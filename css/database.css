@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* *********
+ *author:daisy
+ *version:1.0
+ *Date:2015-3-11
+ ********* */
+  /* *******通用******** */
+ .item-tabbox{
+	width:100%;
+	background-color:#fff9ee;
+	border-bottom: solid 1px #d6d6d6;
+}
+.item-tabbox li{
+	width:33.33%;
+	box-sizing:border-box;
+	float:left;
+	margin:15px 0;
+	font-size:1.5rem;
+	text-align:center;
+}
+.itemlist {
+	width: 100%;
+	color: #8f8f8f;
+	font-size: 1rem;
+}
+ul.itemlist li {
+	width: 100%;
+	padding: 12px 0;
+	border-bottom: 1px solid #d6d6d6;
+}
+.iteminfo {
+	float: left;
+	width: 70%;
+	color:#736c5f;
+}
+.itemlist h2 {
+	font-size: 1.5rem;
+	margin: 0;
+	color: #131313;
+}
+.itemthumb {
+	float: left;
+	width: 16%;
+	margin: 0 3%;
+}
+.itemlist-enter {
+	float: right;
+	width: 2%;
+	margin: 30px 3%;
+}
+ /* *******海岛奇兵******** */
+#databasebody-bb{
+	background-color:#fff3dc;
+ }
+.databaseheader-bb{
+	background-color:#43b9de;
+}
+.data-bb h4{
+	color:#423f38;
+	font-size:1.25rem;
+	margin:5px;
+}
+.data-bb-list{
+	width:3%;
+	float:left;
+	margin:0 5px;
+}
