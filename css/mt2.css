@@ -4,7 +4,7 @@
 body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{ margin:0; padding:0}
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{ display:block}
 html{ font:62.5%/1.5 "Microsoft YaHei", sans-serif}
-img{border:none}
+img{border:none; max-width:100%}
 h1,h2,h3,h4,h5,h6{ font-weight:normal}
 input,select,textarea{ font-size:100%; vertical-align:baseline; *vertical-align: middle}
 ol,ul{ list-style:none}
@@ -14,3 +14,32 @@ em,i,code,cite,address,th{font-style:normal}
 .clear{clear:both;line-height:0;font-size:0}
 .clearfix{*zoom:1;_height:1px}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+
+body{ background:#1e1d2c}
+.datadetail{ color:#fff}
+.datadetail .summary{ background:#014f7f; overflow:hidden; padding:10px 10px 15px}
+.datadetail .summary .l{ float:left; width:30%; padding-right:10px}
+.datadetail .summary h1{ font-size:1.8em; margin-bottom:3px}
+.datadetail .summary p{ font-size:1.6em}
+.datadetail .section{ padding:5px}
+.datadetail .section .tit i{ background:#43b9de; width:3px; height:1.7em; display:inline-block; vertical-align:text-bottom; margin-right:5px}
+.datadetail .section .tit h2{ font-size:1.8em; display:inline-block}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
