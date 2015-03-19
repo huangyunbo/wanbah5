@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* mt2 2015/03/19 */
+
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{ margin:0; padding:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{ display:block}
+html{ font:62.5%/1.5 "Microsoft YaHei", sans-serif}
+img{border:none}
+h1,h2,h3,h4,h5,h6{ font-weight:normal}
+input,select,textarea{ font-size:100%; vertical-align:baseline; *vertical-align: middle}
+ol,ul{ list-style:none}
+textarea{ overflow:auto; vertical-align:top; resize:vertical}
+table{ border-collapse:collapse; border-spacing:0}
+em,i,code,cite,address,th{font-style:normal}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
