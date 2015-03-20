@@ -6,7 +6,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{ displa
 html{ font:62.5%/1.5 "Microsoft YaHei", sans-serif}
 img{border:none; max-width:100%}
 h1,h2,h3,h4,h5,h6{ font-weight:normal}
-input,select,textarea{ font-size:100%; vertical-align:baseline; *vertical-align: middle}
+input,select,textarea{ font-size:100%; vertical-align:baseline; *vertical-align:middle}
 ol,ul{ list-style:none}
 textarea{ overflow:auto; vertical-align:top; resize:vertical}
 table{ border-collapse:collapse; border-spacing:0}
@@ -18,23 +18,57 @@ em,i,code,cite,address,th{font-style:normal}
 body{ background:#1e1d2c}
 .datadetail{ color:#fff}
 .datadetail .summary{ background:#014f7f; overflow:hidden; padding:10px 10px 15px}
-.datadetail .summary .l{ float:left; width:30%; padding-right:10px}
+.datadetail .summary .l{ float:left; width:30%; padding-right:10px; text-align:center}
 .datadetail .summary h1{ font-size:1.8em; margin-bottom:3px}
 .datadetail .summary p{ font-size:1.6em}
 .datadetail .section{ padding:5px}
-.datadetail .section .tit i{ background:#43b9de; width:3px; height:1.7em; display:inline-block; vertical-align:text-bottom; margin-right:5px}
+.datadetail .section .tit i.icon{ background:#43b9de; width:3px; height:1.7em; display:inline-block; vertical-align:text-bottom; margin-right:5px}
 .datadetail .section .tit h2{ font-size:1.8em; display:inline-block}
-
-
-
-
-
-
-
-
-
-
-
+.datadetail .init .com{ display:table; width:100%}
+.datadetail .init .com .d{ display:table-cell; text-align:center; font-size:1.4em; padding:10px 0}
+.datadetail .init .com .d .round{ width:60px; height:60px; display:inline-block; line-height:60px; border:1px solid #fff; border-radius:40px; margin-bottom:5px}
+.ico_init_sta1,.ico_init_sta2,.ico_init_sta3{ background:url(../images/data-mt2-detail.png) no-repeat; width:60px; height:60px; display:inline-block}
+.ico_init_sta2{ background-position:0 -60px}
+.ico_init_sta3{ background-position:0 -120px}
+.datadetail .ability i.ico_ability{ float:left; background:url(../images/data-mt2-detail.png) no-repeat; width:60px; height:60px}
+.datadetail .ability li{ overflow:hidden; margin-bottom:5px}
+.datadetail .ability i.ico_ability_groom{ background-position:0 -180px}
+.datadetail .ability i.ico_ability_begin{ background-position:0 -240px}
+.datadetail .ability i.ico_ability_sta{ background-position:0 -300px}
+.datadetail .ability i.ico_ability_dps{ background-position:0 -360px}
+.datadetail .ability i.ico_ability_team{ background-position:0 -420px}
+.datadetail .ability .r{ margin:8px 0 0 60px}
+.datadetail .ability span{ font-size:1.4em}
+.datadetail .ability .star em{ width:7%; padding-top:1%; margin-right:1%; background:#3a2d57; display:inline-block}
+.datadetail .ability .star em:after{ content:"\0"}
+.datadetail .ability .star_purple1 em:nth-child(-n+1),.datadetail .ability .star_purple2 em:nth-child(-n+2),.datadetail .ability .star_purple3 em:nth-child(-n+3),.datadetail .ability .star_purple4 em:nth-child(-n+4),.datadetail .ability .star_purple5 em:nth-child(-n+5),.datadetail .ability .star_purple6 em:nth-child(-n+6),.datadetail .ability .star_purple7 em:nth-child(-n+7),.datadetail .ability .star_purple8 em:nth-child(-n+8),.datadetail .ability .star_purple9 em:nth-child(-n+9),.datadetail .ability .star_purple10 em:nth-child(-n+10){background:#da5bff}
+.datadetail .ability .star_green1 em:nth-child(-n+1),.datadetail .ability .star_green2 em:nth-child(-n+2),.datadetail .ability .star_green3 em:nth-child(-n+3),.datadetail .ability .star_green4 em:nth-child(-n+4),.datadetail .ability .star_green5 em:nth-child(-n+5),.datadetail .ability .star_green6 em:nth-child(-n+6),.datadetail .ability .star_green7 em:nth-child(-n+7),.datadetail .ability .star_green8 em:nth-child(-n+8),.datadetail .ability .star_green9 em:nth-child(-n+9),.datadetail .ability .star_green10 em:nth-child(-n+10){background:#47c197}
+.datadetail .ability .star_blue1 em:nth-child(-n+1),.datadetail .ability .star_blue2 em:nth-child(-n+2),.datadetail .ability .star_blue3 em:nth-child(-n+3),.datadetail .ability .star_blue4 em:nth-child(-n+4),.datadetail .ability .star_blue5 em:nth-child(-n+5),.datadetail .ability .star_blue6 em:nth-child(-n+6),.datadetail .ability .star_blue7 em:nth-child(-n+7),.datadetail .ability .star_blue8 em:nth-child(-n+8),.datadetail .ability .star_blue9 em:nth-child(-n+9),.datadetail .ability .star_blue10 em:nth-child(-n+10){background:#4dd2fd}
+.datadetail .lineup .li{ margin-bottom:15px}
+.datadetail .lineup .li .t{ font-size:1.4em; margin-bottom:10px}
+.datadetail .lineup .li .c{ background:#383742; display:table; position:relative; width:100%}
+.datadetail .lineup .li .c a{ display:inline-table; width:20%; padding:10px; box-sizing:border-box}
+.datadetail .lineup .li .c .trg{ position:absolute; width:0; height:0; top:-14px; left:7px; border-width:7px; border-style:dashed dashed solid dashed; border-color:transparent transparent #383742 transparent}
+.datadetail .skill li{ display:table; width:100%; margin-bottom:10px}
+.datadetail .skill li .img{ display:table-cell; width:16%}
+.datadetail .skill li .note{ display:table-cell; width:64%; vertical-align:top; padding:0 10px; box-sizing:border-box; font-size:1.4em}
+.datadetail .skill li .note h3{ margin-bottom:3px}
+.datadetail .skill li .des{display:table-cell; width:20%; vertical-align:top; text-align:right; font-size:1.8em}
+.datadetail .skill li .des span{ display:inline-block; padding:7px; line-height:1}
+.datadetail .skill li .des_green{ border:1px solid #37ffc9}
+.datadetail .skill li .des_purple{ border:1px solid #da5bff}
+.datadetail .skill li .des_blue{ border:1px solid #4dd2fd}
+.datadetail .goodfriends li{ display:table; width:100%; margin-bottom:10px}
+.datadetail .goodfriends li .img{ display:table-cell; width:16%}
+.datadetail .goodfriends li .c{ display:table-cell; vertical-align:top; padding-left:10px; font-size:1.4em}
+.datadetail .goodfriends li .c h3{ margin-bottom:3px}
+.datadetail .growup .tab{ width:100%; font-size:1.4em; text-align:center}
+.datadetail .growup .tab tr:nth-child(odd){ background:#1c1528}
+.datadetail .growup .tab tr:nth-child(even){ background:#0f0e16}
+.datadetail .growup .tab tr.th{ background:#2f1f44}
+.datadetail .growup .tab td{ padding:5px 0}
+.datadetail a{ color:#fff; text-decoration:none; font-size:1.4em}
+.relevant{ margin:10px 0 50px}
 
 
 

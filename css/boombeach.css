@@ -6,7 +6,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{ displa
 html{ font:62.5%/1.5 "Microsoft YaHei", sans-serif}
 img{border:none; max-width:100%}
 h1,h2,h3,h4,h5,h6{ font-weight:normal}
-input,select,textarea{ font-size:100%; vertical-align:baseline; *vertical-align: middle}
+input,select,textarea{ font-size:100%; vertical-align:baseline; *vertical-align:middle}
 ol,ul{ list-style:none}
 textarea{ overflow:auto; vertical-align:top; resize:vertical}
 table{ border-collapse:collapse; border-spacing:0}
@@ -18,7 +18,7 @@ em,i,code,cite,address,th{font-style:normal}
 
 body{ background:#fff3dc}
 .datadetail .summary{overflow:hidden; padding:10px 10px 15px}
-.datadetail .summary .l{ float:left; width:30%; padding-right:10px}
+.datadetail .summary .l{ float:left; width:30%; padding-right:10px; text-align:center}
 .datadetail .summary h1{ font-size:1.8em; margin-bottom:3px; font-weight:bold}
 .datadetail .summary p{ font-size:1.6em}
 .datadetail .leveal{ overflow:hidden; padding:10px 10px 15px; font-size:1.4em}
