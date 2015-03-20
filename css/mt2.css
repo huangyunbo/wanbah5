@@ -49,6 +49,7 @@ body{ background:#1e1d2c}
 .datadetail .lineup .li .c{ background:#383742; display:table; position:relative; width:100%}
 .datadetail .lineup .li .c a{ display:inline-table; width:20%; padding:10px; box-sizing:border-box}
 .datadetail .lineup .li .c .trg{ position:absolute; width:0; height:0; top:-14px; left:7px; border-width:7px; border-style:dashed dashed solid dashed; border-color:transparent transparent #383742 transparent}
+.datadetail .skill .tit{ margin-bottom:5px}
 .datadetail .skill li{ display:table; width:100%; margin-bottom:10px}
 .datadetail .skill li .img{ display:table-cell; width:16%}
 .datadetail .skill li .note{ display:table-cell; width:64%; vertical-align:top; padding:0 10px; box-sizing:border-box; font-size:1.4em}
@@ -58,6 +59,7 @@ body{ background:#1e1d2c}
 .datadetail .skill li .des_green{ border:1px solid #37ffc9}
 .datadetail .skill li .des_purple{ border:1px solid #da5bff}
 .datadetail .skill li .des_blue{ border:1px solid #4dd2fd}
+.datadetail .goodfriends .tit{ margin-bottom:5px}
 .datadetail .goodfriends li{ display:table; width:100%; margin-bottom:10px}
 .datadetail .goodfriends li .img{ display:table-cell; width:16%}
 .datadetail .goodfriends li .c{ display:table-cell; vertical-align:top; padding-left:10px; font-size:1.4em}
@@ -68,7 +70,7 @@ body{ background:#1e1d2c}
 .datadetail .growup .tab tr.th{ background:#2f1f44}
 .datadetail .growup .tab td{ padding:5px 0}
 .datadetail a{ color:#fff; text-decoration:none; font-size:1.4em}
-.relevant{ margin:10px 0 50px}
+.datadetail .relevant{ margin:10px 0 50px}
 
 
 
