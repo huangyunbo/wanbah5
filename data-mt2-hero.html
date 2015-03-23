@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>英雄列表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/mt2.css">
+</head>
+
+<body>
+<div class="hero">
+	<div class="header" id="mheader_navbox">
+        <ul>
+            <li class="on">分类一<i></i></li>
+            <li>分类二<i></i></li>
+            <li>分类三<i></i></li>
+            <li>分类四<i></i></li>
+            <li>分类五<i></i></li>
+            <li>分类六<i></i></li>
+            <li>分类七<i></i></li>
+            <li>分类八<i></i></li>
+            <li>分类九<i></i></li>
+            <li>分类十<i></i></li>
+        </ul>
+    </div>
+    <div class="pagebody">
+    	<ul>
+        	<li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
+            <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
+            <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
+            <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
+            <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
+            <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
+        </ul>
+    </div>
+</div><!--/hero-->
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript">
+	var $mheader_navbox = $("#mheader_navbox");
+	var li = $mheader_navbox.find("li");
+	var liW = li.width();
+	var w = li.length * liW;
+	$mheader_navbox.children().width(w);
+	
+	var myscroll=new IScroll("#mheader_navbox", {
+		scrollX: true,
+		scrollY: false
+	});
+</script>
+</body>
+</html>

@@ -15,11 +15,25 @@ em,i,code,cite,address,th{font-style:normal}
 .clearfix{*zoom:1;_height:1px}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 
-body{ background:#1e1d2c}
-.datadetail{ color:#fff}
+body{ background:#1e1d2c; color:#fff}
+a{ color:#fff; text-decoration:none; font-size:1.4em}
+/*英雄列表*/
+.hero .header{ overflow:hidden; border-bottom:1px solid #60478e; margin:5px 0; width:100%; height:42px; position:relative}
+.hero .header ul{ position:absolute; width:2000px; height:42px}
+.hero .header li{ float:left; font-size:1.6em; color:#b0b8c8; padding:8px 0 8px 25px; white-space:nowrap}
+.hero .header li.on{ color:#fff; border-bottom:2px solid #4dd2fd}
+.hero .header li i{ width:1px; height:18px; vertical-align:sub; display:inline-block; background:#3c91b2; margin-left:25px}
+.hero .header li:last-child i{ background:none}
+.hero .pagebody li{ width:25%; float:left; padding:10px; box-sizing:border-box; text-align:center}
+.hero .pagebody li img{ display:inline-block}
+
+
+
+
+/*详情页*/
 .datadetail .summary{ background:#014f7f; overflow:hidden; padding:10px 10px 15px}
 .datadetail .summary .l{ float:left; width:30%; padding-right:10px; text-align:center}
-.datadetail .summary h1{ font-size:1.8em; margin-bottom:3px}
+.datadetail .summary h1{ font-size:1.8em; margin-bottom:3px; text-shadow:0 0 2px #fff}
 .datadetail .summary p{ font-size:1.6em}
 .datadetail .section{ padding:5px}
 .datadetail .section .tit i.icon{ background:#43b9de; width:3px; height:1.7em; display:inline-block; vertical-align:text-bottom; margin-right:5px}
@@ -69,7 +83,6 @@ body{ background:#1e1d2c}
 .datadetail .growup .tab tr:nth-child(even){ background:#0f0e16}
 .datadetail .growup .tab tr.th{ background:#2f1f44}
 .datadetail .growup .tab td{ padding:5px 0}
-.datadetail a{ color:#fff; text-decoration:none; font-size:1.4em}
 .datadetail .relevant{ margin:10px 0 50px}
 
 
