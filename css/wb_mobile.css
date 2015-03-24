@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* 2015/3/24 */
+
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{ margin:0; padding:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{ display:block}
+html{ font:62.5%/1.5 "Microsoft YaHei", sans-serif}
+img{border:none; max-width:100%}
+h1,h2,h3,h4,h5,h6{ font-weight:normal}
+input,select,textarea{ font-size:100%; vertical-align:baseline; *vertical-align:middle}
+ol,ul{ list-style:none}
+textarea{ overflow:auto; vertical-align:top; resize:vertical}
+table{ border-collapse:collapse; border-spacing:0}
+em,i,code,cite,address,th{font-style:normal}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+
+
+a{ text-decoration:none}
+.header{ height:40px; background:#fbbc0e; overflow:hidden}
+.header .wblogo{ float:left; margin:7px 0 0 10px}
+.header .wblogo a{ display:block; width:48px; height:26px; padding-left:52px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.header .crumbs{ margin:7px 0 0 110px; color:#fff; font-size:2em}
+.index_nav{ font-size:2em; width:100%; display:table; margin-top:10px}
+.index_nav div{  width:50%; text-align:center; display:table-cell; border-right:1px solid #d3d3d3}
+.index_nav a{ color:#1a1a1a; border-bottom:2px solid transparent; padding:0 20px; display:inline-block}
+.index_nav .on a{color:#fbbc0e; border-color:#fbbc0e}
+.index_nav div:last-child{ border:none}
+.gamearea .title{ font-size:1.8em; margin-left:10px}
+.gamearea .title .icon{ width:2px; height:9px; background:#fbbc0e; display:inline-block; vertical-align:4px; margin-right:3px}
+.gamearea li{ border-bottom:1px solid #ccc}
+.gamearea a{ display:table; width:100%; padding:15px 0}
+.gamearea .img{ display:table-cell; width:28%; padding:0 10px; box-sizing:border-box; text-align:center}
+.gamearea .desc{ display:table-cell; vertical-align:top}
+.gamearea .desc h2{ font-size:1.4em; color:#1a1a1a}
+.gamearea .desc p,.gamearea .desc .info{ font-size:1.4em; color:#8f8f8f}
+.gamearea .desc .info span{ margin-right:6px}
+.gamearea .look{ display:table-cell; width:20%; vertical-align:middle}
+.gamearea .look span{ border:1px solid #fbbc0e; padding:3px 15px; color:#fbbc0e; font-size:1.4em; line-height:1; white-space:nowrap}
+.index .lookmore{ font-size:1.4em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
+.index_ad{ height:80px; background:#fbbc0e}
+.index_ad a{ color:#666; border:1px solid #666; border-top:none; margin-left:10px; padding:2px 8px; font-size:1.4em}
+.videoarea{ margin-top:10px}
+.videoarea .title{ font-size:1.8em; margin-left:10px}
+.videoarea .title .icon{ width:2px; height:9px; background:#fbbc0e; display:inline-block; vertical-align:4px; margin-right:3px}
+.videoarea .videolist{ display:table; width:100%;}
+.videoarea .videoitem{ display:table-cell; width:50%; padding:10px; box-sizing:border-box}
+.videoarea .videoitem h3{ color:#454545; font-size:1.4em}
+.videoarea .videoitem img{ width:100%}
+.footer{ text-align:center; margin:15px 0 20px}
+.footer a{ border:1px solid #ccc; color:#ccc; padding:0 10px; font-size:1.4em}
+
+
+
+
+
