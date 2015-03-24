@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>玩吧</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/wb_mobile.css">
+</head>
+
+<body>
+<header class="header">
+	<div class="wblogo"><a href="javascript:;"><h1>玩吧</h1></a></div>
+    <div class="crumbs">&gt;&nbsp;我叫MT2专区</div>
+</header><!--/header-->
+
+<nav class="news_nav" id="news_nav">
+	<ul>
+        <li class="on">新手引导</li>
+        <li>基础攻略</li>
+        <li>基础攻略</li>
+        <li>基础攻略</li>
+        <li>基础攻略</li>
+        <li>基础攻略</li>
+        <li>基础攻略</li>
+        <li>基础攻略</li>
+        <li>基础攻略</li>
+        <li>基础攻略</li>
+        <li>基础攻略</li>
+    </ul>
+</nav><!--/news_nav-->
+
+<section class="news">
+	<ul>
+    	<li>
+        	<a href="javascript:;">
+                <div class="img"><img src="images/articlethumb1.jpg"></div>
+                <div class="note">
+                    <h2>公会本第三章攻略公会本第三章攻</h2>
+                    <div class="info">
+                        <span>02-17 13:54</span>
+                        <span>23478</span>
+                        <span>125248</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+        	<a href="javascript:;">
+                <div class="note">
+                    <h2>公会本第三章攻略公会本第三章攻</h2>
+                    <p>傻馒</p>
+                    <div class="info">
+                        <span>02-17 13:54</span>
+                        <span>23478</span>
+                        <span>125248</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</section><!--/news-->
+
+<footer class="footer">
+	<a href="javascript:;">电脑版</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="javascript:;">客户端</a>
+</footer><!--/footer-->
+
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript">
+	var $news_nav = $("#news_nav");
+	var li = $news_nav.find("li");
+	var liW = li.width();
+	var w = li.length * liW;
+	$news_nav.children().width(w);
+	
+	var myscroll=new IScroll("#news_nav", {
+		scrollX: true,
+		scrollY: false
+	});
+</script>
+</body>
+</html>
