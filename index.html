@@ -20,9 +20,22 @@
 </nav><!--/index_nav-->
 
 <section class="index">
-	<div class="poster">
-    	海报
-    </div><!--/poster-->
+	<div id="posterPicMobile" class="posterPicMobile">
+    	<!--<div class="pic">
+            <ul>
+                <li><a href="javascript:;"><img src="http://10.8.50.163:9090/resources/images/10000700.jpg"></a></li>
+                <li><a href="javascript:;"><img src="http://10.8.50.163:9090/resources/images/10000708.jpg"></a></li>
+                <li><a href="javascript:;"><img src="images/56327.jpg"></a></li>
+            </ul>
+		</div>
+        <div class="pager">
+            <ul>
+                <li class="current"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>-->
+    </div><!--/posterPicMobile-->
     
 	<div class="gamearea">
     	<div class="title"><i class="icon"></i>热门专区</div>
@@ -103,5 +116,15 @@
 	<a href="javascript:;">电脑版</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="javascript:;">客户端</a>
 </footer><!--/footer-->
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/fx.js"></script>
+<script type="text/javascript" src="js/posterPicMobile.js"></script>
+<script type="text/javascript">
+var posterPicMobileVar = new posterPicMobile({
+	id: 'posterPicMobile',
+	delay: 2000,
+	data: [{"img":"http://10.8.50.163:9090/resources/images/10000700.jpg","url":"#","title":"第一张图"},{"img":"http://10.8.50.163:9090/resources/images/10000708.jpg","url":"#","title":"第二张图"},{"img":"images/56327.jpg","url":"#","title":"第三张图"}]
+});
+</script>
 </body>
 </html>
