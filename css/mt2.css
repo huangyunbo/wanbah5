@@ -18,18 +18,18 @@ em,i,code,cite,address,th{font-style:normal}
 body{ background:#1e1d2c; color:#fff}
 a{ color:#fff; text-decoration:none; font-size:1.4em}
 /*英雄列表*/
-.hero .header{ overflow:hidden; border-bottom:1px solid #60478e; margin:5px 0; width:100%; height:42px; position:relative}
+/*.hero .header{ overflow:hidden; border-bottom:1px solid #60478e; margin:5px 0; width:100%; height:42px; position:relative}
 .hero .header ul{ position:absolute; width:2000px; height:42px}
 .hero .header li{ float:left; font-size:1.6em; color:#b0b8c8; padding:8px 0 8px 25px; white-space:nowrap}
 .hero .header li.on{ color:#fff; border-bottom:2px solid #4dd2fd}
 .hero .header li i{ width:1px; height:18px; vertical-align:sub; display:inline-block; background:#3c91b2; margin-left:25px}
-.hero .header li:last-child i{ background:none}
+.hero .header li:last-child i{ background:none}*/
+.hero .header{ border-bottom:1px solid #60478e; margin:5px 0}
+.hero .header ul{ display:table; width:100%; table-layout:fixed}
+.hero .header li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center}
+.hero .header li.on{ color:#fff; border-bottom:2px solid #4dd2fd}
 .hero .pagebody li{ width:25%; float:left; padding:10px; box-sizing:border-box; text-align:center}
 .hero .pagebody li img{ display:inline-block}
-
-
-
-
 /*详情页*/
 .datadetail .summary{ background:#014f7f; overflow:hidden; padding:10px 10px 15px}
 .datadetail .summary .l{ float:left; width:30%; padding-right:10px; text-align:center}
