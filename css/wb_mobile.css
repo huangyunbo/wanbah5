@@ -63,11 +63,15 @@ a{ text-decoration:none}
 .news li a{ padding:10px; border-bottom:1px solid #d3d3d3; display:table; width:100%; box-sizing:border-box}
 .news li .img{ width:30%; display:table-cell; text-align:center}
 .news li .img + .note h2{ margin-bottom:1.1em}
-.news li .note{ display:table-cell; padding-left:10px; position:relative; vertical-align:top; color:#1a1a1a}
+.news li .img + .note{ padding-left:10px}
+.news li .note{ display:table-cell; position:relative; vertical-align:top; color:#1a1a1a}
 .news li .note h2{ font-size:1.6em}
-.news li .note p{ font-size:1.4em; margin-bottom:1.5em}
-.news li .note .info{ position:absolute; bottom:0}
-
+.news li .note p{ font-size:1.4em; margin-bottom:1.5em; color:#8f8f8f}
+.news li .note .info{ position:absolute; bottom:0; color:#8f8f8f; font-size:1.4em}
+.news li .note .info span{ margin-right:7px}
+.news_icon_essence,.news_icon_look,.news_icon_comment{ background:url(../images/news_icon.png) no-repeat; background-size:cover; width:15px; height:15px; display:inline-block}
+.news_icon_look{ background-position:0 -15px; vertical-align:sub}
+.news_icon_comment{ background-position:0 -30px; vertical-align:sub}
 
 
 

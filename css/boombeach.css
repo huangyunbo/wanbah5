@@ -17,6 +17,24 @@ em,i,code,cite,address,th{font-style:normal}
 
 
 body{ background:#fff3dc}
+a{ text-decoration:none}
+.header{ height:40px; background:#fbbc0e; overflow:hidden}
+.header .wblogo{ float:left; margin:7px 0 0 10px}
+.header .wblogo a{ display:block; width:48px; height:26px; padding-left:52px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.header .crumbs{ margin:7px 0 0 110px; color:#fff; font-size:2em}
+/*列表页*/
+.datalist_nav{ border-bottom:1px solid #d3d3d3}
+.datalist_nav ul{ display:table; width:100%; table-layout:fixed}
+.datalist_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center}
+.datalist_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e}
+.datalist li a{ padding:10px; border-bottom:1px solid #d3d3d3; display:table; width:100%; box-sizing:border-box}
+.datalist li .img{ width:18%; display:table-cell; text-align:center}
+.datalist li .note{ display:table-cell; padding-left:10px; vertical-align:middle; color:#1a1a1a}
+.datalist li .note h2{ font-size:1.8em; font-weight:bold}
+.datalist li .note p{ font-size:1.4em; color:#8f8f8f}
+.datalist li .look{ display:table-cell; width:10%; vertical-align:middle}
+.datalist li .look .icon{ width:13px; height:13px; display:inline-block; border-width:0 1px 1px 0; border-color:#8f8f8f; border-style:solid; transform:rotate(-45deg)}
+/*详情页*/
 .datadetail .summary{overflow:hidden; padding:10px 10px 15px}
 .datadetail .summary .l{ float:left; width:30%; padding-right:10px; text-align:center}
 .datadetail .summary h1{ font-size:1.8em; margin-bottom:3px; font-weight:bold}
@@ -47,3 +65,18 @@ body{ background:#fff3dc}
 .datadetail .list i.ico_stone{ background-position:0 -105px}
 .datadetail .list i.ico_time{ background-position:0 -120px}
 .datadetail .list i.ico_exp{ background-position:0 -135px}
+/*阵型详情页*/
+.formation .item{ border-bottom:1px solid #d3d3d3; padding-bottom:10px}
+.formation .item h3{ font-size:1.7em; padding:10px}
+.formation .item h3 span{ color:#c96; border:1px solid #c96; border-radius:10px; padding:0 4px; margin-right:5px; font-size:0.7em; vertical-align:1px}
+.formation .item .img{ text-align:center}
+.formation .item p{ padding:10px 10px 0; font-size:1.4em; color:#8f8f8f}
+
+
+
+
+
+
+
+
+
