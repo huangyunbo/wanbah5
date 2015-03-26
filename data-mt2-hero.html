@@ -10,15 +10,15 @@
 
 <body>
 <div class="hero">
-	<div class="header" id="mheader_navbox">
+	<div class="header" id="hero_nav">
         <ul>
-            <li class="on">分类一<i></i></li>
+            <li>分类一<i></i></li>
             <li>分类二<i></i></li>
             <li>分类三<i></i></li>
             <li>分类四<i></i></li>
         </ul>
     </div>
-    <div class="pagebody">
+    <div class="pagebody" id="pagebody">
     	<ul>
         	<li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
             <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
@@ -27,10 +27,19 @@
             <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
             <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
         </ul>
+        <ul style="display:none">
+        	2
+        </ul>
+        <ul style="display:none">
+        	3
+        </ul>
+        <ul style="display:none">
+        	4
+        </ul>
     </div>
 </div><!--/hero-->
 <script type="text/javascript" src="js/zepto.min.js"></script>
-<script type="text/javascript" src="js/iscroll.js"></script>
+<!--<script type="text/javascript" src="js/iscroll.js"></script>-->
 <script type="text/javascript">
 /*	var $mheader_navbox = $("#mheader_navbox");
 	var li = $mheader_navbox.find("li");
@@ -42,6 +51,17 @@
 		scrollX: true,
 		scrollY: false
 	});*/
+$(function(){
+	var $hero_nav = $("#hero_nav");
+	var $li = $hero_nav.find("li");
+	var $pagebody = $("#pagebody");
+	$li.first().addClass("on");
+	$li.on("click", function(){
+		var _index = $(this).index();
+		$(this).addClass("on").siblings("li.on").removeClass("on");
+		$pagebody.children("ul").eq(_index).show().siblings("ul").hide();
+	});
+});
 </script>
 </body>
 </html>
