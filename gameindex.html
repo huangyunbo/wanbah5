@@ -14,11 +14,8 @@
     <div class="crumbs">&gt;&nbsp;我叫MT2专区</div>
 </header><!--/header-->
 
-<section class="gameindex">
-	<div class="poster">
-    	海报
-    </div><!--/poster-->
-    
+<div id="posterPicMobile" class="posterPicMobile"></div>
+<section class="gameindex">    
 	<div class="content">
     	<ul>
         	<li>
@@ -77,5 +74,16 @@
 	<a href="javascript:;">电脑版</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="javascript:;">客户端</a>
 </footer><!--/footer-->
+
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/fx.js"></script>
+<script type="text/javascript" src="js/posterPicMobile.js"></script>
+<script type="text/javascript">
+var posterPicMobileVar = new posterPicMobile({
+	id: 'posterPicMobile',
+	delay: 6000,
+	data: [{"img":"http://10.8.50.163:9090/resources/images/10000700.jpg","url":"#","title":"第一张图"},{"img":"http://10.8.50.163:9090/resources/images/10000708.jpg","url":"#","title":"第二张图"}]
+});
+</script>
 </body>
 </html>

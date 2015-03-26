@@ -21,7 +21,7 @@
 		this.thumbs = [];//所有点点组
 		this.timer = null;
 		this.locked = false;
-		this.imgplace = '../images/bx_loader.gif';
+		this.imgplace = '../images/spacer.gif';
 		this.pos_start = 0;
 		
 		this.init();
