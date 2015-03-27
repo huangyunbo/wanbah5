@@ -71,9 +71,9 @@ a{ text-decoration:none}
 .news_nav li{ float:left; font-size:1.6em; color:#454545; padding:8px 20px 8px 20px; white-space:nowrap}
 .news_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e}
 .news li a{ padding:10px; border-bottom:1px solid #d3d3d3; display:flex; width:100%; box-sizing:border-box}
-.news li .note{ display:flex; flex-flow:column; justify-content:space-between; color:#1a1a1a}
 .news li .img{ width:32%}
-.news li .img + .note{ padding-left:10px}
+.news li .note{ color:#1a1a1a}
+.news li .img + .note{ display:flex; flex-flow:column; justify-content:space-between; padding-left:10px}
 .news li .note h2{ font-size:1.6em}
 .news li .note p{ font-size:1.6em; margin-bottom:10px; color:#8f8f8f}
 .news li .note .info{ color:#8f8f8f; font-size:1.4em}
