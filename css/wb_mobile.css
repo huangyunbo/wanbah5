@@ -36,7 +36,7 @@ a{ text-decoration:none}
 .gamearea .desc p,.gamearea .desc .info{ font-size:1.6em; color:#8f8f8f}
 .gamearea .desc .info span{ margin-right:6px}
 .gamearea .look{ display:table-cell; width:10%; vertical-align:middle}
-.gamearea .look .icon{ width:13px; height:13px; display:inline-block; border-width:0 1px 1px 0; border-color:#8f8f8f; border-style:solid; transform:rotate(-45deg)}
+.gamearea .look .icon{ width:13px; height:13px; display:inline-block; border-width:0 1px 1px 0; border-color:#8f8f8f; border-style:solid; -webkit-transform:rotate(-45deg); transform:rotate(-45deg)}
 .index .lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 .index_ad{ height:80px; background:#fbbc0e}
 .index_ad a{ color:#666; border:1px solid #666; border-top:none; margin-left:10px; padding:2px 8px; font-size:1.6em}
@@ -70,14 +70,14 @@ a{ text-decoration:none}
 .news_nav ul{ position:absolute; width:2000px; height:42px}
 .news_nav li{ float:left; font-size:1.6em; color:#454545; padding:8px 20px 8px 20px; white-space:nowrap}
 .news_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e}
-.news li a{ padding:10px; border-bottom:1px solid #d3d3d3; display:flex; width:100%; box-sizing:border-box}
-.news li .img{ width:32%}
-.news li .note{ color:#1a1a1a}
-.news li .img + .note{ display:flex; flex-flow:column; justify-content:space-between; padding-left:10px}
+.news li{ border-bottom:1px solid #d3d3d3; padding:10px}
+.news li table{ width:100%}
+.news li .img{ width:35%; vertical-align:top; padding-right:10px}
+.news li .note{ color:#1a1a1a; vertical-align:top}
 .news li .note h2{ font-size:1.6em}
 .news li .note p{ font-size:1.6em; margin-bottom:10px; color:#8f8f8f}
-.news li .note .info{ color:#8f8f8f; font-size:1.4em}
-.news li .note .info span{ margin-right:7px; white-space:nowrap}
+.news li .info{ color:#8f8f8f; font-size:1.4em; vertical-align:bottom}
+.news li .info span{ margin-right:5px; white-space:nowrap}
 .news_icon_essence,.news_icon_look,.news_icon_comment{ background:url(../images/news_icon.png) no-repeat; background-size:cover; width:15px; height:15px; display:inline-block}
 .news_icon_look{ background-position:0 -15px; vertical-align:sub}
 .news_icon_comment{ background-position:0 -30px; vertical-align:sub}
