@@ -33,7 +33,7 @@ a{ text-decoration:none}
 .datalist li .note h2{ font-size:1.8em; font-weight:bold}
 .datalist li .note p{ font-size:1.4em; color:#8f8f8f}
 .datalist li .look{ display:table-cell; width:10%; vertical-align:middle}
-.datalist li .look .icon{ width:13px; height:13px; display:inline-block; border-width:0 1px 1px 0; border-color:#8f8f8f; border-style:solid; transform:rotate(-45deg)}
+.datalist li .look .icon{ width:13px; height:13px; display:inline-block; border-width:0 1px 1px 0; border-color:#8f8f8f; border-style:solid; -webkit-transform:rotate(-45deg); transform:rotate(-45deg)}
 /*详情页*/
 .datadetail .summary{overflow:hidden; padding:10px 10px 15px}
 .datadetail .summary .l{ float:left; width:30%; padding-right:10px; text-align:center}
