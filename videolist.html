@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>玩吧视频</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/wb_mobile.css">
+</head>
+
+<body>
+<header class="header">
+	<div class="wblogo"><a href="javascript:;"><h1>玩吧</h1></a></div>
+    <div class="crumbs">&gt;&nbsp;我叫MT2专区</div>
+</header><!--/header-->
+
+<div class="x_slide_nav" id="videoarea_nav">
+    <ul>
+        <li>分类一</li>
+        <li>分类22222222222222二</li>
+        <li>分类三</li>
+        <li>分类四</li>
+    </ul>
+</div>
+    
+<section id="videolist">
+	<div class="videolist">
+        <div class="item">
+            <div class="v-thumb">
+                <a href="javascript:;"></a>
+                <img src="http://res.wanba123.cn/video/52/2015-03-28_124626.png">
+                <div class="v-overlay"></div>
+                <div class="v-time">2:33</div>
+                <div class="v-num"><i class="iconw"><i class="icon"></i></i>213</div>
+            </div>
+            <div class="v-metadata">
+                <a href="javascript:;"><h3>1111111111111111111111111111111111</h3></a>
+                <img src="images/itemthumb-bb2.png">
+            </div>
+        </div>
+        <div class="item">
+            <div class="v-thumb">
+                <a href="javascript:;"></a>
+                <img src="http://res.wanba123.cn/video/52/2015-03-28_124626.png">
+                <div class="v-overlay"></div>
+                <div class="v-time">2:33</div>
+                <div class="v-num"><i class="iconw"><i class="icon"></i></i>213</div>
+            </div>
+            <div class="v-metadata">
+                <a href="javascript:;"><h3>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h3></a>
+                <img src="images/itemthumb-bb2.png">
+            </div>
+        </div>
+        <div class="item">
+            <div class="v-thumb">
+                <a href="javascript:;"></a>
+                <img src="http://res.wanba123.cn/video/52/2015-03-28_124626.png">
+                <div class="v-overlay"></div>
+                <div class="v-time">2:33</div>
+                <div class="v-num"><i class="iconw"><i class="icon"></i></i>213</div>
+            </div>
+            <div class="v-metadata">
+                <a href="javascript:;"><h3>坦克流坦克流坦克流坦克流坦克流</h3></a>
+                <img src="images/itemthumb-bb2.png">
+            </div>
+        </div>
+    </div>
+    
+    <div style="display:none">2</div>
+    <div style="display:none">3</div>
+    <div style="display:none">4</div>
+</section><!--/videolist-->
+
+<footer class="footer">
+	<a href="javascript:;">电脑版</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="javascript:;">客户端</a>
+</footer><!--/footer-->
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript">
+$(function(){
+	var $videoarea_nav = $("#videoarea_nav");
+	var $li = $videoarea_nav.find("li");
+	$videoarea_nav.children().width(getSlideWidth("videoarea_nav","li"));
+
+	function getSlideWidth(parentId, subtagName){//获得整个长度,第一个参数是需要设置id,第二个参数是每个单元的tagName
+		var $parent = $("#"+parentId);
+		var $sub = $parent.find(subtagName);
+		var _w = 0;
+		$sub.each(function(){
+			_w += $(this).width();
+		});
+		return _w+1;
+	}
+	
+	var myscroll=new IScroll("#videoarea_nav", {
+		scrollX: true,
+		scrollY: false,
+		click:	true
+	});
+	
+	var $pagebody = $("#videolist");
+	$li.first().addClass("on");
+	$li.on("click", function(){
+		var _index = $(this).index();
+		$(this).addClass("on").siblings("li.on").removeClass("on");
+		$pagebody.children().eq(_index).show().siblings().hide();
+	});
+});
+</script>
+</body>
+</html>
