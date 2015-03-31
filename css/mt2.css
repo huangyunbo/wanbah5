@@ -16,19 +16,23 @@ em,i,code,cite,address,th{font-style:normal}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 
 body{ background:#1e1d2c; color:#fff}
-a{ color:#fff; text-decoration:none; font-size:1.4em}
+a{ color:#fff; text-decoration:none}
+.header{ height:40px; background:#fbbc0e; overflow:hidden}
+.header .wblogo{ float:left; margin:7px 0 0 10px}
+.header .wblogo a{ display:block; width:48px; height:26px; padding-left:52px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.header .crumbs{ margin:7px 0 0 110px; color:#fff; font-size:2em}
 /*英雄列表*/
-/*.hero .header{ overflow:hidden; border-bottom:1px solid #60478e; margin:5px 0; width:100%; height:42px; position:relative}
-.hero .header ul{ position:absolute; width:2000px; height:42px}
-.hero .header li{ float:left; font-size:1.6em; color:#b0b8c8; padding:8px 0 8px 25px; white-space:nowrap}
-.hero .header li.on{ color:#fff; border-bottom:2px solid #4dd2fd}
-.hero .header li i{ width:1px; height:18px; vertical-align:sub; display:inline-block; background:#3c91b2; margin-left:25px}
-.hero .header li:last-child i{ background:none}*/
-.hero .header{ border-bottom:1px solid #60478e; margin:5px 0}
-.hero .header ul{ display:table; width:100%; table-layout:fixed}
-.hero .header li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center}
-.hero .header li.on{ color:#fff; border-bottom:2px solid #4dd2fd}
-.hero .pagebody li{ width:25%; float:left; padding:10px; box-sizing:border-box; text-align:center}
+/*hero_nav{ overflow:hidden; border-bottom:1px solid #60478e; margin:5px 0; width:100%; height:42px; position:relative}
+.hero_nav ul{ position:absolute; width:2000px; height:42px}
+.hero_nav li{ float:left; font-size:1.6em; color:#b0b8c8; padding:8px 0 8px 25px; white-space:nowrap}
+.hero_nav li.on{ color:#fff; border-bottom:2px solid #4dd2fd}
+.hero_nav li i{ width:1px; height:18px; vertical-align:sub; display:inline-block; background:#3c91b2; margin-left:25px}
+.hero_nav li:last-child i{ background:none}*/
+.hero_nav{ border-bottom:1px solid #60478e; margin:5px 0}
+.hero_nav ul{ display:table; width:100%; table-layout:fixed}
+.hero_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center}
+.hero_nav li.on{ color:#fff; border-bottom:2px solid #4dd2fd}
+.hero .pagebody li{ width:25%; float:left; padding:10px; box-sizing:border-box; text-align:center; font-size:1.4em}
 .hero .pagebody li img{ display:inline-block}
 /*详情页*/
 .datadetail .summary{ background:#014f7f; overflow:hidden; padding:10px 10px 15px}
@@ -85,7 +89,7 @@ a{ color:#fff; text-decoration:none; font-size:1.4em}
 .datadetail .growup .tab tr.th{ background:#2f1f44}
 .datadetail .growup .tab td{ padding:5px 0}
 .datadetail .relevant{ margin:10px 0 50px}
-
+.datadetail .relevant a{ font-size:1.4em}
 
 
 
