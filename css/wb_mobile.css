@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* 2015/3/24 */
 
-body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{ margin:0; padding:0}
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td,iframe{ margin:0; padding:0}
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{ display:block}
 html{ font:62.5%/1.5 "Microsoft YaHei", sans-serif; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 img{border:none; max-width:100%; vertical-align:top}
@@ -16,7 +16,7 @@ em,i,code,cite,address,th{font-style:normal}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 
 
-a{ text-decoration:none}
+a{ text-decoration:none; outline:none}
 .header{ height:40px; background:#fbbc0e; overflow:hidden}
 .header .wblogo{ float:left; margin:7px 0 0 10px}
 .header .wblogo a{ display:block; width:48px; height:26px; padding-left:52px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
@@ -83,6 +83,11 @@ a{ text-decoration:none}
 .news_icon_essence,.news_icon_look,.news_icon_comment{ background:url(../images/news_icon.png) no-repeat; background-size:cover; width:15px; height:15px; display:inline-block}
 .news_icon_look{ background-position:0 -15px; vertical-align:sub}
 .news_icon_comment{ background-position:0 -30px; vertical-align:sub}
+.newsdetail .art{ padding:10px}
+.newsdetail .art h2{ font-size:1.8em; font-weight:normal; line-height:1.2; margin-bottom:10px}
+.newsdetail .art .from{ font-size:1.3em; color:#8f8f8f}
+.newsdetail .art .from span{ margin-right:10px}
+.newsdetail .pagebody{ padding:10px; font-size:1.6em}
 /*视频*/
 .videolist{ display:table; width:100%; box-sizing:border-box; padding:5px; overflow:hidden}
 .videolist .item{ display:table-cell; width:50%; padding:5px; box-sizing:border-box; float:left}
@@ -98,9 +103,10 @@ a{ text-decoration:none}
 .videolist .v-metadata a{ width:100%; position:absolute; padding-top:4px}
 .videolist .v-metadata a h3{ width:100%; font-size:1.6em; color:#111; padding:0 24px 0 5px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; box-sizing:border-box}
 .videolist .v-metadata img{ width:20px; height:20px; border-radius:20px; position:absolute; right:5px; top:5px}
-
-
-
+.videodetail .wb_play_iframe{ width:100%; border:0; vertical-align:top}
+.videodetail .info{ padding:10px}
+.videodetail .info h3{ font-size:1.6em; color:#111}
+.videodetail .info { font-size:1.4em; color:#555}
 
 
 

@@ -14,16 +14,34 @@
     <div class="crumbs">&gt;&nbsp;我叫MT2专区</div>
 </header><!--/header-->
     
-<section id="videodetail">
-    111
-    <video controls autoplay width="320" height="240" src="http://v.youku.com/v_show/id_XOTIwMjY5NjI0.html?f=23617811">
-    您的浏览器不支持 video 标签。
-    </video>
+<section class="videodetail">
+    <div class="wb_play">
+    	<iframe class="wb_play_iframe" id="wb_play_iframe" src="http://player.youku.com/embed/XOTI0MjI2MDY0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="info">
+    	<h2>野人流完爆博士</h2>
+        <p>完美野人流完爆博士精彩锦集，不看你绝对后悔还不点击试试，顺便给我两句留言，一表感谢</p>
+    </div>
 </section><!--/videodetail-->
 
 <footer class="footer">
 	<a href="javascript:;">电脑版</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="javascript:;">客户端</a>
 </footer><!--/footer-->
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	function setIframeHeight(){
+		var _w = $("body").width();
+		var _h = _w / 320 * 180 + 40;
+		$("#wb_play_iframe").height(_h);
+	}
+	setIframeHeight();
+	$(window).resize(setIframeHeight);
+});
+
+
+</script>
 </body>
 </html>
