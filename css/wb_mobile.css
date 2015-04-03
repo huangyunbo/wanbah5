@@ -17,24 +17,25 @@ em,i,code,cite,address,th{font-style:normal}
 
 
 a{ text-decoration:none; outline:none}
-.header{ height:40px; background:#fbbc0e; overflow:hidden}
-.header .wblogo{ float:left; margin:7px 0 0 10px}
+.header{ height:50px; background:#fbbc0e; overflow:hidden}
+.header .wblogo{ float:left; margin:10px 0 0 10px}
 .header .wblogo a{ display:block; width:48px; height:26px; padding-left:52px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
-.header .crumbs{ margin:7px 0 0 110px; color:#fff; font-size:2em}
+.header .crumbs{ margin:10px 0 0 110px; color:#fff; font-size:2em}
 /*首页*/
-.index_nav{ font-size:2em; width:100%; display:table; margin-top:10px}
+.index_nav{ font-size:1.5em; width:100%; display:table}
 .index_nav div{  width:50%; text-align:center; display:table-cell; border-right:1px solid #d3d3d3}
-.index_nav a{ color:#1a1a1a; border-bottom:2px solid transparent; padding:0 20px; display:inline-block}
+.index_nav a{ color:#1a1a1a; border-bottom:2px solid transparent; padding:5px 20px; display:inline-block}
 .index_nav .on a{color:#fbbc0e; border-color:#fbbc0e}
 .index_nav div:last-child{ border:none}
-.gamearea .title{ font-size:1.8em; padding-left:10px}
+.index .gamearea{ margin-top:10px}
+.gamearea .title{ font-size:1.8em; padding:5px 0 5px 10px; background:#f5f5f5}
 .gamearea .title .icon{ width:2px; height:9px; background:#fbbc0e; display:inline-block; vertical-align:4px; margin-right:3px}
 .gamearea li{ border-bottom:1px solid #ccc}
 .gamearea a{ display:table; width:100%; padding:15px 0}
-.gamearea .img{ display:table-cell; width:28%; padding:0 10px; box-sizing:border-box; text-align:center}
+.gamearea .img{ display:table-cell; width:86px; padding:0 10px; box-sizing:border-box; text-align:center}
 .gamearea .desc{ display:table-cell; vertical-align:top}
-.gamearea .desc h2{ font-size:1.6em; color:#1a1a1a}
-.gamearea .desc p,.gamearea .desc .info{ font-size:1.6em; color:#8f8f8f}
+.gamearea .desc h2{ font-size:1.8em; color:#1a1a1a}
+.gamearea .desc p,.gamearea .desc .info{ font-size:1.4em; color:#8f8f8f}
 .gamearea .desc .info span{ margin-right:6px}
 .gamearea .look{ display:table-cell; width:10%; vertical-align:middle}
 .gamearea .look .icon{ width:13px; height:13px; display:inline-block; border-width:0 1px 1px 0; border-color:#8f8f8f; border-style:solid; -webkit-transform:rotate(-45deg); transform:rotate(-45deg)}
@@ -42,13 +43,13 @@ a{ text-decoration:none; outline:none}
 .index_ad{ height:80px; background:#fbbc0e}
 .index_ad a{ color:#666; border:1px solid #666; border-top:none; margin-left:10px; padding:2px 8px; font-size:1.6em}
 .index_videoarea{ margin-top:10px}
-.index_videoarea .title{ font-size:1.8em; margin-left:10px}
+.index_videoarea .title{ font-size:1.8em; padding:5px 0 5px 10px; background:#f5f5f5}
 .index_videoarea .title .icon{ width:2px; height:9px; background:#fbbc0e; display:inline-block; vertical-align:4px; margin-right:3px}
 .index_videoarea .list{ display:table; width:100%;}
 .index_videoarea .item{ display:table-cell; width:50%; padding:10px; box-sizing:border-box}
 .index_videoarea .item h3{ color:#454545; font-size:1.6em}
 .index_videoarea .item img{ width:100%}
-.footer{ text-align:center; margin:15px 0 20px}
+.footer{ text-align:center; margin:50px 0 20px}
 .footer a{ border:1px solid #ccc; color:#ccc; padding:2px 10px; font-size:1.6em}
 /*海报移动*/
 .posterPicMobile .pic{ position:relative; overflow:hidden}
@@ -56,7 +57,7 @@ a{ text-decoration:none; outline:none}
 .posterPicMobile .pic li{ position:absolute; width:100%; height:100%; background:url(../images/posterPicMobile_loader.gif) no-repeat center center}
 .posterPicMobile .pic li a{ display:block; width:100%; height:100%}
 .posterPicMobile .pic li a img{ width:100%}
-.posterPicMobile .pager{ position:relative; bottom:30px}
+.posterPicMobile .pager{ position:relative; bottom:20px}
 .posterPicMobile .pager ul{ float:right; margin-right:10px}
 .posterPicMobile .pager li{ width:10px; height:10px; border-radius:10px; background:#c3c3c3; display:inline-block; margin-right:10px}
 .posterPicMobile .pager li.current{ background:#fbbc0e}
@@ -64,26 +65,26 @@ a{ text-decoration:none; outline:none}
 .game .gamearea .title{ background:#f7f7f7; border-top:1px solid #d3d3d3}
 /*游戏专区首页*/
 .gameindex ul{ overflow:hidden; width:100%}
-.gameindex li{ width:25%; text-align:center; box-sizing:border-box; float:left; padding:10px}
-.gameindex li h2{ font-size:1.6em; color:#454545; white-space:nowrap; width:100%; overflow:hidden}
+.gameindex li{ width:25%; text-align:center; box-sizing:border-box; float:left; padding:18px}
+.gameindex li h2{ font-size:1.4em; color:#454545; white-space:nowrap; width:100%; overflow:hidden; padding-top:10px}
 /*横向滑动通用导航*/
-.x_slide_nav{ overflow:hidden; border-bottom:1px solid #d3d3d3; width:100%; height:42px; position:relative}
-.x_slide_nav ul{ position:absolute; width:2000px; height:42px}
-.x_slide_nav li{ float:left; font-size:1.6em; color:#454545; padding:8px 20px 8px 20px; white-space:nowrap}
+.x_slide_nav{ overflow:hidden; width:100%; height:42px; position:relative}
+.x_slide_nav ul{ position:absolute; width:2000px; height:41px; border-bottom:1px solid #d3d3d3; box-sizing:border-box}
+.x_slide_nav li{ float:left; font-size:1.6em; color:#454545; padding:8px 20px 7px 20px; white-space:nowrap}
 .x_slide_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e}
 /*新闻列表页*/
-.news li.item{ border-bottom:1px solid #d3d3d3; padding:10px}
+.news li.item{ border-bottom:0.05rem solid #d3d3d3; padding:10px}
 .news li.item table{ width:100%}
 .news li.item .img{ width:35%; vertical-align:top; padding-right:10px}
 .news li.item .note{ color:#1a1a1a; vertical-align:top}
 .news li.item .note h2{ font-size:1.6em; line-height:1.2}
-.news li.item .note p{ font-size:1.6em; margin-bottom:10px; color:#8f8f8f}
+.news li.item .note p{ font-size:1.4em; margin-bottom:10px; color:#8f8f8f}
 .news li.item .info{ color:#8f8f8f; font-size:1.4em; vertical-align:bottom}
 .news li.item .info span{ margin-right:5px; white-space:nowrap}
-.news_icon_essence,.news_icon_look,.news_icon_comment,.news_icon_praise{ vertical-align:sub; background:url(../images/news_icon.png) no-repeat; background-size:cover; width:15px; height:15px; display:inline-block}
-.news_icon_look{ background-position:0 -15px}
-.news_icon_comment{ background-position:0 -30px}
-.news_icon_praise{ background-position:0 -45px}
+.news_icon_essence,.news_icon_look,.news_icon_comment,.news_icon_praise{ background:url(../images/news_icon.png) no-repeat; background-size:cover; width:15px; height:15px; display:inline-block}
+.news_icon_look{ background-position:0 -15px; vertical-align:sub}
+.news_icon_comment{ background-position:0 -30px; vertical-align:sub}
+.news_icon_praise{ background-position:0 -45px; vertical-align:sub}
 /*游戏动态*/
 .news li.item2{ border-bottom:1px solid #d3d3d3; padding:10px}
 .news li.item2 a{ color:#8f8f8f}
@@ -96,7 +97,7 @@ a{ text-decoration:none; outline:none}
 .news li.item2 .content{ overflow:hidden; width:100%}
 .news li.item2 .content .data{ float:left; width:68%}
 .news li.item2 .content .img{ float:left; width:30%; position:relative}
-.news li.item2 .content h2{ color:#8f8f8f; font-size:1.6em; color:#1a1a1a; line-height:1.2; padding-bottom:5px; position:relative; top:-2px}
+.news li.item2 .content h2{ color:#8f8f8f; font-size:1.6em; color:#1a1a1a; line-height:1.2; padding-bottom:5px}
 .news li.item2 .content p{ font-size:1.4em; white-space:nowrap; text-overflow:ellipsis; overflow:hidden}
 .news li.item2 .content .v-overlay{ width:100%; background:rgba(0,0,0,0.6); position:absolute; bottom:0px; height:18px; z-index:2}
 .news li.item2 .content .v-time{  position:absolute; bottom:0; left:3px; z-index:3; color:#fff; font-size:1.2em}
@@ -104,8 +105,8 @@ a{ text-decoration:none; outline:none}
 .news li.item2 .content .v-num .iconw{ width:12px; height:12px; background:#ffb309; border-radius:12px; display:inline-block; position:relative; vertical-align:-2px; margin-right:3px}
 .news li.item2 .content .v-num .icon{ width:0; height:0; border-top:3px solid transparent; border-bottom:3px solid transparent; border-left:3px solid rgba(0,0,0,0.6); position:absolute; left:5px; top:3px}
 /*新闻详情*/
-.newsdetail .art{ padding:10px}
-.newsdetail .art h2{ font-size:1.8em; font-weight:normal; line-height:1.2; margin-bottom:10px}
+.newsdetail .art{ padding:10px; border-bottom:1px solid #d3d3d3}
+.newsdetail .art h2{ font-size:1.8em; font-weight:normal; line-height:1.2; margin:10px 0}
 .newsdetail .art .from{ font-size:1.3em; color:#8f8f8f}
 .newsdetail .art .from span{ margin-right:10px}
 .newsdetail .pagebody{ padding:10px; font-size:1.6em}
