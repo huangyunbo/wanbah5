@@ -72,17 +72,33 @@ a{ text-decoration:none; outline:none}
 .x_slide_nav li{ float:left; font-size:1.6em; color:#454545; padding:8px 20px 8px 20px; white-space:nowrap}
 .x_slide_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e}
 /*新闻列表页*/
-.news li{ border-bottom:1px solid #d3d3d3; padding:10px}
-.news li table{ width:100%}
-.news li .img{ width:35%; vertical-align:top; padding-right:10px}
-.news li .note{ color:#1a1a1a; vertical-align:top}
-.news li .note h2{ font-size:1.6em}
-.news li .note p{ font-size:1.6em; margin-bottom:10px; color:#8f8f8f}
-.news li .info{ color:#8f8f8f; font-size:1.4em; vertical-align:bottom}
-.news li .info span{ margin-right:5px; white-space:nowrap}
-.news_icon_essence,.news_icon_look,.news_icon_comment{ background:url(../images/news_icon.png) no-repeat; background-size:cover; width:15px; height:15px; display:inline-block}
-.news_icon_look{ background-position:0 -15px; vertical-align:sub}
-.news_icon_comment{ background-position:0 -30px; vertical-align:sub}
+.news li.item{ border-bottom:1px solid #d3d3d3; padding:10px}
+.news li.item table{ width:100%}
+.news li.item .img{ width:35%; vertical-align:top; padding-right:10px}
+.news li.item .note{ color:#1a1a1a; vertical-align:top}
+.news li.item .note h2{ font-size:1.6em; line-height:1.2}
+.news li.item .note p{ font-size:1.6em; margin-bottom:10px; color:#8f8f8f}
+.news li.item .info{ color:#8f8f8f; font-size:1.4em; vertical-align:bottom}
+.news li.item .info span{ margin-right:5px; white-space:nowrap}
+.news_icon_essence,.news_icon_look,.news_icon_comment,.news_icon_praise{ vertical-align:sub; background:url(../images/news_icon.png) no-repeat; background-size:cover; width:15px; height:15px; display:inline-block}
+.news_icon_look{ background-position:0 -15px}
+.news_icon_comment{ background-position:0 -30px}
+.news_icon_praise{ background-position:0 -45px}
+/*游戏动态*/
+.news li.item2{ border-bottom:1px solid #d3d3d3; padding:10px}
+.news li.item2 a{ color:#8f8f8f}
+.news li.item2 .head{ overflow:hidden}
+.news li.item2 .head img{ float:left; width:40px; height:40px; border-radius:40px; margin-right:8px}
+.news li.item2 .head .title{ font-size:1.6em}
+.news li.item2 .head .title span{ color:#fbbc0e; margin-right:10px}
+.news li.item2 .head .info{ color:#8f8f8f; font-size:1.4em}
+.news li.item2 .head .info span{ margin-right:5px; white-space:nowrap}
+.news li.item2 .content{ overflow:hidden; width:100%}
+.news li.item2 .content .data{ float:left; width:70%}
+.news li.item2 .content img{ float:left; width:28%}
+.news li.item2 .content h2{ color:#8f8f8f; font-size:1.6em; color:#1a1a1a; line-height:1.2; padding:2px 0 5px}
+.news li.item2 .content p{ font-size:1.4em; white-space:nowrap; text-overflow:ellipsis; overflow:hidden}
+/*新闻详情*/
 .newsdetail .art{ padding:10px}
 .newsdetail .art h2{ font-size:1.8em; font-weight:normal; line-height:1.2; margin-bottom:10px}
 .newsdetail .art .from{ font-size:1.3em; color:#8f8f8f}
