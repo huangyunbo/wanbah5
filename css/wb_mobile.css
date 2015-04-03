@@ -87,17 +87,22 @@ a{ text-decoration:none; outline:none}
 /*游戏动态*/
 .news li.item2{ border-bottom:1px solid #d3d3d3; padding:10px}
 .news li.item2 a{ color:#8f8f8f}
-.news li.item2 .head{ overflow:hidden}
+.news li.item2 .head{ overflow:hidden; margin-bottom:2px}
 .news li.item2 .head img{ float:left; width:40px; height:40px; border-radius:40px; margin-right:8px}
 .news li.item2 .head .title{ font-size:1.6em}
 .news li.item2 .head .title span{ color:#fbbc0e; margin-right:10px}
 .news li.item2 .head .info{ color:#8f8f8f; font-size:1.4em}
 .news li.item2 .head .info span{ margin-right:5px; white-space:nowrap}
 .news li.item2 .content{ overflow:hidden; width:100%}
-.news li.item2 .content .data{ float:left; width:70%}
-.news li.item2 .content img{ float:left; width:28%}
-.news li.item2 .content h2{ color:#8f8f8f; font-size:1.6em; color:#1a1a1a; line-height:1.2; padding:2px 0 5px}
+.news li.item2 .content .data{ float:left; width:68%}
+.news li.item2 .content .img{ float:left; width:30%; position:relative}
+.news li.item2 .content h2{ color:#8f8f8f; font-size:1.6em; color:#1a1a1a; line-height:1.2; padding-bottom:5px; position:relative; top:-2px}
 .news li.item2 .content p{ font-size:1.4em; white-space:nowrap; text-overflow:ellipsis; overflow:hidden}
+.news li.item2 .content .v-overlay{ width:100%; background:rgba(0,0,0,0.6); position:absolute; bottom:0px; height:18px; z-index:2}
+.news li.item2 .content .v-time{  position:absolute; bottom:0; left:3px; z-index:3; color:#fff; font-size:1.2em}
+.news li.item2 .content .v-num{  position:absolute; bottom:0; right:3px; z-index:3; color:#ffb309; font-size:1.2em}
+.news li.item2 .content .v-num .iconw{ width:12px; height:12px; background:#ffb309; border-radius:12px; display:inline-block; position:relative; vertical-align:-2px; margin-right:3px}
+.news li.item2 .content .v-num .icon{ width:0; height:0; border-top:3px solid transparent; border-bottom:3px solid transparent; border-left:3px solid rgba(0,0,0,0.6); position:absolute; left:5px; top:3px}
 /*新闻详情*/
 .newsdetail .art{ padding:10px}
 .newsdetail .art h2{ font-size:1.8em; font-weight:normal; line-height:1.2; margin-bottom:10px}
