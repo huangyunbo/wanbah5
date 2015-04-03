@@ -23,10 +23,9 @@ a{ text-decoration:none}
 .header .wblogo a{ display:block; width:48px; height:26px; padding-left:52px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
 .header .crumbs{ margin:7px 0 0 110px; color:#fff; font-size:2em}
 /*列表页*/
-.datalist_nav{ border-bottom:1px solid #d3d3d3}
 .datalist_nav ul{ display:table; width:100%; table-layout:fixed}
-.datalist_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center}
-.datalist_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e}
+.datalist_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center; border-bottom:1px solid #d3d3d3}
+.datalist_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e; padding-bottom:7px}
 .datalist li a{ padding:10px; border-bottom:1px solid #d3d3d3; display:table; width:100%; box-sizing:border-box}
 .datalist li .img{ width:18%; display:table-cell; text-align:center}
 .datalist li .note{ display:table-cell; padding-left:10px; vertical-align:middle; color:#1a1a1a}

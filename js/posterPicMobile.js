@@ -166,4 +166,4 @@
 	
 	
 	window.posterPicMobile = posterPicMobile;
-})(Zepto)
+})(jQuery)
