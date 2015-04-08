@@ -42,7 +42,7 @@
         <ul>
             <li>
                 <a href="javascript:;">
-                    <div class="img"><img class="lazy" data-original="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png"></div>
+                    <div class="img"><img class="lazy" src="images/gameicon_default.png" data-original="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png"></div>
                     <div class="desc">
                         <h2>海盗奇兵</h2>
                         <p>玩吧教你打博士</p>
@@ -56,7 +56,7 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <div class="img"><img class="lazy" data-original="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png"></div>
+                    <div class="img"><img class="lazy" src="images/gameicon_default.png" data-original="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png"></div>
                     <div class="desc">
                         <h2>海盗奇兵</h2>
                         <p>玩吧教你打博士</p>
@@ -70,7 +70,7 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <div class="img"><img class="lazy" data-original="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png"></div>
+                    <div class="img"><img class="lazy" src="images/gameicon_default.png" data-original="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png"></div>
                     <div class="desc">
                         <h2>海盗奇兵</h2>
                         <p>玩吧教你打博士</p>
@@ -96,19 +96,19 @@
         <div class="list">
         	<div class="item">
                 <a href="javascript:;">
-                    <div class="img"><img class="lazy" data-original="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png"></div>
+                    <div class="img"><img class="lazy" src="images/video_default.jpg" data-original="http://res.wanba123.cn/video/52/2015-04-08_111015.png"></div>
                     <h3>海盗奇兵</h3>
                 </a>
             </div>
             <div class="item">
                 <a href="javascript:;">
-                    <div class="img"><img class="lazy" data-original="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png"></div>
+                    <div class="img"><img class="lazy" src="images/video_default.jpg" data-original="http://res.wanba123.cn/video/52/2015-04-08_111015.png"></div>
                     <h3>海盗奇兵</h3>
                 </a>
             </div>
         </div><!--/list-->
     </div><!--/index_videoarea-->
-    
+    <img style="width:300px; height:300px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
     <a href="javascript:;" class="lookmore">查看更多视频&gt;</a>
 </section><!--/index-->
 
@@ -124,13 +124,10 @@ $(function(){
 	var posterPicMobileVar = new posterPicMobile({//首页海报特效
 		id: 'posterPicMobile',
 		delay: 6000,
-		data: [{"img":"http://10.8.50.163:9090/resources/images/10000700.jpg","url":"#","title":"第一张图"},{"img":"http://10.8.50.163:9090/resources/images/10000708.jpg","url":"#","title":"第二张图"}]
+		data: [{"img":"http://res.wanba123.cn//ad/52-2015-03-31-01.jpg","url":"#","title":"第一张图"},{"img":"http://res.wanba123.cn//ad/74_2015_3_4.jpg","url":"#","title":"第二张图"}]
 	});
 	
-   $(".lazy").lazyload({//延迟加载
-	  placeholder : "images/placeholder.png",
-      effect : "fadeIn"
-   });
+   $(".lazy").lazyload();
 });
 </script>
 </body>
