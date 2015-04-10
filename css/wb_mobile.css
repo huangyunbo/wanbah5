@@ -64,8 +64,9 @@ a{ text-decoration:none; outline:none}
 .game .gamearea .title{ background:#f7f7f7; border-top:1px solid #d3d3d3}
 /*游戏专区首页*/
 .gameindex ul{ overflow:hidden; width:100%}
-.gameindex li{ width:25%; text-align:center; box-sizing:border-box; float:left; padding:18px}
-.gameindex li h2{ font-size:1.4em; color:#454545; white-space:nowrap; width:100%; overflow:hidden; padding-top:10px}
+.gameindex li{ width:25%; text-align:center; float:left; padding-bottom:18px}
+.gameindex li img{ padding:18px 18px 10px; width:100%; box-sizing:border-box}
+.gameindex li h2{ font-size:1.4em; color:#454545; white-space:nowrap; overflow:hidden; width:100%}
 /*横向滑动通用导航*/
 .x_slide_nav{ overflow:hidden; width:100%; height:42px; position:relative}
 .x_slide_nav ul{ position:absolute; width:2000px; height:41px; border-bottom:1px solid #d3d3d3; box-sizing:border-box}
