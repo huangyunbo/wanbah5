@@ -77,7 +77,7 @@ a{ text-decoration:none; outline:none}
 .x_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center; border-bottom:1px solid #d3d3d3}
 .x_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e; padding-bottom:7px}
 /*新闻列表页*/
-.news li.item{ border-bottom:0.05rem solid #d3d3d3; padding:10px}
+.news li.item{ border-bottom:1px solid #d3d3d3; padding:10px}
 .news li.item table{ width:100%}
 .news li.item .img{ width:35%; vertical-align:top; padding-right:10px}
 .news li.item .note{ color:#1a1a1a; vertical-align:top}
