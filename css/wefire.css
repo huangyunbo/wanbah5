@@ -22,14 +22,17 @@ a{ color:#fff; text-decoration:none}
 .header .wblogo a{ display:block; width:48px; height:26px; padding-left:52px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
 .header .crumbs{ margin:10px 0 0 110px; color:#fff; font-size:2em}
 /*列表*/
-.wflist .head{ height:40px}
-.wflist .head h2{ text-align:center; font-size:1.8em; padding-top:7px; text-shadow:0 0 1px #4dd2fd}
+.wfhead{ height:41px; border-bottom:1px solid #4dd2fd; position:relative}
+.wfhead h2{ text-align:center; font-size:1.8em; padding-top:7px; text-shadow:0 0 1px #4dd2fd}
+.wfhead .back_btn,.wfhead .back_btn .iconinner{ width:25px; height:25px; border:1px solid #5df7ff; border-radius:25px; position:absolute; left:5px; top:7px; box-shadow:0 0 4px 1px #40d9ff}
+.wfhead .back_btn .iconinner{ left:-1px; top:-1px; box-shadow:0 0 4px 1px #40d9ff inset}
+.wfhead .back_btn .icon{ width:7px; height:7px; border:solid #5df7ff; border-width:0 0 1px 1px; box-shadow:-1px 1px 3px -1px #40d9ff; position:absolute; left:10px; top:8px; transform:rotate(45deg); -webkit-transform:rotate(45deg)}
 .wflist .select{ font-size:1.6em; position:relative; z-index:2}
 .wflist .select .text{ position:absolute; top:6px; right:10px; background:linear-gradient(#005976, #021d68); border-radius:15px; padding:1px 24px 1px 12px; border:1px solid #a6fafe; color:#fff; box-shadow:0 0 4px #82e4ff}
 .wflist .select .text .icon{position:absolute; width:0; height:0; top:11px; right:7px; border-width:6px; border-style:solid dashed dashed dashed; border-color:#fff transparent transparent transparent}
 .wflist .select ul{ display:none; position:absolute; right:10px; top:39px; background:rgba(7,92,135,0.8); border:1px solid #00deff; border-radius:5px; box-shadow:0 0 5px #00deff inset}
 .wflist .select ul li{ padding:0 10px; border:1px solid #a8fafe; border-radius:15px; margin:14px 8px;}
-.wf_nav{ overflow:hidden; width:100%; height:40px; position:relative; border-top:1px solid #4dd2fd; border-bottom:1px solid #4dd2fd; box-sizing:border-box}
+.wf_nav{ overflow:hidden; width:100%; height:40px; position:relative; border-bottom:1px solid #4dd2fd; box-sizing:border-box}
 .wf_nav ul{ position:absolute; width:2000px; height:39px}
 .wf_nav li{ float:left; font-size:1.6em; color:#b0b8c8; padding:8px 20px 7px 20px; white-space:nowrap; position:relative}
 .wf_nav li.on{ color:#fff; box-shadow:0 -5px 2px -3px #4dd2fd inset}
@@ -39,20 +42,20 @@ a{ color:#fff; text-decoration:none}
 .wflist .pagebody li .item{ border:1px solid #00deff; box-shadow:0 0 5px #00deff inset; min-height:70px; background:url(../images/data-wf-listbg.png); position:relative}
 .wflist .pagebody li .item p{ color:#00deff; font-size:1.6em; position:absolute; left:5px; bottom:0}
 /*详情*/
-.wfdetail .head{ height:39px; position:relative; border-bottom:1px solid #4dd2fd}
-.wfdetail .head h2{ text-align:center; font-size:1.8em; padding-top:7px; text-shadow:0 0 1px #4dd2fd}
-.wfdetail .head .gocompare{ font-size:1.6em; position:absolute; top:6px; right:5px; border-radius:15px; padding:1px 12px; border:1px solid #a6fafe; color:#fff; box-shadow:0 0 4px #82e4ff}
-.wfdetail .gun{ text-align:center; font-size:1.6em; position:relative; min-height:54px; border:solid #4dd2fd; border-width:1px 0; box-sizing:border-box; margin:5px 0; background:url(../images/data-wf-listbg.png); box-shadow:0 0 5px #00deff inset}
-.wfdetail .gun .name{ position:absolute; right:10px; top:2px; z-index:3}
-.wfdetail .gun .info{ position:absolute; bottom:1px; left:10px; text-align:left; z-index:4}
+.wfdetail .wfhead .gocompare{ font-size:1.6em; position:absolute; top:6px; right:5px; border-radius:15px; padding:1px 12px; border:1px solid #a6fafe; color:#fff; box-shadow:0 0 4px #82e4ff}
+.wfdetail .gun{ font-size:1.6em; position:relative; min-height:54px; border:solid #4dd2fd; border-width:1px 0; box-sizing:border-box; margin:5px 0; background:url(../images/data-wf-listbg.png); box-shadow:0 0 5px #00deff inset}
+.wfdetail .gun img{ margin:0 auto; display:block}
+.wfdetail .gun .name{ position:absolute; right:10px; top:2px; z-index:3; color:#5af6ff}
+.wfdetail .gun .info{ position:absolute; bottom:1px; left:10px; z-index:4}
 .wfdetail .gun .icon_l{ width:20px; position:absolute; left:0; top:-1px; bottom:-1px; background:linear-gradient(left, #0b0d1b, transparent); background:-webkit-linear-gradient(left, #0b0d1b, transparent); z-index:2}
 .wfdetail .gun .icon_r{ width:20px; position:absolute; right:0; top:-1px; bottom:-1px; background:linear-gradient(right, #0b0d1b, transparent); background:-webkit-linear-gradient(right, #0b0d1b, transparent); z-index:2}
-.wfdetail .gun .moon{ background:url(../images/data-wf-detail.png) no-repeat -77px -65px; background-size:152px; height:13px; display:inline-block; vertical-align:middle; margin-left:-4px}
-.wfdetail .gun .moon1{ width:13px}
-.wfdetail .gun .moon2{ width:27px}
-.wfdetail .gun .moon3{ width:41px}
-.wfdetail .gun .moon4{ width:55px}
-.wfdetail .gun .moon5{ width:69px}
+.wfdetail .gun .moon{ margin-left:-4px}
+.gun .moon{ background:url(../images/data-wf-detail.png) no-repeat -77px -65px; background-size:152px; height:13px; display:inline-block; vertical-align:middle}
+.gun .moon1{ width:13px}
+.gun .moon2{ width:27px}
+.gun .moon3{ width:41px}
+.gun .moon4{ width:55px}
+.gun .moon5{ width:69px}
 .wfdetail .assessment{ position:relative; margin:48px 5px 0; padding:0 7px 5px; background:#092334; box-shadow:0 0 3px #02b4d1 inset; border:1px solid #02b4d1}
 .wfdetail .assessment .icon_top,.wfdetail .assessment .icon_topright,.wfdetail .assessment .ass_btn1,.wfdetail .assessment .ass_btn2{position:absolute; background:url(../images/data-wf-detail.png) no-repeat; background-size:152px}
 .wfdetail .assessment .icon_top{ width:152px; height:64px; top:-26px; left:-1px}
@@ -62,8 +65,7 @@ a{ color:#fff; text-decoration:none}
 .wfdetail .assessment .intro{ font-size:1.6em; padding:5px 10px 10px}
 .wfdetail .assessment .intro li{ padding:5px; border-bottom:1px solid #02b4d1; position:relative}
 .wfdetail .assessment p{ font-size:1.4em}
-.wfdetail .assessment .intro .icon_intro_l{ width:10px; height:1px; position:absolute; left:0; bottom:-1px; background:linear-gradient(left, #092334, transparent); background:-webkit-linear-gradient(left, #092334, transparent); z-index:2}
-.wfdetail .assessment .intro .icon_intro_r{ width:10px; height:1px; position:absolute; right:0; bottom:-1px; background:linear-gradient(right, #092334, transparent); background:-webkit-linear-gradient(right, #092334, transparent); z-index:2}
+.wfdetail .assessment .intro .icon_intro{ width:100%; height:1px; position:absolute; left:0; bottom:-1px; background:linear-gradient(left, #092334, transparent 5%, transparent 95%, #092334); background:-webkit-linear-gradient(left, #092334, transparent 5%, transparent 95%, #092334)}
 .wftitle{ font-size:1.6em}
 .wftitle .icon{ width:32px; height:32px; background:url(../images/data-wf-detail.png) no-repeat right -90px; background-size:152px; display:inline-block; vertical-align:middle; margin-right:5px}
 .wfdetail .gunattr{ padding:20px 3px 10px}
@@ -90,9 +92,24 @@ a{ color:#fff; text-decoration:none}
 .wfdetail .parameter li:last-child div,.wfdetail .parameter li:nth-last-child(2) div{ border:1px solid transparent}
 .wfdetail .parameter li .icon{ width:40px; height:1px; position:absolute; bottom:-1px; left:0; background:linear-gradient(left, #092334, transparent); background:-webkit-linear-gradient(left, #092334, transparent)}
 .wfdetail .parameter li:nth-child(even) .icon{ left:auto; right:0; background:linear-gradient(right, #092334, transparent); background:-webkit-linear-gradient(right, #092334, transparent)}
-.wfdetail .parameter .icon_y{ position:absolute; width:1px; top:10px; bottom:10px; left:50%; background:#02b4d1}
-.wfdetail .parameter .icon_y_t{ position:absolute; width:1px; height:30px; top:10px; left:50%; background:#02b4d1; background:linear-gradient(#092334, transparent); background:-webkit-linear-gradient(#092334, transparent)}
-.wfdetail .parameter .icon_y_b{ position:absolute; width:1px; height:30px; bottom:10px; left:50%; background:#02b4d1; background:linear-gradient(transparent, #092334); background:-webkit-linear-gradient(transparent, #092334)}
-
+.wfdetail .parameter .icon_y{ position:absolute; width:1px; top:10px; bottom:10px; left:50%; background:linear-gradient(transparent, #02b4d1 20%, #02b4d1 80%, transparent); background:-webkit-linear-gradient(transparent, #02b4d1 20%, #02b4d1 80%, transparent)}
+/*对比*/
+.wfcom .wftitle{ margin:10px}
+.wfcom .content{ display:table; width:100%}
+.wfcom .item{ width:50%; display:table-cell; box-sizing:border-box; padding:5px}
+.wfcom .gun{ position:relative; border:1px solid #00deff; box-shadow:0 0 5px #00deff inset; min-height:70px; box-sizing:border-box; background:url(../images/data-wf-listbg.png)}
+.wfcom .gun img{ margin:0 auto; display:block}
+.wfcom .gun .moon{ margin-left:3px; vertical-align:-1px}
+.wfcom .gun .icon{ position:absolute; top:-1px; left:-1px; width:17px; height:14px; background:url(../images/data-wf-compare.png) no-repeat -3px -47px; background-size:93px}
+.wfcom .gun .info{ height:17px; padding-top:5px; overflow:hidden; font-size:1.4em; position:relative; left:-1px; bottom:-1px}
+.wfcom .gun .info .name{ float:left; background:url(../images/data-wf-compare.png) -90px -47px no-repeat; background-size:93px; padding-left:3px; box-sizing:border-box; width:40%; overflow:hidden; white-space:nowrap}
+.wfcom .gun .info .name div{background:url(../images/data-wf-compare.png); background-size:93px}
+.wfcom .gun .info .level{ float:left; background:url(../images/data-wf-compare.png) 0 -23px no-repeat; background-size:93px; padding-left:5px; box-sizing:border-box; width:60%; overflow:hidden; white-space:nowrap}
+.wfcom .item ul{ border:1px solid #00deff; border-top:0; box-shadow:0 0 5px #00deff inset; padding:5px 0 5px 15px; font-size:1.4em; background:#0a2737}
+.wfcom .item ul li{ width:100%; display:table; margin:10px 0}
+.wfcom .item ul li .l{ width:50%; display:table-cell}
+.wfcom .item ul li .r{ width:50%; display:table-cell; position:relative}
+.wfcom .item ul li .r.on{ color:#90ff00}
+.wfcom .item ul li .r.on .icon{ position:absolute; top:3px; right:10px; width:13px; height:12px; background:url(../images/data-wf-compare.png) -20px -47px no-repeat; background-size:93px}
 
 

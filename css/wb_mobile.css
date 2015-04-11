@@ -38,7 +38,7 @@ a{ text-decoration:none; outline:none}
 .gamearea .desc p,.gamearea .desc .info{ font-size:1.4em; color:#8f8f8f}
 .gamearea .desc .info span{ margin-right:6px}
 .gamearea .look{ display:table-cell; width:10%; vertical-align:middle}
-.gamearea .look .icon{ width:13px; height:13px; display:inline-block; border-width:0 1px 1px 0; border-color:#8f8f8f; border-style:solid; -webkit-transform:rotate(-45deg); transform:rotate(-45deg)}
+.gamearea .look .icon{ width:13px; height:13px; display:inline-block; border-width:0 1px 1px 0; border-color:#8f8f8f; border-style:solid; transform:rotate(-45deg); -webkit-transform:rotate(-45deg)}
 .index .lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 
 .index_videoarea{ margin-top:10px}
