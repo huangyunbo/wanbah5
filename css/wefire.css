@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* wefire 2015/04/09 */
+/* 全民突击 2015/04/09 */
 
 body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{ margin:0; padding:0}
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{ display:block}
@@ -42,7 +42,7 @@ a{ color:#fff; text-decoration:none}
 .wflist .pagebody li .item{ border:1px solid #00deff; box-shadow:0 0 5px #00deff inset; min-height:70px; background:url(../images/data-wf-listbg.png); position:relative}
 .wflist .pagebody li .item p{ color:#00deff; font-size:1.6em; position:absolute; left:5px; bottom:0}
 /*详情*/
-.wfdetail .wfhead .gocompare{ font-size:1.6em; position:absolute; top:6px; right:5px; border-radius:15px; padding:1px 12px; border:1px solid #a6fafe; color:#fff; box-shadow:0 0 4px #82e4ff}
+.wfdetail .wfhead .compare_btn{ font-size:1.6em; position:absolute; top:6px; right:5px; border-radius:15px; padding:1px 12px; border:1px solid #a6fafe; color:#fff; box-shadow:0 0 4px #82e4ff}
 .wfdetail .gun{ font-size:1.6em; position:relative; min-height:54px; border:solid #4dd2fd; border-width:1px 0; box-sizing:border-box; margin:5px 0; background:url(../images/data-wf-listbg.png); box-shadow:0 0 5px #00deff inset}
 .wfdetail .gun img{ margin:0 auto; display:block}
 .wfdetail .gun .name{ position:absolute; right:10px; top:2px; z-index:3; color:#5af6ff}

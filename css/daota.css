@@ -1,0 +1,96 @@
+@charset "utf-8";
+/* 刀塔传奇 2015/04/14 */
+
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{ margin:0; padding:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{ display:block}
+html{ font:62.5%/1.5 "Microsoft YaHei", sans-serif; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+img{border:none; max-width:100%; vertical-align:top}
+h1,h2,h3,h4,h5,h6{ font-weight:normal}
+input,select,textarea{ font-size:100%; vertical-align:baseline; *vertical-align:middle}
+ol,ul{ list-style:none}
+textarea{ overflow:auto; vertical-align:top; resize:vertical}
+table{ border-collapse:collapse; border-spacing:0}
+em,i,code,cite,address,th{font-style:normal}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+
+body{ background:url(../images/data-daota-bg.jpg) no-repeat fixed #49324b; background-size:cover; color:#fff}
+a{ color:#fff; text-decoration:none}
+.header{ height:50px; background:#fbbc0e; overflow:hidden}
+.header .wblogo{ float:left; margin:10px 0 0 10px}
+.header .wblogo a{ display:block; width:48px; height:26px; padding-left:52px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.header .crumbs{ margin:5px 0 0 110px; color:#fff; font-size:2em; line-height:2}
+/*英雄列表&装备列表*/
+.daota_nav ul{ display:table; width:100%; table-layout:fixed; background:rgba(0,0,0,0.2)}
+.daota_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center; color:#8f6f78}
+.daota_nav li.on{ color:#fbbc0e; border-bottom:1px solid #fbbc0e}
+.daotalist .herolist{ padding:5px; overflow:hidden}
+.daotalist .herolist li{ float:left; width:25%; text-align:center; font-size:1.4em; margin-bottom:10px}
+.daotalist .herolist .img{ background:#362015; margin:5px; border-radius:5px; padding:5px}
+.daotalist .herolist .img img{ border-radius:5px}
+.daotalist .equiplist{ padding:5px; overflow:hidden}
+.daotalist .equiplist li{ float:left; width:20%; text-align:center; font-size:1.4em; margin-bottom:10px}
+.daotalist .equiplist li .img{ padding:5px}
+.daotalist .equiplist li .img img{ border-radius:5px}
+.daotalist .equiplist li a{ width:100%; overflow:hidden; display:block}
+.daotalist .equiplist li p{ white-space:nowrap}
+@media screen and (max-width:320px){
+	.daotalist .herolist li{ width:50%}
+	.daotalist .equiplist li{ width:25%}
+}
+@media screen and (max-width:320px) and (-webkit-min-device-pixel-ratio:2){
+	.daotalist .herolist li{ width:33.33%}
+}
+/*英雄详情*/
+.daotahead{ background:rgba(0,0,0,0.2); position:relative; height:42px}
+.daotahead h2{ text-align:center; font-size:1.8em; padding-top:7px}
+.daotahead .back_btn{ position:absolute; left:10px; top:8px; font-size:1.6em; padding-left:12px; color:#fbbc0e}
+.daotahead .back_btn .icon{ border:solid #fbbc0e; border-width:0 0 2px 2px; width:10px; height:10px; position:absolute; top:6px; left:0; transform:rotate(45deg); -webkit-transform:rotate(45deg)}
+.daotahead .compare_btn{ position:absolute; right:10px; top:8px; font-size:1.6em}
+.daotadetail .summary{ margin:10px 5px; background:rgba(0,0,0,0.2); border-radius:5px; overflow:hidden}
+.daotadetail .summary .img{ float:left; width:32%}
+.daotadetail .summary .img img{ border-radius:5px; border:5px solid #362015}
+.daotadetail .summary .info{ float:left; width:68%; box-sizing:border-box; padding:5px 5px 5px 20px}
+.daotadetail .summary .info .head{ padding:5px 0; font-size:1.6em}
+.daotadetail .summary .info p{ font-size:1.4em; margin-top:5px}
+.daotadetail .section{ margin:15px 5px}
+.daotatitle{ font-size:1.6em}
+.daotadetail .section .content{ background:rgba(0,0,0,0.2)}
+.daotadetail .getmode .content{ padding:5px 10px; font-size:1.4em}
+.daotadetail .skills{ margin:5px}
+.daotadetail .skills .title{ font-size:1.6em}
+.daotadetail .skills li{ width:100%; display:table; box-sizing:border-box; padding:5px 10px; margin-bottom:1px; background:rgba(0,0,0,0.2)}
+.daotadetail .skills li .img{ width:20%; display:table-cell}
+.daotadetail .skills li .info{ width:80%; display:table-cell; box-sizing:border-box; padding-left:10px}
+.daotadetail .skills li .info h4{ font-size:1.6em}
+.daotadetail .skills li .info p{ color:#d8c4c4; font-size:1.4em}
+.daotadetail .advskills{ margin:15px 5px}
+.daotadetail .advskills .item{ display:table; width:100%; margin-bottom:1px; background:rgba(0,0,0,0.2)}
+.daotadetail .advskills .item_purple .l{ background:#3c053f}
+.daotadetail .advskills .item_orange .l{ background:#f5b00b}
+.daotadetail .advskills .item .l{ width:22%; display:table-cell; font-size:1.5em; vertical-align:middle; padding-left:10px; box-sizing:border-box}
+.daotadetail .advskills .item .r{ width:78%; display:table-cell; overflow:hidden; padding:10px 0 10px 10px; box-sizing:border-box}
+.daotadetail .advskills .item .r li{ float:left; width:16%; padding-right:10px; box-sizing:border-box}
+.daotadetail .advskills .item .r li img{ border:1px solid #fff; border-radius:5px}
+.daotadetail .advskills .item .r li .bor_green{ border:1px solid #02ac2a; border-radius:5px}
+.daotadetail .advskills .item .r li .bor_blue{ border:1px solid #009aff; border-radius:5px}
+.daotadetail .advskills .item .r li .bor_purple{ border:1px solid #a81bfa; border-radius:5px}
+.daotadetail .advskills .item .r li .bor_orange{ border:1px solid #f5b00b; border-radius:5px}
+.daotadetail .herogrowup{ margin:0 5px 50px}
+.daotadetail .herogrowup table{ width:100%; table-layout:fixed; border-collapse:separate; border-spacing:0 1px}
+.daotadetail .herogrowup td{ padding:5px 0; background:rgba(0,0,0,0.2); text-align:center; font-size:1.4em}
+.daotadetail .herogrowup thead td{ color:#d8c4c4}
+
+
+
+
+
+
+
+
+
+
+
+
+
