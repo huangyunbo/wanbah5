@@ -34,9 +34,10 @@ a{ color:#fff; text-decoration:none}
 .hero_nav li.on{ color:#fff; border-bottom:2px solid #4dd2fd; padding-bottom:7px;}
 .hero_nav li i{ width:1px; height:18px; position:absolute; background:#3c91b2; right:0; top:11px}
 .hero_nav li:last-child i{ background:none}
-.hero .pagebody li{ width:25%; float:left; padding:10px; box-sizing:border-box; text-align:center; font-size:1.4em}
+.hero .pagebody li{ width:25%; float:left; padding:10px; box-sizing:border-box; text-align:center; font-size:1.4em; overflow:hidden}
 .hero .pagebody li img{ display:inline-block}
 .hero .pagebody li a{-webkit-tap-highlight-color:transparent;outline:none}
+.hero .pagebody li div{ white-space:nowrap}
 /*详情页*/
 .datadetail .summary{ background:#014f7f; overflow:hidden; padding:10px 10px 15px}
 .datadetail .summary .l{ float:left; width:30%; padding-right:10px; text-align:center}
