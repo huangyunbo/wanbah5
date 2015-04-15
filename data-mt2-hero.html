@@ -2,7 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>英雄列表</title>
+<title>MT2-英雄图鉴-玩吧攻略</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" type="text/css" href="css/mt2.css">
@@ -10,8 +12,7 @@
 
 <body>
 <header class="header">
-	<div class="wblogo"><a href="javascript:;"><h1>玩吧</h1></a></div>
-    <div class="crumbs">&gt;&nbsp;我叫MT2专区</div>
+	<a href="javascript:;" class="wblogo"><h1>MT2英雄图鉴</h1></a>
 </header><!--/header-->
 
 <div class="hero">
@@ -24,23 +25,26 @@
         </ul>
     </div>
     <div class="pagebody" id="pagebody">
-    	<ul>
-        	<li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒傻馒傻馒傻馒</div></a></li>
-            <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
-            <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
-            <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
-            <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
-            <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
-        </ul>
-        <ul style="display:none">
+    	<div>
+            <ul>
+                <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒傻馒傻馒傻馒</div></a></li>
+                <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
+                <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
+                <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
+                <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
+                <li><a href="javascript:;"><img src="images/itemthumb-bb2.png"><div>傻馒</div></a></li>
+            </ul>
+            <a href="javascript:;" class="lookmore">点击加载更多</a>
+        </div>
+        <div style="display:none">
         	2
-        </ul>
-        <ul style="display:none">
+        </div>
+        <div style="display:none">
         	3
-        </ul>
-        <ul style="display:none">
+        </div>
+        <div style="display:none">
         	4
-        </ul>
+        </div>
     </div>
 </div><!--/hero-->
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
@@ -64,7 +68,7 @@ $(function(){
 	$li.on("click", function(){
 		var _index = $(this).index();
 		$(this).addClass("on").siblings("li.on").removeClass("on");
-		$pagebody.children("ul").eq(_index).show().siblings("ul").hide();
+		$pagebody.children().eq(_index).show().siblings().hide();
 	});
 });
 </script>

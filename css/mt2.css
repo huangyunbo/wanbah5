@@ -17,10 +17,10 @@ em,i,code,cite,address,th{font-style:normal}
 
 body{ background:#1e1d2c; color:#fff}
 a{ color:#fff; text-decoration:none}
-.header{ height:50px; background:#fbbc0e; overflow:hidden}
-.header .wblogo{ float:left; margin:10px 0 0 10px}
-.header .wblogo a{ display:block; width:48px; height:26px; padding-left:52px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
-.header .crumbs{ margin:5px 0 0 110px; color:#fff; font-size:2em; line-height:2}
+.header{ height:50px; background:#fbbc0e; overflow:hidden; position:relative}
+.header .wblogo,.header .wblogo_index{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.header .wblogo_index{ background-position:-24px 0; padding-left:66px}
+.lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 /*英雄列表*/
 /*hero_nav{ overflow:hidden; border-bottom:1px solid #60478e; margin:5px 0; width:100%; height:42px; position:relative}
 .hero_nav ul{ position:absolute; width:2000px; height:42px}
@@ -34,9 +34,9 @@ a{ color:#fff; text-decoration:none}
 .hero_nav li.on{ color:#fff; border-bottom:2px solid #4dd2fd; padding-bottom:7px;}
 .hero_nav li i{ width:1px; height:18px; position:absolute; background:#3c91b2; right:0; top:11px}
 .hero_nav li:last-child i{ background:none}
+.hero .pagebody ul{ overflow:hidden}
 .hero .pagebody li{ width:25%; float:left; padding:10px; box-sizing:border-box; text-align:center; font-size:1.4em; overflow:hidden}
 .hero .pagebody li img{ display:inline-block}
-.hero .pagebody li a{-webkit-tap-highlight-color:transparent;outline:none}
 .hero .pagebody li div{ white-space:nowrap}
 /*详情页*/
 .datadetail .summary{ background:#014f7f; overflow:hidden; padding:10px 10px 15px}

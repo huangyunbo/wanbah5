@@ -18,24 +18,25 @@ em,i,code,cite,address,th{font-style:normal}
 
 body{ background:#fff3dc}
 a{ text-decoration:none}
-.header{ height:50px; background:#fbbc0e; overflow:hidden}
-.header .wblogo{ float:left; margin:10px 0 0 10px}
-.header .wblogo a{ display:block; width:48px; height:26px; padding-left:52px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
-.header .crumbs{ margin:5px 0 0 110px; color:#fff; font-size:2em; line-height:2}
+.header{ height:50px; background:#fbbc0e; overflow:hidden; position:relative}
+.header .wblogo,.header .wblogo_index{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.header .wblogo_index{ background-position:-24px 0; padding-left:66px}
+.lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 /*列表页*/
 .datalist_nav ul{ display:table; width:100%; table-layout:fixed}
 .datalist_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center; border-bottom:1px solid #d3d3d3}
 .datalist_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e; padding-bottom:7px}
-.datalist li a{ padding:10px; border-bottom:1px solid #d3d3d3; display:table; width:100%; box-sizing:border-box}
-.datalist li .img{ width:18%; display:table-cell; text-align:center}
-.datalist li .note{ display:table-cell; padding-left:10px; vertical-align:middle; color:#1a1a1a}
+.datalist li a{ border-bottom:1px solid #d3d3d3; display:table; width:100%; padding:10px; box-sizing:border-box}
+.datalist li .img{ width:18%; display:table-cell; text-align:center; padding:10px 15px 10px 5px; box-sizing:border-box}
+.datalist li .note{ display:table-cell; vertical-align:middle; color:#1a1a1a}
 .datalist li .note h2{ font-size:1.8em; font-weight:bold}
 .datalist li .note p{ font-size:1.4em; color:#8f8f8f}
 .datalist li .look{ display:table-cell; width:10%; vertical-align:middle}
 .datalist li .look .icon{ width:13px; height:13px; display:inline-block; border-width:0 1px 1px 0; border-color:#8f8f8f; border-style:solid; -webkit-transform:rotate(-45deg); transform:rotate(-45deg)}
 /*详情页*/
 .datadetail .summary{overflow:hidden; padding:10px 10px 15px}
-.datadetail .summary .l{ float:left; width:30%; padding-right:10px; text-align:center}
+.datadetail .summary .l{ float:left; width:25%; padding:0 13px; box-sizing:border-box; text-align:center}
+.datadetail .summary .r{ float:left; width:75%;}
 .datadetail .summary h1{ font-size:1.8em; margin-bottom:3px; font-weight:bold}
 .datadetail .summary p{ font-size:1.6em}
 .datadetail .leveal{ overflow:hidden; padding:10px 10px 15px; font-size:1.4em}
@@ -44,14 +45,15 @@ a{ text-decoration:none}
 .datadetail .leveal .on,.datadetail .leveal .dt div.on{ background:#43b9de; color:#fff}
 .datadetail .leveal .dt{ float:left; width:25%}
 .datadetail .leveal .dd{ float:left; width:75%; overflow-x:auto}
+.datadetail .leveal .db{ width:100%; overflow-x:auto}
 .datadetail .section{ margin-bottom:15px}
 .datadetail .section .tit{ padding:5px 10px}
 .datadetail .section .tit .icon{ background:#43b9de; width:3px; height:1.5em; display:inline-block; vertical-align:text-bottom}
 .datadetail .section .tit h2{ font-size:1.6em; display:inline-block; color:#43b9de}
 .datadetail .section .comment{ padding:0 10px; font-size:1.4em}
 .datadetail .list{ border-top:1px solid #cabea9; overflow:hidden}
-.datadetail .list .img{ width:15%; float:left; padding:20px}
-.datadetail .list .d{ width:60%; float:left; font-size:1.4em; padding:15px 0}
+.datadetail .list .img{ width:25%; float:left; box-sizing:border-box; padding:20px}
+.datadetail .list .d{ width:75%; float:left; font-size:1.4em; padding:15px 0}
 .datadetail .list .d dl{ margin-bottom:5px}
 .datadetail .list .d .lev{ background:#43b9de; color:#fff; padding:3px 7px; border-radius:12px}
 .datadetail .list .d dt,.datadetail .list .d dd{ display:inline-block}
@@ -66,6 +68,7 @@ a{ text-decoration:none}
 .datadetail .list i.ico_exp{ background-position:0 -135px}
 /*阵型详情页*/
 .formation .item{ border-bottom:1px solid #d3d3d3; padding-bottom:10px}
+.formation .item:last-child{ border-bottom:0}
 .formation .item h3{ font-size:1.7em; padding:10px}
 .formation .item h3 span{ color:#c96; border:1px solid #c96; border-radius:10px; padding:0 4px; margin-right:5px; font-size:0.7em; vertical-align:1px}
 .formation .item .img{ text-align:center}
