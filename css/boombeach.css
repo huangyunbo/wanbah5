@@ -15,12 +15,10 @@ em,i,code,cite,address,th{font-style:normal}
 .clearfix{*zoom:1;_height:1px}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 
-
 body{ background:#fff3dc}
 a{ text-decoration:none}
 .header{ height:50px; background:#43b9de; border-bottom:1px solid #2a94b1; overflow:hidden; position:relative}
-.header h1{ text-align:center; line-height:50px; color:#fff}
-.header .backdata_btn{ background:url(../images/wblogo.png) no-repeat; background-size:90px; width:25px; height:50px; position:absolute; left:10px; top:0}
+.header .wblogo{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
 .lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 /*列表页*/
 .datalist_nav ul{ display:table; width:100%; table-layout:fixed}

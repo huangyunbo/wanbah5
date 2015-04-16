@@ -17,32 +17,27 @@ em,i,code,cite,address,th{font-style:normal}
 
 body{ background:#0b0d1b; color:#fff}
 a{ color:#fff; text-decoration:none}
-.header{ height:50px; background:#fbbc0e; overflow:hidden}
-.header .wblogo{ float:left; margin:10px 0 0 10px}
-.header .wblogo a{ display:block; width:48px; height:26px; padding-left:52px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
-.header .crumbs{ margin:10px 0 0 110px; color:#fff; font-size:2em}
+.header{ height:50px; border-bottom:1px solid #4dd2fd; position:relative}
+.header .wblogo{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.header .select{ font-size:1.6em; position:relative; z-index:2; top:6px}
+.header .select .text{ position:absolute; top:6px; right:10px; background:linear-gradient(#005976, #021d68); border-radius:15px; padding:1px 24px 1px 12px; border:1px solid #a6fafe; color:#fff; box-shadow:0 0 4px #82e4ff}
+.header .select .text .icon{position:absolute; width:0; height:0; top:11px; right:7px; border-width:6px; border-style:solid dashed dashed dashed; border-color:#fff transparent transparent transparent}
+.header .select ul{ display:none; position:absolute; right:10px; top:39px; background:rgba(7,92,135,0.8); border:1px solid #00deff; border-radius:5px; box-shadow:0 0 5px #00deff inset}
+.header .select ul li{ padding:0 10px; border:1px solid #a8fafe; border-radius:15px; margin:14px 8px}
+.lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 /*列表*/
-.wfhead{ height:41px; border-bottom:1px solid #4dd2fd; position:relative}
-.wfhead h2{ text-align:center; font-size:1.8em; padding-top:7px; text-shadow:0 0 1px #4dd2fd}
-.wfhead .back_btn,.wfhead .back_btn .iconinner{ width:25px; height:25px; border:1px solid #5df7ff; border-radius:25px; position:absolute; left:5px; top:7px; box-shadow:0 0 4px 1px #40d9ff}
-.wfhead .back_btn .iconinner{ left:-1px; top:-1px; box-shadow:0 0 4px 1px #40d9ff inset}
-.wfhead .back_btn .icon{ width:7px; height:7px; border:solid #5df7ff; border-width:0 0 1px 1px; box-shadow:-1px 1px 3px -1px #40d9ff; position:absolute; left:10px; top:8px; transform:rotate(45deg); -webkit-transform:rotate(45deg)}
-.wflist .select{ font-size:1.6em; position:relative; z-index:2}
-.wflist .select .text{ position:absolute; top:6px; right:10px; background:linear-gradient(#005976, #021d68); border-radius:15px; padding:1px 24px 1px 12px; border:1px solid #a6fafe; color:#fff; box-shadow:0 0 4px #82e4ff}
-.wflist .select .text .icon{position:absolute; width:0; height:0; top:11px; right:7px; border-width:6px; border-style:solid dashed dashed dashed; border-color:#fff transparent transparent transparent}
-.wflist .select ul{ display:none; position:absolute; right:10px; top:39px; background:rgba(7,92,135,0.8); border:1px solid #00deff; border-radius:5px; box-shadow:0 0 5px #00deff inset}
-.wflist .select ul li{ padding:0 10px; border:1px solid #a8fafe; border-radius:15px; margin:14px 8px;}
 .wf_nav{ overflow:hidden; width:100%; height:40px; position:relative; border-bottom:1px solid #4dd2fd; box-sizing:border-box}
 .wf_nav ul{ position:absolute; width:2000px; height:39px}
 .wf_nav li{ float:left; font-size:1.6em; color:#b0b8c8; padding:8px 20px 7px 20px; white-space:nowrap; position:relative}
 .wf_nav li.on{ color:#fff; box-shadow:0 -5px 2px -3px #4dd2fd inset}
 .wf_nav li i{ width:1px; height:18px; position:absolute; background:#4dd2fd; right:0; top:11px}
 .wf_nav li:last-child i{ background:none}
+.wflist .pagebody ul{ overflow:hidden}
 .wflist .pagebody li{ width:50%; float:left; padding:10px 10px 0 0; box-sizing:border-box}
 .wflist .pagebody li .item{ border:1px solid #00deff; box-shadow:0 0 5px #00deff inset; min-height:70px; background:url(../images/data-wf-listbg.png); position:relative}
 .wflist .pagebody li .item p{ color:#00deff; font-size:1.6em; position:absolute; left:5px; bottom:0}
 /*详情*/
-.wfdetail .wfhead .compare_btn{ font-size:1.6em; position:absolute; top:6px; right:5px; border-radius:15px; padding:1px 12px; border:1px solid #a6fafe; color:#fff; box-shadow:0 0 4px #82e4ff}
+.header .compare_btn{ font-size:1.6em; position:absolute; top:12px; right:5px; border-radius:15px; padding:1px 12px; border:1px solid #a6fafe; color:#fff; background:#0b0d1b; box-shadow:0 0 4px #82e4ff}
 .wfdetail .gun{ font-size:1.6em; position:relative; min-height:54px; border:solid #4dd2fd; border-width:1px 0; box-sizing:border-box; margin:5px 0; background:url(../images/data-wf-listbg.png); box-shadow:0 0 5px #00deff inset}
 .wfdetail .gun img{ margin:0 auto; display:block}
 .wfdetail .gun .name{ position:absolute; right:10px; top:2px; z-index:3; color:#5af6ff}

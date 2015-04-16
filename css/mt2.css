@@ -18,9 +18,7 @@ em,i,code,cite,address,th{font-style:normal}
 body{ background:#1e1d2c; color:#fff}
 a{ color:#fff; text-decoration:none}
 .header{ height:50px; border-bottom:1px solid #5754ba; background:#262e57; overflow:hidden; position:relative}
-.header h1{ text-align:center; line-height:50px; color:#fff}
-.header .backdata_btn{ width:25px; height:25px; border-radius:25px; border:1px solid #fff; position:absolute; left:10px; top:11px}
-.header .backdata_btn i{  position:absolute; left:10px; top:7px; width:10px; height:10px; border-width:0 0 1px 1px; border-color:#fff; border-style:solid; transform:rotate(45deg); -webkit-transform:rotate(45deg)}
+.header .wblogo{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
 .lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 /*英雄列表*/
 /*hero_nav{ overflow:hidden; border-bottom:1px solid #60478e; margin:5px 0; width:100%; height:42px; position:relative}
@@ -41,63 +39,63 @@ a{ color:#fff; text-decoration:none}
 .hero .pagebody li img{ display:inline-block}
 .hero .pagebody li div{ white-space:nowrap}
 /*详情页*/
-.datadetail .summary{ background:#014f7f; overflow:hidden; padding:10px 10px 15px}
-.datadetail .summary .l{ float:left; width:30%; padding-right:10px; box-sizing:border-box; text-align:center}
-.datadetail .summary .r{ float:left; width:70%}
-.datadetail .summary h2{ font-size:1.8em; margin-bottom:3px; text-shadow:0 0 2px #fff}
-.datadetail .summary p{ font-size:1.6em}
-.datadetail .section{ padding:5px}
-.datadetail .section .tit i.icon{ background:#43b9de; width:3px; height:1.7em; display:inline-block; vertical-align:text-bottom; margin-right:5px}
-.datadetail .section .tit h2{ font-size:1.8em; display:inline-block}
-.datadetail .init .com{ display:table; width:100%}
-.datadetail .init .com .d{ display:table-cell; text-align:center; font-size:1.4em; padding:10px 0}
-.datadetail .init .com .d .round{ width:60px; height:60px; display:inline-block; line-height:60px; border:1px solid #fff; border-radius:40px; margin-bottom:5px}
+.herodetail .summary{ background:#014f7f; overflow:hidden; padding:10px 10px 15px}
+.herodetail .summary .l{ float:left; width:30%; padding-right:10px; box-sizing:border-box; text-align:center}
+.herodetail .summary .r{ float:left; width:70%}
+.herodetail .summary h2{ font-size:1.8em; margin-bottom:3px; text-shadow:0 0 2px #fff}
+.herodetail .summary p{ font-size:1.6em}
+.herodetail .section{ padding:5px}
+.herodetail .section .tit i.icon{ background:#43b9de; width:3px; height:1.7em; display:inline-block; vertical-align:text-bottom; margin-right:5px}
+.herodetail .section .tit h2{ font-size:1.8em; display:inline-block}
+.herodetail .init .com{ display:table; width:100%}
+.herodetail .init .com .d{ display:table-cell; text-align:center; font-size:1.4em; padding:10px 0}
+.herodetail .init .com .d .round{ width:60px; height:60px; display:inline-block; line-height:60px; border:1px solid #fff; border-radius:40px; margin-bottom:5px}
 .ico_init_sta1,.ico_init_sta2,.ico_init_sta3{ background:url(../images/data-mt2-detail.png) no-repeat; width:60px; height:60px; display:inline-block}
 .ico_init_sta2{ background-position:0 -60px}
 .ico_init_sta3{ background-position:0 -120px}
-.datadetail .ability li{ margin-bottom:5px; position:relative; height:60px}
-.datadetail .ability i.ico_ability{ position:absolute; background:url(../images/data-mt2-detail.png) no-repeat; width:60px; height:60px}
-.datadetail .ability i.ico_ability_groom{ background-position:0 -180px}
-.datadetail .ability i.ico_ability_begin{ background-position:0 -240px}
-.datadetail .ability i.ico_ability_sta{ background-position:0 -300px}
-.datadetail .ability i.ico_ability_dps{ background-position:0 -360px}
-.datadetail .ability i.ico_ability_team{ background-position:0 -420px}
-.datadetail .ability .r{ padding:7px 0 0 60px; box-sizing:border-box}
-.datadetail .ability span{ font-size:1.4em}
+.herodetail .ability li{ margin-bottom:5px; position:relative; height:60px}
+.herodetail .ability i.ico_ability{ position:absolute; background:url(../images/data-mt2-detail.png) no-repeat; width:60px; height:60px}
+.herodetail .ability i.ico_ability_groom{ background-position:0 -180px}
+.herodetail .ability i.ico_ability_begin{ background-position:0 -240px}
+.herodetail .ability i.ico_ability_sta{ background-position:0 -300px}
+.herodetail .ability i.ico_ability_dps{ background-position:0 -360px}
+.herodetail .ability i.ico_ability_team{ background-position:0 -420px}
+.herodetail .ability .r{ padding:7px 0 0 60px; box-sizing:border-box}
+.herodetail .ability span{ font-size:1.4em}
 /*white:3,blue:3,purple:4*/
-.datadetail .ability .star{ width:100%; overflow:hidden; margin-top:3px}
-.datadetail .ability .star em{ width:8%; height:15px; margin-right:2%; background:#3a2d57; float:left}
-.datadetail .ability .star1 em:first-child,.datadetail .ability .star2 em:nth-child(-n+2),.datadetail .ability .star3 em:nth-child(-n+3){ background:#47c197}
-.datadetail .ability .star4 em:nth-child(-n+4),.datadetail .ability .star5 em:nth-child(-n+5),.datadetail .ability .star_green6 em:nth-child(-n+6){ background:#4dd2fd}
-.datadetail .ability .star7 em:nth-child(-n+7),.datadetail .ability .star8 em:nth-child(-n+8),.datadetail .ability .star9 em:nth-child(-n+9),.datadetail .ability .star_green10 em:nth-child(-n+10){ background:#da5bff}
-.datadetail .lineup .li{ margin-bottom:15px}
-.datadetail .lineup .li .t{ font-size:1.4em; margin-bottom:10px}
-.datadetail .lineup .li .c{ background:#383742; display:table; position:relative; width:100%}
-.datadetail .lineup .li .c a{ display:table-cell; width:20%; padding:10px}
-.datadetail .lineup .li .c .trg{ position:absolute; width:0; height:0; top:-14px; left:7px; border-width:7px; border-style:dashed dashed solid dashed; border-color:transparent transparent #383742 transparent}
-.datadetail .skill .tit{ margin-bottom:5px}
-.datadetail .skill li{ display:table; width:100%; margin-bottom:10px}
-.datadetail .skill li .img{ display:table-cell; width:16%}
-.datadetail .skill li .note{ display:table-cell; width:66%; vertical-align:top; padding:0 10px; box-sizing:border-box; font-size:1.4em}
-.datadetail .skill li .note h3{ margin-bottom:3px}
-.datadetail .skill li .des{display:table-cell; width:18%; vertical-align:top; text-align:right; font-size:1.8em}
-.datadetail .skill li .des span{  line-height:1; width:36px; display:inline-block; padding:7px}
-.datadetail .skill li .des_green{ border:1px solid #37ffc9}
-.datadetail .skill li .des_purple{ border:1px solid #da5bff}
-.datadetail .skill li .des_blue{ border:1px solid #4dd2fd}
-.datadetail .skill li .des_white{ border:1px solid #fff}
-.datadetail .goodfriends .tit{ margin-bottom:5px}
-.datadetail .goodfriends li{ display:table; width:100%; margin-bottom:10px}
-.datadetail .goodfriends li .img{ display:table-cell; width:16%}
-.datadetail .goodfriends li .c{ display:table-cell; vertical-align:top; padding-left:10px; font-size:1.4em}
-.datadetail .goodfriends li .c h3{ margin-bottom:3px}
-.datadetail .growup .tab{ width:100%; font-size:1.4em; text-align:center}
-.datadetail .growup .tab tr:nth-child(odd){ background:#1c1528}
-.datadetail .growup .tab tr:nth-child(even){ background:#0f0e16}
-.datadetail .growup .tab tr.th{ background:#2f1f44}
-.datadetail .growup .tab td{ padding:5px 0}
-.datadetail .relevant{ margin:10px 0 50px}
-.datadetail .relevant a{ font-size:1.4em}
+.herodetail .ability .star{ width:100%; overflow:hidden; margin-top:3px}
+.herodetail .ability .star em{ width:8%; height:15px; margin-right:2%; background:#3a2d57; float:left}
+.herodetail .ability .star1 em:first-child,.herodetail .ability .star2 em:nth-child(-n+2),.herodetail .ability .star3 em:nth-child(-n+3){ background:#47c197}
+.herodetail .ability .star4 em:nth-child(-n+4),.herodetail .ability .star5 em:nth-child(-n+5),.herodetail .ability .star_green6 em:nth-child(-n+6){ background:#4dd2fd}
+.herodetail .ability .star7 em:nth-child(-n+7),.herodetail .ability .star8 em:nth-child(-n+8),.herodetail .ability .star9 em:nth-child(-n+9),.herodetail .ability .star_green10 em:nth-child(-n+10){ background:#da5bff}
+.herodetail .lineup .li{ margin-bottom:15px}
+.herodetail .lineup .li .t{ font-size:1.4em; margin-bottom:10px}
+.herodetail .lineup .li .c{ background:#383742; display:table; position:relative; width:100%}
+.herodetail .lineup .li .c a{ display:table-cell; width:20%; padding:10px}
+.herodetail .lineup .li .c .trg{ position:absolute; width:0; height:0; top:-14px; left:7px; border-width:7px; border-style:dashed dashed solid dashed; border-color:transparent transparent #383742 transparent}
+.herodetail .skill .tit{ margin-bottom:5px}
+.herodetail .skill li{ display:table; width:100%; margin-bottom:10px}
+.herodetail .skill li .img{ display:table-cell; width:16%}
+.herodetail .skill li .note{ display:table-cell; width:66%; vertical-align:top; padding:0 10px; box-sizing:border-box; font-size:1.4em}
+.herodetail .skill li .note h3{ margin-bottom:3px}
+.herodetail .skill li .des{display:table-cell; width:18%; vertical-align:top; text-align:right; font-size:1.8em}
+.herodetail .skill li .des span{  line-height:1; width:36px; display:inline-block; padding:7px}
+.herodetail .skill li .des_green{ border:1px solid #37ffc9}
+.herodetail .skill li .des_purple{ border:1px solid #da5bff}
+.herodetail .skill li .des_blue{ border:1px solid #4dd2fd}
+.herodetail .skill li .des_white{ border:1px solid #fff}
+.herodetail .goodfriends .tit{ margin-bottom:5px}
+.herodetail .goodfriends li{ display:table; width:100%; margin-bottom:10px}
+.herodetail .goodfriends li .img{ display:table-cell; width:16%}
+.herodetail .goodfriends li .c{ display:table-cell; vertical-align:top; padding-left:10px; font-size:1.4em}
+.herodetail .goodfriends li .c h3{ margin-bottom:3px}
+.herodetail .growup .tab{ width:100%; font-size:1.4em; text-align:center}
+.herodetail .growup .tab tr:nth-child(odd){ background:#1c1528}
+.herodetail .growup .tab tr:nth-child(even){ background:#0f0e16}
+.herodetail .growup .tab tr.th{ background:#2f1f44}
+.herodetail .growup .tab td{ padding:5px 0}
+.herodetail .relevant{ margin:10px 0 50px}
+.herodetail .relevant a{ font-size:1.4em}
 
 
 

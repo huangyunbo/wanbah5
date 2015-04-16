@@ -19,19 +19,18 @@ body{ background:url(../images/data-daota-bg.jpg) no-repeat fixed #49324b; backg
 a{ color:#fff; text-decoration:none}
 .col_fbb{ color:#fbbc0e}
 .col_7bf{ color:#7bff10}
-.header{ height:50px; background:#fbbc0e; overflow:hidden}
-.header .wblogo{ float:left; margin:10px 0 0 10px}
-.header .wblogo a{ display:block; width:48px; height:26px; padding-left:52px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
-.header .crumbs{ margin:5px 0 0 110px; color:#fff; font-size:2em; line-height:2}
+.header{ height:50px;  background:rgba(0,0,0,0.2); overflow:hidden; position:relative}
+.header .wblogo{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 /*英雄列表&装备列表*/
-.daota_nav ul{ display:table; width:100%; table-layout:fixed; background:rgba(0,0,0,0.2)}
+.daota_nav ul{ display:table; width:100%; table-layout:fixed}
 .daota_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center; color:#8f6f78}
 .daota_nav li.on{ color:#fbbc0e; border-bottom:1px solid #fbbc0e}
-.daotalist .herolist{ padding:5px; overflow:hidden}
+.daotalist .herolist{ padding:5px; overflow:hidden; background:rgba(0,0,0,0.2)}
 .daotalist .herolist li{ float:left; width:25%; text-align:center; font-size:1.4em; margin-bottom:10px}
 .daotalist .herolist .img{ background:#362015; margin:5px; border-radius:5px; padding:5px}
 .daotalist .herolist .img img{ border-radius:5px}
-.daotalist .equiplist{ padding:5px; overflow:hidden}
+.daotalist .equiplist{ padding:5px; overflow:hidden; background:rgba(0,0,0,0.2)}
 .daotalist .equiplist li{ float:left; width:20%; text-align:center; font-size:1.4em; margin-bottom:10px}
 .daotalist .equiplist li .img{ padding:5px}
 .daotalist .equiplist li .img img{ border-radius:5px}
@@ -45,11 +44,7 @@ a{ color:#fff; text-decoration:none}
 	.daotalist .herolist li{ width:33.33%}
 }
 /*英雄详情*/
-.daotahead{ background:rgba(0,0,0,0.2); position:relative; height:42px}
-.daotahead h2{ text-align:center; font-size:1.8em; padding-top:7px}
-.daotahead .back_btn{ position:absolute; left:10px; top:8px; font-size:1.6em; padding-left:12px; color:#fbbc0e; z-index:3}
-.daotahead .back_btn .icon{ border:solid #fbbc0e; border-width:0 0 2px 2px; width:10px; height:10px; position:absolute; top:6px; left:0; transform:rotate(45deg); -webkit-transform:rotate(45deg)}
-.daotahead .compare_btn{ position:absolute; right:10px; top:8px; font-size:1.6em}
+.header .compare_btn{ position:absolute; right:10px; top:12px; font-size:1.6em}
 .daotahero .summary{ margin:10px 5px; background:rgba(0,0,0,0.2); border-radius:5px; overflow:hidden}
 .daotahero .summary .img{ float:left; width:32%}
 .daotahero .summary .img img{ border-radius:5px; border:5px solid #362015}
