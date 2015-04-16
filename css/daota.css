@@ -26,11 +26,11 @@ a{ color:#fff; text-decoration:none}
 .daota_nav ul{ display:table; width:100%; table-layout:fixed}
 .daota_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center; color:#8f6f78}
 .daota_nav li.on{ color:#fbbc0e; border-bottom:1px solid #fbbc0e}
-.daotalist .herolist{ padding:5px; overflow:hidden; background:rgba(0,0,0,0.2)}
+.daotalist .herolist ul{ padding:5px; overflow:hidden; background:rgba(0,0,0,0.2)}
 .daotalist .herolist li{ float:left; width:25%; text-align:center; font-size:1.4em; margin-bottom:10px}
 .daotalist .herolist .img{ background:#362015; margin:5px; border-radius:5px; padding:5px}
 .daotalist .herolist .img img{ border-radius:5px}
-.daotalist .equiplist{ padding:5px; overflow:hidden; background:rgba(0,0,0,0.2)}
+.daotalist .equiplist ul{ padding:5px; overflow:hidden; background:rgba(0,0,0,0.2)}
 .daotalist .equiplist li{ float:left; width:20%; text-align:center; font-size:1.4em; margin-bottom:10px}
 .daotalist .equiplist li .img{ padding:5px}
 .daotalist .equiplist li .img img{ border-radius:5px}
