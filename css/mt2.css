@@ -66,8 +66,8 @@ a{ color:#fff; text-decoration:none}
 .herodetail .ability .star{ width:100%; overflow:hidden; margin-top:3px}
 .herodetail .ability .star em{ width:8%; height:15px; margin-right:2%; background:#3a2d57; float:left}
 .herodetail .ability .star1 em:first-child,.herodetail .ability .star2 em:nth-child(-n+2),.herodetail .ability .star3 em:nth-child(-n+3){ background:#47c197}
-.herodetail .ability .star4 em:nth-child(-n+4),.herodetail .ability .star5 em:nth-child(-n+5),.herodetail .ability .star_green6 em:nth-child(-n+6){ background:#4dd2fd}
-.herodetail .ability .star7 em:nth-child(-n+7),.herodetail .ability .star8 em:nth-child(-n+8),.herodetail .ability .star9 em:nth-child(-n+9),.herodetail .ability .star_green10 em:nth-child(-n+10){ background:#da5bff}
+.herodetail .ability .star4 em:nth-child(-n+4),.herodetail .ability .star5 em:nth-child(-n+5),.herodetail .ability .star6 em:nth-child(-n+6){ background:#4dd2fd}
+.herodetail .ability .star7 em:nth-child(-n+7),.herodetail .ability .star8 em:nth-child(-n+8),.herodetail .ability .star9 em:nth-child(-n+9),.herodetail .ability .star10 em:nth-child(n){ background:#da5bff}
 .herodetail .lineup .li{ margin-bottom:15px}
 .herodetail .lineup .li .t{ font-size:1.4em; margin-bottom:10px}
 .herodetail .lineup .li .c{ background:#383742; display:table; position:relative; width:100%}

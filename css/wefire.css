@@ -73,6 +73,7 @@ a{ color:#fff; text-decoration:none}
 .wfdetail .gunattr .r{ padding:2px 0 0 50px}
 .wfdetail .gunattr .text{ font-size:1.4em; overflow:hidden}
 .wfdetail .gunattr .text span{ float:right; margin-right:10px}
+/*white:3,green:2,blue:2,purple:3*/
 .wfdetail .gunattr .star{ overflow:hidden; width:100%}
 .wfdetail .gunattr .star em{ width:10%; float:left}
 .wfdetail .gunattr .star em i{ height:15px; margin-right:10px; display:block; background:#0b2442}
