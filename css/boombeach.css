@@ -18,9 +18,9 @@ em,i,code,cite,address,th{font-style:normal}
 
 body{ background:#fff3dc}
 a{ text-decoration:none}
-.header{ height:50px; background:#fbbc0e; overflow:hidden; position:relative}
-.header .wblogo,.header .wblogo_index{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
-.header .wblogo_index{ background-position:-24px 0; padding-left:66px}
+.header{ height:50px; background:#43b9de; border-bottom:1px solid #2a94b1; overflow:hidden; position:relative}
+.header h1{ text-align:center; line-height:50px; color:#fff}
+.header .backdata_btn{ background:url(../images/wblogo.png) no-repeat; background-size:90px; width:25px; height:50px; position:absolute; left:10px; top:0}
 .lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 /*列表页*/
 .datalist_nav ul{ display:table; width:100%; table-layout:fixed}
@@ -44,7 +44,7 @@ a{ text-decoration:none}
 .datadetail .leveal td{ padding:3px 5px; background:#ede2cc; text-align:center}
 .datadetail .leveal .dt{ float:left; width:25%}
 .datadetail .leveal .dd{ float:left; width:75%; overflow-x:auto}
-.datadetail .leveal .db table{ width:100%}
+.datadetail .leveal .dd table,.datadetail .leveal .db table{ width:100%}
 .datadetail .leveal .l{padding:3px 5px; background:#43b9de; color:#fff; border-top:1px solid #fff3dc; text-align:center}
 .datadetail .leveal .on{ background:#43b9de; color:#fff}
 .datadetail .section{ margin-bottom:15px}

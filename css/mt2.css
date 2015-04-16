@@ -17,9 +17,10 @@ em,i,code,cite,address,th{font-style:normal}
 
 body{ background:#1e1d2c; color:#fff}
 a{ color:#fff; text-decoration:none}
-.header{ height:50px; background:#fbbc0e; overflow:hidden; position:relative}
-.header .wblogo,.header .wblogo_index{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
-.header .wblogo_index{ background-position:-24px 0; padding-left:66px}
+.header{ height:50px; border-bottom:1px solid #5754ba; background:#262e57; overflow:hidden; position:relative}
+.header h1{ text-align:center; line-height:50px; color:#fff}
+.header .backdata_btn{ width:25px; height:25px; border-radius:25px; border:1px solid #fff; position:absolute; left:10px; top:11px}
+.header .backdata_btn i{  position:absolute; left:10px; top:7px; width:10px; height:10px; border-width:0 0 1px 1px; border-color:#fff; border-style:solid; transform:rotate(45deg); -webkit-transform:rotate(45deg)}
 .lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 /*英雄列表*/
 /*hero_nav{ overflow:hidden; border-bottom:1px solid #60478e; margin:5px 0; width:100%; height:42px; position:relative}
@@ -31,17 +32,19 @@ a{ color:#fff; text-decoration:none}
 .hero_nav{ margin:5px 0}
 .hero_nav ul{ display:table; width:100%; table-layout:fixed}
 .hero_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center; position:relative; border-bottom:1px solid #60478e}
-.hero_nav li.on{ color:#fff; border-bottom:2px solid #4dd2fd; padding-bottom:7px;}
+.hero_nav li.on{ color:#fff; border-bottom:2px solid #4dd2fd; padding-bottom:7px}
 .hero_nav li i{ width:1px; height:18px; position:absolute; background:#3c91b2; right:0; top:11px}
 .hero_nav li:last-child i{ background:none}
 .hero .pagebody ul{ overflow:hidden}
-.hero .pagebody li{ width:25%; float:left; padding:10px; box-sizing:border-box; text-align:center; font-size:1.4em; overflow:hidden}
+.hero .pagebody li{ width:25%; float:left}
+.hero .pagebody li a{ display:block; padding:10px; text-align:center; font-size:1.4em; overflow:hidden}
 .hero .pagebody li img{ display:inline-block}
 .hero .pagebody li div{ white-space:nowrap}
 /*详情页*/
 .datadetail .summary{ background:#014f7f; overflow:hidden; padding:10px 10px 15px}
-.datadetail .summary .l{ float:left; width:30%; padding-right:10px; text-align:center}
-.datadetail .summary h1{ font-size:1.8em; margin-bottom:3px; text-shadow:0 0 2px #fff}
+.datadetail .summary .l{ float:left; width:30%; padding-right:10px; box-sizing:border-box; text-align:center}
+.datadetail .summary .r{ float:left; width:70%}
+.datadetail .summary h2{ font-size:1.8em; margin-bottom:3px; text-shadow:0 0 2px #fff}
 .datadetail .summary p{ font-size:1.6em}
 .datadetail .section{ padding:5px}
 .datadetail .section .tit i.icon{ background:#43b9de; width:3px; height:1.7em; display:inline-block; vertical-align:text-bottom; margin-right:5px}
@@ -52,24 +55,25 @@ a{ color:#fff; text-decoration:none}
 .ico_init_sta1,.ico_init_sta2,.ico_init_sta3{ background:url(../images/data-mt2-detail.png) no-repeat; width:60px; height:60px; display:inline-block}
 .ico_init_sta2{ background-position:0 -60px}
 .ico_init_sta3{ background-position:0 -120px}
-.datadetail .ability i.ico_ability{ float:left; background:url(../images/data-mt2-detail.png) no-repeat; width:60px; height:60px}
-.datadetail .ability li{ overflow:hidden; margin-bottom:5px}
+.datadetail .ability li{ margin-bottom:5px; position:relative; height:60px}
+.datadetail .ability i.ico_ability{ position:absolute; background:url(../images/data-mt2-detail.png) no-repeat; width:60px; height:60px}
 .datadetail .ability i.ico_ability_groom{ background-position:0 -180px}
 .datadetail .ability i.ico_ability_begin{ background-position:0 -240px}
 .datadetail .ability i.ico_ability_sta{ background-position:0 -300px}
 .datadetail .ability i.ico_ability_dps{ background-position:0 -360px}
 .datadetail .ability i.ico_ability_team{ background-position:0 -420px}
-.datadetail .ability .r{ margin:8px 0 0 60px}
+.datadetail .ability .r{ padding:7px 0 0 60px; box-sizing:border-box}
 .datadetail .ability span{ font-size:1.4em}
-.datadetail .ability .star em{ width:7%; padding-top:1%; margin-right:1%; background:#3a2d57; display:inline-block}
-.datadetail .ability .star em:after{ content:"\0"}
-.datadetail .ability .star_purple1 em:nth-child(-n+1),.datadetail .ability .star_purple2 em:nth-child(-n+2),.datadetail .ability .star_purple3 em:nth-child(-n+3),.datadetail .ability .star_purple4 em:nth-child(-n+4),.datadetail .ability .star_purple5 em:nth-child(-n+5),.datadetail .ability .star_purple6 em:nth-child(-n+6),.datadetail .ability .star_purple7 em:nth-child(-n+7),.datadetail .ability .star_purple8 em:nth-child(-n+8),.datadetail .ability .star_purple9 em:nth-child(-n+9),.datadetail .ability .star_purple10 em:nth-child(-n+10){background:#da5bff}
-.datadetail .ability .star_green1 em:nth-child(-n+1),.datadetail .ability .star_green2 em:nth-child(-n+2),.datadetail .ability .star_green3 em:nth-child(-n+3),.datadetail .ability .star_green4 em:nth-child(-n+4),.datadetail .ability .star_green5 em:nth-child(-n+5),.datadetail .ability .star_green6 em:nth-child(-n+6),.datadetail .ability .star_green7 em:nth-child(-n+7),.datadetail .ability .star_green8 em:nth-child(-n+8),.datadetail .ability .star_green9 em:nth-child(-n+9),.datadetail .ability .star_green10 em:nth-child(-n+10){background:#47c197}
-.datadetail .ability .star_blue1 em:nth-child(-n+1),.datadetail .ability .star_blue2 em:nth-child(-n+2),.datadetail .ability .star_blue3 em:nth-child(-n+3),.datadetail .ability .star_blue4 em:nth-child(-n+4),.datadetail .ability .star_blue5 em:nth-child(-n+5),.datadetail .ability .star_blue6 em:nth-child(-n+6),.datadetail .ability .star_blue7 em:nth-child(-n+7),.datadetail .ability .star_blue8 em:nth-child(-n+8),.datadetail .ability .star_blue9 em:nth-child(-n+9),.datadetail .ability .star_blue10 em:nth-child(-n+10){background:#4dd2fd}
+/*white:3,blue:3,purple:4*/
+.datadetail .ability .star{ width:100%; overflow:hidden; margin-top:3px}
+.datadetail .ability .star em{ width:8%; height:15px; margin-right:2%; background:#3a2d57; float:left}
+.datadetail .ability .star1 em:first-child,.datadetail .ability .star2 em:nth-child(-n+2),.datadetail .ability .star3 em:nth-child(-n+3){ background:#47c197}
+.datadetail .ability .star4 em:nth-child(-n+4),.datadetail .ability .star5 em:nth-child(-n+5),.datadetail .ability .star_green6 em:nth-child(-n+6){ background:#4dd2fd}
+.datadetail .ability .star7 em:nth-child(-n+7),.datadetail .ability .star8 em:nth-child(-n+8),.datadetail .ability .star9 em:nth-child(-n+9),.datadetail .ability .star_green10 em:nth-child(-n+10){ background:#da5bff}
 .datadetail .lineup .li{ margin-bottom:15px}
 .datadetail .lineup .li .t{ font-size:1.4em; margin-bottom:10px}
 .datadetail .lineup .li .c{ background:#383742; display:table; position:relative; width:100%}
-.datadetail .lineup .li .c a{ display:inline-table; width:20%; padding:10px; box-sizing:border-box}
+.datadetail .lineup .li .c a{ display:table-cell; width:20%; padding:10px}
 .datadetail .lineup .li .c .trg{ position:absolute; width:0; height:0; top:-14px; left:7px; border-width:7px; border-style:dashed dashed solid dashed; border-color:transparent transparent #383742 transparent}
 .datadetail .skill .tit{ margin-bottom:5px}
 .datadetail .skill li{ display:table; width:100%; margin-bottom:10px}
