@@ -130,18 +130,21 @@ a{ text-decoration:none; outline:none}
 .videodetail .info{ padding:10px}
 .videodetail .info h3{ font-size:1.6em; color:#111}
 .videodetail .info { font-size:1.4em; color:#555}
-
-
-
-
-
-
-
-
-
-
-
-
+/*提示下载*/
+.downpage{ background:url(../images/downpage_bg.jpg) #fbf8eb fixed no-repeat; background-size:cover}
+.downpage .pagebody{ margin:100px auto 0; width:280px}
+.downpage .pagebody .t{ text-align:center; border-bottom:1px solid #454545; padding-bottom:15px; position:relative; margin-bottom:40px}
+.downpage h2{ font-size:4.5em; color:#111}
+.downpage .pagebody .t p{ font-size:2em; color:#454545}
+.downpage .pagebody .t i{ position:absolute; width:20px; height:20px; left:130px; bottom:-17px; background:url(../images/downpage_icon.png) no-repeat 0 -20px; background-size:20px}
+.downpage .pagebody .m{ overflow:hidden; color:#4545t45}
+.downpage .pagebody .m .l{ float:left; background:#ffb309; width:72px; height:72px; border-radius:15px; margin-right:15px}
+.downpage .pagebody .m .l .mlogo{ width:72px; height:72px; background:url(../images/wblogo.png) -18px 10px no-repeat; background-size:90px}
+.downpage .pagebody .m .r{ float:left}
+.downpage .pagebody .m .r .name{ font-size:1.8em}
+.downpage .pagebody .m .r .star i{ display:inline-block; width:20px; height:20px; left:130px; bottom:-17px; background:url(../images/downpage_icon.png) no-repeat; background-size:20px}
+.downpage .pagebody .m .r .other{ font-size:1.5em}
+.downpage .pagebody .b{ display:block; margin-top:20px; color:#6b6b6b; width:100%; height:40px; line-height:40px; text-align:center; font-size:1.6em; background:rgba(255,255,255,0.3); border-radius:10px}
 
 
 
