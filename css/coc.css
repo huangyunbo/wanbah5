@@ -1,0 +1,87 @@
+@charset "utf-8";
+/* 部落冲突(coc) 2015.4.22 */
+
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{ margin:0; padding:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{ display:block}
+html{ font:62.5%/1.5 "Microsoft YaHei", sans-serif}
+img{border:none; max-width:100%}
+h1,h2,h3,h4,h5,h6{ font-weight:normal}
+input,select,textarea{ font-size:100%; vertical-align:baseline; *vertical-align:middle}
+ol,ul{ list-style:none}
+textarea{ overflow:auto; vertical-align:top; resize:vertical}
+table{ border-collapse:collapse; border-spacing:0}
+em,i,code,cite,address,th{font-style:normal}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+
+body{ background:#fff3dc}
+a{ text-decoration:none}
+.header{ height:50px; background:#613713; border-bottom:1px solid #ffd58d; overflow:hidden; position:relative}
+.header .wblogo{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
+/*列表页*/
+.datalist_nav ul{ display:table; width:100%; table-layout:fixed}
+.datalist_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center; border-bottom:1px solid #d3d3d3}
+.datalist_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e; padding-bottom:7px}
+.datalist li a{ border-bottom:1px solid #d3d3d3; display:table; width:100%; padding:10px; box-sizing:border-box}
+.datalist li .img{ width:18%; display:table-cell; text-align:center; padding:10px 15px 10px 5px; box-sizing:border-box}
+.datalist li .note{ display:table-cell; vertical-align:middle; color:#1a1a1a}
+.datalist li .note h2{ font-size:1.8em}
+.datalist li .note p{ font-size:1.4em; color:#8f8f8f}
+.datalist li .look{ display:table-cell; width:10%; vertical-align:middle}
+.datalist li .look .icon{ width:13px; height:13px; display:inline-block; border-width:0 1px 1px 0; border-color:#8f8f8f; border-style:solid; -webkit-transform:rotate(-45deg); transform:rotate(-45deg)}
+/*详情页*/
+.datadetail .summary{overflow:hidden; padding:10px 10px 15px}
+.datadetail .summary .l{ float:left; width:25%; padding:0 13px; box-sizing:border-box; text-align:center}
+.datadetail .summary .r{ float:left; width:75%;}
+.datadetail .summary h2{ font-size:1.8em; margin-bottom:3px; font-weight:bold; color:#423f38}
+.datadetail .summary p{ font-size:1.6em; color:#736c5f}
+.datadetail .leveal{ overflow:hidden; padding:10px 10px 15px; font-size:1.2em}
+.datadetail .leveal table{ border-collapse:separate; border-spacing:1px; color:#423f38}
+.datadetail .leveal td{ padding:3px 5px; background:#ede2cc; text-align:center}
+.datadetail .leveal .dt{ float:left; width:25%}
+.datadetail .leveal .dd{ float:left; width:75%; overflow-x:auto}
+.datadetail .leveal .dd table,.datadetail .leveal .db table{ width:100%}
+.datadetail .leveal .l{padding:3px 5px; background:#423f38; color:#fde69f; border-top:1px solid #fff3dc; text-align:center}
+.datadetail .leveal .on{ background:#423f38; color:#fde69f}
+.datadetail .section{ margin-bottom:15px; color:#454545}
+.datadetail .section .tit{ padding:5px 10px}
+.datadetail .section .tit .icon{ background:#613713; width:3px; height:1.5em; display:inline-block; vertical-align:text-bottom}
+.datadetail .section .tit h2{ font-size:1.6em; display:inline-block; color:#613713}
+/*.datadetail .section .comment{ padding:0 10px; font-size:1.4em}*/
+.datadetail .item{ border-top:1px solid #cabea9; overflow:hidden}
+.datadetail .item .img{ width:25%; float:left; box-sizing:border-box; padding:20px}
+.datadetail .item .d{ width:75%; float:left; font-size:1.4em; padding:15px 0}
+.datadetail .item .d dl{ margin-bottom:5px}
+.datadetail .item .d .lev{ background:#fde69f; color:#583503; padding:3px 7px; border-radius:12px}
+.datadetail .item .d dt,.datadetail .item .d dd{ display:inline-block}
+.datadetail .item .d dd span{ white-space:nowrap; margin-right:20px}
+.datadetail .item i{ background:url(../images/data-bb-detail.png) no-repeat; width:15px; height:15px; display:inline-block; vertical-align:-2px; background-size:15px; margin-right:1px}
+.datadetail .item i.ico_command{ background-position:0 0}/*司令部*/
+.datadetail .item i.ico_life{ background-position:0 -15px}/*生命*/
+.datadetail .item i.ico_dps{ background-position:0 -30px}/*每秒伤害*/
+.datadetail .item i.ico_research{ background-position:0 -45px}/*研究院*/
+.datadetail .item i.ico_wood{ background-position:0 -60px}/*木头*/
+.datadetail .item i.ico_gold{ background-position:0 -75px}/*金币*/
+.datadetail .item i.ico_steel{ background-position:0 -90px}/*钢铁*/
+.datadetail .item i.ico_stone{ background-position:0 -105px}/*石头*/
+.datadetail .item i.ico_time{ background-position:0 -120px}/*时间*/
+.datadetail .item i.ico_exp{ background-position:0 -135px}/*经验*/
+.datadetail .item i.ico_hps{ background-position:0 -150px}/*每秒治疗*/
+/*阵型详情页*/
+.formation .item{ border-bottom:1px solid #d3d3d3; padding-bottom:10px}
+.formation .item:last-child{ border-bottom:0}
+.formation .item h3{ font-size:1.7em; padding:10px}
+.formation .item h3 span{ color:#c96; border:1px solid #c96; border-radius:10px; padding:0 4px; margin-right:5px; font-size:0.7em; vertical-align:1px}
+.formation .item .img{ text-align:center}
+.formation .item p{ padding:10px 10px 0; font-size:1.4em; color:#8f8f8f}
+
+
+
+
+
+
+
+
+
