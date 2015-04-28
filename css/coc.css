@@ -43,7 +43,7 @@ a{ text-decoration:none}
 .datadetail .leveal .dt{ float:left; width:25%}
 .datadetail .leveal .dd{ float:left; width:75%; overflow-x:auto}
 .datadetail .leveal .dd table,.datadetail .leveal .db table{ width:100%}
-.datadetail .leveal .l{padding:3px 5px; background:#423f38; color:#fde69f; border-top:1px solid #fff3dc; text-align:center}
+.datadetail .leveal .l{ border-top:1px solid #fff3dc; padding:3px 5px; background:#423f38; color:#fde69f; text-align:center; white-space:nowrap; overflow-x:auto}
 .datadetail .leveal .on{ background:#423f38; color:#fde69f}
 .datadetail .section{ margin-bottom:15px; color:#454545}
 .datadetail .section .tit{ padding:5px 10px}
