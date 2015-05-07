@@ -10,18 +10,18 @@
 
 <body>
 <header class="header">
-	<div class="wblogo"><a href="data-daota-list.html"><h1>熊猫酒仙 vs </h1></a></div>
+	<div class="wblogo"><a href="data-daota-herodetail.html"><h1 id="daotacomName">熊猫酒仙 vs </h1></a></div>
 </header><!--/header-->
 
-<div class="daotacom">
-    <div class="vspic">
-    	<div class="pic"><img src="http://res.wanba123.cn/gameRes/46/DBPic/46_2725_original.jpg"></div>
+<div class="daotacom" id="daotacom">
+    <!--<div class="vspic">
+    	<a href="data-daota-list.html" class="pic"><img src="http://res.wanba123.cn/gameRes/46/DBPic/46_2725_original.jpg"></a>
         <div class="text">vs</div>
-        <div class="pic"><div class="icon_plus"><i class="x"></i><i class="y"></i></div></div>
-    </div><!--/vspic-->
+        <a href="data-daota-list.html" class="pic"><div class="icon_plus"><i class="x"></i><i class="y"></i></div></a>
+    </div>
 	
     <div class="vsnum">
-        <table>
+        <table id="table">
         	<tr>
                 <td>机甲浣熊</td>
                 <td class="cor_d8c">英雄名称</td>
@@ -53,7 +53,117 @@
                 <td class="col_7bf">12</td>
             </tr>
         </table>
-    </div><!--/herogrowup-->
+    </div>-->
 </div><!--/daotacom-->
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript">
+var data = [{"heroid":2725,"name":"熊猫酒仙","img":"http://res.wanba123.cn/gameRes/46/DBPic/46_2725_original.jpg","attri":[{"t":"最大生命","v":1},{"t":"物理攻击","v":1},{"t":"魔法强度","v":1},{"t":"物理护甲","v":1},{"t":"魔法抗性","v":1}]},
+{"heroid":2721,"name":"船长","img":"http://res.wanba123.cn/gameRes/46/DBPic/46_2721_original.jpg","attri":[{"t":"最大生命","v":1},{"t":"物理攻击","v":1},{"t":"魔法强度","v":10},{"t":"物理护甲","v":1},{"t":"魔法抗性","v":1}]},
+{"heroid":2724,"name":"斧王","img":"http://res.wanba123.cn/gameRes/46/DBPic/46_2724_original.jpg","attri":[{"t":"最大生命","v":2},{"t":"物理攻击","v":1},{"t":"魔法强度","v":1},{"t":"物理护甲","v":1},{"t":"魔法抗性","v":1}]}];
+
+
+var longHref = location.href.split("?");
+var compareHref = "data-daota-compare.html";
+var href = longHref[0];
+var query = longHref[1];
+var heroFirstOnly = "herofirstonly";
+var heroFirst = "herofirst";
+var heroSecond = "herosecond";
+
+var args = new Object();  
+var pairs = query.split("&");
+var heroHref = "";
+for(var i=0; i<pairs.length; i++){//取得url参数
+	var pos = pairs[i].indexOf('='); //查找name=value
+	if(pos == -1) continue; //如果没有找到就跳过
+	var argname = pairs[i].substring(0, pos); //提取name
+	var value = pairs[i].substring(pos + 1); //提取value
+	if(argname == heroFirst || argname == heroSecond){
+		args[argname] = unescape(value); //存为属性
+	}
+}
+
+var heroFirstData,heroSecondData;
+for(var i=0; i<data.length; i++){//获取第1个英雄和第二个英雄的数据
+	if(args[heroFirst] == data[i].heroid){
+		 heroFirstData = data[i];
+	}
+	if(args[heroSecond] == data[i].heroid){
+		 heroSecondData = data[i];
+	}
+}
+
+var attriHtml = "";
+for(var i=0; i<heroFirstData.attri.length; i++){//获取2个英雄的属性值
+	heroFirstDataAttri = heroFirstData.attri[i];
+	if(args[heroFirst] !== undefined && args[heroSecond] !== undefined){
+		heroSecondDataAttri = heroSecondData.attri[i];
+		if(heroFirstDataAttri.v > heroSecondDataAttri.v){
+			attriHtml += '<tr>'+
+							'<td class="col_7bf">'+heroFirstDataAttri.v+'</td>'+
+							'<td class="cor_d8c">'+heroFirstDataAttri.t+'</td>'+
+							'<td>'+heroSecondDataAttri.v+'</td>'+
+						'</tr>';
+		}else if(heroFirstDataAttri.v < heroSecondDataAttri.v){
+			attriHtml += '<tr>'+
+							'<td>'+heroFirstDataAttri.v+'</td>'+
+							'<td class="cor_d8c">'+heroFirstDataAttri.t+'</td>'+
+							'<td class="col_7bf">'+heroSecondDataAttri.v+'</td>'+
+						'</tr>';
+		}else{
+			attriHtml += '<tr>'+
+							'<td>'+heroFirstDataAttri.v+'</td>'+
+							'<td class="cor_d8c">'+heroFirstDataAttri.t+'</td>'+
+							'<td>'+heroSecondDataAttri.v+'</td>'+
+						'</tr>';
+		}
+	}else if(args[heroFirst] !== undefined && args[heroSecond] === undefined){
+		attriHtml += '<tr>'+
+						  '<td>'+heroFirstDataAttri.v+'</td>'+
+						  '<td class="cor_d8c">'+heroFirstDataAttri.t+'</td>'+
+						  '<td></td>'+
+					  '</tr>';
+	}
+}
+
+
+var _html = "";
+if(args[heroFirst] !== undefined && args[heroSecond] !== undefined){//2个英雄对比的时候
+	$("#daotacomName").html(heroFirstData.name + " vs " +heroSecondData.name);
+	_html = '<div class="vspic">'+
+    			'<a href="data-daota-list.html?' + heroSecond + '=' + args[heroSecond] +'" class="pic"><img src="'+heroFirstData.img+'"></a>'+
+        		'<div class="text">vs</div>'+
+        		'<a href="data-daota-list.html?' + heroFirst + '=' + args[heroFirst] +'" class="pic"><img src="'+heroSecondData.img+'"></a>'+
+    		'</div>'+
+			'<div class="vsnum">'+
+				'<table id="table">'+
+					'<tr>'+
+						'<td>'+heroFirstData.name+'</td>'+
+						'<td class="cor_d8c">英雄名称</td>'+
+						'<td>'+heroSecondData.name+'</td>'+
+					'</tr>'+
+					attriHtml+
+				'</table>'+
+			'</div>';
+}else if(args[heroFirst] !== undefined && args[heroSecond] === undefined){//只有第1个英雄的时候
+	$("#daotacomName").html(heroFirstData.name + " vs");
+	_html = '<div class="vspic">'+
+    			'<a href="data-daota-list.html?' + heroFirstOnly + '=' + args[heroFirst] +'" class="pic"><img src="'+heroFirstData.img+'"></a>'+
+        		'<div class="text">vs</div>'+
+        		'<a href="data-daota-list.html?' + heroFirst + '=' + args[heroFirst] +'" class="pic"><div class="icon_plus"><i class="x"></i><i class="y"></i></div></a>'+
+    		'</div>'+
+			'<div class="vsnum">'+
+				'<table id="table">'+
+					'<tr>'+
+						'<td>'+heroFirstData.name+'</td>'+
+						'<td class="cor_d8c">英雄名称</td>'+
+						'<td></td>'+
+					'</tr>'+
+					attriHtml+
+				'</table>'+
+			'</div>';
+}
+$("#daotacom").html(_html);
+</script>
 </body>
 </html>

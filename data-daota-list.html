@@ -27,17 +27,17 @@
         <div>
             <ul>
                 <li>
-                    <a href="data-daota-herodetail.html">
-                    <div class="img"><img src="http://res.wanba123.cn/gameRes/46/DBPic/46_2725_original.jpg"></div>熊猫酒仙
+                    <a href="data-daota-herodetail.html" data-heroid="2721" class="aherf">
+                    <div class="img"><img src="http://res.wanba123.cn/gameRes/46/DBPic/46_2721_original.jpg"></div>船长
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:;">
-                    <div class="img"><img src="http://res.wanba123.cn/gameRes/46/DBPic/46_2725_original.jpg"></div>熊猫酒仙
+                    <a href="data-daota-herodetail.html" data-heroid="2724" class="aherf">
+                    <div class="img"><img src="http://res.wanba123.cn/gameRes/46/DBPic/46_2724_original.jpg"></div>斧王
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:;">
+                    <a href="data-daota-herodetail.html" data-heroid="2725" class="aherf">
                     <div class="img"><img src="http://res.wanba123.cn/gameRes/46/DBPic/46_2725_original.jpg"></div>熊猫酒仙
                     </a>
                 </li>
@@ -104,5 +104,48 @@
         <div style="display:none">白色</div>
 	</div><!--/equiplist-->
 </div><!--/daotalist-->
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript">
+$(".aherf").on("click", function(e){
+	//e.stopPropagation();
+	//e.preventDefault();
+	
+	var _this = $(this);
+	var heroid = _this.attr("data-heroid");
+	var longHref = location.href.split("?");
+	var compareHref = "data-daota-compare.html";
+	var href = longHref[0];
+	var query = longHref[1];
+	var heroFirstOnly = "herofirstonly";
+	var heroFirst = "herofirst";
+	var heroSecond = "herosecond";
+	
+	if(query !== undefined){
+		var args = new Object();  
+		var pairs = query.split("&");
+		var heroHref = "";
+		for(var i=0; i<pairs.length; i++){
+			var pos = pairs[i].indexOf('='); //查找name=value
+			if(pos == -1) continue; //如果没有找到就跳过
+			var argname = pairs[i].substring(0, pos); //提取name
+			var value = pairs[i].substring(pos + 1); //提取value
+			if(argname == heroFirstOnly || argname == heroFirst || argname == heroSecond){
+				args[argname] = unescape(value); //存为属性
+			}
+		}
+		
+		if(args[heroFirstOnly] !== undefined){//只有1个英雄，点击第一个英雄过来
+			heroHref = compareHref + "?" + heroFirst + "=" + heroid;
+			_this.attr("href", heroHref);
+		}else if(args[heroFirst] !== undefined){//有2个英雄，点击第二个英雄过来
+			heroHref = compareHref + "?" + heroFirst + "=" + args[heroFirst] + "&" + heroSecond + "=" + heroid;
+			_this.attr("href", heroHref);
+		}else if(args[heroSecond] !== undefined){//有2个英雄，点击第一个英雄过来
+			heroHref = compareHref + "?" + heroFirst + "=" + heroid + "&" + heroSecond + "=" + args[heroSecond];
+			_this.attr("href", heroHref);
+		}
+	}
+});
+</script>
 </body>
 </html>
