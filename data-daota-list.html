@@ -137,10 +137,10 @@ $(".aherf").on("click", function(e){
 		if(args[heroFirstOnly] !== undefined){//只有1个英雄，点击第一个英雄过来
 			heroHref = compareHref + "?" + heroFirst + "=" + heroid;
 			_this.attr("href", heroHref);
-		}else if(args[heroFirst] !== undefined){//有2个英雄，点击第二个英雄过来
+		}else if(args[heroFirst] !== undefined){//有1个或则2个英雄，点击第二个英雄过来
 			heroHref = compareHref + "?" + heroFirst + "=" + args[heroFirst] + "&" + heroSecond + "=" + heroid;
 			_this.attr("href", heroHref);
-		}else if(args[heroSecond] !== undefined){//有2个英雄，点击第一个英雄过来
+		}else if(args[heroSecond] !== undefined){//只有2个英雄，点击第一个英雄过来；或则只有1个英雄，点击第二个+过来
 			heroHref = compareHref + "?" + heroFirst + "=" + heroid + "&" + heroSecond + "=" + args[heroSecond];
 			_this.attr("href", heroHref);
 		}

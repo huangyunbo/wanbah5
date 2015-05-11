@@ -107,5 +107,8 @@ a{ color:#fff; text-decoration:none}
 .wfcom .item ul li .r{ width:50%; display:table-cell; position:relative}
 .wfcom .item ul li .r.on{ color:#90ff00}
 .wfcom .item ul li .r.on .icon{ position:absolute; top:3px; right:10px; width:13px; height:12px; background:url(../images/data-wf-compare.png) -20px -47px no-repeat; background-size:93px}
+.wfcom .item .icon_plus{ width:30px; height:30px; position:relative; display:block; margin:0 auto}
+.wfcom .item .icon_plus .x{ width:30px; height:2px; background:#00deff; position:absolute; left:0; top:14px}
+.wfcom .item .icon_plus .y{ width:2px; height:30px; background:#00deff; position:absolute; left:14px; top:0}
 
 

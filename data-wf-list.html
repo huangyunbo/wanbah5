@@ -41,17 +41,17 @@
             <ul>
                 <li>
                     <div class="item">
-                        <a href="data-wf-detail.html"><img src="http://res.wanba123.cn/gameRes/77/DBPic/77_5010_thumb.png"><p>B43</p></a>
+                        <a href="data-wf-detail.html" class="aherf" data-compareid="5010"><img src="http://res.wanba123.cn/gameRes/77/DBPic/77_5010_thumb.png"><p>M4A1</p></a>
                     </div>
                 </li>
                 <li>
                     <div class="item">
-                        <a href="data-wf-detail.html"><img src="http://res.wanba123.cn/gameRes/77/DBPic/77_5010_thumb.png"><p>B43</p></a>
+                        <a href="data-wf-detail.html" class="aherf" data-compareid="5011"><img src="http://res.wanba123.cn/gameRes/77/DBPic/77_5011_thumb.png"><p>AK47</p></a>
                     </div>
                 </li>
                 <li>
                     <div class="item">
-                        <a href="data-wf-detail.html"><img src="http://res.wanba123.cn/gameRes/77/DBPic/77_5010_thumb.png"><p>B43</p></a>
+                        <a href="data-wf-detail.html" class="aherf" data-compareid="5014"><img src="http://res.wanba123.cn/gameRes/77/DBPic/77_5014_thumb.png"><p>MP5</p></a>
                     </div>
                 </li>
                 <li>
@@ -135,6 +135,48 @@ $(function(){
 		select_btn.html(_val+'<i class="icon"></i>');
 		selectul.toggle();
 		//do somethings
+	});
+	
+	//对比
+	$(".aherf").on("click", function(e){
+		//e.stopPropagation();
+		//e.preventDefault();
+		
+		var _this = $(this);
+		var cid = _this.attr("data-compareid");
+		var longHref = location.href.split("?");
+		var compareUrl = "data-wf-compare.html";
+		var qhref = longHref[0];
+		var query = longHref[1];
+		var compareFirstOnly = "comparefirstonly";
+		var compareFirst = "comparefirst";
+		var compareSecond = "comparesecond";
+		
+		if(query !== undefined){
+			var args = new Object();  
+			var pairs = query.split("&");
+			var compareHref = "";
+			for(var i=0; i<pairs.length; i++){
+				var pos = pairs[i].indexOf('='); //查找name=value
+				if(pos == -1) continue; //如果没有找到就跳过
+				var argname = pairs[i].substring(0, pos); //提取name
+				var value = pairs[i].substring(pos + 1); //提取value
+				if(argname == compareFirstOnly || argname == compareFirst || argname == compareSecond){
+					args[argname] = unescape(value); //存为属性
+				}
+			}
+			
+			if(args[compareFirstOnly] !== undefined){//只有1个英雄，点击第一个英雄过来
+				compareHref = compareUrl + "?" + compareFirst + "=" + cid;
+				_this.attr("href", compareHref);
+			}else if(args[compareFirst] !== undefined){//有1个或则2个英雄，点击第二个英雄过来
+				compareHref = compareUrl + "?" + compareFirst + "=" + args[compareFirst] + "&" + compareSecond + "=" + cid;
+				_this.attr("href", compareHref);
+			}else if(args[compareSecond] !== undefined){//只有2个英雄，点击第一个英雄过来；或则只有1个英雄，点击第二个+过来
+				compareHref = compareUrl + "?" + compareFirst + "=" + cid + "&" + compareSecond + "=" + args[compareSecond];
+				_this.attr("href", compareHref);
+			}
+		}
 	});
 });
 </script>
