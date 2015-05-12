@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* 梦幻西游 2015.5.12 */
+
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{ margin:0; padding:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{ display:block}
+html{ font:62.5%/1.5 "Microsoft YaHei", sans-serif}
+img{border:none; max-width:100%; vertical-align:top}
+h1,h2,h3,h4,h5,h6{ font-weight:normal}
+input,select,textarea{ font-size:100%; vertical-align:baseline; *vertical-align:middle}
+ol,ul{ list-style:none}
+textarea{ overflow:auto; vertical-align:top; resize:vertical}
+table{ border-collapse:collapse; border-spacing:0}
+em,i,code,cite,address,th{font-style:normal}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+
+body{ background:#340637; color:#fff}
+a{ text-decoration:none}
+.header{ height:50px; border-bottom:1px solid #af36a4; overflow:hidden; position:relative; background:url(../images/data-mhxy-headerbg.jpg); background-size:cover}
+.header .wblogo{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
+/*伙伴详情页*/
+.partnersum{ padding:20px 10px 10px 0; display:table; width:100%;box-sizing:border-box}
+.partnersum .l{ display:table-cell; width:84px; box-sizing:border-box; vertical-align:top; text-align:center}
+.partnersum .l img{ border:1px solid #debb90; width:50px; padding:6px; display:inline-block; margin-bottom:10px}
+.partnersum .l .name{ border:1px solid #debb90; padding:2px 12px; display:inline-block; border-radius:15px; white-space:nowrap; margin:0 5px}
+.partnersum .r{ display:table-cell; vertical-align:top}
+.partnersum .r .t{ border-bottom:1px solid #856a87; overflow:hidden; padding-bottom:2px; font-size:1.4em; margin-bottom:8px}
+.partnersum .r .type{ color:#ffe931; float:right}
+.partnersum .r p{ font-size:1.2em}
+
+.mhxytitle{ background:url(../images/data-mhxy-detail.png) left bottom no-repeat; background-size:100px; padding-left:24px; font-size:1.5em; margin:10px 0 10px 10px}
+.attri{ background:#240426; margin:0 10px; position:relative}
+.attri ul{ overflow:hidden; padding:7px 0}
+.attri li{ float:left; width:50%; box-sizing:border-box; padding:2px 0 2px 40px; font-size:1.2em}
+.attri li span{ color:#50d1fe; margin-left:10px}
+.attri .xline{ position:absolute; width:1px; top:12px; bottom:12px; left:50%; background:#7c687d}
+
+.skill li{ display:table; margin-bottom:10px}
+.skill li .img{ display:table-cell; width:28px; padding:0 10px 0 4px}
+.skill li .des{ display:table-cell; }
+.skill li .des span{ font-size:1.4em; color:#50d1fe}
+.skill li .des label{ font-size:1em; color:#f36eff; border:1px solid #f36eff; margin-left:10px}
+.skill li .des p{ font-size:1.2em}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
