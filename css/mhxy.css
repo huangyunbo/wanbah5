@@ -29,28 +29,38 @@ a{ text-decoration:none}
 .partnersum .r .t{ border-bottom:1px solid #856a87; overflow:hidden; padding-bottom:2px; font-size:1.4em; margin-bottom:8px}
 .partnersum .r .type{ color:#ffe931; float:right}
 .partnersum .r p{ font-size:1.2em}
-
+/*伙伴、宠物属性*/
 .mhxytitle{ background:url(../images/data-mhxy-detail.png) left bottom no-repeat; background-size:100px; padding-left:24px; font-size:1.5em; margin:10px 0 10px 10px}
-.attri{ background:#240426; margin:0 10px; position:relative}
+.attri{ background:#240426; margin:0 10px 30px; position:relative}
 .attri ul{ overflow:hidden; padding:7px 0}
-.attri li{ float:left; width:50%; box-sizing:border-box; padding:2px 0 2px 40px; font-size:1.2em}
+.attri li{ float:left; width:50%; box-sizing:border-box; padding:2px 0 2px 30px; font-size:1.2em}
 .attri li span{ color:#50d1fe; margin-left:10px}
 .attri .xline{ position:absolute; width:1px; top:12px; bottom:12px; left:50%; background:#7c687d}
-
+/*伙伴、宠物技能*/
+.skill{ margin-bottom:30px}
 .skill li{ display:table; margin-bottom:10px}
-.skill li .img{ display:table-cell; width:28px; padding:0 10px 0 4px}
-.skill li .des{ display:table-cell; }
+.skill li .img{ display:table-cell; width:30px; padding:0 10px}
+.skill li .des{ display:table-cell; padding-right:10px}
 .skill li .des span{ font-size:1.4em; color:#50d1fe}
 .skill li .des label{ font-size:1em; color:#f36eff; border:1px solid #f36eff; margin-left:10px}
 .skill li .des p{ font-size:1.2em}
-
-
-
-
-
-
-
-
+/*价格*/
+.prince{ padding:0 10px 30px}
+.prince table{ border:1px solid #3f5787; width:100%; table-layout:fixed; text-align:center}
+.prince .thead td{ background:#407fa9}
+.prince table td{ padding:2px 0}
+/*宠物简介*/
+.pet{ position:relative; overflow:hidden; text-align:center; padding:10px}
+.petbg{ position:absolute; width:100%; left:0; top:0; transform:scale(1.2); filter:blur(10px); -webkit-filter:blur(10px)}
+.petimg{ display:inline-block; position:relative; z-index:3; border:1px solid #84744a}
+.pet .icon_linear{ height:20px; position:absolute; left:0; right:0; bottom:0; background:linear-gradient(top, transparent, #340637); background:-webkit-linear-gradient(top, transparent, #340637); z-index:2}
+.petsum{ margin:5px 10px 30px}
+.petsum .t{ overflow:hidden; border-bottom:1px solid #856a87; padding-bottom:5px; margin-bottom:5px}
+.petsum .l{ float:left}
+.petsum .r{ float:right; color:#ffe931; border:1px solid #ffe931; padding:0 6px; font-size:1.2em; border-radius:10px}
+.petsum .l span{ color:#50d1fe; margin-left:5px}
+.petsum .l .leveal{ font-size:1.5em}
+.petsum .l .homeplace{ font-size:1.2em}
 
 
 
