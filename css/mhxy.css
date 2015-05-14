@@ -23,10 +23,10 @@ a{ text-decoration:none}
 .lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 /*列表页*/
 .mhxylisthead{ text-align:center; margin-top:12px}
-.mhxylisthead a{ display:inline-block; padding:2px 11px; background:#fff; color:#a964ac; margin-left:-4px; font-size:1.6em}
+.mhxylisthead a{ display:inline-block; padding:2px 20px; background:rgba(255,255,255,0.7); color:#a964ac; margin-left:-4px; font-size:1.6em}
 .mhxylisthead a:first-child{ border-radius:5px 0 0 5px}
 .mhxylisthead a:last-child{ border-radius:0 5px 5px 0}
-.mhxylisthead a.on{ color:#fff; background:#a964ac}
+.mhxylisthead a.on{ color:#fff; background:rgba(196,97,200,1)}
 
 .mhxylist{ overflow:hidden; margin:10px 0 0 -7.5px}
 .mhxylist .item{ float:left; width:65px; height:105px; margin-left:15px; text-align:center; color:#fff}
@@ -51,14 +51,17 @@ a{ text-decoration:none}
 .mhxytitle{ background:url(../images/data-mhxy-detail.png) left bottom no-repeat; background-size:100px; padding-left:24px; font-size:1.5em; margin:10px 0 10px 10px}
 .attri{ background:#240426; margin:0 10px 30px; position:relative}
 .attri ul{ overflow:hidden; padding:7px 0}
-.attri li{ float:left; width:50%; box-sizing:border-box; padding:2px 0 2px 30px; font-size:1.2em}
+.attri li{ float:left; width:50%; box-sizing:border-box; padding:2px 0 2px 20px; font-size:1.2em}
 .attri li span{ color:#50d1fe; margin-left:10px}
 .attri .xline{ position:absolute; width:1px; top:12px; bottom:12px; left:50%; background:#7c687d}
 /*伙伴、宠物技能*/
 .skill{ margin-bottom:30px}
 .skill li{ display:table; margin-bottom:10px}
-.skill li .img{ display:table-cell; width:30px; padding:0 10px}
-.skill li .des{ display:table-cell; padding-right:10px}
+.skill li .img{ display:table-cell; width:30px; padding:0 10px; position:relative; vertical-align:top}
+.skill li .img img{ position:relative}
+.skill li .img .skill_mask_purple,.skill li .img .skill_mask_blue{ background:url(../images/data-mhxy-detail.png) 0 -21px no-repeat; background-size:156px; width:30px; height:30px; position:absolute; top:0; left:10px; z-index:2}
+.skill li .img .skill_mask_blue{ background-position:-31px -21px}
+.skill li .des{ display:table-cell; padding-right:10px; vertical-align:top}
 .skill li .des span{ font-size:1.4em; color:#50d1fe}
 .skill li .des label{ font-size:1em; color:#f36eff; border:1px solid #f36eff; margin-left:10px}
 .skill li .des p{ font-size:1.2em}
