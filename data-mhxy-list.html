@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>雾中仙-梦幻西游-玩吧攻略</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/mhxy.css">
+</head>
+
+<body>
+<header class="header">
+	<a href="javascript:;" class="wblogo_back"></a>
+    <div class="mhxylisthead" id="mhxylisthead">
+    	<a href="javascript:;" class="on">宠物</a>
+        <a href="javascript:;">伙伴</a>
+    </div>
+</header><!--/header-->
+
+
+<div id="pagebody">
+    <div>
+        <div class="mhxylist">
+            <div class="item">
+                <div class="img"><img src="http://res.wanba123.cn/gameRes/76/DBPic/76_5514_thumb.png"></div>
+                <div class="name">宠物宠物</div>
+            </div>
+            <div class="item">
+                <div class="img"><img src="http://res.wanba123.cn/gameRes/76/DBPic/76_5514_thumb.png"></div>
+                <div class="name">雾中仙</div>
+            </div>
+            <div class="item">
+                <div class="img"><img src="http://res.wanba123.cn/gameRes/76/DBPic/76_5514_thumb.png"></div>
+                <div class="name">雾中仙</div>
+            </div>
+            <div class="item">
+                <div class="img"><img src="http://res.wanba123.cn/gameRes/76/DBPic/76_5514_thumb.png"></div>
+                <div class="name">雾中仙</div>
+            </div>
+            <div class="item">
+                <div class="img"><img src="http://res.wanba123.cn/gameRes/76/DBPic/76_5514_thumb.png"></div>
+                <div class="name">雾中仙</div>
+            </div>
+        </div>
+        <a href="javascript:;" class="lookmore">点击加载更多</a>
+    </div>
+    
+    <div style="display:none">
+        <div class="mhxylist">
+            <div class="item">
+                <img src="http://res.wanba123.cn/gameRes/76/DBPic/76_5542_thumb.jpg">
+                <div class="name">伙伴伙伴</div>
+            </div>
+            <div class="item">
+                <img src="http://res.wanba123.cn/gameRes/76/DBPic/76_5542_thumb.jpg">
+                <div class="name">雾中仙</div>
+            </div>
+            <div class="item">
+                <img src="http://res.wanba123.cn/gameRes/76/DBPic/76_5542_thumb.jpg">
+                <div class="name">雾中仙</div>
+            </div>
+            <div class="item">
+                <img src="http://res.wanba123.cn/gameRes/76/DBPic/76_5542_thumb.jpg">
+                <div class="name">雾中仙</div>
+            </div>
+            <div class="item">
+                <img src="http://res.wanba123.cn/gameRes/76/DBPic/76_5542_thumb.jpg">
+                <div class="name">雾中仙</div>
+            </div>
+            <div class="item">
+                <img src="http://res.wanba123.cn/gameRes/76/DBPic/76_5542_thumb.jpg">
+                <div class="name">雾中仙</div>
+            </div>
+        </div>
+        <a href="javascript:;" class="lookmore">点击加载更多</a>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var $nav = $("#mhxylisthead");
+	var $li = $nav.children();
+	var $pagebody = $("#pagebody");
+	$li.first().addClass("on");
+	$li.on("click", function(){
+		var _index = $(this).index();
+		$(this).addClass("on").siblings().removeClass("on");
+		$pagebody.children().eq(_index).show().siblings().hide();
+	});
+});
+</script>
+</body>
+</html>

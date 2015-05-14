@@ -19,9 +19,21 @@ body{ background:#340637; color:#fff}
 a{ text-decoration:none}
 .header{ height:50px; border-bottom:1px solid #af36a4; overflow:hidden; position:relative; background:url(../images/data-mhxy-headerbg.jpg); background-size:cover}
 .header .wblogo{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.header .wblogo_back{ background:url(../images/wblogo.png) no-repeat; background-size:90px; width:25px; height:50px; position:absolute; left:5px; top:0}
 .lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
+/*列表页*/
+.mhxylisthead{ text-align:center; margin-top:12px}
+.mhxylisthead a{ display:inline-block; padding:2px 11px; background:#fff; color:#a964ac; margin-left:-4px; font-size:1.6em}
+.mhxylisthead a:first-child{ border-radius:5px 0 0 5px}
+.mhxylisthead a:last-child{ border-radius:0 5px 5px 0}
+.mhxylisthead a.on{ color:#fff; background:#a964ac}
+
+.mhxylist{ overflow:hidden; margin:10px 0 0 -7.5px}
+.mhxylist .item{ float:left; width:65px; height:105px; margin-left:15px; text-align:center}
+.mhxylist .item .img{ border:1px solid #efbbc9; border-radius:83px; padding:5px}
+.mhxylist .item .name{ line-height:1.2; font-size:1.4em; margin-top:3px}
 /*伙伴详情页*/
-.partnersum{ padding:20px 10px 10px 0; display:table; width:100%;box-sizing:border-box}
+.partnersum{ padding:20px 10px 10px 0; display:table; width:100%; box-sizing:border-box}
 .partnersum .l{ display:table-cell; width:84px; box-sizing:border-box; vertical-align:top; text-align:center}
 .partnersum .l img{ border:1px solid #debb90; width:50px; padding:6px; display:inline-block; margin-bottom:10px}
 .partnersum .l .name{ border:1px solid #debb90; padding:2px 12px; display:inline-block; border-radius:15px; white-space:nowrap; margin:0 5px}
@@ -50,9 +62,9 @@ a{ text-decoration:none}
 .prince .thead td{ background:#407fa9}
 .prince table td{ padding:2px 0}
 /*宠物简介*/
-.pet{ position:relative; overflow:hidden; text-align:center; padding:10px}
-.petbg{ position:absolute; width:100%; left:0; top:0; transform:scale(1.2); filter:blur(10px); -webkit-filter:blur(10px)}
-.petimg{ display:inline-block; position:relative; z-index:3; border:1px solid #84744a}
+.pet{ position:relative; overflow:hidden; text-align:center; padding:25px 40px}
+.petbg{ position:absolute; width:100%; left:0; top:0; transform:scale(1.8); filter:blur(18px); -webkit-filter:blur(18px)}
+.petimg{ display:inline-block; position:relative; z-index:3}
 .pet .icon_linear{ height:20px; position:absolute; left:0; right:0; bottom:0; background:linear-gradient(top, transparent, #340637); background:-webkit-linear-gradient(top, transparent, #340637); z-index:2}
 .petsum{ margin:5px 10px 30px}
 .petsum .t{ overflow:hidden; border-bottom:1px solid #856a87; padding-bottom:5px; margin-bottom:5px}
