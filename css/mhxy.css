@@ -29,7 +29,7 @@ a{ text-decoration:none}
 .mhxylisthead a.on{ color:#fff; background:#a964ac}
 
 .mhxylist{ overflow:hidden; margin:10px 0 0 -7.5px}
-.mhxylist .item{ float:left; width:65px; height:105px; margin-left:15px; text-align:center}
+.mhxylist .item{ float:left; width:65px; height:105px; margin-left:15px; text-align:center; color:#fff}
 .mhxylist .item .img{ border:1px solid #efbbc9; border-radius:83px; padding:5px}
 .mhxylist .item .name{ line-height:1.2; font-size:1.4em; margin-top:3px}
 /*伙伴详情页*/
