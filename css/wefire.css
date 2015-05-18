@@ -18,7 +18,8 @@ em,i,code,cite,address,th{font-style:normal}
 body{ background:#0b0d1b; color:#fff}
 a{ color:#fff; text-decoration:none}
 .header{ height:50px; border-bottom:1px solid #4dd2fd; position:relative}
-.header .wblogo{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.header .wblogo,.header .wblogo_index{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.header .wblogo_index{ background-position:-24px 0; padding-left:66px}
 .header .select{ font-size:1.6em; position:relative; z-index:2; top:6px}
 .header .select .text{ position:absolute; top:6px; right:10px; background:linear-gradient(#005976, #021d68); border-radius:15px; padding:1px 24px 1px 12px; border:1px solid #a6fafe; color:#fff; box-shadow:0 0 4px #82e4ff}
 .header .select .text .icon{position:absolute; width:0; height:0; top:11px; right:7px; border-width:6px; border-style:solid dashed dashed dashed; border-color:#fff transparent transparent transparent}
