@@ -18,7 +18,8 @@ em,i,code,cite,address,th{font-style:normal}
 body{ background:#fff3dc}
 a{ text-decoration:none}
 .header{ height:50px; background:#43b9de; border-bottom:1px solid #2a94b1; overflow:hidden; position:relative}
-.header .wblogo{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.header .wblogo,.header .wblogo_index{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
+.header .wblogo_index{ background-position:-24px 0; padding-left:66px}
 .lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 /*列表页*/
 .datalist_nav ul{ display:table; width:100%; table-layout:fixed}
