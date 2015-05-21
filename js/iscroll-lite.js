@@ -226,9 +226,11 @@ var utils = (function () {
 		e.target.dispatchEvent(ev);
 	};
 
-	me.click = function (e) {
+	me.click = function (that, e) {
 		var target = e.target,
 			ev;
+
+		if(!$.contains(that.wrapper, target)) return;//判断点击的target是在wrapper内的
 
 		if ( !(/(SELECT|INPUT|TEXTAREA)/i).test(target.tagName) ) {
 			ev = document.createEvent('MouseEvents');
@@ -533,7 +535,7 @@ IScroll.prototype = {
 			}
 
 			if ( this.options.click ) {
-				utils.click(e);
+				utils.click(this, e);
 			}
 
 			this._execEvent('scrollCancel');
