@@ -88,16 +88,22 @@ var query = longHref[1];
 var compareFirstOnly = "comparefirstonly";
 var compareFirst = "comparefirst";
 var compareSecond = "comparesecond";
+var args = new Object();
 
-var args = new Object();  
-var pairs = query.split("&");
-for(var i=0; i<pairs.length; i++){//取得url参数
-	var pos = pairs[i].indexOf('='); //查找name=value
-	if(pos == -1) continue; //如果没有找到就跳过
-	var argname = pairs[i].substring(0, pos); //提取name
-	var value = pairs[i].substring(pos + 1); //提取value
-	if(argname == compareFirst || argname == compareSecond){
-		args[argname] = unescape(value); //存为属性
+//为iphone特意准备
+args[compareFirst] = !isNaN("5011") ? 5011 : undefined;
+args[compareSecond] = !isNaN("#abc#") ? "#abc#" : undefined;
+	
+if(query !== undefined){
+	var pairs = query.split("&");
+	for(var i=0; i<pairs.length; i++){//取得url参数
+		var pos = pairs[i].indexOf('='); //查找name=value
+		if(pos == -1) continue; //如果没有找到就跳过
+		var argname = pairs[i].substring(0, pos); //提取name
+		var value = pairs[i].substring(pos + 1); //提取value
+		if(argname == compareFirst || argname == compareSecond){
+			args[argname] = unescape(value); //存为属性
+		}
 	}
 }
 
