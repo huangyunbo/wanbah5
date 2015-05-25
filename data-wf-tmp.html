@@ -45,142 +45,7 @@
     <a class="compare_btn" id="wf_detail_compare_btn">枪械对比</a>
 </header><!--/header-->
 
-<div class="wfdetail hide" id="wf_detail">
-    <div class="gun">
-    	<div class="name">突击步枪</div>
-        <img src="http://res.wanba123.cn/gameRes/77/DBPic/77_5010_thumb.png">
-        <div class="info">
-        	<div>最高等级：Lv.50</div>
-            <div>
-            	最高星级：
-                <span class="moon moon3"></span>
-            </div>
-        </div>
-        <div class="icon_l"></div>
-        <div class="icon_r"></div>
-    </div><!--/gun-->
-    
-    <div class="assessment">
-    	<i class="icon_top"></i>
-        <i class="icon_topright"></i>
-        <a href="javascript:;" class="ass_btn1">视频评测</a>
-        <a href="javascript:;" class="ass_btn2">玩家评测</a>
-        <div class="intro">
-        	<ul>
-            	<li><i class="icon_intro"></i>枪械等级：A</li>
-                <li><i class="icon_intro"></i>推荐指数：5星</li>
-                <li><i class="icon_intro"></i>适合模式：PK模式</li>
-            </ul>
-        </div>
-        <p>
-        	优点：超强的火力再配上一流的穿透和精准，让AK47成为人人追求的极品枪械！<br>缺点：基本和M4A1一样，弹夹较少，不适合打僵尸这种能吃很高伤害的敌人。<br>本次枪械评测由【玩吧—绿豆君】提供
-        </p>
-    </div><!--/assessment-->
-    
-    <div class="gunattr">
-    	<div class="wftitle"><i class="icon"></i>武器属性</div>
-        <div class="content">
-        	<ul>
-            	<li>
-                	<i class="ico_attr ico_attr_fire"></i>
-                    <div class="r">
-                        <div class="text"><span>40700</span>火力</div>
-                        <div class="star star1">
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                	<i class="ico_attr ico_attr_hurt"></i>
-                    <div class="r">
-                        <div class="text"><span>99</span>伤害</div>
-                        <div class="star star4">
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                	<i class="ico_attr ico_attr_crit"></i>
-                    <div class="r">
-                        <div class="text"><span>77.%</span>暴击</div>
-                        <div class="star star8">
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                            <em><i></i></em>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div><!--/content-->
-    </div><!--/gunattr-->
-    
-    <div class="parameter">
-    	<ul>
-        	<li>
-            	<div>
-                    <i class="icon"></i>
-                    弹夹：4
-                </div>
-            </li>
-            <li>
-            	<div>
-                    <i class="icon"></i>
-                    精准：1
-                </div>
-            </li>
-            <li>
-            	<div>
-                    <i class="icon"></i>
-                    穿透：0.909
-                </div>
-            </li>
-            <li>
-            	<div>
-                    <i class="icon"></i>
-                    后座力：1.14
-                </div>
-            </li>
-            <li>
-            	<div>
-                    <i class="icon"></i>
-                    填弹：1.64
-                </div>
-            </li>
-            <li>
-            	<div>
-                    <i class="icon"></i>
-                    射速：1
-                </div>
-            </li>
-        </ul>
-        <div class="icon_y"></div>
-    </div><!--/parameter-->
-</div><!--/wfdetail-->
+<div class="wfdetail hide" id="wf_detail"></div><!--/wfdetail-->
 
 <header class="header hide" id="wf_com_head">
 	<a href="data-wf-tmp.html" class="wblogo"><h1>枪械对比</h1></a>
@@ -246,14 +111,15 @@ var myscroll=new IScroll("#wf_nav", {
 
 
 
-var data = [{cid:5010,name:"M4A1",img:"http://res.wanba123.cn/gameRes/77/DBPic/77_5010_thumb.png",type:"tuji",lv:40,moon:4,huoli:"1",shanghai:"145",baoji:"19.2%",danjia:"34",jingzhun:"0.25",chuantou:"81%",houzuoli:"0.94",tiandan:"1.85",shesu:"9"},
-{cid:5011,name:"AK47",img:"http://res.wanba123.cn/gameRes/77/DBPic/77_5011_thumb.png",type:"tuji",lv:40,moon:4,huoli:"2",shanghai:"160",baoji:"19.2%",danjia:"34",jingzhun:"0.2",chuantou:"81%",houzuoli:"1.04",tiandan:"1",shesu:"9"},
-{cid:5014,name:"MP5",img:"http://res.wanba123.cn/gameRes/77/DBPic/77_5014_thumb.png",type:"tuji",lv:40,moon:4,huoli:"3",shanghai:"99",baoji:"16.4%",danjia:"27",jingzhun:"0.4",chuantou:"77%",houzuoli:"0.86",tiandan:"1.88",shesu:"9"},
-{cid:5016,name:"AWM",img:"http://res.wanba123.cn/gameRes/77/DBPic/77_5016_thumb.png",type:"juji",lv:40,moon:4,huoli:"4",shanghai:"311",baoji:"32.1%",danjia:"1",jingzhun:"1",chuantou:"67%",houzuoli:"1.21",tiandan:"2.13",shesu:"1"}];
+var data = [{cid:5010,name:"M4A1",img:"http://res.wanba123.cn/gameRes/77/DBPic/77_5010_thumb.png",type:"tuji",lv:30,moon:3,glv:"枪械等级：B",groom:"推荐指数：3星",mode:"适合模式：PK模式",p:"优点：超强的火力再配上一流的穿透和精准，让AK47成为人人追求的极品枪械！<br>缺点：基本和M4A1一样，弹夹较少，不适合打僵尸这种能吃很高伤害的敌人。<br>本次枪械评测由【玩吧—绿豆君】提供",ahuoli:1,ashanghai:4,abaoji:8,huoli:"1",shanghai:"145",baoji:"19.2%",danjia:"34",jingzhun:"0.25",chuantou:"81%",houzuoli:"0.94",tiandan:"1.85",shesu:"9"},
+{cid:5011,name:"AK47",img:"http://res.wanba123.cn/gameRes/77/DBPic/77_5011_thumb.png",type:"tuji",lv:50,moon:5,glv:"枪械等级：S",groom:"推荐指数：5星",mode:"适合模式：PK2模式",p:"优点：超强的火力再配上一流的穿透和精准，让AK47成为人人追求的极品枪械！<br>缺点：基本和M4A1一样，弹夹较少，不适合打僵尸这种能吃很高伤害的敌人。<br>本次枪械评测由【玩吧—绿豆君】提供",ahuoli:7,ashanghai:1,abaoji:10,huoli:"2",shanghai:"160",baoji:"19.2%",danjia:"35",jingzhun:"0.2",chuantou:"81%",houzuoli:"1.04",tiandan:"1",shesu:"9"},
+{cid:5014,name:"MP5",img:"http://res.wanba123.cn/gameRes/77/DBPic/77_5014_thumb.png",type:"tuji",lv:40,moon:4,glv:"枪械等级：A",groom:"推荐指数：5星",mode:"适合模式：PK模式",p:"优点：超强的火力再配上一流的穿透和精准，让AK47成为人人追求的极品枪械！<br>缺点：基本和M4A1一样，弹夹较少，不适合打僵尸这种能吃很高伤害的敌人。<br>本次枪械评测由【玩吧—绿豆君】提供",ahuoli:1,ashanghai:4,abaoji:8,huoli:"3",shanghai:"99",baoji:"16.4%",danjia:"27",jingzhun:"0.4",chuantou:"77%",houzuoli:"0.86",tiandan:"1.88",shesu:"9"},
+{cid:5016,name:"AWM",img:"http://res.wanba123.cn/gameRes/77/DBPic/77_5016_thumb.png",type:"juji",lv:40,moon:4,glv:"枪械等级：A",groom:"推荐指数：5星",mode:"适合模式：PK模式",p:"优点：超强的火力再配上一流的穿透和精准，让AK47成为人人追求的极品枪械！<br>缺点：基本和M4A1一样，弹夹较少，不适合打僵尸这种能吃很高伤害的敌人。<br>本次枪械评测由【玩吧—绿豆君】提供",ahuoli:1,ashanghai:4,abaoji:8,huoli:"4",shanghai:"311",baoji:"32.1%",danjia:"1",jingzhun:"1",chuantou:"67%",houzuoli:"1.21",tiandan:"2.13",shesu:"1"}];
 
 //筛选的全局参数
 var data_nav = "all";
 var data_select = "cid";
+var data_cid;
 
 function hasPercent(str){//查看是否有百分号
 	var reg = /%+/;
@@ -304,24 +170,174 @@ selectul.children().click(function(){
 	showlist(data);
 });
 
-$("body").on("click", ".aherf", function(){
-	if(iscompare == false){
-		compareFirst = $(this).attr("data-compareid");
-		whichone(2);
-	}else{
-		compareSecond = $(this).attr("data-compareid");
-		whichone(3);
-		printcom(compareFirst, compareSecond);
+function printdetail(cid){
+	var _html = "";
+	var _data;
+	for(var i=0; i<data.length; i++){
+		if(cid == data[i].cid) _data = data[i];
 	}
-});
+	_html = '<div class="gun">'+
+				'<div class="name">'+_data.name+'</div>'+
+				'<img src="'+_data.img+'">'+
+				'<div class="info">'+
+					'<div>最高等级：Lv.'+_data.lv+'</div>'+
+					'<div>'+
+						'最高星级：'+
+						'<span class="moon moon'+_data.moon+'"></span>'+
+					'</div>'+
+				'</div>'+
+				'<div class="icon_l"></div>'+
+				'<div class="icon_r"></div>'+
+			'</div>'+
+    
+			'<div class="assessment">'+
+				'<i class="icon_top"></i>'+
+				'<i class="icon_topright"></i>'+
+				'<div class="intro">'+
+					'<ul>'+
+						'<li><i class="icon_intro"></i>'+_data.glv+'</li>'+
+						'<li><i class="icon_intro"></i>'+_data.groom+'</li>'+
+						'<li><i class="icon_intro"></i>'+_data.mode+'</li>'+
+					'</ul>'+
+				'</div>'+
+				'<p>'+_data.p+'</p>'+
+			'</div>'+
+			
+			'<div class="gunattr">'+
+				'<div class="wftitle"><i class="icon"></i>武器属性</div>'+
+				'<div class="content">'+
+					'<ul>'+
+						'<li>'+
+							'<i class="ico_attr ico_attr_fire"></i>'+
+							'<div class="r">'+
+								'<div class="text"><span>'+_data.huoli+'</span>火力</div>'+
+								'<div class="star star'+_data.ahuoli+'">'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+								'</div>'+
+							'</div>'+
+						'</li>'+
+						'<li>'+
+							'<i class="ico_attr ico_attr_hurt"></i>'+
+							'<div class="r">'+
+								'<div class="text"><span>'+_data.shanghai+'</span>伤害</div>'+
+								'<div class="star star'+_data.ashanghai+'">'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+								'</div>'+
+							'</div>'+
+						'</li>'+
+						'<li>'+
+							'<i class="ico_attr ico_attr_crit"></i>'+
+							'<div class="r">'+
+								'<div class="text"><span>'+_data.baoji+'</span>暴击</div>'+
+								'<div class="star star'+_data.abaoji+'">'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+									'<em><i></i></em>'+
+								'</div>'+
+							'</div>'+
+						'</li>'+
+					'</ul>'+
+				'</div>'+
+			'</div>'+
+			
+			'<div class="parameter">'+
+				'<ul>'+
+					'<li>'+
+						'<div>'+
+							'<i class="icon"></i>'+
+							'弹夹：'+_data.danjia+
+						'</div>'+
+					'</li>'+
+					'<li>'+
+						'<div>'+
+							'<i class="icon"></i>'+
+							'精准：'+_data.jingzhun+
+						'</div>'+
+					'</li>'+
+					'<li>'+
+						'<div>'+
+							'<i class="icon"></i>'+
+							'穿透：'+_data.chuantou+
+						'</div>'+
+					'</li>'+
+					'<li>'+
+						'<div>'+
+							'<i class="icon"></i>'+
+							'后座力：'+_data.houzuoli+
+						'</div>'+
+					'</li>'+
+					'<li>'+
+						'<div>'+
+							'<i class="icon"></i>'+
+							'填弹：'+_data.tiandan+
+						'</div>'+
+					'</li>'+
+					'<li>'+
+						'<div>'+
+							'<i class="icon"></i>'+
+							'射速：'+_data.shesu+
+						'</div>'+
+					'</li>'+
+				'</ul>'+
+				'<div class="icon_y"></div>'+
+			'</div>';
+	$("#wf_detail").html(_html);
+}
 
 //对比的全局参数
 var iscompare = false;
+var compareFirstOnly = false;
 var compareFirst = false;
 var compareSecond = false;
 
+$("body").on("click", ".aherf", function(){//列表页点击a链接
+	if(!iscompare){//不对比
+		data_cid = $(this).attr("data-compareid");
+		printdetail(data_cid);
+		whichone(2);
+	}else if(iscompare && compareFirst){//有一个或则两个英雄，选择第2个英雄
+		compareSecond = $(this).attr("data-compareid");
+		whichone(3);
+		printcom(compareFirst, compareSecond);
+	}else if(iscompare && compareSecond){//有两个英雄，选择第1个英雄
+		compareFirst = $(this).attr("data-compareid");
+		whichone(3);
+		printcom(compareFirst, compareSecond);
+	}else if(iscompare && compareFirstOnly){//只有一个英雄，选择第1个英雄
+		compareFirst = $(this).attr("data-compareid");
+		whichone(3);
+		printcom(compareFirst, compareSecond);
+	}
+	
+});
 
-$("#wf_detail_compare_btn").on("click", function(){
+$("#wf_detail_compare_btn").on("click", function(){//详情页点对比
+	compareFirst = data_cid;
 	whichone(3);
 	printcom(compareFirst);
 });
@@ -380,36 +396,24 @@ function printcom(first, second){
 						'<span class="r"><i class="icon"></i>'+_b+_percent+'</span>'+
 					'</li>';
 		}
+		
+		attriFirstHtml += _ahtml;
+		attriSecondHtml += _bhtml;
 		_percent = "";
-		return _obj = {n:name,f:_ahtml,s:_bhtml};
 	}
 	
-
-	
-	
 	if(first && second){//2个英雄对比的时候
-		attriFirstHtml = attrihtml("火力", compareFirstData.huoli, compareSecondData.huoli).f +
-						attrihtml("伤害", compareFirstData.shanghai, compareSecondData.shanghai).f +
-						attrihtml("穿透", compareFirstData.chuantou, compareSecondData.chuantou).f +
-						attrihtml("暴击", compareFirstData.baoji, compareSecondData.baoji).f +
-						attrihtml("射速", compareFirstData.shesu, compareSecondData.shesu).f +
-						attrihtml("弹夹", compareFirstData.danjia, compareSecondData.danjia).f +
-						attrihtml("填弹", compareFirstData.tiandan, compareSecondData.tiandan).f +
-						attrihtml("精准", compareFirstData.jingzhun, compareSecondData.jingzhun).f +
-						attrihtml("后坐力", compareFirstData.houzuoli, compareSecondData.houzuoli).f;
-						
-		attriSecondHtml = attrihtml("火力", compareFirstData.huoli, compareSecondData.huoli).s +
-						attrihtml("伤害", compareFirstData.shanghai, compareSecondData.shanghai).s +
-						attrihtml("穿透", compareFirstData.chuantou, compareSecondData.chuantou).s +
-						attrihtml("暴击", compareFirstData.baoji, compareSecondData.baoji).s +
-						attrihtml("射速", compareFirstData.shesu, compareSecondData.shesu).s +
-						attrihtml("弹夹", compareFirstData.danjia, compareSecondData.danjia).s +
-						attrihtml("填弹", compareFirstData.tiandan, compareSecondData.tiandan).s +
-						attrihtml("精准", compareFirstData.jingzhun, compareSecondData.jingzhun).s +
-						attrihtml("后坐力", compareFirstData.houzuoli, compareSecondData.houzuoli).s;
+		attrihtml("火力", compareFirstData.huoli, compareSecondData.huoli);
+		attrihtml("伤害", compareFirstData.shanghai, compareSecondData.shanghai);
+		attrihtml("穿透", compareFirstData.chuantou, compareSecondData.chuantou);
+		attrihtml("暴击", compareFirstData.baoji, compareSecondData.baoji);
+		attrihtml("射速", compareFirstData.shesu, compareSecondData.shesu);
+		attrihtml("弹夹", compareFirstData.danjia, compareSecondData.danjia);
+		attrihtml("填弹", compareFirstData.tiandan, compareSecondData.tiandan);
+		attrihtml("精准", compareFirstData.jingzhun, compareSecondData.jingzhun);
+		attrihtml("后坐力", compareFirstData.houzuoli, compareSecondData.houzuoli);				
 		
-		
-		_html = '<div class="item wf_com_btn">'+
+		_html = '<div class="item wf_com_btn" data-comparepos="left">'+
 					'<div class="gun">'+
 						'<i class="icon"></i>'+
 						'<img src="'+compareFirstData.img+'">'+
@@ -422,7 +426,7 @@ function printcom(first, second){
 					'</div>'+
 					'<ul>'+attriFirstHtml+'</ul>'+
 				'</div>'+
-				'<div class="item wf_com_btn">'+
+				'<div class="item wf_com_btn" data-comparepos="right">'+
 					'<div class="gun">'+
 						'<i class="icon"></i>'+
 						'<img src="'+compareSecondData.img+'">'+
@@ -436,7 +440,7 @@ function printcom(first, second){
 					'<ul>'+attriSecondHtml+'</ul>'+
 				'</div>'
 	}else if(first && !second){//只有第1个英雄的时候
-		_html = '<div class="item wf_com_btn">'+
+		_html = '<div class="item wf_com_btn" data-comparepos="onlyleft">'+
 					'<div class="gun">'+
 						'<i class="icon"></i>'+
 						'<img src="'+compareFirstData.img+'">'+
@@ -486,7 +490,7 @@ function printcom(first, second){
 						'</li>'+
 					'</ul>'+
 				'</div>'+
-				'<div class="item wf_com_btn">'+
+				'<div class="item wf_com_btn" data-comparepos="right">'+
 					'<div class="icon_plus"><i class="x"></i><i class="y"></i></div>'+
 				'</div>';
 	}
@@ -494,12 +498,24 @@ function printcom(first, second){
 }
 
 $("body").on("click", ".wf_com_btn", function(){
+	var _comparepos = $(this).attr("data-comparepos");
+	switch(_comparepos){
+		case "onlyleft"://只有一个英雄点左边的时候
+			compareFirstOnly = compareFirst;
+			compareFirst = false;
+			break;
+		case "left"://点左边的英雄
+			compareFirstOnly = false;
+			compareFirst = false;
+			break;
+		case "right"://点右边的英雄
+			compareFirstOnly = false;
+			compareSecond = false;
+			break;
+	}
 	whichone(1);
 	iscompare = true;
 });
-
-
-
 
 });
 
