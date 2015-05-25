@@ -56,7 +56,6 @@
     
     <div class="content" id="wf_com_content"></div><!--/content-->
 </div><!--/wfcom-->
-
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/iscroll-lite.js"></script>
 <script type="text/javascript">
@@ -511,7 +510,8 @@ function printcom(first, second){
 	$("#wf_com_content").html(_html);
 }
 
-$("body").on("click", ".wf_com_btn", function(){
+
+$("#wf_com_content").on("click", ".wf_com_btn", function(){
 	var _comparepos = $(this).attr("data-comparepos");
 	switch(_comparepos){
 		case "onlyleft"://只有一个英雄点左边的时候
