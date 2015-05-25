@@ -41,7 +41,7 @@
 
 <!--详情页-->
 <header class="header hide" id="wf_detail_head">
-	<a href="data-wf-tmp.html" class="wblogo"><h1>突击步枪</h1></a>
+	<a href="data-wf-tmp.html" class="wblogo"><h1></h1></a>
     <a class="compare_btn" id="wf_detail_compare_btn">枪械对比</a>
 </header><!--/header-->
 
@@ -170,14 +170,28 @@ selectul.children().click(function(){
 	showlist(data);
 });
 
+function guntype(num){//返回所属类别
+	switch(num){
+		case "tuji":
+			return "突击步枪";
+		case "juji":
+			return "狙击枪";
+		case "xiandan":
+			return "霰弹枪";
+		case "jiguan":
+			return "机关枪";	
+	}
+}
+
 function printdetail(cid){
 	var _html = "";
 	var _data;
 	for(var i=0; i<data.length; i++){
 		if(cid == data[i].cid) _data = data[i];
 	}
+	$("#wf_detail_head").find("h1").html(_data.name);
 	_html = '<div class="gun">'+
-				'<div class="name">'+_data.name+'</div>'+
+				'<div class="name">'+guntype(_data.type)+'</div>'+
 				'<img src="'+_data.img+'">'+
 				'<div class="info">'+
 					'<div>最高等级：Lv.'+_data.lv+'</div>'+
