@@ -23,22 +23,22 @@ a{ text-decoration:none}
 .lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 /*列表页*/
 .datalist_nav ul{ display:table; width:100%; table-layout:fixed}
-.datalist_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center; border-bottom:1px solid #d3d3d3}
+.datalist_nav li{ display:table-cell; color:#333; font-size:1.6em; padding:8px 0; text-align:center; border-bottom:1px solid #d3d3d3}
 .datalist_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e; padding-bottom:7px}
 .datalist li a{ border-bottom:1px solid #d3d3d3; display:table; width:100%; padding:10px; box-sizing:border-box}
 .datalist li .img{ width:18%; display:table-cell; text-align:center; padding:10px 15px 10px 5px; box-sizing:border-box}
-.datalist li .note{ display:table-cell; vertical-align:middle; color:#1a1a1a}
+.datalist li .note{ display:table-cell; vertical-align:middle; color:#333}
 .datalist li .note h2{ font-size:1.8em}
-.datalist li .note p{ font-size:1.4em; color:#8f8f8f}
+.datalist li .note p{ font-size:1.4em; color:#666}
 .datalist li .look{ display:table-cell; width:10%; vertical-align:middle}
 .datalist li .look .icon{ width:13px; height:13px; display:inline-block; border-width:0 1px 1px 0; border-color:#8f8f8f; border-style:solid; -webkit-transform:rotate(-45deg); transform:rotate(-45deg)}
 /*详情页*/
 .datadetail .summary{overflow:hidden; padding:10px 10px 15px}
 .datadetail .summary .l{ float:left; width:25%; padding:0 13px; box-sizing:border-box; text-align:center}
 .datadetail .summary .r{ float:left; width:75%;}
-.datadetail .summary h2{ font-size:1.8em; margin-bottom:3px; font-weight:bold}
-.datadetail .summary p{ font-size:1.6em}
-.datadetail .leveal{ overflow:hidden; padding:10px 10px 15px; font-size:1.2em}
+.datadetail .summary h2{ font-size:1.8em; margin-bottom:3px; font-weight:bold; color:#333}
+.datadetail .summary p{ font-size:1.3em; color:#666}
+.datadetail .leveal{ overflow:hidden; padding:10px 10px 15px; font-size:1.2em; color:#333}
 .datadetail .leveal table{ border-collapse:separate; border-spacing:1px}
 .datadetail .leveal td{ padding:3px 5px; background:#ede2cc; text-align:center}
 .datadetail .leveal .dt{ float:left; width:25%}
@@ -50,8 +50,8 @@ a{ text-decoration:none}
 .datadetail .section .tit{ padding:5px 10px}
 .datadetail .section .tit .icon{ background:#43b9de; width:3px; height:1.5em; display:inline-block; vertical-align:text-bottom}
 .datadetail .section .tit h2{ font-size:1.6em; display:inline-block; color:#43b9de}
-.datadetail .section .comment{ padding:0 10px; font-size:1.4em}
-.datadetail .list{ border-top:1px solid #cabea9; overflow:hidden}
+.datadetail .section .comment{ padding:0 10px; font-size:1.4em; color:#666}
+.datadetail .list{ border-top:1px solid #cabea9; overflow:hidden; color:#333}
 .datadetail .list .img{ width:25%; float:left; box-sizing:border-box; padding:20px}
 .datadetail .list .d{ width:75%; float:left; font-size:1.4em; padding:15px 0}
 .datadetail .list .d dl{ margin-bottom:5px}
