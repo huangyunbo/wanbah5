@@ -19,19 +19,19 @@ body{ background:url(../images/data-daota-bg.jpg) no-repeat fixed #49324b; backg
 a{ color:#fff; text-decoration:none}
 .col_fbb{ color:#fbbc0e}
 .col_7bf{ color:#7bff10}
-.header{ height:50px;  background:rgba(0,0,0,0.2); overflow:hidden; position:relative}
+.header{ height:50px; overflow:hidden; position:relative}
 .header .wblogo,.header .wblogo_index{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
 .header .wblogo_index{ background-position:-24px 0; padding-left:66px}
 .lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
 /*英雄列表&装备列表*/
-.daota_nav ul{ display:table; width:100%; table-layout:fixed}
+.daota_nav ul{ display:table; width:100%; table-layout:fixed; background:rgba(0,0,0,0.2)}
 .daota_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center; color:#8f6f78}
 .daota_nav li.on{ color:#fbbc0e; border-bottom:1px solid #fbbc0e}
-.daotalist .herolist ul{ padding:5px; overflow:hidden; background:rgba(0,0,0,0.2)}
+.daotalist .herolist ul{ padding:5px; overflow:hidden}
 .daotalist .herolist li{ float:left; width:25%; text-align:center; font-size:1.4em; margin-bottom:10px}
 .daotalist .herolist .img{ background:#362015; margin:5px; border-radius:5px; padding:5px}
 .daotalist .herolist .img img{ border-radius:5px}
-.daotalist .equiplist ul{ padding:5px; overflow:hidden; background:rgba(0,0,0,0.2)}
+.daotalist .equiplist ul{ padding:5px; overflow:hidden}
 .daotalist .equiplist li{ float:left; width:20%; text-align:center; font-size:1.4em; margin-bottom:10px}
 .daotalist .equiplist li .img{ padding:5px}
 .daotalist .equiplist li .img img{ border-radius:5px}
@@ -50,13 +50,13 @@ a{ color:#fff; text-decoration:none}
 .daotahero .summary .img{ float:left; width:32%}
 .daotahero .summary .img img{ border-radius:5px; border:5px solid #362015}
 .daotahero .summary .info{ float:left; width:68%; box-sizing:border-box; padding:5px 5px 5px 20px}
-.daotahero .summary .info .head{ padding:5px 0; font-size:1.6em}
+.daotahero .summary .info .head{ padding:5px 0; font-size:1.7em}
 .daotahero .summary .info p{ font-size:1.4em; margin-top:5px}
 .daotahero .summary .icon_zhi,.daotahero .summary .icon_li,.daotahero .summary .icon_min{ width:20px; height:20px; display:inline-block; vertical-align:-3px; margin-right:5px; background:url(../images/data-daota-herodetail.png); background-size:20px}
 .daotahero .summary .icon_li{ background-position:0 -20px}
 .daotahero .summary .icon_min{ background-position:0 -40px}
 .daotahero .section,.daotaequip .section{ margin:15px 5px}
-.daotatitle{ font-size:1.6em}
+.daotatitle{ font-size:1.7em}
 .daotahero .section .content,.daotaequip .section .content{ background:rgba(0,0,0,0.2)}
 .daotahero .getmode .content{ padding:5px 10px; font-size:1.4em}
 .daotahero .skills{ margin:5px}
@@ -64,13 +64,13 @@ a{ color:#fff; text-decoration:none}
 .daotahero .skills li{ width:100%; display:table; box-sizing:border-box; padding:5px 10px; margin-bottom:1px; background:rgba(0,0,0,0.2)}
 .daotahero .skills li .img{ width:20%; display:table-cell}
 .daotahero .skills li .info{ width:80%; display:table-cell; box-sizing:border-box; padding-left:10px}
-.daotahero .skills li .info h4{ font-size:1.6em}
-.daotahero .skills li .info p{ color:#d8c4c4; font-size:1.4em}
+.daotahero .skills li .info h4{ font-size:1.4em}
+.daotahero .skills li .info p{ color:#ccc; font-size:1.2em}
 .daotahero .advskills{ margin:15px 5px}
 .daotahero .advskills .item{ display:table; width:100%; margin-bottom:1px; background:rgba(0,0,0,0.2)}
 .daotahero .advskills .item_purple .l{ background:#3c053f}
 .daotahero .advskills .item_orange .l{ background:#f5b00b}
-.daotahero .advskills .item .l{ width:22%; display:table-cell; font-size:1.5em; vertical-align:middle; padding-left:10px; box-sizing:border-box}
+.daotahero .advskills .item .l{ width:22%; display:table-cell; font-size:1.4em; vertical-align:middle; padding-left:10px; box-sizing:border-box}
 .daotahero .advskills .item .r{ width:78%; display:table-cell; overflow:hidden; padding:10px 0 10px 10px; box-sizing:border-box}
 .daotahero .advskills .item .r li{ float:left; width:16%; padding-right:10px; box-sizing:border-box}
 .bor_white,.bor_green,.bor_blue,.bor_purple,.bor_orange{ border:1px solid #fff; border-radius:5px}
@@ -81,15 +81,15 @@ a{ color:#fff; text-decoration:none}
 .daotahero .herogrowup{ margin:0 5px 50px}
 .daotahero .herogrowup table{ width:100%; table-layout:fixed; border-collapse:separate; border-spacing:0 1px}
 .daotahero .herogrowup td{ padding:5px 0; background:rgba(0,0,0,0.2); text-align:center; font-size:1.4em}
-.daotahero .herogrowup thead td{ color:#d8c4c4}
+.daotahero .herogrowup thead td{ color:#d8c4c4; font-size:1.2em}
 /*装备详情*/
 .daotaequip .summary{ margin:5px; background:rgba(0,0,0,0.2); border-radius:5px; padding:10px; overflow:hidden}
 .daotaequip .summary .img{ float:left; width:20%; box-sizing:border-box; padding-right:10px}
 .daotaequip .summary .img img{ border-radius:5px}
 .daotaequip .summary .info{ float:left; width:80%}
 .daotaequip .summary .head{ overflow:hidden}
-.daotaequip .summary .name{ font-size:1.6em; float:left}
-.daotaequip .summary .level{ float:right; font-size:1.6em}
+.daotaequip .summary .name{ font-size:1.7em; float:left}
+.daotaequip .summary .level{ float:right; font-size:1.4em; color:#ccc}
 .daotaequip .summary p{ font-size:1.4em}
 .daotaequip .equipattr .content{ padding:10px 0}
 .daotaequip .equipattr li{ text-align:center; padding:5px 0; font-size:1.4em}
@@ -105,5 +105,5 @@ a{ color:#fff; text-decoration:none}
 .daotacom .vspic .pic .icon_plus .y{ width:2px; height:30px; background:#765133; position:absolute; left:14px; top:0}
 .daotacom .vsnum{ margin:15px 5px}
 .daotacom .vsnum table{ width:100%; table-layout:fixed; border-collapse:separate; border-spacing:0 1px}
-.daotacom .vsnum table td{ padding:5px 0; background:rgba(0,0,0,0.2); text-align:center; font-size:1.4em}
-.daotacom .vsnum table .cor_d8c{ color:#d8c4c4}
+.daotacom .vsnum table td{ padding:5px 0; background:rgba(0,0,0,0.2); text-align:center; font-size:1.6em}
+.daotacom .vsnum table .cor_d8c{ color:#d8c4c4; font-size:1.4em}
