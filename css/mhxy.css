@@ -64,7 +64,7 @@ a{ text-decoration:none}
 .skill li .img .skill_mask_blue{ background-position:-31px -21px}
 .skill li .des{ display:table-cell; padding-right:10px; vertical-align:top}
 .skill li .des span{ font-size:1.4em; color:#50d1fe}
-.skill li .des label{ font-size:1em; color:#f36eff; border:1px solid #f36eff; margin-left:10px}
+.skill li .des label{ font-size:1em; line-height:1; color:#f36eff; border:1px solid #f36eff; margin-left:10px; padding:0 7px}
 .skill li .des p{ font-size:1.2em}
 /*伙伴价格*/
 .prince{ padding:0 10px 30px}
