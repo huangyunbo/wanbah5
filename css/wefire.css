@@ -36,7 +36,7 @@ a{ color:#fff; text-decoration:none}
 .wf_nav li:last-child i{ background:none}
 .wflist .pagebody ul{ overflow:hidden}
 .wflist .pagebody li{ width:50%; float:left; padding:10px 10px 0 0; box-sizing:border-box}
-.wflist .pagebody li .item{ display:block; border:1px solid #00deff; box-shadow:0 0 5px #00deff inset; min-height:70px; background:url(../images/data-wf-listbg.png); position:relative}
+.wflist .pagebody li .item{ display:block; border:1px solid #00deff; box-shadow:0 0 5px #00deff inset; min-height:70px; background:url(../images/data-wf-listbg.png); position:relative; cursor:pointer}
 .wflist .pagebody li .item p{ color:#00deff; font-size:1.6em; position:absolute; left:5px; bottom:0}
 /*详情*/
 .header .compare_btn{ font-size:1.6em; position:absolute; top:12px; right:5px; border-radius:15px; padding:1px 12px; border:1px solid #a6fafe; color:#fff; background:#0b0d1b; box-shadow:0 0 4px #82e4ff}
@@ -94,7 +94,7 @@ a{ color:#fff; text-decoration:none}
 /*对比*/
 .wfcom .wftitle{ margin:10px}
 .wfcom .content{ display:table; width:100%}
-.wfcom .item{ width:50%; display:table-cell; box-sizing:border-box; padding:5px}
+.wfcom .item{ width:50%; display:table-cell; box-sizing:border-box; padding:5px; cursor:pointer}
 .wfcom .gun{ position:relative; border:1px solid #00deff; box-shadow:0 0 5px #00deff inset; min-height:70px; box-sizing:border-box; background:url(../images/data-wf-listbg.png)}
 .wfcom .gun img{ margin:0 auto; display:block}
 .wfcom .gun .moon{ margin-left:3px; vertical-align:-1px}

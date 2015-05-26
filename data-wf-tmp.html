@@ -511,7 +511,7 @@ function printcom(first, second){
 }
 
 
-$("#wf_com_content").on("click", ".wf_com_btn", function(){
+$("body").on("click", ".wf_com_btn", function(){
 	var _comparepos = $(this).attr("data-comparepos");
 	switch(_comparepos){
 		case "onlyleft"://只有一个英雄点左边的时候
