@@ -39,10 +39,12 @@ a{ text-decoration:none}
 .datadetail .summary h2{ font-size:1.8em; margin-bottom:3px; font-weight:bold; color:#423f38}
 .datadetail .summary p{ font-size:1.4em; color:#666}
 .datadetail .leveal{ overflow:hidden; padding:10px 10px 15px; font-size:1.2em; color:#333}
+.datadetail .leveal .tit .icon{ background:#613713; width:3px; height:1.5em; display:inline-block; vertical-align:text-bottom}
+.datadetail .leveal .tit h2{ font-size:16px; display:inline-block; color:#613713}
 .datadetail .leveal table{ border-collapse:separate; border-spacing:1px}
 .datadetail .leveal td{ padding:3px 5px; background:#ede2cc; text-align:center}
-.datadetail .leveal .dt{ float:left; width:25%}
-.datadetail .leveal .dd{ float:left; width:75%; overflow-x:auto}
+.datadetail .leveal .dt{ float:left; width:32%}
+.datadetail .leveal .dd{ float:left; width:68%; overflow-x:auto}
 .datadetail .leveal .dd table,.datadetail .leveal .db table{ width:100%}
 .datadetail .leveal .l{ border-top:1px solid #fff3dc; padding:3px 5px; background:#423f38; color:#fde69f; text-align:center; white-space:nowrap; overflow-x:auto}
 .datadetail .leveal .on{ background:#423f38; color:#fde69f}
