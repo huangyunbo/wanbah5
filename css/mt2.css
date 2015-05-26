@@ -80,8 +80,8 @@ a{ color:#fff; text-decoration:none}
 .herodetail .skill li .note{ display:table-cell; width:66%; vertical-align:top; padding:0 10px; box-sizing:border-box}
 .herodetail .skill li .note h3{ margin-bottom:3px; font-size:1.4em}
 .herodetail .skill li .note p{ font-size:1.2em}
-.herodetail .skill li .des{ display:table-cell; width:18%; vertical-align:top; text-align:right; font-size:1.7em}
-.herodetail .skill li .des span{ line-height:1; width:36px; display:inline-block; padding:7px}
+.herodetail .skill li .des{ display:table-cell; width:18%; vertical-align:top; text-align:right; font-size:17px}
+.herodetail .skill li .des span{ line-height:1; display:inline-block; text-align:center; padding:7px}
 .herodetail .skill li .des_green{ border:1px solid #37ffc9}
 .herodetail .skill li .des_purple{ border:1px solid #da5bff}
 .herodetail .skill li .des_blue{ border:1px solid #4dd2fd}
