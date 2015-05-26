@@ -55,7 +55,7 @@ a{ text-decoration:none}
 .datadetail .list .img{ width:25%; float:left; box-sizing:border-box; padding:20px}
 .datadetail .list .d{ width:75%; float:left; font-size:1.4em; padding:15px 0}
 .datadetail .list .d dl{ margin-bottom:5px}
-.datadetail .list .d .lev{ background:#43b9de; color:#fff; padding:3px 7px; border-radius:12px}
+.datadetail .list .d .lev{ background:#43b9de; color:#fff; padding:3px 7px; border-radius:12px; font-size:.8em}
 .datadetail .list .d dt,.datadetail .list .d dd{ display:inline-block}
 .datadetail .list .d dd span{ white-space:nowrap; margin-right:20px}
 .datadetail .list i{ background:url(../images/data-bb-detail.png) no-repeat; width:15px; height:15px; display:inline-block; vertical-align:-2px; background-size:15px; margin-right:1px}
