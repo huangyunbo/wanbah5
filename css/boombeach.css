@@ -57,7 +57,7 @@ a{ text-decoration:none}
 .datadetail .list .d dl{ margin-bottom:5px}
 .datadetail .list .d .lev{ background:#43b9de; color:#fff; padding:3px 7px; border-radius:12px; font-size:.8em}
 .datadetail .list .d dt,.datadetail .list .d dd{ display:inline-block}
-.datadetail .list .d dd span{ white-space:nowrap; margin-right:20px}
+.datadetail .list .d dd span{ display:inline-block; margin-right:20px}
 .datadetail .list i{ background:url(../images/data-bb-detail.png) no-repeat; width:15px; height:15px; display:inline-block; vertical-align:-2px; background-size:15px; margin-right:1px}
 .datadetail .list i.ico_command{ background-position:0 0}/*司令部*/
 .datadetail .list i.ico_life{ background-position:0 -15px}/*生命*/
@@ -70,6 +70,11 @@ a{ text-decoration:none}
 .datadetail .list i.ico_time{ background-position:0 -120px}/*时间*/
 .datadetail .list i.ico_exp{ background-position:0 -135px}/*经验*/
 .datadetail .list i.ico_hps{ background-position:0 -150px}/*每秒治疗*/
+.datadetail .list i.ico_weaponslabs{ background-position:0 -165px}/*武器实验室*/
+.datadetail .list i.ico_criticalfuse{ background-position:0 -180px}/*临界熔断器*/
+.datadetail .list i.ico_powerlever{ background-position:0 -195px}/*动力杆*/
+.datadetail .list i.ico_fieldcapacitor{ background-position:0 -210px}/*场电容器*/
+.datadetail .list i.ico_compoundgear{ background-position:0 -224px}/*复合齿轮*/
 /*阵型详情页*/
 .formation .item{ border-bottom:1px solid #d3d3d3; padding-bottom:10px}
 .formation .item:last-child{ border-bottom:0}
