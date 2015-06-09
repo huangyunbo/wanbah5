@@ -40,11 +40,11 @@ a{ color:#fff; text-decoration:none}
 .hero .pagebody li img{ display:inline-block}
 .hero .pagebody li div{ white-space:nowrap}
 /*详情页*/
-.herodetail .summary{ background:#014f7f; overflow:hidden; padding:10px 10px 15px}
-.herodetail .summary .l{ float:left; width:30%; padding-right:10px; box-sizing:border-box; text-align:center}
-.herodetail .summary .r{ float:left; width:70%}
-.herodetail .summary h2{ font-size:1.8em; margin-bottom:3px; text-shadow:0 0 2px #fff}
-.herodetail .summary p{ font-size:1.6em}
+.herodetail .summary{ background:#014f7f; overflow:hidden; padding:10px 5px}
+.herodetail .summary .l{ float:left; width:50%; padding-right:10px; box-sizing:border-box; text-align:center}
+.herodetail .summary .r{ float:left; width:50%}
+.herodetail .summary h2{ font-size:1.6em; margin-bottom:3px; text-shadow:0 0 2px #fff}
+.herodetail .summary p{ font-size:1.4em}
 .herodetail .section{ padding:5px}
 .herodetail .section .tit i.icon{ background:#43b9de; width:3px; height:1.7em; display:inline-block; vertical-align:text-bottom; margin-right:5px}
 .herodetail .section .tit h2{ font-size:1.8em; display:inline-block}
