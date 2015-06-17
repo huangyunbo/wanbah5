@@ -32,6 +32,20 @@ a{ text-decoration:none}
 
 .mhxylist{ overflow:hidden; margin:10px 0 0 -7.5px}
 .mhxylist .item{ float:left; width:65px; height:105px; margin-left:15px; text-align:center; color:#fff}
+/*720/1080*/
+@media screen and (min-width:360px) and (max-width:374px){
+	.mhxylist{ margin-left:-12.5px}
+	.mhxylist .item{ margin-left:25px}
+}
+/*iphone6*/
+@media screen and (min-width:375px) and (max-width:399px){
+	.mhxylist{ margin-left:-14px}
+	.mhxylist .item{ margin-left:28px}
+}
+/*ipad*/
+@media screen and (min-width:640px){
+	.mhxylist .item{ margin-left:28px}
+}
 .mhxylist .item .img{ border:1px solid #efbbc9; border-radius:83px; padding:5px}
 .mhxylist .item .name{ line-height:1.2; font-size:1.4em; margin-top:3px}
 /*伙伴详情页*/
