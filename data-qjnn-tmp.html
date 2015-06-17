@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>奇迹暖暖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/qjnn.css">
+</head>
+
+<body>
+<div class="switchboard">
+    <div class="l">
+    	<i></i>
+        <a href="javascript:;">搭配竞技场</a>
+    </div>
+    <div class="r">
+    	<i></i>
+    	<a href="javascript:;">五属性模拟器</a>
+    </div>
+</div>
+
+<div class="switchbute">
+	<i class="flower_l"></i>
+    <i class="flower_r"></i>
+    <div class="title">
+    	已选属性/主题
+    </div>
+    <div class="content">
+    	<div class="item">简约</div>
+    	<div class="item">可爱</div>
+        <div class="item">活泼</div>
+        <div class="item">性感</div>
+        <div class="item">清凉</div>
+    </div>
+</div>
+
+<div class="filter_warp">
+	<div class="filter" id="filter">
+    	<div class="filter_inner">
+            <a class="item on">发型</a>
+            <a class="item">连衣裙</a>
+            <a class="item">连衣裙</a>
+            <a class="item">连衣裙</a>
+            <a class="item">连衣裙</a>
+        </div>
+    </div>
+</div>
+
+<div class="clothes_wrap">
+	<i class="flower_top_left"></i>
+    <i class="flower_top_right"></i>
+    <i class="flower_bottom_left"></i>
+    <i class="flower_bottom_right"></i>
+    <i class="line_top"></i>
+    <i class="line_right"></i>
+    <i class="line_bottom"></i>
+    <i class="line_left"></i>
+    <div class="clothes">
+    	<a class="item">
+        	<div class="l">
+            	<div class="t">
+                	<div>乖顺使者的·马甲</div>
+                    <i class="t_l"></i>
+                    <i class="t_m"></i>
+                    <i class="t_r"></i>
+                </div>
+                <div class="b">
+                	<div><span>简约</span></div>
+                    <div><span>性感</span></div>
+                </div>
+            </div>
+            <div class="r">99</div>
+        </a>
+        <a class="item">
+        	<div class="l">
+            	<div class="t">
+                	<div>乖顺使者的乖顺使者的·马甲</div>
+                    <i class="t_l"></i>
+                    <i class="t_m"></i>
+                    <i class="t_r"></i>
+                </div>
+                <div class="b">
+                	<div><span>简约</span></div>
+                    <div><span>性感</span></div>
+                </div>
+            </div>
+            <div class="r">13</div>
+        </a>
+        <a class="item">
+        	<div class="l">
+            	<div class="t">
+                	<div>乖顺使者的·马甲</div>
+                    <i class="t_l"></i>
+                    <i class="t_m"></i>
+                    <i class="t_r"></i>
+                </div>
+                <div class="b">
+                	<div><span>简约</span></div>
+                    <div><span>性感</span></div>
+                </div>
+            </div>
+            <div class="r">13</div>
+        </a>
+    </div><!--/clothes-->
+</div><!--/clothes_wrap-->
+
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/iscroll-lite.js"></script>
+<script type="text/javascript">
+$(function(){
+	//设置列表页导航宽度
+	var $filter = $("#filter");
+	$filter.children().width(getSlideWidth("filter","a"));
+	
+	function getSlideWidth(parentId, subtagName){//获得整个长度,第一个参数是需要设置id,第二个参数是每个单元的tagName
+		var $parent = $("#"+parentId);
+		var $sub = $parent.find(subtagName);
+		var _w = 0;
+		$sub.each(function(){
+			_w += $(this).innerWidth();
+		});
+		return _w+1;
+	}
+	//初始化滑动导航
+	var myscroll=new IScroll("#filter", {
+		scrollX: true,
+		scrollY: false,
+		click: true
+	});
+/*2 C
+3 B
+4 A
+5 S
+6 SS*/
+
+});
+
+</script>
+</body>
+</html>
