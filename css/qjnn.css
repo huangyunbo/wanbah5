@@ -20,7 +20,7 @@ body{ background:#f9ddd3 url(../images/data-qjnn-bg.jpg) no-repeat fixed; backgr
 .switchboard .l,.switchboard .r{ width:50%; height:47px; display:table-cell; text-align:center; position:relative}
 .switchboard .l i,.switchboard .r i{ background:url(../images/data-qjnn-tmp.png) -5px -12px no-repeat; width:100%; height:47px; background-size:320px; position:absolute; left:0; top:0}
 .switchboard .r i{ background-position:-13px -23px; transform:rotateY(180deg); -webkit-transform:rotateY(180deg)}
-.switchboard a{ font-size:1.3rem; color:#fff; margin-top:8px; width:130px; height:31px; line-height:31px; text-align:center; background:url(../images/data-qjnn-tmp.png) 0 -80px no-repeat; background-size:320px; display:inline-block; position:relative; z-index:2}
+.switchboard a{ font-size:1.3rem; color:#fff; margin-top:8px; width:130px; height:31px; line-height:31px; text-align:center; background:url(../images/data-qjnn-tmp.png) 0 -80px no-repeat; background-size:320px; display:inline-block; position:relative; z-index:2; cursor:pointer}
 .switchboard .r a{ background-position:0 -113px}
 .switchbute{ margin:7px 10px; background:rgba(255,255,255,0.5); border-radius:10px; padding:0 23px; border:1px solid #fff; position:relative}
 .switchbute .flower_l,.switchbute .flower_r{ background:url(../images/data-qjnn-tmp.png) 0 -145px no-repeat; background-size:320px; position:absolute; left:0; top:0; width:56px; height:33px}
@@ -70,7 +70,7 @@ body{ background:#f9ddd3 url(../images/data-qjnn-bg.jpg) no-repeat fixed; backgr
 .clothes .item .l .b span{ color:#456395; width:45px; height:19px; line-height:19px; text-align:center; background:url(../images/data-qjnn-tmp.png) 0 -202px no-repeat; background-size:320px; display:inline-block}
 .clothes .item .r{ width:30px; display:table-cell; background:#ffb67b; border-radius:4px; color:#fff; font-size:2rem; vertical-align:middle; text-align:center}
 /*五属性弹窗*/
-.dialog_attr{ background:#fff; border-radius:10px; width:260px; padding:18px 0; position:relative}
+.dialog_attr{ background:#fff; border-radius:10px; width:260px; padding:18px 0; position:relative; display:none}
 @media screen and (min-width:320px){
 	.dialog_attr{width:300px}
 }
@@ -91,13 +91,15 @@ body{ background:#f9ddd3 url(../images/data-qjnn-bg.jpg) no-repeat fixed; backgr
 .dialog_arena .item{ float:left; width:50%; text-align:center}
 .dialog_arena .btn_arena{ border:1px solid #ffb67b; margin:0 20px 9px; padding:2px 0 1px; border-radius:20px; color:#ffb67b; font-size:1.3rem; cursor:pointer; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 /*详情弹窗*/
-.dialog_det{ background:#fff; border-radius:10px; width:260px; padding:18px 0; position:relative}
-@media screen and (min-width:320px){
-	.dialog_det{width:300px}
-}
-
-
-
-
-
-
+.dialog_det{ background:#fff; color:#454545; border-radius:10px; width:185px; padding:17px; position:relative; border:1px solid #d2476e; display:none}
+.dialog_det .title{ display:table; width:100%; table-layout:fixed; margin:5px 0}
+.dialog_det .title .l,.dialog_det .title .r{ display:table-cell; background:url(../images/data-qjnn-tmp.png) 0 -286px; background-size:320px; vertical-align:top}
+.dialog_det .title .l i,.dialog_det .title .r i{ width:10px; height:22px; float:right; background:url(../images/data-qjnn-tmp.png) -97px -286px; background-size:320px; transform:rotateY(180deg); -webkit-transform:rotateY(180deg)}
+.dialog_det .title .m{ display:table-cell; width:75%; padding:0 3px; overflow:hidden; text-align:center; font-size:1.5rem; color:#921a33; white-space:nowrap; text-overflow:ellipsis}
+.dialog_det .title .r{ transform:rotateY(180deg); -webkit-transform:rotateY(180deg)}
+.dialog_det .title .m2{ width:40%}
+.dialog_det .content{ overflow:hidden; margin-left:-15px}
+.dialog_det .content .item{ background:#ffb67b; float:left; margin-left:15px; width:85px; text-align:center; border-radius:20px; font-size:1.2rem; margin-bottom:10px}
+.dialog_det .spe{ border:solid #921a34; border-width:1px 0; width:100%; display:table; padding:3px 0; margin:5px 0 10px}
+.dialog_det .spe div{ width:50%; display:table-cell; text-align:center}
+.dialog_det .content2{ font-size:1.2rem; text-align:center}
