@@ -32,7 +32,7 @@ body{ background:#f9ddd3 url(../images/data-qjnn-bg.jpg) no-repeat fixed; backgr
 .filter{ box-shadow:inset 0 0 12px #fff; background:#ffecd1; height:40px; line-height:40px; margin-top:1px; overflow:hidden; position:relative}
 .filter_inner{ position:absolute}
 .filter .item{ font-size:1.5rem; color:#454545; cursor:pointer; padding:0 16px; float:left}
-.filter .on.item{ color:#ffb309; font-size:1.8rem}
+.filter .on.item{ color:#ffb309}
 .clothes_wrap{ position:relative; background:rgba(253,223,217,0.8); margin:17px 19px}
 .clothes_wrap .flower_top_left,.clothes_wrap .flower_top_right,.clothes_wrap .flower_bottom_left,.clothes_wrap .flower_bottom_right{ background:url(../images/data-qjnn-tmp.png) 0 -180px no-repeat; background-size:320px; position:absolute; width:17px; height:15px}
 .clothes_wrap .flower_top_left{ top:-15px; left:-17px}
@@ -91,7 +91,7 @@ body{ background:#f9ddd3 url(../images/data-qjnn-bg.jpg) no-repeat fixed; backgr
 .dialog_arena .item{ float:left; width:50%; text-align:center}
 .dialog_arena .btn_arena{ border:1px solid #ffb67b; margin:0 20px 9px; padding:2px 0 1px; border-radius:20px; color:#ffb67b; font-size:1.3rem; cursor:pointer; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 /*详情弹窗*/
-.dialog_det{ background:#fff; color:#454545; border-radius:10px; width:185px; padding:17px; position:relative; border:1px solid #d2476e; display:none}
+.dialog_det{ background:#fff; color:#454545; border-radius:10px; width:185px; padding:17px; position:relative; border:1px solid #d2476e; display:none; cursor:pointer}
 .dialog_det .title{ display:table; width:100%; table-layout:fixed; margin:5px 0}
 .dialog_det .title .l,.dialog_det .title .r{ display:table-cell; background:url(../images/data-qjnn-tmp.png) 0 -286px; background-size:320px; vertical-align:top}
 .dialog_det .title .l i,.dialog_det .title .r i{ width:10px; height:22px; float:right; background:url(../images/data-qjnn-tmp.png) -97px -286px; background-size:320px; transform:rotateY(180deg); -webkit-transform:rotateY(180deg)}

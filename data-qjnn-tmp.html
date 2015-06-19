@@ -26,7 +26,7 @@
     <div class="title">
     	已选属性/主题
     </div>
-    <div class="content">
+    <div class="content" id="selectedbute">
     	<div class="item">简约</div>
     	<div class="item">可爱</div>
         <div class="item">活泼</div>
@@ -124,8 +124,8 @@
             <a class="btn_radio">性感</a>
         </div>
         <div class="item">
-        	<a class="btn_radio on">清凉</a>
-            <a class="btn_radio">保暖</a>
+        	<a class="btn_radio">清凉</a>
+            <a class="btn_radio on">保暖</a>
         </div>
     </div>
     <i class="line_l"></i>
@@ -161,7 +161,7 @@
     </div>
 </div>
 
-<a class="dialog_det" id="dialog_det">
+<div class="dialog_det" id="dialog_det">
 	<div class="title">
     	<div class="l"><i></i></div>
         <div class="m">乖顺使者的马甲马甲马甲马甲马甲</div>
@@ -187,7 +187,7 @@
     	<div>6-7（少女级）</div>
         <div>6-7（少女级）</div>
     </div>
-</a>
+</div>
 
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/iscroll-lite.js"></script>
@@ -195,10 +195,10 @@
 <script type="text/javascript">
 $(function(){
 	//设置列表页导航宽度
-	var $filter = $("#filter");
-	$filter.children().width(getSlideWidth("filter","a"));
+	/*var $filter = $("#filter");
+	$filter.children().width(getSlideWidth("filter","a"));*/
 	
-	function getSlideWidth(parentId, subtagName){//获得整个长度,第一个参数是需要设置id,第二个参数是每个单元的tagName
+	/*function getSlideWidth(parentId, subtagName){//获得整个长度,第一个参数是需要设置id,第二个参数是每个单元的tagName
 		var $parent = $("#"+parentId);
 		var $sub = $parent.find(subtagName);
 		var _w = 0;
@@ -206,46 +206,276 @@ $(function(){
 			_w += $(this).innerWidth();
 		});
 		return _w+1;
-	}
+	}*/
 	//初始化滑动导航
-	var myscroll=new IScroll("#filter", {
+	/*var myscroll=new IScroll("#filter", {
 		scrollX: true,
 		scrollY: false,
 		click: true
-	});
+	});*/
 	
 	
-	$("#btn_dialog_arena").click(function(){//竞技场打开弹窗
-		easyDialog.open({
-		  container: "dialog_arena",
-		  fixed : false
-		});
-	});
-	
-	$("#btn_dialog_wu").click(function(){//五属性打开弹窗
-		easyDialog.open({
-		  container: "dialog_wu",
-		  fixed : false
-		});
-	});
-	
-	$(".clothes").on("click", ".item", function(){//衣服打开弹窗
-		easyDialog.open({
-		  container: "dialog_det",
-		  fixed : false
-		});
-	});
-	
-	$(".btn_cancel,#dialog_det").click(function(){
-		easyDialog.close();
-	});
 	
 	
-/*2 C
+	var qjnnFun = function(option){
+		if(typeof(arguments[0]) == 'undefined') return false;
+		var option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
+		this.dataclothes = option.data_clothes;
+		this.dataarena = option.data_arena;
+		this.datawu = option.data_wu;
+		this.o = {type:1,clothestype:0,lable1:"jianyue",lable2:"keai",lable3:"huopo",lable4:"qingchun",lable5:"baonuan"};
+		
+		this.init();
+	}
+	
+	qjnnFun.prototype = {
+		printFilterclothes: function(){//打印横向滑动选择 头发/连衣裙/外套
+			var _html = '',
+			_datawu = this.datawu,
+			i;
+			for(i=0; i<_datawu.length; i++){
+				_html += '<a class="item" data-id="'+_datawu[i].id+'">'+_datawu[i].name+'</a>';
+			}
+			$("#filter .filter_inner").html(_html);
+		},
+		filterclothesScroll: function(){//设置横向滑动条
+			var $parent = $("#filter"),
+			$sub = $parent.find("a.item"),
+			_w = 0;
+
+			$sub.each(function(){
+				_w += $(this).innerWidth();
+			});
+			
+			$parent.children().width(_w);//先设置宽度
+			
+			var myscroll = new IScroll("#filter", {//再设置滑动
+				scrollX: true,
+				scrollY: false,
+				click: true
+			});
+		},
+		printArena: function(){//打印搭配竞技场
+			var _html = '',
+			_dataarena = this.dataarena,
+			i;
+			for(i=0; i<_dataarena.length; i++){
+				_html += '<div class="item"><a class="btn_arena">'+_dataarena[i].name+'</a></div>';
+			}
+			$("#dialog_arena .dialog_content").html(_html);
+		},
+		printClothes:function(index){//打印衣服组
+			var _html = '',
+			_dataclothes = this.dataclothes;
+			
+			function calcClothes(){//计算衣服的数值和最高的2个标签
+				var _wu = arguments[0].w,
+				_obj = {score:0},
+				k,
+				score,
+				i = 0,
+				temp1 = {},
+				temp2 = {},
+				temp3 = {};
+				for(k in _wu){
+					score = _wu[k];
+					if(i==0){
+						temp1 = {k:k,v:score};//赋值第1个
+					}else if(i==1){
+						temp2 = {k:k,v:score};//赋值第2个
+					}
+					_obj.score += score;//加起来获得总数
+					i++;
+				}
+				i = 0;
+				if(temp1.v > temp2.v){//排成第2个比第1个大
+					temp3 = temp2;
+					temp2 = temp1;
+					temp1 = temp3;
+				}
+				for(k in _wu){
+					if(i > 1){//从第3个开始对比
+						score = _wu[k];
+						if(score > temp1.v && score <= temp2.v){//如果第n个数比第1个大且小于等于第2个，则把第n个数赋值给第1个
+							temp1 = {k:k,v:score};
+						}else if(score > temp2.v){//如果第n个数比第2个大，则把第2个数赋值给第1个，第n个赋值给第2个
+							temp1 = temp2;
+							temp2 = {k:k,v:score};
+						}
+					}
+					i++;
+				}
+				
+				_obj.high1 = arguments[1].switchlael(temp1.k);
+				_obj.high2 = arguments[1].switchlael(temp2.k);
+				return _obj;
+			}
+			
+			for(var i=0; i<_dataclothes.length; i++){
+				if(_dataclothes[i].type == this.o.clothestype){
+					var _obj = calcClothes(_dataclothes[i],this);
+					_html += '<a class="item" data-id="'+_dataclothes[i].id+'">'+
+								'<div class="l">'+
+									'<div class="t">'+
+										'<div>'+_dataclothes[i].name+'</div>'+
+										'<i class="t_l"></i>'+
+										'<i class="t_m"></i>'+
+										'<i class="t_r"></i>'+
+									'</div>'+
+									'<div class="b">'+
+										'<div><span>'+_obj.high1+'</span></div>'+
+										'<div><span>'+_obj.high2+'</span></div>'+
+									'</div>'+
+								'</div>'+
+								'<div class="r">'+_obj.score+'</div>'+
+							'</a>';
+				}
+			}
+			$("#clothes").html(_html);
+		},
+		switchlael: function(){
+			switch(arguments[0]){
+				case "jianyue":return "简约";
+				case "huali":return "华丽";
+				case "keai":return "可爱";
+				case "chengshu":return "成熟";
+				case "huopo":return "活泼";
+				case "youya":return "优雅";
+				case "qingchun":return "清纯";
+				case "xinggan":return "性感";
+				case "qingliang":return "清凉";
+				case "baonuan":return "保暖";
+			}
+		},
+		selectedbute: function(){//选择哪些属性
+			var _html;
+			if(this.o.type == 1){
+				_html = '<div class="item">'+this.switchlael(this.o.lable1)+'</div>'+
+						'<div class="item">'+this.switchlael(this.o.lable2)+'</div>'+
+						'<div class="item">'+this.switchlael(this.o.lable3)+'</div>'+
+						'<div class="item">'+this.switchlael(this.o.lable4)+'</div>'+
+						'<div class="item">'+this.switchlael(this.o.lable5)+'</div>';
+			}else{
+				_html = '<div class="item">'+this.switchlael(this.o.lable1)+'</div>';
+			}
+			$("#selectedbute").html(_html);
+			
+			this.printClothes();
+		},
+		showclothes: function(data_id){//打开单个衣服展示详情
+			var data_id = data_id,
+			that = this,
+			_dataclothes = that.dataclothes;
+			for(var i=0; i<_dataclothes.length; i++){
+				if(_dataclothes[i].id == data_id){
+					_dataclothes = _dataclothes[i];
+				}
+			}
+			function rate(){
+				var k,
+				r = "",
+				_html = "";
+				for(k in _dataclothes.w){
+					switch(_dataclothes.w[k]){
+						case 3:r="B";break;
+						case 4:r="A";break;
+						case 5:r="S";break;
+						case 6:r="SS";break;
+						default:r="C";
+					}
+					_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
+				}
+				return _html;
+			}
+			
+			var _html = '<div class="title">'+
+							'<div class="l"><i></i></div>'+
+							'<div class="m">'+_dataclothes.name+'</div>'+
+							'<div class="r"><i></i></div>'+
+						'</div>'+
+						'<div class="content">'+rate()+'</div>'+
+						'<div class="spe">'+
+							'<div>'+_dataclothes.t1+'</div>'+
+							'<div>'+_dataclothes.t2+'</div>'+
+						'</div>'+
+						'<div class="title">'+
+							'<div class="l"><i></i></div>'+
+							'<div class="m m2">获取途径</div>'+
+							'<div class="r"><i></i></div>'+
+						'</div>'+
+						'<div class="content2">'+
+							'<div>6-7（少女级）</div>'+
+							'<div>6-7（少女级）</div>'+
+						'</div>';
+						
+			$("#dialog_det").html(_html);
+		},
+		events: function(){
+			var that = this;
+			//选中横向滑动衣服类别
+			$("#filter .item").click(function(){
+				that.o.clothestype = $(this).attr("data-id");
+				$(this).addClass("on").siblings().removeClass("on");
+				that.selectedbute();
+			});
+			
+			//竞技场打开弹窗
+			$("#btn_dialog_arena").click(function(){
+				easyDialog.open({
+				  container: "dialog_arena",
+				  fixed : false
+				});
+			});
+			//五属性打开弹窗
+			$("#btn_dialog_wu").click(function(){
+				easyDialog.open({
+				  container: "dialog_wu",
+				  fixed : false
+				});
+			});
+			//衣服打开弹窗
+			$(".clothes").on("click", ".item", function(){
+				that.showclothes($(this).attr("data-id"));
+				easyDialog.open({
+				  container: "dialog_det",
+				  fixed : false
+				});
+			});
+			//关闭2个弹窗
+			$(".btn_cancel,#dialog_det").click(function(){
+				easyDialog.close();
+			});
+		},
+		init: function(){
+			this.printFilterclothes();
+			this.events();
+			$("#filter .item").eq(0).trigger("click");
+			this.filterclothesScroll();
+			this.printArena();
+			
+			
+		}
+	}
+
+/*
+1:简约,2:华丽,3:可爱,4:成熟,5:活泼,6:优雅,7:清纯,8:性感,9:清凉,10:保暖
+jianyue:0,huali:0,keai:0,chengshu:0,huopo:0,youya:0,qingchun:0,xinggan:0,qingliang:0,baonuan:0
+1:头发,2:连衣裙,3:外套,4:上衣,5:下装,6:袜子,7:鞋,8:头饰,9:耳饰,10:颈饰...
+
+2 C
 3 B
 4 A
 5 S
-6 SS*/
+6 SS
+*/
+
+	
+	var data_clothes = [{id:8144,name:"默认粉毛",type:317,t1:"特殊属性1",t2:"",w:{jianyue:6,huopo:0,keai:3,qingchun:5,qingliang:5}},{id:8145,name:"运动少年",type:317,t1:"特殊属性1",t2:"特殊属性2",w:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}},{id:8146,name:"不羁",type:317,t1:"",t2:"",w:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}},{id:8434,name:"白翩语",type:318,t1:"",t2:"",w:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}}];
+	var data_arena = [{id:10130,name:"金色音乐厅",wu:[2,4,6,8,10]},{id:10131,name:"秋日物语",wu:[1,3,5,6,9]},{id:10132,name:"海边派对的搭配",wu:[1,3,5,8,9]},{aid:10133,name:"冬天里的一把火",wu:[2,3,5,8,10]}];
+	var data_wu = [{id:317,name:"头发"},{id:318,name:"连衣裙"},{id:319,name:"外套"},{id:320,name:"上衣"},{id:321,name:"下装"},{id:322,name:"袜子"}];
+	var data_all = {data_clothes:data_clothes, data_arena:data_arena, data_wu:data_wu}
+	var qjnn = new qjnnFun(data_all);
+
 
 });
 
