@@ -199,7 +199,7 @@ $(function(){
 		var option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.dataclothes = option.data_clothes;
 		this.dataarena = option.data_arena;
-		this.datawu = option.data_wu;
+		this.datatype = option.data_type;
 		this.o = {type:1,clothestype:0,zhuti:"",label1:"jianyue",label2:"keai",label3:"huopo",label4:"qingchun",label5:"baonuan"};
 		
 		this.init();
@@ -208,10 +208,10 @@ $(function(){
 	qjnnFun.prototype = {
 		printFilterclothes: function(){//打印横向滑动选择 头发/连衣裙/外套
 			var _html = '',
-			_datawu = this.datawu,
+			_datatype = this.datatype,
 			i;
-			for(i=0; i<_datawu.length; i++){
-				_html += '<a class="item" data-id="'+_datawu[i].id+'">'+_datawu[i].name+'</a>';
+			for(i=0; i<_datatype.length; i++){
+				_html += '<a class="item" data-id="'+_datatype[i].id+'">'+_datatype[i].name+'</a>';
 			}
 			$("#filter .filter_inner").html(_html);
 		},
@@ -233,15 +233,6 @@ $(function(){
 			});
 		},
 		printArena: function(){//打印搭配竞技场
-			var _html = '',
-			_dataarena = this.dataarena,
-			i;
-			for(i=0; i<_dataarena.length; i++){
-				_html += '<div class="item"><a class="btn_arena" data-id="'+_dataarena[i].id+'">'+_dataarena[i].name+'</a></div>';
-			}
-			$("#dialog_arena .dialog_content").html(_html);
-		},
-		printwu: function(){//打印五属性
 			var _html = '',
 			_dataarena = this.dataarena,
 			i;
@@ -530,10 +521,10 @@ jianyue:0,huali:0,keai:0,chengshu:0,huopo:0,youya:0,qingchun:0,xinggan:0,qinglia
 */
 
 	
-	var data_clothes = [{id:8144,name:"默认粉毛",type:317,t1:"特殊属性1",t2:"",g:"店/迷/6-7少",wu:{jianyue:6,huopo:0,keai:3,qingchun:5,baonuan:5}},{id:8145,name:"运动少年",type:317,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}},{id:8145,name:"金色音乐厅专用",type:317,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{huali:5,chengshu:5,youya:4,xinggan:5,baonuan:5}},{id:8145,name:"连衣裙金色音乐厅专用",type:318,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{huali:5,chengshu:5,youya:4,xinggan:5,baonuan:5}},{id:8146,name:"不羁",type:317,t1:"",t2:"",g:"",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}},{id:8434,name:"白翩语",type:318,t1:"",t2:"",g:"暂无",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}}];
+	var data_clothes = [{id:8144,name:"默认粉毛",type:317,t1:"特殊属性1",t2:"墨墨",g:"店/迷/6-7少",wu:{jianyue:6,huopo:0,keai:3,qingchun:5,baonuan:5}},{id:8145,name:"运动少年",type:317,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}},{id:8145,name:"金色音乐厅专用",type:317,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{huali:5,chengshu:5,youya:4,xinggan:5,baonuan:5}},{id:8145,name:"连衣裙金色音乐厅专用",type:318,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{huali:5,chengshu:5,youya:4,xinggan:5,baonuan:5}},{id:8146,name:"不羁",type:317,t1:"",t2:"",g:"",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}},{id:8434,name:"白翩语",type:318,t1:"",t2:"",g:"暂无",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}}];
 	var data_arena = [{id:10130,name:"金色音乐厅",wu:["huali","chengshu","youya","xinggan","baonuan"]},{id:10131,name:"秋日物语",wu:["jianyue","keai","huopo","youya","qingliang"]},{id:10132,name:"海边派对的搭配",wu:["jianyue","keai","huopo","xinggan","qingliang"]},{id:10133,name:"冬天里的一把火",wu:["huali","keai","huopo","xinggan","baonuan"]}];
-	var data_wu = [{id:317,name:"头发"},{id:318,name:"连衣裙"},{id:319,name:"外套"},{id:320,name:"上衣"},{id:321,name:"下装"},{id:322,name:"袜子"}];
-	var data_all = {data_clothes:data_clothes, data_arena:data_arena, data_wu:data_wu}
+	var data_type = [{id:317,name:"头发"},{id:318,name:"连衣裙"},{id:319,name:"外套"},{id:320,name:"上衣"},{id:321,name:"下装"},{id:322,name:"袜子"}];
+	var data_all = {data_clothes:data_clothes, data_arena:data_arena, data_type:data_type}
 	var qjnn = new qjnnFun(data_all);
 
 
