@@ -108,24 +108,24 @@
 <div class="dialog_attr" id="dialog_wu">
 	<div class="dialog_content dialog_five">
     	<div class="item">
-        	<a class="btn_radio on">简约</a>
-            <a class="btn_radio">华丽</a>
+        	<a class="btn_radio on" data-label="jianyue">简约</a>
+            <a class="btn_radio" data-label="huali">华丽</a>
         </div>
         <div class="item">
-        	<a class="btn_radio on">可爱</a>
-            <a class="btn_radio">成熟</a>
+        	<a class="btn_radio on" data-label="keai">可爱</a>
+            <a class="btn_radio" data-label="chengshu">成熟</a>
         </div>
         <div class="item">
-        	<a class="btn_radio on">活泼</a>
-            <a class="btn_radio">优雅</a>
+        	<a class="btn_radio on" data-label="huopo">活泼</a>
+            <a class="btn_radio" data-label="youya">优雅</a>
         </div>
         <div class="item">
-        	<a class="btn_radio on">清纯</a>
-            <a class="btn_radio">性感</a>
+        	<a class="btn_radio on" data-label="qingchun">清纯</a>
+            <a class="btn_radio" data-label="xinggan">性感</a>
         </div>
         <div class="item">
-        	<a class="btn_radio">清凉</a>
-            <a class="btn_radio on">保暖</a>
+        	<a class="btn_radio" data-label="qingliang">清凉</a>
+            <a class="btn_radio on" data-label="baonuan">保暖</a>
         </div>
     </div>
     <i class="line_l"></i>
@@ -133,7 +133,7 @@
     <i class="line_r"></i>
     <div class="handle">
     	<a class="btn_cancel">取消</a>
-        <a class="btn_sure">确定</a>
+        <a class="btn_sure" data-type="1">确定</a>
     </div>
 </div>
 
@@ -157,7 +157,7 @@
     <i class="line_r"></i>
     <div class="handle">
     	<a class="btn_cancel">取消</a>
-        <a class="btn_sure">确定</a>
+        <a class="btn_sure" data-type="2">确定</a>
     </div>
 </div>
 
@@ -193,37 +193,14 @@
 <script type="text/javascript" src="js/iscroll-lite.js"></script>
 <script type="text/javascript" src="js/easydialog.min.js"></script>
 <script type="text/javascript">
-$(function(){
-	//设置列表页导航宽度
-	/*var $filter = $("#filter");
-	$filter.children().width(getSlideWidth("filter","a"));*/
-	
-	/*function getSlideWidth(parentId, subtagName){//获得整个长度,第一个参数是需要设置id,第二个参数是每个单元的tagName
-		var $parent = $("#"+parentId);
-		var $sub = $parent.find(subtagName);
-		var _w = 0;
-		$sub.each(function(){
-			_w += $(this).innerWidth();
-		});
-		return _w+1;
-	}*/
-	//初始化滑动导航
-	/*var myscroll=new IScroll("#filter", {
-		scrollX: true,
-		scrollY: false,
-		click: true
-	});*/
-	
-	
-	
-	
+$(function(){	
 	var qjnnFun = function(option){
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.dataclothes = option.data_clothes;
 		this.dataarena = option.data_arena;
 		this.datawu = option.data_wu;
-		this.o = {type:1,clothestype:0,lable1:"jianyue",lable2:"keai",lable3:"huopo",lable4:"qingchun",lable5:"baonuan"};
+		this.o = {type:1,clothestype:0,zhuti:"",label1:"jianyue",label2:"keai",label3:"huopo",label4:"qingchun",label5:"baonuan"};
 		
 		this.init();
 	}
@@ -260,16 +237,26 @@ $(function(){
 			_dataarena = this.dataarena,
 			i;
 			for(i=0; i<_dataarena.length; i++){
-				_html += '<div class="item"><a class="btn_arena">'+_dataarena[i].name+'</a></div>';
+				_html += '<div class="item"><a class="btn_arena" data-id="'+_dataarena[i].id+'">'+_dataarena[i].name+'</a></div>';
+			}
+			$("#dialog_arena .dialog_content").html(_html);
+		},
+		printwu: function(){//打印五属性
+			var _html = '',
+			_dataarena = this.dataarena,
+			i;
+			for(i=0; i<_dataarena.length; i++){
+				_html += '<div class="item"><a class="btn_arena" data-id="'+_dataarena[i].id+'">'+_dataarena[i].name+'</a></div>';
 			}
 			$("#dialog_arena .dialog_content").html(_html);
 		},
 		printClothes:function(index){//打印衣服组
 			var _html = '',
-			_dataclothes = this.dataclothes;
+			that = this,
+			_dataclothes = that.dataclothes;
 			
 			function calcClothes(){//计算衣服的数值和最高的2个标签
-				var _wu = arguments[0].w,
+				var _wu = arguments[0].wu,
 				_obj = {score:0},
 				k,
 				score,
@@ -306,14 +293,30 @@ $(function(){
 					i++;
 				}
 				
-				_obj.high1 = arguments[1].switchlael(temp1.k);
-				_obj.high2 = arguments[1].switchlael(temp2.k);
+				_obj.high1 = that.switchlael(temp1.k);
+				_obj.high2 = that.switchlael(temp2.k);
 				return _obj;
 			}
 			
+			function calclabel(){//计算看是不是属于5属性
+				var _wu = arguments[0],
+				k;
+				for(k in _wu){
+					switch(k){
+						case that.o.label1:break;
+						case that.o.label2:break;
+						case that.o.label3:break;
+						case that.o.label4:break;
+						case that.o.label5:break;
+						default:return false;
+					}
+				}
+				return true;
+			}
+			
 			for(var i=0; i<_dataclothes.length; i++){
-				if(_dataclothes[i].type == this.o.clothestype){
-					var _obj = calcClothes(_dataclothes[i],this);
+				if(_dataclothes[i].type == that.o.clothestype && calclabel(_dataclothes[i].wu)){
+					var _obj = calcClothes(_dataclothes[i]);
 					_html += '<a class="item" data-id="'+_dataclothes[i].id+'">'+
 								'<div class="l">'+
 									'<div class="t">'+
@@ -350,13 +353,13 @@ $(function(){
 		selectedbute: function(){//选择哪些属性
 			var _html;
 			if(this.o.type == 1){
-				_html = '<div class="item">'+this.switchlael(this.o.lable1)+'</div>'+
-						'<div class="item">'+this.switchlael(this.o.lable2)+'</div>'+
-						'<div class="item">'+this.switchlael(this.o.lable3)+'</div>'+
-						'<div class="item">'+this.switchlael(this.o.lable4)+'</div>'+
-						'<div class="item">'+this.switchlael(this.o.lable5)+'</div>';
+				_html = '<div class="item">'+this.switchlael(this.o.label1)+'</div>'+
+						'<div class="item">'+this.switchlael(this.o.label2)+'</div>'+
+						'<div class="item">'+this.switchlael(this.o.label3)+'</div>'+
+						'<div class="item">'+this.switchlael(this.o.label4)+'</div>'+
+						'<div class="item">'+this.switchlael(this.o.label5)+'</div>';
 			}else{
-				_html = '<div class="item">'+this.switchlael(this.o.lable1)+'</div>';
+				_html = '<div class="item">'+this.o.zhuti+'</div>';
 			}
 			$("#selectedbute").html(_html);
 			
@@ -371,12 +374,12 @@ $(function(){
 					_dataclothes = _dataclothes[i];
 				}
 			}
-			function rate(){
+			function rate(){//评级s
 				var k,
 				r = "",
 				_html = "";
-				for(k in _dataclothes.w){
-					switch(_dataclothes.w[k]){
+				for(k in _dataclothes.wu){
+					switch(_dataclothes.wu[k]){
 						case 3:r="B";break;
 						case 4:r="A";break;
 						case 5:r="S";break;
@@ -387,6 +390,27 @@ $(function(){
 				}
 				return _html;
 			}
+			function spec(){//特殊属性
+				var _html = "";
+				if(_dataclothes.t1 || _dataclothes.t1){
+					_html = '<div class="spe">'+
+								'<div>'+_dataclothes.t1+'</div>'+
+								'<div>'+_dataclothes.t2+'</div>'+
+							'</div>';
+				}
+				return _html;
+			}
+			function gain(){//获取途径
+				var _html = "",
+				_arr;
+				if(_dataclothes.g){
+					_arr = _dataclothes.g.split("/");
+					for(var i=0; i<_arr.length; i++){
+						_html += '<div>'+_arr[i]+'</div>';
+					}
+				}
+				return _html;
+			}
 			
 			var _html = '<div class="title">'+
 							'<div class="l"><i></i></div>'+
@@ -394,18 +418,14 @@ $(function(){
 							'<div class="r"><i></i></div>'+
 						'</div>'+
 						'<div class="content">'+rate()+'</div>'+
-						'<div class="spe">'+
-							'<div>'+_dataclothes.t1+'</div>'+
-							'<div>'+_dataclothes.t2+'</div>'+
-						'</div>'+
+						spec()+
 						'<div class="title">'+
 							'<div class="l"><i></i></div>'+
 							'<div class="m m2">获取途径</div>'+
 							'<div class="r"><i></i></div>'+
 						'</div>'+
 						'<div class="content2">'+
-							'<div>6-7（少女级）</div>'+
-							'<div>6-7（少女级）</div>'+
+							gain()+
 						'</div>';
 						
 			$("#dialog_det").html(_html);
@@ -445,6 +465,46 @@ $(function(){
 			$(".btn_cancel,#dialog_det").click(function(){
 				easyDialog.close();
 			});
+			
+			//在五属性里面选择
+			$("#dialog_wu .btn_radio").click(function(){
+				var _index = $("#dialog_wu .item").index($(this).parent());
+				$(this).addClass("on").siblings().removeClass("on");
+			});
+			//点五属性或则竞技场的确定
+			$(".btn_sure").click(function(){
+				if($(this).attr("data-type") == 1){//五属性
+					that.o.type = 1;
+					$("#dialog_wu .item").each(function(index){
+						switch(index){
+							case 0:that.o.label1 = $(this).children(".on").attr("data-label");break;
+							case 1:that.o.label2 = $(this).children(".on").attr("data-label");break;
+							case 2:that.o.label3 = $(this).children(".on").attr("data-label");break;
+							case 3:that.o.label4 = $(this).children(".on").attr("data-label");break;
+							case 4:that.o.label5 = $(this).children(".on").attr("data-label");break;
+						}
+                    });
+				}else{
+					that.o.type = 2;//竞技场
+					var dataarena_id = $("#dialog_arena .on").attr("data-id");
+					for(var i=0; i<that.dataarena.length; i++){
+						if(dataarena_id == that.dataarena[i].id){
+							that.o.zhuti = that.dataarena[i].name;
+							that.o.label1 = that.dataarena[i].wu[0];
+							that.o.label2 = that.dataarena[i].wu[1];
+							that.o.label3 = that.dataarena[i].wu[2];
+							that.o.label4 = that.dataarena[i].wu[3];
+							that.o.label5 = that.dataarena[i].wu[4];
+						}
+					}
+				}
+				that.selectedbute();
+				easyDialog.close();
+			});
+			//在竞技场里面选择
+			$("#dialog_arena").on("click", ".btn_arena", function(){
+				$(this).addClass("on").parent().siblings().children().removeClass("on");
+			});
 		},
 		init: function(){
 			this.printFilterclothes();
@@ -470,8 +530,8 @@ jianyue:0,huali:0,keai:0,chengshu:0,huopo:0,youya:0,qingchun:0,xinggan:0,qinglia
 */
 
 	
-	var data_clothes = [{id:8144,name:"默认粉毛",type:317,t1:"特殊属性1",t2:"",w:{jianyue:6,huopo:0,keai:3,qingchun:5,qingliang:5}},{id:8145,name:"运动少年",type:317,t1:"特殊属性1",t2:"特殊属性2",w:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}},{id:8146,name:"不羁",type:317,t1:"",t2:"",w:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}},{id:8434,name:"白翩语",type:318,t1:"",t2:"",w:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}}];
-	var data_arena = [{id:10130,name:"金色音乐厅",wu:[2,4,6,8,10]},{id:10131,name:"秋日物语",wu:[1,3,5,6,9]},{id:10132,name:"海边派对的搭配",wu:[1,3,5,8,9]},{aid:10133,name:"冬天里的一把火",wu:[2,3,5,8,10]}];
+	var data_clothes = [{id:8144,name:"默认粉毛",type:317,t1:"特殊属性1",t2:"",g:"店/迷/6-7少",wu:{jianyue:6,huopo:0,keai:3,qingchun:5,baonuan:5}},{id:8145,name:"运动少年",type:317,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}},{id:8145,name:"金色音乐厅专用",type:317,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{huali:5,chengshu:5,youya:4,xinggan:5,baonuan:5}},{id:8145,name:"连衣裙金色音乐厅专用",type:318,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{huali:5,chengshu:5,youya:4,xinggan:5,baonuan:5}},{id:8146,name:"不羁",type:317,t1:"",t2:"",g:"",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}},{id:8434,name:"白翩语",type:318,t1:"",t2:"",g:"暂无",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}}];
+	var data_arena = [{id:10130,name:"金色音乐厅",wu:["huali","chengshu","youya","xinggan","baonuan"]},{id:10131,name:"秋日物语",wu:["jianyue","keai","huopo","youya","qingliang"]},{id:10132,name:"海边派对的搭配",wu:["jianyue","keai","huopo","xinggan","qingliang"]},{id:10133,name:"冬天里的一把火",wu:["huali","keai","huopo","xinggan","baonuan"]}];
 	var data_wu = [{id:317,name:"头发"},{id:318,name:"连衣裙"},{id:319,name:"外套"},{id:320,name:"上衣"},{id:321,name:"下装"},{id:322,name:"袜子"}];
 	var data_all = {data_clothes:data_clothes, data_arena:data_arena, data_wu:data_wu}
 	var qjnn = new qjnnFun(data_all);
