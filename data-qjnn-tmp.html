@@ -244,50 +244,8 @@ $(function(){
 		printClothes:function(index){//打印衣服组
 			var _html = '',
 			that = this,
-			_dataclothes = that.dataclothes;
-			
-			function calcClothes(){//计算衣服的数值和最高的2个标签
-				var _wu = arguments[0].wu,
-				_obj = {score:0},
-				k,
-				score,
-				i = 0,
-				temp1 = {},
-				temp2 = {},
-				temp3 = {};
-				for(k in _wu){
-					score = _wu[k];
-					if(i==0){
-						temp1 = {k:k,v:score};//赋值第1个
-					}else if(i==1){
-						temp2 = {k:k,v:score};//赋值第2个
-					}
-					_obj.score += score;//加起来获得总数
-					i++;
-				}
-				i = 0;
-				if(temp1.v > temp2.v){//排成第2个比第1个大
-					temp3 = temp2;
-					temp2 = temp1;
-					temp1 = temp3;
-				}
-				for(k in _wu){
-					if(i > 1){//从第3个开始对比
-						score = _wu[k];
-						if(score > temp1.v && score <= temp2.v){//如果第n个数比第1个大且小于等于第2个，则把第n个数赋值给第1个
-							temp1 = {k:k,v:score};
-						}else if(score > temp2.v){//如果第n个数比第2个大，则把第2个数赋值给第1个，第n个赋值给第2个
-							temp1 = temp2;
-							temp2 = {k:k,v:score};
-						}
-					}
-					i++;
-				}
-				
-				_obj.high1 = that.switchlael(temp1.k);
-				_obj.high2 = that.switchlael(temp2.k);
-				return _obj;
-			}
+			_dataclothes = that.dataclothes,
+			newdata = [];
 			
 			function calclabel(){//计算看是不是属于5属性
 				var _wu = arguments[0],
@@ -305,26 +263,79 @@ $(function(){
 				return true;
 			}
 			
-			for(var i=0; i<_dataclothes.length; i++){
+			function calcScore(){//计算衣服的数值和最高的2个标签
+				var _wu = arguments[0].wu,
+				isCalcLabel = arguments[1],
+				_obj = {score:0,high1:"",high2:""},
+				k,
+				score,
+				i = 0,
+				temp1 = {},
+				temp2 = {},
+				temp3 = {};
+				
+				for(k in _wu){
+					score = _wu[k];
+					if(isCalcLabel !== undefined){//判断要不要算出最高分数的2个标签
+						if(i == 0){
+							temp1 = {k:k,v:score};//赋值第1个
+						}else if(i == 1){
+							temp2 = {k:k,v:score};//赋值第2个
+							if(temp1.v > temp2.v){//先默认排成第2个比第1个大
+								temp3 = temp2;
+								temp2 = temp1;
+								temp1 = temp3;
+							}
+						}else if(i > 1){//从第3个开始对比
+							if(score > temp1.v && score <= temp2.v){//如果第n个数比第1个大且小于等于第2个，则把第n个数赋值给第1个
+								temp1 = {k:k,v:score};
+							}else if(score > temp2.v){//如果第n个数比第2个大，则把第2个数赋值给第1个，第n个赋值给第2个
+								temp1 = temp2;
+								temp2 = {k:k,v:score};
+							}
+						}
+					}
+					_obj.score += score;//加起来获得总数
+					i++;
+				}
+				
+				_obj.high1 = that.switchlael(temp1.k);
+				_obj.high2 = that.switchlael(temp2.k);
+				return _obj;
+			}
+			
+			for(var i=0; i<_dataclothes.length; i++){//过滤衣服类别+五属性
 				if(_dataclothes[i].type == that.o.clothestype && calclabel(_dataclothes[i].wu)){
-					var _obj = calcClothes(_dataclothes[i]);
-					_html += '<a class="item" data-id="'+_dataclothes[i].id+'">'+
+					newdata.push({k:_dataclothes[i],v:calcScore(_dataclothes[i]).score});
+				}
+			}
+
+			function sortNumber(a,b){
+				return a.v - b.v;
+			}
+			newdata.sort(sortNumber);//对过滤完后的数组排序
+			
+			
+			for(var i=0; i<newdata.length; i++){//过滤衣服类别+五属性
+				var _newdata = newdata[i].k;
+				var scoreobj = calcScore(newdata[i].k, "needcompare");//需要算出最高分数的2个标签
+					_html += '<a class="item" data-id="'+_newdata.id+'">'+
 								'<div class="l">'+
 									'<div class="t">'+
-										'<div>'+_dataclothes[i].name+'</div>'+
+										'<div>'+_newdata.name+'</div>'+
 										'<i class="t_l"></i>'+
 										'<i class="t_m"></i>'+
 										'<i class="t_r"></i>'+
 									'</div>'+
 									'<div class="b">'+
-										'<div><span>'+_obj.high1+'</span></div>'+
-										'<div><span>'+_obj.high2+'</span></div>'+
+										'<div><span>'+scoreobj.high1+'</span></div>'+
+										'<div><span>'+scoreobj.high2+'</span></div>'+
 									'</div>'+
 								'</div>'+
-								'<div class="r">'+_obj.score+'</div>'+
+								'<div class="r">'+scoreobj.score+'</div>'+
 							'</a>';
-				}
 			}
+
 			$("#clothes").html(_html);
 		},
 		switchlael: function(){
@@ -456,11 +467,13 @@ $(function(){
 			$(".btn_cancel,#dialog_det").click(function(){
 				easyDialog.close();
 			});
-			
 			//在五属性里面选择
 			$("#dialog_wu .btn_radio").click(function(){
-				var _index = $("#dialog_wu .item").index($(this).parent());
 				$(this).addClass("on").siblings().removeClass("on");
+			});
+			//在竞技场里面选择
+			$("#dialog_arena").on("click", ".btn_arena", function(){
+				$(this).addClass("on").parent().siblings().children().removeClass("on");
 			});
 			//点五属性或则竞技场的确定
 			$(".btn_sure").click(function(){
@@ -479,22 +492,19 @@ $(function(){
 					that.o.type = 2;//竞技场
 					var dataarena_id = $("#dialog_arena .on").attr("data-id");
 					for(var i=0; i<that.dataarena.length; i++){
-						if(dataarena_id == that.dataarena[i].id){
-							that.o.zhuti = that.dataarena[i].name;
-							that.o.label1 = that.dataarena[i].wu[0];
-							that.o.label2 = that.dataarena[i].wu[1];
-							that.o.label3 = that.dataarena[i].wu[2];
-							that.o.label4 = that.dataarena[i].wu[3];
-							that.o.label5 = that.dataarena[i].wu[4];
+						var _dataarena_item = that.dataarena[i];
+						if(dataarena_id == _dataarena_item.id){
+							that.o.zhuti = _dataarena_item.name;
+							that.o.label1 = _dataarena_item.wu[0];
+							that.o.label2 = _dataarena_item.wu[1];
+							that.o.label3 = _dataarena_item.wu[2];
+							that.o.label4 = _dataarena_item.wu[3];
+							that.o.label5 = _dataarena_item.wu[4];
 						}
 					}
 				}
 				that.selectedbute();
 				easyDialog.close();
-			});
-			//在竞技场里面选择
-			$("#dialog_arena").on("click", ".btn_arena", function(){
-				$(this).addClass("on").parent().siblings().children().removeClass("on");
 			});
 		},
 		init: function(){
@@ -521,8 +531,8 @@ jianyue:0,huali:0,keai:0,chengshu:0,huopo:0,youya:0,qingchun:0,xinggan:0,qinglia
 */
 
 	
-	var data_clothes = [{id:8144,name:"默认粉毛",type:317,t1:"特殊属性1",t2:"墨墨",g:"店/迷/6-7少",wu:{jianyue:6,huopo:0,keai:3,qingchun:5,baonuan:5}},{id:8145,name:"运动少年",type:317,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}},{id:8145,name:"金色音乐厅专用",type:317,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{huali:5,chengshu:5,youya:4,xinggan:5,baonuan:5}},{id:8145,name:"连衣裙金色音乐厅专用",type:318,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{huali:5,chengshu:5,youya:4,xinggan:5,baonuan:5}},{id:8146,name:"不羁",type:317,t1:"",t2:"",g:"",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}},{id:8434,name:"白翩语",type:318,t1:"",t2:"",g:"暂无",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}}];
-	var data_arena = [{id:10130,name:"金色音乐厅",wu:["huali","chengshu","youya","xinggan","baonuan"]},{id:10131,name:"秋日物语",wu:["jianyue","keai","huopo","youya","qingliang"]},{id:10132,name:"海边派对的搭配",wu:["jianyue","keai","huopo","xinggan","qingliang"]},{id:10133,name:"冬天里的一把火",wu:["huali","keai","huopo","xinggan","baonuan"]}];
+	var data_clothes = [{id:8144,name:"默认粉毛",type:317,t1:"特殊属性1",t2:"墨墨",g:"店/迷/6-7少",wu:{jianyue:6,huopo:0,keai:3,qingchun:5,baonuan:5}},{id:8145,name:"运动少年",type:317,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{jianyue:6,huopo:6,keai:6,qingchun:6,qingliang:5}},{id:8145,name:"金色音乐厅专用",type:317,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{huali:5,chengshu:5,youya:4,xinggan:5,baonuan:5}},{id:8145,name:"连衣裙金色音乐厅专用",type:318,t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{huali:5,chengshu:5,youya:4,xinggan:5,baonuan:5}},{id:8146,name:"不羁",type:317,t1:"",t2:"",g:"",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}},{id:8434,name:"白翩语",type:318,t1:"",t2:"",g:"暂无",wu:{jianyue:5,huopo:5,keai:4,qingchun:5,qingliang:5}}];
+	var data_arena = [{id:10130,name:"金色音乐厅",wu:["huali","chengshu","youya","xinggan","baonuan"]},{id:10131,name:"秋日物语",wu:["jianyue","keai","huopo","qingchun","baonuan"]},{id:10132,name:"海边派对的搭配",wu:["jianyue","keai","huopo","xinggan","qingliang"]},{id:10133,name:"冬天里的一把火",wu:["huali","keai","huopo","xinggan","baonuan"]}];
 	var data_type = [{id:317,name:"头发"},{id:318,name:"连衣裙"},{id:319,name:"外套"},{id:320,name:"上衣"},{id:321,name:"下装"},{id:322,name:"袜子"}];
 	var data_all = {data_clothes:data_clothes, data_arena:data_arena, data_type:data_type}
 	var qjnn = new qjnnFun(data_all);
