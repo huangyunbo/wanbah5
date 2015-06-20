@@ -316,7 +316,7 @@ $(function(){
 			newdata.sort(sortNumber);//对过滤完后的数组排序
 			
 			
-			for(var i=0; i<newdata.length; i++){//过滤衣服类别+五属性
+			for(var i=0; i<newdata.length; i++){//对排完序的衣服打印出来
 				var _newdata = newdata[i].k;
 				var scoreobj = calcScore(newdata[i].k, "needcompare");//需要算出最高分数的2个标签
 					_html += '<a class="item" data-id="'+_newdata.id+'">'+
