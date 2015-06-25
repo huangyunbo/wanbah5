@@ -87,11 +87,14 @@ body{ background:#f9ddd3 url(../images/data-qjnn-bg.jpg) no-repeat fixed; backgr
 .dialog_attr .handle a{ background:url(../images/data-qjnn-tmp.png) 0 -225px no-repeat; background-size:320px; width:107px; height:30px; line-height:30px; display:block; text-align:center; color:#fff; font-size:1.3rem; cursor:pointer}
 .dialog_attr .handle a.btn_cancel{ float:left; color:#454545; background-position:0 -255px; margin-left:20px}
 .dialog_attr .handle a.btn_sure{ float:right; margin-right:20px}
-.dialog_arena{ height:160px; overflow-y:auto; margin-bottom:28px}
+.dialog_arena{ height:175px; overflow-y:auto; margin-bottom:28px}
 .dialog_arena .item{ float:left; width:50%; text-align:center}
 .dialog_arena .btn_arena{ border:1px solid #ffb67b; margin:0 20px 9px; padding:2px 0 1px; border-radius:20px; color:#ffb67b; font-size:1.3rem; cursor:pointer; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 /*详情弹窗*/
-.dialog_det{ background:#fff; color:#454545; border-radius:10px; width:185px; padding:17px; position:relative; border:1px solid #d2476e; display:none; cursor:pointer}
+.dialog_det{ background:#fff; color:#454545; border-radius:10px; width:185px; padding:17px; position:relative; border:1px solid #d2476e; display:none}
+.dialog_det .btn_det_close{ width:30px; height:30px; background:#fff; border-radius:30px; border:1px solid #d2476e; position:absolute; top:-15px; right:-15px; cursor:pointer}
+.dialog_det .btn_det_close:before,.dialog_det .btn_det_close:after{ content:""; position:absolute; top:14px; left:5px; width:20px; height:3px; background:#d2476e; transform:rotate(45deg); -webkit-transform:rotate(45deg) }
+.dialog_det .btn_det_close:after{ transform:rotate(-45deg); -webkit-transform:rotate(-45deg)}
 .dialog_det .title{ display:table; width:100%; table-layout:fixed; margin:5px 0}
 .dialog_det .title .l,.dialog_det .title .r{ display:table-cell; background:url(../images/data-qjnn-tmp.png) 0 -286px; background-size:320px; vertical-align:top}
 .dialog_det .title .l i,.dialog_det .title .r i{ width:10px; height:22px; float:right; background:url(../images/data-qjnn-tmp.png) -97px -286px; background-size:320px; transform:rotateY(180deg); -webkit-transform:rotateY(180deg)}

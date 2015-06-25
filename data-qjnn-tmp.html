@@ -139,7 +139,7 @@
 
 <div class="dialog_attr" id="dialog_arena">
 	<div class="dialog_content dialog_arena">
-        <div class="item"><a class="btn_arena on">金色音乐厅</a></div>
+        <!--<div class="item"><a class="btn_arena on">金色音乐厅</a></div>
         <div class="item"><a class="btn_arena">金色音乐金色音乐厅厅</a></div>
         <div class="item"><a class="btn_arena">金色音乐厅</a></div>
         <div class="item"><a class="btn_arena">金色音乐厅</a></div>
@@ -150,7 +150,7 @@
         <div class="item"><a class="btn_arena">金色音乐厅</a></div>
         <div class="item"><a class="btn_arena">金色音乐厅</a></div>
         <div class="item"><a class="btn_arena">金色音乐厅</a></div>
-        <div class="item"><a class="btn_arena">金色音乐厅</a></div>
+        <div class="item"><a class="btn_arena">金色音乐厅</a></div>-->
     </div>
     <i class="line_l"></i>
     <i class="line_m"></i>
@@ -162,6 +162,7 @@
 </div>
 
 <div class="dialog_det" id="dialog_det">
+	<div class="btn_det_close" id="btn_det_close"></div>
 	<div class="title">
     	<div class="l"><i></i></div>
         <div class="m">乖顺使者的马甲马甲马甲马甲马甲</div>
@@ -311,7 +312,7 @@ $(function(){
 			}
 
 			function sortNumber(a,b){
-				return a.v - b.v;
+				return b.v - a.v;
 			}
 			newdata.sort(sortNumber);//对过滤完后的数组排序
 			
@@ -414,7 +415,8 @@ $(function(){
 				return _html;
 			}
 			
-			var _html = '<div class="title">'+
+			var _html = '<div class="btn_det_close" id="btn_det_close"></div>'+
+						'<div class="title">'+
 							'<div class="l"><i></i></div>'+
 							'<div class="m">'+_dataclothes.name+'</div>'+
 							'<div class="r"><i></i></div>'+
@@ -463,8 +465,12 @@ $(function(){
 				  fixed : false
 				});
 			});
-			//关闭2个弹窗
-			$(".btn_cancel,#dialog_det").click(function(){
+			//关闭竞技场or五属性弹窗
+			$(".btn_cancel").click(function(){
+				easyDialog.close();
+			});
+			//关闭详情弹窗
+			$("#dialog_det").on("click", "#btn_det_close", function(){
 				easyDialog.close();
 			});
 			//在五属性里面选择
