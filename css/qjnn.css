@@ -27,7 +27,7 @@ body{ background:#f9ddd3 url(../images/data-qjnn-bg.jpg) no-repeat fixed; backgr
 .switchbute .flower_r{ left:auto; right:0; transform:rotateY(180deg); -webkit-transform:rotateY(180deg)}
 .switchbute .title{ font-size:1.5rem; color:#c04861; border-bottom:1px solid #d8b3ac; text-align:center; margin:0 7px; padding:3px 0 4px}
 .switchbute .content{ padding:10px 0 1px; overflow:hidden; margin-left:-23px}
-.switchbute .content .item{ float:left; margin-left:23px; border:1px solid #fff; background:#ffb67b; border-radius:30px; font-size:1.3rem; color:#fff; padding:2px 20px; margin-bottom:9px}
+.switchbute .content .item{ float:left; margin-left:23px; border:1px solid #fff; background:#ffb67b; border-radius:30px; font-size:1.3rem; color:#fff; padding:2px 20px; margin-bottom:9px; cursor:pointer}
 .filter_warp{ height:42px; border:solid #fff; border-width:1px 0; background:rgba(255,255,255,0.4)}
 .filter{ box-shadow:inset 0 0 12px #fff; background:#ffecd1; height:40px; line-height:40px; margin-top:1px; overflow:hidden; position:relative}
 .filter_inner{ position:absolute}
@@ -45,8 +45,8 @@ body{ background:#f9ddd3 url(../images/data-qjnn-bg.jpg) no-repeat fixed; backgr
 .clothes_wrap .line_bottom{ height:14px; bottom:-15px; left:0; right:0; border-bottom-width:1px}
 .clothes_wrap .line_left{ width:15px; top:0; bottom:0; left:-16px; border-left-width:1px}
 /*衣服列表*/
-.clothes{ overflow:hidden; margin-left:-16px}
-.clothes .item{ float:left; border:1px solid #ffb67b; background:#ffebe7; border-radius:5px; display:table; table-layout:fixed; margin:0 0 10px 16px; width:111px; cursor:pointer}
+.clothes{ overflow-y:auto; margin-left:-16px}
+.clothes .item{ float:left; border:1px solid #ffb67b; background:#ffebe7; border-radius:5px; display:table; table-layout:fixed; margin:0 0 10px 16px; width:111px; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 @media screen and (min-width:320px){
 	.clothes .item{ width:131px}
 }
