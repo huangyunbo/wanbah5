@@ -61,9 +61,9 @@ body{ background:#f9ddd3 url(../images/data-qjnn-bg.jpg) no-repeat fixed; backgr
 }
 .clothes .item .l{ display:table-cell; padding-top:3px}
 .clothes .item .l .t{ padding:0 6px; position:relative}
-.clothes .item .l .t div{ color:#454545; font-size:1.2rem; text-align:center; width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; border-bottom:1px solid #ce7b39;}
+.clothes .item .l .t div{ color:#454545; font-size:1.2rem; text-align:center; width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; border-bottom:1px solid #ce7b39}
 .clothes .item .l .t_l,.clothes .item .l .t_r,.clothes .item .l .t_m{ background:url(../images/data-qjnn-tmp.png) 0 -197px no-repeat; background-size:320px; width:3px; height:4px; position:absolute; left:4px; bottom:0}
-.clothes .item .l .t_r{ left:auto; right:4px; transform:rotateY(180deg); -webkit-transform:rotateY(180deg)}
+.clothes .item .l .t_r{ left:auto; right:4px; background-position:-10px -197px}
 .clothes .item .l .t_m{ left:50%; bottom:-1px; background-position:-5px -197px; width:4px}
 .clothes .item .l .b{ font-size:1rem; display:table; width:100%; padding:3px 0}
 .clothes .item .l .b div{ width:50%; display:table-cell; text-align:center}
