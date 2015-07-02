@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* 炉石传说 2015.7.2 */
+
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
+html{font:62.5%/1.5 "Microsoft YaHei",sans-serif}
+img{border:none;max-width:100%;vertical-align:top}
+h1,h2,h3,h4,h5,h6{font-weight:normal}
+input,select,textarea{font-size:100%;vertical-align:baseline}
+ol,ul{list-style:none}
+textarea{overflow:auto;vertical-align:top;resize:vertical}
+table{border-collapse:collapse;border-spacing:0}
+em,i,code,cite,address,th{font-style:normal}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+a{ text-decoration:none}
+
+body{ background:#ead0a2 url(../images/lushichuanshuo/data-bg.jpg) no-repeat center bottom; background-size:cover}
+.header{ height:49px; background:#845832; position:relative; border-bottom:1px solid #dba542}
+.header .back{}
+.header h1{ line-height:50px; font-size:1.8rem; text-align:center; color:#fff}
+.header .more{ position:absolute; right:7px; top:17px; font-size:1.2rem; color:#fde69f}
+/*数据库*/
+.data_type{ width:100%; background:#ffe697}
+.data_type ul{overflow:hidden}
+.data_type li{ width:20%; float:left; border:solid #ffbc3f; border-width:0 1px 1px 0; box-sizing:border-box; padding:5px 15px; text-align:center; cursor:pointer}
+.data_type li.on{ background:#7d6438}
+.data_type li img{ display:inline-block; border-radius:70px}
+.data_type li.on img{ box-shadow:0 0 10px #feffa3}
+.data_card{ width:100%}
+.data_card ul{ overflow:hidden}
+.data_card li{ float:left; width:33.33%; text-align:center; cursor:pointer}
+.data_card li div{ margin:10px 10px 2px}
+.data_card li p{ font-size:1.2rem; color:#322b27}
+.data_fei{ width:100%; position:fixed; bottom:0; left:0; height:34px; background:rgba(29,20,4,0.6); border-top:1px solid #ffd957; display:table}
+.data_fei .item{ width:11.11%; display:table-cell; text-align:center; position:relative; overflow:hidden; cursor:pointer}
+.data_fei .item i{ background:url(../images/lushichuanshuo/data-fei.png) no-repeat; background-size:320px; height:30px; width:30px; display:block; margin:2px auto 0}
+.data_fei .item i.item_0{ background-position:-30px 0}
+.data_fei .item i.item_1{ background-position:-60px 0}
+.data_fei .item i.item_2{ background-position:-90px 0}
+.data_fei .item i.item_3{ background-position:-120px 0}
+.data_fei .item i.item_4{ background-position:-150px 0}
+.data_fei .item i.item_5{ background-position:-180px 0}
+.data_fei .item i.item_6{ background-position:-210px 0}
+.data_fei .item i.item_7{ background-position:-240px 0}
+.data_fei .item.on span{ background:url(../images/lushichuanshuo/data-fei.png) -270px 0px no-repeat; background-size:320px; height:40px; width:40px; position:absolute; margin:-5px 0 0 -18px}
+@media screen and (max-height:414px){
+	.data_type li img{ width:20px}
+}
+
