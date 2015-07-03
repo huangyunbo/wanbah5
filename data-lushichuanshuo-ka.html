@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>炉石传说-卡组模拟器</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/lushichuanshuo.css">
+</head>
+
+<body class="ka_body">
+<div class="header">
+	<a href="javascript:;" class="back"></a>
+    <h1>卡牌列表</h1>
+</div><!--/header-->
+
+<div class="ka_road hide">
+	<div class="item">创建卡组</div>
+    <div class="item">查看卡组</div>
+    <div class="item">热门卡组</div>
+</div><!--/ka_road-->
+
+<div class="ka_switch hide">
+	<div class="item"><i></i>德鲁伊</div>
+    <div class="item"><i class="lieren"></i>猎人</div>
+    <div class="item"><i class="fashi"></i>法师</div>
+    <div class="item"><i class="shengqishi"></i>圣骑士</div>
+    <div class="item"><i class="mushi"></i>牧师</div>
+    <div class="item"><i class="qianxingzhe"></i>潜行者</div>
+    <div class="item"><i class="saman"></i>萨满</div>
+    <div class="item"><i class="shushi"></i>牧师</div>
+    <div class="item"><i class="zhanshi"></i>战士</div>
+</div><!--/ka_switch-->
+
+
+
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/easydialog.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var win_h = $(window).height(),
+	body_h = $("body").height();
+	if(win_h > body_h){
+		$(".ka_body").height(win_h);
+	}
+	
+/*
+a:卡牌组类别
+b:卡牌id
+c:卡牌名称
+d:费法力
+e:图片地址
+f:稀有度
+g:构筑评分
+h:竞技场评分
+i:画师语录
+*/
+	var data_cards = [{a:"中立",data:[{b:123,c:"恐怖的奴隶主",d:1,e:"79_7523_thumb.png",f:1,g:9,h:6,i:"有些德鲁伊做梦的时候都会被陌生人的“给我个激活！”的喊叫声惊醒"},{}]}];
+
+
+});
+
+</script>
+</body>
+</html>
