@@ -23,16 +23,25 @@ body{ background:#ead0a2 url(../images/lushichuanshuo/data-bg.jpg) no-repeat cen
 /*数据库*/
 .data_type{ width:100%; background:#ffe697}
 .data_type ul{overflow:hidden}
-.data_type li{ width:20%; float:left; border:solid #ffbc3f; border-width:0 1px 1px 0; box-sizing:border-box; padding:5px 15px; text-align:center; cursor:pointer}
+.data_type li{ width:20%; float:left; border:solid #ffbc3f; border-width:0 1px 1px 0; box-sizing:border-box; text-align:center; cursor:pointer}
 .data_type li.on{ background:#7d6438}
-.data_type li img{ display:inline-block; border-radius:70px}
-.data_type li.on img{ box-shadow:0 0 10px #feffa3}
+.data_type li i{ background:url(../images/lushichuanshuo/data-type.jpg) no-repeat; background-size:175px; width:35px; height:35px; display:block; margin:4px auto; border-radius:70px}
+.data_type li i.deluyi{ background-position:-35px 0}
+.data_type li i.lieren{ background-position:-70px 0}
+.data_type li i.fashi{ background-position:-105px 0}
+.data_type li i.shengqishi{ background-position:-140px 0}
+.data_type li i.mushi{ background-position:0 -35px}
+.data_type li i.qianxingzhe{ background-position:-35px -35px}
+.data_type li i.saman{ background-position:-70px -35px}
+.data_type li i.shushi{ background-position:-105px -35px}
+.data_type li i.zhanshi{ background-position:-140px -35px}
+.data_type li.on i{ box-shadow:0 0 10px #feffa3}
 .data_card{ width:100%}
 .data_card ul{ overflow:hidden}
 .data_card li{ float:left; width:33.33%; text-align:center; cursor:pointer}
 .data_card li div{ margin:10px 10px 2px}
 .data_card li p{ font-size:1.2rem; color:#322b27}
-.data_fei{ width:100%; position:fixed; bottom:0; left:0; height:34px; background:rgba(29,20,4,0.6); border-top:1px solid #ffd957; display:table}
+.data_fei{ width:100%; position:fixed; bottom:0; left:0; height:34px; background:rgba(29,20,4,0.6); border-top:1px solid #ffd957; display:table; z-index:10}
 .data_fei .item{ width:11.11%; display:table-cell; text-align:center; position:relative; overflow:hidden; cursor:pointer}
 .data_fei .item i{ background:url(../images/lushichuanshuo/data-fei.png) no-repeat; background-size:320px; height:30px; width:30px; display:block; margin:2px auto 0}
 .data_fei .item i.item_0{ background-position:-30px 0}
@@ -44,7 +53,35 @@ body{ background:#ead0a2 url(../images/lushichuanshuo/data-bg.jpg) no-repeat cen
 .data_fei .item i.item_6{ background-position:-210px 0}
 .data_fei .item i.item_7{ background-position:-240px 0}
 .data_fei .item.on span{ background:url(../images/lushichuanshuo/data-fei.png) -270px 0px no-repeat; background-size:320px; height:40px; width:40px; position:absolute; margin:-5px 0 0 -18px}
-@media screen and (max-height:414px){
-	.data_type li img{ width:20px}
-}
+.dialogCard{ background:rgba(0,0,0,0.9); color:#fff; width:100%; height:100%; z-index:9999; position:fixed; top:0; left:0; overflow-y:auto}
+.dialogCard .pic{ padding:10px 70px 5px; text-align:center}
+.dialogCard .zy{ background:url(../images/lushichuanshuo/data-zhiye.png) no-repeat; background-size:189px; width:189px; height:50px; margin:0 auto}
+.dialogCard .zy_fashi{ background-position:0 -150px}
+.dialogCard .line1,.dialogCard .line2,.dialogCard .line3{ margin:0 18px; border-bottom:1px solid #71706e; padding:10px 0; overflow:hidden}
+.dialogCard .line1 .name{ font-size:1.8rem; float:left; margin-right:20px}
+.dialogCard .line1 .lev{ color:#fc7508; font-size:1.2rem; margin-top:5px; color:#fff}
+.dialogCard .line1 .lev i{background:url(../images/lushichuanshuo/data-fei.png) no-repeat; background-size:320px; height:15px; width:12px; display:inline-block; vertical-align:-3px; margin-right:3px}
+.dialogCard .line1 .lev_free i{ background:none}
+.dialogCard .line1 .lev_white i{ background-position:0 -40px}
+.dialogCard .line1 .lev_blue{ color:#277dff}
+.dialogCard .line1 .lev_blue i{ background-position:-12px -40px}
+.dialogCard .line1 .lev_purple{ color:#8439d2}
+.dialogCard .line1 .lev_purple i{ background-position:-24px -40px}
+.dialogCard .line1 .lev_orange{ color:#fc7508}
+.dialogCard .line1 .lev_orange i{ background-position:-36px -40px}
+.dialogCard .line2,.dialogCard .line3{ font-size:1.5rem}
+.dialogCard .line2 .k,.dialogCard .line3 .k{ color:#ffd957; padding-right:10px}
+.dialogCard .line2 .l{ float:left}
+.dialogCard .line2 .r{ float:right}
+.dialogCard .line3{ border:0}
+
+
+
+
+
+
+
+
+
+
 
