@@ -126,14 +126,23 @@ a{ text-decoration:none}
 .ka_add .aside_bottom{ position:absolute; bottom:0; text-align:center; width:100%; z-index:3}
 .ka_add .aside_bottom div{ color:#fff; font-size:1.6rem}
 .ka_add .aside_bottom a{ background:url(../images/lushichuanshuo/ka-btn.png) -4px -73px no-repeat; background-size:220px; width:106px; height:44px; display:block}
+
 .ka_add .main{ margin-right:115px}
-
-
-
-
-
-
-
+.ka_add .main .head{ height:30px; padding-top:6px; overflow:hidden; display:table; width:100%}
+.ka_add .main .head .td{ display:table-cell; text-align:center}
+.ka_add .main .head .group{ font-size:1.2rem; display:inline-block}
+.ka_add .main .head .group .item{ float:left; color:#ffd957}
+.ka_add .main .head .group_change .item{ border:1px solid #ffd957}
+.ka_add .main .head .group_change .item:first-child{ border-radius:30px 0 0 30px; padding:1px 3px 1px 7px}
+.ka_add .main .head .group_change .item:last-child{ border-radius:0 30px 30px 0; padding:1px 7px 1px 3px}
+.ka_add .main .head .group_change .on{ background:#ffd957; color:#2f2a21}
+.ka_add .main .head .group_select{ padding:1px 18px 1px 9px; position:relative; border:1px solid #ffd957; border-radius:30px}
+.ka_add .main .head .group_select .arrow{ border-width:4px; border-style:solid dashed dashed; border-color:#ffd957 transparent transparent; position:absolute; top:9px; right:5px}
+.ka_add .maincard{ overflow-y:auto}
+.ka_add .maincard .item{ float:left; width:33.33%; color:#fde69f; text-align:center; position:relative}
+.ka_add .maincard .zoom{ background:url(../images/lushichuanshuo/ka-number.png) -200px -40px no-repeat; width:18px; height:18px; background-size:220px; position:absolute; top:5px; right:5px}
+.ka_add .maincard .item .pic{ margin:5px}
+.ka_add .maincard .item p{ font-size:1.2rem; height:36px; line-height:1.2}
 
 
 

@@ -183,21 +183,82 @@
     
 	<div class="main">
     	<div class="head">
-        	<div class="group group_change">
-            	<div class="item">职业</div>
-                <div class="item">中立</div>
+        	<div class="td">
+            	<div class="group group_change">
+                    <div class="item on">职业</div>
+                    <div class="item">中立</div>
+                </div>
             </div>
-            <div class="group group_select">
-            	 稀有度
-                 <i></i>
+            <div class="td">
+            	<div class="group group_select">
+                    <div class="item">稀有度</div>
+                 	<i class="arrow"></i>
+                </div>
             </div>
-            <div class="group group_select">
-            	 费用
-                 <i></i>
+            <div class="td">
+            	<div class="group group_select">
+					<div class="item">费用</div>
+                 	<i class="arrow"></i>
+                </div>
             </div>
         </div>
-        <div class="concent">
+        <div class="maincard" id="maincard">
         	<div class="item">
+            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+                <div class="zoom"></div>
+                <p>恐怖的奴隶主恐怖</p>
+            </div>
+            <div class="item">
+            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+                <div class="zoom"></div>
+                <p>恐怖的奴隶主</p>
+            </div>
+            <div class="item">
+            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+                <div class="zoom"></div>
+                <p>恐怖的奴隶主</p>
+            </div>
+            <div class="item">
+            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+                <div class="zoom"></div>
+                <p>恐怖的奴隶主</p>
+            </div>
+            <div class="item">
+            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+                <div class="zoom"></div>
+                <p>恐怖的奴隶主恐怖</p>
+            </div>
+            <div class="item">
+            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+                <div class="zoom"></div>
+                <p>恐怖的奴隶主</p>
+            </div>
+            <div class="item">
+            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+                <div class="zoom"></div>
+                <p>恐怖的奴隶主</p>
+            </div>
+            <div class="item">
+            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+                <div class="zoom"></div>
+                <p>恐怖的奴隶主</p>
+            </div>
+            <div class="item">
+            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+                <div class="zoom"></div>
+                <p>恐怖的奴隶主恐怖</p>
+            </div>
+            <div class="item">
+            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+                <div class="zoom"></div>
+                <p>恐怖的奴隶主</p>
+            </div>
+            <div class="item">
+            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+                <div class="zoom"></div>
+                <p>恐怖的奴隶主</p>
+            </div>
+            <div class="item">
             	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
                 <div class="zoom"></div>
                 <p>恐怖的奴隶主</p>
@@ -217,7 +278,10 @@ $(function(){
 	if(win_h > body_h){
 		$(".ka_body").height(win_h);
 	}
+	$("#maincard").height(win_h-86);
 	
+	
+
 /*
 a:卡牌组类别
 b:卡牌id
@@ -228,8 +292,9 @@ f:稀有度
 g:构筑评分
 h:竞技场评分
 i:画师语录
+var data_cards = [{a:"中立",data:[{b:123,c:"恐怖的奴隶主",d:1,e:"79_7523_thumb.png",f:1,g:9,h:6,i:"有些德鲁伊做梦的时候都会被陌生人的“给我个激活！”的喊叫声惊醒"},{}]}];
 */
-	var data_cards = [{a:"中立",data:[{b:123,c:"恐怖的奴隶主",d:1,e:"79_7523_thumb.png",f:1,g:9,h:6,i:"有些德鲁伊做梦的时候都会被陌生人的“给我个激活！”的喊叫声惊醒"},{}]}];
+	
 
 
 });
