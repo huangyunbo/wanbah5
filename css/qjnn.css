@@ -16,6 +16,9 @@ em,i,code,cite,address,th{font-style:normal}
 a{ text-decoration:none}
 
 body{ background:#f9ddd3 url(../images/data-qjnn-bg.jpg) no-repeat fixed; background-size:cover}
+.header{ height:44px; border-bottom:1px solid #dc7fb7; background:#f098b1; position:relative}
+.header h1{ font-size:1.8rem; line-height:44px; color:#fff; text-align:center}
+.header .wblogo_index{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; transform:rotate(45deg); -webkit-transform:rotate(45deg); -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .switchboard{ height:47px; border-bottom:1px solid #fff; background:rgba(179,159,165,0.8); display:table; width:100%}
 .switchboard .l,.switchboard .r{ width:50%; height:47px; display:table-cell; text-align:center; position:relative}
 .switchboard .l i,.switchboard .r i{ background:url(../images/data-qjnn-tmp.png) -5px -12px no-repeat; width:100%; height:47px; background-size:320px; position:absolute; left:0; top:0}
@@ -46,7 +49,7 @@ body{ background:#f9ddd3 url(../images/data-qjnn-bg.jpg) no-repeat fixed; backgr
 .clothes_wrap .line_left{ width:15px; top:0; bottom:0; left:-16px; border-left-width:1px}
 /*衣服列表*/
 .clothes{ overflow-y:auto; margin-left:-16px}
-.clothes .item{ float:left; border:1px solid #ffb67b; background:#ffebe7; border-radius:5px; display:table; table-layout:fixed; margin:0 0 10px 16px; width:111px; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.clothes .item{ float:left; border:1px solid #ff8b88; background:#ffebe7; border-radius:5px; margin:0 0 10px 16px; width:111px; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 @media screen and (min-width:320px){
 	.clothes .item{ width:131px}
 }
@@ -59,16 +62,21 @@ body{ background:#f9ddd3 url(../images/data-qjnn-bg.jpg) no-repeat fixed; backgr
 @media screen and (min-width:414px){
 	.clothes .item{ width:178px}
 }
-.clothes .item .l{ display:table-cell; padding-top:3px}
-.clothes .item .l .t{ padding:0 6px; position:relative}
-.clothes .item .l .t div{ color:#454545; font-size:1.2rem; text-align:center; width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; border-bottom:1px solid #ce7b39}
-.clothes .item .l .t_l,.clothes .item .l .t_r,.clothes .item .l .t_m{ background:url(../images/data-qjnn-tmp.png) 0 -197px no-repeat; background-size:320px; width:3px; height:4px; position:absolute; left:4px; bottom:0}
-.clothes .item .l .t_r{ left:auto; right:4px; background-position:-10px -197px}
-.clothes .item .l .t_m{ left:50%; bottom:-1px; background-position:-5px -197px; width:4px}
-.clothes .item .l .b{ font-size:1rem; display:table; width:100%; padding:3px 0}
-.clothes .item .l .b div{ width:50%; display:table-cell; text-align:center}
-.clothes .item .l .b span{ color:#456395; width:45px; height:19px; line-height:19px; text-align:center; background:url(../images/data-qjnn-tmp.png) 0 -202px no-repeat; background-size:320px; display:inline-block}
-.clothes .item .r{ width:30px; display:table-cell; background:#ffb67b; border-radius:4px; color:#fff; font-size:2rem; vertical-align:middle; text-align:center}
+@media screen and (min-width:768px){
+	.clothes{ margin-left:-20px}
+	.clothes .item{ width:200px; margin-left:40px}
+}
+.clothes .item .t{ padding:3px 6px 0; position:relative}
+.clothes .item .t div{ color:#454545; font-size:1.2rem; text-align:center; width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; border-bottom:1px solid #ce7b39}
+.clothes .item .t_l,.clothes .item .t_r,.clothes .item .t_m{ background:url(../images/data-qjnn-tmp.png) 0 -197px no-repeat; background-size:320px; width:3px; height:4px; position:absolute; left:4px; bottom:0}
+.clothes .item .t_r{ left:auto; right:4px; background-position:-10px -197px}
+.clothes .item .t_m{ left:50%; bottom:-1px; background-position:-5px -197px; width:4px}
+.clothes .item .m{ font-size:1rem; display:table; width:100%; padding:3px 0}
+.clothes .item .m div{ width:50%; display:table-cell; text-align:center}
+.clothes .item .m span{ color:#456395; width:45px; height:19px; line-height:19px; text-align:center; background:url(../images/data-qjnn-tmp.png) 0 -202px no-repeat; background-size:320px; display:inline-block}
+.clothes .item .b{ background:#ff8b88; border-radius:0 0 4px 4px; color:#fff; text-align:center}
+.clothes .item .b span{ font-size:1.8rem; font-family:Arial}
+#loadmore{ font-size:1.5rem; padding:0 5px; margin-left:16px; text-align:center; cursor:pointer}
 /*五属性弹窗*/
 .dialog_attr{ background:#fff; border-radius:10px; width:260px; padding:18px 0; position:relative; display:none}
 @media screen and (min-width:320px){
