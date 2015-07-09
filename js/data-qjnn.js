@@ -1,5 +1,5 @@
 (function(window){
-	var QjnnFun = function(option){
+	var QjnnTmp = function(option){
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.dataclothes = option.data_clothes;
@@ -9,7 +9,7 @@
 		this.init();
 	}
 	
-	QjnnFun.prototype = {
+	QjnnTmp.prototype = {
 		printFilterclothes: function(){//打印横向滑动选择 头发/连衣裙/外套
 			var _html = '',
 			_dataclothes = this.dataclothes,
@@ -372,7 +372,7 @@
 		}
 	}
 	
-	window.QjnnFun = QjnnFun;
+	window.QjnnTmp = QjnnTmp;
 })(window);
 /*
 1:简约,2:华丽,3:可爱,4:成熟,5:活泼,6:优雅,7:清纯,8:性感,9:清凉,10:保暖
