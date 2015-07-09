@@ -19,7 +19,7 @@ a{ text-decoration:none}
 body{ background:#f9ddd3 url(../images/qjnn/pass-bg.jpg) no-repeat fixed; background-size:cover}
 .header{ height:44px; border-bottom:1px solid #dc7fb7; background:#f098b1; position:fixed; width:100%; top:0; left:0; z-index:10}
 .header h1{ font-size:1.8rem; line-height:44px; color:#fff; text-align:center}
-.header .wblogo_index{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; transform:rotate(45deg); -webkit-transform:rotate(45deg); -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.header .wblogo_index{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; cursor:pointer; transform:rotate(45deg); -webkit-transform:rotate(45deg); -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .pass{ overflow:hidden; margin:45px 0 40px}
 .pass .item{ width:50%; float:left; text-align:center; position:relative; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .pass .item .inner{ margin:10px; position:relative; display:inline-block}

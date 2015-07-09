@@ -5,7 +5,7 @@
 		this.dataclothes = option.data_clothes;
 		this.dataarena = option.data_arena;
 		this.o = {type:1,clothestype:0,zhuti:"",label:["jianyue","huopo","keai","qingchun","baonuan"]};
-		
+
 		this.init();
 	}
 	
@@ -192,7 +192,8 @@
 		},
 		showclothes: function(clothes_id){//打开单个衣服展示详情
 			var that = this,
-			_dataclothes = that.dataclothes[that.o.clothestype].data;
+			_clothestype = that.o.clothestype,
+			_dataclothes = that.dataclothes[_clothestype].data;
 			for(var i=0; i<_dataclothes.length; i++){
 				if(_dataclothes[i].id == clothes_id){
 					_dataclothes = _dataclothes[i];
@@ -202,15 +203,122 @@
 				var k,
 				r = "",
 				_html = "";
-				for(k in _dataclothes.wu){
-					switch(_dataclothes.wu[k]){
-						case 3:r="B";break;
-						case 4:r="A";break;
-						case 5:r="S";break;
-						case 6:r="SS";break;
-						default:r="C";
-					}
-					_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
+				
+				switch(_clothestype){
+					case 0:
+						for(k in _dataclothes.wu){
+							switch(_dataclothes.wu[k]){
+								case 650:r="B";break;
+								case 825:r="A";break;
+								case 1050:r="S";break;
+								case 1250:r="SS";break;
+								default:r="C";
+							}
+							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
+						}
+						break;
+					case 1:
+						for(k in _dataclothes.wu){
+							switch(_dataclothes.wu[k]){
+								case 2750:r="B";break;
+								case 3400:r="A";break;
+								case 4000:r="S";break;
+								case 5100:r="SS";break;
+								default:r="C";
+							}
+							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
+						}
+						break;
+					case 2:
+						for(k in _dataclothes.wu){
+							switch(_dataclothes.wu[k]){
+								case 255:r="B";break;
+								case 330:r="A";break;
+								case 410:r="S";break;
+								case 505:r="SS";break;
+								default:r="C";
+							}
+							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
+						}
+						break;
+					case 3:
+						for(k in _dataclothes.wu){
+							switch(_dataclothes.wu[k]){
+								case 1325:r="B";break;
+								case 1550:r="A";break;
+								case 1925:r="S";break;
+								case 2725:r="SS";break;
+								default:r="C";
+							}
+							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
+						}
+						break;
+					case 4:
+						for(k in _dataclothes.wu){
+							switch(_dataclothes.wu[k]){
+								case 1325:r="B";break;
+								case 1550:r="A";break;
+								case 1925:r="S";break;
+								case 2725:r="SS";break;
+								default:r="C";
+							}
+							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
+						}
+						break;
+					case 5:
+						for(k in _dataclothes.wu){
+							switch(_dataclothes.wu[k]){
+								case 420:r="B";break;
+								case 495:r="A";break;
+								case 610:r="S";break;
+								case 860:r="SS";break;
+								default:r="C";
+							}
+							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
+						}
+						break;
+					case 6:
+						for(k in _dataclothes.wu){
+							switch(_dataclothes.wu[k]){
+								case 555:r="B";break;
+								case 600:r="A";break;
+								case 860:r="S";break;
+								case 1000:r="SS";break;
+								default:r="C";
+							}
+							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
+						}
+						break;
+					case 7:
+					case 8:
+					case 9:
+					case 10:
+					case 11:
+					case 12:
+					case 13:
+						for(k in _dataclothes.wu){
+							switch(_dataclothes.wu[k]){
+								case 250:r="B";break;
+								case 310:r="A";break;
+								case 410:r="S";break;
+								case 485:r="SS";break;
+								default:r="C";
+							}
+							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
+						}
+						break;
+					case 14:
+						for(k in _dataclothes.wu){
+							switch(_dataclothes.wu[k]){
+								case 120:r="B";break;
+								case 130:r="A";break;
+								case 190:r="S";break;
+								case 265:r="SS";break;
+								default:r="C";
+							}
+							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
+						}
+						break;
 				}
 				return _html;
 			}
@@ -266,7 +374,7 @@
 			var that = this;
 			//选中横向滑动衣服类别
 			$("#filter .item").click(function(){
-				that.o.clothestype = $(this).attr("data-type");
+				that.o.clothestype = Number($(this).attr("data-type"));
 				$(this).addClass("on").siblings().removeClass("on");
 				that.selectedbute();
 			});
