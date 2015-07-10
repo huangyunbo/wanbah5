@@ -16,6 +16,7 @@
 			var _datapass = this.datapass[this.o.chapter];
 			_html = '';
 			
+			$("#header").removeClass("hide");//ios专用
 			$("#pass").addClass("hide");
 			$("#passdetail").addClass("hide");
 			$("#passlist").removeClass("hide");
@@ -56,11 +57,12 @@
 				var _id = Number($(this).attr("data-id"));
 				that.showpassdetail(_id);
 			});
-			//android顶部返回按钮
+			
 			$("#header").on("click", ".wblogo_index", function(){
 				if(that.o.crumbs == 0){
-					//
+					//window.jstojava.close();//android顶部返回按钮
 				}else if(that.o.crumbs == 1){
+					$("#header").addClass("hide");//ios专用
 					that.showpass();
 				}else if(that.o.crumbs == 2){
 					that.showpasslist();
