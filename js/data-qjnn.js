@@ -112,14 +112,60 @@
 			}
 			that.printClothes();
 		},
+		caidan: function(){//彩蛋
+			var _html = '',
+			caidan_id = arguments[0],
+			day_id = [[8161,8651,8843,8982,9229],[8402,9371,9504,10310,10298],[9860,10300,9809,9844,8269],[8251,8472,10242,8992,9241]],
+			myDate = new Date(),
+			myDate = myDate.valueOf(),
+			
+			day0 = new Date(Date.UTC(2015,6,11,12,0,0)),
+			day0 = day0.valueOf();
+			
+			day1 = new Date(Date.UTC(2015,6,12,12,0,0)),
+			day1 = day1.valueOf(),
+			
+			day2 = new Date(Date.UTC(2015,6,13,12,0,0)),
+			day2 = day2.valueOf(),
+			
+			day3 = new Date(Date.UTC(2015,6,14,12,0,0)),
+			day3 = day3.valueOf(),
+			
+			day4 = new Date(Date.UTC(2015,6,15,12,0,0)),
+			day4 = day4.valueOf();
+			
+			function isDay(){
+				var _day = arguments[0],
+				_id = arguments[1];
+				for(var i=0; i<day_id[_day].length; i++){
+					if(day_id[_day][i] == _id){
+						return true;
+					}
+				}
+				return false;
+			}
+
+			switch(true){
+				case (myDate >= day0 && myDate < day1):
+					return _html = isDay(0,caidan_id) == true ? '<i class="caidan"></i>' : '';
+				case (myDate >= day1 && myDate < day2):
+					return _html = isDay(1,caidan_id) == true ? '<i class="caidan"></i>' : '';
+				case (myDate >= day2 && myDate < day3):
+					return _html = isDay(2,caidan_id) == true ? '<i class="caidan"></i>' : '';
+				case (myDate >= day3 && myDate < day4):
+					return _html = isDay(3,caidan_id) == true ? '<i class="caidan"></i>' : '';
+			}
+			
+			return _html;
+		},
 		printClothes: function(){//打印衣服组
 			var pagesize = 30,
 			pagecurrent = i = arguments[0] != undefined ? arguments[0] : 0,
 			_dataclothes = this.dataclothes[this.o.clothestype].data,
 			len = _dataclothes.length,
 			totalpage = Math.floor(len / pagesize),
-			_html = '';			
-
+			_html = '';
+			
 			if(Math.floor(i / pagesize) == totalpage){
 				for(; i<len; i++){
 					_html += '<div class="item" data-id="'+_dataclothes[i].id+'">'+
@@ -134,6 +180,7 @@
 									'<div><span>'+_dataclothes[i].high2+'</span></div>'+
 								'</div>'+
 								'<div class="b">估算分:<span>'+_dataclothes[i].total+'</span></div>'+
+								this.caidan(_dataclothes[i].id)+
 							'</div>';
 				}
 			}else{
@@ -150,6 +197,7 @@
 									'<div><span>'+_dataclothes[i].high2+'</span></div>'+
 								'</div>'+
 								'<div class="b">估算分:<span>'+_dataclothes[i].total+'</span></div>'+
+								this.caidan(_dataclothes[i].id)+
 							'</div>';
 				}
 				_html += '<div class="clear"></div><div id="loadmore" data-pagecurrent="'+i+'">加载更多</div>';

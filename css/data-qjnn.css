@@ -49,7 +49,7 @@ body{ background:#f9ddd3 url(../images/qjnn/data-tmp-bg.jpg) no-repeat fixed; ba
 .clothes_wrap .line_left{ width:15px; top:0; bottom:0; left:-16px; border-left-width:1px}
 /*衣服列表*/
 .clothes{ overflow-y:auto; margin-left:-16px}
-.clothes .item{ float:left; border:1px solid #ff8b88; background:#ffebe7; border-radius:5px; margin:0 0 10px 16px; width:111px; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.clothes .item{ float:left; border:1px solid #ff8b88; background:#ffebe7; border-radius:5px; margin:0 0 10px 16px; width:111px; position:relative; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 @media screen and (min-width:320px){
 	.clothes .item{ width:131px}
 }
@@ -77,6 +77,8 @@ body{ background:#f9ddd3 url(../images/qjnn/data-tmp-bg.jpg) no-repeat fixed; ba
 .clothes .item .b{ background:#ff8b88; border-radius:0 0 4px 4px; color:#fff; text-align:center}
 .clothes .item .b span{ font-size:1.8rem; font-family:Arial}
 #loadmore{ font-size:1.5rem; padding:0 5px; margin-left:16px; text-align:center; cursor:pointer}
+/*彩蛋*/
+.caidan{ width:29px; height:46px; background:url(../images/qjnn/caidan.png) no-repeat; background-size:29px; position:absolute; right:0; bottom:0}
 /*五属性弹窗*/
 .dialog_attr{ background:#fff; border-radius:10px; width:260px; padding:18px 0; position:relative; display:none}
 @media screen and (min-width:320px){
