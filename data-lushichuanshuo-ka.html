@@ -10,8 +10,9 @@
 
 <body class="ka_body">
 <div class="header">
-	<a href="javascript:;" class="back"></a>
+	<a href="javascript:;" class="back"><i></i>返回</a>
     <h1>卡牌列表</h1>
+    <div class="ka_edit">编辑</div>
 </div><!--/header-->
 
 <div class="ka_road hide">
@@ -32,11 +33,11 @@
     <div class="item"><i class="zhanshi"></i>战士</div>
 </div><!--/ka_switch-->
 
-<div class="ka_add">
+<div class="ka_add hide">
 	<div class="aside">
     	<div class="aside_inner">
             <div class="ka_mycard">
-                <div class="box deluyi">
+                <div class="box zhanshi">
                     <i class="zhiye"></i>
                     <i class="mask"></i>
                     <input placeholder="卡组名字" class="text">
@@ -184,88 +185,220 @@
 	<div class="main">
     	<div class="head">
         	<div class="td">
-            	<div class="group group_change">
+            	<div class="group group_change_btn">
                     <div class="item on">职业</div>
                     <div class="item">中立</div>
                 </div>
             </div>
             <div class="td">
-            	<div class="group group_select">
+            	<div class="group group_select_btn">
                     <div class="item">稀有度</div>
                  	<i class="arrow"></i>
                 </div>
+                <ul class="group_select" id="selectul">
+                    <li data-type="">史诗级</li>
+                    <li data-type="">传说级</li>
+                    <li data-type="">稀有级</li>
+                    <li data-type="">免费级</li>
+                </ul>
             </div>
             <div class="td">
-            	<div class="group group_select">
+            	<div class="group group_select_btn">
 					<div class="item">费用</div>
                  	<i class="arrow"></i>
                 </div>
+                <ul class="group_select" id="selectul">
+                    <li data-type="">所有</li>
+                    <li data-type="">0~2费</li>
+                    <li data-type="">3~4费</li>
+                    <li data-type="">5~6费</li>
+                    <li data-type="">7费+</li>
+                </ul>
             </div>
         </div>
         <div class="maincard" id="maincard">
         	<div class="item">
-            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+            	<div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div>
                 <div class="zoom"></div>
                 <p>恐怖的奴隶主恐怖</p>
             </div>
             <div class="item">
-            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+            	<div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div>
                 <div class="zoom"></div>
                 <p>恐怖的奴隶主</p>
             </div>
             <div class="item">
-            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+            	<div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div>
                 <div class="zoom"></div>
                 <p>恐怖的奴隶主</p>
             </div>
             <div class="item">
-            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+            	<div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div>
                 <div class="zoom"></div>
                 <p>恐怖的奴隶主</p>
             </div>
             <div class="item">
-            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+            	<div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div>
                 <div class="zoom"></div>
                 <p>恐怖的奴隶主恐怖</p>
             </div>
             <div class="item">
-            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+            	<div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div>
                 <div class="zoom"></div>
                 <p>恐怖的奴隶主</p>
             </div>
             <div class="item">
-            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+            	<div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div>
                 <div class="zoom"></div>
                 <p>恐怖的奴隶主</p>
             </div>
             <div class="item">
-            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+            	<div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div>
                 <div class="zoom"></div>
                 <p>恐怖的奴隶主</p>
             </div>
             <div class="item">
-            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+            	<div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div>
                 <div class="zoom"></div>
                 <p>恐怖的奴隶主恐怖</p>
             </div>
             <div class="item">
-            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+            	<div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div>
                 <div class="zoom"></div>
                 <p>恐怖的奴隶主</p>
             </div>
             <div class="item">
-            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+            	<div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div>
                 <div class="zoom"></div>
                 <p>恐怖的奴隶主</p>
             </div>
             <div class="item">
-            	<div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+            	<div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div>
                 <div class="zoom"></div>
                 <p>恐怖的奴隶主</p>
             </div>
         </div>
     </div><!--/main-->
 </div><!--/ka_add-->
+
+<div class="ka_my hide">
+	<div class="ka_my_content">
+        <div class="ka_mycard">
+            <div class="box zhanshi">
+                <i class="zhiye"></i>
+                <i class="mask"></i>
+                <div class="text text_p">卡组名字卡组名字卡组名字</div>
+                <div class="share">分享</div>
+            </div>
+        </div>
+        <div class="ka_mycard">
+            <div class="box fashi">
+                <i class="zhiye"></i>
+                <i class="mask"></i>
+                <div class="text text_p">卡组名字</div>
+                <i class="del"></i>
+            </div>
+        </div>
+        <div class="ka_mycard">
+            <div class="box lieren">
+                <i class="zhiye"></i>
+                <i class="mask"></i>
+                <div class="text text_p">卡组名字</div>
+                <i class="del"></i>
+            </div>
+        </div>
+    </div>
+</div><!--/ka_my-->
+
+<div class="ka_mygroup">
+	<div class="c">
+        <div class="item">
+            <div class="inner">
+                <div class="num num_two"><em>10</em></div>
+                <span>管理者埃克索图斯</span>
+                <i></i>
+                <div class="pic" style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="inner">
+                <div class="num"><em>0</em></div>
+                <span>管理者埃克索图斯</span>
+                <i></i>
+                <div class="pic" style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="inner">
+                <div class="num"><em>3</em></div>
+                <span>管理者埃克索图斯</span>
+                <i></i>
+                <div class="pic" style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="inner">
+                <div class="num"><em>0</em></div>
+                <span>管理者埃克索图斯</span>
+                <i></i>
+                <div class="pic" style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="b">
+        <div class="count_wrap">
+            <div class="count">
+                <div class="title">卡牌/法力消耗值</div>
+                <ul class="list">
+                    <li>
+                        <div class="bar"><i style="height:50%"><code></code></i></div>
+                        <div class="num"><span>0</span><i></i></div>
+                    </li>
+                    <li>
+                        <div class="bar"><i style="height:20%"><code></code></i></div>
+                        <div class="num"><span>1</span><i></i></div>
+                    </li>
+                    <li>
+                        <div class="bar"><i><code></code></i></div>
+                        <div class="num"><span>2</span><i></i></div>
+                    </li>
+                    <li>
+                        <div class="bar"><i><code></code></i></div>
+                        <div class="num"><span>3</span><i></i></div>
+                    </li>
+                    <li>
+                        <div class="bar"><i><code></code></i></div>
+                        <div class="num"><span>4</span><i></i></div>
+                    </li>
+                    <li>
+                        <div class="bar"><i><code></code></i></div>
+                        <div class="num"><span>5</span><i></i></div>
+                    </li>
+                    <li>
+                        <div class="bar"><i><code></code></i></div>
+                        <div class="num"><span>6</span><i></i></div>
+                    </li>
+                    <li>
+                        <div class="bar"><i><code></code></i></div>
+                        <div class="num"><span>7+</span><i></i></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="more">
+            <div class="more_t">
+                <div class="logo"></div>
+                <div class="more_t_r">
+                    <div>最专业</div>
+                    炉石传说app攻略
+                </div>
+            </div>
+            <a class="download" id="download">点击下载</a>
+        </div>
+    </div>
+</div><!--/ka_mygroup-->
 
 
 
@@ -280,8 +413,11 @@ $(function(){
 	}
 	$("#maincard").height(win_h-86);
 	
+	//sessionStorage.setItem("good","http://www.baidu.com");
 	
 
+	
+	
 /*
 a:卡牌组类别
 b:卡牌id
