@@ -16,7 +16,7 @@
 </div><!--/header-->
 
 <div class="data_type">
-	<ul>
+	<ul id="data_type">
     	<li class="on"><i></i></li>
         <li><i class="deluyi"></i></li>
         <li><i class="lieren"></i></li>
@@ -31,21 +31,14 @@
 </div><!--/data_type-->
 
 <div class="data_card">
-	<ul>
-    	<li><div><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div><p>恐怖的奴隶主</p></li>
-        <li><div><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div><p>恐怖的奴隶主</p></li>
-        <li><div><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div><p>恐怖的奴隶主</p></li>
-        <li><div><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div><p>恐怖的奴隶主</p></li>
-        <li><div><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div><p>恐怖的奴隶主</p></li>
-        <li><div><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div><p>恐怖的奴隶主</p></li>
-        <li><div><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div><p>恐怖的奴隶主</p></li>
-        <li><div><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div><p>恐怖的奴隶主</p></li>
-        <li><div><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div><p>恐怖的奴隶主</p></li>
-        <li><div><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div><p>恐怖的奴隶主</p></li>
+	<ul id="data_card">
+    	<li data-id=""><div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div><p>恐怖的奴隶主</p></li>
+        <li data-id=""><div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div><p>恐怖的奴隶主</p></li>
+        <li data-id=""><div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div><p>恐怖的奴隶主</p></li>
     </ul>
 </div>
 
-<div class="data_fei">
+<div class="data_fei" id="data_fei">
     <div class="item on"><span></span><i></i></div>
     <div class="item"><span></span><i class="item_0"></i></div>
     <div class="item"><span></span><i class="item_1"></i></div>
@@ -57,9 +50,9 @@
     <div class="item"><span></span><i class="item_7"></i></div>
 </div>
 
-<div class="dialogCard" id="dialogCard">
+<div class="dialogCard hide" id="dialogCard">
     <div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
-    <div class="zy zy_fashi"></div>
+    <div class="zy fashi"></div>
     <div class="line1">
         <div class="name">黑翼技师</div>
         <div class="lev lev_orange"><i></i>免费级</div>
@@ -77,22 +70,11 @@
 
 
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="js/easydialog.min.js"></script>
+<script type="text/javascript" src="js/data-lushichuanshuo.js"></script>
+<script type="text/javascript" src="json/json-lushichuanshuo.js"></script>
 <script type="text/javascript">
 $(function(){
-/*
-a:卡牌组类别
-b:卡牌id
-c:卡牌名称
-d:费法力
-e:稀有度
-f:构筑评分
-g:竞技场评分
-h:画师语录
-*/
-	var data_cards = [{a:"中立",data:[{b:123,c:"恐怖的奴隶主",d:1,e:1,f:9,g:6,h:"有些德鲁伊做梦的时候都会被陌生人的“给我个激活！”的喊叫声惊醒"},{}]}];
-
-
+	var lscs = new Lscs(data_cards);
 });
 
 </script>
