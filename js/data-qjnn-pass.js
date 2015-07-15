@@ -60,9 +60,9 @@
 			
 			$("#header").on("click", ".wblogo_index", function(){
 				if(that.o.crumbs == 0){
-					//window.jstojava.close();//android顶部返回按钮
+					window.jstojava.close();//android专用，顶部返回按钮
 				}else if(that.o.crumbs == 1){
-					$("#header").addClass("hide");//ios专用
+					//$("#header").addClass("hide");//ios专用
 					that.showpass();
 				}else if(that.o.crumbs == 2){
 					that.showpasslist();
