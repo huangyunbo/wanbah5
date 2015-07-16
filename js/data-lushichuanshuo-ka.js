@@ -4,54 +4,118 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {job:"zhongli"};
+		this.o = {job:"zhongli",url:"images/lushichuanshuo/",cards:[]};
 
 		this.init();
 	}
 	
 	LscsKa.prototype = {
-		ispage: function(){
-			var _href = location.href;
-			console.log(_href.indexOf("ka-detail"));
-			switch(true){
-				case _href.indexOf("ka-detail"):
-					console.log(1);
-					sessionStorage.setItem("page","data-lushichuanshuo-ka.html");
-					break;
+		switchjob:function(){
+			switch(arguments[0]){
+				case "zhongli":return 0;
+				case "deluyi":return 1;
+				case "lieren":return 2;
+				case "fashi":return 3;
+				case "shengqishi":return 4;
+				case "mushi":return 5;
+				case "qianxingzhe":return 6;
+				case "saman":return 7;
+				case "mushi":return 8;
+				case "zhanshi":return 9;
 			}
 		},
-		goPage: function(){
-			switch(sessionStorage.getItem("page")){
-				case "ka":
+		printdetail: function(){//打印卡牌
+			var cardshtml = '',
+			_datacards = this.datacards[this.switchjob(this.o.job)].b;
+			for(var i=0; i<_datacards.length; i++){
+				cardshtml += '<div class="item" data-id="'+_datacards[i].c+'">'+
+								'<div class="pic"><div style="background-image:url('+this.o.url+'DBPic/79_'+_datacards[i].c+'_thumb.png)"></div><img src="'+this.o.url+'ka-defaultpic.png"></div>'+
+								'<div class="zoom"></div>'+
+								'<p>'+_datacards[i].d+'</p>'+
+							'</div>';
+			}
+			$("#maincard").html(cardshtml);
+		},
+		setkaaddboxbg:function(){//设置添加卡牌右侧顶部职业旗帜
+			$("#ka_add_box").removeClass().addClass("box "+this.o.job);
+		},
+		addcardlist: function(){//增加卡牌进列表
+			var _html = '',
+			cardid = Number(arguments[0]),
+			_datacards = this.datacards[this.switchjob(this.o.job)].b;
+			
+			for(var i=0; i<_datacards.length; i++){//追加进数组
+				if(_datacards[i].c == cardid){
+					this.o.cards.push(_datacards[i]);
+				}
+			}
+			this.o.cards.sort(function(a,b){
+				return a.e - b.e;
+			});
+			for(var i=0; i<this.o.cards.length; i++){
+				_html += '<div class="item" data-id="'+this.o.cards[i].c+'">'+
+							'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+this.o.cards[i].c+'_thumb.png);"></i>'+
+							'<i class="mask"></i>'+
+							'<i class="num num_'+this.o.cards[i].e+'"><span></span></i>'+
+							'<p>'+this.o.cards[i].d+'</p>'+
+						'</div>';
+			}
+			
+			$("#ka_add_content").html(_html);
+			this.Numcardlist();
+		},
+		Numcardlist: function(){//显示卡牌数量0/30
+			$("#ka_add_num").html(this.o.cards.length+"/30");
+		},
+		removecardlist: function(){//移除卡牌列表
+			var cardid = Number(arguments[0]);
+			for(var i=0; i<this.o.cards.length; i++){
+				if(this.o.cards[i].c == cardid){
+					this.o.cards.splice(i,1);
+					$("#ka_add_content").children().eq(i).remove();
+					this.Numcardlist();
 					break;
-				case "job":
+				}
+			}
+		},
+		ispage: function(){//判断当前打开的是哪一个页面
+			var _href = location.href;
+			switch(true){
+				case _href.indexOf("index") != -1:
+					
 					break;
-				case "detail":
+				case _href.indexOf("job") != -1:
+					
 					break;
-				case "mycardlist":
+				case _href.indexOf("detail") != -1:
+					this.o.job = sessionStorage.getItem("job");
+					this.setkaaddboxbg();
+					this.printdetail();
+					
 					break;
-				case "mycards":
+				case _href.indexOf("mycardlist") != -1:
+					
+					break;
+				case _href.indexOf("mycards") != -1:
+					
 					break;
 			}
 		},
 		events: function(){
 			var that = this;
-			//data-lushichuanshuo-ka-job.html
+			//选择职业
 			$("#ka_switch .item").click(function(){
 				sessionStorage.setItem("job",$(this).attr("data-job"));
 				location.href = 'data-lushichuanshuo-ka-detail.html';
 			});
-			//data-lushichuanshuo-ka-detail.html
-			$("#header").click(function(){
-				
-				//location.href = 'data-lushichuanshuo-ka-detail.html';
+			//添加卡牌
+			$("#maincard").on("click", ".item", function(){
+				that.addcardlist($(this).attr("data-id"));
 			});
-			//data-lushichuanshuo-ka-mycardlist.html
-			$("#ka_my .ka_mycard").click(function(){
-				
-				//location.href = 'data-lushichuanshuo-ka-detail.html';
+			//移除卡牌
+			$("#ka_add_content").on("click", ".item", function(){
+				that.removecardlist($(this).attr("data-id"));
 			});
-			
 		},
 		init: function(){
 			var win_h = $(window).height(),
