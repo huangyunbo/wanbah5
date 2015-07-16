@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>炉石传说-卡组模拟器</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/data-lushichuanshuo.css">
+</head>
+
+<body class="ka_body">
+<div class="header" id="header">
+	<a href="data-lushichuanshuo-ka.html" class="back"><i></i>返回</a>
+    <h1>选择职业</h1>
+</div><!--/header-->
+
+<div class="ka_switch" id="ka_switch">
+	<div class="item" data-job="deluyi"><i></i>德鲁伊</div>
+    <div class="item" data-job="lieren"><i class="lieren"></i>猎人</div>
+    <div class="item" data-job="fashi"><i class="fashi"></i>法师</div>
+    <div class="item" data-job="shengqishi"><i class="shengqishi"></i>圣骑士</div>
+    <div class="item" data-job="mushi"><i class="mushi"></i>牧师</div>
+    <div class="item" data-job="qianxingzhe"><i class="qianxingzhe"></i>潜行者</div>
+    <div class="item" data-job="saman"><i class="saman"></i>萨满</div>
+    <div class="item" data-job="mushi"><i class="shushi"></i>牧师</div>
+    <div class="item" data-job="zhanshi"><i class="zhanshi"></i>战士</div>
+</div><!--/ka_switch-->
+
+
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/easydialog.min.js"></script>
+<script type="text/javascript" src="js/data-lushichuanshuo-ka.js"></script>
+<script type="text/javascript" src="json/json-lushichuanshuo.js"></script>
+<script type="text/javascript">
+$(function(){
+	var lscska = new LscsKa(data_cards);
+});
+</script>
+</body>
+</html>

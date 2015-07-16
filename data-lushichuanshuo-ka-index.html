@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>炉石传说-卡组模拟器</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/data-lushichuanshuo.css">
+</head>
+
+<body class="ka_body">
+<div class="header" id="header">
+	<a href="javascript:;" class="back"><i></i>返回</a>
+    <h1>卡组模拟器</h1>
+</div><!--/header-->
+
+<div class="ka_road" id="ka_road">
+	<a href="data-lushichuanshuo-ka-job.html" class="item">创建卡组</a>
+    <a href="data-lushichuanshuo-ka-mycardlist.html" class="item">我的卡组</a>
+</div><!--/ka_road-->
+
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/easydialog.min.js"></script>
+<script type="text/javascript" src="js/data-lushichuanshuo-ka.js"></script>
+<script type="text/javascript" src="json/json-lushichuanshuo.js"></script>
+<script type="text/javascript">
+$(function(){
+	var lscska = new LscsKa(data_cards);
+});
+</script>
+</body>
+</html>

@@ -1,9 +1,10 @@
+//2015-07-02
 (function(window){
 	var Lscs = function(option){
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {type:0,manacost:0,url:"images/lushichuanshuo/",isSlidingHide:true};
+		this.o = {type:0,manacost:0,url:"images/lushichuanshuo/",isSlidingHide:true};//type:9职业+中立 0-9,manacost:费法力 0-8,url:为android/ios准备,isSlidingHide:打开弹窗不需要开启隐藏上下
 
 		this.init();
 	}

@@ -17,7 +17,8 @@ a{ text-decoration:none}
 .hide{ display:none !important}
 
 .data_body{ background:#ead0a2 url(../images/lushichuanshuo/data-bg.jpg) no-repeat fixed center bottom / cover}
-.header{ height:49px; width:100%; background:#845832; position:fixed; z-index:10; top:0; left:0; border-bottom:1px solid #dba542}
+.header{ height:49px; background:#845832; position:relative; border-bottom:1px solid #dba542}
+.data_body .header{ width:100%; position:fixed; z-index:10; top:0; left:0}
 .header .back{ position:absolute; left:10px; top:12px; color:#fff; font-size:1.8rem}
 .header .back i{ display:inline-block; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; transform:rotate(45deg); -webkit-transform:rotate(45deg); cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .header h1{ line-height:50px; font-size:1.8rem; text-align:center; color:#fff}
@@ -91,7 +92,7 @@ a{ text-decoration:none}
 
 /*卡组模拟*/
 .ka_body{ background:#2f2a21 url(../images/lushichuanshuo/ka-bg.jpg) no-repeat center bottom; background-size:cover}
-.ka_road .item{ width:220px; height:42px; padding-top:28px; color:#321701; background:url(../images/lushichuanshuo/ka-btn.png) no-repeat; background-size:220px; text-align:center; margin:45px auto 0; font-size:1.8rem}
+.ka_road .item{ width:220px; height:42px; padding-top:28px; color:#321701; background:url(../images/lushichuanshuo/ka-btn.png) no-repeat; background-size:220px; text-align:center; margin:45px auto 0; font-size:1.8rem; display:block}
 /*卡组模拟-创建卡组*/
 .ka_switch{ overflow:hidden; width:100%; padding:15px 0 30px}
 .ka_switch .item{ width:33.33%; float:left; text-align:center; color:#ffd957; font-size:1.2rem}
@@ -168,7 +169,7 @@ a{ text-decoration:none}
 .ka_add .main .head .group_change_btn .on{ background:#ffd957; color:#2f2a21}
 .ka_add .main .head .group_select_btn{ padding:1px 18px 1px 9px; position:relative; border:1px solid #ffd957; border-radius:30px}
 .ka_add .main .head .group_select_btn .arrow{ border-width:4px; border-style:solid dashed dashed; border-color:#ffd957 transparent transparent; position:absolute; top:9px; right:5px}
-.ka_add .main .head .group_select{/* display:none;*/ position:absolute; z-index:2; left:0; top:25px; font-size:1.2rem; color:#fff; width:103px; background:rgba(50,32,24,0.83); border:1px solid #ffd957; border-radius:5px; box-shadow:0 0 5px #ffd957 inset}
+.ka_add .main .head .group_select{ display:none; position:absolute; z-index:2; left:0; top:25px; font-size:1.2rem; color:#fff; width:103px; background:rgba(50,32,24,0.83); border:1px solid #ffd957; border-radius:5px; box-shadow:0 0 5px #ffd957 inset}
 .ka_add .main .head .group_select li{ padding:0 10px; border:1px solid #ffd957; border-radius:15px; margin:14px 8px}
 /*卡组模拟-编辑卡牌-左侧主体-卡牌组*/
 .ka_add .maincard{ overflow-y:auto}
