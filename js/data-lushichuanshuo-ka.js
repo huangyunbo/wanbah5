@@ -40,43 +40,52 @@
 		setkaaddboxbg:function(){//设置添加卡牌右侧顶部职业旗帜
 			$("#ka_add_box").removeClass().addClass("box "+this.o.job);
 		},
-		istwofun: function(){//判断不能超过2张
-			var cardid = Number(arguments[0]),
-			istwo = 0,
-			i = 0,
-			cards = this.o.cards;
-			
-			for(; i<cards.length; i++){
-				if(cards[i].c == cardid){
-					istwo++;
-				}
-			}
-			if(istwo < 2){
-				return true;
-			}
-			return false;
-		},
 		addcardlist: function(){//增加卡牌进列表
 			var cardid = Number(arguments[0]),
-			datacards = this.datacards[this.switchjob(this.o.job)].b;
-			
-			if(!this.istwofun(cardid)){
-				easyDialog.open({
-					container: "dialogTip",
-					fixed: false,
-					overlay: false,
-					autoClose: 1000
-				});
-				return;
-			}
+			datacards = this.datacards[this.switchjob(this.o.job)].b,
+			cards = this.o.cards,
+			cardtmp;
 			
 			for(var i=0; i<datacards.length; i++){//追加进数组
 				if(datacards[i].c == cardid){
-					this.o.cards.push(datacards[i]);
+					cardtmp = datacards[i];
+					
+					var k = 0,
+					istwo = false;
+					
+					if(cards.length == 0){//第一次的时候
+						cardtmp.z = 1;
+						cards.push(cardtmp);
+					}else{
+						for(var j=0; j<cards.length; j++){
+							if(cards[j].c == cardid){
+								k = j;
+								istwo = true;
+							}
+						}
+						if(!istwo){
+							cardtmp.z = 1;
+							cards.push(cardtmp);
+						}
+						if(istwo && cards[k].z == 1){
+							istwo = false;
+							cards[k].z = 2;
+						}
+						if(istwo && cards[k].z == 2){
+							istwo = false;
+							easyDialog.open({
+								container: "dialogTip",
+								fixed: false,
+								overlay: false,
+								autoClose: 1000
+							});
+						}
+					}
+					
 				}
-			}
+			}			
 			
-			function bubbleSort(arr){//冒泡排序
+			function bubbleSort(arr){//冒泡排序,从小到大
 				var i = arr.length,
 				j,
 				tempExchangVal;
@@ -93,40 +102,41 @@
 				return arr;
 			}
 			
-			this.o.cards = bubbleSort(this.o.cards);
+			this.o.cards = bubbleSort(cards);
 			this.printcardlist();
 		},
 		removecardlist: function(){//移除卡牌列表
-			var cardid = Number(arguments[0]);
+			var cardid = Number(arguments[0]),
+			cards = this.o.cards;
 			
-			for(var i=0; i<this.o.cards.length; i++){
-				if(this.o.cards[i].c == cardid){
-					this.o.cards.splice(i,1);
+			for(var i=0; i<cards.length; i++){
+				if(cards[i].c == cardid){
+					if(cards[i].z == 1){
+						cards.splice(i,1);
+					}else{
+						cards[i].z = 1;
+					}
 					this.printcardlist();
-					break;
 				}
 			}
 		},
 		printcardlist: function(){//打印卡牌列表
 			var html = '',
+			cards = this.o.cards,
 			card,
-			istwo = 0;
+			num = 0;
 			
-			for(var i=0; i<this.o.cards.length; i++){
-				card = this.o.cards[i];
-				if(istwo == 1){
-					istwo = 0;
-					continue;
-				}
-				if(this.istwofun(card.c)){
+			for(var i=0; i<cards.length; i++){
+				card = cards[i];
+				if(card.z == 1){
 					html += '<div class="item" data-id="'+card.c+'">'+
 								'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
 								'<i class="mask"></i>'+
 								'<i class="num num_'+card.e+'"><span></span></i>'+
 								'<p>'+card.d+'</p>'+
 							'</div>';
+					num++;
 				}else{
-					istwo = 1;
 					html += '<div class="item" data-id="'+card.c+'">'+
 								'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
 								'<i class="mask"></i>'+
@@ -134,11 +144,12 @@
 								'<p>'+card.d+'</p>'+
 								'<i class="double"></i>'+
 							'</div>';
+					num += 2;
 				}
 			}
-			
+
 			$("#ka_add_content").html(html);
-			$("#ka_add_num").html(this.o.cards.length+"/30");
+			$("#ka_add_num").html(num+"/30");
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			var href = location.href;
@@ -208,6 +219,8 @@ f:稀有度 //1:免费 2:普通 3.稀有 4.史诗 5.传说
 g:构筑评分
 h:竞技场评分
 i:画师语录
+
+z:卡牌是否乘以2
 
 var data_cards = [{a:"zhongli",b:[{c:123,d:"恐怖的奴隶主",e:1,f:1,g:9,h:6,i:"有些德鲁伊做梦的时候都会被陌生人的“给我个激活！”的喊叫声惊醒"},{}]}];
 
