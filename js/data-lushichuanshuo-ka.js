@@ -26,12 +26,13 @@
 		},
 		printdetail: function(){//打印卡牌
 			var cardshtml = '',
-			_datacards = this.datacards[this.switchjob(this.o.job)].b;
-			for(var i=0; i<_datacards.length; i++){
-				cardshtml += '<div class="item" data-id="'+_datacards[i].c+'">'+
-								'<div class="pic"><div style="background-image:url('+this.o.url+'DBPic/79_'+_datacards[i].c+'_thumb.png)"></div><img src="'+this.o.url+'ka-defaultpic.png"></div>'+
+			datacards = this.datacards[this.switchjob(this.o.job)].b;
+			
+			for(var i=0; i<datacards.length; i++){
+				cardshtml += '<div class="item" data-id="'+datacards[i].c+'">'+
+								'<div class="pic"><div style="background-image:url('+this.o.url+'DBPic/79_'+datacards[i].c+'_thumb.png)"></div><img src="'+this.o.url+'ka-defaultpic.png"></div>'+
 								'<div class="zoom"></div>'+
-								'<p>'+_datacards[i].d+'</p>'+
+								'<p>'+datacards[i].d+'</p>'+
 							'</div>';
 			}
 			$("#maincard").html(cardshtml);
@@ -39,64 +40,125 @@
 		setkaaddboxbg:function(){//设置添加卡牌右侧顶部职业旗帜
 			$("#ka_add_box").removeClass().addClass("box "+this.o.job);
 		},
-		addcardlist: function(){//增加卡牌进列表
-			var _html = '',
-			cardid = Number(arguments[0]),
-			_datacards = this.datacards[this.switchjob(this.o.job)].b;
+		istwofun: function(){//判断不能超过2张
+			var cardid = Number(arguments[0]),
+			istwo = 0,
+			i = 0,
+			cards = this.o.cards;
 			
-			for(var i=0; i<_datacards.length; i++){//追加进数组
-				if(_datacards[i].c == cardid){
-					this.o.cards.push(_datacards[i]);
+			for(; i<cards.length; i++){
+				if(cards[i].c == cardid){
+					istwo++;
 				}
 			}
-			this.o.cards.sort(function(a,b){
-				return a.e - b.e;
-			});
-			for(var i=0; i<this.o.cards.length; i++){
-				_html += '<div class="item" data-id="'+this.o.cards[i].c+'">'+
-							'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+this.o.cards[i].c+'_thumb.png);"></i>'+
-							'<i class="mask"></i>'+
-							'<i class="num num_'+this.o.cards[i].e+'"><span></span></i>'+
-							'<p>'+this.o.cards[i].d+'</p>'+
-						'</div>';
+			if(istwo < 2){
+				return true;
+			}
+			return false;
+		},
+		addcardlist: function(){//增加卡牌进列表
+			var cardid = Number(arguments[0]),
+			datacards = this.datacards[this.switchjob(this.o.job)].b;
+			
+			if(!this.istwofun(cardid)){
+				easyDialog.open({
+					container: "dialogTip",
+					fixed: false,
+					overlay: false,
+					autoClose: 1000
+				});
+				return;
 			}
 			
-			$("#ka_add_content").html(_html);
-			this.Numcardlist();
-		},
-		Numcardlist: function(){//显示卡牌数量0/30
-			$("#ka_add_num").html(this.o.cards.length+"/30");
+			for(var i=0; i<datacards.length; i++){//追加进数组
+				if(datacards[i].c == cardid){
+					this.o.cards.push(datacards[i]);
+				}
+			}
+			
+			function bubbleSort(arr){//冒泡排序
+				var i = arr.length,
+				j,
+				tempExchangVal;
+				while(i>0){
+					for(j=0; j<i-1; j++){
+						if(arr[j].e > arr[j+1].e){
+							tempExchangVal = arr[j];
+							arr[j] = arr[j+1];
+							arr[j+1] = tempExchangVal;
+						}
+					}
+					i--;
+				}
+				return arr;
+			}
+			
+			this.o.cards = bubbleSort(this.o.cards);
+			this.printcardlist();
 		},
 		removecardlist: function(){//移除卡牌列表
 			var cardid = Number(arguments[0]);
+			
 			for(var i=0; i<this.o.cards.length; i++){
 				if(this.o.cards[i].c == cardid){
 					this.o.cards.splice(i,1);
-					$("#ka_add_content").children().eq(i).remove();
-					this.Numcardlist();
+					this.printcardlist();
 					break;
 				}
 			}
 		},
+		printcardlist: function(){//打印卡牌列表
+			var html = '',
+			card,
+			istwo = 0;
+			
+			for(var i=0; i<this.o.cards.length; i++){
+				card = this.o.cards[i];
+				if(istwo == 1){
+					istwo = 0;
+					continue;
+				}
+				if(this.istwofun(card.c)){
+					html += '<div class="item" data-id="'+card.c+'">'+
+								'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
+								'<i class="mask"></i>'+
+								'<i class="num num_'+card.e+'"><span></span></i>'+
+								'<p>'+card.d+'</p>'+
+							'</div>';
+				}else{
+					istwo = 1;
+					html += '<div class="item" data-id="'+card.c+'">'+
+								'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
+								'<i class="mask"></i>'+
+								'<i class="num num_'+card.e+'"><span></span></i>'+
+								'<p>'+card.d+'</p>'+
+								'<i class="double"></i>'+
+							'</div>';
+				}
+			}
+			
+			$("#ka_add_content").html(html);
+			$("#ka_add_num").html(this.o.cards.length+"/30");
+		},
 		ispage: function(){//判断当前打开的是哪一个页面
-			var _href = location.href;
+			var href = location.href;
 			switch(true){
-				case _href.indexOf("index") != -1:
+				case href.indexOf("index") != -1:
 					
 					break;
-				case _href.indexOf("job") != -1:
+				case href.indexOf("job") != -1:
 					
 					break;
-				case _href.indexOf("detail") != -1:
+				case href.indexOf("detail") != -1:
 					this.o.job = sessionStorage.getItem("job");
 					this.setkaaddboxbg();
 					this.printdetail();
 					
 					break;
-				case _href.indexOf("mycardlist") != -1:
+				case href.indexOf("mycardlist") != -1:
 					
 					break;
-				case _href.indexOf("mycards") != -1:
+				case href.indexOf("mycards") != -1:
 					
 					break;
 			}
@@ -106,7 +168,7 @@
 			//选择职业
 			$("#ka_switch .item").click(function(){
 				sessionStorage.setItem("job",$(this).attr("data-job"));
-				location.href = 'data-lushichuanshuo-ka-detail.html';
+				window.location.href = 'data-lushichuanshuo-ka-detail.html';
 			});
 			//添加卡牌
 			$("#maincard").on("click", ".item", function(){

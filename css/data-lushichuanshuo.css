@@ -95,7 +95,7 @@ a{ text-decoration:none}
 .ka_road .item{ width:220px; height:42px; padding-top:28px; color:#321701; background:url(../images/lushichuanshuo/ka-btn.png) no-repeat; background-size:220px; text-align:center; margin:45px auto 0; font-size:1.8rem; display:block}
 /*卡组模拟-创建卡组*/
 .ka_switch{ overflow:hidden; width:100%; padding:15px 0 30px}
-.ka_switch .item{ width:33.33%; float:left; text-align:center; color:#ffd957; font-size:1.2rem}
+.ka_switch .item{ width:33.33%; float:left; text-align:center; color:#ffd957; font-size:1.2rem; cursor:pointer}
 .ka_switch .item i{ width:97px; height:78px; background:url(../images/lushichuanshuo/ka-zhiye2.png) no-repeat; background-size:97px; display:block; margin:20px auto 5px}
 .ka_switch .item i.lieren{ background-position:0 -78px}
 .ka_switch .item i.fashi{ background-position:0 -156px}
@@ -179,6 +179,8 @@ a{ text-decoration:none}
 .ka_add .maincard .item .pic img{ width:100%; height:auto}
 .ka_add .maincard .item .pic div{ position:absolute; width:100%; height:100%; background-repeat:no-repeat; background-position:center center; left:0; top:0; background-size:cover}
 .ka_add .maincard .item p{ font-size:1.2rem; height:36px; line-height:1.2}
+/*卡组模拟-编辑卡牌-相同卡牌不能超过2张*/
+.dialogTip{ font-size:1.5rem; color:#fff; background:#000; border-radius:5px; padding:0 10px; display:none}
 /*卡组模拟-我的卡组*/
 .ka_my{}
 .ka_my_content{ overflow:hidden}
