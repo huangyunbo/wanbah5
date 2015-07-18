@@ -10,7 +10,7 @@
 	}
 	
 	LscsKa.prototype = {
-		printmycardlist: function(){//打印我的卡组
+		printmygroup: function(){//打印我的卡组
 			if(!this.checkversion(1) || !this.checkversion(2)) return;
 
 			var wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka")),
@@ -21,7 +21,7 @@
 			
 			for(var i=0; i<wbgllscska.data.length; i++){
 				group = wbgllscska.data[i];
-				html += '<div class="ka_mycard" data-index="'+i+'">'+
+				html += '<div class="ka_flag" data-index="'+i+'">'+
 							'<div class="box '+group.job+'">'+
 								'<i class="zhiye"></i>'+
 								'<i class="mask"></i>'+
@@ -31,7 +31,7 @@
 						'</div>';
 			}
 		
-			$("#ka_my").html(html);
+			$("#ka_mygroup").html(html);
 		},
 		setmemorycard: function(){//存储卡组
 			var cardname = $("#ka_add_input").val();
@@ -51,7 +51,7 @@
 				wbgllscska.data.push(ka);
 			}
 			localStorage.setItem("wbgl-lscs-ka",JSON.stringify(wbgllscska));
-			location.href = 'data-lushichuanshuo-ka-my.html';
+			location.href = 'data-lushichuanshuo-ka-mygroup.html';
 		},
 		checkversion: function(){//检查版本
 			var i = Number(arguments[0]);
@@ -317,7 +317,7 @@
 			$("#ka_add_maincard").html(cardshtml);
 		},
 		setkaaddboxbg: function(){//设置添加卡牌右侧顶部职业旗帜
-			$("#ka_add_box").removeClass().addClass("box "+this.o.job);
+			$("#ka_add_flag").removeClass().addClass("box "+this.o.job);
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			var href = location.href;
@@ -336,8 +336,8 @@
 					this.setkaaddboxbg();
 					this.printdetail();
 					break;
-				case href.indexOf("mycardlist") != -1:
-					this.printmycardlist();
+				case href.indexOf("mygroup") != -1:
+					this.printmygroup();
 					break;
 				case href.indexOf("mycards") != -1:
 					
@@ -419,7 +419,7 @@
 				}
 			});
 			//点击我的卡组
-			$("#ka_my").on("click", ".ka_mycard", function(){
+			$("#ka_mygroup").on("click", ".ka_flag", function(){
 				location.href = 'data-lushichuanshuo-ka-mycards.html';
 			});
 		},
