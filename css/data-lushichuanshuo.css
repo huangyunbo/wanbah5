@@ -187,7 +187,7 @@ a{ text-decoration:none}
 /*卡组模拟-我的卡组*/
 .ka_my{}
 .ka_my_content{ overflow:hidden}
-.ka_my .ka_mycard{ float:left; margin:20px 0 20px 20px}
+.ka_my .ka_mycard{ float:left; margin:20px 0 20px 20px; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 @media screen and (max-width:414px){
 	.ka_my_content{ margin-left:-14px}
 	.ka_my .ka_mycard{ margin-left:29px}

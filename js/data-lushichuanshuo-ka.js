@@ -10,6 +10,68 @@
 	}
 	
 	LscsKa.prototype = {
+		printmycardlist: function(){//打印我的卡组
+			if(!this.checkversion(1) || !this.checkversion(2)) return;
+
+			var wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka")),
+			group,
+			html = '';
+			
+			if(wbgllscska === null) return;
+			
+			for(var i=0; i<wbgllscska.data.length; i++){
+				group = wbgllscska.data[i];
+				html += '<div class="ka_mycard" data-index="'+i+'">'+
+							'<div class="box '+group.job+'">'+
+								'<i class="zhiye"></i>'+
+								'<i class="mask"></i>'+
+								'<div class="text text_p">'+group.name+'</div>'+
+								'<div class="share">分享</div>'+
+							'</div>'+
+						'</div>';
+			}
+		
+			$("#ka_my").html(html);
+		},
+		setmemorycard: function(){//存储卡组
+			var cardname = $("#ka_add_input").val();
+			if($.trim(cardname) == ""){
+				this.showdialogtip(4);
+				return;
+			}
+			if(!this.checkversion(1) || !this.checkversion(2)) return;
+			
+			var wbgllscska = {"data":[]},
+			ka = {"name":cardname,"job":this.o.job,"card":this.o.cards};
+			
+			if(localStorage.getItem("wbgl-lscs-ka") === null){//如果没有json
+				wbgllscska.data.push(ka);
+			}else{//如果有json就追加
+				wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka"));
+				wbgllscska.data.push(ka);
+			}
+			localStorage.setItem("wbgl-lscs-ka",JSON.stringify(wbgllscska));
+			location.href = 'data-lushichuanshuo-ka-my.html';
+		},
+		checkversion: function(){//检查版本
+			var i = Number(arguments[0]);
+			switch(i){
+				case 1:
+					if(!window.localStorage){
+						alert("错误，你的版本过低，请升级你的设备");
+						return false;
+					}
+					return true;
+				case 2:
+					/*try{
+						window.jstojava.getHostVersion();
+					}catch(err){
+						alert("错误，请升级Android玩吧专业版2.5");
+						return false;
+					}*/
+					return true;
+			}
+		},
 		switchjob:function(){
 			switch(arguments[0]){
 				case "zhongli":return 0;
@@ -20,73 +82,9 @@
 				case "mushi":return 5;
 				case "qianxingzhe":return 6;
 				case "saman":return 7;
-				case "mushi":return 8;
+				case "shushi":return 8;
 				case "zhanshi":return 9;
 			}
-		},
-		printdetail: function(){//打印卡牌
-			var cardshtml = '',
-			datacards = this.datacards[this.switchjob(this.o.job)].b,
-			rarity = this.o.rarity,
-			fei = this.o.fei;
-			
-			function leak(){
-				var _rarity = arguments[0],
-				_fei = arguments[1];
-				
-				switch(true){
-					case (rarity==0 && fei==0):return true;
-					case (rarity==0 && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
-					case (rarity==0 && (fei==2 && (_fei==3 || _fei==4))):return true;
-					case (rarity==0 && (fei==3 && (_fei==5 || _fei==6))):return true;
-					case (rarity==0 && (fei==4 && _fei>=7)):return true;
-					
-					case ((rarity==1 && _rarity==1) && fei==0):return true;
-					case ((rarity==1 && _rarity==1) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
-					case ((rarity==1 && _rarity==1) && (fei==2 && (_fei==3 || _fei==4))):return true;
-					case ((rarity==1 && _rarity==1) && (fei==3 && (_fei==5 || _fei==6))):return true;
-					case ((rarity==1 && _rarity==1) && (fei==4 && _fei>=7)):return true;
-					
-					case ((rarity==2 && _rarity==2) && fei==0):return true;
-					case ((rarity==2 && _rarity==2) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
-					case ((rarity==2 && _rarity==2) && (fei==2 && (_fei==3 || _fei==4))):return true;
-					case ((rarity==2 && _rarity==2) && (fei==3 && (_fei==5 || _fei==6))):return true;
-					case ((rarity==2 && _rarity==2) && (fei==4 && _fei>=7)):return true;
-					
-					case ((rarity==3 && _rarity==3) && fei==0):return true;
-					case ((rarity==3 && _rarity==3) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
-					case ((rarity==3 && _rarity==3) && (fei==2 && (_fei==3 || _fei==4))):return true;
-					case ((rarity==3 && _rarity==3) && (fei==3 && (_fei==5 || _fei==6))):return true;
-					case ((rarity==3 && _rarity==3) && (fei==4 && _fei>=7)):return true;
-					
-					case ((rarity==4 && _rarity==4) && fei==0):return true;
-					case ((rarity==4 && _rarity==4) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
-					case ((rarity==4 && _rarity==4) && (fei==2 && (_fei==3 || _fei==4))):return true;
-					case ((rarity==4 && _rarity==4) && (fei==3 && (_fei==5 || _fei==6))):return true;
-					case ((rarity==4 && _rarity==4) && (fei==4 && _fei>=7)):return true;
-					
-					case ((rarity==5 && _rarity==5) && fei==0):return true;
-					case ((rarity==5 && _rarity==5) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
-					case ((rarity==5 && _rarity==5) && (fei==2 && (_fei==3 || _fei==4))):return true;
-					case ((rarity==5 && _rarity==5) && (fei==3 && (_fei==5 || _fei==6))):return true;
-					case ((rarity==5 && _rarity==5) && (fei==4 && _fei>=7)):return true;
-					default:return false;
-				}
-			}
-			
-			for(var i=0; i<datacards.length; i++){
-				if(leak(datacards[i].f, datacards[i].e)){
-					cardshtml += '<div class="item" data-id="'+datacards[i].c+'">'+
-									'<div class="pic"><div style="background-image:url('+this.o.url+'DBPic/79_'+datacards[i].c+'_thumb.png)"></div><img src="'+this.o.url+'ka-defaultpic.png"></div>'+
-									'<div class="zoom"><i></i></div>'+
-									'<p>'+datacards[i].d+'</p>'+
-								'</div>';
-				}
-			}
-			$("#ka_add_maincard").html(cardshtml);
-		},
-		setkaaddboxbg: function(){//设置添加卡牌右侧顶部职业旗帜
-			$("#ka_add_box").removeClass().addClass("box "+this.o.job);
 		},
 		showdialogtip: function(){//弹窗
 			var i = Number(arguments[0]),
@@ -108,6 +106,90 @@
 				overlay: false,
 				autoClose: 1000
 			});
+		},
+		printdialogcard: function(){//打印单张卡片弹窗
+			var id = Number(arguments[0]),
+			datacards = this.datacards[this.switchjob(this.o.job)].b,
+			html = '';
+
+			function lev(){//判断级别 免费级
+				var i = Number(arguments[0]);
+				switch(i){
+					case 1:return '<div class="lev lev_free"><i></i>免费级</div>';
+					case 2:return '<div class="lev lev_white"><i></i>普通级</div>';
+					case 3:return '<div class="lev lev_blue"><i></i>稀有级</div>';
+					case 4:return '<div class="lev lev_purple"><i></i>史诗级</div>';
+					case 5:return '<div class="lev lev_orange"><i></i>传说级</div>';
+				}
+			}
+			
+			for(var i=0; i<datacards.length; i++){
+				if(datacards[i].c == id){
+					html = '<div class="pic"><img src="'+this.o.url+'DBPic/79_'+id+'_thumb.png"></div>'+
+						'<div class="zy '+this.o.job+'"></div>'+
+						'<div class="line1">'+
+							'<div class="name">'+datacards[i].d+'</div>'+
+							lev(datacards[i].f)+
+						'</div>'+
+						'<div class="line2">'+
+							'<div class="l"><span class="k">构筑评分</span>'+datacards[i].g+'</div>'+
+							'<div class="r"><span class="k">竞技场评分</span>'+datacards[i].h+'</div>'+
+						'</div>'+
+						'<div class="line3">'+
+							'<div><span class="k">画师语录</span></div>'+
+							'<p>'+datacards[i].i+'</p>'+
+						'</div>';
+				}
+			}
+			
+			$("#ka_add_dialogcard").html(html).removeClass("hide");
+		},
+		printcardlist: function(){//打印卡牌列表
+			var html = '',
+			cards = this.o.cards,
+			card,
+			num = 0;
+			
+			for(var i=0; i<cards.length; i++){
+				card = cards[i];
+				if(card.z == 1){
+					html += '<div class="item" data-id="'+card.c+'">'+
+								'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
+								'<i class="mask"></i>'+
+								'<i class="num num_'+card.e+'"><span></span></i>'+
+								'<p>'+card.d+'</p>'+
+							'</div>';
+					num++;
+				}else{
+					html += '<div class="item" data-id="'+card.c+'">'+
+								'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
+								'<i class="mask"></i>'+
+								'<i class="num num_'+card.e+'"><span></span></i>'+
+								'<p>'+card.d+'</p>'+
+								'<i class="double"></i>'+
+							'</div>';
+					num += 2;
+				}
+			}
+			
+			this.o.cardnum = num;
+			$("#ka_add_content").html(html);
+			$("#ka_add_num").html(num+"/30");
+		},
+		removecardlist: function(){//移除卡牌列表
+			var cardid = Number(arguments[0]),
+			cards = this.o.cards;
+			
+			for(var i=0; i<cards.length; i++){
+				if(cards[i].c == cardid){
+					if(cards[i].z == 1){
+						cards.splice(i,1);
+					}else{
+						cards[i].z = 1;
+					}
+					this.printcardlist();
+				}
+			}
 		},
 		addcardlist: function(){//增加卡牌进列表
 			var cardid = Number(arguments[0]),
@@ -173,89 +255,69 @@
 			this.o.cards = bubbleSort(cards);
 			this.printcardlist();
 		},
-		removecardlist: function(){//移除卡牌列表
-			var cardid = Number(arguments[0]),
-			cards = this.o.cards;
-			
-			for(var i=0; i<cards.length; i++){
-				if(cards[i].c == cardid){
-					if(cards[i].z == 1){
-						cards.splice(i,1);
-					}else{
-						cards[i].z = 1;
-					}
-					this.printcardlist();
-				}
-			}
-		},
-		printcardlist: function(){//打印卡牌列表
-			var html = '',
-			cards = this.o.cards,
-			card,
-			num = 0;
-			
-			for(var i=0; i<cards.length; i++){
-				card = cards[i];
-				if(card.z == 1){
-					html += '<div class="item" data-id="'+card.c+'">'+
-								'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
-								'<i class="mask"></i>'+
-								'<i class="num num_'+card.e+'"><span></span></i>'+
-								'<p>'+card.d+'</p>'+
-							'</div>';
-					num++;
-				}else{
-					html += '<div class="item" data-id="'+card.c+'">'+
-								'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
-								'<i class="mask"></i>'+
-								'<i class="num num_'+card.e+'"><span></span></i>'+
-								'<p>'+card.d+'</p>'+
-								'<i class="double"></i>'+
-							'</div>';
-					num += 2;
-				}
-			}
-			
-			this.o.cardnum = num;
-			$("#ka_add_content").html(html);
-			$("#ka_add_num").html(num+"/30");
-		},
-		printdialogcard: function(){//打印单张卡片弹窗
-			var id = Number(arguments[0]),
+		printdetail: function(){//打印卡牌
+			var cardshtml = '',
 			datacards = this.datacards[this.switchjob(this.o.job)].b,
-			html = '';
-
-			function lev(){//判断级别 免费级
-				var i = Number(arguments[0]);
-				switch(i){
-					case 1:return '<div class="lev lev_free"><i></i>免费级</div>';
-					case 2:return '<div class="lev lev_white"><i></i>普通级</div>';
-					case 3:return '<div class="lev lev_blue"><i></i>稀有级</div>';
-					case 4:return '<div class="lev lev_purple"><i></i>史诗级</div>';
-					case 5:return '<div class="lev lev_orange"><i></i>传说级</div>';
+			rarity = this.o.rarity,
+			fei = this.o.fei;
+			
+			function leak(){
+				var _rarity = arguments[0],
+				_fei = arguments[1];
+				
+				switch(true){
+					case (rarity==0 && fei==0):return true;
+					case (rarity==0 && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
+					case (rarity==0 && (fei==2 && (_fei==3 || _fei==4))):return true;
+					case (rarity==0 && (fei==3 && (_fei==5 || _fei==6))):return true;
+					case (rarity==0 && (fei==4 && _fei>=7)):return true;
+					
+					case ((rarity==1 && _rarity==1) && fei==0):return true;
+					case ((rarity==1 && _rarity==1) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
+					case ((rarity==1 && _rarity==1) && (fei==2 && (_fei==3 || _fei==4))):return true;
+					case ((rarity==1 && _rarity==1) && (fei==3 && (_fei==5 || _fei==6))):return true;
+					case ((rarity==1 && _rarity==1) && (fei==4 && _fei>=7)):return true;
+					
+					case ((rarity==2 && _rarity==2) && fei==0):return true;
+					case ((rarity==2 && _rarity==2) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
+					case ((rarity==2 && _rarity==2) && (fei==2 && (_fei==3 || _fei==4))):return true;
+					case ((rarity==2 && _rarity==2) && (fei==3 && (_fei==5 || _fei==6))):return true;
+					case ((rarity==2 && _rarity==2) && (fei==4 && _fei>=7)):return true;
+					
+					case ((rarity==3 && _rarity==3) && fei==0):return true;
+					case ((rarity==3 && _rarity==3) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
+					case ((rarity==3 && _rarity==3) && (fei==2 && (_fei==3 || _fei==4))):return true;
+					case ((rarity==3 && _rarity==3) && (fei==3 && (_fei==5 || _fei==6))):return true;
+					case ((rarity==3 && _rarity==3) && (fei==4 && _fei>=7)):return true;
+					
+					case ((rarity==4 && _rarity==4) && fei==0):return true;
+					case ((rarity==4 && _rarity==4) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
+					case ((rarity==4 && _rarity==4) && (fei==2 && (_fei==3 || _fei==4))):return true;
+					case ((rarity==4 && _rarity==4) && (fei==3 && (_fei==5 || _fei==6))):return true;
+					case ((rarity==4 && _rarity==4) && (fei==4 && _fei>=7)):return true;
+					
+					case ((rarity==5 && _rarity==5) && fei==0):return true;
+					case ((rarity==5 && _rarity==5) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
+					case ((rarity==5 && _rarity==5) && (fei==2 && (_fei==3 || _fei==4))):return true;
+					case ((rarity==5 && _rarity==5) && (fei==3 && (_fei==5 || _fei==6))):return true;
+					case ((rarity==5 && _rarity==5) && (fei==4 && _fei>=7)):return true;
+					default:return false;
 				}
 			}
 			
 			for(var i=0; i<datacards.length; i++){
-				if(datacards[i].c == id){
-					html = '<div class="pic"><img src="'+this.o.url+'DBPic/79_'+id+'_thumb.png"></div>'+
-						'<div class="zy '+this.o.job+'"></div>'+
-						'<div class="line1">'+
-							'<div class="name">'+datacards[i].d+'</div>'+
-							lev(datacards[i].f)+
-						'</div>'+
-						'<div class="line2">'+
-							'<div class="l"><span class="k">构筑评分</span>'+datacards[i].g+'</div>'+
-							'<div class="r"><span class="k">竞技场评分</span>'+datacards[i].h+'</div>'+
-						'</div>'+
-						'<div class="line3">'+
-							'<div><span class="k">画师语录</span></div>'+
-							'<p>'+datacards[i].i+'</p>'+
-						'</div>';
+				if(leak(datacards[i].f, datacards[i].e)){
+					cardshtml += '<div class="item" data-id="'+datacards[i].c+'">'+
+									'<div class="pic"><div style="background-image:url('+this.o.url+'DBPic/79_'+datacards[i].c+'_thumb.png)"></div><img src="'+this.o.url+'ka-defaultpic.png"></div>'+
+									'<div class="zoom"><i></i></div>'+
+									'<p>'+datacards[i].d+'</p>'+
+								'</div>';
 				}
 			}
-			
-			$("#ka_add_dialogcard").html(html).removeClass("hide");
+			$("#ka_add_maincard").html(cardshtml);
+		},
+		setkaaddboxbg: function(){//设置添加卡牌右侧顶部职业旗帜
+			$("#ka_add_box").removeClass().addClass("box "+this.o.job);
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			var href = location.href;
@@ -267,34 +329,29 @@
 					
 					break;
 				case href.indexOf("detail") != -1:
+					if(!this.checkversion(1) || !this.checkversion(2)) return;
+					
 					this.o.job = sessionStorage.getItem("job");
 					$("#ka_add_group").children().eq(0).attr("data-job",this.o.job);
 					this.setkaaddboxbg();
 					this.printdetail();
-					
-					
 					break;
 				case href.indexOf("mycardlist") != -1:
-					
+					this.printmycardlist();
 					break;
 				case href.indexOf("mycards") != -1:
 					
 					break;
 			}
 		},
-		setmemorycard: function(){//存储卡组
-			if($.trim($("#ka_add_input").val()) == ""){
-				this.showdialogtip(4);
-				return;
-			}
-			
-		},
 		events: function(){
 			var that = this;
 			//选择职业
 			$("#ka_switch .item").click(function(){
+				if(!that.checkversion(1) || !that.checkversion(2)) return;
+
 				sessionStorage.setItem("job",$(this).attr("data-job"));
-				window.location.href = 'data-lushichuanshuo-ka-detail.html';
+				location.href = 'data-lushichuanshuo-ka-detail.html';
 			});
 			//添加卡牌-添加卡牌
 			$("#ka_add_maincard").on("click", ".item", function(){
@@ -361,15 +418,18 @@
 					that.setmemorycard();
 				}
 			});
+			//点击我的卡组
+			$("#ka_my").on("click", ".ka_mycard", function(){
+				location.href = 'data-lushichuanshuo-ka-mycards.html';
+			});
 		},
 		init: function(){
 			var win_h = $(window).height(),
 			body_h = $("body").height();
-			
 			if(win_h > body_h){
 				$(".ka_body").height(win_h);
 			}
-			$("#ka_add_maincard").height(win_h-86);//data-lushichuanshuo-ka-detail.html
+			$("#ka_add_maincard").height(win_h-86);
 			
 			this.ispage();
 			this.events();
