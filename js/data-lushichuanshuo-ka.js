@@ -4,7 +4,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {job:"zhongli",url:"images/lushichuanshuo/",cards:[],rarity:0,fei:0};//job:职业 url:前缀路径 cards:选中的卡牌 rarity:稀有度0所有 fei:费法力-1所有
+		this.o = {job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,fei:0};//job:职业 url:前缀路径 cards:选中的卡牌 rarity:稀有度0所有 fei:费法力-1所有
 
 		this.init();
 	}
@@ -74,26 +74,51 @@
 				}
 			}
 			
-			
 			for(var i=0; i<datacards.length; i++){
 				if(leak(datacards[i].f, datacards[i].e)){
 					cardshtml += '<div class="item" data-id="'+datacards[i].c+'">'+
 									'<div class="pic"><div style="background-image:url('+this.o.url+'DBPic/79_'+datacards[i].c+'_thumb.png)"></div><img src="'+this.o.url+'ka-defaultpic.png"></div>'+
-									'<div class="zoom"></div>'+
+									'<div class="zoom"><i></i></div>'+
 									'<p>'+datacards[i].d+'</p>'+
 								'</div>';
 				}
 			}
-			$("#maincard").html(cardshtml);
+			$("#ka_add_maincard").html(cardshtml);
 		},
-		setkaaddboxbg:function(){//设置添加卡牌右侧顶部职业旗帜
+		setkaaddboxbg: function(){//设置添加卡牌右侧顶部职业旗帜
 			$("#ka_add_box").removeClass().addClass("box "+this.o.job);
+		},
+		showdialogtip: function(){//弹窗
+			var i = Number(arguments[0]),
+			html_1 = '相同卡牌不能超过2张',
+			html_2 = '只能添加30张卡牌';
+			html_3 = '请添加30张卡牌';
+			html_4 = '给你的卡组命个名吧';
+			
+			switch(i){
+				case 1:$("#ka_add_dialogtip").html(html_1);break;
+				case 2:$("#ka_add_dialogtip").html(html_2);break;
+				case 3:$("#ka_add_dialogtip").html(html_3);break;
+				case 4:$("#ka_add_dialogtip").html(html_4);break;
+			}
+			
+			easyDialog.open({
+				container: "ka_add_dialogtip",
+				fixed: false,
+				overlay: false,
+				autoClose: 1000
+			});
 		},
 		addcardlist: function(){//增加卡牌进列表
 			var cardid = Number(arguments[0]),
 			datacards = this.datacards[this.switchjob(this.o.job)].b,
 			cards = this.o.cards,
 			cardtmp;
+			
+			if(this.o.cardnum == 4){
+				this.showdialogtip(2);
+				return;
+			}
 			
 			for(var i=0; i<datacards.length; i++){//追加进数组
 				if(datacards[i].c == cardid){
@@ -122,15 +147,9 @@
 						}
 						if(istwo && cards[k].z == 2){
 							istwo = false;
-							easyDialog.open({
-								container: "dialogTip",
-								fixed: false,
-								overlay: false,
-								autoClose: 1000
-							});
+							this.showdialogtip(1);
 						}
 					}
-					
 				}
 			}			
 			
@@ -196,9 +215,47 @@
 					num += 2;
 				}
 			}
-
+			
+			this.o.cardnum = num;
 			$("#ka_add_content").html(html);
 			$("#ka_add_num").html(num+"/30");
+		},
+		printdialogcard: function(){//打印单张卡片弹窗
+			var id = Number(arguments[0]),
+			datacards = this.datacards[this.switchjob(this.o.job)].b,
+			html = '';
+
+			function lev(){//判断级别 免费级
+				var i = Number(arguments[0]);
+				switch(i){
+					case 1:return '<div class="lev lev_free"><i></i>免费级</div>';
+					case 2:return '<div class="lev lev_white"><i></i>普通级</div>';
+					case 3:return '<div class="lev lev_blue"><i></i>稀有级</div>';
+					case 4:return '<div class="lev lev_purple"><i></i>史诗级</div>';
+					case 5:return '<div class="lev lev_orange"><i></i>传说级</div>';
+				}
+			}
+			
+			for(var i=0; i<datacards.length; i++){
+				if(datacards[i].c == id){
+					html = '<div class="pic"><img src="'+this.o.url+'DBPic/79_'+id+'_thumb.png"></div>'+
+						'<div class="zy '+this.o.job+'"></div>'+
+						'<div class="line1">'+
+							'<div class="name">'+datacards[i].d+'</div>'+
+							lev(datacards[i].f)+
+						'</div>'+
+						'<div class="line2">'+
+							'<div class="l"><span class="k">构筑评分</span>'+datacards[i].g+'</div>'+
+							'<div class="r"><span class="k">竞技场评分</span>'+datacards[i].h+'</div>'+
+						'</div>'+
+						'<div class="line3">'+
+							'<div><span class="k">画师语录</span></div>'+
+							'<p>'+datacards[i].i+'</p>'+
+						'</div>';
+				}
+			}
+			
+			$("#ka_add_dialogcard").html(html).removeClass("hide");
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			var href = location.href;
@@ -211,7 +268,7 @@
 					break;
 				case href.indexOf("detail") != -1:
 					this.o.job = sessionStorage.getItem("job");
-					$("#group_change_btn").children().eq(0).attr("data-job",this.o.job);
+					$("#ka_add_group").children().eq(0).attr("data-job",this.o.job);
 					this.setkaaddboxbg();
 					this.printdetail();
 					
@@ -225,6 +282,13 @@
 					break;
 			}
 		},
+		setmemorycard: function(){//存储卡组
+			if($.trim($("#ka_add_input").val()) == ""){
+				this.showdialogtip(4);
+				return;
+			}
+			
+		},
 		events: function(){
 			var that = this;
 			//选择职业
@@ -233,52 +297,69 @@
 				window.location.href = 'data-lushichuanshuo-ka-detail.html';
 			});
 			//添加卡牌-添加卡牌
-			$("#maincard").on("click", ".item", function(){
+			$("#ka_add_maincard").on("click", ".item", function(){
 				that.addcardlist($(this).attr("data-id"));
 			});
 			//添加卡牌-移除卡牌
 			$("#ka_add_content").on("click", ".item", function(){
 				that.removecardlist($(this).attr("data-id"));
 			});
+			
+			var $ka_add_rarity = $("#ka_add_rarity"),
+			$ka_add_rarity_ul = $("#ka_add_rarity_ul"),
+			$ka_add_fei = $("#ka_add_fei"),
+			$ka_add_fei_ul = $("#ka_add_fei_ul");
 			//添加卡牌-职业/中立切换
-			$("#group_change_btn .item").click(function(){
+			$("#ka_add_group .item").click(function(){
 				var job = $(this).attr("data-job");
 				that.o.job = job;
 				$(this).addClass("on").siblings().removeClass("on");
-				$rarity_select_ul.hide();
-				$fei_select_ul.hide();
+				$ka_add_rarity_ul.hide();
+				$ka_add_fei_ul.hide();
 				that.printdetail();
 			});
 			//添加卡牌-稀有度切换
-			var $rarity_select = $("#rarity_select"),
-			$rarity_select_ul = $("#rarity_select_ul"),
-			$fei_select = $("#fei_select"),
-			$fei_select_ul = $("#fei_select_ul");
-			
-			$rarity_select.click(function(){
-				$fei_select_ul.hide();
-				$rarity_select_ul.toggle();
+			$ka_add_rarity.click(function(){
+				$ka_add_fei_ul.hide();
+				$ka_add_rarity_ul.toggle();
 			});
-			$rarity_select_ul.children().click(function(){
+			$ka_add_rarity_ul.children().click(function(){
 				var self = $(this);
 				that.o.rarity = Number(self.attr("data-type"));
 				self.addClass("on").siblings().removeClass("on");
-				$rarity_select.children().eq(0).html(self.children().html());
-				$rarity_select_ul.hide();
+				$ka_add_rarity.children().eq(0).html(self.children().html());
+				$ka_add_rarity_ul.hide();
 				that.printdetail();
 			});
 			//添加卡牌-费用切换
-			$fei_select.click(function(){
-				$rarity_select_ul.hide();
-				$("#fei_select_ul").toggle();
+			$ka_add_fei.click(function(){
+				$ka_add_rarity_ul.hide();
+				$ka_add_fei_ul.toggle();
 			});
-			$fei_select_ul.children().click(function(){
+			$ka_add_fei_ul.children().click(function(){
 				var self = $(this);
 				that.o.fei = Number(self.attr("data-type"));
 				self.addClass("on").siblings().removeClass("on");
-				$fei_select.children().eq(0).html(self.children().html());
-				$fei_select_ul.hide();
+				$ka_add_fei.children().eq(0).html(self.children().html());
+				$ka_add_fei_ul.hide();
 				that.printdetail();
+			});
+			//添加卡牌-点击卡牌放大镜
+			$("#ka_add_maincard").on("click", ".zoom", function(e){
+				e.stopPropagation();
+				that.printdialogcard($(this).parent().attr("data-id"));
+			});
+			//添加卡牌-点击卡牌放大镜关闭弹窗
+			$("#ka_add_dialogcard").click(function(){
+				$(this).addClass("hide");
+			});
+			//添加卡牌-点击完成
+			$("#ka_add_ok").click(function(){
+				if(that.o.cardnum != 4){
+					that.showdialogtip(3);
+				}else{
+					that.setmemorycard();
+				}
 			});
 		},
 		init: function(){
@@ -288,7 +369,7 @@
 			if(win_h > body_h){
 				$(".ka_body").height(win_h);
 			}
-			$("#maincard").height(win_h-86);//data-lushichuanshuo-ka-detail.html
+			$("#ka_add_maincard").height(win_h-86);//data-lushichuanshuo-ka-detail.html
 			
 			this.ispage();
 			this.events();

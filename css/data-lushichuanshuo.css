@@ -60,35 +60,35 @@ a{ text-decoration:none}
 .data_fei .item i.item_7{ background-position:-240px 0}
 .data_fei .item.on span{ background:url(../images/lushichuanshuo/data-fei.png) -270px 0px no-repeat; background-size:320px; height:40px; width:40px; left:50%; top:-4px; position:absolute; margin-left:-19px}
 /*数据库-单张卡片弹窗*/
-.dialogCard{ background:rgba(0,0,0,0.9); color:#fff; width:100%; height:100%; z-index:9999; position:fixed; top:0; left:0; overflow-y:auto}
-.dialogCard .pic{ padding:10px 70px 5px; text-align:center}
-.dialogCard .zy{ background:url(../images/lushichuanshuo/data-zhiye.png) no-repeat; background-size:189px; width:189px; height:50px; margin:0 auto}
-.dialogCard .deluyi{ background-position:0 -50px}
-.dialogCard .lieren{ background-position:0 -100px}
-.dialogCard .fashi{ background-position:0 -150px}
-.dialogCard .shengqishi{ background-position:0 -200px}
-.dialogCard .mushi{ background-position:0 -250px}
-.dialogCard .qianxingzhe{ background-position:0 -300px}
-.dialogCard .saman{ background-position:0 -350px}
-.dialogCard .shushi{ background-position:0 -400px}
-.dialogCard .zhanshi{ background-position:0 -450px}
-.dialogCard .line1,.dialogCard .line2,.dialogCard .line3{ margin:0 18px; border-bottom:1px solid #71706e; padding:10px 0; overflow:hidden}
-.dialogCard .line1 .name{ font-size:1.8rem; float:left; margin-right:20px}
-.dialogCard .line1 .lev{ color:#fc7508; font-size:1.2rem; margin-top:5px; color:#fff}
-.dialogCard .line1 .lev i{background:url(../images/lushichuanshuo/data-fei.png) no-repeat; background-size:320px; height:15px; width:12px; display:inline-block; vertical-align:-3px; margin-right:3px}
-.dialogCard .line1 .lev_free i{ background:none}
-.dialogCard .line1 .lev_white i{ background-position:0 -40px}
-.dialogCard .line1 .lev_blue{ color:#277dff}
-.dialogCard .line1 .lev_blue i{ background-position:-12px -40px}
-.dialogCard .line1 .lev_purple{ color:#8439d2}
-.dialogCard .line1 .lev_purple i{ background-position:-24px -40px}
-.dialogCard .line1 .lev_orange{ color:#fc7508}
-.dialogCard .line1 .lev_orange i{ background-position:-36px -40px}
-.dialogCard .line2,.dialogCard .line3{ font-size:1.5rem}
-.dialogCard .line2 .k,.dialogCard .line3 .k{ color:#ffd957; padding-right:10px}
-.dialogCard .line2 .l{ float:left}
-.dialogCard .line2 .r{ float:right}
-.dialogCard .line3{ border:0}
+.dialogcard{ background:rgba(0,0,0,0.9); color:#fff; width:100%; height:100%; z-index:9999; position:fixed; top:0; left:0; overflow-y:auto}
+.dialogcard .pic{ padding:10px 70px 5px; text-align:center}
+.dialogcard .zy{ background:url(../images/lushichuanshuo/data-zhiye.png) no-repeat; background-size:189px; width:189px; height:50px; margin:0 auto}
+.dialogcard .deluyi{ background-position:0 -50px}
+.dialogcard .lieren{ background-position:0 -100px}
+.dialogcard .fashi{ background-position:0 -150px}
+.dialogcard .shengqishi{ background-position:0 -200px}
+.dialogcard .mushi{ background-position:0 -250px}
+.dialogcard .qianxingzhe{ background-position:0 -300px}
+.dialogcard .saman{ background-position:0 -350px}
+.dialogcard .shushi{ background-position:0 -400px}
+.dialogcard .zhanshi{ background-position:0 -450px}
+.dialogcard .line1,.dialogcard .line2,.dialogcard .line3{ margin:0 18px; border-bottom:1px solid #71706e; padding:10px 0; overflow:hidden}
+.dialogcard .line1 .name{ font-size:1.8rem; float:left; margin-right:20px}
+.dialogcard .line1 .lev{ color:#fc7508; font-size:1.2rem; margin-top:5px; color:#fff}
+.dialogcard .line1 .lev i{background:url(../images/lushichuanshuo/data-fei.png) no-repeat; background-size:320px; height:15px; width:12px; display:inline-block; vertical-align:-3px; margin-right:3px}
+.dialogcard .line1 .lev_free i{ background:none}
+.dialogcard .line1 .lev_white i{ background-position:0 -40px}
+.dialogcard .line1 .lev_blue{ color:#277dff}
+.dialogcard .line1 .lev_blue i{ background-position:-12px -40px}
+.dialogcard .line1 .lev_purple{ color:#8439d2}
+.dialogcard .line1 .lev_purple i{ background-position:-24px -40px}
+.dialogcard .line1 .lev_orange{ color:#fc7508}
+.dialogcard .line1 .lev_orange i{ background-position:-36px -40px}
+.dialogcard .line2,.dialogcard .line3{ font-size:1.5rem}
+.dialogcard .line2 .k,.dialogcard .line3 .k{ color:#ffd957; padding-right:10px}
+.dialogcard .line2 .l{ float:left}
+.dialogcard .line2 .r{ float:right}
+.dialogcard .line3{ border:0}
 
 /*卡组模拟*/
 .ka_body{ background:#2f2a21 url(../images/lushichuanshuo/ka-bg.jpg) no-repeat center bottom; background-size:cover}
@@ -107,7 +107,7 @@ a{ text-decoration:none}
 .ka_switch .item i.zhanshi{ background-position:0 -624px}
 /*卡组模拟-编辑卡牌*/
 .ka_add{ overflow:hidden}
-.ka_add .aside{ position:absolute; right:0; top:0; width:106px; height:100%; padding-top:50px; box-sizing:border-box}/*总共设计让出右边110*/
+.ka_add .aside{ position:absolute; right:0; top:0; width:106px; height:100%; padding-top:50px; box-sizing:border-box}/*总共设计让出右边110,ios不需要头部需要去掉padding-top*/
 .ka_add .aside_inner{ background:#191623; height:100%; position:relative}
 .ka_add .aside .ka_mycard{ margin-left:-3px}
 .ka_mycard{ width:109px; height:86px; position:relative}
@@ -176,13 +176,14 @@ a{ text-decoration:none}
 /*卡组模拟-编辑卡牌-左侧主体-卡牌组*/
 .ka_add .maincard{ overflow-y:auto}
 .ka_add .maincard .item{ float:left; width:33.33%; color:#fde69f; text-align:center; position:relative}
-.ka_add .maincard .zoom{ background:url(../images/lushichuanshuo/ka-number.png) -200px -40px no-repeat; width:18px; height:18px; background-size:220px; position:absolute; top:5px; right:5px}
+.ka_add .maincard .zoom{ position:absolute; width:100%; height:30px; top:0; left:0; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.ka_add .maincard .zoom i{ background:url(../images/lushichuanshuo/ka-number.png) -200px -40px no-repeat; width:18px; height:18px; background-size:220px; position:absolute; top:0; right:0}
 .ka_add .maincard .item .pic{ margin:5px; position:relative}
 .ka_add .maincard .item .pic img{ width:100%; height:auto}
 .ka_add .maincard .item .pic div{ position:absolute; width:100%; height:100%; background-repeat:no-repeat; background-position:center center; left:0; top:0; background-size:cover}
 .ka_add .maincard .item p{ font-size:1.2rem; height:36px; line-height:1.2}
 /*卡组模拟-编辑卡牌-相同卡牌不能超过2张*/
-.dialogTip{ font-size:1.5rem; color:#fff; background:#000; border-radius:5px; padding:0 10px; display:none}
+.dialogtip{ font-size:1.5rem; color:#fff; background:#000; border-radius:5px; padding:0 10px; display:none}
 /*卡组模拟-我的卡组*/
 .ka_my{}
 .ka_my_content{ overflow:hidden}

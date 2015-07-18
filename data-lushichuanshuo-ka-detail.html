@@ -21,7 +21,7 @@
                 <div class="box" id="ka_add_box">
                     <i class="zhiye"></i>
                     <i class="mask"></i>
-                    <input placeholder="卡组名字" class="text">
+                    <input placeholder="卡组名字" class="text" id="ka_add_input">
                 </div>
             </div>
             <div class="content" id="ka_add_content">
@@ -54,7 +54,7 @@
             </div>
             <div class="aside_bottom">
             	<div id="ka_add_num">0/30</div>
-                <a href="javascript:;"></a>
+                <a href="javascript:;" id="ka_add_ok"></a>
             </div>
         </div>
     </div><!--/aside-->
@@ -62,17 +62,17 @@
 	<div class="main">
     	<div class="head">
         	<div class="td">
-            	<div class="group group_change_btn" id="group_change_btn">
+            	<div class="group group_change_btn" id="ka_add_group">
                     <div class="item on" data-job="">职业</div>
                     <div class="item" data-job="zhongli">中立</div>
                 </div>
             </div>
             <div class="td">
-            	<div class="group group_select_btn" id="rarity_select">
+            	<div class="group group_select_btn" id="ka_add_rarity">
                     <div class="item">稀有度</div>
                  	<i class="arrow"></i>
                 </div>
-                <ul class="group_select" id="rarity_select_ul">
+                <ul class="group_select" id="ka_add_rarity_ul">
                 	<li data-type="0"><div>所有级</div></li>
                 	<li data-type="1"><div>免费级</div></li>
                     <li data-type="2"><div>普通级</div></li>
@@ -82,11 +82,11 @@
                 </ul>
             </div>
             <div class="td">
-            	<div class="group group_select_btn" id="fei_select">
+            	<div class="group group_select_btn" id="ka_add_fei">
 					<div class="item">费用</div>
                  	<i class="arrow"></i>
                 </div>
-                <ul class="group_select" id="fei_select_ul">
+                <ul class="group_select" id="ka_add_fei_ul">
                     <li data-type="0"><div>所有</div></li>
                     <li data-type="1"><div>0~2费</div></li>
                     <li data-type="2"><div>3~4费</div></li>
@@ -95,17 +95,34 @@
                 </ul>
             </div>
         </div>
-        <div class="maincard" id="maincard">
-        	<!--<div class="item">
+        <div class="maincard" id="ka_add_maincard">
+        	<!--<div class="item" data-id="">
             	<div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div>
-                <div class="zoom"></div>
+                <div class="zoom"><i></i></div>
                 <p>恐怖的奴隶主恐怖</p>
             </div>-->
         </div>
     </div><!--/main-->
 </div><!--/ka_add-->
 
-<div class="dialogTip" id="dialogTip">相同卡牌不能超过2张</div>
+<div class="dialogtip" id="ka_add_dialogtip">相同卡牌不能超过2张</div>
+
+<div class="dialogcard hide" id="ka_add_dialogcard">
+    <div class="pic"><img src="images/lushichuanshuo/DBPic/79_7523_thumb.png"></div>
+    <div class="zy fashi"></div>
+    <div class="line1">
+        <div class="name">黑翼技师</div>
+        <div class="lev lev_orange"><i></i>免费级</div>
+    </div>
+    <div class="line2">
+        <div class="l"><span class="k">构筑评分</span>9</div>
+        <div class="r"><span class="k">竞技场评分</span>8</div>
+    </div>
+    <div class="line3">
+        <div><span class="k">画师语录</span></div>
+        <p>大叫着“看那儿！”，然后让你的对手背对着你，这一招总是出奇地有效。</p>
+    </div>
+</div>
 
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/easydialog.min.js"></script>

@@ -34,7 +34,7 @@
 			$(".data_body").scrollTop(0);
 			this.slidingHide();
 		},
-		printcard: function(){//打印单张卡片弹窗
+		printdialogcard: function(){//打印单张卡片弹窗
 			var _id = Number(arguments[0]),
 			_type = this.o.type,
 			_datacards = this.datacards[_type].b,
@@ -85,7 +85,7 @@
 				}
 			}
 			
-			$("#dialogCard").html(_html).removeClass("hide");
+			$("#dialogcard").html(_html).removeClass("hide");
 		},
 		slidingHide: function(){//滑动隐藏上下
 			
@@ -145,11 +145,11 @@
 			$("#data_card").on("click", "li", function(){
 				$("body").css("overflow-y","hidden");
 				that.o.isSlidingHide = false;
-				that.printcard($(this).attr("data-id"));
+				that.printdialogcard($(this).attr("data-id"));
 				
 			});
 			//关闭单张卡片弹窗
-			$("#dialogCard").click(function(){
+			$("#dialogcard").click(function(){
 				$("body").css("overflow-y","auto");
 				that.o.isSlidingHide = true;
 				$(this).addClass("hide");
