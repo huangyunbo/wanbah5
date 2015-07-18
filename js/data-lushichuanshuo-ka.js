@@ -4,7 +4,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {job:"zhongli",url:"images/lushichuanshuo/",cards:[]};
+		this.o = {job:"zhongli",url:"images/lushichuanshuo/",cards:[],rarity:0,fei:0};//job:职业 url:前缀路径 cards:选中的卡牌 rarity:稀有度0所有 fei:费法力-1所有
 
 		this.init();
 	}
@@ -26,14 +26,63 @@
 		},
 		printdetail: function(){//打印卡牌
 			var cardshtml = '',
-			datacards = this.datacards[this.switchjob(this.o.job)].b;
+			datacards = this.datacards[this.switchjob(this.o.job)].b,
+			rarity = this.o.rarity,
+			fei = this.o.fei;
+			
+			function leak(){
+				var _rarity = arguments[0],
+				_fei = arguments[1];
+				
+				switch(true){
+					case (rarity==0 && fei==0):return true;
+					case (rarity==0 && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
+					case (rarity==0 && (fei==2 && (_fei==3 || _fei==4))):return true;
+					case (rarity==0 && (fei==3 && (_fei==5 || _fei==6))):return true;
+					case (rarity==0 && (fei==4 && _fei>=7)):return true;
+					
+					case ((rarity==1 && _rarity==1) && fei==0):return true;
+					case ((rarity==1 && _rarity==1) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
+					case ((rarity==1 && _rarity==1) && (fei==2 && (_fei==3 || _fei==4))):return true;
+					case ((rarity==1 && _rarity==1) && (fei==3 && (_fei==5 || _fei==6))):return true;
+					case ((rarity==1 && _rarity==1) && (fei==4 && _fei>=7)):return true;
+					
+					case ((rarity==2 && _rarity==2) && fei==0):return true;
+					case ((rarity==2 && _rarity==2) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
+					case ((rarity==2 && _rarity==2) && (fei==2 && (_fei==3 || _fei==4))):return true;
+					case ((rarity==2 && _rarity==2) && (fei==3 && (_fei==5 || _fei==6))):return true;
+					case ((rarity==2 && _rarity==2) && (fei==4 && _fei>=7)):return true;
+					
+					case ((rarity==3 && _rarity==3) && fei==0):return true;
+					case ((rarity==3 && _rarity==3) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
+					case ((rarity==3 && _rarity==3) && (fei==2 && (_fei==3 || _fei==4))):return true;
+					case ((rarity==3 && _rarity==3) && (fei==3 && (_fei==5 || _fei==6))):return true;
+					case ((rarity==3 && _rarity==3) && (fei==4 && _fei>=7)):return true;
+					
+					case ((rarity==4 && _rarity==4) && fei==0):return true;
+					case ((rarity==4 && _rarity==4) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
+					case ((rarity==4 && _rarity==4) && (fei==2 && (_fei==3 || _fei==4))):return true;
+					case ((rarity==4 && _rarity==4) && (fei==3 && (_fei==5 || _fei==6))):return true;
+					case ((rarity==4 && _rarity==4) && (fei==4 && _fei>=7)):return true;
+					
+					case ((rarity==5 && _rarity==5) && fei==0):return true;
+					case ((rarity==5 && _rarity==5) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
+					case ((rarity==5 && _rarity==5) && (fei==2 && (_fei==3 || _fei==4))):return true;
+					case ((rarity==5 && _rarity==5) && (fei==3 && (_fei==5 || _fei==6))):return true;
+					case ((rarity==5 && _rarity==5) && (fei==4 && _fei>=7)):return true;
+					default:return false;
+				}
+			}
+			
 			
 			for(var i=0; i<datacards.length; i++){
-				cardshtml += '<div class="item" data-id="'+datacards[i].c+'">'+
-								'<div class="pic"><div style="background-image:url('+this.o.url+'DBPic/79_'+datacards[i].c+'_thumb.png)"></div><img src="'+this.o.url+'ka-defaultpic.png"></div>'+
-								'<div class="zoom"></div>'+
-								'<p>'+datacards[i].d+'</p>'+
-							'</div>';
+				if(leak(datacards[i].f, datacards[i].e)){
+					cardshtml += '<div class="item" data-id="'+datacards[i].c+'">'+
+									'<div class="pic"><div style="background-image:url('+this.o.url+'DBPic/79_'+datacards[i].c+'_thumb.png)"></div><img src="'+this.o.url+'ka-defaultpic.png"></div>'+
+									'<div class="zoom"></div>'+
+									'<p>'+datacards[i].d+'</p>'+
+								'</div>';
+				}
 			}
 			$("#maincard").html(cardshtml);
 		},
@@ -162,8 +211,10 @@
 					break;
 				case href.indexOf("detail") != -1:
 					this.o.job = sessionStorage.getItem("job");
+					$("#group_change_btn").children().eq(0).attr("data-job",this.o.job);
 					this.setkaaddboxbg();
 					this.printdetail();
+					
 					
 					break;
 				case href.indexOf("mycardlist") != -1:
@@ -181,13 +232,53 @@
 				sessionStorage.setItem("job",$(this).attr("data-job"));
 				window.location.href = 'data-lushichuanshuo-ka-detail.html';
 			});
-			//添加卡牌
+			//添加卡牌-添加卡牌
 			$("#maincard").on("click", ".item", function(){
 				that.addcardlist($(this).attr("data-id"));
 			});
-			//移除卡牌
+			//添加卡牌-移除卡牌
 			$("#ka_add_content").on("click", ".item", function(){
 				that.removecardlist($(this).attr("data-id"));
+			});
+			//添加卡牌-职业/中立切换
+			$("#group_change_btn .item").click(function(){
+				var job = $(this).attr("data-job");
+				that.o.job = job;
+				$(this).addClass("on").siblings().removeClass("on");
+				$rarity_select_ul.hide();
+				$fei_select_ul.hide();
+				that.printdetail();
+			});
+			//添加卡牌-稀有度切换
+			var $rarity_select = $("#rarity_select"),
+			$rarity_select_ul = $("#rarity_select_ul"),
+			$fei_select = $("#fei_select"),
+			$fei_select_ul = $("#fei_select_ul");
+			
+			$rarity_select.click(function(){
+				$fei_select_ul.hide();
+				$rarity_select_ul.toggle();
+			});
+			$rarity_select_ul.children().click(function(){
+				var self = $(this);
+				that.o.rarity = Number(self.attr("data-type"));
+				self.addClass("on").siblings().removeClass("on");
+				$rarity_select.children().eq(0).html(self.children().html());
+				$rarity_select_ul.hide();
+				that.printdetail();
+			});
+			//添加卡牌-费用切换
+			$fei_select.click(function(){
+				$rarity_select_ul.hide();
+				$("#fei_select_ul").toggle();
+			});
+			$fei_select_ul.children().click(function(){
+				var self = $(this);
+				that.o.fei = Number(self.attr("data-type"));
+				self.addClass("on").siblings().removeClass("on");
+				$fei_select.children().eq(0).html(self.children().html());
+				$fei_select_ul.hide();
+				that.printdetail();
 			});
 		},
 		init: function(){
@@ -215,7 +306,7 @@ b:data
 c:卡牌id
 d:卡牌名称
 e:费法力
-f:稀有度 //1:免费 2:普通 3.稀有 4.史诗 5.传说
+f:稀有度 //0.所有 1:免费 2:普通 3.稀有 4.史诗 5.传说
 g:构筑评分
 h:竞技场评分
 i:画师语录

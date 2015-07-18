@@ -62,34 +62,36 @@
 	<div class="main">
     	<div class="head">
         	<div class="td">
-            	<div class="group group_change_btn">
-                    <div class="item on">职业</div>
-                    <div class="item">中立</div>
+            	<div class="group group_change_btn" id="group_change_btn">
+                    <div class="item on" data-job="">职业</div>
+                    <div class="item" data-job="zhongli">中立</div>
                 </div>
             </div>
             <div class="td">
-            	<div class="group group_select_btn">
+            	<div class="group group_select_btn" id="rarity_select">
                     <div class="item">稀有度</div>
                  	<i class="arrow"></i>
                 </div>
-                <ul class="group_select" id="selectul">
-                    <li data-type="">史诗级</li>
-                    <li data-type="">传说级</li>
-                    <li data-type="">稀有级</li>
-                    <li data-type="">免费级</li>
+                <ul class="group_select" id="rarity_select_ul">
+                	<li data-type="0"><div>所有级</div></li>
+                	<li data-type="1"><div>免费级</div></li>
+                    <li data-type="2"><div>普通级</div></li>
+                    <li data-type="3"><div>稀有级</div></li>
+                    <li data-type="4"><div>史诗级</div></li>
+                    <li data-type="5"><div>传说级</div></li>                    
                 </ul>
             </div>
             <div class="td">
-            	<div class="group group_select_btn">
+            	<div class="group group_select_btn" id="fei_select">
 					<div class="item">费用</div>
                  	<i class="arrow"></i>
                 </div>
-                <ul class="group_select" id="selectul">
-                    <li data-type="">所有</li>
-                    <li data-type="">0~2费</li>
-                    <li data-type="">3~4费</li>
-                    <li data-type="">5~6费</li>
-                    <li data-type="">7费+</li>
+                <ul class="group_select" id="fei_select_ul">
+                    <li data-type="0"><div>所有</div></li>
+                    <li data-type="1"><div>0~2费</div></li>
+                    <li data-type="2"><div>3~4费</div></li>
+                    <li data-type="3"><div>5~6费</div></li>
+                    <li data-type="4"><div>7费+</div></li>
                 </ul>
             </div>
         </div>
