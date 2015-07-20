@@ -4,15 +4,105 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,fei:0};//job:职业 url:前缀路径 cards:选中的卡牌 rarity:稀有度0所有 fei:费法力-1所有
+		this.o = {job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,feimin:0,feimax:100};//job:职业 url:前缀路径 cards:选中的卡牌 cardnum:当前一共选了多少张牌了 rarity:稀有度0所有 fei:费法力0所有
 
 		this.init();
 	}
 	
 	LscsKa.prototype = {
-		printmygroup: function(){//打印我的卡组
-			if(!this.checkversion(1) || !this.checkversion(2)) return;
+		removewbgllscska: function(){
+			var id = Number(arguments[0]),
+			wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka"));
+			
+			$("#ka_mygroup").children().each(function(i){
+				var _self = $(this);
+            	if(id == Number(_self.attr("data-id"))){
+					_self.remove();
+					wbgllscska.data.splice(i,1);
+					if(wbgllscska.data.length == 0){
+						localStorage.removeItem("wbgl-lscs-ka");
+						$("#ka_mygroup_edit").addClass("hide");
+						return;
+					}
+					localStorage.setItem("wbgl-lscs-ka",JSON.stringify(wbgllscska));
+					return;
+				}
+            });
+		},
+		printmycards: function(){//打印我的某个卡组			
+			var wbgllscsmycards = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards")),
+			card,
+			html = '',
+			dic = [0,0,0,0,0,0,0,0];//0-7+的卡牌法力消耗值图表
 
+			if(wbgllscsmycards === null) return;
+			
+			sessionStorage.setItem("wbgl-lscs-ka-job", wbgllscsmycards.job);
+			sessionStorage.setItem("wbgl-lscs-ka-urlform", "mycards.html");//当准备去编辑详情页的时候，记录来自于data-lushichuanshuo-ka-mycards.html
+			
+			$("#header h1").html(wbgllscsmycards.name);
+			
+			function isnumtwo(){//上两位数费的卡牌要换className
+				var num = arguments[0];
+				if(num >= 10){
+					return '<div class="num num_two"><em>'+num+'</em></div>'	
+				}else{
+					return '<div class="num"><em>'+num+'</em></div>'
+				}
+			}
+			
+			for(var i=0; i<wbgllscsmycards.cards.length; i++){
+				card = wbgllscsmycards.cards[i];
+				if(card.z == 2){//如果有两张相同的卡牌
+					if(card.e >= 7){
+						dic[7] += 2;
+					}else{
+						dic[card.e] += 2;
+					}
+					html += '<div class="item">'+
+								'<div class="inner">'+
+									isnumtwo(card.e)+
+									'<span>'+card.d+'</span>'+
+									'<i></i>'+
+									'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
+								'</div>'+
+							'</div>'+
+							'<div class="item">'+
+								'<div class="inner">'+
+									isnumtwo(card.e)+
+									'<span>'+card.d+'</span>'+
+									'<i></i>'+
+									'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
+								'</div>'+
+							'</div>';
+				}else{
+					if(card.e >= 7){
+						dic[7]++;
+					}else{
+						dic[card.e]++;
+					}
+					html += '<div class="item">'+
+								'<div class="inner">'+
+									isnumtwo(card.e)+
+									'<span>'+card.d+'</span>'+
+									'<i></i>'+
+									'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
+								'</div>'+
+							'</div>';
+				}
+			}
+		
+			$("#ka_mycards").html(html);
+			
+			$("#ka_mycards_chart").children("li").each(function(index, element){
+				var _h = dic[index] / 30 * 2 * 100;//翻倍效果更加明显
+				if(_h > 100){
+					_h = 100;
+				}
+            	$(this).find("i").eq(0).css("height",_h+"%");
+            });
+		},
+		printmygroup: function(){//打印我的卡牌组
 			var wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka")),
 			group,
 			html = '';
@@ -20,12 +110,17 @@
 			if(wbgllscska === null) return;
 			
 			for(var i=0; i<wbgllscska.data.length; i++){
+				if(i == 0){
+					$("#ka_mygroup_edit").removeClass("hide");
+				}
 				group = wbgllscska.data[i];
-				html += '<div class="ka_flag" data-index="'+i+'">'+
+				html += '<div class="ka_flag" data-id="'+group.id+'">'+
 							'<div class="box '+group.job+'">'+
-								'<i class="zhiye"></i>'+
-								'<i class="mask"></i>'+
-								'<div class="text text_p">'+group.name+'</div>'+
+								'<div class="a">'+
+									'<i class="zhiye"></i>'+
+									'<i class="mask"></i>'+
+									'<div class="text text_p">'+group.name+'</div>'+
+								'</div>'+
 								'<div class="share">分享</div>'+
 							'</div>'+
 						'</div>';
@@ -34,43 +129,39 @@
 			$("#ka_mygroup").html(html);
 		},
 		setmemorycard: function(){//存储卡组
-			var cardname = $("#ka_add_input").val();
+			var cardname = $("#ka_add_input").val(),
+			wbgllscska,
+			job = $("#ka_add_group").children().eq(0).attr("data-job"),
+			ka;
 			if($.trim(cardname) == ""){
 				this.showdialogtip(4);
 				return;
 			}
-			if(!this.checkversion(1) || !this.checkversion(2)) return;
 			
-			var wbgllscska = {"data":[]},
-			ka = {"name":cardname,"job":this.o.job,"card":this.o.cards};
-			
-			if(localStorage.getItem("wbgl-lscs-ka") === null){//如果没有json
-				wbgllscska.data.push(ka);
-			}else{//如果有json就追加
+			if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "job.html"){//如果是job.html过来的就新建保存
+				wbgllscska = {"data":[],id:1};
+				ka = {"id":1,"name":cardname,"job":job,"cards":this.o.cards};
+				
+				if(localStorage.getItem("wbgl-lscs-ka") === null){//如果没有json
+					wbgllscska.data.push(ka);
+				}else{//如果有json就追加
+					wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka"));
+					ka.id = ++wbgllscska.id;
+					wbgllscska.data.unshift(ka);
+				}
+				localStorage.setItem("wbgl-lscs-ka",JSON.stringify(wbgllscska));
+			}else if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html"){//如果是mycards.html过来的就在原来的里面编辑保存
+				var id = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards")).id,
 				wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka"));
-				wbgllscska.data.push(ka);
-			}
-			localStorage.setItem("wbgl-lscs-ka",JSON.stringify(wbgllscska));
-			location.href = 'data-lushichuanshuo-ka-mygroup.html';
-		},
-		checkversion: function(){//检查版本
-			var i = Number(arguments[0]);
-			switch(i){
-				case 1:
-					if(!window.localStorage){
-						alert("错误，你的版本过低，请升级你的设备");
-						return false;
+				
+				for(var i=0; i<wbgllscska.data.length; i++){
+					if(wbgllscska.data[i].id == id){
+						wbgllscska.data[i] = {"id":id,"name":cardname,"job":job,"cards":this.o.cards};
+						localStorage.setItem("wbgl-lscs-ka", JSON.stringify(wbgllscska));
 					}
-					return true;
-				case 2:
-					/*try{
-						window.jstojava.getHostVersion();
-					}catch(err){
-						alert("错误，请升级Android玩吧专业版2.5");
-						return false;
-					}*/
-					return true;
+				}
 			}
+			location.href = 'data-lushichuanshuo-ka-mygroup.html';
 		},
 		switchjob:function(){
 			switch(arguments[0]){
@@ -152,7 +243,7 @@
 			
 			for(var i=0; i<cards.length; i++){
 				card = cards[i];
-				if(card.z == 1){
+				if(card.z == 1){//如果只有单张卡牌的时候
 					html += '<div class="item" data-id="'+card.c+'">'+
 								'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
 								'<i class="mask"></i>'+
@@ -259,58 +350,17 @@
 			var cardshtml = '',
 			datacards = this.datacards[this.switchjob(this.o.job)].b,
 			rarity = this.o.rarity,
-			fei = this.o.fei;
-			
-			function leak(){
-				var _rarity = arguments[0],
-				_fei = arguments[1];
-				
-				switch(true){
-					case (rarity==0 && fei==0):return true;
-					case (rarity==0 && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
-					case (rarity==0 && (fei==2 && (_fei==3 || _fei==4))):return true;
-					case (rarity==0 && (fei==3 && (_fei==5 || _fei==6))):return true;
-					case (rarity==0 && (fei==4 && _fei>=7)):return true;
-					
-					case ((rarity==1 && _rarity==1) && fei==0):return true;
-					case ((rarity==1 && _rarity==1) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
-					case ((rarity==1 && _rarity==1) && (fei==2 && (_fei==3 || _fei==4))):return true;
-					case ((rarity==1 && _rarity==1) && (fei==3 && (_fei==5 || _fei==6))):return true;
-					case ((rarity==1 && _rarity==1) && (fei==4 && _fei>=7)):return true;
-					
-					case ((rarity==2 && _rarity==2) && fei==0):return true;
-					case ((rarity==2 && _rarity==2) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
-					case ((rarity==2 && _rarity==2) && (fei==2 && (_fei==3 || _fei==4))):return true;
-					case ((rarity==2 && _rarity==2) && (fei==3 && (_fei==5 || _fei==6))):return true;
-					case ((rarity==2 && _rarity==2) && (fei==4 && _fei>=7)):return true;
-					
-					case ((rarity==3 && _rarity==3) && fei==0):return true;
-					case ((rarity==3 && _rarity==3) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
-					case ((rarity==3 && _rarity==3) && (fei==2 && (_fei==3 || _fei==4))):return true;
-					case ((rarity==3 && _rarity==3) && (fei==3 && (_fei==5 || _fei==6))):return true;
-					case ((rarity==3 && _rarity==3) && (fei==4 && _fei>=7)):return true;
-					
-					case ((rarity==4 && _rarity==4) && fei==0):return true;
-					case ((rarity==4 && _rarity==4) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
-					case ((rarity==4 && _rarity==4) && (fei==2 && (_fei==3 || _fei==4))):return true;
-					case ((rarity==4 && _rarity==4) && (fei==3 && (_fei==5 || _fei==6))):return true;
-					case ((rarity==4 && _rarity==4) && (fei==4 && _fei>=7)):return true;
-					
-					case ((rarity==5 && _rarity==5) && fei==0):return true;
-					case ((rarity==5 && _rarity==5) && (fei==1 && (_fei==0 || _fei==1 || _fei==2))):return true;
-					case ((rarity==5 && _rarity==5) && (fei==2 && (_fei==3 || _fei==4))):return true;
-					case ((rarity==5 && _rarity==5) && (fei==3 && (_fei==5 || _fei==6))):return true;
-					case ((rarity==5 && _rarity==5) && (fei==4 && _fei>=7)):return true;
-					default:return false;
-				}
-			}
+			feimin = this.o.feimin,
+			feimax = this.o.feimax,
+			card;
 			
 			for(var i=0; i<datacards.length; i++){
-				if(leak(datacards[i].f, datacards[i].e)){
-					cardshtml += '<div class="item" data-id="'+datacards[i].c+'">'+
-									'<div class="pic"><div style="background-image:url('+this.o.url+'DBPic/79_'+datacards[i].c+'_thumb.png)"></div><img src="'+this.o.url+'ka-defaultpic.png"></div>'+
+				card = datacards[i];
+				if((rarity==0 || card.f==rarity) && ((card.e>=feimin && card.e<=feimax))){
+					cardshtml += '<div class="item" data-id="'+card.c+'">'+
+									'<div class="pic"><div style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div><img src="'+this.o.url+'ka-defaultpic.png"></div>'+
 									'<div class="zoom"><i></i></div>'+
-									'<p>'+datacards[i].d+'</p>'+
+									'<p>'+card.d+'</p>'+
 								'</div>';
 				}
 			}
@@ -319,38 +369,62 @@
 		setkaaddboxbg: function(){//设置添加卡牌右侧顶部职业旗帜
 			$("#ka_add_flag").removeClass().addClass("box "+this.o.job);
 		},
+		checkversion: function(){//检查版本
+			var i = Number(arguments[0]);
+			switch(i){
+				case 1:
+					if(!window.localStorage){
+						alert("错误，你的版本过低，请升级你的设备");
+						return false;
+					}
+					return true;
+				case 2:
+					/*try{
+						window.jstojava.getHostVersion();
+					}catch(err){
+						alert("错误，请升级Android玩吧专业版2.5");
+						return false;
+					}*/
+					return true;
+			}
+		},
 		ispage: function(){//判断当前打开的是哪一个页面
+			if(!this.checkversion(1) || !this.checkversion(2)) return;
 			var href = location.href;
 			switch(true){
 				case href.indexOf("index") != -1:
-					
 					break;
 				case href.indexOf("job") != -1:
-					
+					sessionStorage.setItem("wbgl-lscs-ka-urlform", "job.html");//记录来自于data-lushichuanshuo-ka-job.html
 					break;
 				case href.indexOf("detail") != -1:
-					if(!this.checkversion(1) || !this.checkversion(2)) return;
-					
-					this.o.job = sessionStorage.getItem("job");
+					this.o.job = sessionStorage.getItem("wbgl-lscs-ka-job");
 					$("#ka_add_group").children().eq(0).attr("data-job",this.o.job);
 					this.setkaaddboxbg();
+					if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html" && sessionStorage.getItem("wbgl-lscs-ka-mycards") !== null){//如果是从data-lushichuanshuo-ka-mycards.html过来的就赋值
+						var data = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards"));
+						this.o.cards = data.cards;
+						this.printcardlist();
+						$("#ka_add_input").val(data.name);
+					}
 					this.printdetail();
 					break;
 				case href.indexOf("mygroup") != -1:
 					this.printmygroup();
 					break;
 				case href.indexOf("mycards") != -1:
-					
+					this.printmycards();
 					break;
 			}
 		},
 		events: function(){
 			var that = this;
 			//选择职业
+
 			$("#ka_switch .item").click(function(){
 				if(!that.checkversion(1) || !that.checkversion(2)) return;
-
-				sessionStorage.setItem("job",$(this).attr("data-job"));
+				
+				sessionStorage.setItem("wbgl-lscs-ka-job",$(this).attr("data-job"));
 				location.href = 'data-lushichuanshuo-ka-detail.html';
 			});
 			//添加卡牌-添加卡牌
@@ -395,7 +469,8 @@
 			});
 			$ka_add_fei_ul.children().click(function(){
 				var self = $(this);
-				that.o.fei = Number(self.attr("data-type"));
+				that.o.feimin = Number(self.attr("data-fei-min"));
+				that.o.feimax = Number(self.attr("data-fei-max"));
 				self.addClass("on").siblings().removeClass("on");
 				$ka_add_fei.children().eq(0).html(self.children().html());
 				$ka_add_fei_ul.hide();
@@ -418,9 +493,55 @@
 					that.setmemorycard();
 				}
 			});
-			//点击我的卡组
-			$("#ka_mygroup").on("click", ".ka_flag", function(){
-				location.href = 'data-lushichuanshuo-ka-mycards.html';
+			//添加卡牌-点击顶部返回
+			$("#ka_detail_back").click(function(e){
+				if(JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html")){//如果是从mycards.html过来的就回mycards.html
+					e.preventDefault();
+					location.href = 'data-lushichuanshuo-ka-mycards.html';
+				}
+			});
+			//我的卡组-mygroup-点击哪条卡组
+			$("#ka_mygroup").on("click", ".a", function(){
+				var _id = Number($(this).closest(".ka_flag").attr("data-id")),
+				_wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka")),
+				card;
+
+				for(var i=0; i<_wbgllscska.data.length; i++){
+					card = _wbgllscska.data[i];
+					if(card.id == _id){
+						card = JSON.stringify(card);
+						sessionStorage.setItem("wbgl-lscs-ka-mycards",card);
+						location.href = 'data-lushichuanshuo-ka-mycards.html';
+					}
+				}
+			});
+			//我的卡组-mygroup-编辑
+			$("#ka_mygroup_edit").click(function(){
+				var isedit = Number($(this).attr("data-isedit"));
+				if(isedit == 1){
+					$(this).html("完成");
+					$(this).attr("data-isedit","2");
+					$("#ka_mygroup .share").each(function(){
+						$(this).html("").removeClass().addClass("del");
+					});
+				}else{
+					$(this).html("编辑");
+					$(this).attr("data-isedit","1");
+					$("#ka_mygroup .del").each(function(){
+						$(this).html("分享").removeClass().addClass("share");
+					});
+				}
+			});
+			//我的卡组-mygroup-编辑-删除
+			$("#ka_mygroup").on("click", ".del", function(){
+				if(confirm("您确定要删除吗？")){
+					var _id = $(this).closest(".ka_flag").attr("data-id");
+					that.removewbgllscska(_id);
+				}
+			});
+			//我的卡组-mygroup-mycards
+			$("#ka_mycards_edit").click(function(){
+				location.href = 'data-lushichuanshuo-ka-detail.html';
 			});
 		},
 		init: function(){

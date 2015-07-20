@@ -10,14 +10,14 @@
 
 <body class="ka_body">
 <div class="header" id="header">
-	<a href="javascript:;" class="back"><i></i>返回</a>
+	<a href="data-lushichuanshuo-ka-mygroup.html" class="back"><i></i>返回</a>
     <h1>卡组模拟器</h1>
-    <div class="ka_edit">编辑</div>
+    <div class="ka_edit" id="ka_mycards_edit">编辑</div>
 </div><!--/header-->
 
 <div class="ka_mycards">
-	<div class="c">
-        <div class="item">
+	<div class="c" id="ka_mycards">
+        <!--<div class="item">
             <div class="inner">
                 <div class="num num_two"><em>10</em></div>
                 <span>管理者埃克索图斯</span>
@@ -48,20 +48,20 @@
                 <i></i>
                 <div class="pic" style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div>
             </div>
-        </div>
+        </div>-->
     </div>
     
     <div class="b">
         <div class="count_wrap">
             <div class="count">
                 <div class="title">卡牌/法力消耗值</div>
-                <ul class="list">
+                <ul class="list" id="ka_mycards_chart">
                     <li>
-                        <div class="bar"><i style="height:50%"><code></code></i></div>
+                        <div class="bar"><i><code></code></i></div>
                         <div class="num"><span>0</span><i></i></div>
                     </li>
                     <li>
-                        <div class="bar"><i style="height:20%"><code></code></i></div>
+                        <div class="bar"><i><code></code></i></div>
                         <div class="num"><span>1</span><i></i></div>
                     </li>
                     <li>

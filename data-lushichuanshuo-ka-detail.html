@@ -10,7 +10,7 @@
 
 <body class="ka_body">
 <div class="header" id="header">
-	<a href="data-lushichuanshuo-ka-job.html" class="back"><i></i>返回</a>
+	<a href="data-lushichuanshuo-ka-job.html" class="back" id="ka_detail_back"><i></i>返回</a>
     <h1>添加卡牌</h1>
 </div><!--/header-->
 
@@ -21,7 +21,7 @@
                 <div class="box" id="ka_add_flag">
                     <i class="zhiye"></i>
                     <i class="mask"></i>
-                    <input placeholder="卡组名字" class="text" id="ka_add_input">
+                    <input placeholder="卡组名字" class="text" id="ka_add_input" maxlength="10">
                 </div>
             </div>
             <div class="content" id="ka_add_content">
@@ -87,11 +87,11 @@
                  	<i class="arrow"></i>
                 </div>
                 <ul class="group_select" id="ka_add_fei_ul">
-                    <li data-type="0"><div>所有</div></li>
-                    <li data-type="1"><div>0~2费</div></li>
-                    <li data-type="2"><div>3~4费</div></li>
-                    <li data-type="3"><div>5~6费</div></li>
-                    <li data-type="4"><div>7费+</div></li>
+                    <li data-fei-min="0" data-fei-max="100"><div>所有</div></li>
+                    <li data-fei-min="0" data-fei-max="2"><div>0~2费</div></li>
+                    <li data-fei-min="3" data-fei-max="4"><div>3~4费</div></li>
+                    <li data-fei-min="5" data-fei-max="6"><div>5~6费</div></li>
+                    <li data-fei-min="7" data-fei-max="100"><div>7费+</div></li>
                 </ul>
             </div>
         </div>

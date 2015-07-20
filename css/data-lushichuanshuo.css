@@ -114,7 +114,7 @@ a{ text-decoration:none}
 .ka_flag .box{ background:url(../images/lushichuanshuo/ka-mycard.png) 13px -50px no-repeat; background-size:109px; height:86px}
 .ka_flag .box.lieren{ background-position:13px -136px}/*272*/
 .ka_flag .box.fashi{ background-position:13px -222px}/*444*/
-.ka_flag .box.shenqishi{ background-position:13px -308px}/*616*/
+.ka_flag .box.shengqishi{ background-position:13px -308px}/*616*/
 .ka_flag .box.mushi{ background-position:13px -394px}/*788*/
 .ka_flag .box.qianxingzhe{ background-position:13px -480px}/*960*/
 .ka_flag .box.saman{ background-position:13px -566px}/*1132*/
@@ -123,7 +123,7 @@ a{ text-decoration:none}
 .ka_flag .zhiye{ background:url(../images/lushichuanshuo/ka-zhiye2.png) -4px -24px no-repeat; background-size:111px; width:100px; height:40px; position:absolute; top:12px; left:5px}
 .ka_flag .box.lieren .zhiye{ background-position:-4px -113px}/*194/111=1.747747 156/1.747747=89.2577 24+89=113*/
 .ka_flag .box.fashi .zhiye{ background-position:-4px -202px}
-.ka_flag .box.shenqishi .zhiye{ background-position:-4px -291px}
+.ka_flag .box.shengqishi .zhiye{ background-position:-4px -291px}
 .ka_flag .box.mushi .zhiye{ background-position:-4px -380px}
 .ka_flag .box.qianxingzhe .zhiye{ background-position:-4px -469px}
 .ka_flag .box.saman .zhiye{ background-position:-4px -558px}
