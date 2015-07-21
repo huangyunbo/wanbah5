@@ -134,7 +134,7 @@
 			job = $("#ka_add_group").children().eq(0).attr("data-job"),
 			ka;
 			if($.trim(cardname) == ""){
-				this.showdialogtip(4);
+				this.showdialogtip(5);
 				return;
 			}
 			
@@ -182,13 +182,15 @@
 			html_1 = '相同卡牌不能超过2张',
 			html_2 = '只能添加30张卡牌';
 			html_3 = '请添加30张卡牌';
-			html_4 = '给你的卡组命个名吧';
+			html_4 = '相同传说级卡牌只能携带一张';
+			html_5 = '给你的卡组命个名吧';
 			
 			switch(i){
 				case 1:$("#ka_add_dialogtip").html(html_1);break;
 				case 2:$("#ka_add_dialogtip").html(html_2);break;
 				case 3:$("#ka_add_dialogtip").html(html_3);break;
 				case 4:$("#ka_add_dialogtip").html(html_4);break;
+				case 5:$("#ka_add_dialogtip").html(html_5);break;
 			}
 			
 			easyDialog.open({
@@ -241,26 +243,30 @@
 			card,
 			num = 0;
 			
+			
+			function isLegend(f){//是否是传说级别
+				if(f==5){
+					return "item_glod";
+				}
+			}
+			
 			for(var i=0; i<cards.length; i++){
 				card = cards[i];
-				if(card.z == 1){//如果只有单张卡牌的时候
-					html += '<div class="item" data-id="'+card.c+'">'+
-								'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
-								'<i class="mask"></i>'+
-								'<i class="num num_'+card.e+'"><span></span></i>'+
-								'<p>'+card.d+'</p>'+
-							'</div>';
-					num++;
-				}else{
-					html += '<div class="item" data-id="'+card.c+'">'+
-								'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
-								'<i class="mask"></i>'+
-								'<i class="num num_'+card.e+'"><span></span></i>'+
-								'<p>'+card.d+'</p>'+
-								'<i class="double"></i>'+
-							'</div>';
+				
+				html += '<div class="item '+isLegend(card.f)+'" data-id="'+card.c+'">'+
+							'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
+							'<i class="mask"></i>'+
+							'<i class="num num_'+card.e+'"><span></span></i>'+
+							'<p>'+card.d+'</p>';
+				
+				if(card.z == 2){//如果只有单张卡牌的时候
 					num += 2;
+					html += '<i class="double"></i>';
+				}else{
+					num++;
 				}
+				
+				html += '</div>';
 			}
 			
 			this.o.cardnum = num;
@@ -308,19 +314,27 @@
 							if(cards[j].c == cardid){
 								k = j;
 								istwo = true;
+								break;
 							}
 						}
 						if(!istwo){
 							cardtmp.z = 1;
 							cards.push(cardtmp);
+							break;
 						}
 						if(istwo && cards[k].z == 1){
+							if(cards[k].f == 5){//相同传说级卡牌只能携带一张
+								this.showdialogtip(4);
+								return;
+							}
 							istwo = false;
 							cards[k].z = 2;
+							break;
 						}
 						if(istwo && cards[k].z == 2){
 							istwo = false;
 							this.showdialogtip(1);
+							return;
 						}
 					}
 				}
