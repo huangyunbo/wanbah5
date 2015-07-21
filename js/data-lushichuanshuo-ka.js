@@ -289,12 +289,14 @@
 			}
 		},
 		addcardlist: function(){//增加卡牌进列表
-			var cardid = Number(arguments[0]),
+			var $element = $(arguments[0]),
+			$picwrap = $element.children(".picwrap"),
+			cardid = Number($element.attr("data-id")),
 			datacards = this.datacards[this.switchjob(this.o.job)].b,
 			cards = this.o.cards,
 			cardtmp;
 			
-			if(this.o.cardnum == 4){
+			if(this.o.cardnum == 30){
 				this.showdialogtip(2);
 				return;
 			}
@@ -338,7 +340,15 @@
 						}
 					}
 				}
-			}			
+			}
+			
+			if(!$picwrap.hasClass("flip1") && !$picwrap.hasClass("flip2")){
+				$picwrap.addClass("flip1");
+			}else if($picwrap.hasClass("flip1") && !$picwrap.hasClass("flip2")){
+				$picwrap.removeClass("flip1").addClass("flip2");
+			}else if(!$picwrap.hasClass("flip1") && $picwrap.hasClass("flip2")){
+				$picwrap.removeClass("flip2").addClass("flip1");
+			}
 			
 			function bubbleSort(arr){//冒泡排序,从小到大
 				var i = arr.length,
@@ -372,7 +382,11 @@
 				card = datacards[i];
 				if((rarity==0 || card.f==rarity) && ((card.e>=feimin && card.e<=feimax))){
 					cardshtml += '<div class="item" data-id="'+card.c+'">'+
-									'<div class="pic"><div style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div><img src="'+this.o.url+'ka-defaultpic.png"></div>'+
+									'<div class="picwrap">'+
+										'<div class="pic picfront" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
+										'<div class="pic picback"></div>'+
+										'<img src="'+this.o.url+'ka-defaultpic.png">'+
+									'</div>'+
 									'<div class="zoom"><i></i></div>'+
 									'<p>'+card.d+'</p>'+
 								'</div>';
@@ -434,7 +448,6 @@
 		events: function(){
 			var that = this;
 			//选择职业
-
 			$("#ka_switch .item").click(function(){
 				if(!that.checkversion(1) || !that.checkversion(2)) return;
 				
@@ -443,7 +456,7 @@
 			});
 			//添加卡牌-添加卡牌
 			$("#ka_add_maincard").on("click", ".item", function(){
-				that.addcardlist($(this).attr("data-id"));
+				that.addcardlist(this);
 			});
 			//添加卡牌-移除卡牌
 			$("#ka_add_content").on("click", ".item", function(){
@@ -501,7 +514,7 @@
 			});
 			//添加卡牌-点击完成
 			$("#ka_add_ok").click(function(){
-				if(that.o.cardnum != 4){
+				if(that.o.cardnum != 30){
 					that.showdialogtip(3);
 				}else{
 					that.setmemorycard();
