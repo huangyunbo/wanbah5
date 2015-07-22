@@ -114,18 +114,20 @@
 					$("#ka_mygroup_edit").removeClass("hide");
 				}
 				group = wbgllscska.data[i];
-				html += '<div class="ka_flag" data-id="'+group.id+'">'+
-							'<div class="box '+group.job+'">'+
-								'<div class="a">'+
-									'<i class="zhiye"></i>'+
-									'<i class="mask"></i>'+
-									'<div class="text text_p">'+group.name+'</div>'+
+				html += '<div class="item" data-id="'+group.id+'">'+
+							'<div class="ka_flag">'+
+								'<div class="box '+group.job+'">'+
+									'<div class="a">'+
+										'<i class="zhiye"></i>'+
+										'<i class="mask"></i>'+
+										'<div class="text text_p">'+group.name+'</div>'+
+									'</div>'+
+									'<div class="share">分享</div>'+
 								'</div>'+
-								'<div class="share">分享</div>'+
 							'</div>'+
 						'</div>';
 			}
-		
+			
 			$("#ka_mygroup").html(html);
 		},
 		setmemorycard: function(){//存储卡组
@@ -529,7 +531,7 @@
 			});
 			//我的卡组-mygroup-点击哪条卡组
 			$("#ka_mygroup").on("click", ".a", function(){
-				var _id = Number($(this).closest(".ka_flag").attr("data-id")),
+				var _id = Number($(this).closest(".item").attr("data-id")),
 				_wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka")),
 				card;
 
@@ -562,7 +564,7 @@
 			//我的卡组-mygroup-编辑-删除
 			$("#ka_mygroup").on("click", ".del", function(){
 				if(confirm("您确定要删除吗？")){
-					var _id = $(this).closest(".ka_flag").attr("data-id");
+					var _id = $(this).closest(".item").attr("data-id");
 					that.removewbgllscska(_id);
 				}
 			});
@@ -573,16 +575,19 @@
 		},
 		init: function(){
 			var win_h = $(window).height(),
-			body_h = $("body").height();
+			body_h = $("body").height(),
+			body_w = $("body").width();
 			if(win_h > body_h){
 				$(".ka_body").height(win_h);
 			}
-			$("#ka_add_maincard").height(win_h-86);
+			if(body_w <= 640){//详情添加卡牌
+				$("#ka_add_maincard").height(win_h-86);
+			}else{
+				$("#ka_add_maincard").height(win_h-122);
+			}
 			
 			this.ispage();
 			this.events();
-			
-			
 		}
 	}
 	

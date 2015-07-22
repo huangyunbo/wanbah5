@@ -134,6 +134,9 @@ a{ text-decoration:none}
 /*卡组模拟*/
 .ka_body{ background:#2f2a21 url(../images/lushichuanshuo/ka-bg.jpg) no-repeat center bottom; background-size:cover}
 .ka_road .item{ width:220px; height:42px; padding-top:28px; color:#321701; background:url(../images/lushichuanshuo/ka-btn.png) no-repeat; background-size:220px; text-align:center; margin:45px auto 0; font-size:1.8rem; display:block}
+@media screen and (min-width:641px){
+	.ka_road .item{ width:440px; height:84px; padding-top:54px; background-size:440px; margin-top:90px; font-size:3.6rem}
+}
 /*卡组模拟-创建卡组*/
 .ka_switch{ overflow:hidden; width:100%; padding:15px 0 30px}
 .ka_switch .item{ width:33.33%; float:left; text-align:center; color:#ffd957; font-size:1.2rem; cursor:pointer}
@@ -146,6 +149,18 @@ a{ text-decoration:none}
 .ka_switch .item i.saman{ background-position:0 -468px}
 .ka_switch .item i.shushi{ background-position:0 -546px}
 .ka_switch .item i.zhanshi{ background-position:0 -624px}
+@media screen and (min-width:641px){
+	.ka_switch .item{ font-size:2.4rem}
+	.ka_switch .item i{ width:194px; height:156px; background-size:194px; margin-top:40px}
+	.ka_switch .item i.lieren{ background-position:0 -156px}
+	.ka_switch .item i.fashi{ background-position:0 -312px}
+	.ka_switch .item i.shengqishi{ background-position:0 -468px}
+	.ka_switch .item i.mushi{ background-position:0 -624px}
+	.ka_switch .item i.qianxingzhe{ background-position:0 -780px}
+	.ka_switch .item i.saman{ background-position:0 -936px}
+	.ka_switch .item i.shushi{ background-position:0 -1092px}
+	.ka_switch .item i.zhanshi{ background-position:0 -1248px}
+}
 /*卡组模拟-编辑卡牌*/
 .ka_add{ overflow:hidden}
 .ka_add .aside{ position:absolute; right:0; top:0; width:106px; height:100%; padding-top:50px; box-sizing:border-box}/*总共设计让出右边110,ios不需要头部需要去掉padding-top*/
@@ -193,15 +208,64 @@ a{ text-decoration:none}
 .ka_add .aside .item .num_10 span{ background-position:0 -20px}
 .ka_add .aside .item .num_12 span{ background-position:-40px -20px}
 .ka_add .aside .item .num_20 span{ background-position:0 -40px}
-.ka_add .aside .item p{ position:absolute; left:12px; top:1px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; width:84px; color:#fff; text-shadow:1px 1px 1px #000; font-size:1.2rem; transform:scale(0.833)}
+.ka_add .aside .item p{ position:absolute; left:15px; top:1px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; width:84px; color:#fff; text-shadow:1px 1px 1px #000; font-size:1.2rem; transform:scale(0.833)}
 .ka_add .aside .item .double{ background:url(../images/lushichuanshuo/ka-number.png) -204px -60px no-repeat; background-size:220px; right:7px; top:2px; width:16px; height:15px; position:absolute}
 .ka_add .aside_bottom{ position:absolute; bottom:0; text-align:center; width:100%; z-index:3}
 .ka_add .aside_bottom div{ color:#fff; font-size:1.6rem}
 .ka_add .aside_bottom a{ background:url(../images/lushichuanshuo/ka-btn.png) -4px -75px no-repeat; background-size:220px; width:106px; height:44px; display:block}
+@media screen and (min-width:641px){
+	.ka_add .aside{ width:212px}
+	.ka_add .aside .ka_flag{ margin-left:-6px}
+	.ka_flag{ width:218px; height:172px}
+	.ka_flag .box{ background-position:26px -100px; background-size:218px; height:172px}
+	.ka_flag .box.lieren{ background-position:26px -272px}
+	.ka_flag .box.fashi{ background-position:26px -444px}
+	.ka_flag .box.shengqishi{ background-position:26px -616px}
+	.ka_flag .box.mushi{ background-position:26px -788px}
+	.ka_flag .box.qianxingzhe{ background-position:26px -960px}
+	.ka_flag .box.saman{ background-position:26px -1132px}
+	.ka_flag .box.shushi{ background-position:26px -1304px}
+	.ka_flag .box.zhanshi{ background-position:26px -1476px}
+	.ka_flag .zhiye{ background-position:-8px -48px; background-size:222px; width:200px; height:80px; top:24px; left:10px}
+	.ka_flag .box.lieren .zhiye{ background-position:-8px -226px}/*194/222=0.873873 156/0.873873=178.5156 48+178=226*/
+	.ka_flag .box.fashi .zhiye{ background-position:-8px -404px}
+	.ka_flag .box.shengqishi .zhiye{ background-position:-8px -582px}
+	.ka_flag .box.mushi .zhiye{ background-position:-8px -760px}
+	.ka_flag .box.qianxingzhe .zhiye{ background-position:-8px -938px}
+	.ka_flag .box.saman .zhiye{ background-position:-8px -1116px}
+	.ka_flag .box.shushi .zhiye{ background-position:-8px -1294px}
+	.ka_flag .box.zhanshi .zhiye{ background-position:-8px -1472px}
+	.ka_flag .mask{ width:218px; height:96px; background-size:218px; top:14px}
+	.ka_flag .text{ width:176px; height:24px; font-size:2.4rem; line-height:2.4rem; top:64px; left:24px}
+	.ka_add .aside .content{ margin:-50px 0 0 -6px; height:calc(100% - 258px)}/*ka_flag-负上去的，再加底部的完成。172-50+136=258*/
+	.ka_add .aside .item{ height:40px; margin-bottom:6px}
+	.ka_add .aside .item .hero{ background-size:360px; background-position:-94px -124px; width:180px; height:32px; top:4px; right:14px}
+	.ka_add .aside .item .mask,.ka_add .aside .item_glod .mask{ background-position:0 -120px; width:204px; height:40px; left:8px; background-size:440px}
+	.ka_add .aside .item_glod .mask{ background-position:-204px -120px}
+	.ka_add .aside .item .num,.ka_add .aside .item_glod .num{ background-position:-400px 0; width:40px; height:40px; background-size:440px}
+	.ka_add .aside .item_glod .num{ background-position:-400px -40px}
+	.ka_add .aside .item .num span{ background-size:440px}
+	.ka_add .aside .item .num_1 span{ background-position:-40px 0}
+	.ka_add .aside .item .num_2 span{ background-position:-80px 0}
+	.ka_add .aside .item .num_3 span{ background-position:-120px 0}
+	.ka_add .aside .item .num_4 span{ background-position:-160px 0}
+	.ka_add .aside .item .num_5 span{ background-position:-200px 0}
+	.ka_add .aside .item .num_6 span{ background-position:-240px 0}
+	.ka_add .aside .item .num_7 span{ background-position:-280px 0}
+	.ka_add .aside .item .num_8 span{ background-position:-320px 0}
+	.ka_add .aside .item .num_9 span{ background-position:-360px 0}
+	.ka_add .aside .item .num_10 span{ background-position:0 -40px}
+	.ka_add .aside .item .num_12 span{ background-position:-80px -40px}
+	.ka_add .aside .item .num_20 span{ background-position:0 -80px}
+	.ka_add .aside .item p{ left:45px; top:4px; width:160px; font-size:2rem; transform:none}
+	.ka_add .aside .item .double{ background-position:-408px -120px; background-size:440px; right:14px; top:4px; width:32px; height:30px}
+	.ka_add .aside_bottom div{ color:#fff; font-size:3.2rem}
+	.ka_add .aside_bottom a{ background-position:-8px -150px; background-size:440px; width:212px; height:88px}
+}
 /*卡组模拟-编辑卡牌-左侧主体*/
 .ka_add .main{ margin-right:110px}
 .ka_add .main .head{ height:30px; padding-top:6px; display:table; width:100%}
-.ka_add .main .head .td{ display:table-cell; position:relative; text-align:center; z-index:10}
+.ka_add .main .head .td{ display:table-cell; position:relative; text-align:center; z-index:10; vertical-align:top}
 .ka_add .main .head .group{ font-size:1.2rem; display:inline-block; overflow:hidden}
 .ka_add .main .head .group .item{ float:left; color:#ffd957}
 .ka_add .main .head .group_change_btn .item{ border:1px solid #ffd957}
@@ -214,6 +278,18 @@ a{ text-decoration:none}
 .ka_add .main .head .group_select li{ border:1px solid #ffd957; border-radius:15px; margin:14px 8px}
 .ka_add .main .head .group_select li.on{ background:linear-gradient(rgba(253,230,136,0.9), rgba(255,188,63,0.9)); background:-webkit-linear-gradient(rgba(253,230,136,0.9), rgba(255,188,63,0.9))}
 .ka_add .main .head .group_select li div{ box-shadow:0 0 4px rgba(36,0,0,0.45) inset; padding:0 10px; border-radius:15px}
+@media screen and (min-width:641px){
+	.ka_add .main{ margin-right:220px}
+	.ka_add .main .head{ height:60px; padding-top:12px}
+	.ka_add .main .head .group{ font-size:2rem}
+	.ka_add .main .head .group_change_btn .item:first-child{ padding:0 6px 1px 14px}
+	.ka_add .main .head .group_change_btn .item:last-child{ padding:0 14px 1px 6px}
+	.ka_add .main .head .group_select_btn{ padding:0 30px 1px 16px; width:80px; border-radius:30px}
+	.ka_add .main .head .group_select_btn .arrow{ border-width:8px; top:14px; right:10px}
+	.ka_add .main .head .group_select{ display:none; left:50%; top:38px; margin-left:-64px; font-size:2rem; width:206px}
+	.ka_add .main .head .group_select li{ margin:18px 12px}
+	.ka_add .main .head .group_select li div{ padding:0 20px}
+}
 /*卡组模拟-编辑卡牌-左侧主体-卡牌组*/
 .ka_add .maincard{ overflow-y:auto; -webkit-transform-style:preserve-3d}
 .ka_add .maincard .item{ float:left; width:33.33%; color:#fde69f; text-align:center; position:relative}
@@ -227,44 +303,57 @@ a{ text-decoration:none}
 .ka_add .maincard .item .flip2 .picfront{ -webkit-animation:picfrontflip2 2s ease-out 0s 1 normal}
 .ka_add .maincard .item .flip2 .picback{ -webkit-animation:picbackflip2 2s ease-out 0s 1 normal}
 @-webkit-keyframes picfrontflip{
-	100%{ transform:rotateY(360deg); -webkit-transform:rotateY(360deg)}
+	100%{ -webkit-transform:rotateY(360deg)}
 }
 @-webkit-keyframes picbackflip{
-	50%{ background-image:url(../images/lushichuanshuo/ka-card-default.jpg)}
-	100%{ transform:rotateY(360deg); -webkit-transform:rotateY(360deg)}
+	50%{ background-image:url(../images/lushichuanshuo/ka-card-default.png)}
+	100%{ -webkit-transform:rotateY(360deg)}
 }
 @-webkit-keyframes picfrontflip2{
-	100%{ transform:rotateY(360deg); -webkit-transform:rotateY(360deg)}
+	100%{ -webkit-transform:rotateY(360deg)}
 }
 @-webkit-keyframes picbackflip2{
-	50%{ background-image:url(../images/lushichuanshuo/ka-card-default.jpg)}
-	100%{ transform:rotateY(360deg); -webkit-transform:rotateY(360deg)}
+	50%{ background-image:url(../images/lushichuanshuo/ka-card-default.png)}
+	100%{ -webkit-transform:rotateY(360deg)}
 }
 .ka_add .maincard .item .picwrap img{ width:100%; height:auto}
 .ka_add .maincard .item p{ font-size:1.2rem; height:36px; line-height:1.2}
+@media screen and (min-width:640px){
+	.ka_add .maincard .item{ width:25%}
+}
+@media screen and (min-width:641px){
+	.ka_add .maincard .zoom { height:60px}
+	.ka_add .maincard .zoom i{ background-position:-400px -80px; width:36px; height:36px; background-size:440px}
+	.ka_add .maincard .item .picwrap{ margin:10px 10px 5px}
+	.ka_add .maincard .item p{ font-size:1.8rem; height:50px; line-height:1.2}
+}
+@media screen and (min-width:1024px){
+	.ka_add .maincard .item{ width:20%}
+	.ka_add .maincard .item .picwrap{ margin:15px 15px 5px}
+}
 /*卡组模拟-编辑卡牌-相同卡牌不能超过2张*/
 .dialogtip{ font-size:1.5rem; color:#fff; background:#000; border-radius:5px; padding:0 10px; display:none}
+@media screen and (min-width:641px){
+	.dialogtip{ font-size:2.6rem; padding:2px 20px}
+}
 /*卡组模拟-我的卡组*/
 .ka_mygroup_content{ overflow:hidden}
-.ka_mygroup .ka_flag{ float:left; margin:20px 0 20px 20px; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
-@media screen and (max-width:414px){
-	.ka_mygroup_content{ margin-left:-14px}
-	.ka_mygroup .ka_flag{ margin-left:29px}
+.ka_mygroup .item{ float:left; width:50%; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.ka_mygroup .item .ka_flag{ margin:20px auto}
+.ka_mygroup .item .share{ position:absolute; bottom:11px; left:50%; margin-left:-21px; color:#fff; font-size:1.2rem; cursor:pointer; border:1px solid #fff; border-radius:30px; padding:2px 8px 1px; line-height:1}
+.ka_mygroup .item .del{ position:absolute; width:14px; height:14px; bottom:12px; left:50%; margin-left:-7px; background:url(../images/lushichuanshuo/ka-btn.png) -115px -75px no-repeat; background-size:220px; cursor:pointer}
+@media screen and (min-width:375px){
+	.ka_mygroup .item{ width:33.33%}
 }
-@media screen and (max-width:375px){
-	.ka_mygroup_content{ margin-left:-8px}
-	.ka_mygroup .ka_flag{ margin-left:16px}
+@media screen and (min-width:641px){
+	.ka_mygroup .item{ width:50%}
+	.ka_mygroup .item .share{ bottom:22px; margin-left:-33px; font-size:1.8rem; padding:4px 14px}
+	.ka_mygroup .item .del{ width:28px; height:28px; bottom:22px; margin-left:-14px; background-position:-230px -150px; background-size:440px}
+
 }
-@media screen and (max-width:360px){
-	.ka_mygroup_content{ margin-left:-35px}
-	.ka_mygroup .ka_flag{ margin-left:71px}
+@media screen and (min-width:769px){
+	.ka_mygroup .item{ width:33.33%}
 }
-@media screen and (max-width:320px){
-	.ka_mygroup_content{ margin-left:-25px}
-	.ka_mygroup .ka_flag{ margin-left:51px}
-}
-.ka_mygroup .ka_flag .share{ position:absolute; bottom:11px; left:50%; margin-left:-21px; color:#fff; font-size:1.2rem; cursor:pointer; border:1px solid #fff; border-radius:10px; padding:2px 8px 1px; line-height:1}
-.ka_mygroup .ka_flag .del{ position:absolute; width:14px; height:14px; bottom:12px; left:50%; margin-left:-7px; background:url(../images/lushichuanshuo/ka-btn.png) -115px -75px no-repeat; background-size:220px; cursor:pointer}
 /*卡组模拟-我的卡组-卡列表*/
 .ka_mycards .c{ overflow:hidden; color:#fff; margin-top:15px}
 .ka_mycards .c .item{ float:left; width:50%; padding:0 7.5px; margin-bottom:3px; box-sizing:border-box}
