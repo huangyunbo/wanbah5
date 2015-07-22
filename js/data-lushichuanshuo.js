@@ -4,7 +4,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {type:0,manacost:0,url:"images/lushichuanshuo/",isSlidingHide:true};//type:9职业+中立 0-9,manacost:费法力 0-8,url:为android/ios准备,isSlidingHide:打开弹窗不需要开启隐藏上下
+		this.o = {type:0,manacost:0,url:"images/lushichuanshuo/",isSlidingHide:true,ratio:320};//type:9职业+中立 0-9,manacost:费法力 0-8,url:为android/ios准备,isSlidingHide:打开弹窗不需要开启隐藏上下
 
 		this.init();
 	}
@@ -106,12 +106,22 @@
 					distanceY = touchStarY - touchMoveY;
 					
 					if(distanceY > 10 && document.documentElement.scrollTop + document.body.scrollTop >= 88 && that.o.isSlidingHide){//下滑隐藏，顶部预留88px不隐藏，且兼容ie和ff
-						$data_type.stop(true,true).animate({
-							top: -38
-						});
-						$data_fei.stop(true,true).animate({
-							bottom: -35
-						});
+						if(that.o.ratio == 320){
+							$data_type.stop(true,true).animate({
+								top: -38
+							});
+							$data_fei.stop(true,true).animate({
+								bottom: -35
+							});
+						}else{
+							$data_type.stop(true,true).animate({
+								top: -108
+							});
+							$data_fei.stop(true,true).animate({
+								bottom: -70
+							});
+						}
+						
 					}
 					if(distanceY < -10 && that.o.isSlidingHide){//上划展示
 						$data_type.stop(true,true).animate({
@@ -124,8 +134,20 @@
 				},false);
 			}
 		},
+		calcw: function(){
+			var window_w = $(window).width();
+			if(window_w < 768){
+				this.o.ratio = 320;
+			}else{
+				this.o.ratio = 768;
+			}
+		},
 		events: function(){
 			var that = this;
+			
+			$(window).resize(function(){
+                that.calcw();
+            });
 			//点击中立+9职业
 			$("#data_type li").click(function(){
 				var _index = $("#data_type li").index($(this));
@@ -156,6 +178,7 @@
 			});
 		},
 		init: function(){
+			this.calcw();
 			this.events();
 			$("#data_type li").eq(0).trigger("click");
 		}
