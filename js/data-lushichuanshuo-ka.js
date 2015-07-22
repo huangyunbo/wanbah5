@@ -10,7 +10,69 @@
 	}
 	
 	LscsKa.prototype = {
-		removewbgllscska: function(){
+		shareweixin: function(){//分享到微信
+			var isicon = arguments[0],//true:调取图片 false不调取图片,直接分享
+			cardsid = Number(arguments[1]),
+			agent = navigator.userAgent.toLowerCase(),
+			sharejson = {"device":0,"url":"http://myapp.wanba123.cn/","title":"玩吧专业版客户端","des":"专为手机游戏玩家而生！这里有最给力的原创游戏攻略、最及时的游戏资讯、各种奇葩玩法、最实用的游戏资料...","pic":"'+this.o.url+'shareweixin.png","name":"","job":0,"cards":""};
+			
+			
+			if(agent.indexOf("android") != -1){
+				sharejson.device = 1;
+			}else if(agent.indexOf("iphone") != -1 || agent.indexOf("ipad") != -1 || agent.indexOf("ipod") != -1){
+				sharejson.device = 2;
+			}
+			
+			function setjob(){
+				switch(arguments[0]){
+					case "deluyi":return 3;
+					case "lieren":return 7;
+					case "fashi":return 9;
+					case "shengqishi":return 8;
+					case "mushi":return 2;
+					case "qianxingzhe":return 6;
+					case "saman":return 4;
+					case "shushi":return 1;
+					case "zhanshi":return 5;
+				}
+			}
+			
+			if(isicon){
+				try{
+					if(sharejson.device = 1){
+						window.jstojava.setShareWxIcon(sharejson.pic);
+					}else if(sharejson.device = 2){
+						window.location.href = 'ios://setShareWxIcon?ico=' + encodeURIComponent(sharejson.pic);
+					}
+				}catch(err){
+				
+				}
+			}else{
+				var wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka")).data;
+				
+				for(var i=0; i<wbgllscska.length; i++){
+					if(cardsid == wbgllscska[i].id){
+						sharejson.name = wbgllscska[i].name;
+						sharejson.job = setjob(wbgllscska[i].job);
+						
+						for(var j=0; j<wbgllscska[i].cards.length; j++){
+							sharejson.cards += wbgllscska[i].cards[j].c+",";
+						}
+						break;
+					}
+				}
+				sharejson.url = 'http://ella.wanba123.cn/lushichuanshuo/share.aspx?job='+sharejson.job+'&title='+encodeURIComponent(sharejson.name)+'&card='+sharejson.cards;
+				sharejson.title = '炉石传说 '+sharejson.name+' 卡组已构建完成，谁来与我一战！';
+
+				if(sharejson.device = 1){
+					window.jstojava.shareToWXCircleofFriends(sharejson.url, sharejson.title, sharejson.des);
+				}else if(sharejson.device = 2){
+					var codeUrl = 'url='+encodeURIComponent(sharejson.url)+'&title='+encodeURIComponent(sharejson.title)+'&description='+encodeURIComponent(sharejson.des);
+					window.location.href = "ios://shareToWXCircleofFriends?" + codeUrl;
+				}
+			}
+		},
+		removewbgllscska: function(){//移除我的卡组里的某个卡组
 			var id = Number(arguments[0]),
 			wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka"));
 			
@@ -101,6 +163,8 @@
 				}
             	$(this).find("i").eq(0).css("height",_h+"%");
             });
+			
+			$("#shareweixin").attr("data-id",wbgllscsmycards.id);//赋值该卡组的id给分享
 		},
 		printmygroup: function(){//打印我的卡牌组
 			var wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka")),
@@ -440,6 +504,7 @@
 					this.printdetail();
 					break;
 				case href.indexOf("mygroup") != -1:
+					this.shareweixin(true);
 					this.printmygroup();
 					break;
 				case href.indexOf("mycards") != -1:
@@ -568,9 +633,19 @@
 					that.removewbgllscska(_id);
 				}
 			});
-			//我的卡组-mygroup-mycards
+			//我的卡组-mygroup-编辑-分享
+			$("#ka_mygroup").on("click", ".share", function(){
+				var _id = $(this).closest(".item").attr("data-id");
+				that.shareweixin(false,_id);
+			});
+			//我的卡组-mycards
 			$("#ka_mycards_edit").click(function(){
 				location.href = 'data-lushichuanshuo-ka-detail.html';
+			});
+			//我的卡组-mycards-分享
+			$("#shareweixin").click(function(){
+				var _id = $(this).attr("data-id");
+				that.shareweixin(false,_id);
 			});
 		},
 		init: function(){
