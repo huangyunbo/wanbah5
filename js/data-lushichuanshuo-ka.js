@@ -1,13 +1,13 @@
 //2015-07-16
 (function(window){
-	var LscsKa = function(option){
+	var LscsKa = function(){
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
 		this.o = {job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,feimin:0,feimax:100};//job:职业 url:前缀路径 cards:选中的卡牌 cardnum:当前一共选了多少张牌了 rarity:稀有度0所有 fei:费法力0所有
 
 		this.init();
-	}
+	};
 	
 	LscsKa.prototype = {
 		shareweixin: function(){//分享到微信
@@ -39,9 +39,9 @@
 			
 			if(isicon){
 				try{
-					if(sharejson.device = 1){
+					if(sharejson.device == 1){
 						window.jstojava.setShareWxIcon(sharejson.pic);
-					}else if(sharejson.device = 2){
+					}else if(sharejson.device == 2){
 						window.location.href = 'ios://setShareWxIcon?ico=' + encodeURIComponent(sharejson.pic);
 					}
 				}catch(err){
@@ -64,9 +64,9 @@
 				sharejson.url = 'http://ella.wanba123.cn/lushichuanshuo/share.aspx?job='+sharejson.job+'&title='+encodeURIComponent(sharejson.name)+'&card='+sharejson.cards;
 				sharejson.title = '炉石传说 '+sharejson.name+' 卡组已构建完成，谁来与我一战！';
 
-				if(sharejson.device = 1){
+				if(sharejson.device == 1){
 					window.jstojava.shareToWXCircleofFriends(sharejson.url, sharejson.title, sharejson.des);
-				}else if(sharejson.device = 2){
+				}else if(sharejson.device == 2){
 					var codeUrl = 'url='+encodeURIComponent(sharejson.url)+'&title='+encodeURIComponent(sharejson.title)+'&description='+encodeURIComponent(sharejson.des);
 					window.location.href = "ios://shareToWXCircleofFriends?" + codeUrl;
 				}
@@ -107,9 +107,9 @@
 			function isnumtwo(){//上两位数费的卡牌要换className
 				var num = arguments[0];
 				if(num >= 10){
-					return '<div class="num num_two"><em>'+num+'</em></div>'	
+					return '<div class="num num_two"><em>'+num+'</em></div>';
 				}else{
-					return '<div class="num"><em>'+num+'</em></div>'
+					return '<div class="num"><em>'+num+'</em></div>';
 				}
 			}
 			
@@ -156,7 +156,7 @@
 		
 			$("#ka_mycards").html(html);
 			
-			$("#ka_mycards_chart").children("li").each(function(index, element){
+			$("#ka_mycards_chart").children("li").each(function(index){
 				var _h = dic[index] / 30 * 2 * 100;//翻倍效果更加明显
 				if(_h > 100){
 					_h = 100;
@@ -195,11 +195,13 @@
 			$("#ka_mygroup").html(html);
 		},
 		setmemorycard: function(){//存储卡组
-			var cardname = $("#ka_add_input").val(),
+			var $input = $("#ka_add_input"),
+			cardname = $input.val(),
 			wbgllscska,
 			job = $("#ka_add_group").children().eq(0).attr("data-job"),
 			ka;
-			if($.trim(cardname) == ""){
+			if($.trim(cardname).length == 0){
+				$input.focus();
 				this.showdialogtip(5);
 				return;
 			}
@@ -217,9 +219,9 @@
 				}
 				localStorage.setItem("wbgl-lscs-ka",JSON.stringify(wbgllscska));
 			}else if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html"){//如果是mycards.html过来的就在原来的里面编辑保存
-				var id = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards")).id,
-				wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka"));
+				var id = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards")).id;
 				
+				wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka"));
 				for(var i=0; i<wbgllscska.data.length; i++){
 					if(wbgllscska.data[i].id == id){
 						wbgllscska.data[i] = {"id":id,"name":cardname,"job":job,"cards":this.o.cards};
@@ -664,7 +666,7 @@
 			this.ispage();
 			this.events();
 		}
-	}
+	};
 	
 	window.LscsKa = LscsKa;
 })(window);
