@@ -4,7 +4,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,feimin:0,feimax:100};//job:职业 url:前缀路径 cards:选中的卡牌 cardnum:当前一共选了多少张牌了 rarity:稀有度0所有 fei:费法力0所有
+		this.o = {platform:"android",job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,feimin:0,feimax:100};//job:职业 url:前缀路径 cards:选中的卡牌 cardnum:当前一共选了多少张牌了 rarity:稀有度0所有 fei:费法力0所有
 
 		this.init();
 	};
@@ -13,16 +13,8 @@
 		shareweixin: function(){//分享到微信
 			var isicon = arguments[0],//true:调取图片 false不调取图片,直接分享
 			cardsid = Number(arguments[1]),
-			agent = navigator.userAgent.toLowerCase(),
-			sharejson = {"device":0,"url":"http://myapp.wanba123.cn/","title":"玩吧专业版客户端","des":"专为手机游戏玩家而生！这里有最给力的原创游戏攻略、最及时的游戏资讯、各种奇葩玩法、最实用的游戏资料...","pic":"'+this.o.url+'shareweixin.png","name":"","job":0,"cards":""};
-			
-			
-			if(agent.indexOf("android") != -1){
-				sharejson.device = 1;
-			}else if(agent.indexOf("iphone") != -1 || agent.indexOf("ipad") != -1 || agent.indexOf("ipod") != -1){
-				sharejson.device = 2;
-			}
-			
+			sharejson = {"url":"http://myapp.wanba123.cn/","title":"玩吧专业版客户端","des":"专为手机游戏玩家而生！这里有最给力的原创游戏攻略、最及时的游戏资讯、各种奇葩玩法、最实用的游戏资料...","pic":"'+this.o.url+'shareweixin.png","name":"","job":0,"cards":""};
+
 			function setjob(){
 				switch(arguments[0]){
 					case "deluyi":return 3;
@@ -36,16 +28,16 @@
 					case "zhanshi":return 5;
 				}
 			}
-			
+
 			if(isicon){
 				try{
-					if(sharejson.device == 1){
+					if(this.o.platform == "android"){
 						window.jstojava.setShareWxIcon(sharejson.pic);
-					}else if(sharejson.device == 2){
+					}else if(this.o.platform == "ios"){
 						window.location.href = 'ios://setShareWxIcon?ico=' + encodeURIComponent(sharejson.pic);
 					}
 				}catch(err){
-				
+					alert(err);
 				}
 			}else{
 				var wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka")).data;
@@ -56,19 +48,27 @@
 						sharejson.job = setjob(wbgllscska[i].job);
 						
 						for(var j=0; j<wbgllscska[i].cards.length; j++){
-							sharejson.cards += wbgllscska[i].cards[j].c+",";
+							if(wbgllscska[i].cards.z == 2){
+								sharejson.cards += wbgllscska[i].cards[j].c+","+wbgllscska[i].cards[j].c+",";
+							}else{
+								sharejson.cards += wbgllscska[i].cards[j].c+",";
+							}
 						}
+						sharejson.cards = sharejson.cards.substring(0,sharejson.cards.length-1);
 						break;
 					}
 				}
+				
 				sharejson.url = 'http://ella.wanba123.cn/lushichuanshuo/share.aspx?job='+sharejson.job+'&title='+encodeURIComponent(sharejson.name)+'&card='+sharejson.cards;
 				sharejson.title = '炉石传说 '+sharejson.name+' 卡组已构建完成，谁来与我一战！';
-
-				if(sharejson.device == 1){
-					window.jstojava.shareToWXCircleofFriends(sharejson.url, sharejson.title, sharejson.des);
-				}else if(sharejson.device == 2){
+				
+				if(this.o.platform == "android"){
+						window.jstojava.shareToWXCircleofFriends(sharejson.url, sharejson.title, sharejson.des);
+				}else if(this.o.platform == "ios"){
 					var codeUrl = 'url='+encodeURIComponent(sharejson.url)+'&title='+encodeURIComponent(sharejson.title)+'&description='+encodeURIComponent(sharejson.des);
 					window.location.href = "ios://shareToWXCircleofFriends?" + codeUrl;
+				}else if(this.o.platform == "other"){
+					alert("暂不支持分享");
 				}
 			}
 		},
@@ -476,17 +476,22 @@
 					}
 					return true;
 				case 2:
-					/*try{
-						window.jstojava.getHostVersion();
-					}catch(err){
-						alert("错误，请升级Android玩吧专业版2.5");
-						return false;
-					}*/
-					return true;
+					if(this.o.platform == "android"){
+						try{
+							window.jstojava.getHostVersion();
+						}catch(err){
+							alert("错误，请升级Android玩吧专业版2.5以上");
+							return false;
+						}
+						return true;
+					}else{
+						return true;
+					}
 			}
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			if(!this.checkversion(1) || !this.checkversion(2)) return;
+
 			var href = location.href;
 			switch(true){
 				case href.indexOf("index") != -1:

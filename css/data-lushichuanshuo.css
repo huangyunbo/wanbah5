@@ -186,7 +186,7 @@ a{ text-decoration:none}
 .ka_flag .box.shushi .zhiye{ background-position:-4px -647px}
 .ka_flag .box.zhanshi .zhiye{ background-position:-4px -736px}
 .ka_flag .mask{ width:109px; height:48px; position:absolute; background:url(../images/lushichuanshuo/ka-mycard.png) no-repeat; background-size:109px; top:7px; left:0}
-.ka_flag .text{ position:absolute; width:88px; height:12px; font-size:1.2rem; line-height:1.2rem; border:none; top:32px; left:12px; background:transparent; color:#fde69f}
+.ka_flag .text{ position:absolute; width:88px; height:14px; font-size:1.2rem; line-height:1; border:none; top:32px; left:12px; background:transparent; color:#fde69f}
 .ka_flag .text_p{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .ka_add .aside .content{ position:relative; margin:-25px 0 0 -3px; z-index:2; overflow-y:auto; height:calc(100% - 129px)}/*ka_flag-负上去的，再加底部的完成。86-25+68=129*/
 .ka_add .aside .item{ height:20px; position:relative; margin-bottom:3px; cursor:pointer}
@@ -236,7 +236,7 @@ a{ text-decoration:none}
 	.ka_flag .box.shushi .zhiye{ background-position:-8px -1294px}
 	.ka_flag .box.zhanshi .zhiye{ background-position:-8px -1472px}
 	.ka_flag .mask{ width:218px; height:96px; background-size:218px; top:14px}
-	.ka_flag .text{ width:176px; height:24px; font-size:2.4rem; line-height:2.4rem; top:64px; left:24px}
+	.ka_flag .text{ width:176px; height:28px; font-size:2.4rem; line-height:1; top:64px; left:24px}
 	.ka_add .aside .content{ margin:-50px 0 0 -6px; height:calc(100% - 258px)}/*ka_flag-负上去的，再加底部的完成。172-50+136=258*/
 	.ka_add .aside .item{ height:40px; margin-bottom:6px}
 	.ka_add .aside .item .hero{ background-size:360px; background-position:-94px -124px; width:180px; height:32px; top:4px; right:14px}
