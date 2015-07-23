@@ -314,14 +314,15 @@
 			
 			function isLegend(f){//是否是传说级别
 				if(f==5){
-					return "item_glod";
+					return " item_glod";
 				}
+				return ""
 			}
 			
 			for(var i=0; i<cards.length; i++){
 				card = cards[i];
 				
-				html += '<div class="item '+isLegend(card.f)+'" data-id="'+card.c+'">'+
+				html += '<div class="item'+isLegend(card.f)+'" data-id="'+card.c+'">'+
 							'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
 							'<i class="mask"></i>'+
 							'<i class="num num_'+card.e+'"><span></span></i>'+

@@ -43,10 +43,10 @@ a{ text-decoration:none}
 .data_card{ width:100%; margin:138px 0 50px}
 .data_card ul{ overflow:hidden}
 .data_card li{ float:left; width:33.33%; text-align:center; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
-.data_card li .pic{ margin:10px 10px 2px; position:relative}
+.data_card li .pic{ margin:0 10px 2px; position:relative}
 .data_card li .pic img{ width:100%; height:auto}
 .data_card li .pic div{ position:absolute; width:100%; height:100%; background-repeat:no-repeat; background-position:center center; left:0; top:0; background-size:cover}
-.data_card li p{ font-size:1.2rem; color:#322b27}
+.data_card li p{ font-size:1.2rem; color:#322b27; height:36px}
 .data_fei{ width:100%; position:fixed; bottom:0; left:0; height:34px; background:rgba(29,20,4,0.6); border-top:1px solid #ffd957; display:table; z-index:10}
 .data_fei .item{ width:11.11%; display:table-cell; text-align:center; position:relative; overflow:hidden; cursor:pointer}
 .data_fei .item i{ background:url(../images/lushichuanshuo/data-fei.png) no-repeat; background-size:320px; height:30px; width:30px; display:block; margin:2px auto 0}
@@ -61,7 +61,7 @@ a{ text-decoration:none}
 .data_fei .item.on span{ background:url(../images/lushichuanshuo/data-fei.png) -270px 0px no-repeat; background-size:320px; height:40px; width:40px; left:50%; top:-4px; position:absolute; margin-left:-19px}
 @media screen and (min-width:640px){
 	.data_card li{ width:25%}
-	.data_card li p{ font-size:2rem}
+	.data_card li p{ font-size:2rem; height:60px}
 }
 @media screen and (min-width:768px){
 	.data_card{ margin:173px 0 100px}
@@ -208,7 +208,7 @@ a{ text-decoration:none}
 .ka_add .aside .item .num_10 span{ background-position:0 -20px}
 .ka_add .aside .item .num_12 span{ background-position:-40px -20px}
 .ka_add .aside .item .num_20 span{ background-position:0 -40px}
-.ka_add .aside .item p{ position:absolute; left:15px; top:1px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; width:84px; color:#fff; text-shadow:1px 1px 1px #000; font-size:1.2rem; transform:scale(0.833)}
+.ka_add .aside .item p{ position:absolute; left:20px; top:1px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; width:84px; color:#fff; text-shadow:1px 1px 1px #000; font-size:1.2rem}
 .ka_add .aside .item .double{ background:url(../images/lushichuanshuo/ka-number.png) -204px -60px no-repeat; background-size:220px; right:7px; top:2px; width:16px; height:15px; position:absolute}
 .ka_add .aside_bottom{ position:absolute; bottom:0; text-align:center; width:100%; z-index:3}
 .ka_add .aside_bottom div{ color:#fff; font-size:1.6rem}
@@ -257,7 +257,7 @@ a{ text-decoration:none}
 	.ka_add .aside .item .num_10 span{ background-position:0 -40px}
 	.ka_add .aside .item .num_12 span{ background-position:-80px -40px}
 	.ka_add .aside .item .num_20 span{ background-position:0 -80px}
-	.ka_add .aside .item p{ left:45px; top:4px; width:160px; font-size:2rem; transform:none}
+	.ka_add .aside .item p{ left:42px; top:4px; width:165px; font-size:2rem}
 	.ka_add .aside .item .double{ background-position:-408px -120px; background-size:440px; right:14px; top:4px; width:32px; height:30px}
 	.ka_add .aside_bottom div{ color:#fff; font-size:3.2rem}
 	.ka_add .aside_bottom a{ background-position:-8px -150px; background-size:440px; width:212px; height:88px}
@@ -267,12 +267,12 @@ a{ text-decoration:none}
 .ka_add .main .head{ height:30px; padding-top:6px; display:table; width:100%}
 .ka_add .main .head .td{ display:table-cell; position:relative; text-align:center; z-index:10; vertical-align:top}
 .ka_add .main .head .group{ font-size:1.2rem; display:inline-block; overflow:hidden}
-.ka_add .main .head .group .item{ float:left; color:#ffd957}
+.ka_add .main .head .group .item{ float:left; color:#ffd957; white-space:nowrap}
 .ka_add .main .head .group_change_btn .item{ border:1px solid #ffd957}
-.ka_add .main .head .group_change_btn .item:first-child{ border-radius:30px 0 0 30px; padding:1px 3px 1px 7px}
-.ka_add .main .head .group_change_btn .item:last-child{ border-radius:0 30px 30px 0; padding:1px 7px 1px 3px}
+.ka_add .main .head .group_change_btn .item:first-child{ border-radius:30px 0 0 30px; padding:1px 2px 1px 6px}
+.ka_add .main .head .group_change_btn .item:last-child{ border-radius:0 30px 30px 0; padding:1px 6px 1px 2px}
 .ka_add .main .head .group_change_btn .on{ background:#ffd957; color:#2f2a21}
-.ka_add .main .head .group_select_btn{ padding:1px 15px 1px 8px; width:40px; position:relative; border:1px solid #ffd957; border-radius:30px}
+.ka_add .main .head .group_select_btn{ padding:1px 13px 1px 6px; width:40px; position:relative; border:1px solid #ffd957; border-radius:30px}
 .ka_add .main .head .group_select_btn .arrow{ border-width:4px; border-style:solid dashed dashed; border-color:#ffd957 transparent transparent; position:absolute; top:9px; right:5px}
 .ka_add .main .head .group_select{ display:none; position:absolute; z-index:2; left:50%; top:25px; margin-left:-33px; font-size:1.2rem; color:#fff; width:103px; text-align:left; background:rgba(50,32,24,0.83); border:1px solid #ffd957; border-radius:5px; box-shadow:0 0 5px #ffd957 inset}
 .ka_add .main .head .group_select li{ border:1px solid #ffd957; border-radius:15px; margin:14px 8px}
