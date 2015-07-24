@@ -4,7 +4,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {type:0,manacost:0,url:"images/lushichuanshuo/",isSlidingHide:true,ratio:320};//type:9职业+中立 0-9,manacost:费法力 0-8,url:为android/ios准备,isSlidingHide:打开弹窗不需要开启隐藏上下
+		this.o = {platform:"android",platename:"plugin_926",type:0,manacost:0,url:"images/lushichuanshuo/",isData_type:true};//platform:打包平台,platename:插件板块名,type:9职业+中立 0-9,manacost:费法力 0-8,url:图片路径,isData_type:打开弹窗不需要开启隐藏上下
 
 		this.init();
 	}
@@ -105,49 +105,23 @@
 					touchMoveY = e.targetTouches[0].pageY;
 					distanceY = touchStarY - touchMoveY;
 					
-					if(distanceY > 10 && document.documentElement.scrollTop + document.body.scrollTop >= 88 && that.o.isSlidingHide){//下滑隐藏，顶部预留88px不隐藏，且兼容ie和ff
-						if(that.o.ratio == 320){
-							$data_type.stop(true,true).animate({
-								top: -38
-							});
-							$data_fei.stop(true,true).animate({
-								bottom: -35
-							});
-						}else{
-							$data_type.stop(true,true).animate({
-								top: -108
-							});
-							$data_fei.stop(true,true).animate({
-								bottom: -70
-							});
-						}
-						
+					if(distanceY > 10 && document.documentElement.scrollTop + document.body.scrollTop >= 88 && that.o.isData_type){//下滑隐藏
+						$data_type.addClass("data_type_animate");
 					}
-					if(distanceY < -10 && that.o.isSlidingHide){//上划展示
-						$data_type.stop(true,true).animate({
-							top: 50
-						});
-						$data_fei.stop(true,true).animate({
-							bottom: 0
-						});
+					if(distanceY < -10 && that.o.isData_type){//上划展示
+						$data_type.removeClass("data_type_animate");
 					}
 				},false);
 			}
 		},
-		calcw: function(){
-			var window_w = $(window).width();
-			if(window_w < 768){
-				this.o.ratio = 320;
-			}else{
-				this.o.ratio = 768;
+		isheader: function(){
+			if(this.o.platform == "android"){
+				$("#header").removeClass("hide");
+				$("#header").children(".more").attr("href","../"+this.o.platename+"/index.html");
 			}
 		},
 		events: function(){
 			var that = this;
-			
-			$(window).resize(function(){
-                that.calcw();
-            });
 			//点击中立+9职业
 			$("#data_type li").click(function(){
 				var _index = $("#data_type li").index($(this));
@@ -166,19 +140,19 @@
 			//单张卡片弹窗
 			$("#data_card").on("click", "li", function(){
 				$("body").css("overflow-y","hidden");
-				that.o.isSlidingHide = false;
+				that.o.isData_type = false;
 				that.printdialogcard($(this).attr("data-id"));
 				
 			});
 			//关闭单张卡片弹窗
 			$("#dialogcard").click(function(){
 				$("body").css("overflow-y","auto");
-				that.o.isSlidingHide = true;
+				that.o.isData_type = true;
 				$(this).addClass("hide");
 			});
 		},
 		init: function(){
-			this.calcw();
+			this.isheader();
 			this.events();
 			$("#data_type li").eq(0).trigger("click");
 		}
