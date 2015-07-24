@@ -4,7 +4,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {platform:"web",job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,feimin:0,feimax:100};//platform:打包平台,platename:插件板块名,job:职业,url:前缀路径,cards:选中的卡牌,cardnum:当前一共选了多少张牌了,rarity:稀有度0所有,fei:费法力0所有
+		this.o = {platform:"web",platename:"plugin_926",job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,feimin:0,feimax:100};//platform:打包平台,platename:插件板块名,job:职业,url:前缀路径,cards:选中的卡牌,cardnum:当前一共选了多少张牌了,rarity:稀有度0所有,fei:费法力0所有
 		if(this.o.platform == "android"){
 			this.o.url="../images/lushichuanshuo/";
 		}
@@ -15,8 +15,7 @@
 		shareweixin: function(){//分享到微信
 			var isicon = arguments[0],//true:调取图片 false不调取图片,直接分享
 			cardsid = Number(arguments[1]),
-			sharejson = {"url":"http://myapp.wanba123.cn/","title":"玩吧专业版客户端","des":"专为手机游戏玩家而生！这里有最给力的原创游戏攻略、最及时的游戏资讯、各种奇葩玩法、最实用的游戏资料...","pic":"shareweixin.png","name":"","job":0,"cards":""};
-			sharejson.pic = this.o.url + sharejson.pic;
+			sharejson = {"url":"http://myapp.wanba123.cn/","title":"玩吧专业版客户端","des":"专为手机游戏玩家而生！这里有最给力的原创游戏攻略、最及时的游戏资讯、各种奇葩玩法、最实用的游戏资料...","pic":"https://is2-ssl.mzstatic.com/image/thumb/Newsstand7/v4/70/35/87/70358797-1269-34a0-dd1f-3891c7d74038/Icon-76@2x.png.png/150x150bb-80.png","name":"","job":0,"cards":""};
 
 			function setjob(){
 				switch(arguments[0]){
@@ -51,7 +50,7 @@
 						sharejson.job = setjob(wbgllscska[i].job);
 						
 						for(var j=0; j<wbgllscska[i].cards.length; j++){
-							if(wbgllscska[i].cards.z == 2){
+							if(wbgllscska[i].cards[j].z == 2){
 								sharejson.cards += wbgllscska[i].cards[j].c+","+wbgllscska[i].cards[j].c+",";
 							}else{
 								sharejson.cards += wbgllscska[i].cards[j].c+",";
@@ -61,12 +60,12 @@
 						break;
 					}
 				}
-				
+
 				sharejson.url = 'http://ella.wanba123.cn/lushichuanshuo/share.aspx?job='+sharejson.job+'&title='+encodeURIComponent(sharejson.name)+'&card='+sharejson.cards;
 				sharejson.title = '炉石传说 '+sharejson.name+' 卡组已构建完成，谁来与我一战！';
 				
 				if(this.o.platform == "android"){
-						window.jstojava.shareToWXCircleofFriends(sharejson.url, sharejson.title, sharejson.des);
+					window.jstojava.shareToWXCircleofFriends(sharejson.url, sharejson.title, sharejson.des);
 				}else if(this.o.platform == "ios"){
 					var codeUrl = 'url='+encodeURIComponent(sharejson.url)+'&title='+encodeURIComponent(sharejson.title)+'&description='+encodeURIComponent(sharejson.des);
 					window.location.href = "ios://shareToWXCircleofFriends?" + codeUrl;
@@ -232,7 +231,11 @@
 					}
 				}
 			}
-			location.href = 'data-lushichuanshuo-ka-mygroup.html';
+			if(this.o.platform != "ios"){
+				location.href = 'data-lushichuanshuo-ka-mygroup.html';
+			}else{
+				location.href = this.o.platename+'/data-lushichuanshuo-ka-mygroup.html';
+			}
 		},
 		switchjob:function(){
 			switch(arguments[0]){
@@ -492,47 +495,61 @@
 					}
 			}
 		},
-		ispage: function(){//判断当前打开的是哪一个页面
-			if(!this.checkversion(1) || !this.checkversion(2)) return;
-
-			var href = location.href;
-			switch(true){
-				case href.indexOf("index") != -1:
-					this.isplatform(1);
-					break;
-				case href.indexOf("job") != -1:
-					this.isplatform(2);
-					sessionStorage.setItem("wbgl-lscs-ka-urlform", "job.html");//记录来自于data-lushichuanshuo-ka-job.html
-					break;
-				case href.indexOf("detail") != -1:
-					var win_h = $(window).height(),
-					$ka_add_maincard = $("#ka_add_maincard"),
-					head_h = $ka_add_maincard.siblings(".head").innerHeight(),
-					header_h = this.o.platform == "ios" ? 0 : 50;
-					
-					$ka_add_maincard.height(win_h-head_h-header_h);
-					
-					this.isplatform(3);
-					this.o.job = sessionStorage.getItem("wbgl-lscs-ka-job");
-					$("#ka_add_group").children().eq(0).attr("data-job",this.o.job);
-					this.setkaaddboxbg();
-					if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html" && sessionStorage.getItem("wbgl-lscs-ka-mycards") !== null){//如果是从data-lushichuanshuo-ka-mycards.html过来的就赋值
-						var data = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards"));
-						this.o.cards = data.cards;
-						this.printcardlist();
-						$("#ka_add_input").val(data.name);
+		isplatform: function(i){//判断打包平台显示相应内容
+			function removehide(){
+				$("#header").removeClass("hide");
+			}
+			
+			switch(i){
+				case 1:
+					if(this.o.platform == "web"){
+						removehide();
+					}else if(this.o.platform == "android"){
+						removehide();
+						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
+					}else if(this.o.platform == "ios"){
+						$("#ka_road").children(".item").eq(0).attr("href",this.o.platename+"/data-lushichuanshuo-ka-job.html");
+						$("#ka_road").children(".item").eq(1).attr("href",this.o.platename+"/data-lushichuanshuo-ka-mygroup.html");
 					}
-					this.printdetail();
-					break;
-				case href.indexOf("mygroup") != -1:
-					this.isplatform(4);
-					this.shareweixin(true);
-					this.printmygroup();
-					break;
-				case href.indexOf("mycards") != -1:
-					this.isplatform(5);
-					this.printmycards();
-					break;
+				break;
+				case 2:
+					if(this.o.platform == "web"){
+						removehide();
+					}else if(this.o.platform == "android"){
+						removehide();
+						$("#header").children(".back").attr("href","index.html");
+					}
+				break;
+				case 3:
+					if(this.o.platform == "web"){
+						removehide();
+					}else if(this.o.platform == "android"){
+						removehide();
+					}else if(this.o.platform == "ios"){
+						$("#ka_add").children(".aside").addClass("aside_ios");
+					}
+				break;
+				case 4:
+					if(this.o.platform == "web"){
+						removehide();
+					}else if(this.o.platform == "android"){
+						removehide();
+						$("#header").children(".back").attr("href","index.html");
+					}else if(this.o.platform == "ios"){
+						removehide();
+						$("#header").addClass("header_ios");	
+					}
+				break;
+				case 5:
+					if(this.o.platform == "web"){
+						removehide();
+					}else if(this.o.platform == "android"){
+						removehide();
+					}else if(this.o.platform == "ios"){
+						removehide();
+						$("#header").addClass("header_ios");	
+					}
+				break;
 			}
 		},
 		events: function(){
@@ -542,7 +559,11 @@
 				if(!that.checkversion(1) || !that.checkversion(2)) return;
 				
 				sessionStorage.setItem("wbgl-lscs-ka-job",$(this).attr("data-job"));
-				location.href = 'data-lushichuanshuo-ka-detail.html';
+				if(that.o.platform != "ios"){
+					location.href = 'data-lushichuanshuo-ka-detail.html';
+				}else{
+					location.href = that.o.platename+'/data-lushichuanshuo-ka-detail.html';
+				}
 			});
 			//添加卡牌-添加卡牌
 			$("#ka_add_maincard").on("click", ".item", function(){
@@ -628,7 +649,11 @@
 					if(card.id == _id){
 						card = JSON.stringify(card);
 						sessionStorage.setItem("wbgl-lscs-ka-mycards",card);
-						location.href = 'data-lushichuanshuo-ka-mycards.html';
+						if(that.o.platform != "ios"){
+							location.href = 'data-lushichuanshuo-ka-mycards.html';
+						}else{
+							location.href = that.o.platename+'/data-lushichuanshuo-ka-mycards.html';
+						}
 					}
 				}
 			});
@@ -663,7 +688,11 @@
 			});
 			//我的卡组-mycards
 			$("#ka_mycards_edit").click(function(){
-				location.href = 'data-lushichuanshuo-ka-detail.html';
+				if(that.o.platform != "ios"){
+					location.href = 'data-lushichuanshuo-ka-detail.html';
+				}else{
+					location.href = that.o.platename+'/data-lushichuanshuo-ka-detail.html';
+				}
 			});
 			//我的卡组-mycards-分享
 			$("#shareweixin").click(function(){
@@ -671,58 +700,47 @@
 				that.shareweixin(false,_id);
 			});
 		},
-		isplatform: function(i){//判断打包平台显示相应内容
-			function removehide(){
-				$("#header").removeClass("hide");
-			}
+		ispage: function(){//判断当前打开的是哪一个页面
+			if(!this.checkversion(1) || !this.checkversion(2)) return;
 			
-			switch(i){
-				case 1:
-					if(this.o.platform == "web"){
-						removehide();
-					}else if(this.o.platform == "android"){
-						removehide();
-						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
+			var href = location.href;
+			switch(true){
+				case href.indexOf("index") != -1:
+					this.isplatform(1);
+					break;
+				case href.indexOf("job") != -1:
+					this.isplatform(2);
+					sessionStorage.setItem("wbgl-lscs-ka-urlform", "job.html");//记录来自于data-lushichuanshuo-ka-job.html
+					break;
+				case href.indexOf("detail") != -1:
+					var win_h = $(window).height(),
+					$ka_add_maincard = $("#ka_add_maincard"),
+					head_h = $ka_add_maincard.siblings(".head").innerHeight(),
+					header_h = this.o.platform == "ios" ? 0 : 50;
+					
+					$ka_add_maincard.height(win_h-head_h-header_h);
+					
+					this.isplatform(3);
+					this.o.job = sessionStorage.getItem("wbgl-lscs-ka-job");
+					$("#ka_add_group").children().eq(0).attr("data-job",this.o.job);
+					this.setkaaddboxbg();
+					if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html" && sessionStorage.getItem("wbgl-lscs-ka-mycards") !== null){//如果是从data-lushichuanshuo-ka-mycards.html过来的就赋值
+						var data = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards"));
+						this.o.cards = data.cards;
+						this.printcardlist();
+						$("#ka_add_input").val(data.name);
 					}
-				break;
-				case 2:
-					if(this.o.platform == "web"){
-						removehide();
-					}else if(this.o.platform == "android"){
-						removehide();
-						$("#header").children(".back").attr("href","index.html");
-					}
-				break;
-				case 3:
-					if(this.o.platform == "web"){
-						removehide();
-					}else if(this.o.platform == "android"){
-						removehide();
-					}else if(this.o.platform == "ios"){
-						$("#ka_add").children(".aside").addClass("aside_ios");
-					}
-				break;
-				case 4:
-					if(this.o.platform == "web"){
-						removehide();
-					}else if(this.o.platform == "android"){
-						removehide();
-						$("#header").children(".back").attr("href","index.html");
-					}else if(this.o.platform == "ios"){
-						removehide();
-						$("#header").addClass("header_ios");	
-					}
-				break;
-				case 5:
-					if(this.o.platform == "web"){
-						removehide();
-					}else if(this.o.platform == "android"){
-						removehide();
-					}else if(this.o.platform == "ios"){
-						removehide();
-						$("#header").addClass("header_ios");	
-					}
-				break;
+					this.printdetail();
+					break;
+				case href.indexOf("mygroup") != -1:
+					this.isplatform(4);
+					this.shareweixin(true);
+					this.printmygroup();
+					break;
+				case href.indexOf("mycards") != -1:
+					this.isplatform(5);
+					this.printmycards();
+					break;
 			}
 		},
 		init: function(){
