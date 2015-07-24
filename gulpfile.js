@@ -35,7 +35,7 @@ var del = require('del');
 
 var lscs_platename_data = "plugin_925";
 var lscs_platename_ka = "plugin_926";
-var path = '../';
+var lscs_path = '../';
 var lscs_replacename = ['css/', 'js/', 'json/'];
 
 gulp.task('lscs_images', function(){
@@ -51,6 +51,7 @@ gulp.task('lscs_css', function(){
 gulp.task('lscs_js_android', function(){
     gulp.src(['./js/jquery-2.1.3.min.js','./js/data-lushichuanshuo.js'])
         .pipe(concat('lushichuanshuo.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"android"'))
         .pipe(uglify())
         .pipe(gulp.dest('../../chajian/79/android/DataPlugin/js'));
 		
@@ -63,7 +64,7 @@ gulp.task('lscs_js_android', function(){
 gulp.task('lscs_js_ios', function(){
     gulp.src(['./js/jquery-2.1.3.min.js','./js/data-lushichuanshuo.js'])
         .pipe(concat('lushichuanshuo.min.js'))
-		.pipe(replace('platform:"android"', 'platform:"ios"'))
+		.pipe(replace('platform:"web"', 'platform:"ios"'))
         .pipe(uglify())
         .pipe(gulp.dest('../../chajian/79/android/DataPlugin/js'));
 		
@@ -79,26 +80,26 @@ gulp.task('lscs_json', function(){
         .pipe(gulp.dest('../../chajian/79/android/DataPlugin/json'));
 });
 
-gulp.task('lscs_data_mergejs_android', function(){
-    gulp.src('./data-lushichuanshuo.html')
+gulp.task('lscs_data_replace_android', function(){
+    gulp.src('data-lushichuanshuo.html')
         .pipe(merge({
             'js/lushichuanshuo.min.js':['js/jquery-2.1.3.min.js','js/data-lushichuanshuo.js']
         }))
-		.pipe(replace(replaceName[0], path + replaceName[0]))
-		.pipe(replace(replaceName[1], path + replaceName[1]))
-		.pipe(replace(replaceName[2], path + replaceName[2]))
+		.pipe(replace(lscs_replacename[0], lscs_path + lscs_replacename[0]))
+		.pipe(replace(lscs_replacename[1], lscs_path + lscs_replacename[1]))
+		.pipe(replace(lscs_replacename[2], lscs_path + lscs_replacename[2]))
 		.pipe(rename('index.html'))
         .pipe(gulp.dest('../../chajian/79/android/DataPlugin/'+lscs_platename_data));
 });
 
-gulp.task('lscs_ka_mergejs_android', function() {
-    gulp.src('./data-lushichuanshuo-ka-index.html')
+gulp.task('lscs_ka_replace_android', function() {
+    gulp.src('data-lushichuanshuo-ka-index.html')
 		.pipe(merge({
             'js/lushichuanshuo-ka.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-lushichuanshuo-ka.js']
         }))
-		.pipe(replace(replaceName[0], path + replaceName[0]))
-		.pipe(replace(replaceName[1], path + replaceName[1]))
-		.pipe(replace(replaceName[2], path + replaceName[2]))
+		.pipe(replace(lscs_replacename[0], lscs_path + lscs_replacename[0]))
+		.pipe(replace(lscs_replacename[1], lscs_path + lscs_replacename[1]))
+		.pipe(replace(lscs_replacename[2], lscs_path + lscs_replacename[2]))
 		.pipe(rename('index.html'))
         .pipe(gulp.dest('../../chajian/79/android/DataPlugin/'+lscs_platename_ka));
 		
@@ -106,41 +107,41 @@ gulp.task('lscs_ka_mergejs_android', function() {
 		.pipe(merge({
             'js/lushichuanshuo-ka.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-lushichuanshuo-ka.js']
         }))
-		.pipe(replace(replaceName[0], path + replaceName[0]))
-		.pipe(replace(replaceName[1], path + replaceName[1]))
-		.pipe(replace(replaceName[2], path + replaceName[2]))
+		.pipe(replace(lscs_replacename[0], lscs_path + lscs_replacename[0]))
+		.pipe(replace(lscs_replacename[1], lscs_path + lscs_replacename[1]))
+		.pipe(replace(lscs_replacename[2], lscs_path + lscs_replacename[2]))
         .pipe(gulp.dest('../../chajian/79/android/DataPlugin/'+lscs_platename_ka));
 		
 	gulp.src('./data-lushichuanshuo-ka-detail.html')
 		.pipe(merge({
             'js/lushichuanshuo-ka.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-lushichuanshuo-ka.js']
         }))
-		.pipe(replace(replaceName[0], path + replaceName[0]))
-		.pipe(replace(replaceName[1], path + replaceName[1]))
-		.pipe(replace(replaceName[2], path + replaceName[2]))
+		.pipe(replace(lscs_replacename[0], lscs_path + lscs_replacename[0]))
+		.pipe(replace(lscs_replacename[1], lscs_path + lscs_replacename[1]))
+		.pipe(replace(lscs_replacename[2], lscs_path + lscs_replacename[2]))
         .pipe(gulp.dest('../../chajian/79/android/DataPlugin/'+lscs_platename_ka));
 		
 	gulp.src('./data-lushichuanshuo-ka-mygroup.html')
 		.pipe(merge({
             'js/lushichuanshuo-ka.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-lushichuanshuo-ka.js']
         }))
-		.pipe(replace(replaceName[0], path + replaceName[0]))
-		.pipe(replace(replaceName[1], path + replaceName[1]))
-		.pipe(replace(replaceName[2], path + replaceName[2]))
+		.pipe(replace(lscs_replacename[0], lscs_path + lscs_replacename[0]))
+		.pipe(replace(lscs_replacename[1], lscs_path + lscs_replacename[1]))
+		.pipe(replace(lscs_replacename[2], lscs_path + lscs_replacename[2]))
         .pipe(gulp.dest('../../chajian/79/android/DataPlugin/'+lscs_platename_ka));
 		
 	gulp.src('./data-lushichuanshuo-ka-mycards.html')
 		.pipe(merge({
             'js/lushichuanshuo-ka.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-lushichuanshuo-ka.js']
         }))
-		.pipe(replace(replaceName[0], path + replaceName[0]))
-		.pipe(replace(replaceName[1], path + replaceName[1]))
-		.pipe(replace(replaceName[2], path + replaceName[2]))
+		.pipe(replace(lscs_replacename[0], lscs_path + lscs_replacename[0]))
+		.pipe(replace(lscs_replacename[1], lscs_path + lscs_replacename[1]))
+		.pipe(replace(lscs_replacename[2], lscs_path + lscs_replacename[2]))
         .pipe(gulp.dest('../../chajian/79/android/DataPlugin/'+lscs_platename_ka));
 });
 
 gulp.task('lscs_android', function(){
-	gulp.start('lscs_images', 'lscs_css', 'lscs_js_android', 'lscs_json', 'lscs_data_mergejs_android', 'lscs_ka_mergejs_android');
+	gulp.start('lscs_images', 'lscs_css', 'lscs_js_android', 'lscs_json', 'lscs_data_replace_android', 'lscs_ka_replace_android');
 });
 
 

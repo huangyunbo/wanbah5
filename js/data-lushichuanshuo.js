@@ -153,6 +153,8 @@
 			}else if(this.o.platform == "ios"){
 				$("#data_type").addClass("data_type_ios");
 				$("#data_card").parent().addClass("data_card_ios");
+			}else if(this.o.platform == "web"){
+				$("#header").removeClass("hide");
 			}
 		},
 		init: function(){
