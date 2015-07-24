@@ -4,8 +4,10 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {platform:"android",platename:"plugin_926",type:0,manacost:0,url:"images/lushichuanshuo/",isData_type:true};//platform:打包平台,platename:插件板块名,type:9职业+中立 0-9,manacost:费法力 0-8,url:图片路径,isData_type:打开弹窗不需要开启隐藏上下
-
+		this.o = {platform:"web",platename:"plugin_926",type:0,manacost:0,url:"images/lushichuanshuo/",isData_type:true};//platform:打包平台,platename:插件板块名,type:9职业+中立 0-9,manacost:费法力 0-8,url:图片路径,isData_type:打开弹窗不需要开启隐藏上下
+		if(this.o.platform == "android"){
+			this.o.url="../images/lushichuanshuo/";
+		}
 		this.init();
 	}
 	
@@ -88,7 +90,6 @@
 			$("#dialogcard").html(_html).removeClass("hide");
 		},
 		slidingHide: function(){//滑动隐藏上下
-			
 			if(document.documentElement.clientHeight < document.body.clientHeight - 138){
 				var that = this,
 					touchStarY,
@@ -112,12 +113,6 @@
 						$data_type.removeClass("data_type_animate");
 					}
 				},false);
-			}
-		},
-		isheader: function(){
-			if(this.o.platform == "android"){
-				$("#header").removeClass("hide");
-				$("#header").children(".more").attr("href","../"+this.o.platename+"/index.html");
 			}
 		},
 		events: function(){
@@ -151,8 +146,17 @@
 				$(this).addClass("hide");
 			});
 		},
+		isplatform: function(){//判断打包平台显示相应内容
+			if(this.o.platform == "android"){
+				$("#header").removeClass("hide");
+				$("#header").children(".more").attr("href","../"+this.o.platename+"/index.html");
+			}else if(this.o.platform == "ios"){
+				$("#data_type").addClass("data_type_ios");
+				$("#data_card").parent().addClass("data_card_ios");
+			}
+		},
 		init: function(){
-			this.isheader();
+			this.isplatform();
 			this.events();
 			$("#data_type li").eq(0).trigger("click");
 		}

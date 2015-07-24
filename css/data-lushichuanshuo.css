@@ -24,8 +24,12 @@ a{ text-decoration:none}
 .header h1{ line-height:50px; font-size:1.8rem; text-align:center; color:#fff}
 .header .more{ position:absolute; right:7px; top:17px; font-size:1.2rem; color:#fde69f}
 .header .ka_edit{ position:absolute; right:7px; top:12px; font-size:1.8rem; color:#fff; cursor:pointer}
+.header_ios{ background:none; border:0}
+.header_ios .back{ display:none}
+.header_ios h1{ display:none}
 /*数据库*/
 .data_type{ width:100%; background:#ffe697; position:fixed; z-index:9; top:50px; left:0; transition:top 0.5s ease-out}
+.data_type_ios{ top:0}
 .data_type ul{overflow:hidden}
 .data_type li{ width:20%; float:left; border:solid #ffbc3f; border-width:0 1px 1px 0; box-sizing:border-box; text-align:center; cursor:pointer}
 .data_type li.on{ background:#7d6438}
@@ -42,6 +46,7 @@ a{ text-decoration:none}
 .data_type li.on i{ box-shadow:0 0 10px #feffa3}
 .data_type_animate{ top:-88px; transition:top 0.5s ease-out}
 .data_card{ width:100%; margin:148px 0 50px}
+.data_card_ios{ margin-top:98px}
 .data_card ul{ overflow:hidden}
 .data_card li{ float:left; width:33.33%; text-align:center; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .data_card li .pic{ margin:0 10px 2px; position:relative}
@@ -66,6 +71,7 @@ a{ text-decoration:none}
 }
 @media screen and (min-width:768px){
 	.data_card{ margin:183px 0 100px}
+	.data_card_ios{ margin-top:123px}
 	.data_type li i{ background-size:262.5px; width:52.5px; height:52.5px}
 	.data_type li i.deluyi{ background-position:-52.5px 0}
 	.data_type li i.lieren{ background-position:-105px 0}
@@ -90,6 +96,7 @@ a{ text-decoration:none}
 	.data_fei .item.on span{ background-position:-540px 0; background-size:640px; width:80px; height:80px; top:-8px; margin-left:-39px}}
 @media screen and (min-width:1024px){
 	.data_card{ margin:218px 0 100px}
+	.data_card_ios{ margin-top:168px}
 	.data_card li{ width:20%}
 	.data_type li i{ background-size:350px; width:70px; height:70px}
 	.data_type li i.deluyi{ background-position:-70px 0}
@@ -167,6 +174,7 @@ a{ text-decoration:none}
 /*卡组模拟-编辑卡牌*/
 .ka_add{ overflow:hidden}
 .ka_add .aside{ position:absolute; right:0; top:0; width:106px; height:100%; padding-top:50px; box-sizing:border-box}/*总共设计让出右边110,ios不需要头部需要去掉padding-top*/
+.ka_add .aside_ios{ padding-top:0}
 .ka_add .aside_inner{ background:#191623; height:100%; position:relative}
 .ka_add .aside .ka_flag{ margin-left:-3px}
 .ka_flag{ width:109px; height:86px; position:relative}

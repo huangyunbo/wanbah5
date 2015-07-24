@@ -4,8 +4,10 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {platform:"android",job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,feimin:0,feimax:100};//job:职业 url:前缀路径 cards:选中的卡牌 cardnum:当前一共选了多少张牌了 rarity:稀有度0所有 fei:费法力0所有
-
+		this.o = {platform:"web",job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,feimin:0,feimax:100};//platform:打包平台,platename:插件板块名,job:职业,url:前缀路径,cards:选中的卡牌,cardnum:当前一共选了多少张牌了,rarity:稀有度0所有,fei:费法力0所有
+		if(this.o.platform == "android"){
+			this.o.url="../images/lushichuanshuo/";
+		}
 		this.init();
 	};
 	
@@ -13,7 +15,8 @@
 		shareweixin: function(){//分享到微信
 			var isicon = arguments[0],//true:调取图片 false不调取图片,直接分享
 			cardsid = Number(arguments[1]),
-			sharejson = {"url":"http://myapp.wanba123.cn/","title":"玩吧专业版客户端","des":"专为手机游戏玩家而生！这里有最给力的原创游戏攻略、最及时的游戏资讯、各种奇葩玩法、最实用的游戏资料...","pic":"'+this.o.url+'shareweixin.png","name":"","job":0,"cards":""};
+			sharejson = {"url":"http://myapp.wanba123.cn/","title":"玩吧专业版客户端","des":"专为手机游戏玩家而生！这里有最给力的原创游戏攻略、最及时的游戏资讯、各种奇葩玩法、最实用的游戏资料...","pic":"shareweixin.png","name":"","job":0,"cards":""};
+			sharejson.pic = this.o.url + sharejson.pic;
 
 			function setjob(){
 				switch(arguments[0]){
@@ -67,7 +70,7 @@
 				}else if(this.o.platform == "ios"){
 					var codeUrl = 'url='+encodeURIComponent(sharejson.url)+'&title='+encodeURIComponent(sharejson.title)+'&description='+encodeURIComponent(sharejson.des);
 					window.location.href = "ios://shareToWXCircleofFriends?" + codeUrl;
-				}else if(this.o.platform == "other"){
+				}else if(this.o.platform == "web"){
 					alert("暂不支持分享");
 				}
 			}
@@ -495,11 +498,21 @@
 			var href = location.href;
 			switch(true){
 				case href.indexOf("index") != -1:
+					this.isplatform(1);
 					break;
 				case href.indexOf("job") != -1:
+					this.isplatform(2);
 					sessionStorage.setItem("wbgl-lscs-ka-urlform", "job.html");//记录来自于data-lushichuanshuo-ka-job.html
 					break;
 				case href.indexOf("detail") != -1:
+					var win_h = $(window).height(),
+					$ka_add_maincard = $("#ka_add_maincard"),
+					head_h = $ka_add_maincard.siblings(".head").innerHeight(),
+					header_h = this.o.platform == "ios" ? 0 : 50;
+					
+					$ka_add_maincard.height(win_h-head_h-header_h);
+					
+					this.isplatform(3);
 					this.o.job = sessionStorage.getItem("wbgl-lscs-ka-job");
 					$("#ka_add_group").children().eq(0).attr("data-job",this.o.job);
 					this.setkaaddboxbg();
@@ -512,10 +525,12 @@
 					this.printdetail();
 					break;
 				case href.indexOf("mygroup") != -1:
+					this.isplatform(4);
 					this.shareweixin(true);
 					this.printmygroup();
 					break;
 				case href.indexOf("mycards") != -1:
+					this.isplatform(5);
 					this.printmycards();
 					break;
 			}
@@ -656,19 +671,67 @@
 				that.shareweixin(false,_id);
 			});
 		},
+		isplatform: function(i){//判断打包平台显示相应内容
+			function removehide(){
+				$("#header").removeClass("hide");
+			}
+			
+			switch(i){
+				case 1:
+					if(this.o.platform == "web"){
+						removehide();
+					}else if(this.o.platform == "android"){
+						removehide();
+						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
+					}
+				break;
+				case 2:
+					if(this.o.platform == "web"){
+						removehide();
+					}else if(this.o.platform == "android"){
+						removehide();
+						$("#header").children(".back").attr("href","index.html");
+					}
+				break;
+				case 3:
+					if(this.o.platform == "web"){
+						removehide();
+					}else if(this.o.platform == "android"){
+						removehide();
+					}else if(this.o.platform == "ios"){
+						$("#ka_add").children(".aside").addClass("aside_ios");
+					}
+				break;
+				case 4:
+					if(this.o.platform == "web"){
+						removehide();
+					}else if(this.o.platform == "android"){
+						removehide();
+						$("#header").children(".back").attr("href","index.html");
+					}else if(this.o.platform == "ios"){
+						removehide();
+						$("#header").addClass("header_ios");	
+					}
+				break;
+				case 5:
+					if(this.o.platform == "web"){
+						removehide();
+					}else if(this.o.platform == "android"){
+						removehide();
+					}else if(this.o.platform == "ios"){
+						removehide();
+						$("#header").addClass("header_ios");	
+					}
+				break;
+			}
+		},
 		init: function(){
 			var win_h = $(window).height(),
-			body_h = $("body").height(),
-			body_w = $("body").width();
+			body_h = $("body").height();
 			if(win_h > body_h){
 				$(".ka_body").height(win_h);
 			}
-			if(body_w <= 640){//详情添加卡牌
-				$("#ka_add_maincard").height(win_h-86);
-			}else{
-				$("#ka_add_maincard").height(win_h-122);
-			}
-			
+			 
 			this.ispage();
 			this.events();
 		}
