@@ -1,5 +1,5 @@
 /*
-	cnpm install gulp-concat gulp-uglify gulp-merge-link gulp-rename gulp-rename gulp-replace del --save-dev
+	cnpm install gulp-concat gulp-uglify gulp-merge-link gulp-rename gulp-rename gulp-replace gulp-clean del --save-dev
 */
 
 var gulp = require('gulp');
@@ -31,6 +31,7 @@ var uglify = require('gulp-uglify');
 var merge = require('gulp-merge-link');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
+var clean = require('gulp-clean');
 var del = require('del');
 
 var lscs_platename_data = "plugin_925";
@@ -111,7 +112,7 @@ gulp.task('lscs_ka_replace', function(){
 		.pipe(rename('index.html'))
         .pipe(gulp.dest('../../chajian/79/'+lscs_platform+'/DataPlugin/'+lscs_platename_ka));
 		
-	gulp.src('./data-lushichuanshuo-ka-job.html')
+	gulp.src('data-lushichuanshuo-ka-job.html')
 		.pipe(merge({
             'js/lushichuanshuo-ka.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-lushichuanshuo-ka.js']
         }))
@@ -120,7 +121,7 @@ gulp.task('lscs_ka_replace', function(){
 		.pipe(replace(lscs_replacename[2], lscs_replacename_ka_tmp[2]))
         .pipe(gulp.dest('../../chajian/79/'+lscs_platform+'/DataPlugin/'+lscs_platename_ka));
 		
-	gulp.src('./data-lushichuanshuo-ka-detail.html')
+	gulp.src('data-lushichuanshuo-ka-detail.html')
 		.pipe(merge({
             'js/lushichuanshuo-ka.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-lushichuanshuo-ka.js']
         }))
@@ -129,7 +130,7 @@ gulp.task('lscs_ka_replace', function(){
 		.pipe(replace(lscs_replacename[2], lscs_replacename_ka_tmp[2]))
         .pipe(gulp.dest('../../chajian/79/'+lscs_platform+'/DataPlugin/'+lscs_platename_ka));
 		
-	gulp.src('./data-lushichuanshuo-ka-mygroup.html')
+	gulp.src('data-lushichuanshuo-ka-mygroup.html')
 		.pipe(merge({
             'js/lushichuanshuo-ka.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-lushichuanshuo-ka.js']
         }))
@@ -138,7 +139,7 @@ gulp.task('lscs_ka_replace', function(){
 		.pipe(replace(lscs_replacename[2], lscs_replacename_ka_tmp[2]))
         .pipe(gulp.dest('../../chajian/79/'+lscs_platform+'/DataPlugin/'+lscs_platename_ka));
 		
-	gulp.src('./data-lushichuanshuo-ka-mycards.html')
+	gulp.src('data-lushichuanshuo-ka-mycards.html')
 		.pipe(merge({
             'js/lushichuanshuo-ka.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-lushichuanshuo-ka.js']
         }))
@@ -148,6 +149,12 @@ gulp.task('lscs_ka_replace', function(){
         .pipe(gulp.dest('../../chajian/79/'+lscs_platform+'/DataPlugin/'+lscs_platename_ka));
 });
 
+gulp.task('lscs_clean', function(cb){
+  /*return gulp.src('../chajian/79/android/DataPlugin_100_new.tar')
+    .pipe(clean({force: true}))
+	.pipe(gulp.dest('dist'));*/
+	del('../chajian/79/android/DataPlugin_100_new.tar', cb);
+});
 
 gulp.task('lscs_android', function(){
 	gulp.start('lscs_images', 'lscs_css', 'lscs_js', 'lscs_json', 'lscs_data_replace', 'lscs_ka_replace');
