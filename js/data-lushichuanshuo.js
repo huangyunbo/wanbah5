@@ -129,6 +129,7 @@
 			$("#data_fei").children().click(function(){
 				var _index = $("#data_fei").children().index($(this));
 				$(this).addClass("on").siblings().removeClass("on");
+				$("#data_type").removeClass("data_type_animate");
 				that.o.manacost = _index;
 				that.printdatacard();
 			});
