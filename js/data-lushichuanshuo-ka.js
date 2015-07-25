@@ -13,8 +13,7 @@
 	
 	LscsKa.prototype = {
 		shareweixin: function(){//分享到微信
-			var isicon = arguments[0],//true:调取图片 false不调取图片,直接分享
-			cardsid = Number(arguments[1]),
+			var cardsid = arguments[0],//没值时设置icon；有值时直接分享
 			sharejson = {"url":"http://myapp.wanba123.cn/","title":"玩吧专业版客户端","des":"专为手机游戏玩家而生！这里有最给力的原创游戏攻略、最及时的游戏资讯、各种奇葩玩法、最实用的游戏资料...","pic":"https://is2-ssl.mzstatic.com/image/thumb/Newsstand7/v4/70/35/87/70358797-1269-34a0-dd1f-3891c7d74038/Icon-76@2x.png.png/150x150bb-80.png","name":"","job":0,"cards":""};
 
 			function setjob(){
@@ -31,7 +30,7 @@
 				}
 			}
 
-			if(isicon){
+			if(typeof(cardsid) === 'undefined'){
 				try{
 					if(this.o.platform == "android"){
 						window.jstojava.setShareWxIcon(sharejson.pic);
@@ -42,7 +41,10 @@
 					alert(err);
 				}
 			}else{
-				var wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka")).data;
+				var wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka")).data,
+				arrtmp = [];
+				
+				cardsid = Number(cardsid);
 				
 				for(var i=0; i<wbgllscska.length; i++){
 					if(cardsid == wbgllscska[i].id){
@@ -51,12 +53,13 @@
 						
 						for(var j=0; j<wbgllscska[i].cards.length; j++){
 							if(wbgllscska[i].cards[j].z == 2){
-								sharejson.cards += wbgllscska[i].cards[j].c+","+wbgllscska[i].cards[j].c+",";
+								arrtmp.push(wbgllscska[i].cards[j].c);
+								arrtmp.push(wbgllscska[i].cards[j].c);
 							}else{
-								sharejson.cards += wbgllscska[i].cards[j].c+",";
+								arrtmp.push(wbgllscska[i].cards[j].c);
 							}
 						}
-						sharejson.cards = sharejson.cards.substring(0,sharejson.cards.length-1);
+						sharejson.cards = arrtmp.join();
 						break;
 					}
 				}
@@ -74,35 +77,21 @@
 				}
 			}
 		},
-		removewbgllscska: function(){//移除我的卡组里的某个卡组
-			var id = Number(arguments[0]),
-			wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka"));
-			
-			$("#ka_mygroup").children().each(function(i){
-				var _self = $(this);
-            	if(id == Number(_self.attr("data-id"))){
-					_self.remove();
-					wbgllscska.data.splice(i,1);
-					if(wbgllscska.data.length == 0){
-						localStorage.removeItem("wbgl-lscs-ka");
-						$("#ka_mygroup_edit").addClass("hide");
-						return;
-					}
-					localStorage.setItem("wbgl-lscs-ka",JSON.stringify(wbgllscska));
-					return;
-				}
-            });
-		},
-		printmycards: function(){//打印我的某个卡组			
-			var wbgllscsmycards = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards")),
+		printmycards: function(){//打印我的某个卡组
+			var wbgllscsmycards,
 			card,
 			html = '',
 			dic = [0,0,0,0,0,0,0,0];//0-7+的卡牌法力消耗值图表
-
-			if(wbgllscsmycards === null) return;
 			
-			sessionStorage.setItem("wbgl-lscs-ka-job", wbgllscsmycards.job);
-			sessionStorage.setItem("wbgl-lscs-ka-urlform", "mycards.html");//当准备去编辑详情页的时候，记录来自于data-lushichuanshuo-ka-mycards.html
+			if(this.o.platform == "ios"){
+				wbgllscsmycards = JSON.parse(localStorage.getItem("wbgl-lscs-ka-mycards"));
+				if(wbgllscsmycards === null) return;
+				localStorage.setItem("wbgl-lscs-ka-urlform", "mycards.html");//当准备去编辑详情页的时候，记录来自于data-lushichuanshuo-ka-mycards.html
+			}else{
+				wbgllscsmycards = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards"));
+				if(wbgllscsmycards === null) return;
+				sessionStorage.setItem("wbgl-lscs-ka-urlform", "mycards.html");//当准备去编辑详情页的时候，记录来自于data-lushichuanshuo-ka-mycards.html
+			}
 			
 			$("#header h1").html(wbgllscsmycards.name);
 			
@@ -118,7 +107,7 @@
 			for(var i=0; i<wbgllscsmycards.cards.length; i++){
 				card = wbgllscsmycards.cards[i];
 				if(card.z == 2){//如果有两张相同的卡牌
-					if(card.e >= 7){
+					if(card.e >= 7){//费法力超过7(含)以上，就加入字典dic[7]里面
 						dic[7] += 2;
 					}else{
 						dic[card.e] += 2;
@@ -168,6 +157,25 @@
 			
 			$("#shareweixin").attr("data-id",wbgllscsmycards.id);//赋值该卡组的id给分享
 		},
+		removewbgllscska: function(){//移除我的卡组里的某个卡组
+			var id = Number(arguments[0]),
+			wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka"));
+			
+			$("#ka_mygroup").children().each(function(i){
+				var _self = $(this);
+            	if(id == Number(_self.attr("data-id"))){
+					_self.remove();
+					wbgllscska.data.splice(i,1);
+					if(wbgllscska.data.length == 0){
+						localStorage.removeItem("wbgl-lscs-ka");
+						$("#ka_mygroup_edit").addClass("hide");
+						return;
+					}
+					localStorage.setItem("wbgl-lscs-ka",JSON.stringify(wbgllscska));
+					return;
+				}
+            });
+		},
 		printmygroup: function(){//打印我的卡牌组
 			var wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka")),
 			group,
@@ -202,26 +210,31 @@
 			wbgllscska,
 			job = $("#ka_add_group").children().eq(0).attr("data-job"),
 			ka;
+			
 			if($.trim(cardname).length == 0){
 				$input.focus();
 				this.showdialogtip(5);
 				return;
 			}
 			
-			if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "job.html"){//如果是job.html过来的就新建保存
+			if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "job.html" || localStorage.getItem("wbgl-lscs-ka-urlform") == "job.html"){//如果是job.html过来的就新建保存
 				wbgllscska = {"data":[],id:1};
 				ka = {"id":1,"name":cardname,"job":job,"cards":this.o.cards};
 				
-				if(localStorage.getItem("wbgl-lscs-ka") === null){//如果没有json
+				if(localStorage.getItem("wbgl-lscs-ka") === null){//如果我的卡组为空时
 					wbgllscska.data.push(ka);
-				}else{//如果有json就追加
+				}else{//如果我的卡组不为空时，就追加
 					wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka"));
 					ka.id = ++wbgllscska.id;
 					wbgllscska.data.unshift(ka);
 				}
 				localStorage.setItem("wbgl-lscs-ka",JSON.stringify(wbgllscska));
-			}else if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html"){//如果是mycards.html过来的就在原来的里面编辑保存
-				var id = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards")).id;
+			}else if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html" || localStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html"){//如果是mycards.html过来的就在原来的里面编辑保存
+				if(this.o.platform == "ios"){
+					var id = JSON.parse(localStorage.getItem("wbgl-lscs-ka-mycards")).id;
+				}else{
+					var id = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards")).id;
+				}
 				
 				wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka"));
 				for(var i=0; i<wbgllscska.data.length; i++){
@@ -231,10 +244,11 @@
 					}
 				}
 			}
-			if(this.o.platform != "ios"){
-				location.href = 'data-lushichuanshuo-ka-mygroup.html';
-			}else{
+			
+			if(this.o.platform == "ios"){
 				location.href = this.o.platename+'/data-lushichuanshuo-ka-mygroup.html';
+			}else{
+				location.href = 'data-lushichuanshuo-ka-mygroup.html';
 			}
 		},
 		switchjob:function(){
@@ -322,12 +336,11 @@
 				if(f==5){
 					return " item_glod";
 				}
-				return ""
+				return "";
 			}
 			
 			for(var i=0; i<cards.length; i++){
 				card = cards[i];
-				
 				html += '<div class="item'+isLegend(card.f)+'" data-id="'+card.c+'">'+
 							'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
 							'<i class="mask"></i>'+
@@ -473,27 +486,19 @@
 			$("#ka_add_flag").removeClass().addClass("box "+this.o.job);
 		},
 		checkversion: function(){//检查版本
-			var i = Number(arguments[0]);
-			switch(i){
-				case 1:
-					if(!window.localStorage){
-						alert("错误，你的版本过低，请升级你的设备");
-						return false;
-					}
-					return true;
-				case 2:
-					if(this.o.platform == "android"){
-						try{
-							window.jstojava.getHostVersion();
-						}catch(err){
-							alert("错误，请升级Android玩吧专业版2.5以上");
-							return false;
-						}
-						return true;
-					}else{
-						return true;
-					}
+			if(!window.localStorage){
+				alert("错误，你的版本过低，请升级你的设备");
+				return false;
 			}
+			if(this.o.platform == "android"){
+				try{
+					window.jstojava.getHostVersion();
+				}catch(err){
+					alert("错误，请升级Android玩吧专业版2.5以上");
+					return false;
+				}
+			}
+			return true;
 		},
 		isplatform: function(i){//判断打包平台显示相应内容
 			function removehide(){
@@ -530,23 +535,14 @@
 					}
 				break;
 				case 4:
-					if(this.o.platform == "web"){
-						removehide();
-					}else if(this.o.platform == "android"){
-						removehide();
+					if(this.o.platform == "android"){
 						$("#header").children(".back").attr("href","index.html");
 					}else if(this.o.platform == "ios"){
-						removehide();
-						$("#header").addClass("header_ios");	
+						$("#header").addClass("header_ios");
 					}
 				break;
 				case 5:
-					if(this.o.platform == "web"){
-						removehide();
-					}else if(this.o.platform == "android"){
-						removehide();
-					}else if(this.o.platform == "ios"){
-						removehide();
+					if(this.o.platform == "ios"){
 						$("#header").addClass("header_ios");	
 					}
 				break;
@@ -556,13 +552,14 @@
 			var that = this;
 			//选择职业
 			$("#ka_switch .item").click(function(){
-				if(!that.checkversion(1) || !that.checkversion(2)) return;
+				if(!that.checkversion()) return;
 				
-				sessionStorage.setItem("wbgl-lscs-ka-job",$(this).attr("data-job"));
-				if(that.o.platform != "ios"){
-					location.href = 'data-lushichuanshuo-ka-detail.html';
-				}else{
+				if(that.o.platform == "ios"){
+					localStorage.setItem("wbgl-lscs-ka-job",$(this).attr("data-job"));
 					location.href = that.o.platename+'/data-lushichuanshuo-ka-detail.html';
+				}else{
+					sessionStorage.setItem("wbgl-lscs-ka-job",$(this).attr("data-job"));
+					location.href = 'data-lushichuanshuo-ka-detail.html';
 				}
 			});
 			//添加卡牌-添加卡牌
@@ -633,10 +630,11 @@
 			});
 			//添加卡牌-点击顶部返回
 			$("#ka_detail_back").click(function(e){
-				if(JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html")){//如果是从mycards.html过来的就回mycards.html
+				if(JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html") || JSON.parse(localStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html")){//如果是从mycards.html过来的就回mycards.html
 					e.preventDefault();
 					location.href = 'data-lushichuanshuo-ka-mycards.html';
 				}
+				
 			});
 			//我的卡组-mygroup-点击哪条卡组
 			$("#ka_mygroup").on("click", ".a", function(){
@@ -648,11 +646,12 @@
 					card = _wbgllscska.data[i];
 					if(card.id == _id){
 						card = JSON.stringify(card);
-						sessionStorage.setItem("wbgl-lscs-ka-mycards",card);
-						if(that.o.platform != "ios"){
-							location.href = 'data-lushichuanshuo-ka-mycards.html';
-						}else{
+						if(that.o.platform == "ios"){
+							localStorage.setItem("wbgl-lscs-ka-mycards",card);
 							location.href = that.o.platename+'/data-lushichuanshuo-ka-mycards.html';
+						}else{
+							sessionStorage.setItem("wbgl-lscs-ka-mycards",card);
+							location.href = 'data-lushichuanshuo-ka-mycards.html';
 						}
 					}
 				}
@@ -684,35 +683,39 @@
 			//我的卡组-mygroup-编辑-分享
 			$("#ka_mygroup").on("click", ".share", function(){
 				var _id = $(this).closest(".item").attr("data-id");
-				that.shareweixin(false,_id);
+				that.shareweixin(_id);
 			});
 			//我的卡组-mycards
 			$("#ka_mycards_edit").click(function(){
-				if(that.o.platform != "ios"){
-					location.href = 'data-lushichuanshuo-ka-detail.html';
-				}else{
+				if(that.o.platform == "ios"){
 					location.href = that.o.platename+'/data-lushichuanshuo-ka-detail.html';
+				}else{
+					location.href = 'data-lushichuanshuo-ka-detail.html';
 				}
 			});
 			//我的卡组-mycards-分享
 			$("#shareweixin").click(function(){
 				var _id = $(this).attr("data-id");
-				that.shareweixin(false,_id);
+				that.shareweixin(_id);
 			});
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
-			if(!this.checkversion(1) || !this.checkversion(2)) return;
-			
-			var href = location.href;
+			if(!this.checkversion()) return;
+
+			var href = $("body").attr("data-url");
 			switch(true){
-				case href.indexOf("index") != -1:
+				case (href == "index"):
 					this.isplatform(1);
 					break;
-				case href.indexOf("job") != -1:
+				case (href == "job"):
 					this.isplatform(2);
-					sessionStorage.setItem("wbgl-lscs-ka-urlform", "job.html");//记录来自于data-lushichuanshuo-ka-job.html
+					if(this.o.platform == "ios"){//ios在插件里不识别sessionStorage
+						localStorage.setItem("wbgl-lscs-ka-urlform", "job.html");//记录来自于data-lushichuanshuo-ka-job.html
+					}else{
+						sessionStorage.setItem("wbgl-lscs-ka-urlform", "job.html");//记录来自于data-lushichuanshuo-ka-job.html
+					}
 					break;
-				case href.indexOf("detail") != -1:
+				case (href == "detail"):
 					var win_h = $(window).height(),
 					$ka_add_maincard = $("#ka_add_maincard"),
 					head_h = $ka_add_maincard.siblings(".head").innerHeight(),
@@ -721,23 +724,37 @@
 					$ka_add_maincard.height(win_h-head_h-header_h);
 					
 					this.isplatform(3);
-					this.o.job = sessionStorage.getItem("wbgl-lscs-ka-job");
-					$("#ka_add_group").children().eq(0).attr("data-job",this.o.job);
-					this.setkaaddboxbg();
-					if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html" && sessionStorage.getItem("wbgl-lscs-ka-mycards") !== null){//如果是从data-lushichuanshuo-ka-mycards.html过来的就赋值
-						var data = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards"));
-						this.o.cards = data.cards;
-						this.printcardlist();
-						$("#ka_add_input").val(data.name);
+					
+					if(this.o.platform == "ios"){
+						this.o.job = localStorage.getItem("wbgl-lscs-ka-job");
+						if(localStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html" && localStorage.getItem("wbgl-lscs-ka-mycards") !== null){//如果是从data-lushichuanshuo-ka-mycards.html过来的就赋值
+							var data = JSON.parse(localStorage.getItem("wbgl-lscs-ka-mycards"));
+							this.o.cards = data.cards;
+							$("#ka_add_input").val(data.name);
+							this.printcardlist();
+						}
+					}else{
+						this.o.job = sessionStorage.getItem("wbgl-lscs-ka-job");
+						if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html" && sessionStorage.getItem("wbgl-lscs-ka-mycards") !== null){//如果是从data-lushichuanshuo-ka-mycards.html过来的就赋值
+							var data = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards"));
+							this.o.cards = data.cards;
+							console.log(1);
+							$("#ka_add_input").val(data.name);
+							this.printcardlist();
+						}
 					}
+
+					$("#ka_add_group").children().eq(0).attr("data-job",this.o.job);
+					
+					this.setkaaddboxbg();
 					this.printdetail();
 					break;
-				case href.indexOf("mygroup") != -1:
+				case (href == "mygroup"):
 					this.isplatform(4);
-					this.shareweixin(true);
+					this.shareweixin();
 					this.printmygroup();
 					break;
-				case href.indexOf("mycards") != -1:
+				case (href == "mycards"):
 					this.isplatform(5);
 					this.printmycards();
 					break;
@@ -749,7 +766,7 @@
 			if(win_h > body_h){
 				$(".ka_body").height(win_h);
 			}
-			 
+
 			this.ispage();
 			this.events();
 		}
