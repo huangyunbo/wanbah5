@@ -50,12 +50,12 @@ if(lscs_platform == 'android'){
 }
 
 gulp.task('lscs_images', function(){
-    gulp.src('./images/lushichuanshuo/**')
+    gulp.src('./images/lushichuanshuo/**', {buffer: false})
         .pipe(gulp.dest('../../chajian/79/'+lscs_platform+'/DataPlugin/images/lushichuanshuo'));
 });
 
 gulp.task('lscs_css', function(){
-    gulp.src('./css/data-lushichuanshuo.css')
+    gulp.src('./css/data-lushichuanshuo.css', {buffer: false})
         .pipe(gulp.dest('../../chajian/79/'+lscs_platform+'/DataPlugin/css'));
 });
 
@@ -74,7 +74,7 @@ gulp.task('lscs_js', function(){
 });
 
 gulp.task('lscs_json', function(){
-    gulp.src('./json/json-lushichuanshuo.js')
+    gulp.src('./json/json-lushichuanshuo.js', {buffer: false})
         .pipe(gulp.dest('../../chajian/79/'+lscs_platform+'/DataPlugin/json'));
 });
 
@@ -149,18 +149,16 @@ gulp.task('lscs_ka_replace', function(){
         .pipe(gulp.dest('../../chajian/79/'+lscs_platform+'/DataPlugin/'+lscs_platename_ka));
 });
 
-gulp.task('lscs_clean', function(cb){
-  /*return gulp.src('../chajian/79/android/DataPlugin_100_new.tar')
-    .pipe(clean({force: true}))
-	.pipe(gulp.dest('dist'));*/
-	del('../chajian/79/android/DataPlugin_100_new.tar', cb);
+gulp.task('lscs_clean', function(){
+	return gulp.src('../../chajian/79/'+lscs_platform+'/DataPlugin/*', {read: false})
+	.pipe(clean({force: true}));
 });
 
-gulp.task('lscs_android', function(){
+gulp.task('lscs_android', ['lscs_clean'], function(){
 	gulp.start('lscs_images', 'lscs_css', 'lscs_js', 'lscs_json', 'lscs_data_replace', 'lscs_ka_replace');
 });
 
-gulp.task('lscs_ios', function(){
+gulp.task('lscs_ios', ['lscs_clean'], function(){
 	lscs_platform = 'ios';
 	gulp.start('lscs_images', 'lscs_css', 'lscs_js', 'lscs_json', 'lscs_data_replace', 'lscs_ka_replace');
 });
