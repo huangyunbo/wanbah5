@@ -472,7 +472,7 @@
 					cardshtml += '<div class="item" data-id="'+card.c+'">'+
 									'<div class="w">'+
 										'<img src="'+this.o.url+'ka-defaultpic.png">'+
-										'<div class="zoom"><i></i></div>'+
+										'<div class="zoom"></div>'+
 										'<div class="pic picfront" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
 										'<div class="pic picback"></div>'+
 									'</div>'+
@@ -614,7 +614,7 @@
 			//添加卡牌-点击卡牌放大镜
 			$("#ka_add_maincard").on("click", ".zoom", function(e){
 				e.stopPropagation();
-				that.printdialogcard($(this).parent().attr("data-id"));
+				that.printdialogcard($(this).closest(".item").attr("data-id"));
 			});
 			//添加卡牌-点击卡牌放大镜关闭弹窗
 			$("#ka_add_dialogcard").click(function(){
