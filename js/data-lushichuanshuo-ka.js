@@ -378,7 +378,7 @@
 		},
 		addcardlist: function(){//增加卡牌进列表
 			var $element = $(arguments[0]),
-			$picwrap = $element.children(".picwrap"),
+			$wrap = $element.children(".w"),
 			cardid = Number($element.attr("data-id")),
 			datacards = this.datacards[this.switchjob(this.o.job)].b,
 			cards = this.o.cards,
@@ -430,12 +430,12 @@
 				}
 			}
 			
-			if(!$picwrap.hasClass("flip1") && !$picwrap.hasClass("flip2")){
-				$picwrap.addClass("flip1");
-			}else if($picwrap.hasClass("flip1") && !$picwrap.hasClass("flip2")){
-				$picwrap.removeClass("flip1").addClass("flip2");
-			}else if(!$picwrap.hasClass("flip1") && $picwrap.hasClass("flip2")){
-				$picwrap.removeClass("flip2").addClass("flip1");
+			if(!$wrap.hasClass("flip1") && !$wrap.hasClass("flip2")){
+				$wrap.addClass("flip1");
+			}else if($wrap.hasClass("flip1") && !$wrap.hasClass("flip2")){
+				$wrap.removeClass("flip1").addClass("flip2");
+			}else if(!$wrap.hasClass("flip1") && $wrap.hasClass("flip2")){
+				$wrap.removeClass("flip2").addClass("flip1");
 			}
 			
 			function bubbleSort(arr){//冒泡排序,从小到大
@@ -470,12 +470,12 @@
 				card = datacards[i];
 				if((rarity==0 || card.f==rarity) && ((card.e>=feimin && card.e<=feimax))){
 					cardshtml += '<div class="item" data-id="'+card.c+'">'+
-									'<div class="picwrap">'+
+									'<div class="w">'+
+										'<img src="'+this.o.url+'ka-defaultpic.png">'+
+										'<div class="zoom"><i></i></div>'+
 										'<div class="pic picfront" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
 										'<div class="pic picback"></div>'+
-										'<img src="'+this.o.url+'ka-defaultpic.png">'+
 									'</div>'+
-									'<div class="zoom"><i></i></div>'+
 									'<p>'+card.d+'</p>'+
 								'</div>';
 				}
