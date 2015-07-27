@@ -738,7 +738,6 @@
 						if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html" && sessionStorage.getItem("wbgl-lscs-ka-mycards") !== null){//如果是从data-lushichuanshuo-ka-mycards.html过来的就赋值
 							var data = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards"));
 							this.o.cards = data.cards;
-							console.log(1);
 							$("#ka_add_input").val(data.name);
 							this.printcardlist();
 						}
