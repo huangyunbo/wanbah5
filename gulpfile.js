@@ -34,8 +34,8 @@ var replace = require('gulp-replace');
 var clean = require('gulp-clean');
 var del = require('del');
 
-var lscs_platename_data = "plugin_925";
-var lscs_platename_ka = "plugin_926";
+var lscs_platename_data = "plugin_964";
+var lscs_platename_ka = "plugin_963";
 var lscs_path = '../';
 var lscs_replacename = ['css/', 'js/', 'json/'];
 var lscs_replacename_data_tmp = [];
