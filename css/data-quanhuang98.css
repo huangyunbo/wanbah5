@@ -1,0 +1,115 @@
+@charset "utf-8";
+/* 拳皇98终极之战OL 2015.7.30 */
+
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
+html{font:62.5%/1.5 "Microsoft YaHei",sans-serif}
+img{border:none;max-width:100%;vertical-align:top}
+h1,h2,h3,h4,h5,h6{font-weight:normal}
+input,select,textarea{font-size:100%;vertical-align:baseline}
+ol,ul{list-style:none}
+textarea{overflow:auto;vertical-align:top;resize:vertical}
+table{border-collapse:collapse;border-spacing:0}
+em,i,code,cite,address,th{font-style:normal}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+a{ text-decoration:none}
+.hide{ display:none !important}
+
+body{ background:#000; color:#fff}
+.header{ height:45px; background:#ab3f2a url(../images/quanhuang98/header-bg.png) repeat-x; background-size:5px; position:relative; width:100%; position:fixed; z-index:10; top:0; left:0}
+.header .back{ position:absolute; left:10px; top:11px; color:#fff; font-size:1.5rem}
+.header .back i{ display:inline-block; border:solid #fff; border-width:0 0 1px 1px; width:12px; height:12px; transform:rotate(45deg); -webkit-transform:rotate(45deg); cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.header h1{ line-height:45px; font-size:1.5rem; text-align:center; color:#fff}
+/*详情页*/
+.detialtit{ font-size:1.5rem; color:#fff}
+.detialtit .icon{ background:url(../images/quanhuang98/quanhuang98.png) no-repeat; background-size:105px; width:12px; height:10px; display:inline-block; margin-right:4px}
+
+.summary{ margin-top:45px; height:150px; background:url(../images/quanhuang98/quanhuang98-detail-bg.jpg) center bottom no-repeat; background-size:cover; position:relative}
+.summary .l .img{ width:100%; height:132px; background-repeat:no-repeat; background-size:auto 132px; margin-top:5px; display:inline-block}
+.summary .l .name{ font-size:1.2rem; color:#dd423e; background:#210606; display:inline-block; position:absolute; left:15px; bottom:0; border-radius:30px}
+.summary .l .name div{ box-shadow:0 0 5px rgba(100,0,0,0.65) inset; border-radius:30px; padding:4px 20px}
+.summary .r{ position:absolute; top:18px; left:0; padding:0 8px 0 34%; font-size:1.2rem; width:100%; box-sizing:border-box}
+.summary .r .star{ position:absolute; top:2px; right:8px; width:84px; height:12px; overflow:hidden}
+.summary .r .star i{ background:url(../images/quanhuang98/quanhuang98.png) -12px 0; background-size:105px; width:12px; height:12px; float:right}
+.summary .r li{ margin-bottom:5px}
+.summary .r .k{ background:url(../images/quanhuang98/quanhuang98.png) 0 -24px no-repeat; background-size:105px; padding-left:4px; color:#dd423e}
+.summary .r .k span{ color:#fff; margin-left:10px; font-family:Arial}
+.summary .r .v{ padding-left:4px; line-height:1.2; margin-top:2px}
+/*小编点评*/
+.xiaobian{ margin:20px 7.5px}
+.xiaobian .box{ margin-top:10px; position:relative; padding:5px}
+.xiaobian .hr_top,.xiaobian .hr_bottom{ position:absolute; height:1px; top:-1px; left:0; right:0; background:linear-gradient(left, transparent, #ac231f 10%, #ff7f6e 50%, #ac231f 90%, transparent); background:-webkit-linear-gradient(left, transparent, #ac231f 10%, #ff7f6e 50%, #ac231f 90%, transparent)}
+.xiaobian .hr_bottom{ top:auto; bottom:-1px}
+.xiaobian .box p{ text-indent:2em; font-size:1.2rem}
+/*碎片出处*/
+.suipian{ margin:10px 7.5px 20px}
+.suipian .box{ margin-top:10px; padding:0 5px; display:table; box-sizing:border-box}
+.suipian .box .l{ width:32px; float:left}
+.suipian .box .r{ float:left; margin-left:10px; line-height:2; font-size:1.2rem}
+/*技能*/
+.jineng{ margin:10px 7.5px 20px}
+.jineng .detialtit{ margin-bottom:10px}
+.jineng .item{ display:table; width:100%; margin-bottom:10px; font-size:1.2rem}
+.jineng .item .img{ display:table-cell; width:14%}
+.jineng .item .note{ display:table-cell; vertical-align:top; padding:0 10px; box-sizing:border-box; font-size:1.2rem}
+.jineng .item .note h3{ margin-bottom:3px; color:#dd423e}
+.jineng .item .label{ display:table-cell; width:14%; vertical-align:top; text-align:right}
+.jineng .item .label span{ line-height:1.2; display:inline-block; text-align:center; padding:1px 3px; background:#dd423e; color:#000}
+/*宿命*/
+.suming{ margin:10px 7.5px 20px}
+.suming ul{ margin-top:10px}
+.suming ul li{ font-size:1.2rem; margin-bottom:10px}
+.suming ul li .n{ color:#dd423e}
+/*初级属性*/
+.chujishuxing{ margin:10px 7.5px 20px}
+.chujishuxing .box{ margin-top:10px; position:relative}
+.chujishuxing .hr_top,.chujishuxing .hr_bottom{ position:absolute; height:1px; top:-1px; left:0; right:0; background:linear-gradient(left, transparent, #ac231f 10%, #ff7f6e 50%, #ac231f 90%, transparent); background:-webkit-linear-gradient(left, transparent, #ac231f 10%, #ff7f6e 50%, #ac231f 90%, transparent)}
+.chujishuxing .hr_bottom{ top:auto; bottom:-1px}
+.chujishuxing .box table{ font-size:1.2rem; width:100%}
+.chujishuxing .box table td{ width:50%; text-align:center; padding:2px 0}
+.chujishuxing .box table td .red{ color:#dd423e; padding-right:5px}
+.chujishuxing .box table td .white{ padding-left:5px}
+@media screen and (min-width:640px){
+	.detialtit{ font-size:3rem}
+	.detialtit .icon{ background-size:auto; width:24px; height:20px; margin-right:8px}
+
+	.summary{ height:300px}
+	.summary .l .img{ height:264px; background-repeat:no-repeat; background-size:auto 264px; margin-top:10px}
+	.summary .l .name{ font-size:2.4rem; left:30px}
+	.summary .l .name div{ padding:4px 35px}
+	.summary .r{ top:36px; padding:0 16px 0 34%; font-size:2.4rem}
+	.summary .r .star{ top:4px; right:16px; width:168px; height:24px}
+	.summary .r .star i{ background-position:-24px 0; background-size:auto; width:24px; height:24px}
+	.summary .r li{ margin-bottom:10px}
+	.summary .r .k{ background-position:0 -48px; background-size:auto; padding-left:8px}
+	.summary .r .k span{ margin-left:20px}
+	.summary .r .v{ padding-left:8px; margin-top:4px}
+	/*小编点评*/
+	.xiaobian{ margin:40px 15px}
+	.xiaobian .box{ margin-top:20px; padding:10px}
+	.xiaobian .box p{ font-size:2.4rem}
+	/*碎片出处*/
+	.suipian{ margin:20px 15px 40px}
+	.suipian .box{ margin-top:20px; padding:0 10px}
+	.suipian .box .l{ width:64px}
+	.suipian .box .r{ margin-left:20px; font-size:2.4rem}
+	/*技能*/
+	.jineng{ margin:20px 15px 40px}
+	.jineng .detialtit{ margin-bottom:20px}
+	.jineng .item{ margin-bottom:20px; font-size:2.4rem}
+	.jineng .item .note{ padding:0 20px; font-size:2.4rem}
+	.jineng .item .note h3{ margin-bottom:6px}
+	.jineng .item .label span{ padding:2px 6px}
+	/*宿命*/
+	.suming{ margin:20px 15px 40px}
+	.suming ul{ margin-top:20px}
+	.suming ul li{ font-size:2.4rem; margin-bottom:20px}
+	/*初级属性*/
+	.chujishuxing{ margin:20px 15px 40px}
+	.chujishuxing .box{ margin-top:20px}
+	.chujishuxing .box table{ font-size:2.4rem}
+	.chujishuxing .box table td{ padding:4px 0}
+	.chujishuxing .box table td .red{ padding-right:10px}
+	.chujishuxing .box table td .white{ padding-left:10px}
+}
