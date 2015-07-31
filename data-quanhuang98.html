@@ -8,65 +8,33 @@
 <link rel="stylesheet" type="text/css" href="css/data-quanhuang98.css">
 </head>
 
-<body class="data_body">
+<body data-url="index" class="index">
 <div class="header hide" id="header">
-	<a href="javascript:window.jstojava.close();" class="back"><i></i>返回</a>
-    <h1>卡牌列表</h1>
-    <a href="data-lushichuanshuo-ka-index.html" class="more">卡组模拟</a>
+	<a href="" class="back"><i></i>返回</a>
+    <h1 id="h1">格斗家图鉴</h1>
 </div><!--/header-->
 
-<div class="data_type" id="data_type"><!--data_type_ios-->
-	<ul>
-    	<li class="on"><i></i></li>
-        <li><i class="deluyi"></i></li>
-        <li><i class="lieren"></i></li>
-        <li><i class="fashi"></i></li>
-        <li><i class="shengqishi"></i></li>
-        <li><i class="mushi"></i></li>
-        <li><i class="qianxingzhe"></i></li>
-        <li><i class="saman"></i></li>
-        <li><i class="shushi"></i></li>
-        <li><i class="zhanshi"></i></li>
-    </ul>
-</div><!--/data_type-->
-
-<div class="data_card"><!--data_card_ios-->
-	<ul id="data_card">
-    	<!--<li data-id=""><div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div><p>恐怖的奴隶主</p></li>
-        <li data-id=""><div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div><p>恐怖的奴隶主</p></li>
-        <li data-id=""><div class="pic"><div style="background-image:url(images/lushichuanshuo/DBPic/79_7523_thumb.png)"></div><img src="images/lushichuanshuo/ka-defaultpic.png"></div><p>恐怖的奴隶主</p></li>-->
+<div class="nav">
+	<ul class="clearfix">
+    	<li class="on"><span>全部</span></li>
+        <li><span>力量</span></li>
+        <li><span>智力</span></li>
+        <li><span>敏捷</span></li>
     </ul>
 </div>
 
-<div class="data_fei" id="data_fei">
-    <div class="item on"><span></span><i></i></div>
-    <div class="item"><span></span><i class="item_0"></i></div>
-    <div class="item"><span></span><i class="item_1"></i></div>
-    <div class="item"><span></span><i class="item_2"></i></div>
-    <div class="item"><span></span><i class="item_3"></i></div>
-    <div class="item"><span></span><i class="item_4"></i></div>
-    <div class="item"><span></span><i class="item_5"></i></div>
-    <div class="item"><span></span><i class="item_6"></i></div>
-    <div class="item"><span></span><i class="item_7"></i></div>
+<div class="indexlist">
+	<ul class="clearfix" id="indexlist">
+    	<!--<li>
+        	<div class="pic">
+            	<img src="images/quanhuang98/quanhuang98-indexlist-bg.png">
+                <div class="img" style="background-image:url(images/quanhuang98/DBPic/1.png)"></div>
+                <div class="mask"></div>
+            </div>
+            <div class="name">草稚京</div>
+        </li>-->
+    </ul>
 </div>
-
-<div class="dialogcard hide" id="dialogcard">
-    <div class="pic"><img src=""></div>
-    <div class="zy fashi"></div>
-    <div class="line1">
-        <div class="name">黑翼技师</div>
-        <div class="lev lev_orange"><i></i>免费级</div>
-    </div>
-    <div class="line2">
-        <div class="l"><span class="k">构筑评分</span>9</div>
-        <div class="r"><span class="k">竞技场评分</span>8</div>
-    </div>
-    <div class="line3">
-        <div><span class="k">画师语录</span></div>
-        <p>大叫着“看那儿！”，然后让你的对手背对着你，这一招总是出奇地有效。</p>
-    </div>
-</div>
-
 
 
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
@@ -74,7 +42,7 @@
 <script type="text/javascript" src="json/json-quanhuang98.js"></script>
 <script type="text/javascript">
 $(function(){
-	var Quanhuang = new Quanhuang(data_cards);
+	var quanhuang = new Quanhuang(data_cards);
 });
 
 </script>

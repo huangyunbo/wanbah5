@@ -17,10 +17,24 @@ a{ text-decoration:none}
 .hide{ display:none !important}
 
 body{ background:#000; color:#fff}
+.index{ background:#000 url(../images/quanhuang98/quanhuang98-index-bg.jpg) top center no-repeat fixed; background-size:contain}
 .header{ height:45px; background:#ab3f2a url(../images/quanhuang98/header-bg.png) repeat-x; background-size:5px; position:relative; width:100%; position:fixed; z-index:10; top:0; left:0}
 .header .back{ position:absolute; left:10px; top:11px; color:#fff; font-size:1.5rem}
 .header .back i{ display:inline-block; border:solid #fff; border-width:0 0 1px 1px; width:12px; height:12px; transform:rotate(45deg); -webkit-transform:rotate(45deg); cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .header h1{ line-height:45px; font-size:1.5rem; text-align:center; color:#fff}
+/*首页*/
+.nav{ margin-top:45px; height:40px; background:#2f0705}
+.nav li{ float:left; width:25%; text-align:center; color:#e6b2b2; font-size:1.4rem}
+.nav li span{ height:39px; line-height:40px; display:inline-block; padding:0 5px}
+.nav li.on{ color:#dd423e}
+.nav li.on span{ border-bottom:1px solid #dd423e}
+.indexlist ul{ margin:4px}
+.indexlist li{ float:left; width:25%; padding:0 4px; box-sizing:border-box; margin-top:10px}
+.indexlist li .pic{ position:relative; background:url(../images/quanhuang98/quanhuang98-indexlist-pic.jpg) no-repeat; background-size:cover}
+.indexlist li .pic img{ width:100%; height:auto}
+.indexlist li .pic .img{ position:absolute; width:100%; height:100%; top:0; left:0; background-repeat:no-repeat; background-size:cover; background-position:center center}
+.indexlist li .pic .mask{ position:absolute; width:100%; height:100%; top:0; left:0; background:url(../images/quanhuang98/quanhuang98-indexlist-mask.png) no-repeat; background-size:cover}
+.indexlist li .name{ text-align:center; font-size:1.2rem; line-height:1.2; height:30px; padding-top:2px}
 /*详情页*/
 .detialtit{ font-size:1.5rem; color:#fff}
 .detialtit .icon{ background:url(../images/quanhuang98/quanhuang98.png) no-repeat; background-size:105px; width:12px; height:10px; display:inline-block; margin-right:4px}
@@ -46,9 +60,7 @@ body{ background:#000; color:#fff}
 .suipian{ margin:10px 7.5px 20px}
 .suipian .box{ margin-top:5px; padding:0 5px; display:table; box-sizing:border-box}
 .suipian .box .l{ width:32px; height:32px; float:left; position:relative; margin-top:5px}
-.suipian .box .l .img1{ background:url(../images/quanhuang98/quanhuang98.png) -32px -50px no-repeat; background-size:105px; width:100%; height:100%; position:absolute; z-index:1}
-.suipian .box .l .img2{ background-repeat:no-repeat; background-position:center center; background-size:contain; width:100%; height:100%; position:absolute; z-index:2}
-.suipian .box .l .img3{ background:url(../images/quanhuang98/quanhuang98.png) 0 -50px no-repeat; background-size:105px;  width:100%; height:100%; position:absolute; z-index:3}
+.suipian .box .l img{ width:32px; height:32px}
 .suipian .box .r{ float:left; margin-left:10px; line-height:2; font-size:1.2rem}
 /*技能*/
 .jineng{ margin:10px 7.5px 20px}
@@ -96,8 +108,7 @@ body{ background:#000; color:#fff}
 	.suipian{ margin:20px 15px 40px}
 	.suipian .box{ margin-top:10px; padding:0 10px}
 	.suipian .box .l{ width:64px; height:64px; margin-top:10px}
-	.suipian .box .l .img1{ background-position:-64px -100px no-repeat; background-size:auto}
-	.suipian .box .l .img3{ background-position:0 -100px; background-size:auto}
+	.suipian .box .l img{ width:64px; height:64px}
 	.suipian .box .r{ margin-left:20px; font-size:2.4rem}
 	/*技能*/
 	.jineng{ margin:20px 15px 40px}
