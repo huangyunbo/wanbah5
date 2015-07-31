@@ -44,8 +44,11 @@ body{ background:#000; color:#fff}
 .xiaobian .box p{ text-indent:2em; font-size:1.2rem}
 /*碎片出处*/
 .suipian{ margin:10px 7.5px 20px}
-.suipian .box{ margin-top:10px; padding:0 5px; display:table; box-sizing:border-box}
-.suipian .box .l{ width:32px; float:left}
+.suipian .box{ margin-top:5px; padding:0 5px; display:table; box-sizing:border-box}
+.suipian .box .l{ width:32px; height:32px; float:left; position:relative; margin-top:5px}
+.suipian .box .l .img1{ background:url(../images/quanhuang98/quanhuang98.png) -32px -50px no-repeat; background-size:105px; width:100%; height:100%; position:absolute; z-index:1}
+.suipian .box .l .img2{ background-repeat:no-repeat; background-position:center center; background-size:contain; width:100%; height:100%; position:absolute; z-index:2}
+.suipian .box .l .img3{ background:url(../images/quanhuang98/quanhuang98.png) 0 -50px no-repeat; background-size:105px;  width:100%; height:100%; position:absolute; z-index:3}
 .suipian .box .r{ float:left; margin-left:10px; line-height:2; font-size:1.2rem}
 /*技能*/
 .jineng{ margin:10px 7.5px 20px}
@@ -91,8 +94,10 @@ body{ background:#000; color:#fff}
 	.xiaobian .box p{ font-size:2.4rem}
 	/*碎片出处*/
 	.suipian{ margin:20px 15px 40px}
-	.suipian .box{ margin-top:20px; padding:0 10px}
-	.suipian .box .l{ width:64px}
+	.suipian .box{ margin-top:10px; padding:0 10px}
+	.suipian .box .l{ width:64px; height:64px; margin-top:10px}
+	.suipian .box .l .img1{ background-position:-64px -100px no-repeat; background-size:auto}
+	.suipian .box .l .img3{ background-position:0 -100px; background-size:auto}
 	.suipian .box .r{ margin-left:20px; font-size:2.4rem}
 	/*技能*/
 	.jineng{ margin:20px 15px 40px}
