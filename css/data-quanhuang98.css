@@ -24,17 +24,25 @@ body{ background:#000; color:#fff}
 .header h1{ line-height:45px; font-size:1.5rem; text-align:center; color:#fff}
 /*首页*/
 .nav{ margin-top:45px; height:40px; background:#2f0705}
-.nav li{ float:left; width:25%; text-align:center; color:#e6b2b2; font-size:1.4rem}
+.nav li{ float:left; width:25%; text-align:center; color:#e6b2b2; font-size:1.4rem; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .nav li span{ height:39px; line-height:40px; display:inline-block; padding:0 5px}
 .nav li.on{ color:#dd423e}
 .nav li.on span{ border-bottom:1px solid #dd423e}
-.indexlist ul{ margin:4px}
-.indexlist li{ float:left; width:25%; padding:0 4px; box-sizing:border-box; margin-top:10px}
+.indexlist ul{ margin:4px; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.indexlist li{ float:left; width:25%; padding:0 4px; box-sizing:border-box; margin-top:10px; cursor:pointer}
 .indexlist li .pic{ position:relative; background:url(../images/quanhuang98/quanhuang98-indexlist-pic.jpg) no-repeat; background-size:cover}
 .indexlist li .pic img{ width:100%; height:auto}
 .indexlist li .pic .img{ position:absolute; width:100%; height:100%; top:0; left:0; background-repeat:no-repeat; background-size:cover; background-position:center center}
 .indexlist li .pic .mask{ position:absolute; width:100%; height:100%; top:0; left:0; background:url(../images/quanhuang98/quanhuang98-indexlist-mask.png) no-repeat; background-size:cover}
 .indexlist li .name{ text-align:center; font-size:1.2rem; line-height:1.2; height:30px; padding-top:2px}
+@media screen and (min-width:640px){
+	.nav{ height:68px}
+	.nav li{ font-size:2.2rem}
+	.nav li span{ height:67px; line-height:68px; padding:0 10px}
+	.indexlist ul{ margin:8px}
+	.indexlist li{ width:20%; padding:0 8px; margin-top:15px}
+	.indexlist li .name{ font-size:2.1rem; line-height:1.2; height:54px; padding-top:2px}
+}
 /*详情页*/
 .detialtit{ font-size:1.5rem; color:#fff}
 .detialtit .icon{ background:url(../images/quanhuang98/quanhuang98.png) no-repeat; background-size:105px; width:12px; height:10px; display:inline-block; margin-right:4px}

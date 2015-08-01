@@ -12,12 +12,11 @@
 	};
 	
 	Quanhuang.prototype = {
-		
 		printdetail: function(){//打印详情页
 			var that = this,
 			len = that.datacards.length,
 			card,
-			id = that.getcardid(),
+			id = Number(that.getsession("wbgl-quanhuang-card")),
 			summary_html = '',
 			xiaobian_html = '',
 			suipian_html = '',
@@ -130,15 +129,16 @@
 			var datacards = this.datacards,
 			len = datacards.length,
 			card,
-			navindex = arguments[0],
+			navindex = 0,
 			html = '';
 			
-			navindex = navindex === undefined ? 0 : navindex;
+			navindex = Number(this.getsession("wbgl-quanhuang-navindex"));
+			$("#nav li").eq(navindex).addClass("on").siblings().removeClass("on");
 			
 			for(var i=0; i<len; i++){
 				card = datacards[i];
 				if(navindex == 0 || navindex == card.c){
-					html += '<li>'+
+					html += '<li data-id="'+card.a+'">'+
 								'<div class="pic">'+
 									'<img src="'+this.o.url+'quanhuang98-indexlist-bg.png">'+
 									'<div class="img" style="background-image:url('+this.o.url+'DBPic/'+card.e+')"></div>'+
@@ -151,16 +151,24 @@
 			
 			$("#indexlist").html(html);
 		},
-		getcardid: function(){//从列表获取人物id
-			return 10413;
-			
+		getsession: function(){
+			var sessionname = arguments[0];
 			if(this.o.platform == "ios"){
-				return Number(this.cookie('wbgl-quanhuang-card'));
+				return this.cookie(sessionname);
 			}else{
-				return Number(sessionStorage.getItem("wbgl-quanhuang-card"));
+				return sessionStorage.getItem(sessionname);
 			}
 		},
-		cookie: function(){
+		setsession: function(){
+			var sessionname = arguments[0],
+			sessionvalue = arguments[1];
+			if(this.o.platform == "ios"){
+				this.cookie(sessionname,sessionvalue);
+			}else{
+				sessionStorage.setItem(sessionname, sessionvalue);
+			}
+		},
+		cookie: function(name, value, options){
 			if(typeof value != 'undefined'){// name and value given, set cookie
 				options = options || {};
 				if(value === null){
@@ -202,10 +210,10 @@
 			}
 		},
 		checkversion: function(){//检查版本
-			/*if(!window.localStorage){
+			if(!window.localStorage){
 				alert("错误，你的版本过低，请升级你的设备");
 				return false;
-			}*/
+			}
 			if(this.o.platform == "android"){
 				try{
 					window.jstojava.getHostVersion();
@@ -236,9 +244,6 @@
 					}else if(this.o.platform == "android"){
 						removehide();
 						$("#header").children(".back").attr("href","index.html");
-					}else if(this.o.platform == "ios"){
-						removehide();
-						$("#header").children(".back").attr("href",this.o.platename+"/index.html");
 					}
 				break;
 			}
@@ -246,6 +251,22 @@
 		events: function(){
 			var that = this;
 			
+			$("#nav li").click(function(){
+				var navindex = Number($(this).attr("data-navindex"));
+				
+				that.setsession("wbgl-quanhuang-navindex", navindex);
+				that.printindex();
+			});
+			$("#indexlist").on("click", "li", function(){
+				var _id = Number($(this).attr("data-id"));
+				
+				that.setsession("wbgl-quanhuang-card", _id);
+				if(that.o.platform == "ios"){
+					location.href = this.o.platename+'/data-quanhuang98-detail.html';
+				}else{
+					location.href = 'data-quanhuang98-detail.html';
+				}
+			});
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			if(!this.checkversion()) return;
