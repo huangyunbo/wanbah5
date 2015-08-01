@@ -1,22 +1,22 @@
 //2015-07-30
 (function(window){
-	var Quanhuang = function(){
+	var Quanhuang98 = function(){
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {platform:"web",plugname:"plugin_963",url:"images/quanhuang98/"};//platform:打包平台,platename:插件板块名,url:前缀路径
+		this.o = {platform:"web",plugin:"plugin_925",url:"images/quanhuang98/"};//platform:打包平台,plugin:插件板块名,url:前缀路径
 		if(this.o.platform == "android"){
 			this.o.url="../images/quanhuang98/";
 		}
 		this.init();
 	};
 	
-	Quanhuang.prototype = {
+	Quanhuang98.prototype = {
 		printdetail: function(){//打印详情页
 			var that = this,
 			len = that.datacards.length,
 			card,
-			id = Number(that.getsession("wbgl-quanhuang-card")),
+			id = Number(that.getsession("wbgl-quanhuang98-card")),
 			summary_html = '',
 			xiaobian_html = '',
 			suipian_html = '',
@@ -132,7 +132,7 @@
 			navindex = 0,
 			html = '';
 			
-			navindex = Number(this.getsession("wbgl-quanhuang-navindex"));
+			navindex = Number(this.getsession("wbgl-quanhuang98-navindex"));
 			$("#nav li").eq(navindex).addClass("on").siblings().removeClass("on");
 			
 			for(var i=0; i<len; i++){
@@ -236,6 +236,8 @@
 					}else if(this.o.platform == "android"){
 						removehide();
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
+					}else if(this.o.platform == "ios"){
+						$("#nav").parent().addClass("nav_ios");
 					}
 				break;
 				case "detail":
@@ -244,6 +246,8 @@
 					}else if(this.o.platform == "android"){
 						removehide();
 						$("#header").children(".back").attr("href","index.html");
+					}else if(this.o.platform == "ios"){
+						$("#summary").addClass("summary_ios");
 					}
 				break;
 			}
@@ -254,15 +258,16 @@
 			$("#nav li").click(function(){
 				var navindex = Number($(this).attr("data-navindex"));
 				
-				that.setsession("wbgl-quanhuang-navindex", navindex);
+				that.setsession("wbgl-quanhuang98-navindex", navindex);
 				that.printindex();
 			});
 			$("#indexlist").on("click", "li", function(){
 				var _id = Number($(this).attr("data-id"));
 				
-				that.setsession("wbgl-quanhuang-card", _id);
+				that.setsession("wbgl-quanhuang98-card", _id);
+				
 				if(that.o.platform == "ios"){
-					location.href = this.o.platename+'/data-quanhuang98-detail.html';
+					location.href = that.o.plugin+'/data-quanhuang98-detail.html';
 				}else{
 					location.href = 'data-quanhuang98-detail.html';
 				}
@@ -289,7 +294,7 @@
 		}
 	};
 	
-	window.Quanhuang = Quanhuang;
+	window.Quanhuang98 = Quanhuang98;
 })(window);
 
 /*

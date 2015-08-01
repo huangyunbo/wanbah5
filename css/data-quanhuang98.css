@@ -24,6 +24,7 @@ body{ background:#000; color:#fff}
 .header h1{ line-height:45px; font-size:1.5rem; text-align:center; color:#fff}
 /*首页*/
 .nav{ margin-top:45px; height:40px; background:#2f0705}
+.nav_ios{ margin:0}
 .nav li{ float:left; width:25%; text-align:center; color:#e6b2b2; font-size:1.4rem; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .nav li span{ height:39px; line-height:40px; display:inline-block; padding:0 5px}
 .nav li.on{ color:#dd423e}
@@ -48,6 +49,7 @@ body{ background:#000; color:#fff}
 .detialtit .icon{ background:url(../images/quanhuang98/quanhuang98.png) no-repeat; background-size:105px; width:12px; height:10px; display:inline-block; margin-right:4px}
 
 .summary{ margin-top:45px; height:150px; background:url(../images/quanhuang98/quanhuang98-detail-bg.jpg) center bottom no-repeat; background-size:cover; position:relative}
+.summary_ios{ margin:0}
 .summary .l .img{ width:100%; height:132px; background-repeat:no-repeat; background-size:auto 132px; margin-top:5px; display:inline-block}
 .summary .l .name{ font-size:1.2rem; color:#dd423e; background:#210606; display:inline-block; position:absolute; left:15px; bottom:0; border-radius:30px}
 .summary .l .name div{ box-shadow:0 0 5px rgba(100,0,0,0.65) inset; border-radius:30px; padding:4px 20px}
