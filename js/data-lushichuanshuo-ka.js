@@ -4,7 +4,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {platform:"web",platename:"plugin_963",job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,feimin:0,feimax:100};//platform:打包平台,platename:插件板块名,job:职业,url:前缀路径,cards:选中的卡牌,cardnum:当前一共选了多少张牌了,rarity:稀有度0所有,fei:费法力0所有
+		this.o = {platform:"web",plugin:"plugin_926",job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,feimin:0,feimax:100};//platform:打包平台,plugin:插件板块名925/926内侧 963/964正式,job:职业,url:前缀路径,cards:选中的卡牌,cardnum:当前一共选了多少张牌了,rarity:稀有度0所有,fei:费法力0所有
 		if(this.o.platform == "android"){
 			this.o.url="../images/lushichuanshuo/";
 		}
@@ -246,7 +246,7 @@
 			}
 			
 			if(this.o.platform == "ios"){
-				location.href = this.o.platename+'/data-lushichuanshuo-ka-mygroup.html';
+				location.href = this.o.plugin+'/data-lushichuanshuo-ka-mygroup.html';
 			}else{
 				location.href = 'data-lushichuanshuo-ka-mygroup.html';
 			}
@@ -513,8 +513,8 @@
 						removehide();
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
 					}else if(this.o.platform == "ios"){
-						$("#ka_road").children(".item").eq(0).attr("href",this.o.platename+"/data-lushichuanshuo-ka-job.html");
-						$("#ka_road").children(".item").eq(1).attr("href",this.o.platename+"/data-lushichuanshuo-ka-mygroup.html");
+						$("#ka_road").children(".item").eq(0).attr("href",this.o.plugin+"/data-lushichuanshuo-ka-job.html");
+						$("#ka_road").children(".item").eq(1).attr("href",this.o.plugin+"/data-lushichuanshuo-ka-mygroup.html");
 					}
 				break;
 				case 2:
@@ -556,7 +556,7 @@
 				
 				if(that.o.platform == "ios"){
 					localStorage.setItem("wbgl-lscs-ka-job",$(this).attr("data-job"));
-					location.href = that.o.platename+'/data-lushichuanshuo-ka-detail.html';
+					location.href = that.o.plugin+'/data-lushichuanshuo-ka-detail.html';
 				}else{
 					sessionStorage.setItem("wbgl-lscs-ka-job",$(this).attr("data-job"));
 					location.href = 'data-lushichuanshuo-ka-detail.html';
@@ -648,7 +648,7 @@
 						card = JSON.stringify(card);
 						if(that.o.platform == "ios"){
 							localStorage.setItem("wbgl-lscs-ka-mycards",card);
-							location.href = that.o.platename+'/data-lushichuanshuo-ka-mycards.html';
+							location.href = that.o.plugin+'/data-lushichuanshuo-ka-mycards.html';
 						}else{
 							sessionStorage.setItem("wbgl-lscs-ka-mycards",card);
 							location.href = 'data-lushichuanshuo-ka-mycards.html';
@@ -688,7 +688,7 @@
 			//我的卡组-mycards
 			$("#ka_mycards_edit").click(function(){
 				if(that.o.platform == "ios"){
-					location.href = that.o.platename+'/data-lushichuanshuo-ka-detail.html';
+					location.href = that.o.plugin+'/data-lushichuanshuo-ka-detail.html';
 				}else{
 					location.href = 'data-lushichuanshuo-ka-detail.html';
 				}
