@@ -4,7 +4,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {platform:"web",plugin:"plugin_925",url:"images/quanhuang98/"};//platform:打包平台,plugin:插件板块名,url:前缀路径
+		this.o = {platform:"web",plugin:"plugin_992",url:"images/quanhuang98/"};//platform:打包平台,plugin:插件板块名,url:前缀路径
 		if(this.o.platform == "android"){
 			this.o.url="../images/quanhuang98/";
 		}
@@ -34,7 +34,7 @@
 			function star(){
 				var _html = '';
 				for(var i=0; i<arguments[0]; i++){
-						_html += '<i></i>';
+					_html += '<i></i>';
 				}
 				return _html;
 			}
@@ -42,19 +42,20 @@
 				var _arr = arguments[0],
 				_html = '';
 				for(var i=0; i<_arr.length; i++){
-						_html += '<p>'+_arr[i]+'</p>';
+					_html += '<p>'+_arr[i]+'</p>';
+
 				}
-				return _html;
+				return _html.replace(/【精英】/g,'<span style="color:#dd423e">【精英】</span>');//【精英】变成红色的
 			}
 			function jinengllist(){
 				var _arr = arguments[0],
 				_html = '';
 				for(var i=0; i<_arr.length; i++){
-						_html += '<div class="item">'+
-									'<div class="img"><img src="'+that.o.url+'DBOther/'+_arr[i].img+'"></div>'+
-									'<div class="note"><h3>'+_arr[i].name+'</h3><p>'+_arr[i].des+'</p></div>'+
-									'<div class="label"><span>'+ _arr[i].label.slice(0,2) + '<br>' + _arr[i].label.slice(2,4) +'</span></div>'+
-								'</div>';
+					_html += '<div class="item">'+
+								'<div class="img"><img src="'+that.o.url+'DBOther/'+_arr[i].img+'"></div>'+
+								'<div class="note"><h3>'+_arr[i].name+'</h3><p>'+_arr[i].des+'</p></div>'+
+								'<div class="label"><span>'+ _arr[i].label.slice(0,2) + '<br>' + _arr[i].label.slice(2,4) +'</span></div>'+
+							'</div>';
 				}
 				return _html;
 			}

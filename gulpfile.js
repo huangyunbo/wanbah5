@@ -162,7 +162,7 @@ gulp.task('lscs_ios', function(){
 
 
 //拳皇98终极之战OL
-var quanhuang98_plugin_data = "plugin_925";
+var quanhuang98_plugin_data = "plugin_992";
 var quanhuang98_path = '../';
 var quanhuang98_replace = ['css/', 'js/', 'json/'];
 var quanhuang98_replace_data = ['css/', 'js/', 'json/'];
