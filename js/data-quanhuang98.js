@@ -38,6 +38,13 @@
 				}
 				return _html;
 			}
+			function zhiye(){
+				switch(arguments[0]){
+					case 1:return "攻";
+					case 2:return "防";
+					case 3:return "技";
+				}
+			}
 			function suipianlist(){
 				var _arr = arguments[0],
 				_html = '';
@@ -81,15 +88,18 @@
 								'</div>'+
 								'<ul>'+
 									'<li>'+
+										'<div class="k">资质<span>'+card.h+'</span></div>'+
+									'</li>'+
+									'<li>'+
+										'<div class="k">职业<span>'+zhiye(card.c)+'</span></div>'+
+									'</li>'+
+									'<li>'+
 										'<div class="k">定位</div>'+
 										'<div class="v">'+card.f+'</div>'+
 									'</li>'+
 									'<li>'+
 										'<div class="k">怒气特性</div>'+
 										'<div class="v">'+card.g+'</div>'+
-									'</li>'+
-									'<li>'+
-										'<div class="k">资质<span>'+card.h+'</span></div>'+
 									'</li>'+
 								'</ul>'+
 							'</div>';

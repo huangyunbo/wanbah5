@@ -53,7 +53,7 @@ body{ background:#000; color:#fff}
 .summary .l .img{ width:100%; height:132px; background-repeat:no-repeat; background-size:auto 132px; margin-top:5px; display:inline-block}
 .summary .l .name{ font-size:1.2rem; color:#dd423e; background:#210606; display:inline-block; position:absolute; left:15px; bottom:0; border-radius:30px}
 .summary .l .name div{ box-shadow:0 0 5px rgba(100,0,0,0.65) inset; border-radius:30px; padding:4px 20px}
-.summary .r{ position:absolute; top:18px; left:0; padding:0 8px 0 40%; font-size:1.2rem; width:100%; box-sizing:border-box}
+.summary .r{ position:absolute; top:10px; left:0; padding:0 8px 0 40%; font-size:1.2rem; width:100%; box-sizing:border-box}
 .summary .r .star{ position:absolute; top:2px; right:8px; width:84px; height:12px; overflow:hidden}
 .summary .r .star i{ background:url(../images/quanhuang98/quanhuang98.png) -12px 0; background-size:105px; width:12px; height:12px; float:right}
 .summary .r li{ margin-bottom:5px}
@@ -104,7 +104,7 @@ body{ background:#000; color:#fff}
 	.summary .l .img{ height:264px; background-repeat:no-repeat; background-size:auto 264px; margin-top:10px}
 	.summary .l .name{ font-size:2.4rem; left:30px}
 	.summary .l .name div{ padding:4px 35px}
-	.summary .r{ top:36px; padding:0 16px 0 40%; font-size:2.4rem}
+	.summary .r{ top:20px; padding:0 16px 0 40%; font-size:2.4rem}
 	.summary .r .star{ top:4px; right:16px; width:168px; height:24px}
 	.summary .r .star i{ background-position:-24px 0; background-size:auto; width:24px; height:24px}
 	.summary .r li{ margin-bottom:10px}
