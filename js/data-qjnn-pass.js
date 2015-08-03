@@ -3,7 +3,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datapass = option;
-		this.o = {crumbs:0,chapter:0};//crumbs翻页层级,chapter具体大章
+		this.o = {platform:"web",plugin:"plugin_911",crumbs:0,chapter:0};//crumbs翻页层级,chapter具体大章
 		this.init();
 	}
 	QjnnPass.prototype = {

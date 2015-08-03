@@ -1,65 +1,59 @@
 (function(window){
-	var QjnnTmp = function(option){
+	var Qjnn = function(option){
 		if(typeof(arguments[0]) == 'undefined') return false;
-		var option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
+		option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.dataclothes = option.data_clothes;
 		this.dataarena = option.data_arena;
-		this.o = {type:1,clothestype:0,zhuti:"",label:["jianyue","huopo","keai","qingchun","baonuan"]};
+		this.o = {platform:"web",plugin:"plugin_911",type:1,clothestype:0,zhuti:"",label:["jianyue","huopo","keai","qingchun","baonuan"]};
 
 		this.init();
-	}
+	};
 	
-	QjnnTmp.prototype = {
-		printFilterclothes: function(){//打印横向滑动选择 头发/连衣裙/外套
-			var _html = '',
+	Qjnn.prototype = {
+		printfilter: function(){//打印横向滑动选择 头发/连衣裙/外套
+			var html = '',
 			_dataclothes = this.dataclothes,
 			len = _dataclothes.length,
-			i;
-			for(i=0; i<len; i++){
-				_html += '<a class="item" data-type="'+i+'">'+_dataclothes[i].tname+'</a>';
+			i = 0;
+			for(; i<len; i++){
+				html += '<li class="item" data-type="'+i+'">'+_dataclothes[i].tname+'</li>';
 			}
-			$("#filter .filter_inner").html(_html);
+			$("#filter").html(html);
+			this.setfilter();
 		},
-		filterclothesScroll: function(){//设置横向滑动条
+		setfilter: function(){//设置横向滑动条
 			var $filter = $("#filter"),
-			$item = $filter.find("a.item"),
-			_w = 0;
+			$item = $filter.children(".item"),
+			item_w = 0;
 
 			$item.each(function(){
-				_w += $(this).innerWidth();
+				item_w += $(this).innerWidth();
 			});
-			
-			$filter.children().width(_w);//先设置宽度
-			
-			var myscroll = new IScroll("#filter", {//再设置滑动
-				scrollX: true,
-				scrollY: false,
-				bounce: false,
-				click: true
-			});
+			$filter.width(item_w+1);
 		},
 		printArena: function(){//打印搭配竞技场
-			var _html = '',
+			var html = '',
 			_dataarena = this.dataarena,
-			i;
-			for(i=0; i<_dataarena.length; i++){
-				_html += '<div class="item"><a class="btn_arena" data-id="'+_dataarena[i].id+'">'+_dataarena[i].name+'</a></div>';
+			i = 0;
+			for(; i<_dataarena.length; i++){
+				html += '<div class="item"><a class="btn_arena" data-id="'+_dataarena[i].id+'">'+_dataarena[i].name+'</a></div>';
 			}
-			$("#dialog_arena .dialog_content").html(_html);
+			$("#dialog_arena .dialog_content").html(html);
 		},
-		calcClothes:function(index){//计算衣服组
+		calcClothes:function(){//计算衣服组
 			var that = this,
 			_dataclothes = that.dataclothes[that.o.clothestype].data,
-			htmllen = len = _dataclothes.length,
+			len = _dataclothes.length,
+			htmllen = len,
 			j,
 			tempExchangVal;
 			
 			function calcScore(){//计算衣服的数值和最高的2个标签
-				var _wu = arguments[0].wu,
-				clothes_index = arguments[1],
+				var _wu = arguments[0].wu,//五属性
+				clothes_index = arguments[1],//当前类别下所有衣服的数组下标
 				k,
 				score,
-				total = 0
+				total = 0,
 				labelnum = 0,
 				temp1 = {},
 				temp2 = {},
@@ -113,7 +107,7 @@
 			that.printClothes();
 		},
 		caidan: function(){//彩蛋
-			var _html = '',
+			var html = '',
 			caidan_id = arguments[0],
 			day_id = [[8161,8651,8843,8982,9229],[8402,9371,9504,10310,10298],[9860,10300,9809,9844,8269],[8251,8472,10242,8992,9241]],
 			myDate = new Date(),
@@ -147,28 +141,30 @@
 
 			switch(true){
 				case (myDate >= day0 && myDate < day1):
-					return _html = isDay(0,caidan_id) == true ? '<i class="caidan"></i>' : '';
+					html = isDay(0,caidan_id) === true ? '<i class="caidan"></i>' : '';
+					break;
 				case (myDate >= day1 && myDate < day2):
-					return _html = isDay(1,caidan_id) == true ? '<i class="caidan"></i>' : '';
+					html = isDay(1,caidan_id) === true ? '<i class="caidan"></i>' : '';
+					break;
 				case (myDate >= day2 && myDate < day3):
-					return _html = isDay(2,caidan_id) == true ? '<i class="caidan"></i>' : '';
+					html = isDay(2,caidan_id) === true ? '<i class="caidan"></i>' : '';
+					break;
 				case (myDate >= day3 && myDate < day4):
-					return _html = isDay(3,caidan_id) == true ? '<i class="caidan"></i>' : '';
+					html = isDay(3,caidan_id) === true ? '<i class="caidan"></i>' : '';
+					break;
 			}
 			
-			return _html;
+			return html;
 		},
 		printClothes: function(){//打印衣服组
-			var pagesize = 30,
-			pagecurrent = i = arguments[0] != undefined ? arguments[0] : 0,
+			var i = 0,
 			_dataclothes = this.dataclothes[this.o.clothestype].data,
 			len = _dataclothes.length,
-			totalpage = Math.floor(len / pagesize),
-			_html = '';
-			
-			if(Math.floor(i / pagesize) == totalpage){
-				for(; i<len; i++){
-					_html += '<div class="item" data-id="'+_dataclothes[i].id+'">'+
+			html = '';
+
+			for(; i<len; i++){
+				html += '<div class="item" data-id="'+_dataclothes[i].id+'">'+
+							'<div class="item_inner">'+
 								'<div class="t">'+
 									'<div>'+_dataclothes[i].name+'</div>'+
 									'<i class="t_l"></i>'+
@@ -180,35 +176,12 @@
 									'<div><span>'+_dataclothes[i].high2+'</span></div>'+
 								'</div>'+
 								'<div class="b">估算分:<span>'+_dataclothes[i].total+'</span></div>'+
-								this.caidan(_dataclothes[i].id)+
-							'</div>';
-				}
-			}else{
-				for(; i<pagecurrent+pagesize; i++){
-					_html += '<div class="item" data-id="'+_dataclothes[i].id+'">'+
-								'<div class="t">'+
-									'<div>'+_dataclothes[i].name+'</div>'+
-									'<i class="t_l"></i>'+
-									'<i class="t_m"></i>'+
-									'<i class="t_r"></i>'+
-								'</div>'+
-								'<div class="m">'+
-									'<div><span>'+_dataclothes[i].high1+'</span></div>'+
-									'<div><span>'+_dataclothes[i].high2+'</span></div>'+
-								'</div>'+
-								'<div class="b">估算分:<span>'+_dataclothes[i].total+'</span></div>'+
-								this.caidan(_dataclothes[i].id)+
-							'</div>';
-				}
-				_html += '<div class="clear"></div><div id="loadmore" data-pagecurrent="'+i+'">加载更多</div>';
+								//this.caidan(_dataclothes[i].id)+//彩蛋
+							'</div>'+
+						'</div>';
 			}
-			
-			if(arguments[0] != undefined){
-				$("#clothes").append(_html);
-			}else{
-				$("#clothes").scrollTop(0);
-				$("#clothes").html(_html);
-			}
+			$("#clothes").scrollTop(0);
+			$("#clothes").html(html);
 			
 		},
 		switchlael: function(){
@@ -226,15 +199,15 @@
 			}
 		},
 		selectedbute: function(){//选择哪些属性
-			var _html = '';
+			var html = '';
 			if(this.o.type == 1){
 				for(var i=0; i<this.o.label.length; i++){
-					_html += '<div class="item">'+this.switchlael(this.o.label[i])+'</div>';
+					html += '<div class="item">'+this.switchlael(this.o.label[i])+'</div>';
 				}
 			}else{
-				_html = '<div class="item">'+this.o.zhuti+'</div>';
+				html = '<div class="item">'+this.o.zhuti+'</div>';
 			}
-			$("#selectedbute").html(_html);
+			$("#selectedbute").html(html);
 			
 			this.calcClothes();
 		},
@@ -392,7 +365,7 @@
 				return _html;
 			}
 			
-			var _html = '<div class="btn_det_close" id="btn_det_close"></div>'+
+			var html = '<div class="btn_det_close" id="btn_det_close"></div>'+
 						'<div class="title">'+
 							'<div class="l"><i></i></div>'+
 							'<div class="m">'+_dataclothes.name+'</div>'+
@@ -409,13 +382,15 @@
 							gain()+
 						'</div>';
 						
-			$("#dialog_det").html(_html);
+			$("#dialog_det").html(html);
 		},
 		setHight: function(){
-			var headerH = $("#header").outerHeight();
-			headerH = headerH === null ? 0 : headerH;
+			var headerH = 45;
+			if(this.o.platform == "ios"){
+				headerH = 0;
+			}
 			var _h = $(window).height() - 251 - headerH;//48+125+44+17+17
-			_h = _h >= 229 ? _h : 229;
+			_h = _h >= 229 ? _h : 229;//去掉头的iphone4 480
 			$("#clothes").height(_h);
 		},
 		events: function(){
@@ -442,7 +417,7 @@
 				});
 			});
 			//点击已选属性/主题 打开弹窗
-			$("#selectedbute").on("click", ".item", function(){
+			$("#selectedbute").click(function(){
 				if(that.o.type == 1){
 					easyDialog.open({
 					  container: "dialog_wu",
@@ -507,28 +482,47 @@
 			$(window).resize(function(e) {
                 that.setHight();
             });
-			//加载更多
-			$("#clothes").on("click", "#loadmore", function(){
-				var _this = $(this);
-				_num  = Number(_this.attr("data-pagecurrent"));
-				_this.prev().remove();
-				_this.remove();
-				that.printClothes(_num);
-			});
+		},
+		checkversion: function(){//检查版本
+			if(!window.localStorage){
+				alert("错误，你的版本过低，请升级你的设备");
+				return false;
+			}
+			if(this.o.platform == "android"){
+				try{
+					window.jstojava.getHostVersion();
+				}catch(err){
+					alert("错误，请升级Android玩吧专业版2.5以上");
+					return false;
+				}
+			}
+			return true;
+		},
+		isplatform: function(){//判断打包平台显示相应内容
+			this.checkversion();
+			
+			function removehide(){
+				$("#header").removeClass("hide");
+			}
+			
+			if(this.o.platform == "web"){
+				removehide();
+			}else if(this.o.platform == "android"){
+				removehide();
+				$("#header").children(".wblogo_index").attr("href","javascript:window.jstojava.close();");
+			}
 		},
 		init: function(){
-			this.printFilterclothes();
+			this.isplatform();
+			this.printfilter();
 			this.events();
 			this.setHight();
 			$("#filter .item").eq(0).trigger("click");
-			this.filterclothesScroll();
 			this.printArena();
-			
-			
 		}
-	}
+	};
 	
-	window.QjnnTmp = QjnnTmp;
+	window.Qjnn = Qjnn;
 })(window);
 /*
 1:简约,2:华丽,3:可爱,4:成熟,5:活泼,6:优雅,7:清纯,8:性感,9:清凉,10:保暖

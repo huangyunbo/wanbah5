@@ -14,6 +14,7 @@ em,i,code,cite,address,th{font-style:normal}
 .clearfix{*zoom:1;_height:1px}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 a{ text-decoration:none}
+.hide{ display:none !important}
 
 body{ background:#f9ddd3 url(../images/qjnn/data-tmp-bg.jpg) no-repeat fixed; background-size:cover}
 .header{ height:44px; border-bottom:1px solid #dc7fb7; background:#f098b1; position:relative}
@@ -29,42 +30,32 @@ body{ background:#f9ddd3 url(../images/qjnn/data-tmp-bg.jpg) no-repeat fixed; ba
 .switchbute .flower_l,.switchbute .flower_r{ background:url(../images/qjnn/data-tmp.png) 0 -145px no-repeat; background-size:320px; position:absolute; left:0; top:0; width:56px; height:33px}
 .switchbute .flower_r{ left:auto; right:0; transform:rotateY(180deg); -webkit-transform:rotateY(180deg)}
 .switchbute .title{ font-size:1.5rem; color:#c04861; border-bottom:1px solid #d8b3ac; text-align:center; margin:0 7px; padding:3px 0 4px}
-.switchbute .content{ padding:10px 0 1px; overflow:hidden; margin-left:-23px}
-.switchbute .content .item{ float:left; margin-left:23px; border:1px solid #fff; background:#ffb67b; border-radius:30px; font-size:1.3rem; color:#fff; padding:2px 20px; margin-bottom:9px; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
-.filter_warp{ height:42px; border:solid #fff; border-width:1px 0; background:rgba(255,255,255,0.4)}
-.filter{ box-shadow:inset 0 0 12px #fff; background:#ffecd1; height:40px; line-height:40px; margin-top:1px; overflow:hidden; position:relative}
-.filter_inner{ position:absolute}
+.switchbute .content{ padding:10px 0 1px; overflow:hidden; margin-left:-23px; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.switchbute .content .item{ float:left; margin-left:23px; border:1px solid #fff; background:#ffb67b; border-radius:30px; font-size:1.3rem; color:#fff; padding:2px 20px; margin-bottom:9px}
+.filter{ height:42px; border:solid #fff; border-width:1px 0; background:rgba(255,255,255,0.4)}
+.filter .filter_inner{ box-shadow:inset 0 0 12px #fff; background:#ffecd1; height:40px; line-height:40px; margin-top:1px; overflow-x:auto; -webkit-overflow-scrolling:touch}
 .filter .item{ font-size:1.5rem; color:#454545; cursor:pointer; padding:0 16px; float:left; -webkit-tap-highlight-color:rgba(0,0,0,0)}
-.filter .on.item{ color:#ffb309}
-.clothes_wrap{ position:relative; background:rgba(253,223,217,0.8); margin:17px 19px}
+.filter .item.on{ color:#ffb309}
+.clothes_wrap{ position:relative; background:rgba(253,223,217,0.8); margin:17px 11px}
 .clothes_wrap .flower_top_left,.clothes_wrap .flower_top_right,.clothes_wrap .flower_bottom_left,.clothes_wrap .flower_bottom_right{ background:url(../images/qjnn/data-tmp.png) 0 -180px no-repeat; background-size:320px; position:absolute; width:17px; height:15px}
-.clothes_wrap .flower_top_left{ top:-15px; left:-17px}
-.clothes_wrap .flower_top_right{ top:-15px; right:-17px; transform:rotateY(180deg); -webkit-transform:rotateY(180deg)}
-.clothes_wrap .flower_bottom_left{ bottom:-15px; left:-17px; transform:rotateX(180deg); -webkit-transform:rotateX(180deg)}
-.clothes_wrap .flower_bottom_right{ bottom:-15px; right:-17px; transform:rotate(180deg); -webkit-transform:rotate(180deg)}
+.clothes_wrap .flower_top_left{ top:-15px; left:-10px}
+.clothes_wrap .flower_top_right{ top:-15px; right:-10px; transform:rotateY(180deg); -webkit-transform:rotateY(180deg)}
+.clothes_wrap .flower_bottom_left{ bottom:-15px; left:-10px; transform:rotateX(180deg); -webkit-transform:rotateX(180deg)}
+.clothes_wrap .flower_bottom_right{ bottom:-15px; right:-10px; transform:rotate(180deg); -webkit-transform:rotate(180deg)}
 .clothes_wrap .line_top,.clothes_wrap .line_right,.clothes_wrap .line_bottom,.clothes_wrap .line_left{ background:rgba(253,223,217,0.8); position:absolute; border:0 solid rgba(255,255,255,0.7)}
-.clothes_wrap .line_top{ height:14px; top:-15px; left:0; right:0; border-top-width:1px}
-.clothes_wrap .line_right{ width:15px; top:0; bottom:0; right:-16px; border-right-width:1px}
-.clothes_wrap .line_bottom{ height:14px; bottom:-15px; left:0; right:0; border-bottom-width:1px}
-.clothes_wrap .line_left{ width:15px; top:0; bottom:0; left:-16px; border-left-width:1px}
+.clothes_wrap .line_top{ height:14px; top:-15px; left:7px; right:7px; border-top-width:1px}/*17=15 留2px高, 17宽-(left:-10)=7*/
+.clothes_wrap .line_right{ width:8px; top:0; bottom:0; right:-9px; border-right-width:1px}/*11=10 留1px宽，再配合图片留1px,最后9*/
+.clothes_wrap .line_bottom{ height:14px; bottom:-15px; left:7px; right:7px; border-bottom-width:1px}
+.clothes_wrap .line_left{ width:8px; top:0; bottom:0; left:-9px; border-left-width:1px}
 /*衣服列表*/
-.clothes{ overflow-y:auto; -webkit-overflow-scrolling:touch; margin-left:-16px; -webkit-tap-highlight-color:rgba(0,0,0,0)}
-.clothes .item{ float:left; border:1px solid #ff8b88; background:#ffebe7; border-radius:5px; margin:0 0 10px 16px; width:111px; position:relative; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
-@media screen and (min-width:320px){
-	.clothes .item{ width:131px}
-}
-@media screen and (min-width:360px){
-	.clothes .item{ width:151px}
-}
-@media screen and (min-width:375px){
-	.clothes .item{ width:158px}
-}
-@media screen and (min-width:414px){
-	.clothes .item{ width:178px}
+.clothes{ overflow-y:auto; -webkit-overflow-scrolling:touch; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.clothes .item{ float:left; width:50%; cursor:pointer}
+.clothes .item_inner{ border:1px solid #ff8b88; background:#ffebe7; border-radius:5px; margin:0 8px 10px}
+@media screen and (min-width:640px){
+	.clothes .item{ width:33.33%}
 }
 @media screen and (min-width:768px){
-	.clothes{ margin-left:-20px}
-	.clothes .item{ width:200px; margin-left:40px}
+	.clothes .item{ width:25%}
 }
 .clothes .item .t{ padding:3px 6px 0; position:relative}
 .clothes .item .t div{ color:#454545; font-size:1.2rem; text-align:center; width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; border-bottom:1px solid #ce7b39}
@@ -76,9 +67,8 @@ body{ background:#f9ddd3 url(../images/qjnn/data-tmp-bg.jpg) no-repeat fixed; ba
 .clothes .item .m span{ color:#456395; width:45px; height:19px; line-height:19px; text-align:center; background:url(../images/qjnn/data-tmp.png) 0 -202px no-repeat; background-size:320px; display:inline-block}
 .clothes .item .b{ background:#ff8b88; border-radius:0 0 4px 4px; color:#fff; text-align:center}
 .clothes .item .b span{ font-size:1.8rem; font-family:Arial}
-#loadmore{ font-size:1.5rem; padding:0 5px; margin-left:16px; text-align:center; cursor:pointer}
 /*彩蛋*/
-.caidan{ width:29px; height:46px; background:url(../images/qjnn/caidan.png) no-repeat; background-size:29px; position:absolute; right:0; bottom:0}
+/*.caidan{ width:29px; height:46px; background:url(../images/qjnn/caidan.png) no-repeat; background-size:29px; position:absolute; right:0; bottom:0}*/
 /*五属性弹窗*/
 .dialog_attr{ background:#fff; border-radius:10px; width:260px; padding:18px 0; position:relative; display:none; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 @media screen and (min-width:320px){
@@ -97,13 +87,13 @@ body{ background:#f9ddd3 url(../images/qjnn/data-tmp-bg.jpg) no-repeat fixed; ba
 .dialog_attr .handle a{ background:url(../images/qjnn/data-tmp.png) 0 -225px no-repeat; background-size:320px; width:107px; height:30px; line-height:30px; display:block; text-align:center; color:#fff; font-size:1.3rem; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .dialog_attr .handle a.btn_cancel{ float:left; color:#454545; background-position:0 -255px; margin-left:20px}
 .dialog_attr .handle a.btn_sure{ float:right; margin-right:20px}
-.dialog_arena{ height:175px; overflow-y:auto; margin-bottom:28px}
-.dialog_arena .item{ float:left; width:50%; text-align:center}
-.dialog_arena .btn_arena{ border:1px solid #ffb67b; margin:0 20px 9px; padding:2px 0 1px; border-radius:20px; color:#ffb67b; font-size:1.3rem; cursor:pointer; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.dialog_arena{ height:175px; overflow-y:auto; margin-bottom:28px; -webkit-tap-highlight-color:rgba(0,0,0,0); -webkit-overflow-scrolling:touch}
+.dialog_arena .item{ float:left; width:50%; text-align:center; cursor:pointer}
+.dialog_arena .btn_arena{ border:1px solid #ffb67b; margin:0 20px 9px; padding:2px 0 1px; border-radius:20px; color:#ffb67b; font-size:1.3rem; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 /*详情弹窗*/
 .dialog_det{ background:#fff; color:#454545; border-radius:10px; width:185px; padding:17px; position:relative; border:1px solid #d2476e; display:none; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .dialog_det .btn_det_close{ width:30px; height:30px; background:#fff; border-radius:30px; border:1px solid #d2476e; position:absolute; top:-15px; right:-15px; cursor:pointer}
-.dialog_det .btn_det_close:before,.dialog_det .btn_det_close:after{ content:""; position:absolute; top:14px; left:5px; width:20px; height:3px; background:#d2476e; transform:rotate(45deg); -webkit-transform:rotate(45deg) }
+.dialog_det .btn_det_close:before,.dialog_det .btn_det_close:after{ content:""; position:absolute; top:14px; left:5px; width:20px; height:3px; background:#d2476e; transform:rotate(45deg); -webkit-transform:rotate(45deg)}
 .dialog_det .btn_det_close:after{ transform:rotate(-45deg); -webkit-transform:rotate(-45deg)}
 .dialog_det .title{ display:table; width:100%; table-layout:fixed; margin:5px 0}
 .dialog_det .title .l,.dialog_det .title .r{ display:table-cell; background:url(../images/qjnn/data-tmp.png) 0 -286px; background-size:320px; vertical-align:top}
