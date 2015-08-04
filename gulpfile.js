@@ -236,7 +236,106 @@ gulp.task('quanhuang98_ios', function(){
 });
 
 
+//奇迹暖暖
+var qjnn_plugin_data = "plugin_911";
+var qjnn_plugin_pass = "plugin_952";
+var qjnn_path = '../';
+var qjnn_replace = ['css/', 'js/', 'json/'];
+var qjnn_replace_data =  ['css/', 'js/', 'json/'];
+var qjnn_platform = 'android';
 
+gulp.task('qjnn_images', function(){
+    gulp.src('./images/qjnn/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/images/qjnn'));
+});
+
+gulp.task('qjnn_css', function(){
+    gulp.src(['./css/data-qjnn.css', './css/data-qjnn-pass.css'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/css'));
+});
+
+gulp.task('qjnn_js', function(){
+    gulp.src(['./js/jquery-2.1.3.min.js','./js/easydialog.min.js','./js/data-qjnn.js'])
+        .pipe(concat('data-qjnn.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+qjnn_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/js'));
+		
+	gulp.src(['./js/jquery-2.1.3.min.js','./js/data-qjnn-pass.js'])
+        .pipe(concat('data-qjnn-pass.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+qjnn_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/js'));
+});
+
+gulp.task('qjnn_json', function(){
+    gulp.src(['./json/json-qjnn.js', './json/json-qjnn-pass.js'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/json'));
+});
+
+gulp.task('qjnn_data', function(){
+	if(qjnn_platform == 'android'){
+		for(var i=0; i<qjnn_replace.length; i++){
+			qjnn_replace_data[i] = qjnn_path + qjnn_replace[i];
+		}
+	}
+	
+    gulp.src('data-qjnn.html')
+        .pipe(merge({
+            'js/data-qjnn.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-qjnn.js']
+        }))
+		.pipe(replace(qjnn_replace[0], qjnn_replace_data[0]))
+		.pipe(replace(qjnn_replace[1], qjnn_replace_data[1]))
+		.pipe(replace(qjnn_replace[2], qjnn_replace_data[2]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/'+qjnn_plugin_data));
+		
+	gulp.src('data-qjnn-pass.html')
+		.pipe(merge({
+            'js/data-qjnn-pass.min.js':['js/jquery-2.1.3.min.js','js/data-qjnn-pass.js']
+        }))
+		.pipe(replace(qjnn_replace[0], qjnn_replace_data[0]))
+		.pipe(replace(qjnn_replace[1], qjnn_replace_data[1]))
+		.pipe(replace(qjnn_replace[2], qjnn_replace_data[2]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/'+qjnn_plugin_pass));
+	
+	gulp.src('data-qjnn-pass-list.html')
+		.pipe(merge({
+            'js/data-qjnn-pass.min.js':['js/jquery-2.1.3.min.js','js/data-qjnn-pass.js']
+        }))
+		.pipe(replace(qjnn_replace[0], qjnn_replace_data[0]))
+		.pipe(replace(qjnn_replace[1], qjnn_replace_data[1]))
+		.pipe(replace(qjnn_replace[2], qjnn_replace_data[2]))
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/'+qjnn_plugin_pass));
+	
+	gulp.src('data-qjnn-pass-detail.html')
+		.pipe(merge({
+            'js/data-qjnn-pass.min.js':['js/jquery-2.1.3.min.js','js/data-qjnn-pass.js']
+        }))
+		.pipe(replace(qjnn_replace[0], qjnn_replace_data[0]))
+		.pipe(replace(qjnn_replace[1], qjnn_replace_data[1]))
+		.pipe(replace(qjnn_replace[2], qjnn_replace_data[2]))
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/'+qjnn_plugin_pass));
+});
+
+gulp.task('qjnn_clean', function(){
+	return gulp.src('../../chajian/78/'+qjnn_platform+'/DataPlugin/*', {read: false})
+	.pipe(clean({force: true}));
+});
+
+gulp.task('qjnn_android', ['qjnn_clean'], function(){
+	gulp.start('qjnn_images', 'qjnn_css', 'qjnn_js', 'qjnn_json', 'qjnn_data');
+});
+
+gulp.task('qjnn_ios_inner', ['qjnn_clean'], function(){
+	gulp.start('qjnn_images', 'qjnn_css', 'qjnn_js', 'qjnn_json', 'qjnn_data');
+});
+
+gulp.task('qjnn_ios', function(){
+	qjnn_platform = 'ios';
+	gulp.start('qjnn_ios_inner');
+});
 
 
 

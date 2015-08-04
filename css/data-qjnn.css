@@ -19,7 +19,7 @@ a{ text-decoration:none}
 body{ background:#f9ddd3 url(../images/qjnn/data-tmp-bg.jpg) no-repeat fixed; background-size:cover}
 .header{ height:44px; border-bottom:1px solid #dc7fb7; background:#f098b1; position:relative}
 .header h1{ font-size:1.8rem; line-height:44px; color:#fff; text-align:center}
-.header .wblogo_index{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; transform:rotate(45deg); -webkit-transform:rotate(45deg); cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; transform:rotate(45deg); -webkit-transform:rotate(45deg); cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .switchboard{ height:47px; border-bottom:1px solid #fff; background:rgba(179,159,165,0.8); display:table; width:100%}
 .switchboard .l,.switchboard .r{ width:50%; height:47px; display:table-cell; text-align:center; position:relative}
 .switchboard .l i,.switchboard .r i{ background:url(../images/qjnn/data-tmp.png) -5px -12px no-repeat; width:100%; height:47px; background-size:320px; position:absolute; left:0; top:0}
@@ -32,9 +32,9 @@ body{ background:#f9ddd3 url(../images/qjnn/data-tmp-bg.jpg) no-repeat fixed; ba
 .switchbute .title{ font-size:1.5rem; color:#c04861; border-bottom:1px solid #d8b3ac; text-align:center; margin:0 7px; padding:3px 0 4px}
 .switchbute .content{ padding:10px 0 1px; overflow:hidden; margin-left:-23px; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .switchbute .content .item{ float:left; margin-left:23px; border:1px solid #fff; background:#ffb67b; border-radius:30px; font-size:1.3rem; color:#fff; padding:2px 20px; margin-bottom:9px}
-.filter{ height:42px; border:solid #fff; border-width:1px 0; background:rgba(255,255,255,0.4)}
-.filter .filter_inner{ box-shadow:inset 0 0 12px #fff; background:#ffecd1; height:40px; line-height:40px; margin-top:1px; overflow-x:auto; -webkit-overflow-scrolling:touch}
-.filter .item{ font-size:1.5rem; color:#454545; cursor:pointer; padding:0 16px; float:left; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.filter{ height:42px; border:solid #fff; border-width:1px 0; background:rgba(255,255,255,0.4); overflow:hidden}
+.filter .filter_inner{ box-shadow:inset 0 0 12px #fff; background:#ffecd1; height:50px; margin-top:1px; overflow-x:auto; -webkit-overflow-scrolling:touch}
+.filter .item{ font-size:1.5rem; height:40px; line-height:40px; color:#454545; cursor:pointer; padding:0 16px; float:left; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .filter .item.on{ color:#ffb309}
 .clothes_wrap{ position:relative; background:rgba(253,223,217,0.8); margin:17px 11px}
 .clothes_wrap .flower_top_left,.clothes_wrap .flower_top_right,.clothes_wrap .flower_bottom_left,.clothes_wrap .flower_bottom_right{ background:url(../images/qjnn/data-tmp.png) 0 -180px no-repeat; background-size:320px; position:absolute; width:17px; height:15px}

@@ -53,7 +53,7 @@
 			for(var i=0; i<this.datapass.length; i++){
 				html += '<div class="item" data-chapter="'+i+'">'+
 							'<div class="pic">'+
-								'<img src="images/qjnn/pass-default.png">'+
+								'<img src="'+this.o.url+'pass-default.png">'+
 								'<div class="img" style="background-image:url('+this.o.url+'guanka/guanka'+Number(i+1)+'.jpg)"></div>'+
 								'<div class="text">第'+this.numtochinese(Number(i+1))+'章</div>'+
 							'</div>'+
@@ -171,6 +171,8 @@
 					}else if(this.o.platform == "android"){
 						removehide();
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
+					}else if(this.o.platform == "ios"){
+						$("#pass").addClass("mt_0");
 					}
 				break;
 				case "list":

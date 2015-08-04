@@ -389,8 +389,8 @@
 			if(this.o.platform == "ios"){
 				headerH = 0;
 			}
-			var _h = $(window).height() - 251 - headerH;//48+125+44+17+17
-			_h = _h >= 229 ? _h : 229;//去掉头的iphone4 480
+			var _h = $(window).height() - 142 - $("#switchbute").height() - headerH;//48+8+8+44+17+17=142
+			_h = _h >= 220 ? _h : 220;//去掉头的iphone4 480
 			$("#clothes").height(_h);
 		},
 		events: function(){
@@ -509,7 +509,7 @@
 				removehide();
 			}else if(this.o.platform == "android"){
 				removehide();
-				$("#header").children(".wblogo_index").attr("href","javascript:window.jstojava.close();");
+				$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
 			}
 		},
 		init: function(){
