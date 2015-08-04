@@ -1,11 +1,15 @@
 (function(window){
 	var QjnnPass = function(option){
 		if(typeof(arguments[0]) == 'undefined') return false;
-		var option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
+		option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datapass = option;
-		this.o = {platform:"web",plugin:"plugin_911",crumbs:0,chapter:0};//crumbs翻页层级,chapter具体大章
+		this.o = {platform:"web",plugin:"plugin_952",crumbs:0,chapter:0};
+		if(this.o.platform == "android"){
+			this.o.url="../images/quanhuang98/";
+		}
 		this.init();
-	}
+	};
+	
 	QjnnPass.prototype = {
 		showpass: function(){
 			$("#passlist").addClass("hide");
