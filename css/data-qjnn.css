@@ -33,7 +33,8 @@ body{ background:#f9ddd3 url(../images/qjnn/data-tmp-bg.jpg) no-repeat fixed; ba
 .switchbute .content{ padding:10px 0 1px; overflow:hidden; margin-left:-23px; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .switchbute .content .item{ float:left; margin-left:23px; border:1px solid #fff; background:#ffb67b; border-radius:30px; font-size:1.3rem; color:#fff; padding:2px 20px; margin-bottom:9px}
 .filter{ height:42px; border:solid #fff; border-width:1px 0; background:rgba(255,255,255,0.4); overflow:hidden}
-.filter .filter_inner{ box-shadow:inset 0 0 12px #fff; background:#ffecd1; height:50px; margin-top:1px; overflow-x:auto; -webkit-overflow-scrolling:touch}
+.filter .filter_inner{ box-shadow:inset 0 0 12px #fff; background:#ffecd1; height:50px; margin-top:1px; overflow-x:auto; position:relative; -webkit-overflow-scrolling:touch}
+.filter .filter_inner ul{ position:absolute}
 .filter .item{ font-size:1.5rem; height:40px; line-height:40px; color:#454545; cursor:pointer; padding:0 16px; float:left; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .filter .item.on{ color:#ffb309}
 .clothes_wrap{ position:relative; background:rgba(253,223,217,0.8); margin:17px 11px}
@@ -48,7 +49,7 @@ body{ background:#f9ddd3 url(../images/qjnn/data-tmp-bg.jpg) no-repeat fixed; ba
 .clothes_wrap .line_bottom{ height:14px; bottom:-15px; left:7px; right:7px; border-bottom-width:1px}
 .clothes_wrap .line_left{ width:8px; top:0; bottom:0; left:-9px; border-left-width:1px}
 /*衣服列表*/
-.clothes{ overflow-y:auto; -webkit-overflow-scrolling:touch; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.clothes{ overflow-y:auto; -webkit-overflow-scrolling:touch; -webkit-tap-highlight-color:rgba(0,0,0,0); position:relative; transform:translate3d(0,0,0); -webkit-transform:translate3d(0,0,0)}/*开启gpu加速*/
 .clothes .item{ float:left; width:50%; cursor:pointer}
 .clothes .item_inner{ border:1px solid #ff8b88; background:#ffebe7; border-radius:5px; margin:0 8px 10px}
 @media screen and (min-width:640px){
