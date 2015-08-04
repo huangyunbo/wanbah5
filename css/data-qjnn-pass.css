@@ -15,19 +15,27 @@ em,i,code,cite,address,th{font-style:normal}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 a{ text-decoration:none}
 .hide{ display:none !important}
+.mt_0{ margin-top:0 !important}
 
 body{ background:#f9ddd3 url(../images/qjnn/pass-bg.jpg) no-repeat fixed; background-size:cover}
 .header{ height:44px; border-bottom:1px solid #dc7fb7; background:#f098b1; position:fixed; width:100%; top:0; left:0; z-index:10}
 .header h1{ font-size:1.8rem; line-height:44px; color:#fff; text-align:center}
-.header .wblogo_index{ position:absolute; height:44px; line-height:44px; cursor:pointer; padding-left:35px; font-size:1.6rem; color:#fff}
-.header .wblogo_index i{ transform:rotate(45deg); -webkit-transform:rotate(45deg); border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; position:absolute; left:15px; top:14px}
-.pass{ overflow:hidden; margin:45px 0 40px}
-.pass .item{ width:50%; float:left; text-align:center; position:relative; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
-.pass .item .inner{ margin:10px; position:relative; display:inline-block}
-.pass .item img{ border:3px solid rgba(0,0,0,0.2); border-radius:8px; box-sizing:border-box}
-.pass .item .text{ height:27px; line-height:27px; left:3px; right:3px; bottom:3px; border-radius:0 0 5px 5px; font-size:1.5rem; color:#fff; display:block; box-sizing:border-box; background:rgba(0,0,0,0.6); position:absolute}
-.passlist{ overflow:hidden; margin:45px 0 40px}
-.passlist .item{ width:50%; float:left; text-align:center; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.header .back{ position:absolute; height:44px; line-height:44px; cursor:pointer; padding-left:35px; font-size:1.6rem; color:#fff; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.header .back i{ transform:rotate(45deg); -webkit-transform:rotate(45deg); border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; position:absolute; left:15px; top:14px}
+.pass{ overflow:hidden; margin:45px 0 40px; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.pass .item{ width:50%; float:left; text-align:center; cursor:pointer}
+.pass .item .pic{ margin:10px; border:3px solid rgba(0,0,0,0.2); border-radius:8px; position:relative}
+.pass .item .pic img{ width:100%; height:auto}
+.pass .item .pic .img{ background-repeat:no-repeat; position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center center; border-radius:5px}
+.pass .item .text{ height:27px; line-height:27px; left:0; right:0; bottom:0; border-radius:0 0 5px 5px; font-size:1.5rem; color:#fff; background:rgba(0,0,0,0.6); position:absolute}
+@media screen and (min-width:640px){
+	.pass .item .pic{ margin:20px 40px}
+}
+@media screen and (min-width:1024px){
+	.pass .item{ width:33.33%}
+}
+.passlist{ overflow:hidden; margin:45px 0 40px; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.passlist .item{ width:50%; float:left; text-align:center; cursor:pointer}
 .passlist .item div{ margin:5px 10px; border:3px solid rgba(255,255,255,0.2); border-radius:8px; color:#fff; font-size:1.2rem}
 .passlist .item div span{background:#ff96b6; display:block; padding:8px 0; border-radius:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 .passdetail{ margin-top:45px; background:#fff; padding:15px; font-size:1.8rem !important}
