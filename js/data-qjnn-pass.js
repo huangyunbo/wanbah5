@@ -3,7 +3,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datapass = option;
-		this.o = {platform:"web",plugin:"plugin_952",url:"images/qjnn/"};
+		this.o = {platform:"web",plugin:"plugin_911",url:"images/qjnn/"};
 		if(this.o.platform == "android"){
 			this.o.url="../images/qjnn/";
 		}

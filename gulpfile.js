@@ -237,8 +237,8 @@ gulp.task('quanhuang98_ios', function(){
 
 
 //奇迹暖暖
-var qjnn_plugin_data = "plugin_911";
-var qjnn_plugin_pass = "plugin_952";
+var qjnn_plugin_data = "plugin_952";
+var qjnn_plugin_pass = "plugin_911";
 var qjnn_path = '../';
 var qjnn_replace = ['css/', 'js/', 'json/'];
 var qjnn_replace_data =  ['css/', 'js/', 'json/'];

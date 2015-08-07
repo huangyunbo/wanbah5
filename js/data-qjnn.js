@@ -4,7 +4,7 @@
 		option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.dataclothes = option.data_clothes;
 		this.dataarena = option.data_arena;
-		this.o = {platform:"web",plugin:"plugin_911",type:1,clothestype:0,zhuti:"",label:["jianyue","huopo","keai","qingchun","baonuan"]};
+		this.o = {platform:"web",plugin:"plugin_952",type:1,clothestype:0,zhuti:"",label:["jianyue","huopo","keai","qingchun","baonuan"]};
 
 		this.init();
 	};
