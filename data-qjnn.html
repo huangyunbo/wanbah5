@@ -15,13 +15,14 @@
 </div>
 
 <div class="switchboard">
-    <div class="l">
-    	<i></i>
-        <a id="btn_dialog_arena">搭配竞技场</a>
+    <div class="item wbclick on" id="btn_dialog_arena">
+        <span>搭配竞技场</span>
     </div>
-    <div class="r">
-    	<i></i>
-    	<a id="btn_dialog_wu">五属性模拟器</a>
+    <div class="item wbclick" id="btn_dialog_proxy">
+    	<span>联盟委托</span>
+    </div>
+    <div class="item wbclick" id="btn_dialog_wu">
+    	<span>五属性模拟器</span>
     </div>
 </div>
 
@@ -31,12 +32,12 @@
     <div class="title">
     	已选属性/主题
     </div>
-    <div class="content" id="selectedbute">
-    	<div class="item">简约</div>
-    	<div class="item">可爱</div>
-        <div class="item">活泼</div>
-        <div class="item">清纯</div>
-        <div class="item">清凉</div>
+    <div class="content wbclick" id="selectedbute">
+    	<div class="item"><span>简约</span></div>
+    	<div class="item"><span>可爱</span></div>
+        <div class="item"><span>活泼</span></div>
+        <div class="item"><span>清纯</span></div>
+        <div class="item"><span>清凉</span></div>
     </div>
 </div>
 
@@ -83,7 +84,7 @@
 </div><!--/clothes_wrap-->
 
 <div class="dialog_attr" id="dialog_wu">
-	<div class="dialog_content dialog_five">
+	<div class="dialog_content dialog_attr_content">
     	<div class="item">
         	<a class="btn_radio on" data-label="jianyue">简约</a>
             <a class="btn_radio" data-label="huali">华丽</a>
@@ -115,19 +116,9 @@
 </div>
 
 <div class="dialog_attr" id="dialog_arena">
-	<div class="dialog_content dialog_arena">
+	<div class="dialog_content dialog_arena_content">
         <!--<div class="item"><a class="btn_arena on">金色音乐厅</a></div>
-        <div class="item"><a class="btn_arena">金色音乐金色音乐厅厅</a></div>
-        <div class="item"><a class="btn_arena">金色音乐厅</a></div>
-        <div class="item"><a class="btn_arena">金色音乐厅</a></div>
-        <div class="item"><a class="btn_arena">金色音乐厅</a></div>
-        <div class="item"><a class="btn_arena">金色音乐厅</a></div>
-        <div class="item"><a class="btn_arena">金色音乐厅</a></div>
-        <div class="item"><a class="btn_arena">金色音乐厅</a></div>
-        <div class="item"><a class="btn_arena">金色音乐厅</a></div>
-        <div class="item"><a class="btn_arena">金色音乐厅</a></div>
-        <div class="item"><a class="btn_arena">金色音乐厅</a></div>
-        <div class="item"><a class="btn_arena">金色音乐厅</a></div>-->
+        <div class="item"><a class="btn_arena">金色音乐金色音乐厅厅</a></div>-->
     </div>
     <i class="line_l"></i>
     <i class="line_m"></i>
@@ -139,7 +130,7 @@
 </div>
 
 <div class="dialog_det" id="dialog_det">
-	<div class="btn_det_close" id="btn_det_close"></div>
+	<!--<div class="btn_det_close" id="btn_det_close"></div>
 	<div class="title">
     	<div class="l"><i></i></div>
         <div class="m">乖顺使者的马甲马甲马甲马甲马甲</div>
@@ -164,13 +155,13 @@
     <div class="content2">
     	<div>6-7（少女级）</div>
         <div>6-7（少女级）</div>
-    </div>
+    </div>-->
 </div>
 
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/easydialog.min.js"></script>
 <script type="text/javascript" src="js/data-qjnn.js"></script>
-<script type="text/javascript" src="json/json-qjnn.js"></script>
+<!--<script type="text/javascript" src="json/json-qjnn.js"></script>-->
 <script type="text/javascript">
 $(function(){
 	var data_all = {data_clothes:data_clothes, data_arena:data_arena};

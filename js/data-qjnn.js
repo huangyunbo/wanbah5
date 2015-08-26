@@ -16,6 +16,9 @@
 			len = _dataclothes.length,
 			i = 0;
 			for(; i<len; i++){
+				if(i){
+				
+				}
 				html += '<li class="item" data-type="'+i+'">'+_dataclothes[i].tname+'</li>';
 			}
 			$("#filter").html(html);
@@ -202,10 +205,10 @@
 			var html = '';
 			if(this.o.type == 1){
 				for(var i=0; i<this.o.label.length; i++){
-					html += '<div class="item">'+this.switchlael(this.o.label[i])+'</div>';
+					html += '<div class="item"><span>'+this.switchlael(this.o.label[i])+'</span></div>';
 				}
 			}else{
-				html = '<div class="item">'+this.o.zhuti+'</div>';
+				html = '<div class="item"><span>'+this.o.zhuti+'</span></div>';
 			}
 			$("#selectedbute").html(html);
 			
@@ -389,7 +392,7 @@
 			if(this.o.platform == "ios"){
 				headerH = 0;
 			}
-			var _h = $(window).height() - 142 - $("#switchbute").height() - headerH;//48+8+8+44+17+17=142
+			var _h = $(window).height() - 204 - headerH;//40+86+44+17+17=204
 			_h = _h >= 220 ? _h : 220;//去掉头的iphone4 480
 			$("#clothes").height(_h);
 		},
@@ -525,9 +528,9 @@
 	window.Qjnn = Qjnn;
 })(window);
 /*
-1:简约,2:华丽,3:可爱,4:成熟,5:活泼,6:优雅,7:清纯,8:性感,9:清凉,10:保暖
-jianyue:0,huali:0,keai:0,chengshu:0,huopo:0,youya:0,qingchun:0,xinggan:0,qingliang:0,baonuan:0
-1:头发,2:连衣裙,3:外套,4:上衣,5:下装,6:袜子,7:鞋,8:头饰,9:耳饰,10:颈饰...
+简约,华丽,可爱,成熟,活泼,优雅,清纯,性感,清凉,保暖
+jianyue,huali,keai,chengshu,huopo,youya,qingchun,xinggan,qingliang,baonuan
+头发,连衣裙,外套,上衣,下装,袜子,鞋,头饰,耳饰,颈饰...
 
 2 C
 3 B
@@ -536,8 +539,32 @@ jianyue:0,huali:0,keai:0,chengshu:0,huopo:0,youya:0,qingchun:0,xinggan:0,qinglia
 6 SS
 */
 	
-//var data_clothes = [{tname:"头发",data:[{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:999999,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",t1:"特殊属性1",t2:"特殊属性2",g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8145,name:"头发2",t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,qingliang:5}},{id:8145,name:"头发3",t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}}]},{tname:"连衣裙",data:[{id:8145,name:"连衣裙1",t1:"特殊属性1",t2:"特殊属性2",g:"签到",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8146,name:"不羁",t1:"",t2:"",g:"",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8434,name:"白翩语",t1:"",t2:"",g:"暂无",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}}]},{tname:"外套",data:[]},{tname:"上衣",data:[]},{tname:"下装",data:[]},{tname:"袜子",data:[]}];
-//var data_arena = [{id:10130,name:"金色音乐厅",wu:["huali","chengshu","youya","xinggan","baonuan"]},{id:10131,name:"秋日物语",wu:["jianyue","keai","huopo","qingchun","baonuan"]},{id:10132,name:"海边派对的搭配",wu:["jianyue","keai","huopo","xinggan","qingliang"]},{id:10133,name:"冬天里的一把火",wu:["huali","keai","huopo","xinggan","baonuan"]}];
+var data_clothes = [{id:1,tname:"头发",data:[{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:999999,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:["特殊属性1","特殊属性2"],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8145,name:"头发2",te:["特殊属性1","特殊属性2"],g:"签到",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,qingliang:5}},{id:8145,name:"头发3",te:["特殊属性1","特殊属性2"],g:"签到",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}}]},{id:2,tname:"连衣裙",data:[{id:8145,name:"连衣裙1",te:["特殊属性1","特殊属性2"],g:"签到",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8146,name:"不羁",te:[],g:"",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8434,name:"白翩语",te:[],g:"暂无",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}}]},{id:3,tname:"外套",data:[]},{id:4,tname:"上衣",data:[]},{id:5,tname:"下装",data:[]},{id:6,tname:"袜子",data:[]}];
+
+var data_arena = [{id:10130,name:"金色音乐厅",type:1,wu:[{k:"huali",r:1},{k:"chengshu",r:1},{k:"youya",r:1},{k:"xinggan",r:1},{k:"baonuan",r:1}]},{id:10131,name:"秋日物语",type:1,wu:[{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}]},{id:10132,name:"海边派对的搭配",type:2,wu:[{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"xinggan",r:1},{k:"qingliang",r:1}],te:[]},{id:10133,name:"冬天里的一把火",type:2,wu:[{k:"huali",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"xinggan",r:1},{k:"baonuan",r:1}],te:["特殊属性1","特殊属性2"]}];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
