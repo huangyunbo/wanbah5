@@ -10,18 +10,18 @@
 
 <body>
 <div class="header hide" id="header">
-	<a href="javascript:;" class="back"></a>
+	<a href="javascript:;" class="back wbclick"></a>
     <h1>服装搭配器</h1>
 </div>
 
-<div class="switchboard">
-    <div class="item wbclick on" id="btn_dialog_arena">
+<div class="switchboard" id="switchboard">
+    <div class="item wbclick" data-type="2">
         <span>搭配竞技场</span>
     </div>
-    <div class="item wbclick" id="btn_dialog_proxy">
+    <div class="item wbclick" data-type="3">
     	<span>联盟委托</span>
     </div>
-    <div class="item wbclick" id="btn_dialog_wu">
+    <div class="item wbclick on" data-type="1">
     	<span>五属性模拟器</span>
     </div>
 </div>
@@ -33,11 +33,11 @@
     	已选属性/主题
     </div>
     <div class="content wbclick" id="selectedbute">
-    	<div class="item"><span>简约</span></div>
+    	<!--<div class="item"><span>简约</span></div>
     	<div class="item"><span>可爱</span></div>
         <div class="item"><span>活泼</span></div>
         <div class="item"><span>清纯</span></div>
-        <div class="item"><span>清凉</span></div>
+        <div class="item"><span>保暖</span></div>-->
     </div>
 </div>
 
@@ -83,9 +83,9 @@
     </div><!--/clothes-->
 </div><!--/clothes_wrap-->
 
-<div class="dialog_attr" id="dialog_wu">
-	<div class="dialog_content dialog_attr_content">
-    	<div class="item">
+<div class="dialog_attr" id="dialog_attr">
+	<div class="dialog_content dialog_attr_content wbclick">
+    	<!--<div class="item">
         	<a class="btn_radio on" data-label="jianyue">简约</a>
             <a class="btn_radio" data-label="huali">华丽</a>
         </div>
@@ -104,21 +104,21 @@
         <div class="item">
         	<a class="btn_radio" data-label="qingliang">清凉</a>
             <a class="btn_radio on" data-label="baonuan">保暖</a>
-        </div>
+        </div>-->
     </div>
     <i class="line_l"></i>
     <i class="line_m"></i>
     <i class="line_r"></i>
     <div class="handle">
-    	<a class="btn_cancel">取消</a>
-        <a class="btn_sure" data-type="1">确定</a>
+    	<a class="btn_cancel wbclick">取消</a>
+        <a class="btn_sure wbclick">确定</a>
     </div>
 </div>
 
-<div class="dialog_attr" id="dialog_arena">
+<!--<div class="dialog_attr" id="dialog_arena">
 	<div class="dialog_content dialog_arena_content">
-        <!--<div class="item"><a class="btn_arena on">金色音乐厅</a></div>
-        <div class="item"><a class="btn_arena">金色音乐金色音乐厅厅</a></div>-->
+        <div class="item"><a class="btn_radio on">金色音乐厅</a></div>
+        <div class="item"><a class="btn_radio">金色音乐金色音乐厅厅</a></div>
     </div>
     <i class="line_l"></i>
     <i class="line_m"></i>
@@ -127,7 +127,7 @@
     	<a class="btn_cancel">取消</a>
         <a class="btn_sure" data-type="2">确定</a>
     </div>
-</div>
+</div>-->
 
 <div class="dialog_det" id="dialog_det">
 	<!--<div class="btn_det_close" id="btn_det_close"></div>
@@ -161,7 +161,7 @@
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/easydialog.min.js"></script>
 <script type="text/javascript" src="js/data-qjnn.js"></script>
-<!--<script type="text/javascript" src="json/json-qjnn.js"></script>-->
+<script type="text/javascript" src="json/json-qjnn.js"></script>
 <script type="text/javascript">
 $(function(){
 	var data_all = {data_clothes:data_clothes, data_arena:data_arena};
