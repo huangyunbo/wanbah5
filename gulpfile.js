@@ -34,6 +34,7 @@ var replace = require('gulp-replace');
 var clean = require('gulp-clean');
 var del = require('del');
 
+
 //炉石传说
 var lscs_plugin_data = "plugin_925";
 var lscs_plugin_ka = "plugin_926";
@@ -247,6 +248,9 @@ var qjnn_platform = 'android';
 gulp.task('qjnn_images', function(){
     gulp.src('./images/qjnn/**', {buffer: false})
         .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/images/qjnn'));
+	
+	gulp.src('./images/.nomedia', {buffer: false})
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/images/'));
 });
 
 gulp.task('qjnn_css', function(){

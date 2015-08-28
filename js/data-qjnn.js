@@ -185,6 +185,7 @@
 						}
 						break;
 					case 5:
+					case 6:
 						for(k in _dataclothes.wu){
 							switch(_dataclothes.wu[k]){
 								case 420:r="B";break;
@@ -196,7 +197,7 @@
 							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
 						}
 						break;
-					case 6:
+					case 7:
 						for(k in _dataclothes.wu){
 							switch(_dataclothes.wu[k]){
 								case 555:r="B";break;
@@ -208,13 +209,13 @@
 							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
 						}
 						break;
-					case 7:
 					case 8:
 					case 9:
 					case 10:
 					case 11:
 					case 12:
 					case 13:
+					case 14:
 						for(k in _dataclothes.wu){
 							switch(_dataclothes.wu[k]){
 								case 250:r="B";break;
@@ -226,8 +227,8 @@
 							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
 						}
 						break;
-					case 14:
-						for(k in _dataclothes.wu){
+					case 15:
+						for(k in _dataclothes.wu){//妆容
 							switch(_dataclothes.wu[k]){
 								case 120:r="B";break;
 								case 130:r="A";break;
@@ -484,16 +485,27 @@
 		},
 		mergeData: function(){//合并数据
 			var _dataclothes = this.dataclothes,
-			newArr = [];
-			for(var i=0; i<_dataclothes.length; i++){
-				if(i>=9){
-					for(var j=0; j<_dataclothes[i].data.length; j++){
-						newArr.push(_dataclothes[i].data[j]);
-					}
-				}
-			}
-			this.dataclothes[9] = {tname:"饰品",id:10,data:newArr};
-			this.dataclothes = this.dataclothes.slice(0,10);
+			makeupObj = _dataclothes[8];//妆容id:9->16
+			
+			makeupObj.id = 16;
+			
+			this.dataclothes[8] = _dataclothes[9];//头饰
+			_dataclothes[8].id = 9;
+			
+			this.dataclothes[9] = _dataclothes[10];//耳饰
+			_dataclothes[9].id = 10;
+			
+			this.dataclothes[10] = {tname:"颈饰",id:11,data:_dataclothes[11].data.concat(_dataclothes[12].data)};//颈饰(颈饰*围巾,颈饰*项链)
+			this.dataclothes[11] = {tname:"手饰",id:12,data:_dataclothes[13].data.concat(_dataclothes[14].data,_dataclothes[15].data)};//手饰(手饰*右,手饰*左,手饰*双)
+			this.dataclothes[12] = {tname:"手持",id:13,data:_dataclothes[16].data.concat(_dataclothes[17].data)};//手持(手持*左,手持*右)
+			
+			this.dataclothes[13] = _dataclothes[18];//腰饰
+			_dataclothes[13].id = 14;
+			
+			this.dataclothes[14] = {tname:"特殊",id:15,data:_dataclothes[19].data.concat(_dataclothes[20].data,_dataclothes[21].data,_dataclothes[22].data,_dataclothes[23].data,_dataclothes[24].data,_dataclothes[25].data)};//特殊7个
+			
+			this.dataclothes = this.dataclothes.slice(0,15);
+			this.dataclothes.push(makeupObj);
 		},
 		setHight: function(){
 			var headerH = 45;
