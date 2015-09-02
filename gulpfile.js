@@ -46,6 +46,9 @@ var lscs_platform = 'android';
 gulp.task('lscs_images', function(){
     gulp.src('./images/lushichuanshuo/**', {buffer: false})
         .pipe(gulp.dest('../../chajian/79/'+lscs_platform+'/DataPlugin/images/lushichuanshuo'));
+	
+	gulp.src('./images/.nomedia', {buffer: false})
+        .pipe(gulp.dest('../../chajian/79/'+lscs_platform+'/DataPlugin/images/'));
 });
 
 gulp.task('lscs_css', function(){
