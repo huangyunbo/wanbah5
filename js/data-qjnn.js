@@ -391,6 +391,8 @@
 			$("#switchboard").children().click(function(){
 				var _type = Number($(this).attr("data-type"));
 				that.o.type = _type,
+				
+				$(this).addClass("on").siblings().removeClass("on");
 				that.printDialogattr();
 			});
 			//点击已选属性/主题 打开弹窗
@@ -435,12 +437,6 @@
 						}
 					}
 				}
-				$("#switchboard").children().each(function(){
-					var self = $(this);
-                    if(Number(self.attr("data-type")) == that.o.type){
-						self.addClass("on").siblings().removeClass("on");
-					}
-                });
 				that.selectedbute();
 				easyDialog.close();
 			});
