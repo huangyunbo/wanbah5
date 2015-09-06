@@ -175,6 +175,9 @@ var quanhuang98_platform = 'android';
 gulp.task('quanhuang98_images', function(){
     gulp.src('./images/quanhuang98/**', {buffer: false})
         .pipe(gulp.dest('../../chajian/94/'+quanhuang98_platform+'/DataPlugin/images/quanhuang98'));
+	
+	gulp.src('./images/.nomedia', {buffer: false})
+        .pipe(gulp.dest('../../chajian/94/'+quanhuang98_platform+'/DataPlugin/images/'));
 });
 
 gulp.task('quanhuang98_css', function(){
