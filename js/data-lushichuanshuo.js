@@ -97,21 +97,31 @@
 					distanceY,
 					$data_type = $("#data_type"),
 					$data_fei = $("#data_fei");
-					
-				document.addEventListener("touchstart",function(e){
-					touchStarY = e.targetTouches[0].pageY;
-				},false);
 				
-				document.addEventListener("touchmove",function(e){
-					touchMoveY = e.targetTouches[0].pageY;
+				function isshowfun(e){
 					distanceY = touchStarY - touchMoveY;
-					
 					if(distanceY > 10 && document.documentElement.scrollTop + document.body.scrollTop >= 88 && that.o.isData_type){//下滑隐藏
 						$data_type.addClass("data_type_animate");
 					}
 					if(distanceY < -10 && that.o.isData_type){//上划展示
 						$data_type.removeClass("data_type_animate");
 					}
+				}
+			
+				document.addEventListener("touchstart",function(e){
+					touchStarY = e.targetTouches[0].pageY;
+				},false);
+				
+				document.addEventListener("touchmove",function(e){
+					touchMoveY = e.targetTouches[0].pageY;
+				},false);
+				
+				document.addEventListener("touchend",function(e){
+					isshowfun(e);
+				},false);
+				
+				document.addEventListener("touchcancel",function(e){//修复android4.0touchend的bug
+					isshowfun(e);
 				},false);
 			}
 		},

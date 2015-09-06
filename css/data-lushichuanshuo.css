@@ -93,7 +93,8 @@ a{ text-decoration:none}
 	.data_fei .item i.item_5{ background-position:-360px 0}
 	.data_fei .item i.item_6{ background-position:-420px 0}
 	.data_fei .item i.item_7{ background-position:-480px 0}
-	.data_fei .item.on span{ background-position:-540px 0; background-size:640px; width:80px; height:80px; top:-8px; margin-left:-39px}}
+	.data_fei .item.on span{ background-position:-540px 0; background-size:640px; width:80px; height:80px; top:-8px; margin-left:-39px}
+}
 @media screen and (min-width:1024px){
 	.data_card{ margin:218px 0 100px}
 	.data_card_ios{ margin-top:168px}
