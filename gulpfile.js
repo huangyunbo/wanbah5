@@ -36,8 +36,8 @@ var del = require('del');
 
 
 //炉石传说
-var lscs_plugin_data = "plugin_925";
-var lscs_plugin_ka = "plugin_926";
+var lscs_plugin_data = "plugin_964";
+var lscs_plugin_ka = "plugin_963";
 var lscs_path = '../';
 var lscs_replace = ['css/', 'js/', 'json/'];
 var lscs_replace_data =  ['css/', 'js/', 'json/'];
