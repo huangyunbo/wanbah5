@@ -378,16 +378,23 @@ a{ text-decoration:none}
 .ka_mycards .b{ margin:6px 0 30px; display:table; width:100%}
 .ka_mycards .b .count_wrap{ display:table-cell; width:50%}
 .ka_mycards .b .count{ background:#31302e; margin:0 7.5px; text-align:center}
-.ka_mycards .b .count .title{ font-size:1.2rem; color:#fde69f; border:1px solid #fde69f; display:inline-block; transform:scale(0.833); -webkit-transform:scale(0.833); border-radius:30px; padding:0 10px; margin:5px 0}
+.ka_mycards .b .count .title{ font-size:1.2rem; color:#fde69f; border:1px solid #fde69f; display:inline-block; transform:scale(0.833); -webkit-transform:scale(0.833); border-radius:30px; padding:0 10px; margin:5px 0 18px}
 .ka_mycards .b .count .list{ display:table; width:100%}
 .ka_mycards .b .count .list li{ display:table-cell; width:12.5%}
-.ka_mycards .b .count .bar{ height:70px; background:#191918; margin:0 3px; position:relative}
-.ka_mycards .b .count .bar i{ width:100%; position:absolute; bottom:0; left:0; height:0%; transform:rotateX(180deg); -webkit-transform:rotateX(180deg)}
-.ka_mycards .b .count .bar i code{ width:100%; height:100%; background:#ffd957; -webkit-animation:bar 2s linear 0s 1 normal; display:block}
+.ka_mycards .b .count .bar{ height:70px; background:#191918; margin:0 3px; display:table; width:calc(100% - 6px)}
+.ka_mycards .b .count .bar .column{ display:table-cell; vertical-align:bottom}
+.ka_mycards .b .count .bar .column i{ width:100%; height:0%; display:block; position:relative; background:#ffd957}
+.ka_mycards .b .count .bar .column i span{ color:#fff; position:absolute; top:-18px; left:0; width:100%; font-family:Arial; opacity:1; -webkit-animation:show_slow 4s linear 0s 1 normal}
+.ka_mycards .b .count .bar .column i code{ width:100%; height:0%; background:#191918; -webkit-animation:bar 2s linear 0s 1 normal; display:block}
 @-webkit-keyframes bar{
-	0%{ height:0%}
-	50%{ height:0%}
-	100%{ height:100%}
+	0%{ height:100%}
+	50%{ height:100%}
+	100%{ height:0%}
+}
+@-webkit-keyframes show_slow{
+	0%{ opacity:0}
+	50%{ opacity:0}
+	100%{ opacity:1}
 }
 .ka_mycards .b .count .num{ width:8px; height:14px; line-height:14px; background:#2a91ff; position:relative; font-size:1.2rem; display:inline-block; margin:3px 0 7px; color:#fff; font-family:Arial} 
 .ka_mycards .b .count .num:before{ content:""; position:absolute; top:0; left:-4px; width:0; height:0; border-top:7px solid transparent; border-right:4px solid #2a91ff; border-bottom:7px solid transparent}
@@ -413,8 +420,9 @@ a{ text-decoration:none}
 	.ka_mycards .c .item .pic{ width:108px; height:36px; background-size:300px; background-position:-82px -100px}
 	.ka_mycards .c .item i{ width:20px; right:88px}
 	.ka_mycards .b{ margin:12px 0 60px}
-	.ka_mycards .b .count .title{ font-size:2rem; transform:scale(1); -webkit-transform:scale(1); margin:10px 0}
-	.ka_mycards .b .count .bar{ height:140px; margin:0 6px}
+	.ka_mycards .b .count .title{ font-size:2rem; transform:scale(1); -webkit-transform:scale(1); margin:10px 0 36px}
+	.ka_mycards .b .count .bar{ height:140px; margin:0 6px; width:calc(100% - 12px)}
+	.ka_mycards .b .count .bar .column i span{ font-size:2rem; top:-36px}
 	.ka_mycards .b .count .num{ width:16px; height:28px; line-height:28px; font-size:2.4rem; margin:6px 0 14px} 
 	.ka_mycards .b .count .num:before{ left:-8px; border-width:14px 8px 14px 0}
 	.ka_mycards .b .count .num:after{ right:-8px; border-width:14px 0 14px 8px}

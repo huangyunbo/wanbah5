@@ -79,6 +79,9 @@
 		},
 		printmycards: function(){//打印我的某个卡组
 			var wbgllscsmycards,
+			newcards = [],
+			newcards_l = [],
+			newcards_r = [],
 			card,
 			html = '',
 			dic = [0,0,0,0,0,0,0,0];//0-7+的卡牌法力消耗值图表
@@ -104,7 +107,8 @@
 				}
 			}
 			
-			for(var i=0; i<wbgllscsmycards.cards.length; i++){
+			
+			for(var i=0; i<wbgllscsmycards.cards.length; i++){//先把30张牌排出来
 				card = wbgllscsmycards.cards[i];
 				if(card.z == 2){//如果有两张相同的卡牌
 					if(card.e >= 7){//费法力超过7(含)以上，就加入字典dic[7]里面
@@ -112,37 +116,38 @@
 					}else{
 						dic[card.e] += 2;
 					}
-					html += '<div class="item">'+
-								'<div class="inner">'+
-									isnumtwo(card.e)+
-									'<span>'+card.d+'</span>'+
-									'<i></i>'+
-									'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
-								'</div>'+
-							'</div>'+
-							'<div class="item">'+
-								'<div class="inner">'+
-									isnumtwo(card.e)+
-									'<span>'+card.d+'</span>'+
-									'<i></i>'+
-									'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
-								'</div>'+
-							'</div>';
+					newcards.push(card,card);
 				}else{
 					if(card.e >= 7){
 						dic[7]++;
 					}else{
 						dic[card.e]++;
 					}
-					html += '<div class="item">'+
-								'<div class="inner">'+
-									isnumtwo(card.e)+
-									'<span>'+card.d+'</span>'+
-									'<i></i>'+
-									'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
-								'</div>'+
-							'</div>';
+					newcards.push(card);
 				}
+			}
+			
+			newcards_l = newcards.slice(0,15);//分成0-14
+			newcards_r = newcards.slice(15);//分成15-29
+			newcards = [];
+			for(var i=0; i<30; i++){//然后偶数的放左边数组，奇数的放右边数组
+				if(i%2 == 0){
+					newcards.push(newcards_l[Math.floor(i/2)]);
+				}else{
+					newcards.push(newcards_r[Math.floor(i/2)]);
+				}
+			}
+
+			for(var i=0; i<newcards.length; i++){
+				card = newcards[i];
+				html += '<div class="item">'+
+							'<div class="inner">'+
+								isnumtwo(card.e)+
+								'<span>'+card.d+'</span>'+
+								'<i></i>'+
+								'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
+							'</div>'+
+						'</div>';
 			}
 		
 			$("#ka_mycards").html(html);
@@ -152,6 +157,7 @@
 				if(_h > 100){
 					_h = 100;
 				}
+				$(this).find("span").eq(0).html(dic[index]);
             	$(this).find("i").eq(0).css("height",_h+"%");
             });
 			
