@@ -347,6 +347,80 @@ gulp.task('qjnn_ios', function(){
 	gulp.start('qjnn_ios_inner');
 });
 
+//虚荣
+var vainglory_gameid = 99;
+var vainglory_plugin_hero = "plugin_1080";
+var vainglory_plugin_equip = "plugin_1083";
+/*var vainglory_path = '../';
+var vainglory_replace = ['css/', 'js/', 'json/'];
+var vainglory_replace_data =  ['css/', 'js/', 'json/'];*/
+var vainglory_platform = 'android';
+
+/*gulp.task('qjnn_images', function(){
+    gulp.src('./images/qjnn/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/images/qjnn'));
+	
+	gulp.src('./images/.nomedia', {buffer: false})
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/images/'));
+});
+
+gulp.task('qjnn_css', function(){
+    gulp.src(['./css/data-qjnn.css', './css/data-qjnn-pass.css'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/css'));
+});
+
+gulp.task('qjnn_js', function(){
+    gulp.src(['./js/jquery-2.1.3.min.js','./js/easydialog.min.js','./js/data-qjnn.js'])
+        .pipe(concat('data-qjnn.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+qjnn_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/js'));
+		
+	gulp.src(['./js/jquery-2.1.3.min.js','./js/data-qjnn-pass.js'])
+        .pipe(concat('data-qjnn-pass.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+qjnn_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/js'));
+});
+
+gulp.task('qjnn_json', function(){
+    gulp.src(['./json/json-qjnn.js', './json/json-qjnn-pass.js'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/json'));
+});*/
+
+gulp.task('vainglory_data', function(){
+	/*if(qjnn_platform == 'android'){
+		for(var i=0; i<qjnn_replace.length; i++){
+			qjnn_replace_data[i] = qjnn_path + qjnn_replace[i];
+		}
+	}*/
+	
+    gulp.src('data-vainglory-hero.html')
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/'+vainglory_plugin_hero));
+		
+	gulp.src('data-vainglory-equip.html')
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/'+vainglory_plugin_equip));
+});
+
+gulp.task('vainglory_clean', function(){
+	return gulp.src('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/*', {read: false})
+	.pipe(clean({force: true}));
+});
+
+gulp.task('vainglory_android', ['vainglory_clean'], function(){
+	gulp.start('vainglory_data');
+});
+
+gulp.task('vainglory_ios_inner', ['vainglory_clean'], function(){
+	gulp.start('vainglory_data');
+});
+
+gulp.task('vainglory_ios', function(){
+	vainglory_platform = 'ios';
+	gulp.start('vainglory_ios_inner');
+});
 
 
 
