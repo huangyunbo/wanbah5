@@ -2,7 +2,7 @@
 /* 2015-09-10 wuyunduoduopiao */
 
 body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td,fieldset,legend{margin:0;padding:0}
-html{font:62.5%/1.5 "Microsoft YaHei",sans-serif}
+html{font:625%/1.5 "Microsoft YaHei",sans-serif}
 img{border:none;max-width:100%;vertical-align:top}
 h1,h2,h3,h4,h5,h6{font-weight:normal}
 input,select,textarea{font-size:100%;vertical-align:baseline}
@@ -15,9 +15,47 @@ em,i,code,cite,address,th{font-style:normal}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 a{ text-decoration:none}
 .hide{ display:none !important}
+@font-face{font-family:sszhjt;src:url(sszhjt.ttf)}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 
 body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; background-size:cover}
 .header{ height:44px; border-bottom:1px solid #dc7fb7; background:#f098b1; position:relative}
-.header h1{ font-size:1.8rem; line-height:44px; color:#fff; text-align:center}
-.header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; transform:rotate(45deg); -webkit-transform:rotate(45deg)}
+.header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
+.header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
+.way_wrap{ font-size:0.12rem; height:0.54rem; border-bottom:1px solid #db6788; background:rgba(255,255,255,0.8); position:relative; padding:0 0.035rem}
+.png_choice{ background:url(../images/qjnn/choice.png) no-repeat; background-size:1.57rem}
+.way_wrap .icon_w_l{ position:absolute; left:0; bottom:-1px; width:0.57rem; height:0.315rem}
+.way_wrap .icon_w_r{ background-position:right 0; position:absolute; right:0; bottom:-1px; width:0.97rem; height:0.315rem}
+.way{ display:table; width:100%; position:relative; z-index:3}
+.way .item{ display:table-cell; width:25%; text-align:center}
+.way .item.on .item_inner{ background:#ffd68f; color:#c85a5a}
+.way .item_inner{ color:#c85a79; height:0.35rem; line-height:0.35rem; font-size:0.15rem; border:solid #c85a79; border-width:0.01rem 0.01rem 0.02rem 0.01rem; background:#fffeb6; margin:0.09rem 0.015rem 0; border-radius:0 0 0.05rem 0.05rem; position:relative}
+.way .item_inner div{ font-family:sszhjt}
+.way .item .icon_x{ position:absolute; background-position:right -0.55rem; left:50%; top:0.04rem; margin-left:-0.115rem; width:0.23rem; height:0.05rem}
+.way .item.on .icon_x{ background-position:right -0.6rem}
+.way .item .icon_l,.way .item .icon_r{ position:absolute; background-position:right -0.4rem; left:0; bottom:0; width:0.15rem; height:0.115rem}
+.way .item .icon_r{ left:auto; right:0; -webkit-transform:scaleX(-1); transform:scaleX(-1)}
+.chudo{ margin:0 0.15rem; font-size:0.12rem; background:#db6788; border-radius:0 0 0.1rem 0.1rem; height:0.28rem; position:relative}
+.chudo_attr{ text-align:center}
+.chudo_attr .item{ height:0.22rem; line-height:0.22rem; margin-top:0.02rem; display:inline-block; border-top:0.01rem solid #9c3d58; border-radius:0.01rem 0.01rem 0.03rem 0.03rem; background:#e88aa4; font-family:sszhjt; padding:0 0.18rem; color:#b75872; position:relative}
+.chudo_attr .item .icon_x{ width:0.2rem; height:0.01rem; background:#cb6a85; position:absolute; left:50%; top:0.025rem; margin-left:-0.1rem}
+.chudo_attr .item .icon_d_l,.chudo_attr .item .icon_d_r{ position:absolute; left:0.02rem; width:0.01rem; height:0.01rem; background:#be627b}
+.chudo_attr .item .icon_d_r{ left:auto; right:0.02rem}
+.chudo_attr .item .icon_d_1{ top:0.03rem}
+.chudo_attr .item .icon_d_2{ top:0.08rem}
+.chudo_attr .item .icon_d_3{ top:0.13rem}
+.chudo_attr .item .icon_d_4{ top:0.18rem}
+.chudo .zoom{ width:0.23rem; height:0.23rem; background:#fff; position:absolute; right:0.03rem; top:0.02rem; border-radius:0.08rem 0 0.08rem 0}
+.chudo .zoom .icon{ position:relative; width:0.16rem; height:0.16rem; margin:0.03rem 0 0 0.03rem}
+.chudo .zoom .icon_r{ border:0.01rem solid #db6788; border-radius:0.15rem; width:0.14rem; height:0.14rem; position:absolute; left:0; top:0}
+.chudo .zoom .icon_h{ width:0.04rem; height:0.01rem; background:#db6788; position:absolute; right:-0.01rem; bottom:0.01rem; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
+.chudo_title{ text-align:center}
+.chudo_title .text{ height:0.28rem; line-height:0.28rem; color:#902543}
+.chudo_search{ overflow:hidden}
+.chudo_search .box{ float:left; height:0.23rem; background:#fff; margin:0.02rem 0 0 0.04rem; border-radius:0 0 0 0.08rem}
+.chudo_search .box .zoom{ position:static; float:left; background:none}
+.chudo_search .box .zoom .icon_r{ border-color:#d1d1d1}
+.chudo_search .box .zoom .icon_h{ background:#d1d1d1}
+.chudo_search .box .ipt_text{ border:none; width:1.47rem; height:0.23rem; line-height:0.23rem}
+.chudo_search .so{ float:left; width:0.52rem; height:0.23rem; line-height:0.23rem; background:#fea7bf; margin:0.02rem 0 0 0.04rem; text-align:center; color:#b75872}
+.chudo_search .so_cancel{ border-radius:0 0 0.08rem 0}
