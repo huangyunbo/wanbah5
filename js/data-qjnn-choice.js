@@ -457,6 +457,7 @@
 			//旋转屏幕重新设置高度
 			$(window).resize(function(e) {
                 that.setfontSize();
+				that.setHight();
             });
 		},
 		printfilter: function(){//打印横向滑动选择 头发/连衣裙/外套
@@ -503,19 +504,21 @@
 			this.dataclothes = this.dataclothes.slice(0,15);
 			this.dataclothes.push(makeupObj);
 		},
+		
+		pageReset: function(){//重置页面
+			//var that = this;
+			
+			this.setfontSize();
+			this.setHight();
+		},
 		setHight: function(){
 			var headerH = 45;
 			if(this.o.platform == "ios"){
 				headerH = 0;
 			}
-			var _h = $(window).height() - 204 - headerH;//40+86+44+17+17=204
-			_h = _h >= 220 ? _h : 220;//去掉头的iphone4 480
-			$("#clothes").height(_h);
-		},
-		pageReset: function(){//重置页面
-			var that = this;
-			
-			this.setfontSize();
+			var _h = $(window).height() - headerH - $("#way_wrap").outerHeight(true) - $("#chudo").outerHeight(true);
+			//_h = _h >= 220 ? _h : 220;//去掉头的iphone4 480
+			$("#container").height(_h);
 		},
 		setfontSize: function(){//根据宽度算整体字体大小
 			var doc = document,

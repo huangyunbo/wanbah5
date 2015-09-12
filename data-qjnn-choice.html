@@ -14,7 +14,7 @@
     <h1>服装搭配器</h1>
 </div>
 
-<div class="way_wrap">
+<div class="way_wrap" id="way_wrap">
 	<i class="icon_w_l png_choice"></i>
     <i class="icon_w_r png_choice"></i>
     <div class="way" id="way">
@@ -54,7 +54,7 @@
 </div><!--/way-->
 
 
-<div class="chudo">
+<div class="chudo" id="chudo">
     <div class="chudo_attr">
         <div class="item on">
             <i class="icon_x"></i>
@@ -113,41 +113,53 @@
     </div><!--/chudo_search-->
 </div><!--/chudo-->
 
-<div class="container">
+<div class="container" id="container">
 	<div class="clothestype_wrap">
-        <div class="clothestype">
+        <div class="clothestype wbclick">
             <div class="item on"><div>发型<br>23</div></div>
+            <div class="item"><div>连衣裙</div></div>
+            <div class="item"><div>上衣</div></div>
+            <div class="item"><div>连衣裙</div></div>
+            <div class="item"><div>上衣</div></div>
+            <div class="item"><div>连衣裙</div></div>
+            <div class="item"><div>上衣</div></div>
+            <div class="item"><div>连衣裙</div></div>
+            <div class="item"><div>上衣</div></div>
+            <div class="item"><div>连衣裙</div></div>
+            <div class="item"><div>上衣</div></div>
             <div class="item"><div>连衣裙</div></div>
             <div class="item"><div>上衣</div></div>
         </div>
     </div>
     
-    <div class="wardrobe_wrap clothestype_first">
-    	<div class="wardrobe">
+    <div class="wardrobe_wrap">
+    	<div class="wardrobe wbclick">
         	<div class="item">
-            	<div class="head">
+            	<div class="head head_first">
                 	<i class="icon_gun"></i>
                     <i class="icon_ring"></i>
                     <i class="icon_ring_1"></i>
                     <i class="icon_ring_2"></i>
                     <i class="icon_handle"></i>
                 </div>
-                <div class="clothes">
-                	<i class="icon_top"></i>
-                    <div class="clothes_add">
-                    	<i class="icon_x"></i>
-                        <i class="icon_y"></i>
-                    </div>
-                    <div class="box">
-                        <div class="t1">甜心巧克力·珍稀</div>
-                        <div class="t2">
-                        	<div class="t2l">
-                            	<span>欧式古典</span>
-                                <span>欧式古典</span>
-                            </div>
-                            <div class="t2r">
-                            	<span>估算分:</span>
-                                <span class="score">5555</span>
+                <div class="clothes_wrap">
+                	<div class="clothes">
+                        <i class="icon_top"></i>
+                        <div class="add">
+                            <i class="icon_x"></i>
+                            <i class="icon_y"></i>
+                        </div>
+                        <div class="box">
+                            <div class="t1">甜心巧克力·珍稀</div>
+                            <div class="t2">
+                                <div class="td">
+                                    <span>欧式古典</span>
+                                    <span>欧式古典</span>
+                                </div>
+                                <div class="td">
+                                    <span>估算分:</span>
+                                    <span class="score">55555</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -158,35 +170,63 @@
             	<div class="head">
                 	<i class="icon_line"></i>
                 </div>
-                <div class="clothes">
-                	<i class="icon_top"></i>
-                    <div class="clothes_add">
-                    	<i class="icon_x"></i>
-                        <i class="icon_y"></i>
-                    </div>
-                    <div class="box">
-                        <div class="t1">甜心巧克力·珍稀</div>
-                        <div class="t2">
-                        	<div class="t2l">
-                            	<span>欧式古典</span>
-                                <span>欧式古典</span>
-                            </div>
-                            <div class="t2r">
-                            	<span>估算分:</span>
-                                <span class="score">5555</span>
+                <div class="clothes_wrap">
+                    <div class="clothes">
+                        <i class="icon_top"></i>
+                        <div class="add">
+                            <i class="icon_x"></i>
+                            <i class="icon_y"></i>
+                        </div>
+                        <div class="box">
+                            <div class="t1">甜心巧克力·珍稀</div>
+                            <div class="t2">
+                                <div class="td">
+                                    <span>欧式古典</span>
+                                    <span>欧式古典</span>
+                                </div>
+                                <div class="td">
+                                    <span>估算分:</span>
+                                    <span class="score">5555</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="box_back">
-                        <div class="t1">甜心巧克力·珍稀</div>
-                        <div class="t2">
-                        	<span>简约S</span>
-                            <span>简约S</span>
-                            <span>简约S</span>
-                            <span>简约S</span>
-                            <span>简约S</span>
+                        <div class="box_back hide">
+                            <div class="t1">甜心巧克力·珍稀</div>
+                            <div class="t2">
+                                <span>简约S</span>
+                                <span>简约S</span>
+                                <span>简约S</span>
+                                <span>简约S</span>
+                                <span>简约S</span>
+                            </div>
+                            <div class="t3">服装店/幻指阁/迷之阁/1-3公主/5-6公主</div>
                         </div>
-                        <div class="t3">服装店/幻指阁/迷之阁/1-3公主/5-6公主</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="item">
+            	<div class="head">
+                	<i class="icon_line"></i>
+                </div>
+                <div class="clothes_wrap">
+                    <div class="clothes">
+                        <i class="icon_top"></i>
+                        <div class="add">
+                            <i class="icon_x"></i>
+                            <i class="icon_y"></i>
+                        </div>
+                        <div class="box_back">
+                            <div class="t1">甜心巧克力·珍稀</div>
+                            <div class="t2">
+                                <span>简约S</span>
+                                <span>简约S</span>
+                                <span>简约S</span>
+                                <span>简约S</span>
+                                <span>简约S</span>
+                            </div>
+                            <div class="t3">服装店/幻指阁/迷之阁/1-3公主/5-6公主</div>
+                        </div>
                     </div>
                 </div>
             </div>

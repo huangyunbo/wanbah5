@@ -16,6 +16,7 @@ em,i,code,cite,address,th{font-style:normal}
 a{ text-decoration:none}
 .hide{ display:none !important}
 @font-face{font-family:sszhjt;src:url(sszhjt.ttf)}
+::-webkit-scrollbar{ width:0}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 
 body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; background-size:cover}
@@ -35,7 +36,7 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .way .item.on .icon_x{ background-position:right -0.6rem}
 .way .item .icon_l,.way .item .icon_r{ position:absolute; background-position:right -0.4rem; left:0; bottom:0; width:0.15rem; height:0.115rem}
 .way .item .icon_r{ left:auto; right:0; -webkit-transform:scaleX(-1); transform:scaleX(-1)}
-.chudo{ margin:0 0.15rem; font-size:0.12rem; background:#db6788; border-radius:0 0 0.1rem 0.1rem; height:0.28rem; position:relative}
+.chudo{ margin:0 0.15rem 0.05rem; font-size:0.12rem; background:#db6788; border-radius:0 0 0.1rem 0.1rem; height:0.28rem; position:relative}
 .chudo_attr{ text-align:center}
 .chudo_attr .item{ height:0.22rem; line-height:0.22rem; margin-top:0.02rem; display:inline-block; border-top:0.01rem solid #9c3d58; border-radius:0.01rem 0.01rem 0.03rem 0.03rem; background:#fea7bf; font-family:sszhjt; padding:0 0.18rem; color:#b75872; position:relative}
 .chudo_attr .item.on{ background:#e88aa4; color:#b75872}
@@ -62,23 +63,37 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .chudo_search .box .ipt_text{ border:none; width:1.47rem; height:0.23rem; line-height:0.23rem}
 .chudo_search .so{ float:left; width:0.52rem; height:0.23rem; line-height:0.23rem; background:#fea7bf; margin:0.02rem 0 0 0.04rem; text-align:center; color:#b75872}
 .chudo_search .so_cancel{ border-radius:0 0 0.08rem 0}
-.container{ margin:0.05rem 0.13rem 0 0.05rem; font-size:0.12rem}
+.container{ margin:0 0.13rem 0 0.05rem; font-size:0.12rem}
 /*衣服类别*/
-.clothestype_wrap{ float:left; position:relative; overflow-y:auto; width:0.53rem; height:200px}
+.clothestype_wrap{ float:left; position:relative; overflow-y:auto; width:0.53rem; height:100%; -webkit-overflow-scrolling:touch}
 .clothestype{ position:absolute; width:0.53rem; left:0; top:0; z-index:2}
 .clothestype .item{ position:relative; width:0.51rem; height:0.4rem; font-size:0.13rem; background:#ff7aa0; color:#fffeb6; font-family:sszhjt; margin-bottom:0.05rem; box-sizing:border-box; border:0.02rem solid #ff7aa0; border-right:none; border-radius:0.09rem 0 0 0.09rem; display:table; text-align:center}
 .clothestype .item.on{ background:#fffeb6; color:#e6668b}
 .clothestype .item.on:before{ content:""; position:absolute; right:-0.02rem; top:0; bottom:0; width:0.02rem; background:#fffeb6}
 .clothestype .item div{ display:table-cell; vertical-align:middle; line-height:1}
 /*衣柜*/
-.wardrobe_wrap{ margin-left:0.5rem; box-sizing:border-box; border:solid #ff7aa0; border-width:0.02rem 0.02rem 0 0.02rem; border-radius:0 0.09rem 0 0; background:#fffeb6; padding:0.05rem 0.05rem 0; position:relative}
-.wardrobe{ background:#ddca6f; border-radius:0.05rem 0.05rem 0 0}
-
-
-
-
-
-
+.wardrobe_wrap{ margin-left:0.5rem; box-sizing:border-box; border:solid #ff7aa0; border-width:0.02rem 0.02rem 0 0.02rem; border-radius:0 0.09rem 0 0; background:#fffeb6; padding:0.05rem 0.05rem 0; height:100%}
+.wardrobe{ background:#ddca6f; border-radius:0.05rem 0.05rem 0 0; height:100%; padding-left:0.05rem; position:relative; -webkit-overflow-scrolling:touch}
+.wardrobe .item .head{ position:relative; margin-top:-0.01rem}
+.wardrobe .item .head.head_first{ margin-top:0; height:0.15rem}
+.wardrobe .item .head .icon_gun{ width:100%; height:0.03rem; border-radius:0.02rem 0 0 0.02rem; background:#dfde87; position:absolute; top:0.06rem; left:0}
+.wardrobe .item .head .icon_ring{ width:0.09rem; height:0.09rem; border:0.02rem solid #765000; border-radius:0.09rem; position:absolute; left:50%; top:0.01rem; margin-left:-0.065rem}
+.wardrobe .item .head .icon_ring_1{ width:0.065rem; height:0.06rem; background:#ddca6f; position:absolute; left:50%; margin-left:-0.065rem; top:0.09rem}
+.wardrobe .item .head .icon_ring_2{ width:0.065rem; height:0.03rem; background:#dfde87; position:absolute; left:50%; margin-left:-0.065rem; top:0.06rem}
+.wardrobe .item .head .icon_handle{ width:0.02rem; height:0.03rem; background:#765000; position:absolute; left:50%; margin-left:-0.01rem; bottom:0}
+.wardrobe .clothes_wrap{ padding-right:0.22rem; margin-bottom:0.05rem}
+.wardrobe .clothes{ position:relative}
+.wardrobe .clothes .icon_top{ background:#765000; height:0.17rem; display:block; border-radius:0.05rem 0.05rem 0 0}
+.wardrobe .clothes .add{ position:absolute; width:0.28rem; height:0.28rem; right:0; top:0; background:#765000; border-radius:0 0.05rem 0 0.05rem}
+.wardrobe .clothes .add .icon_x{ position:absolute; right:0.07rem; top:0.135rem; width:0.14rem; height:0.01rem; background:#fff}
+.wardrobe .clothes .add .icon_y{ position:absolute; right:0.13rem; top:0.07rem; width:0.01rem; height:0.14rem; background:#fff}
+.wardrobe .clothes .box,.wardrobe .clothes .box_back{ margin:-0.16rem 0.01rem 0; padding:0 0.03rem; background:#feffd2; border-radius:0.04rem; height:0.65rem; box-shadow:0.01rem 0.01rem 0.01rem #b3a450}
+.wardrobe .clothes .box .t1{ height:0.375rem; line-height:0.375rem; font-size:0.15rem; color:#644400; border-bottom:1px solid #cdce99; text-align:center}
+.wardrobe .clothes .box .t2{ display:table; width:100%}
+.wardrobe .clothes .box .t2 .td{ display:table-cell; width:55%; height:0.23rem; line-height:0.23rem; text-align:center; color:#976907}
+.wardrobe .clothes .box .t2 .td:last-child{ width:45%; border-left:1px solid #cdce99}
+.wardrobe .clothes .box .t2 .score{ font-size:0.13rem}
+.wardrobe .clothes .box_back .t1{ height:0.23rem; line-height:0.23rem; color:#644400; border-bottom:1px solid #cdce99}
 
 
 
