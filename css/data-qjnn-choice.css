@@ -72,17 +72,25 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .clothestype .item.on:before{ content:""; position:absolute; right:-0.02rem; top:0; bottom:0; width:0.02rem; background:#fffeb6}
 .clothestype .item div{ display:table-cell; vertical-align:middle; line-height:1}
 /*衣柜*/
-.wardrobe_wrap{ margin-left:0.5rem; box-sizing:border-box; border:solid #ff7aa0; border-width:0.02rem 0.02rem 0 0.02rem; border-radius:0 0.09rem 0 0; background:#fffeb6; padding:0.05rem 0.05rem 0; height:100%}
-.wardrobe{ background:#ddca6f; border-radius:0.05rem 0.05rem 0 0; height:100%; padding-left:0.05rem; position:relative; -webkit-overflow-scrolling:touch}
-.wardrobe .item .head{ position:relative; margin-top:-0.01rem}
-.wardrobe .item .head.head_first{ margin-top:0; height:0.15rem}
+.wardrobe_room{ margin-left:0.5rem; box-sizing:border-box; border:solid #ff7aa0; border-width:0.02rem 0.02rem 0 0.02rem; border-radius:0 0.09rem 0 0; background:#fffeb6; padding:0.05rem 0.05rem 0; height:100%}
+.wardrobe_wrap{ background:#ddca6f; border-radius:0.05rem 0.05rem 0 0; height:100%}
+.wardrobe_spe{ font-size:0.12rem; display:none; height:0.22rem; padding:0 0.03rem; z-index:2; position:relative}
+.wardrobe_spe_inner{ width:100%; table-layout:fixed; display:table}
+.wardrobe_spe .item{ width:33%; display:table-cell; padding:0 0.02rem; box-sizing:border-box}
+.wardrobe_spe .item div{ box-shadow:0 0.01rem 0.01rem #b3a450; color:#765000; font-size:0.13rem; border:solid #fffeb6; border-width:0 0.02rem 0.02rem; border-radius:0 0 0.05rem 0.05rem; background:#ffd562; text-align:center}
+.wardrobe_filter .wardrobe_spe{ display:block}
+.wardrobe{ position:relative; overflow-y:auto; height:100%; -webkit-overflow-scrolling:touch; margin-left:0.05rem; -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0)}
+.wardrobe_filter .wardrobe{ margin:-0.07rem 0 -0.15rem 0.05rem}
+.wardrobe_inner{ position:absolute; width:100%}
+.wardrobe .item .head{ position:relative}
+.wardrobe .item .head.head_first{ height:0.15rem}
 .wardrobe .item .head .icon_gun{ width:100%; height:0.03rem; border-radius:0.02rem 0 0 0.02rem; background:#dfde87; position:absolute; top:0.06rem; left:0}
-.wardrobe .item .head .icon_ring{ width:0.09rem; height:0.09rem; border:0.02rem solid #765000; border-radius:0.09rem; position:absolute; left:50%; top:0.01rem; margin-left:-0.065rem}
-.wardrobe .item .head .icon_ring_1{ width:0.065rem; height:0.06rem; background:#ddca6f; position:absolute; left:50%; margin-left:-0.065rem; top:0.09rem}
-.wardrobe .item .head .icon_ring_2{ width:0.065rem; height:0.03rem; background:#dfde87; position:absolute; left:50%; margin-left:-0.065rem; top:0.06rem}
-.wardrobe .item .head .icon_handle{ width:0.02rem; height:0.03rem; background:#765000; position:absolute; left:50%; margin-left:-0.01rem; bottom:0}
-.wardrobe .clothes_wrap{ padding-right:0.22rem; margin-bottom:0.05rem}
-.wardrobe .clothes{ position:relative}
+.wardrobe .item .head .icon_ring{ width:0.09rem; height:0.09rem; border:0.02rem solid #765000; border-radius:0.09rem; position:absolute; left:50%; top:0.01rem; margin-left:-0.175rem}
+.wardrobe .item .head .icon_ring_1{ width:0.065rem; height:0.06rem; background:#ddca6f; position:absolute; left:50%; margin-left:-0.175rem; top:0.09rem}
+.wardrobe .item .head .icon_ring_2{ width:0.065rem; height:0.03rem; background:#dfde87; position:absolute; left:50%; margin-left:-0.175rem; top:0.06rem}
+.wardrobe .item .head .icon_handle{ width:0.02rem; height:0.03rem; background:#765000; position:absolute; left:50%; margin-left:-0.12rem; bottom:0}
+.wardrobe .item .head .icon_line{ width:0.02rem; height:0.05rem; background:#765000; position:absolute; left:50%; margin-left:-0.12rem; bottom:0}
+.wardrobe .clothes{ position:relative; margin:0 0.22rem 0.05rem 0}
 .wardrobe .clothes .icon_top{ background:#765000; height:0.17rem; display:block; border-radius:0.05rem 0.05rem 0 0}
 .wardrobe .clothes .add{ position:absolute; width:0.28rem; height:0.28rem; right:0; top:0; background:#765000; border-radius:0 0.05rem 0 0.05rem}
 .wardrobe .clothes .add .icon_x{ position:absolute; right:0.07rem; top:0.135rem; width:0.14rem; height:0.01rem; background:#fff}
