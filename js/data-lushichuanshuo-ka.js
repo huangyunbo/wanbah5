@@ -89,10 +89,12 @@
 			if(this.o.platform == "ios"){
 				wbgllscsmycards = JSON.parse(localStorage.getItem("wbgl-lscs-ka-mycards"));
 				if(wbgllscsmycards === null) return;
+				localStorage.setItem("wbgl-lscs-ka-job", wbgllscsmycards.job);
 				localStorage.setItem("wbgl-lscs-ka-urlform", "mycards.html");//当准备去编辑详情页的时候，记录来自于data-lushichuanshuo-ka-mycards.html
 			}else{
 				wbgllscsmycards = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards"));
 				if(wbgllscsmycards === null) return;
+				sessionStorage.setItem("wbgl-lscs-ka-job", wbgllscsmycards.job);
 				sessionStorage.setItem("wbgl-lscs-ka-urlform", "mycards.html");//当准备去编辑详情页的时候，记录来自于data-lushichuanshuo-ka-mycards.html
 			}
 			
@@ -160,7 +162,7 @@
 				$(this).find("span").eq(0).html(dic[index]);
             	$(this).find("i").eq(0).css("height",_h+"%");
             });
-			
+
 			$("#shareweixin").attr("data-id",wbgllscsmycards.id);//赋值该卡组的id给分享
 		},
 		removewbgllscska: function(){//移除我的卡组里的某个卡组
@@ -750,7 +752,7 @@
 					}
 
 					$("#ka_add_group").children().eq(0).attr("data-job",this.o.job);
-					
+
 					this.setkaaddboxbg();
 					this.printdetail();
 					break;
