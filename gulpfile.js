@@ -351,55 +351,59 @@ gulp.task('qjnn_ios', function(){
 var vainglory_gameid = 99;
 var vainglory_plugin_hero = "plugin_1080";
 var vainglory_plugin_equip = "plugin_1083";
-/*var vainglory_path = '../';
+var vainglory_path = '../';
 var vainglory_replace = ['css/', 'js/', 'json/'];
-var vainglory_replace_data =  ['css/', 'js/', 'json/'];*/
+var vainglory_replace_data =  ['css/', 'js/', 'json/'];
 var vainglory_platform = 'android';
 
-/*gulp.task('qjnn_images', function(){
-    gulp.src('./images/qjnn/**', {buffer: false})
-        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/images/qjnn'));
+/*gulp.task('vainglory_images', function(){
+    gulp.src('./images/vainglory/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/vainglory'));
 	
 	gulp.src('./images/.nomedia', {buffer: false})
-        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/images/'));
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/'));
+});*/
+
+gulp.task('vainglory_css', function(){
+    gulp.src(['./css/data-vainglory.css'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/css'));
 });
 
-gulp.task('qjnn_css', function(){
-    gulp.src(['./css/data-qjnn.css', './css/data-qjnn-pass.css'], {buffer: false})
-        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/css'));
-});
-
-gulp.task('qjnn_js', function(){
-    gulp.src(['./js/jquery-2.1.3.min.js','./js/easydialog.min.js','./js/data-qjnn.js'])
-        .pipe(concat('data-qjnn.min.js'))
-		.pipe(replace('platform:"web"', 'platform:"'+qjnn_platform+'"'))
+gulp.task('vainglory_js', function(){
+    gulp.src(['./js/jquery-2.1.3.min.js','./js/data-vainglory.js'])
+        .pipe(concat('data-vainglory.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+vainglory_platform+'"'))
         .pipe(uglify())
-        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/js'));
-		
-	gulp.src(['./js/jquery-2.1.3.min.js','./js/data-qjnn-pass.js'])
-        .pipe(concat('data-qjnn-pass.min.js'))
-		.pipe(replace('platform:"web"', 'platform:"'+qjnn_platform+'"'))
-        .pipe(uglify())
-        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/js'));
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/js'));
 });
 
-gulp.task('qjnn_json', function(){
-    gulp.src(['./json/json-qjnn.js', './json/json-qjnn-pass.js'], {buffer: false})
-        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/json'));
+/*gulp.task('vainglory_json', function(){
+    gulp.src(['./json/json-vainglory.js', './json/json-vainglory.js'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/json'));
 });*/
 
 gulp.task('vainglory_data', function(){
-	/*if(qjnn_platform == 'android'){
-		for(var i=0; i<qjnn_replace.length; i++){
-			qjnn_replace_data[i] = qjnn_path + qjnn_replace[i];
+	if(vainglory_platform == 'android'){
+		for(var i=0; i<vainglory_replace.length; i++){
+			vainglory_replace_data[i] = vainglory_path + vainglory_replace[i];
 		}
-	}*/
+	}
 	
     gulp.src('data-vainglory-hero.html')
+		.pipe(merge({
+            'js/data-vainglory.min.js':['js/jquery-2.1.3.min.js','js/data-vainglory.js']
+        }))
+		.pipe(replace(vainglory_replace[0], vainglory_replace_data[0]))
+		.pipe(replace(vainglory_replace[1], vainglory_replace_data[1]))
 		.pipe(rename('index.html'))
         .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/'+vainglory_plugin_hero));
 		
 	gulp.src('data-vainglory-equip.html')
+		.pipe(merge({
+			'js/data-vainglory.min.js':['js/jquery-2.1.3.min.js','js/data-vainglory.js']
+		}))
+		.pipe(replace(vainglory_replace[0], vainglory_replace_data[0]))
+		.pipe(replace(vainglory_replace[1], vainglory_replace_data[1]))
 		.pipe(rename('index.html'))
         .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/'+vainglory_plugin_equip));
 });
@@ -410,11 +414,11 @@ gulp.task('vainglory_clean', function(){
 });
 
 gulp.task('vainglory_android', ['vainglory_clean'], function(){
-	gulp.start('vainglory_data');
+	gulp.start('vainglory_css', 'vainglory_js', 'vainglory_data');
 });
 
 gulp.task('vainglory_ios_inner', ['vainglory_clean'], function(){
-	gulp.start('vainglory_data');
+	gulp.start('vainglory_css', 'vainglory_js', 'vainglory_data');
 });
 
 gulp.task('vainglory_ios', function(){
