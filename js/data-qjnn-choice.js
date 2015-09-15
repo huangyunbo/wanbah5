@@ -455,7 +455,7 @@
 			});
 			
 			//旋转屏幕重新设置高度
-			$(window).resize(function(e) {
+			$(window).resize(function(e){
                 that.setfontSize();
 				that.setHight();
             });
