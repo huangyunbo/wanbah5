@@ -22,4 +22,4 @@ body{ background:#0d0f14}
 .header{ height:44px; border-bottom:1px solid #406fe8; background:#091723; position:fixed; width:100%; top:0; left:0; z-index:100}
 .header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
-.container{ margin-top:45px; color:#fff}
+.container{ margin-top:45px; color:#fff; font-size:1.8rem; text-align:center; padding-top:100px}
