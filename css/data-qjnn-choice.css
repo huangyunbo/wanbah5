@@ -30,7 +30,7 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .index .item.item_2{ background-position:0 -0.6rem}
 .index .item.item_3{ background-position:0 -1.2rem}
 /*服装搭配data-qjnn-choice-clothes.html*/
-.way_wrap{ font-size:0.12rem; height:0.54rem; border-bottom:1px solid #db6788; background:rgba(255,255,255,0.8); position:relative; padding:0 0.035rem}
+.way_wrap{ font-size:0.12rem; height:0.54rem; border-bottom:1px solid #db6788; background:rgba(255,255,255,0.8); position:relative; padding:0 0.035rem; margin-top:45px}
 .png_clothes{ background:url(../images/qjnn/choice-clothes.png) no-repeat; background-size:1.57rem}
 .way_wrap .icon_w_l{ position:absolute; left:0; bottom:-1px; width:0.57rem; height:0.315rem}
 .way_wrap .icon_w_r{ background-position:right 0; position:absolute; right:0; bottom:-1px; width:0.97rem; height:0.315rem}
@@ -100,9 +100,9 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .wardrobe .clothes{ position:relative; margin:0 0.22rem 0.05rem 0}
 .wardrobe .clothes .icon_top{ background:#765000; height:0.17rem; display:block; border-radius:0.05rem 0.05rem 0 0}
 .wardrobe .clothes .add{ position:absolute; width:0.28rem; height:0.28rem; right:0; top:0; background:#765000; border-radius:0 0.05rem 0 0.05rem}
-.wardrobe .clothes .add .icon_x{ position:absolute; right:0.07rem; top:0.135rem; width:0.14rem; height:0.01rem; background:#fff}
+.wardrobe .clothes .add .icon_x{ position:absolute; right:0.07rem; top:0.14rem; width:0.14rem; height:0.01rem; background:#fff}
 .wardrobe .on .clothes .add .icon_x{ background:#e96288; -webkit-transform:rotate(45deg); transform:rotate(45deg); -webkit-transform-origin:right top 0; transform-origin:right top 0; width:0.09rem; right:0.14rem; top:0.19rem}
-.wardrobe .clothes .add .icon_y{ position:absolute; right:0.13rem; top:0.07rem; width:0.01rem; height:0.14rem; background:#fff}
+.wardrobe .clothes .add .icon_y{ position:absolute; right:0.14rem; top:0.07rem; width:0.01rem; height:0.14rem; background:#fff}
 .wardrobe .on .clothes .add .icon_y{ background:#e96288; -webkit-transform:rotate(45deg); transform:rotate(45deg); -webkit-transform-origin:right top 0; transform-origin:right top 0; height:0.14rem; right:0.045rem; top:0.1rem}
 .wardrobe .clothes .box,.wardrobe .clothes .box_back{ margin:-0.16rem 0.01rem 0; padding:0 0.05rem; background:#feffd2; border-radius:0.04rem; height:0.65rem; box-shadow:0.01rem 0.01rem 0.01rem #b3a450; overflow:hidden}
 .wardrobe .on .clothes .box,.wardrobe .on .clothes .box_back{ background:#ffe1e1}
@@ -157,17 +157,31 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .my .item .l{ width:70%; display:table-cell; padding-left:0.1rem; box-sizing:border-box}
 .my .item .l .title{ color:#644400; font-size:0.16rem}
 .my .item .l .time{ font-size:0.1rem}
-.my .item .r{ width:30%; display:table-cell; padding-left:0.1rem; box-sizing:border-box; border-left:1px solid #c0aa7b}
+.my .item .r{ width:30%; display:table-cell; padding-left:0.1rem; box-sizing:border-box; border-left:1px solid #c0aa7b; position:relative}
+.my .item .r .close{ position:absolute; width:0.28rem; height:0.28rem; right:0; top:-0.06rem; background:#765000; border-radius:0 0.05rem 0 0.05rem}
+.my .item .r .close .icon_x,.my .item .r .close .icon_y{ position:absolute; right:0.07rem; top:0.14rem; width:0.14rem; height:0.01rem; background:#fff; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
+.my .item .r .close .icon_y{ -webkit-transform:rotate(-45deg); transform:rotate(-45deg)}
 .my .item .r .dt{ font-size:0.1rem}
 .my .item .r .dd{ font-size:0.18rem}
 /*套装详情data-qjnn-choice-mydetail.html*/
-.mydetail{ background:rgba(255,255,255,0.7); padding:0 0.07rem; margin-top:45px; font-size:0.12rem}
+.mydetail{ background:rgba(255,255,255,0.7); padding:0 0.07rem 0.2rem; margin-top:45px; font-size:0.12rem}
 .mydetail .head{ text-align:center}
 .mydetail .head .title{ font-size:0.15rem; color:#5c5c5c; padding:0.07rem 0 0.03rem}
 .mydetail .head .icon{ background:url(../images/qjnn/choice-mydetail.png) no-repeat; background-size:2.63rem; width:2.63rem; height:0.11rem; display:block; margin:0 auto}
 .mydetail .head .b{ position:relative; height:0.4rem}
 .mydetail .head .b .btn{ background:#ffa4a2; border-radius:0.03rem; position:absolute; left:50%; margin-left:-1rem; padding:0.02rem 0.32rem; color:#fff}
 .mydetail .head .b .btn:last-child{ margin-left:0.12rem}
-.mydetail .scoreshow{ display:table; width:100%; border:solid #ef7d7b; border-width:1px 0}
-.mydetail .scoreshow .l{ display:table-cell; width:52%; box-sizing:border-box; padding:0.25rem 0 0 0.18rem}
-.mydetail .scoreshow .r{ display:table-cell; width:48%; box-sizing:border-box; padding:0; border-left:1px solid #ef7d7b}
+.mydetail .scoreshow{ width:100%; border:solid #ef7d7b; border-width:1px 0; overflow:hidden}
+.mydetail .scoreshow .l{ float:left; width:52%; box-sizing:border-box; padding:0.25rem 0 0 0.18rem; color:#5c5c5c}
+.mydetail .scoreshow .l .dd{ padding-left:0.2rem; font-size:0.24rem}
+.mydetail .scoreshow .r{ float:left; width:48%; box-sizing:border-box; padding:0.13rem 0 0.13rem 0.23rem; border-left:1px solid #ef7d7b; color:#de706f}
+.mydetail .suit div{ color:#5c5c5c; font-size:0.14rem; padding:0.14rem 0 0.03rem}
+.mydetail .suit ul{ overflow:hidden}
+.mydetail .suit li{ width:49%; margin:0 1% 0.05rem 0; float:left; height:0.32rem; border:0.01rem solid #ef7d7b; box-sizing:border-box; border-radius:0.03rem; padding:0.03rem 0.05rem; color:#ef7d7b; line-height:1; overflow:hidden}
+.mydetail .suit li:nth-child(even){ margin:0 0 0.05rem 1%}
+.mydetail .suit li span{ float:left; height:0.24rem}
+
+
+
+
+
