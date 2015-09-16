@@ -512,11 +512,7 @@
 			this.setHight();
 		},
 		setHight: function(){
-			var headerH = 45;
-			if(this.o.platform == "ios"){
-				headerH = 0;
-			}
-			var _h = $(window).height() - headerH - $("#way_wrap").outerHeight(true) - $("#chudo").outerHeight(true);
+			var _h = $(window).height() - $("#way_wrap").outerHeight(true) - $("#chudo").outerHeight(true);
 			//_h = _h >= 220 ? _h : 220;//去掉头的iphone4 480
 			$("#container").height(_h);
 		},
