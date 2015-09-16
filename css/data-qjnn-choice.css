@@ -15,16 +15,23 @@ em,i,code,cite,address,th{font-style:normal}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 a{ text-decoration:none}
 .hide{ display:none !important}
+.mt_0{ margin-top:0 !important}
 @font-face{font-family:sszhjt;src:url(sszhjt.ttf)}
 ::-webkit-scrollbar{ width:0}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 
 body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; background-size:cover}
-.header{ height:44px; border-bottom:1px solid #dc7fb7; background:#f098b1; position:relative}
+.header{ height:44px; border-bottom:1px solid #dc7fb7; background:#f098b1; position:fixed; z-index:100; left:0; top:0; width:100%}
 .header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
+/*首页data-qjnn-choice-index.html*/
+.index{ width:100%; margin-top:45px; padding-top:1.1rem}
+.index .item{ display:block; width:2.41rem; height:0.58rem; margin:0 auto 0.16rem; background:url(../images/qjnn/choice-index.png) no-repeat; background-size:2.41rem}
+.index .item.item_2{ background-position:0 -0.6rem}
+.index .item.item_3{ background-position:0 -1.2rem}
+/*服装搭配data-qjnn-choice-clothes.html*/
 .way_wrap{ font-size:0.12rem; height:0.54rem; border-bottom:1px solid #db6788; background:rgba(255,255,255,0.8); position:relative; padding:0 0.035rem}
-.png_choice{ background:url(../images/qjnn/choice.png) no-repeat; background-size:1.57rem}
+.png_clothes{ background:url(../images/qjnn/choice-clothes.png) no-repeat; background-size:1.57rem}
 .way_wrap .icon_w_l{ position:absolute; left:0; bottom:-1px; width:0.57rem; height:0.315rem}
 .way_wrap .icon_w_r{ background-position:right 0; position:absolute; right:0; bottom:-1px; width:0.97rem; height:0.315rem}
 .way{ display:table; width:100%; position:relative; z-index:3}
@@ -143,3 +150,24 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .basket .foot .btn .icon_line1{ width:0.78rem; height:0.01rem; position:absolute; top:-0.01rem; left:0; background:#835b06}
 .basket .foot .btn .icon_line2{ width:0.76rem; height:0.01rem; position:absolute; top:-0.02rem; left:0.01rem; background:#835b06}
 .basket .foot .btn .icon_line3{ width:0.2rem; height:0.02rem; position:absolute; top:0.03rem; left:50%; margin-left:-0.1rem; background:#835b06}
+/*我的套装data-qjnn-choice-my.html*/
+.my{ margin-top:45px; font-size:0.12rem; padding-top:0.15rem}
+.my .item{ background:#fff; border-radius:0.05rem; box-shadow:0 0.02rem rgba(169,145,142,0.8); margin:0 0.1rem 0.1rem; color:#907a4d}
+.my .item_inner{ display:table; width:100%; padding:0.06rem 0}
+.my .item .l{ width:70%; display:table-cell; padding-left:0.1rem; box-sizing:border-box}
+.my .item .l .title{ color:#644400; font-size:0.16rem}
+.my .item .l .time{ font-size:0.1rem}
+.my .item .r{ width:30%; display:table-cell; padding-left:0.1rem; box-sizing:border-box; border-left:1px solid #c0aa7b}
+.my .item .r .dt{ font-size:0.1rem}
+.my .item .r .dd{ font-size:0.18rem}
+/*套装详情data-qjnn-choice-mydetail.html*/
+.mydetail{ background:rgba(255,255,255,0.7); padding:0 0.07rem; margin-top:45px; font-size:0.12rem}
+.mydetail .head{ text-align:center}
+.mydetail .head .title{ font-size:0.15rem; color:#5c5c5c; padding:0.07rem 0 0.03rem}
+.mydetail .head .icon{ background:url(../images/qjnn/choice-mydetail.png) no-repeat; background-size:2.63rem; width:2.63rem; height:0.11rem; display:block; margin:0 auto}
+.mydetail .head .b{ position:relative; height:0.4rem}
+.mydetail .head .b .btn{ background:#ffa4a2; border-radius:0.03rem; position:absolute; left:50%; margin-left:-1rem; padding:0.02rem 0.32rem; color:#fff}
+.mydetail .head .b .btn:last-child{ margin-left:0.12rem}
+.mydetail .scoreshow{ display:table; width:100%; border:solid #ef7d7b; border-width:1px 0}
+.mydetail .scoreshow .l{ display:table-cell; width:52%; box-sizing:border-box; padding:0.25rem 0 0 0.18rem}
+.mydetail .scoreshow .r{ display:table-cell; width:48%; box-sizing:border-box; padding:0; border-left:1px solid #ef7d7b}

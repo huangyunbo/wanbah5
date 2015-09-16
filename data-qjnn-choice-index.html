@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>奇迹暖暖-服装搭配器</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/data-qjnn-choice.css">
+</head>
+
+<body data-url="index">
+<div class="header" id="header">
+	<a href="javascript:;" class="back wbclick"></a>
+    <h1>服装搭配器</h1>
+</div>
+
+<div class="index" id="index">
+    <a href="data-qjnn-choice-clothes.html" class="item"></a>
+    <a href="data-qjnn-choice-my.html" class="item item_2"></a>
+    <a href="" class="item item_3"></a>
+</div>
+
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/easydialog.min.js"></script>
+<script type="text/javascript" src="js/data-qjnn-choice.js"></script>
+<script type="text/javascript" src="json/json-qjnn-choice.js"></script>
+<script type="text/javascript">
+$(function(){
+	var data_all = {data_clothes:data_clothes, data_arena:data_arena};
+	var qjnn = new Qjnn(data_all);
+});
+</script>
+</body>
+</html>
