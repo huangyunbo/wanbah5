@@ -1,10 +1,13 @@
 (function(window){
 	var Qjnn = function(option){
-		if(typeof(arguments[0]) == 'undefined') return false;
-		option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
-		this.dataclothes = option.data_clothes;
-		this.dataarena = option.data_arena;
-		this.o = {platform:"web",plugin:"plugin_952"};
+		if(arguments[0] === undefined) return false;
+		data_all = typeof(arguments[0]) == 'object' ? arguments[0] : {};
+		this.dataclothes = data_all.data_clothes;
+		this.dataarena = data_all.data_arena;
+		this.o = {
+					platform:"web",//针对平台
+					plugin:"plugin_952"//服装搭配器的板块ID
+				 };
 
 		this.init();
 	};
@@ -454,7 +457,12 @@
 				easyDialog.close();
 			});
 			
-			//旋转屏幕重新设置高度
+			easyDialog.open({
+				container: "dialog",
+				fixed : false
+			});
+			
+			//旋转屏幕重新设置
 			$(window).resize(function(e){
                 that.setfontSize();
 				that.setHight();
@@ -513,7 +521,7 @@
 		},
 		setHight: function(){
 			var _h = $(window).height() - $("#way_wrap").outerHeight(true) - $("#chudo").outerHeight(true);
-			//_h = _h >= 220 ? _h : 220;//去掉头的iphone4 480
+			_h = _h >= 220 ? _h : 220;//最小220
 			$("#container").height(_h);
 		},
 		setfontSize: function(){//根据宽度算整体字体大小
