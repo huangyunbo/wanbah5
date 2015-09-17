@@ -372,31 +372,30 @@ a{ text-decoration:none}
 .ka_mycards .c .item .num_two em{ transform:scale(0.883); -webkit-transform:scale(0.883); display:block; z-index:4; position:relative; left:-3px}
 .ka_mycards .c .item .num:before{ content:""; position:absolute; top:0; left:-4px; width:0; height:0; border-top:7px solid transparent; border-right:4px solid #2a91ff; border-bottom:7px solid transparent}
 .ka_mycards .c .item .num:after{ content:""; position:absolute; top:0; right:-4px; width:0; height:0; border-top:7px solid transparent; border-left:4px solid #2a91ff; border-bottom:7px solid transparent}
-.ka_mycards .c .item span{ color:#fde69f; font-size:1.2rem; transform:scale(0.833); -webkit-transform:scale(0.833); position:absolute; left:18px; top:0; z-index:5; white-space:nowrap}
+.ka_mycards .c .item span{ color:#fde69f; position:relative; padding-left:22px; z-index:5; white-space:nowrap}
 .ka_mycards .c .item .pic{ width:50px; height:18px; position:absolute; right:0; top:0; background-size:150px; background-position:-41px -50px; background-repeat:no-repeat}
 .ka_mycards .c .item i{ width:10px; position:absolute; right:40px; top:0; bottom:0; background:linear-gradient(left, #31302e, transparent); background:-webkit-linear-gradient(left, #31302e, transparent); z-index:2}
 .ka_mycards .b{ margin:6px 0 30px; display:table; width:100%}
-.ka_mycards .b .count_wrap{ display:table-cell; width:50%}
+.ka_mycards .b .count_wrap{ display:table-cell; width:50%; vertical-align:bottom}
 .ka_mycards .b .count{ background:#31302e; margin:0 7.5px; text-align:center}
-.ka_mycards .b .count .title{ font-size:1.2rem; color:#fde69f; border:1px solid #fde69f; display:inline-block; transform:scale(0.833); -webkit-transform:scale(0.833); border-radius:30px; padding:0 10px; margin:5px 0 18px}
-.ka_mycards .b .count .list{ display:table; width:100%}
-.ka_mycards .b .count .list li{ display:table-cell; width:12.5%}
-.ka_mycards .b .count .bar{ height:70px; background:#191918; margin:0 3px; display:table; width:calc(100% - 6px)}
-.ka_mycards .b .count .bar .column{ display:table-cell; vertical-align:bottom}
-.ka_mycards .b .count .bar .column i{ width:100%; height:0%; display:block; position:relative; background:#ffd957}
-.ka_mycards .b .count .bar .column i span{ color:#fff; position:absolute; top:-18px; left:0; width:100%; font-family:Arial; opacity:1; -webkit-animation:show_slow 4s linear 0s 1 normal}
-.ka_mycards .b .count .bar .column i code{ width:100%; height:0%; background:#191918; -webkit-animation:bar 2s linear 0s 1 normal; display:block}
+.ka_mycards .b .count .title{ color:#fde69f; border:1px solid #fde69f; display:inline-block; border-radius:30px; padding:0 10px; margin:5px 0 20px}
+.ka_mycards .b .count .list{ width:100%}
+.ka_mycards .b .count .list li{ float:left; width:12.5%}
+.ka_mycards .b .count .bar{ height:70px; background:#191918; margin:0 3px; position:relative}
+.ka_mycards .b .count .bar i{ width:100%; height:0%; position:absolute; bottom:0; left:0}
+.ka_mycards .b .count .bar i span{ color:#fff; margin-top:-16px; position:absolute; width:100%; left:0; z-index:2; font-family:Arial; opacity:1; -webkit-animation:show_slow 4s linear 0s 1 normal}
+.ka_mycards .b .count .bar i code{ width:100%; height:100%; background:#ffd957; -webkit-animation:bar 2s linear 0s 1 normal; position:absolute; bottom:0; left:0}
 @-webkit-keyframes bar{
-	0%{ height:100%}
-	50%{ height:100%}
-	100%{ height:0%}
+	0%{ height:0%}
+	50%{ height:0%}
+	100%{ height:100%}
 }
 @-webkit-keyframes show_slow{
 	0%{ opacity:0}
 	50%{ opacity:0}
 	100%{ opacity:1}
 }
-.ka_mycards .b .count .num{ width:8px; height:14px; line-height:14px; background:#2a91ff; position:relative; font-size:1.2rem; display:inline-block; margin:3px 0 7px; color:#fff; font-family:Arial} 
+.ka_mycards .b .count .num{ width:8px; height:14px; line-height:14px; background:#2a91ff; position:relative; font-size:1.2rem; margin:3px auto 7px; color:#fff; font-family:Arial} 
 .ka_mycards .b .count .num:before{ content:""; position:absolute; top:0; left:-4px; width:0; height:0; border-top:7px solid transparent; border-right:4px solid #2a91ff; border-bottom:7px solid transparent}
 .ka_mycards .b .count .num:after{ content:""; position:absolute; top:0; right:-4px; width:0; height:0; border-top:7px solid transparent; border-left:4px solid #2a91ff; border-bottom:7px solid transparent}
 .ka_mycards .b .count .num span{ position:relative; z-index:3}
@@ -404,11 +403,10 @@ a{ text-decoration:none}
 .ka_mycards .b .count .num i:before{ content:""; position:absolute; top:0; left:-3px; width:0; height:0; border-top:6px solid transparent; border-right:3px solid #31302e; border-bottom:6px solid transparent}
 .ka_mycards .b .count .num i:after{ content:""; position:absolute; top:0; right:-3px; width:0; height:0; border-top:6px solid transparent; border-left:3px solid #31302e; border-bottom:6px solid transparent}
 .ka_mycards .b .more{ width:50%; display:table-cell; vertical-align:bottom; text-align:center}
-.ka_mycards .b .more .more_t{ margin-bottom:10px}
 .ka_mycards .b .more .logo{ display:inline-block; width:40px; height:40px; background:url(../images/lushichuanshuo/ka-btn.png) -140px -120px no-repeat; background-size:220px}
 .ka_mycards .b .more .more_t_r{ display:inline-block; color:#b6832c; vertical-align:2px; font-size:1.1rem}
 .ka_mycards .b .more .more_t_r div{ font-size:1.5rem; color:#f4b915}
-.ka_mycards .b .more .download{ vertical-align:bottom; width:140px; height:45px; line-height:45px; background:url(../images/lushichuanshuo/ka-btn.png) 0 -120px no-repeat; background-size:220px; display:inline-block; font-size:1.5rem; color:#000; cursor:pointer}
+.ka_mycards .b .more .download{ width:140px; height:45px; line-height:45px; background:url(../images/lushichuanshuo/ka-btn.png) 0 -120px no-repeat; background-size:220px; display:block; margin:10px auto 0; font-size:1.5rem; color:#000; cursor:pointer}
 @media screen and (min-width:640px){
 	.ka_mycards .c .item{ margin-bottom:6px}
 	.ka_mycards .c .inner{ height:36px}
@@ -416,24 +414,23 @@ a{ text-decoration:none}
 	.ka_mycards .c .item .num_two em{ transform:scale(1); -webkit-transform:scale(1); position:static; font-size:1.4rem}
 	.ka_mycards .c .item .num:before{ left:-8px; border-width:14px 8px 14px 0}
 	.ka_mycards .c .item .num:after{ right:-8px; border-width:14px 0 14px 8px}
-	.ka_mycards .c .item span{ font-size:2rem; transform:scale(1); -webkit-transform:scale(1); left:46px; top:3px}
+	.ka_mycards .c .item span{ font-size:2rem; padding-left:46px}
 	.ka_mycards .c .item .pic{ width:108px; height:36px; background-size:300px; background-position:-82px -100px}
 	.ka_mycards .c .item i{ width:20px; right:88px}
 	.ka_mycards .b{ margin:12px 0 60px}
-	.ka_mycards .b .count .title{ font-size:2rem; transform:scale(1); -webkit-transform:scale(1); margin:10px 0 36px}
-	.ka_mycards .b .count .bar{ height:140px; margin:0 6px; width:calc(100% - 12px)}
-	.ka_mycards .b .count .bar .column i span{ font-size:2rem; top:-36px}
-	.ka_mycards .b .count .num{ width:16px; height:28px; line-height:28px; font-size:2.4rem; margin:6px 0 14px} 
+	.ka_mycards .b .count .title{ font-size:2rem; margin:10px 0 36px}
+	.ka_mycards .b .count .bar{ height:140px; margin:0 6px}
+	.ka_mycards .b .count .bar i span{ font-size:2rem; margin-top:-30px}
+	.ka_mycards .b .count .num{ width:16px; height:28px; line-height:28px; font-size:2.4rem; margin:6px auto 14px} 
 	.ka_mycards .b .count .num:before{ left:-8px; border-width:14px 8px 14px 0}
 	.ka_mycards .b .count .num:after{ right:-8px; border-width:14px 0 14px 8px}
 	.ka_mycards .b .count .num i{ width:12px; height:24px; left:2px; top:2px}
 	.ka_mycards .b .count .num i:before{ left:-6px; border-width:12px 6px 12px 0}
 	.ka_mycards .b .count .num i:after{ right:-6px; border-width:12px 0 12px 6px}
-	.ka_mycards .b .more .more_t{ margin-bottom:20px}
 	.ka_mycards .b .more .logo{ width:80px; height:80px; background-position:-280px -240px; background-size:440px; margin-right:20px}
 	.ka_mycards .b .more .more_t_r{ vertical-align:4px; font-size:2.2rem}
 	.ka_mycards .b .more .more_t_r div{ font-size:3rem}
-	.ka_mycards .b .more .download{ width:280px; height:90px; line-height:90px; background-size:440px; background-position:0 -240px; font-size:3rem}
+	.ka_mycards .b .more .download{ width:280px; height:90px; line-height:90px; background-size:440px; background-position:0 -240px; font-size:3rem; margin:20px auto 0}
 }
 
 
