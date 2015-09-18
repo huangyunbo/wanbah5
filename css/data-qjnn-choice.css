@@ -15,7 +15,7 @@ em,i,code,cite,address,th{font-style:normal}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 a{ text-decoration:none}
 .hide{ display:none !important}
-.mt_0{ margin-top:0 !important}
+.mt_45{ margin-top:45px !important}
 ::-webkit-scrollbar{ width:0}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 
@@ -24,12 +24,12 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 /*首页data-qjnn-choice-index.html*/
-.index{ width:100%; margin-top:45px; padding-top:1.1rem}
+.index{ width:100%; padding-top:1.1rem}
 .index .item{ display:block; width:2.41rem; height:0.58rem; margin:0 auto 0.16rem; background:url(../images/qjnn/choice-index.png) no-repeat; background-size:2.41rem}
 .index .item.item_2{ background-position:0 -0.6rem}
 .index .item.item_3{ background-position:0 -1.2rem}
 /*服装搭配data-qjnn-choice-clothes.html*/
-.way_wrap{ font-size:0.12rem; height:0.54rem; border-bottom:1px solid #db6788; background:rgba(255,255,255,0.8); position:relative; padding:0 0.035rem; margin-top:45px}
+.way_wrap{ font-size:0.12rem; height:0.54rem; border-bottom:1px solid #db6788; background:rgba(255,255,255,0.8); position:relative; padding:0 0.035rem}
 .png_clothes{ background:url(../images/qjnn/choice-clothes.png) no-repeat; background-size:1.57rem}
 .way_wrap .icon_w_l{ position:absolute; left:0; bottom:-1px; width:0.57rem; height:0.315rem}
 .way_wrap .icon_w_r{ background-position:right 0; position:absolute; right:0; bottom:-1px; width:0.97rem; height:0.315rem}
@@ -44,11 +44,8 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .chudo{ margin:0 0.15rem 0.05rem; font-size:0.12rem; background:#db6788; border-radius:0 0 0.1rem 0.1rem; height:0.28rem; position:relative}
 .chudo_attr{ text-align:center}
 .chudo_attr .item{ height:0.22rem; line-height:0.26rem; margin-top:0.02rem; display:inline-block; border-top:0.01rem solid #9c3d58; border-radius:0.01rem 0.01rem 0.03rem 0.03rem; background:#fea7bf; padding:0 0.18rem; color:#b75872; position:relative}
-.chudo_attr .item.on{ background:#e88aa4; color:#b75872}
 .chudo_attr .item .icon_x{ width:0.2rem; height:0.01rem; background:#cb6a85; position:absolute; left:50%; top:0.025rem; margin-left:-0.1rem}
-.chudo_attr .item.on .icon_x{ background:#cb6a85}
 .chudo_attr .item .icon_d_l,.chudo_attr .item .icon_d_r{ position:absolute; left:0.02rem; width:0.01rem; height:0.01rem; background:#ce728b}
-.chudo_attr .item.on .icon_d_l,.chudo_attr .item.on .icon_d_r{ background:#bd617a}
 .chudo_attr .item .icon_d_r{ left:auto; right:0.02rem}
 .chudo_attr .item .icon_d_1{ top:0.03rem}
 .chudo_attr .item .icon_d_2{ top:0.08rem}
@@ -80,13 +77,14 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .wardrobe_room{ margin-left:0.49rem; box-sizing:border-box; border:solid #ff7aa0; border-width:0.02rem 0.02rem 0; border-radius:0 0.09rem 0 0; background:#fffeb6; padding:0.05rem 0.05rem 0; height:100%}
 .wardrobe_wrap{ background:#ddca6f; border-radius:0.05rem 0.05rem 0 0; height:100%; overflow:hidden}/*overflow:hidden 防止-0.15rem无效*/
 .wardrobe_spe{ font-size:0.12rem; display:none; height:0.22rem; padding:0 0.03rem; z-index:2; position:relative}
+.wardrobe_filter .wardrobe_spe{ display:block}
 .wardrobe_spe_inner{ width:100%; table-layout:fixed; display:table}
 .wardrobe_spe .item{ width:33%; display:table-cell; padding:0 0.02rem; box-sizing:border-box}
 .wardrobe_spe .item div{ box-shadow:0 0.01rem 0.01rem #b3a450; color:#765000; font-size:0.13rem; border:solid #fffeb6; border-width:0 0.02rem 0.02rem; border-radius:0 0 0.05rem 0.05rem; background:#ffd562; text-align:center}
-.wardrobe_filter .wardrobe_spe{ display:block}
 .wardrobe{ position:relative; overflow-y:auto; height:100%; -webkit-overflow-scrolling:touch; margin-left:0.05rem; -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0)}
 .wardrobe_filter .wardrobe{ margin:-0.07rem 0 -0.15rem 0.05rem}
-.wardrobe_inner{ position:absolute; width:100%; padding-bottom:0.15rem}
+.wardrobe_inner{ position:absolute; width:100%}
+.wardrobe_filter .wardrobe_inner{ padding-bottom:0.15rem}
 .wardrobe .item .head{ position:relative}
 .wardrobe .item .head.head_first{ height:0.15rem}
 .wardrobe .item .head .icon_gun{ width:100%; height:0.03rem; border-radius:0.02rem 0 0 0.02rem; background:#dfde87; position:absolute; top:0.06rem; left:0}
@@ -108,24 +106,25 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .wardrobe .clothes .box .t2{ display:table; width:100%; font-size:0.1rem}
 .wardrobe .clothes .box .t2 .td{ display:table-cell; width:50%; height:0.23rem; line-height:0.24rem; text-align:center; color:#976907}
 .wardrobe .clothes .box .t2 .td:last-child{ border-left:1px solid #cdce99}
-.wardrobe .clothes .box .t2 .score{ font-size:0.13rem; vertical-align:middle}
+.wardrobe .clothes .box .t2 .score{ font-size:0.13rem}
 .wardrobe .clothes .box_back .t1{ height:0.23rem; line-height:0.23rem; color:#644400; border-bottom:1px solid #cdce99; font-size:0.12rem}
 .wardrobe .clothes .box_back .t2{ font-size:0.1rem; color:#976907; padding-top:0.02rem}
 .wardrobe .clothes .box_back .t3{ font-size:0.1rem; color:#d54a46}
 /*已选服饰拉手*/
 .door{ position:absolute; z-index:10; height:1.1rem; width:0.47rem; color:#976907; border-left:0.01rem solid rgba(190,191,160,0.75); border-radius:0.1rem; background:#ffeb8b; right:0.03rem; font-size:0.13rem; top:50%; margin-top:-0.55rem}
-.door_front .back{ display:none}
 .door .front{ position:relative; height:100%; padding:0.16rem 0 0 0.03rem; box-sizing:border-box}
 .door .front .icon_trig,.door .back .icon_trig{ position:absolute; right:0.03rem; top:50%; margin-top:-0.025rem; width:0.05rem; height:0.05rem; border:solid #9e7210; border-width:0 0 0.01rem 0.01rem; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 .door .front .num{ border:1px solid #9e7210; display:inline-block; padding:0 0.05rem; border-radius:0.03rem}
 .door .front .t2{ margin-top:0.13rem}
 .door .front .score{ font-size:0.1rem}
-.door_back{ width:0.25rem; text-align:center; right:1rem}
-.door_back .front{ display:none}
-.door .back{ padding:0.35rem 0.05rem 0 0}
-.door .back .icon_trig{ border-width:0.01rem 0.01rem 0 0}
+.door .back{ display:none}
+.door_open{ width:0.25rem; text-align:center; right:1rem}
+.door_open .front{ display:none}
+.door_open .back{ display:block}
+.door_open .back{ padding:0.35rem 0.05rem 0 0}
+.door_open .back .icon_trig{ border-width:0.01rem 0.01rem 0 0}
 /*已选服饰*/
-.basket_wrap{position:absolute; z-index:3; width:1.01rem; right:0.05rem; top:0.07rem; bottom:0; background:#fffeb6}
+.basket_wrap{ position:absolute; z-index:3; width:1.01rem; right:0.05rem; top:0.07rem; bottom:0; background:#fffeb6; display:none}
 .basket{ display:table; width:100%; height:100%; border-radius:0 0.1rem 0 0; border-left:0.01rem solid rgba(190,191,160,0.75); box-sizing:border-box}
 .basket .head{ font-size:0.13rem; color:#976907; text-align:center; display:table-row; height:0.36rem}
 .basket .head div{ display:table-cell; vertical-align:middle}
@@ -160,34 +159,37 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .dialog .foot .handle .item a{ width:1.26rem; height:0.38rem; line-height:0.38rem; display:block; text-align:center; margin:0 auto}
 .dialog .foot .btn_cancel{ background-position:0 -0.4rem; color:#a2a1a1}
 .dialog .foot .btn_sure{ background-position:0 -0.8rem; color:#fff}
-.dialog_1{ font-size:0.15rem; height:0.57rem}
-.dialog_1 .ipt_text{ width:100%; height:0.35rem; line-height:0.35rem; padding:0 0.05rem; box-sizing:border-box; border:0.01rem solid #ffb619; border-radius:0.08rem}
-.dialog_2,.dialog_3{ font-size:0.14rem; height:2.6rem; overflow-y:auto; -webkit-overflow-scrolling:touch}
-.dialog_2 .item,.dialog_3 .item{ float:left; width:50%}
-.dialog_2 .item span,.dialog_3 .item span,.dialog_5 .item span{ text-align:center; margin:0.05rem; height:0.3rem; line-height:0.3rem; padding:0 0.07rem; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; border:0.01rem solid #ffb619; display:block; color:#c88800; border-radius:0.15rem}
-.dialog_2 .item.on span,.dialog_3 .item.on span,.dialog_5 .item.on span{ background:#ffb619; color:#fff}
-.dialog_4{ font-size:0.12rem; height:2.6rem}
-.dialog_4 .l{ width:0.51rem; height:100%; float:left; overflow-y:auto; position:relative; -webkit-overflow-scrolling:touch}
-.dialog_4 .l .box{ position:absolute; top:0; left:0}
-.dialog_4 .l .item{ width:0.5rem; margin:0 0.01rem 0.05rem 0; height:0.27rem; line-height:0.27rem; text-align:center; border:0.01rem solid #e1e1e1; border-right:none; border-radius:0.15rem 0 0 0.15rem; box-sizing:border-box; background:#e1e1e1; color:#999}
-.dialog_4 .l .item.on{ color:#c88800; background:#fff; border-color:#ffb619; position:relative}
-.dialog_4 .l .item.on:before{ content:""; position:absolute; right:-0.01rem; top:0; bottom:0; width:0.01rem; background:#fff}
-.dialog_4 .r{ height:100%; margin-left:0.5rem; border:solid #ffb619; border-width:0.01rem 0.01rem 0; border-radius:0 0.05rem 0 0; box-sizing:border-box}
-.dialog_4 .r .box_wrap{ position:relative; height:100%; overflow-y:auto; -webkit-overflow-scrolling:touch}
-.dialog_4 .r .box{ position:absolute; top:0; left:0; width:100%; padding:0.1rem 0.06rem; box-sizing:border-box}
-.dialog_4 .r .item{ float:left; width:50%}
-.dialog_4 .r .item div{ border:0.01rem solid #ffb619; margin:0.06rem 0.05rem 0; text-align:center; color:#ffb619; border-radius:0.05rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.dialog_4 .r .item.on div{ background:#ffb619; color:#fff}
+.dialog_0{ font-size:0.15rem; height:0.57rem}
+
+
+.dialog_1,.dialog_2{ font-size:0.14rem; height:2.6rem; overflow-y:auto; -webkit-overflow-scrolling:touch}
+.dialog_1 .item,.dialog_2 .item{ float:left; width:50%}
+.dialog_1 .item span,.dialog_2 .item span,.dialog_5 .item span{ text-align:center; margin:0.05rem; height:0.3rem; line-height:0.3rem; padding:0 0.07rem; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; border:0.01rem solid #ffb619; display:block; color:#c88800; border-radius:0.15rem}
+.dialog_1 .item.on span,.dialog_2 .item.on span,.dialog_5 .item.on span{ background:#ffb619; color:#fff}
+.dialog_3{ font-size:0.12rem; height:2.6rem}
+.dialog_3 .l{ width:0.51rem; height:100%; float:left; overflow-y:auto; position:relative; -webkit-overflow-scrolling:touch}
+.dialog_3 .l .box{ position:absolute; top:0; left:0}
+.dialog_3 .l .item{ width:0.5rem; margin:0 0.01rem 0.05rem 0; height:0.27rem; line-height:0.27rem; text-align:center; border:0.01rem solid #e1e1e1; border-right:none; border-radius:0.15rem 0 0 0.15rem; box-sizing:border-box; background:#e1e1e1; color:#999}
+.dialog_3 .l .item.on{ color:#c88800; background:#fff; border-color:#ffb619; position:relative}
+.dialog_3 .l .item.on:before{ content:""; position:absolute; right:-0.01rem; top:0; bottom:0; width:0.01rem; background:#fff}
+.dialog_3 .r{ height:100%; margin-left:0.5rem; border:solid #ffb619; border-width:0.01rem 0.01rem 0; border-radius:0 0.05rem 0 0; box-sizing:border-box}
+.dialog_3 .r .box_wrap{ position:relative; height:100%; overflow-y:auto; -webkit-overflow-scrolling:touch}
+.dialog_3 .r .box{ position:absolute; top:0; left:0; width:100%; padding:0.1rem 0.06rem; box-sizing:border-box}
+.dialog_3 .r .item{ float:left; width:50%}
+.dialog_3 .r .item div{ border:0.01rem solid #ffb619; margin:0.06rem 0.05rem 0; text-align:center; color:#ffb619; border-radius:0.05rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.dialog_3 .r .item.on div{ background:#ffb619; color:#fff}
+.dialog_4{ font-size:0.14rem; height:1.75rem; overflow:hidden}
+.dialog_4 .item{ float:left; width:33.33%; border-right:1px solid #ffb67b; box-sizing:border-box; text-align:center; margin-bottom:0.25rem}
+.dialog_4 .item:nth-child(3){ border:none}
+.dialog_4 .item a{ border:1px solid #ffb619; display:block; margin:0 0.15rem; height:0.3rem; line-height:0.3rem; border-radius:0.2rem; color:#c88800}
+.dialog_4 .item a:first-child{ margin-bottom:0.05rem}
+.dialog_4 .item a.on{ background:#ffb619; color:#fff}
 .dialog_5{ font-size:0.14rem; height:2.6rem; overflow-y:auto; -webkit-overflow-scrolling:touch}
 .dialog_5 .item{ float:left; width:33.33%}
-.dialog_6{ font-size:0.14rem; height:1.75rem; overflow:hidden}
-.dialog_6 .item{ float:left; width:33.33%; border-right:1px solid #ffb67b; box-sizing:border-box; text-align:center; margin-bottom:0.25rem}
-.dialog_6 .item:nth-child(3){ border:none}
-.dialog_6 .item a{ border:1px solid #ffb619; display:block; margin:0 0.15rem; height:0.3rem; line-height:0.3rem; border-radius:0.2rem; color:#c88800}
-.dialog_6 .item a:first-child{ margin-bottom:0.05rem}
-.dialog_6 .item a.on{ background:#ffb619; color:#fff}
+.dialog_6{ font-size:0.15rem; height:0.57rem}
+.dialog_6 .ipt_text{ width:100%; height:0.35rem; line-height:0.35rem; padding:0 0.05rem; box-sizing:border-box; border:0.01rem solid #ffb619; border-radius:0.08rem}
 /*我的套装data-qjnn-choice-my.html*/
-.my{ margin-top:45px; font-size:0.12rem; padding-top:0.15rem}
+.my{ font-size:0.12rem; padding-top:0.15rem}
 .my .item{ background:#fff; border-radius:0.05rem; box-shadow:0 0.02rem rgba(169,145,142,0.8); margin:0 0.1rem 0.1rem; color:#907a4d}
 .my .item_inner{ display:table; width:100%; padding:0.06rem 0}
 .my .item .l{ width:70%; display:table-cell; padding-left:0.1rem; box-sizing:border-box}
@@ -200,7 +202,7 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .my .item .r .dt{ font-size:0.1rem}
 .my .item .r .dd{ font-size:0.18rem}
 /*套装详情data-qjnn-choice-mydetail.html*/
-.mydetail{ background:rgba(255,255,255,0.7); padding:0 0.07rem 0.2rem; margin-top:45px; font-size:0.12rem}
+.mydetail{ background:rgba(255,255,255,0.7); padding:0 0.07rem 0.2rem; font-size:0.12rem}
 .mydetail .head{ text-align:center}
 .mydetail .head .title{ font-size:0.15rem; color:#5c5c5c; padding:0.07rem 0 0.03rem}
 .mydetail .head .icon{ background:url(../images/qjnn/choice-mydetail.png) no-repeat; background-size:2.63rem; width:2.63rem; height:0.11rem; display:block; margin:0 auto}

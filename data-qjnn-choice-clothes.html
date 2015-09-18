@@ -56,7 +56,7 @@
 
 <div class="chudo" id="chudo">
     <div class="chudo_attr">
-        <div class="item on">
+        <div class="item" id="btn_jibenshuxing">
             <i class="icon_x"></i>
             <i class="icon_d_l icon_d_1"></i>
             <i class="icon_d_l icon_d_2"></i>
@@ -68,7 +68,7 @@
             <i class="icon_d_r icon_d_4"></i>
             <div>基本属性</div>
         </div>
-        <div class="item">
+        <div class="item" id="btn_teshushuxing">
             <i class="icon_x"></i>
             <i class="icon_d_l icon_d_1"></i>
             <i class="icon_d_l icon_d_2"></i>
@@ -115,8 +115,8 @@
 
 <div class="container" id="container">
 	<div class="clothestype_wrap">
-        <div class="clothestype wbclick">
-            <div class="item on"><div>发型<br>23</div></div>
+        <div class="clothestype wbclick" id="clothestype">
+            <!--<div class="item on"><div>发型</div></div>
             <div class="item"><div>连衣裙</div></div>
             <div class="item"><div>上衣</div></div>
             <div class="item"><div>连衣裙</div></div>
@@ -128,11 +128,11 @@
             <div class="item"><div>连衣裙</div></div>
             <div class="item"><div>上衣</div></div>
             <div class="item"><div>连衣裙</div></div>
-            <div class="item"><div>上衣</div></div>
+            <div class="item"><div>上衣</div></div>-->
         </div>
     </div>
     
-    <div class="basket_wrap">
+    <div class="basket_wrap" id="basket_wrap">
         <div class="basket">
             <div class="head"><div><i class="icon_l png_clothes"></i>已选服饰<i class="icon_r png_clothes"></i></div></div>
             <div class="basket_inner">
@@ -200,7 +200,7 @@
     </div>
     
     <div class="wardrobe_room">
-    	<div class="wardrobe_wrap wardrobe_filter">
+    	<div class="wardrobe_wrap">
         	<div class="wardrobe_spe">
             	<div class="wardrobe_spe_inner">
                     <div class="item"><div>全部</div></div>
@@ -379,7 +379,7 @@
     </div><!--wardrobe_room-->
 </div><!--/container-->
 
-<div class="door door_back">
+<div class="door" id="door">
 	<div class="front">
     	<i class="icon_trig"></i>
     	<div>已选</div>
@@ -392,146 +392,153 @@
 
 
 <div class="dialog" id="dialog">
-	<div class="dialog_1 hide"><!--保存套装-->
-    	<input class="ipt_text" type="text" maxlength="10" placeholder="请输入套装名称...">
-    </div>
-    
-    <div class="dialog_2 hide"><!--竞技场-->
-    	<div class="item on"><span>金色音乐厅厅厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-        <div class="item"><span>金色音乐厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-        <div class="item"><span>金色音乐厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-        <div class="item"><span>金色音乐厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-        <div class="item"><span>金色音乐厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-        <div class="item"><span>金色音乐厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-        <div class="item"><span>金色音乐厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-    </div>
-    
-    <div class="dialog_3 hide"><!--联盟委托-->
-    	<div class="item on"><span>金色音乐厅厅厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-        <div class="item"><span>金色音乐厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-        <div class="item"><span>金色音乐厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-        <div class="item"><span>金色音乐厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-        <div class="item"><span>金色音乐厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-        <div class="item"><span>金色音乐厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-        <div class="item"><span>金色音乐厅</span></div>
-        <div class="item"><span>金色音乐金色音乐厅厅</span></div>
-    </div>
-    
-    <div class="dialog_4 hide"><!--关卡-->
-    	<div class="l">
-        	<div class="box">
-                <div class="item on">第一章</div>
-                <div class="item">第一章</div>
-                <div class="item">第一章</div>
-                <div class="item">第一章</div>
-                <div class="item">第一章</div>
-                <div class="item">第一章</div>
-                <div class="item">第一章</div>
-                <div class="item">第一章</div>
-                <div class="item">第一章</div>
-                <div class="item">第一章</div>
-                <div class="item">第一章</div>
-                <div class="item">第一章</div>
-                <div class="item">第一章</div>
-            </div>
+	<div class="content">
+        <div class="dialog_0 hide"><!--保存套装-->
+            选择后会清空之前的主题选择和已选服饰哦，确定要选择吗？
         </div>
-        <div class="r">
-        	<div class="box_wrap">
+        
+        <div class="dialog_1 hide"><!--竞技场-->
+            <div class="item on"><span>金色音乐厅厅厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+            <div class="item"><span>金色音乐厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+            <div class="item"><span>金色音乐厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+            <div class="item"><span>金色音乐厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+            <div class="item"><span>金色音乐厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+            <div class="item"><span>金色音乐厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+            <div class="item"><span>金色音乐厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+        </div>
+        
+        <div class="dialog_2 hide"><!--联盟委托-->
+            <div class="item on"><span>金色音乐厅厅厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+            <div class="item"><span>金色音乐厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+            <div class="item"><span>金色音乐厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+            <div class="item"><span>金色音乐厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+            <div class="item"><span>金色音乐厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+            <div class="item"><span>金色音乐厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+            <div class="item"><span>金色音乐厅</span></div>
+            <div class="item"><span>金色音乐金色音乐厅厅</span></div>
+        </div>
+        
+        <div class="dialog_3 hide"><!--关卡-->
+            <div class="l">
                 <div class="box">
-                    <div class="item on"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
-                    <div class="item"><div>1-1</div></div>
+                    <div class="item on">第一章</div>
+                    <div class="item">第一章</div>
+                    <div class="item">第一章</div>
+                    <div class="item">第一章</div>
+                    <div class="item">第一章</div>
+                    <div class="item">第一章</div>
+                    <div class="item">第一章</div>
+                    <div class="item">第一章</div>
+                    <div class="item">第一章</div>
+                    <div class="item">第一章</div>
+                    <div class="item">第一章</div>
+                    <div class="item">第一章</div>
+                    <div class="item">第一章</div>
+                </div>
+            </div>
+            <div class="r">
+                <div class="box_wrap">
+                    <div class="box">
+                        <div class="item on"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                        <div class="item"><div>1-1</div></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        
+        <div class="dialog_4 hide"><!--五属性-->
+            <div class="item">
+                <a class="on" data-label="jianyue">简约</a>
+                <a data-label="huali">华丽</a>
+            </div>
+            <div class="item">
+                <a class="on" data-label="keai">可爱</a>
+                <a data-label="chengshu">成熟</a>
+            </div>
+            <div class="item">
+                <a class="on" data-label="huopo">活泼</a>
+                <a data-label="youya">优雅</a>
+            </div>
+            <div class="item">
+                <a class="on" data-label="qingchun">清纯</a>
+                <a data-label="xinggan">性感</a>
+            </div>
+            <div class="item">
+                <a data-label="qingliang">清凉</a>
+                <a class="on" data-label="baonuan">保暖</a>
+            </div>
+        </div>
+        
+        <div class="dialog_5 hide"><!--特殊属性-->
+            <div class="box">
+                <div class="item on"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+                <div class="item"><span>特殊属性</span></div>
+            </div>
+        </div>
+        
+        <div class="dialog_6 hide"><!--保存套装-->
+            <input class="ipt_text" type="text" maxlength="10" placeholder="请输入套装名称...">
+        </div>
     
-    <div class="dialog_5 hide"><!--特殊属性-->
-    	<div class="box">
-            <div class="item on"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-            <div class="item"><span>特殊属性</span></div>
-        </div>
-    </div>
-    
-    <div class="dialog_6"><!--五属性-->
-    	<div class="item">
-        	<a class="on" data-label="jianyue">简约</a>
-            <a data-label="huali">华丽</a>
-        </div>
-        <div class="item">
-        	<a class="on" data-label="keai">可爱</a>
-            <a data-label="chengshu">成熟</a>
-        </div>
-        <div class="item">
-        	<a class="on" data-label="huopo">活泼</a>
-            <a data-label="youya">优雅</a>
-        </div>
-        <div class="item">
-        	<a class="on" data-label="qingchun">清纯</a>
-            <a data-label="xinggan">性感</a>
-        </div>
-        <div class="item">
-        	<a data-label="qingliang">清凉</a>
-            <a class="on" data-label="baonuan">保暖</a>
-        </div>
     </div>
     
     <div class="foot">
     	<i class="icon icon_l"><code></code></i>
         <i class="icon icon_r"><code></code></i>
         <div class="handle">
-        	<div class="item"><a class="btn_cancel png_clothes wbclick">取消</a></div>
-            <div class="item"><a class="btn_sure png_clothes wbclick">确定</a></div>
+        	<div class="item"><a class="btn_cancel png_clothes wbclick" id="btn_cancel">取消</a></div>
+            <div class="item"><a class="btn_sure png_clothes wbclick" id="btn_sure">确定</a></div>
         </div>
     </div>
 </div><!--/dialog-->
@@ -543,7 +550,7 @@
 <script type="text/javascript" src="json/json-qjnn-choice.js"></script>
 <script type="text/javascript">
 $(function(){
-	var data_all = {data_clothes:data_clothes, data_arena:data_arena};
+	var data_all = {data_clothes:data_clothes, data_arena:data_arena, data_te:data_te};
 	var qjnn = new Qjnn(data_all);
 });
 </script>
