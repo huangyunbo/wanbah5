@@ -9,7 +9,9 @@
 					platform:"web",//针对平台
 					plugin:"plugin_952",//服装搭配器的板块ID
 					clothestype:1,//衣服的类别 1头发 2连衣裙...
-					dialogtype:0,//选择了哪个弹窗 0:衣柜 1:竞技场 2:联盟委托 3:关卡 4:基本属性 5:特殊属性 6:保存套装
+					worktype:0,//要处理的类别 0:衣柜 1:竞技场 2:联盟委托 3:关卡 4:基本属性 5:特殊属性 6:保存套装
+					dialogtype:0,//选择了哪个弹窗 0:清空 1:竞技场 2:联盟委托 3:关卡 4:基本属性 5:特殊属性 6:保存套装
+					isway:[false,[false,false],[false,false],[false,false]],//衣柜 竞技场 联盟委托 关卡,第一层开关是否确认，第二层开关是否确认
 					chudo:0//哪个中堂 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
 				 };
 
@@ -386,36 +388,130 @@
 			
 			this.calcClothes();
 		},
+		work: function(){//弹窗完后处理
+			switch(this.o.worktype){
+				case 0://处理衣柜
+					this.o.isway[0] = false;
+					console.log("处理0");
+					easyDialog.close();
+					break;
+				case 1://处理竞技场
+					this.o.isway[1][0] = false;
+					this.o.isway[1][1] = false;
+					console.log("处理1");
+					easyDialog.close();
+					break;
+				case 2://处理联盟委托
+					this.o.isway[2][0] = false;
+					this.o.isway[2][1] = false;
+					console.log("处理2");
+					easyDialog.close();
+					break;
+				case 3://处理关卡
+					this.o.isway[3][0] = false;
+					this.o.isway[3][1] = false;
+					console.log("处理3");
+					easyDialog.close();
+					break;
+			}
+		},
+		sureWay: function(){
+			switch(this.o.worktype){
+				case 0://处理衣柜
+					this.work();
+					break;
+				case 1://处理竞技场
+					if(this.o.isway[1][0] == false && this.o.isway[1][1] == false){
+						this.o.isway[1][0] = true;
+						this.way();
+					}else if(this.o.isway[1][0] == true && this.o.isway[1][1] == true){
+						this.work();
+					}
+					break;
+				case 2://处理联盟委托
+					if(this.o.isway[2][0] == false && this.o.isway[2][1] == false){
+						this.o.isway[2][0] = true;
+						this.way();
+					}else if(this.o.isway[2][0] == true && this.o.isway[2][1] == true){
+						this.work();
+					}
+					break;
+				case 3://处理关卡
+					if(this.o.isway[3][0] == false && this.o.isway[3][1] == false){
+						this.o.isway[3][0] = true;
+						this.way();
+					}else if(this.o.isway[3][0] == true && this.o.isway[3][1] == true){
+						this.work();
+					}
+					break;
+			}
+		},
+		way: function(){
+			switch(this.o.worktype){
+				case 0://处理衣柜
+					this.o.dialogtype = 0;
+					this.openDialog();
+					break;
+				case 1://处理竞技场
+					if(this.o.isway[1][0] == false && this.o.isway[1][1] == false){
+						this.o.dialogtype = 1;
+						this.openDialog();
+					}else if(this.o.isway[1][0] == true && this.o.isway[1][1] == false){
+						easyDialog.close();
+						this.o.dialogtype = 0;
+						this.openDialog();
+						this.o.isway[1][1] = true;
+					}else if(this.o.isway[1][0] == true && this.o.isway[1][1] == true){
+						this.o.isway[1][0] = false;
+						this.o.isway[1][1] = false;
+						this.o.dialogtype = 1;
+						this.openDialog();
+					}
+					break;
+				case 2://处理联盟委托
+					if(this.o.isway[2][0] == false && this.o.isway[2][1] == false){
+						this.o.dialogtype = 2;
+						this.openDialog();
+					}else if(this.o.isway[2][0] == true && this.o.isway[2][1] == false){
+						easyDialog.close();
+						this.o.dialogtype = 0;
+						this.openDialog();
+						this.o.isway[2][1] = true;
+					}else if(this.o.isway[2][0] == true && this.o.isway[2][1] == true){
+						this.o.isway[2][0] = false;
+						this.o.isway[2][1] = false;
+						this.o.dialogtype = 2;
+						this.openDialog();
+					}
+					break;
+				case 3://处理关卡
+					if(this.o.isway[3][0] == false && this.o.isway[3][1] == false){
+						this.o.dialogtype = 3;
+						this.openDialog();
+					}else if(this.o.isway[3][0] == true && this.o.isway[3][1] == false){
+						easyDialog.close();
+						this.o.dialogtype = 0;
+						this.openDialog();
+						this.o.isway[3][1] = true;
+					}else if(this.o.isway[3][0] == true && this.o.isway[3][1] == true){
+						this.o.isway[3][0] = false;
+						this.o.isway[3][1] = false;
+						this.o.dialogtype = 3;
+						this.openDialog();
+					}
+					break;
+			}
+		},
+		openDialog: function(){//弹窗
+			$("#dialog .content").children().siblings().addClass("hide").eq(this.o.dialogtype).removeClass("hide");
+			easyDialog.open({
+				container: "dialog",
+				fixed : false
+			});			
+		},
 		events: function(){
 			var that = this;
-			//选中衣服类别
-			$("#clothestype .item").click(function(){
-				that.o.clothestype = Number($(this).attr("data-clothestype"));
-				$(this).addClass("on").siblings().removeClass("on");
-				//that.selectedbute();
-			});
-			
-			//竞技场、联盟委托、五属性打开
-			$("#switchboard").children().click(function(){
-				var _type = Number($(this).attr("data-type"));
-				that.o.type = _type,
-				
-				$(this).addClass("on").siblings().removeClass("on");
-				that.printDialogattr();
-			});
-			//点击已选属性/主题 打开弹窗
-			$("#selectedbute").click(function(){
-				that.printDialogattr();
-			});
 
-			//在竞技场、联盟委托、五属性里面选择
-			$("#dialog_attr").on("click", ".btn_radio", function(){
-				if(that.o.type == 1){
-					$(this).addClass("on").siblings().removeClass("on");
-				}else{
-					$(this).addClass("on").parent().siblings().children().removeClass("on");
-				}
-			});
 			//点竞技场、联盟委托、五属性的确定
 			/*$(".btn_sure").click(function(){
 				if(that.o.type == 1){//五属性
@@ -446,29 +542,34 @@
 				easyDialog.close();
 			});*/
 			
-
 			
-			/*easyDialog.open({
-				container: "dialog",
-				fixed : false
-			});*/
+			//旋转屏幕重新设置
+			$(window).resize(function(e){
+                that.pageReset();
+            });
+		},
+		
+		htmlClothes: function(){//衣服页
+			var that = this;
+			
 			//选择四大路打开
 			$("#way .item").click(function(){
 				var _index = $("#way .item").index($(this));
-				that.o.dialogtype = _index;
+				that.o.worktype = _index;
 				$("#way .item").eq(_index).addClass("on").siblings().removeClass("on");
-				if(_index == 0) return;
-				that.whichDialog(_index);
+				that.way();
 			});
 			//基本属性弹窗
 			$("#btn_jibenshuxing").click(function(){
+				that.o.worktype = 4;
 				that.o.dialogtype = 4;
-				that.whichDialog();
+				that.openDialog();
 			});
 			//特殊属性弹窗
 			$("#btn_teshushuxing").click(function(){
+				that.o.worktype = 5;
 				that.o.dialogtype = 5;
-				that.whichDialog();
+				that.openDialog();
 			});
 			//关闭所有弹窗
 			$("#btn_cancel").click(function(){
@@ -476,41 +577,22 @@
 			});
 			//确定弹窗
 			$("#btn_sure").click(function(){
-				that.handleSure();
-				//easyDialog.close();
+				if(that.o.worktype == 0 || that.o.worktype == 1 || that.o.worktype == 2 || that.o.worktype == 3){//是这4种状态，考虑确定键询问是否清空
+					that.sureWay();
+				}else{
+					that.work();
+				}
+			});
+			//选中衣服类别
+			$("#clothestype").on("click",".item",function(){
+				that.o.clothestype = Number($(this).attr("data-clothestype"));
+				$(this).addClass("on").siblings().removeClass("on");
+				//that.selectedbute();
 			});
 			
-			//旋转屏幕重新设置
-			$(window).resize(function(e){
-                that.pageReset();
-            });
-		},
-		handleSure: function(){//处理弹窗确定后的事情
-			switch(this.o.dialogtype){
-				case 0://选择后会清空之前的主题选择和已选服饰
-					break;
-				case 1://处理竞技场
-					//$("#dialog .content").children().siblings().addClass("hide").eq(0).removeClass("hide");
-					break;
-				case 2://处理联盟委托
-					break;
-				case 3://处理关卡
-					break;
-				case 4://处理基本属性
-					break;
-				case 5://处理特殊属性
-					break;
-				case 6://处理保存套装
-					break;
-			}
-		},
-		whichDialog: function(){//选择哪一个弹窗打开
-			$("#dialog .content").children().siblings().addClass("hide").eq(this.o.dialogtype).removeClass("hide");
-			easyDialog.open({
-				container: "dialog",
-				fixed : false
-			});
-				
+			this.printClothestype();
+
+			$("#clothestype .item").eq(0).trigger("click");
 		},
 		printClothestype: function(){//打印衣服类别
 			var html = '',
@@ -555,6 +637,7 @@
 					break;
 				case (href == "clothes"):
 					this.isplatform("clothes");
+					this.htmlClothes();
 					break;
 				case (href == "my"):
 					this.isplatform("my");
@@ -633,11 +716,10 @@
 			return true;
 		},
 		init: function(){
+			this.events();
 			this.ispage();
 			this.pageReset();
-			this.printClothestype();
-			this.events();
-			$("#clothestype .item").eq(0).trigger("click");
+			
 		}
 	};
 	
