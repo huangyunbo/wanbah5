@@ -115,20 +115,23 @@
 
 <div class="container" id="container">
 	<div class="clothestype_wrap">
-        <div class="clothestype wbclick" id="clothestype">
-            <!--<div class="item on"><div>发型</div></div>
-            <div class="item"><div>连衣裙</div></div>
-            <div class="item"><div>上衣</div></div>
-            <div class="item"><div>连衣裙</div></div>
-            <div class="item"><div>上衣</div></div>
-            <div class="item"><div>连衣裙</div></div>
-            <div class="item"><div>上衣</div></div>
-            <div class="item"><div>连衣裙</div></div>
-            <div class="item"><div>上衣</div></div>
-            <div class="item"><div>连衣裙</div></div>
-            <div class="item"><div>上衣</div></div>
-            <div class="item"><div>连衣裙</div></div>
-            <div class="item"><div>上衣</div></div>-->
+    	<div class="clothestype_back" id="clothestype_back">返回</div>
+    	<div class="box">
+            <div class="clothestype wbclick" id="clothestype">
+                <!--<div class="item on"><span>0</span><div>发型</div></div>
+                <div class="item"><span>12</span><div>连衣裙</div></div>
+                <div class="item"><span>0</span><div>上衣</div></div>
+                <div class="item"><span>0</span><div>连衣裙</div></div>
+                <div class="item"><span>0</span><div>上衣</div></div>
+                <div class="item"><span>0</span><div>连衣裙</div></div>
+                <div class="item"><span>0</span><div>上衣</div></div>
+                <div class="item"><span>0</span><div>连衣裙</div></div>
+                <div class="item"><span>0</span><div>上衣</div></div>
+                <div class="item"><span>0</span><div>连衣裙</div></div>
+                <div class="item"><span>0</span><div>上衣</div></div>
+                <div class="item"><span>0</span><div>连衣裙</div></div>
+                <div class="item"><span>0</span><div>上衣</div></div>-->
+            </div>
         </div>
     </div>
     
@@ -209,8 +212,8 @@
                 </div>
             </div>
             <div class="wardrobe">
-                <div class="wardrobe_inner">
-                    <div class="item">
+                <div class="wardrobe_inner" id="wardrobe">
+                    <!--<div class="item">
                         <div class="head head_first">
                             <i class="icon_gun"></i>
                             <i class="icon_ring"></i>
@@ -371,7 +374,7 @@
                                 <div class="t3">服装店/幻指阁/迷之阁/1-3公主/5-6公主</div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 
                 </div><!--/wardrobe_inner-->
             </div><!--/wardrobe-->
@@ -415,7 +418,7 @@
         </div>
         
         <div class="dialog_2 hide"><!--联盟委托-->
-            <div class="item on"><span>金色音乐厅厅厅</span></div>
+            <div class="item on"><span>联盟委托</span></div>
             <div class="item"><span>金色音乐金色音乐厅厅</span></div>
             <div class="item"><span>金色音乐厅</span></div>
             <div class="item"><span>金色音乐金色音乐厅厅</span></div>
@@ -550,7 +553,7 @@
 <script type="text/javascript" src="json/json-qjnn-choice.js"></script>
 <script type="text/javascript">
 $(function(){
-	var data_all = {data_clothes:data_clothes, data_arena:data_arena, data_te:data_te};
+	var data_all = {data_clothes:data_clothes, data_arena:data_arena, data_te:data_te, data_gates:data_gates};
 	var qjnn = new Qjnn(data_all);
 });
 </script>
