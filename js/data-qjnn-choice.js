@@ -10,8 +10,7 @@
 					plugin:"plugin_952",//服装搭配器的板块ID
 					clothestype:1,//衣服的类别 1头发 2连衣裙...
 					worktype:0,//要处理的类别 0:衣柜 1:竞技场 2:联盟委托 3:关卡 4:基本属性 5:特殊属性 6:保存套装
-					dialogtype:0,//选择了哪个弹窗 0:清空 1:竞技场 2:联盟委托 3:关卡 4:基本属性 5:特殊属性 6:保存套装
-					isway:[false,[false,false],[false,false],[false,false]],//衣柜 竞技场 联盟委托 关卡,第一层开关是否确认，第二层开关是否确认
+					isway:[false,false],//竞技场 联盟委托 关卡,第一层默认false,false 确认后true,false 第二层打开true,true
 					chudo:0//哪个中堂 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
 				 };
 
@@ -391,119 +390,85 @@
 		work: function(){//弹窗完后处理
 			switch(this.o.worktype){
 				case 0://处理衣柜
-					this.o.isway[0] = false;
-					console.log("处理0");
+					console.log("衣柜");
 					easyDialog.close();
 					break;
 				case 1://处理竞技场
-					this.o.isway[1][0] = false;
-					this.o.isway[1][1] = false;
-					console.log("处理1");
+					this.o.isway[0] = false;
+					this.o.isway[1] = false;
+					console.log("竞技场");
 					easyDialog.close();
 					break;
 				case 2://处理联盟委托
-					this.o.isway[2][0] = false;
-					this.o.isway[2][1] = false;
-					console.log("处理2");
+					this.o.isway[0] = false;
+					this.o.isway[1] = false;
+					console.log("联盟委托");
 					easyDialog.close();
 					break;
 				case 3://处理关卡
-					this.o.isway[3][0] = false;
-					this.o.isway[3][1] = false;
-					console.log("处理3");
+					this.o.isway[0] = false;
+					this.o.isway[1] = false;
+					console.log("关卡");
 					easyDialog.close();
+					break;
+				case 4://基本属性
+					easyDialog.close();
+					console.log("基本属性");
+					break;
+				case 5://特殊属性
+					easyDialog.close();
+					console.log("特殊属性");
+					break;
+				case 6://保存套装
+					easyDialog.close();
+					console.log("保存套装");
 					break;
 			}
 		},
-		sureWay: function(){
+		sureWay: function(){//0:衣柜 1:竞技场 2:联盟委托 3:关卡 摁下确定键调用的函数
+			var that = this;
+			function sureWayfun(){
+				if(!that.o.isway[0] && !that.o.isway[1]){//[false,false]
+					that.o.isway[0] = true;
+					that.way();
+				}else if(that.o.isway[0] && that.o.isway[1]){//[true,true]
+					that.work();
+				}
+			}
 			switch(this.o.worktype){
 				case 0://处理衣柜
 					this.work();
 					break;
 				case 1://处理竞技场
-					if(this.o.isway[1][0] == false && this.o.isway[1][1] == false){
-						this.o.isway[1][0] = true;
-						this.way();
-					}else if(this.o.isway[1][0] == true && this.o.isway[1][1] == true){
-						this.work();
-					}
+					sureWayfun();
 					break;
 				case 2://处理联盟委托
-					if(this.o.isway[2][0] == false && this.o.isway[2][1] == false){
-						this.o.isway[2][0] = true;
-						this.way();
-					}else if(this.o.isway[2][0] == true && this.o.isway[2][1] == true){
-						this.work();
-					}
+					sureWayfun();
 					break;
 				case 3://处理关卡
-					if(this.o.isway[3][0] == false && this.o.isway[3][1] == false){
-						this.o.isway[3][0] = true;
-						this.way();
-					}else if(this.o.isway[3][0] == true && this.o.isway[3][1] == true){
-						this.work();
-					}
+					sureWayfun();
 					break;
 			}
 		},
-		way: function(){
-			switch(this.o.worktype){
-				case 0://处理衣柜
-					this.o.dialogtype = 0;
-					this.openDialog();
-					break;
-				case 1://处理竞技场
-					if(this.o.isway[1][0] == false && this.o.isway[1][1] == false){
-						this.o.dialogtype = 1;
-						this.openDialog();
-					}else if(this.o.isway[1][0] == true && this.o.isway[1][1] == false){
-						easyDialog.close();
-						this.o.dialogtype = 0;
-						this.openDialog();
-						this.o.isway[1][1] = true;
-					}else if(this.o.isway[1][0] == true && this.o.isway[1][1] == true){
-						this.o.isway[1][0] = false;
-						this.o.isway[1][1] = false;
-						this.o.dialogtype = 1;
-						this.openDialog();
-					}
-					break;
-				case 2://处理联盟委托
-					if(this.o.isway[2][0] == false && this.o.isway[2][1] == false){
-						this.o.dialogtype = 2;
-						this.openDialog();
-					}else if(this.o.isway[2][0] == true && this.o.isway[2][1] == false){
-						easyDialog.close();
-						this.o.dialogtype = 0;
-						this.openDialog();
-						this.o.isway[2][1] = true;
-					}else if(this.o.isway[2][0] == true && this.o.isway[2][1] == true){
-						this.o.isway[2][0] = false;
-						this.o.isway[2][1] = false;
-						this.o.dialogtype = 2;
-						this.openDialog();
-					}
-					break;
-				case 3://处理关卡
-					if(this.o.isway[3][0] == false && this.o.isway[3][1] == false){
-						this.o.dialogtype = 3;
-						this.openDialog();
-					}else if(this.o.isway[3][0] == true && this.o.isway[3][1] == false){
-						easyDialog.close();
-						this.o.dialogtype = 0;
-						this.openDialog();
-						this.o.isway[3][1] = true;
-					}else if(this.o.isway[3][0] == true && this.o.isway[3][1] == true){
-						this.o.isway[3][0] = false;
-						this.o.isway[3][1] = false;
-						this.o.dialogtype = 3;
-						this.openDialog();
-					}
-					break;
+		way: function(){//0:衣柜 1:竞技场 2:联盟委托 3:关卡 处理这4种弹窗
+			if(this.o.worktype == 0){//选择衣柜
+				this.openDialog(0);
+			}else{//1:竞技场 2:联盟委托 3:关卡
+				if(!this.o.isway[0] && !this.o.isway[1]){//[false,false]
+					this.openDialog(this.o.worktype);
+				}else if(this.o.isway[0] && !this.o.isway[1]){//[true,false]
+					easyDialog.close();
+					this.openDialog(0);
+					this.o.isway[1] = true;
+				}else if(this.o.isway[0] && this.o.isway[1]){//[true,true]
+					this.o.isway[0] = false;
+					this.o.isway[1] = false;
+					this.openDialog(this.o.worktype);
+				}
 			}
 		},
-		openDialog: function(){//弹窗
-			$("#dialog .content").children().siblings().addClass("hide").eq(this.o.dialogtype).removeClass("hide");
+		openDialog: function(){//弹窗 0:清空 1:竞技场 2:联盟委托 3:关卡 4:基本属性 5:特殊属性 6:保存套装
+			$("#dialog .content").children().siblings().addClass("hide").eq(arguments[0]).removeClass("hide");
 			easyDialog.open({
 				container: "dialog",
 				fixed : false
@@ -562,14 +527,12 @@
 			//基本属性弹窗
 			$("#btn_jibenshuxing").click(function(){
 				that.o.worktype = 4;
-				that.o.dialogtype = 4;
-				that.openDialog();
+				that.openDialog(4);
 			});
 			//特殊属性弹窗
 			$("#btn_teshushuxing").click(function(){
 				that.o.worktype = 5;
-				that.o.dialogtype = 5;
-				that.openDialog();
+				that.openDialog(5);
 			});
 			//关闭所有弹窗
 			$("#btn_cancel").click(function(){
