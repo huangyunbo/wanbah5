@@ -427,6 +427,76 @@ gulp.task('vainglory_ios', function(){
 });
 
 
+//保卫萝卜3
+var luobo3_gameid = 86;
+var luobo3_plugin = "plugin_1098";
+var luobo3_path = '../';
+var luobo3_replace = ['css/', 'js/', 'json/'];
+var luobo3_replace_data =  ['css/', 'js/', 'json/'];
+var luobo3_platform = 'android';
+
+/*gulp.task('vainglory_images', function(){
+    gulp.src('./images/vainglory/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/vainglory'));
+	
+	gulp.src('./images/.nomedia', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/'));
+});*/
+
+gulp.task('luobo3_css', function(){
+    gulp.src(['./css/data-luobo3.css'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+luobo3_gameid+'/'+luobo3_platform+'/DataPlugin/css'));
+});
+
+gulp.task('luobo3_js', function(){
+    gulp.src(['./js/jquery-2.1.3.min.js','./js/data-luobo3.js'])
+        .pipe(concat('data-luobo3.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+luobo3_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+luobo3_gameid+'/'+luobo3_platform+'/DataPlugin/js'));
+});
+
+/*gulp.task('vainglory_json', function(){
+    gulp.src(['./json/json-vainglory.js', './json/json-vainglory.js'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/json'));
+});*/
+
+gulp.task('luobo3_data', function(){
+	if(luobo3_platform == 'android'){
+		for(var i=0; i<luobo3_replace.length; i++){
+			luobo3_replace_data[i] = luobo3_path + luobo3_replace[i];
+		}
+	}
+	
+    gulp.src('data-luobo3.html')
+		.pipe(merge({
+            'js/data-luobo3.min.js':['js/jquery-2.1.3.min.js','js/data-luobo3.js']
+        }))
+		.pipe(replace(luobo3_replace[0], luobo3_replace_data[0]))
+		.pipe(replace(luobo3_replace[1], luobo3_replace_data[1]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+luobo3_gameid+'/'+luobo3_platform+'/DataPlugin/'+luobo3_plugin));
+});
+
+gulp.task('luobo3_clean', function(){
+	return gulp.src('../../chajian/'+luobo3_gameid+'/'+luobo3_platform+'/DataPlugin/*', {read: false})
+	.pipe(clean({force: true}));
+});
+
+gulp.task('luobo3_android', ['luobo3_clean'], function(){
+	gulp.start('luobo3_css', 'luobo3_js', 'luobo3_data');
+});
+
+gulp.task('luobo3_ios_inner', ['luobo3_clean'], function(){
+	gulp.start('luobo3_css', 'luobo3_js', 'luobo3_data');
+});
+
+gulp.task('luobo3_ios', function(){
+	luobo3_platform = 'ios';
+	gulp.start('luobo3_ios_inner');
+});
+
+
 
 
 
