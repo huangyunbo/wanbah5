@@ -23,68 +23,6 @@
 	};
 	
 	Qjnn.prototype = {
-		calcClothes:function(){//计算衣服组
-			var that = this,
-			_dataclothes = that.dataclothes[that.o.clothestype].data,
-			len = _dataclothes.length,
-			htmllen = len,
-			j,
-			tempExchangVal,
-			telen = that.o.te.length;
-			
-			function calcScore(){
-				var dress_wu = arguments[0].wu,
-				clothes_index = arguments[1],//当前类别下所有衣服的数组下标
-				k,
-				radix,
-				total = 0;
-				
-				for(k in dress_wu){
-					radix = dress_wu[k];
-					for(var i=0; i<that.o.wu.length; i++){
-						if(k == that.o.wu[i].k){
-							total += radix*that.o.wu[i].r;
-						}
-					}
-				}
-				_dataclothes[clothes_index].total = total;
-			}
-			
-			for(var i=0; i<len; i++){//计算衣服分数，乘以基数
-				calcScore(_dataclothes[i],i);
-			}
-			
-			while(htmllen>0){//冒泡排序，最大的放前面
-				for(j=len-1; j>len-htmllen; j--){
-					if(_dataclothes[j].total > _dataclothes[j-1].total){
-						tempExchangVal = _dataclothes[j];
-						_dataclothes[j] = _dataclothes[j-1];
-						_dataclothes[j-1] = tempExchangVal;
-					}
-				}
-				htmllen--;
-			}
-
-			if(telen != 0){
-				var te2Arr = [],
-				te1Arr = [],
-				te0Arr = [],
-				te = that.o.te,
-				telen = te.length;
-				
-				for(var i=0; i<_dataclothes.length; i++){//把排完分数后的，再拆成有2个特殊属性/有1个特殊属性/没有特殊属性的三组数组最后再组合出来
-					if(telen == 2 && (_dataclothes[i].te[0] == te[0] || _dataclothes[i].te[0] == te[1]) && (_dataclothes[i].te[1] == te[0] || _dataclothes[i].te[1] == te[1])){
-						te2Arr.push(_dataclothes[i]);
-					}else if(telen == 1 && (_dataclothes[i].te[0] == te[0] || _dataclothes[i].te[1] == te[0])){
-						te1Arr.push(_dataclothes[i]);
-					}else{
-						te0Arr.push(_dataclothes[i]);
-					}
-				}
-				that.dataclothes[that.o.clothestype].data = te2Arr.concat(te1Arr,te0Arr);
-			}
-			that.printClothes2();
-		},
 		printClothes2: function(){//打印衣服组
 			var i = 0,
 			_dataclothes = this.dataclothes[this.o.clothestype].data,
@@ -302,14 +240,11 @@
 			$("#dialog_det").html(html);
 		},
 		setBeam: function(){//设置中间的横梁 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
-			var html = '',
-			_beam = this.o.beam;
+			var _beam = this.o.beam;
 			if(_beam == 0){
 				this.printNature();
 			}else if(_beam == 1){
 				$("#beam_title").html(this.o.zhuti);
-			}else if(_beam == 2){
-				
 			}
 			
 			$("#beam").children().eq(_beam).removeClass("hide").siblings().addClass("hide");
@@ -330,7 +265,6 @@
 				}
 				html_dialog_4 += '</div>';
 			}
-			
 
 			for(var i=0; i<_datate.length; i++){//打印特殊属性的弹窗内容
 				if(this.datate[i].id == this.o.te[0] || this.datate[i].id == this.o.te[1]){
@@ -378,7 +312,7 @@
 					this.o.te = [];
 					this.setWay(0);
 					this.o.beam = 0;
-					this.printWardrobe();
+					this.calcWardrobe();
 					easyDialog.close();
 					break;
 				case 1://处理竞技场
@@ -394,7 +328,7 @@
 					}
 					this.setWay(1);
 					this.o.beam = 1;
-					this.printWardrobe();
+					this.calcWardrobe();
 					easyDialog.close();
 					break;
 				case 2://处理联盟委托
@@ -410,7 +344,7 @@
 					}
 					this.setWay(2);
 					this.o.beam = 1;
-					this.printWardrobe();
+					this.calcWardrobe();
 					easyDialog.close();
 					break;
 				case 3://处理关卡
@@ -427,7 +361,7 @@
 					}
 					this.setWay(3);
 					this.o.beam = 1;
-					this.printWardrobe();
+					this.calcWardrobe();
 					easyDialog.close();
 					break;
 				case 4://基本属性
@@ -436,11 +370,11 @@
 						wuArr.push({k:$(this).children(".on").attr("data-label"),r:1});
                     });
 					this.o.wu = wuArr;
-					this.printWardrobe();
+					this.calcWardrobe();
 					easyDialog.close();
 					break;
 				case 5://特殊属性
-					this.printWardrobe();
+					this.calcWardrobe();
 					easyDialog.close();
 					console.log("特殊属性");
 					break;
@@ -580,12 +514,42 @@
 				$(this).addClass("on");
 			});
 			//基本属性点选
-			$("#dialog_4 a").click(function(){
+			$("#dialog_4").on("click","a",function(){
 				$(this).addClass("on").siblings().removeClass("on");
 			});
 			//特殊属性点选
 			$("#dialog_5").on("click",".item",function(){
-				$(this).addClass("on").siblings().removeClass("on");
+				var _te = that.o.te,
+				_id = Number($(this).attr("data-id"));
+				
+				if(_te.length == 0){//0个特殊属性
+					_te.push(_id);
+					$(this).addClass("on");
+				}else if(_te.length == 1){//1个特殊属性
+					if(_te[0] == _id){
+						_te.splice(0,1);
+						$(this).removeClass("on");
+					}else{
+						_te.push(_id);
+						$(this).addClass("on");
+					}
+				}else if(_te.length == 2){//2个特殊属性
+					if(_te[0] == _id){
+						_te.splice(0,1);
+						$(this).removeClass("on");
+					}else if(_te[1] == _id){
+						_te.splice(1,1);
+						$(this).removeClass("on");
+					}else{
+						$("#dialog_5").children().each(function(index, element) {
+							if(Number($(element).attr("data-id")) == _te[1]){
+								$(element).removeClass("on");
+							}
+                        });
+						_te.splice(1,1,_id);
+						$(this).addClass("on");
+					}
+				}
 			});
 			//放大镜
 			$("#beam .zoom").click(function(){
@@ -597,7 +561,7 @@
 				if(that.o.worktype == 0){
 					that.o.beam = 0;
 					that.setBeam();
-				}else if(that.o.worktype == 1 || that.o.worktype == 2 || that.o.worktype == 3){
+				}else{
 					that.o.beam = 1;
 					that.setBeam();
 				}
@@ -617,7 +581,7 @@
 					that.printClothestype();
 				}else{
 					that.o.clothestype.oldid = that.o.clothestype.id;//记住单一级的衣服类别选中状态
-					that.printWardrobe();
+					that.calcWardrobe();
 				}
 			}).children().eq(0).trigger("click");
 			
@@ -656,6 +620,86 @@
 			$("#dialog_2").html(html_dialog_2);
 			$("#dialog_3").html(html_dialog_3);
 			$("#dialog_3_box").html(html_dialog_3_box);
+		},
+		calcWardrobe:function(){//计算衣服
+			var that = this,
+			_dataclothes,
+			len = 0,//当前类别衣服一共多少
+			htmllen,//冒泡排序需要用来控制减的长度
+			m,
+			tempExchangVal,
+			_te = that.o.te,
+			telen = _te.length;
+			
+			function calcScore(){
+				var clothes_wu = arguments[0].wu,
+				clothes_index = arguments[1],//当前类别下所有衣服的数组下标
+				k,
+				l,
+				radix,
+				total = 0;
+				
+				for(k in clothes_wu){
+					radix = clothes_wu[k];
+					for(l=0; l<that.o.wu.length; l++){
+						if(k == that.o.wu[l].k){
+							total += radix*that.o.wu[l].r;
+						}
+					}
+				}
+				_dataclothes[clothes_index].total = total;
+			}
+			
+			for(var i=0; i<that.dataclothes.length; i++){//计算衣服分数，乘以基数
+				if(that.dataclothes[i].id == that.o.clothestype.id){
+					_dataclothes = that.dataclothes[i].data;
+					len = _dataclothes.length;
+					htmllen = len;
+					for(var j=0; j<len; j++){
+						calcScore(_dataclothes[j],j);
+					}
+					break;
+				}
+			}
+			
+			while(htmllen>0){//冒泡排序，最大的放前面
+				for(m=len-1; m>len-htmllen; m--){
+					if(_dataclothes[m].total > _dataclothes[m-1].total){
+						tempExchangVal = _dataclothes[m];
+						_dataclothes[m] = _dataclothes[m-1];
+						_dataclothes[m-1] = tempExchangVal;
+					}
+				}
+				htmllen--;
+			}
+
+			if(telen != 0){
+				var teArr2 = [],
+				teArr1 = [],
+				teArr0 = [],
+				item_te,
+				item_telen;
+
+				for(var i=0; i<len; i++){//把排完分数后的，再拆成有2个特殊属性/有1个特殊属性/没有特殊属性的三组数组最后再组合出来
+					if(telen == 2 && (_dataclothes[i].te[0] == _te[0] || _dataclothes[i].te[0] == _te[1]) && (_dataclothes[i].te[1] == _te[0] || _dataclothes[i].te[1] == _te[1])){
+						teArr2.push(_dataclothes[i]);		
+					}else if(telen == 1 && (_dataclothes[i].te[0] == _te[0] || _dataclothes[i].te[1] == _te[0])){
+						console.log(2);
+
+						teArr1.push(_dataclothes[i]);
+					}else{
+						teArr0.push(_dataclothes[i]);
+					}
+				}
+				
+				for(var i=0; i<that.dataclothes.length; i++){
+					if(that.dataclothes[i].id == that.o.clothestype.id){
+						that.dataclothes[i].data = teArr2.concat(teArr1,teArr0);//3个特殊属性数组合并回写数据
+						break;
+					}
+				}
+			}
+			that.printWardrobe();
 		},
 		printWardrobe: function(){//打印衣服
 			var that = this,
@@ -728,7 +772,7 @@
 									'</div>'+
 									'<div class="td">'+
 										'<span>估算分:</span>'+
-										'<span class="score">55555</span>'+
+										'<span class="score">'+_dataclothes[i].total+'</span>'+
 									'</div>'+
 								'</div>'+
 							'</div>'+
