@@ -54,8 +54,8 @@
 </div><!--/way-->
 
 
-<div class="chudo" id="chudo">
-    <div class="chudo_attr">
+<div class="beam" id="beam">
+    <div class="beam_attr">
         <div class="item" id="btn_jibenshuxing">
             <i class="icon_x"></i>
             <i class="icon_d_l icon_d_1"></i>
@@ -86,19 +86,19 @@
                 <i class="icon_h"></i>
             </div>
         </div>
-    </div><!--/chudo_attr-->
+    </div><!--/beam_attr-->
     
-    <div class="chudo_title hide">
-        <div class="text">爱斯基摩旅行</div>
+    <div class="beam_title hide">
+        <div class="text" id="beam_title"></div>
         <div class="zoom wbclick">
         	<div class="icon">
                 <i class="icon_r"></i>
                 <i class="icon_h"></i>
             </div>
         </div>
-    </div><!--/chudo_title-->
+    </div><!--/beam_title-->
     
-    <div class="chudo_search hide">
+    <div class="beam_search hide">
         <div class="box">
             <div class="zoom">
                 <div class="icon">
@@ -109,9 +109,9 @@
             <input class="ipt_text" type="text" placeholder="请输入服饰编号或则名称">
         </div>
         <div class="so wbclick">搜索</div>
-        <div class="so so_cancel wbclick">取消</div>
-    </div><!--/chudo_search-->
-</div><!--/chudo-->
+        <div class="so so_cancel wbclick" id="btn_so_cancel">取消</div>
+    </div><!--/beam_search-->
+</div><!--/beam-->
 
 <div class="container" id="container">
 	<div class="clothestype_wrap">
@@ -436,7 +436,7 @@
         
         <div class="dialog_3 hide"><!--关卡-->
             <div class="l">
-                <div class="box" id="dialog_3">
+                <div class="box" id="dialog_3" data-index="0">
                     <!--<div class="item on">第一章</div>
                     <div class="item">第一章</div>
                     <div class="item">第一章</div>
@@ -481,7 +481,7 @@
         </div>
         
         <div class="dialog_4 hide" id="dialog_4"><!--五属性-->
-            <div class="item">
+            <!--<div class="item">
                 <a class="on" data-label="jianyue">简约</a>
                 <a data-label="huali">华丽</a>
             </div>
@@ -500,7 +500,7 @@
             <div class="item">
                 <a data-label="qingliang">清凉</a>
                 <a class="on" data-label="baonuan">保暖</a>
-            </div>
+            </div>-->
         </div>
         
         <div class="dialog_5 hide"><!--特殊属性-->

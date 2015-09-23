@@ -41,30 +41,30 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .way .item.on .icon_x{ background-position:right -0.6rem}
 .way .item .icon_l,.way .item .icon_r{ position:absolute; background-position:right -0.4rem; left:0; bottom:0; width:0.15rem; height:0.115rem}
 .way .item .icon_r{ left:auto; right:0; -webkit-transform:scaleX(-1); transform:scaleX(-1)}
-.chudo{ margin:0 0.15rem 0.05rem; font-size:0.12rem; background:#db6788; border-radius:0 0 0.1rem 0.1rem; height:0.28rem; position:relative}
-.chudo_attr{ text-align:center}
-.chudo_attr .item{ height:0.22rem; line-height:0.26rem; margin-top:0.02rem; display:inline-block; border-top:0.01rem solid #9c3d58; border-radius:0.01rem 0.01rem 0.03rem 0.03rem; background:#fea7bf; padding:0 0.18rem; color:#b75872; position:relative}
-.chudo_attr .item .icon_x{ width:0.2rem; height:0.01rem; background:#cb6a85; position:absolute; left:50%; top:0.025rem; margin-left:-0.1rem}
-.chudo_attr .item .icon_d_l,.chudo_attr .item .icon_d_r{ position:absolute; left:0.02rem; width:0.01rem; height:0.01rem; background:#ce728b}
-.chudo_attr .item .icon_d_r{ left:auto; right:0.02rem}
-.chudo_attr .item .icon_d_1{ top:0.03rem}
-.chudo_attr .item .icon_d_2{ top:0.08rem}
-.chudo_attr .item .icon_d_3{ top:0.13rem}
-.chudo_attr .item .icon_d_4{ top:0.18rem}
-.chudo .zoom{ width:0.23rem; height:0.23rem; background:#fff; position:absolute; right:0.03rem; top:0.02rem; border-radius:0.08rem 0 0.08rem 0}
-.chudo .zoom .icon{ position:relative; width:0.16rem; height:0.16rem; margin:0.03rem 0 0 0.03rem}
-.chudo .zoom .icon_r{ border:0.01rem solid #db6788; border-radius:0.15rem; width:0.14rem; height:0.14rem; position:absolute; left:0; top:0}
-.chudo .zoom .icon_h{ width:0.04rem; height:0.01rem; background:#db6788; position:absolute; right:-0.01rem; bottom:0.01rem; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
-.chudo_title{ text-align:center}
-.chudo_title .text{ height:0.28rem; line-height:0.28rem; color:#902543}
-.chudo_search{ overflow:hidden}
-.chudo_search .box{ float:left; height:0.23rem; background:#fff; margin:0.02rem 0 0 0.04rem; border-radius:0 0 0 0.08rem}
-.chudo_search .box .zoom{ position:static; float:left; background:none}
-.chudo_search .box .zoom .icon_r{ border-color:#d1d1d1}
-.chudo_search .box .zoom .icon_h{ background:#d1d1d1}
-.chudo_search .box .ipt_text{ border:none; width:1.47rem; height:0.23rem; line-height:0.23rem}
-.chudo_search .so{ float:left; width:0.52rem; height:0.23rem; line-height:0.23rem; background:#fea7bf; margin:0.02rem 0 0 0.04rem; text-align:center; color:#b75872}
-.chudo_search .so_cancel{ border-radius:0 0 0.08rem 0}
+.beam{ margin:0 0.15rem 0.05rem; font-size:0.12rem; background:#db6788; border-radius:0 0 0.1rem 0.1rem; height:0.28rem; position:relative}
+.beam_attr{ text-align:center}
+.beam_attr .item{ height:0.22rem; line-height:0.26rem; margin-top:0.02rem; display:inline-block; border-top:0.01rem solid #9c3d58; border-radius:0.01rem 0.01rem 0.03rem 0.03rem; background:#fea7bf; padding:0 0.18rem; color:#b75872; position:relative}
+.beam_attr .item .icon_x{ width:0.2rem; height:0.01rem; background:#cb6a85; position:absolute; left:50%; top:0.025rem; margin-left:-0.1rem}
+.beam_attr .item .icon_d_l,.beam_attr .item .icon_d_r{ position:absolute; left:0.02rem; width:0.01rem; height:0.01rem; background:#ce728b}
+.beam_attr .item .icon_d_r{ left:auto; right:0.02rem}
+.beam_attr .item .icon_d_1{ top:0.03rem}
+.beam_attr .item .icon_d_2{ top:0.08rem}
+.beam_attr .item .icon_d_3{ top:0.13rem}
+.beam_attr .item .icon_d_4{ top:0.18rem}
+.beam .zoom{ width:0.23rem; height:0.23rem; background:#fff; position:absolute; right:0.03rem; top:0.02rem; border-radius:0.08rem 0 0.08rem 0}
+.beam .zoom .icon{ position:relative; width:0.16rem; height:0.16rem; margin:0.03rem 0 0 0.03rem}
+.beam .zoom .icon_r{ border:0.01rem solid #db6788; border-radius:0.15rem; width:0.14rem; height:0.14rem; position:absolute; left:0; top:0}
+.beam .zoom .icon_h{ width:0.04rem; height:0.01rem; background:#db6788; position:absolute; right:-0.01rem; bottom:0.01rem; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
+.beam_title{ text-align:center}
+.beam_title .text{ height:0.28rem; line-height:0.28rem; color:#902543}
+.beam_search{ overflow:hidden}
+.beam_search .box{ float:left; height:0.23rem; background:#fff; margin:0.02rem 0 0 0.04rem; border-radius:0 0 0 0.08rem}
+.beam_search .box .zoom{ position:static; float:left; background:none}
+.beam_search .box .zoom .icon_r{ border-color:#d1d1d1}
+.beam_search .box .zoom .icon_h{ background:#d1d1d1}
+.beam_search .box .ipt_text{ border:none; width:1.47rem; height:0.23rem; line-height:0.23rem}
+.beam_search .so{ float:left; width:0.52rem; height:0.23rem; line-height:0.23rem; background:#fea7bf; margin:0.02rem 0 0 0.04rem; text-align:center; color:#b75872}
+.beam_search .so_cancel{ border-radius:0 0 0.08rem 0}
 .container{ margin:0 0.13rem 0 0.05rem; position:relative}
 /*衣服类别*/
 .clothestype_wrap{ float:left; width:0.52rem; height:100%; overflow:hidden}/*overflow:hidden 防止.clothestype_wrap .box -0.5rem无效*/
