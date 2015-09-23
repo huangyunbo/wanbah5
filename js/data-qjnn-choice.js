@@ -328,50 +328,7 @@
 				case "baonuan":return "qingliang";
 			}
 		},
-		printDialogattr: function(){//打印搭配竞技场
-			var html = '',
-			that = this,
-			_dataarena = that.dataarena,
-			_type = that.o.type,			
-			$dialog_content = $("#dialog_attr").children(".dialog_content");
-				
-			$dialog_content.removeClass("dialog_attr_content dialog_arena_content");
-			if(_type == 1){//如果是五属性模拟器
-				$dialog_content.addClass("dialog_attr_content");
-				for(var i=0; i<that.o.oldwu.length; i++){
-					html += '<div class="item">';
-					if(that.o.oldwu[i].k == "jianyue" || that.o.oldwu[i].k == "keai" || that.o.oldwu[i].k == "huopo" || that.o.oldwu[i].k == "qingchun" || that.o.oldwu[i].k == "qingliang"){//确保这5个上面
-						html += '<a class="btn_radio on" data-label="'+that.o.oldwu[i].k+'">'+that.switchlael(that.o.oldwu[i].k)+'</a>'+
-								'<a class="btn_radio" data-label="'+that.opposite(that.o.oldwu[i].k)+'">'+that.switchlael(that.opposite(that.o.oldwu[i].k))+'</a>';
-					}else{
-						html += '<a class="btn_radio" data-label="'+that.opposite(that.o.oldwu[i].k)+'">'+that.switchlael(that.opposite(that.o.oldwu[i].k))+'</a>'+
-								'<a class="btn_radio on" data-label="'+that.o.oldwu[i].k+'">'+that.switchlael(that.o.oldwu[i].k)+'</a>';
-					}
-					html += '</div>';
-				}
-			}else{
-				$dialog_content.addClass("dialog_arena_content");
-				function printDataarenahtml(i){
-					if(that.o.zhutiid == _dataarena[i].id){
-						return '<div class="item"><a class="btn_radio on" data-id="'+_dataarena[i].id+'">'+_dataarena[i].name+'</a></div>';
-					}else{
-						return '<div class="item"><a class="btn_radio" data-id="'+_dataarena[i].id+'">'+_dataarena[i].name+'</a></div>';
-					}
-				}
-				for(var i=0; i<_dataarena.length; i++){
-					if(_type == 2 && _dataarena[i].type == 2){//如果是搭配竞技场
-						html += printDataarenahtml(i);
-					}else if(_type == 3 && _dataarena[i].type == 3){//如果是联盟委托
-						html += printDataarenahtml(i);
-					}
-				}
-			}
-			$dialog_content.html(html);
-			easyDialog.open({
-				container: "dialog_attr",
-				fixed : false
-			});
-		},
+		
 		selectedbute: function(){//选择哪些属性
 			var html = '';
 			if(this.o.type == 1){
@@ -550,6 +507,41 @@
 					that.work();
 				}
 			});
+			//返回衣服类别
+			$("#clothestype_back").click(function(){
+				$("#container").removeClass("clothestype_two");
+				that.o.clothestype.haskid = 0;
+				that.o.clothestype.parentid = 0;
+				that.printClothestype();
+			});
+			//竞技场点选
+			$("#dialog_1").on("click",".item",function(){
+				
+				$(this).addClass("on").siblings().removeClass("on");
+			});
+			//联盟委托点选
+			$("#dialog_2").on("click",".item",function(){
+				$(this).addClass("on").siblings().removeClass("on");
+			});
+			//关卡点选
+			$("#dialog_3").on("click",".item",function(){
+				var _index = Number($(this).attr("data-index"));
+				$(this).addClass("on").siblings().removeClass("on");
+				$("#dialog_3_box").children().eq(_index).removeClass("hide").siblings().addClass("hide");
+			});
+			//关卡点选
+			$("#dialog_3_box").on("click",".item",function(){
+				$("#dialog_3_box").find(".on").removeClass("on");
+				$(this).addClass("on").siblings().removeClass("on");
+			});
+			//基本属性点选
+			$("#dialog_4 a").click(function(){
+				$(this).addClass("on").siblings().removeClass("on");
+			});
+			//特殊属性点选
+			$("#dialog_5").on("click",".item",function(){
+				$(this).addClass("on").siblings().removeClass("on");
+			});
 			
 			this.calcClothestype();
 			this.printClothestype();
@@ -568,13 +560,49 @@
 					that.printWardrobe();
 				}
 			}).children().eq(0).trigger("click");
-			//返回衣服类别
-			$("#clothestype_back").click(function(){
-				$("#container").removeClass("clothestype_two");
-				that.o.clothestype.haskid = 0;
-				that.o.clothestype.parentid = 0;
-				that.printClothestype();
-			});
+			
+			this.printDialog();
+			
+		},
+		printDialog: function(){//打印竞技场 联盟委托 关卡
+			var html_dialog_1 = '',//竞技场
+			html_dialog_2 = '',//联盟委托
+			html_dialog_3 = '',//关卡
+			html_dialog_3_box = '',//关卡
+			html_dialog_5 = '',//特殊属性
+			_dataarena = this.dataarena,
+			_datagates = this.datagates,
+			_datate = this.datate;
+			
+			for(var i=0; i<_dataarena.length; i++){
+				if(_dataarena[i].type == 2){
+					html_dialog_1 += '<div class="item"><span>'+_dataarena[i].name+'</span></div>';
+				}else if(_dataarena[i].type == 3){
+					html_dialog_2 += '<div class="item"><span>'+_dataarena[i].name+'</span></div>';
+				}
+			}
+			for(var i=0; i<_datagates.length; i++){
+				if(i == 0){
+					html_dialog_3 += '<div class="item on" data-index="'+i+'">'+_datagates[i].gname+'</div>';
+					html_dialog_3_box += '<div class="box">';
+				}else{
+					html_dialog_3 += '<div class="item" data-index="'+i+'">'+_datagates[i].gname+'</div>';
+					html_dialog_3_box += '<div class="box hide">';
+				}
+				for(var j=0; j<_datagates[i].data.length; j++){
+					html_dialog_3_box += '<div class="item"><div>'+_datagates[i].data[j].name+'</div></div>';
+				}
+				html_dialog_3_box += '</div>';
+			}
+			for(var m=0; m<_datate.length; m++){
+				html_dialog_5 += '<div class="item" data-id="'+_datate[m].id+'"><span>'+_datate[m].k+'</span></div>';
+			}
+			
+			$("#dialog_1").html(html_dialog_1);
+			$("#dialog_2").html(html_dialog_2);
+			$("#dialog_3").html(html_dialog_3);
+			$("#dialog_3_box").html(html_dialog_3_box);
+			$("#dialog_5").html(html_dialog_5);
 		},
 		printWardrobe: function(){//打印衣服
 			var that = this,
@@ -827,6 +855,7 @@ jianyue,huali,keai,chengshu,huopo,youya,qingchun,xinggan,qingliang,baonuan
 5 S
 6 SS
 
+data_arena type 2:竞技场 3:联盟委托
 	
 var data_clothes = [{id:1,tname:"头发",parentid:0,data:[{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:999999,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8144,name:"头发1",te:[1,2],g:"店/迷/6-7少",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8145,name:"头发2",te:[1,2],g:"签到",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,qingliang:5}},{id:8145,name:"头发3",te:[1,2],g:"签到",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}}]},{id:2,tname:"连衣裙",parentid:0,data:[{id:8145,name:"连衣裙1",te:[1,2],g:"签到",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8146,name:"不羁",te:[],g:"",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}},{id:8434,name:"白翩语",te:[],g:"暂无",wu:{jianyue:1,keai:2,huopo:3,qingchun:4,baonuan:5}}]},{id:3,tname:"外套",parentid:0,data:[]},{id:4,tname:"上衣",parentid:0,data:[]},{id:5,tname:"下装",parentid:0,data:[]},{id:6,tname:"袜子",parentid:0,data:[]}];
 
