@@ -17,7 +17,7 @@
 					wu:[{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}],//五属性
 					te:[],//特殊属性
 					zhuti:"",
-					beam:0,//设置中间的横梁 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
+					beam:0
 					//choiceclothes:{"data":[{"id":1,"name":"自己的套装","dress":[]}]}//已选的衣服
 				 };
 
@@ -267,7 +267,7 @@
 			this.calcWardrobe();
 		},
 		setBeam: function(){//设置中间的横梁 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
-			var _beam = this.o.beam;
+			var _beam = arguments[0];
 			if(_beam == 0){
 				this.printNature();
 			}else if(_beam == 1){
@@ -345,7 +345,7 @@
 					this.o.te = [];
 					this.o.way = 0;
 					this.setWay();
-					this.o.beam = 0;
+					this.setBeam(0);
 					this.calcWardrobe();
 					easyDialog.close();
 					break;
@@ -368,7 +368,7 @@
 					}
 					this.o.way = 1;
 					this.setWay();
-					this.o.beam = 1;
+					this.setBeam(1);
 					this.calcWardrobe();
 					easyDialog.close();
 					break;
@@ -391,7 +391,7 @@
 					}
 					this.o.way = 2;
 					this.setWay();
-					this.o.beam = 1;
+					this.setBeam(1);
 					this.calcWardrobe();
 					easyDialog.close();
 					break;
@@ -415,7 +415,7 @@
 					}
 					this.o.way = 3;
 					this.setWay();
-					this.o.beam = 1;
+					this.setBeam(1);
 					this.calcWardrobe();
 					easyDialog.close();
 					break;
@@ -607,8 +607,7 @@
 			});
 			//放大镜
 			$("#beam .zoom").click(function(){
-				that.o.beam = 2;
-				that.setBeam();
+				that.setBeam(2);
 			});
 			//确认搜索
 			$("#btn_so_sure").click(function(){
@@ -617,14 +616,13 @@
 			//取消搜索
 			$("#btn_so_cancel").click(function(){
 				if(that.o.way == 0){
-					that.o.beam = 0;
-					that.setBeam();
+					that.setBeam(0);
 				}else{
-					that.o.beam = 1;
-					that.setBeam();
+					that.setBeam(1);
 				}
 			});
 			
+			this.setBeam(0);
 			this.calcClothestype();
 			
 			//选中衣服类别
@@ -636,6 +634,7 @@
 				if(Number($(this).attr("data-haskid")) > 0){
 					that.o.clothestype.haskid = 1;
 					that.o.clothestype.parentid = that.o.clothestype.id;//有子集的把自己的id赋给parentid
+					$("#clothestype").parent().scrollTop(0);
 					that.printClothestype();
 				}else{
 					that.o.clothestype.oldid = that.o.clothestype.id;//记住单一级的衣服类别选中状态
@@ -783,7 +782,6 @@
 			}
 			console.log("五属性:"+temp+"特殊属性:"+that.o.te);*/
 			
-			that.setBeam();
 			
 			function printTe(){//打印0-2个特殊
 				var _te = arguments[0],
@@ -881,9 +879,6 @@
 						}
 					}
 				}
-			}
-			if(that.o.clothestype.state == 0){
-				$("#clothestype").parent().scrollTop(0);
 			}
 			$("#clothestype").html(html);
 		},
