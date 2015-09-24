@@ -72,7 +72,7 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .clothestype_wrap .box{ position:relative; overflow-y:auto; width:0.52rem; height:100%; -webkit-overflow-scrolling:touch}
 .clothestype{ position:absolute; left:0; top:0}
 .clothestype .item{ width:0.5rem; height:0.4rem; font-size:0.13rem; background:#ff7aa0; color:#fffeb6; margin:0 0.02rem 0.05rem 0; box-sizing:border-box; border:0.02rem solid #ff7aa0; border-right:none; border-radius:0.09rem 0 0 0.09rem; display:table; text-align:center; position:relative}
-.clothestype .item span{ position:absolute; right:0; top:-0.02rem; font:0.12rem Arial; background:#ff5630; color:#fff; border-radius:0.14rem; width:0.14rem; text-align:center; height:0.14rem; line-height:0.14rem}
+.clothestype .item span{ position:absolute; right:0; top:-0.02rem; font-size:0.12rem; background:#ff5630; color:#fff; border-radius:0.14rem; width:0.14rem; text-align:center; height:0.14rem; line-height:0.14rem}
 .clothestype .item.on{ background:#fffeb6; color:#e6668b}
 .clothestype .item.on:before{ content:""; position:absolute; right:-0.02rem; top:0; bottom:0; width:0.02rem; background:#fffeb6}
 .clothestype .item div{ display:table-cell; vertical-align:middle; line-height:1}

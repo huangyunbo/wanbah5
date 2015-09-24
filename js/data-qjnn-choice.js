@@ -3,21 +3,21 @@
 		if(arguments[0] === undefined) return false;
 		data_all = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.dataclothes = data_all.data_clothes;
-		this.dataclothes_back = data_all.data_clothes.slice(0);
+		this.dataclothes_back = $.extend(true,[],data_all.data_clothes);//是二维数组，需要深度拷贝
 		this.dataarena = data_all.data_arena;
 		this.datate = data_all.data_te;
 		this.datagates = data_all.data_gates;
 		this.o = {
 					platform:"web",//针对平台
 					plugin:"plugin_952",//服装搭配器的板块ID
-					clothestype:{id:1,oldid:1,parentid:0,haskid:0,data:[]},//id:是选中哪一个,oldid记录上次点击的id(没有子集的),parentid父级id是谁,每个模块衣服数量
+					clothestype:{id:1,oldid:1,parentid:0,haskid:0,state:0},//id:是选中哪一个,oldid:记录上次点击的id(没有子集的),parentid:父级id是谁,haskid:是否有子集,state:0默认 1已选 2搜索
 					worktype:0,//要处理的类别 0:衣柜 1:竞技场 2:联盟委托 3:关卡 4:基本属性 5:特殊属性 6:保存套装
 					way:0,//选择的4条路 0:衣柜 1:竞技场 2:联盟委托 3:关卡
 					isway:[false,false],//竞技场 联盟委托 关卡,第一层默认false,false 确认后true,false 第二层打开true,true
 					wu:[{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}],//五属性
 					te:[],//特殊属性
 					zhuti:"",
-					beam:0//设置中间的横梁 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
+					beam:0,//设置中间的横梁 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
 					//choiceclothes:{"data":[{"id":1,"name":"自己的套装","dress":[]}]}//已选的衣服
 				 };
 
@@ -243,13 +243,15 @@
 		},
 		so: function(){//搜索处理
 			var keyword = arguments[0],
-			_dataclothes = this.dataclothes_back.slice(0),
+			_dataclothes = $.extend(true,[],this.dataclothes_back),
 			_dataArr,
 			_data,
 			j;
 			
 			keyword = $.trim(keyword);
 			if(keyword.length == 0) return;
+			
+			this.o.clothestype.state = 2;
 			for(var i=0; i<_dataclothes.length; i++){
 				_dataArr = [];
 				_data = _dataclothes[i].data;
@@ -261,6 +263,7 @@
 				_dataclothes[i].data = _dataArr;
 			}
 			this.dataclothes = _dataclothes;
+			this.calcClothestype();
 			this.calcWardrobe();
 		},
 		setBeam: function(){//设置中间的横梁 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
@@ -332,7 +335,12 @@
 		work: function(){//弹窗完后处理
 			switch(this.o.worktype){
 				case 0://处理衣柜
-					this.dataclothes = this.dataclothes_back.slice(0);
+					if(this.o.clothestype.state == 2){//如果是搜索状态就重新获取原数据
+						this.dataclothes = $.extend(true,[],this.dataclothes_back);
+						this.o.clothestype.state = 0;
+						this.calcClothestype();
+					}
+					
 					this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}];
 					this.o.te = [];
 					this.o.way = 0;
@@ -342,7 +350,12 @@
 					easyDialog.close();
 					break;
 				case 1://处理竞技场
-					this.dataclothes = this.dataclothes_back.slice(0);
+					if(this.o.clothestype.state == 2){
+						this.dataclothes = $.extend(true,[],this.dataclothes_back);
+						this.o.clothestype.state = 0;
+						this.calcClothestype();
+					}
+					
 					this.o.isway[0] = false;
 					this.o.isway[1] = false;
 					var _id = Number($("#dialog_1").attr("data-id"));
@@ -360,7 +373,12 @@
 					easyDialog.close();
 					break;
 				case 2://处理联盟委托
-					this.dataclothes = this.dataclothes_back.slice(0);
+					if(this.o.clothestype.state == 2){
+						this.dataclothes = $.extend(true,[],this.dataclothes_back);
+						this.o.clothestype.state = 0;
+						this.calcClothestype();
+					}
+					
 					this.o.isway[0] = false;
 					this.o.isway[1] = false;
 					var _id = Number($("#dialog_2").attr("data-id"));
@@ -378,7 +396,12 @@
 					easyDialog.close();
 					break;
 				case 3://处理关卡
-					this.dataclothes = this.dataclothes_back.slice(0);
+					if(this.o.clothestype.state == 2){
+						this.dataclothes = $.extend(true,[],this.dataclothes_back);
+						this.calcClothestype();
+						this.o.clothestype.state = 0;
+					}
+					
 					this.o.isway[0] = false;
 					this.o.isway[1] = false;
 					var _index = Number($("#dialog_3").attr("data-index"));
@@ -603,7 +626,6 @@
 			});
 			
 			this.calcClothestype();
-			this.printClothestype();
 			
 			//选中衣服类别
 			$("#clothestype").on("click",".item",function(){
@@ -613,6 +635,7 @@
 				
 				if(Number($(this).attr("data-haskid")) > 0){
 					that.o.clothestype.haskid = 1;
+					that.o.clothestype.parentid = that.o.clothestype.id;//有子集的把自己的id赋给parentid
 					that.printClothestype();
 				}else{
 					that.o.clothestype.oldid = that.o.clothestype.id;//记住单一级的衣服类别选中状态
@@ -838,29 +861,30 @@
 			len = _dataclothes.length,
 			i = 0;
 			
-			function printClothestypeFun(){
-				if(that.o.clothestype.oldid == _dataclothes[i].id){//记住单一级的衣服类别选中状态
-					html += '<div class="item on" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><div>'+_dataclothes[i].tname+'</div></div>';
-				}else{
-					html += '<div class="item" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><div>'+_dataclothes[i].tname+'</div></div>';
-				}
-			}
-
 			if(that.o.clothestype.haskid > 0){//有子级菜单的
 				$("#container").addClass("clothestype_two");
-				for(; i<len; i++){
-					if(that.o.clothestype.id == _dataclothes[i].parentid){
-						printClothestypeFun();
-					}
-				}
-			}else{
-				for(; i<len; i++){
-					if(that.o.clothestype.parentid == _dataclothes[i].parentid){
-						printClothestypeFun();
+			}
+
+			for(; i<len; i++){
+				if(that.o.clothestype.parentid == _dataclothes[i].parentid){
+					if(that.o.clothestype.oldid == _dataclothes[i].id){//记住单一级的衣服类别选中状态
+						if(that.o.clothestype.state == 2){
+							html += '<div class="item on" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><span>'+_dataclothes[i].data.length+'</span><div>'+_dataclothes[i].tname+'</div></div>';
+						}else{
+							html += '<div class="item on" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><div>'+_dataclothes[i].tname+'</div></div>';
+						}
+					}else{
+						if(that.o.clothestype.state == 2){
+							html += '<div class="item" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><span>'+_dataclothes[i].data.length+'</span><div>'+_dataclothes[i].tname+'</div></div>';
+						}else{
+							html += '<div class="item" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><div>'+_dataclothes[i].tname+'</div></div>';
+						}
 					}
 				}
 			}
-			$("#clothestype").parent().scrollTop(0);
+			if(that.o.clothestype.state == 0){
+				$("#clothestype").parent().scrollTop(0);
+			}
 			$("#clothestype").html(html);
 		},
 		calcClothestype: function(){//计算衣服类别，增加一个haskid 0代表没有子菜单 1代表有子菜单
@@ -874,9 +898,10 @@
 					}
 				}
 			}
-			for(var i=0; i<_dataclothes.length; i++){
+			for(var i=0; i<len; i++){
 				_dataclothes[i].haskid = _dataclothes[i].haskid == 1 ? 1 : 0;
 			}
+			this.printClothestype();
 		},
 		pageReset: function(){//重置页面
 			this.setfontSize();
