@@ -873,7 +873,11 @@
 						}
 					}else{
 						if(that.o.clothestype.state == 2){
-							html += '<div class="item" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><span>'+_dataclothes[i].data.length+'</span><div>'+_dataclothes[i].tname+'</div></div>';
+							if(_dataclothes[i].haskid > 0){//有子集菜单的不需要数字
+								html += '<div class="item" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><div>'+_dataclothes[i].tname+'</div></div>';
+							}else{
+								html += '<div class="item" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><span>'+_dataclothes[i].data.length+'</span><div>'+_dataclothes[i].tname+'</div></div>';
+							}
 						}else{
 							html += '<div class="item" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><div>'+_dataclothes[i].tname+'</div></div>';
 						}
