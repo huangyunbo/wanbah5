@@ -647,7 +647,7 @@
 						}
 					}
 				}
-				_dataclothes[clothes_index].total = total;
+				_dataclothes[clothes_index].total = Math.round(total);
 			}
 			
 			for(var i=0; i<that.dataclothes.length; i++){//计算衣服分数，乘以基数
@@ -672,23 +672,36 @@
 				}
 				htmllen--;
 			}
-
+			
 			if(telen != 0){
 				var teArr2 = [],
 				teArr1 = [],
 				teArr0 = [],
+				_item,
 				item_te,
-				item_telen;
+				item_telen = 0;
 
 				for(var i=0; i<len; i++){//把排完分数后的，再拆成有2个特殊属性/有1个特殊属性/没有特殊属性的三组数组最后再组合出来
-					if(telen == 2 && (_dataclothes[i].te[0] == _te[0] || _dataclothes[i].te[0] == _te[1]) && (_dataclothes[i].te[1] == _te[0] || _dataclothes[i].te[1] == _te[1])){
-						teArr2.push(_dataclothes[i]);		
-					}else if(telen == 1 && (_dataclothes[i].te[0] == _te[0] || _dataclothes[i].te[1] == _te[0])){
-						console.log(2);
-
-						teArr1.push(_dataclothes[i]);
+					_item = _dataclothes[i];
+					item_te = _item.te;
+					item_telen = item_te.length;
+					
+					if(telen == 2){
+						if(item_telen == 2 && $.inArray(_te[0],item_te) != -1 && $.inArray(_te[1],item_te) != -1){
+							teArr2.push(_item);
+						}else if(item_telen == 1 && ($.inArray(_te[0],item_te) != -1 || $.inArray(_te[1],item_te) != -1)){
+							teArr1.push(_item);
+						}else{
+							teArr0.push(_item);
+						}
+					}else if(telen == 1){
+						if((item_telen == 2 || item_telen == 1) && $.inArray(_te[0],item_te) != -1){
+							teArr1.push(_item);
+						}else{
+							teArr0.push(_item);
+						}
 					}else{
-						teArr0.push(_dataclothes[i]);
+						teArr0.push(_item);
 					}
 				}
 				
@@ -738,7 +751,7 @@
 
 			for(var i=0; i<that.dataclothes.length; i++){//先找到大类衣服
 				if(that.o.clothestype.id == that.dataclothes[i].id){
-					_dataclothes = that.dataclothes[i].data
+					_dataclothes = that.dataclothes[i].data;
 				}
 			}
 
