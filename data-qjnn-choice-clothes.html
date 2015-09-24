@@ -106,9 +106,9 @@
                     <i class="icon_h"></i>
                 </div>
             </div>
-            <input class="ipt_text" type="text" maxlength="10" placeholder="请输入服饰的名称">
+            <input class="ipt_text" type="text" maxlength="10" placeholder="请输入服饰的名称" id="so_text">
         </div>
-        <div class="so wbclick">搜索</div>
+        <div class="so wbclick" id="btn_so_sure">搜索</div>
         <div class="so so_cancel wbclick" id="btn_so_cancel">取消</div>
     </div><!--/beam_search-->
 </div><!--/beam-->
@@ -555,6 +555,23 @@
 $(function(){
 	var data_all = {data_clothes:data_clothes, data_arena:data_arena, data_te:data_te, data_gates:data_gates};
 	var qjnn = new Qjnn(data_all);
+	
+	var y = 1;
+	
+	var a = y;
+	var b = y;
+	var c = b;
+	
+	console.log("a:"+a+",b:"+b+",c:"+c);
+	
+	c = 2;
+	a = c;
+	console.log("a:"+a+",b:"+b+",c:"+c);
+	
+	
+	a = b;
+	console.log("a:"+a+",b:"+b+",c:"+c);
+	
 });
 </script>
 </body>

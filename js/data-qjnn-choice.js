@@ -3,6 +3,7 @@
 		if(arguments[0] === undefined) return false;
 		data_all = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.dataclothes = data_all.data_clothes;
+		this.dataclothes_back = data_all.data_clothes.slice(0);
 		this.dataarena = data_all.data_arena;
 		this.datate = data_all.data_te;
 		this.datagates = data_all.data_gates;
@@ -11,6 +12,7 @@
 					plugin:"plugin_952",//服装搭配器的板块ID
 					clothestype:{id:1,oldid:1,parentid:0,haskid:0,data:[]},//id:是选中哪一个,oldid记录上次点击的id(没有子集的),parentid父级id是谁,每个模块衣服数量
 					worktype:0,//要处理的类别 0:衣柜 1:竞技场 2:联盟委托 3:关卡 4:基本属性 5:特殊属性 6:保存套装
+					way:0,//选择的4条路 0:衣柜 1:竞技场 2:联盟委托 3:关卡
 					isway:[false,false],//竞技场 联盟委托 关卡,第一层默认false,false 确认后true,false 第二层打开true,true
 					wu:[{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}],//五属性
 					te:[],//特殊属性
@@ -239,6 +241,28 @@
 						
 			$("#dialog_det").html(html);
 		},
+		so: function(){//搜索处理
+			var keyword = arguments[0],
+			_dataclothes = this.dataclothes_back.slice(0),
+			_dataArr,
+			_data,
+			j;
+			
+			keyword = $.trim(keyword);
+			if(keyword.length == 0) return;
+			for(var i=0; i<_dataclothes.length; i++){
+				_dataArr = [];
+				_data = _dataclothes[i].data;
+				for(j=0; j<_data.length; j++){
+					if(_data[j].name.indexOf(keyword) != -1){
+						_dataArr.push(_data[j]);
+					}
+				}
+				_dataclothes[i].data = _dataArr;
+			}
+			this.dataclothes = _dataclothes;
+			this.calcWardrobe();
+		},
 		setBeam: function(){//设置中间的横梁 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
 			var _beam = this.o.beam;
 			if(_beam == 0){
@@ -308,14 +332,17 @@
 		work: function(){//弹窗完后处理
 			switch(this.o.worktype){
 				case 0://处理衣柜
+					this.dataclothes = this.dataclothes_back.slice(0);
 					this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}];
 					this.o.te = [];
-					this.setWay(0);
+					this.o.way = 0;
+					this.setWay();
 					this.o.beam = 0;
 					this.calcWardrobe();
 					easyDialog.close();
 					break;
 				case 1://处理竞技场
+					this.dataclothes = this.dataclothes_back.slice(0);
 					this.o.isway[0] = false;
 					this.o.isway[1] = false;
 					var _id = Number($("#dialog_1").attr("data-id"));
@@ -326,12 +353,14 @@
 							this.o.zhuti = this.dataarena[i].name;
 						}
 					}
-					this.setWay(1);
+					this.o.way = 1;
+					this.setWay();
 					this.o.beam = 1;
 					this.calcWardrobe();
 					easyDialog.close();
 					break;
 				case 2://处理联盟委托
+					this.dataclothes = this.dataclothes_back.slice(0);
 					this.o.isway[0] = false;
 					this.o.isway[1] = false;
 					var _id = Number($("#dialog_2").attr("data-id"));
@@ -342,12 +371,14 @@
 							this.o.zhuti = this.dataarena[i].name;
 						}
 					}
-					this.setWay(2);
+					this.o.way = 2;
+					this.setWay();
 					this.o.beam = 1;
 					this.calcWardrobe();
 					easyDialog.close();
 					break;
 				case 3://处理关卡
+					this.dataclothes = this.dataclothes_back.slice(0);
 					this.o.isway[0] = false;
 					this.o.isway[1] = false;
 					var _index = Number($("#dialog_3").attr("data-index"));
@@ -359,7 +390,8 @@
 							this.o.zhuti = this.datagates[_index].data[i].name;
 						}
 					}
-					this.setWay(3);
+					this.o.way = 3;
+					this.setWay();
 					this.o.beam = 1;
 					this.calcWardrobe();
 					easyDialog.close();
@@ -376,7 +408,6 @@
 				case 5://特殊属性
 					this.calcWardrobe();
 					easyDialog.close();
-					console.log("特殊属性");
 					break;
 				case 6://保存套装
 					easyDialog.close();
@@ -385,7 +416,7 @@
 			}
 		},
 		setWay: function(){//0:衣柜 1:竞技场 2:联盟委托 3:关卡 选中样式
-			$("#way").children().eq(arguments[0]).addClass("on").siblings().removeClass("on");
+			$("#way").children().eq(this.o.way).addClass("on").siblings().removeClass("on");
 		},
 		sureWay: function(){//0:衣柜 1:竞技场 2:联盟委托 3:关卡 摁下确定键调用的函数
 			var that = this;
@@ -556,9 +587,13 @@
 				that.o.beam = 2;
 				that.setBeam();
 			});
+			//确认搜索
+			$("#btn_so_sure").click(function(){
+				that.so($("#so_text").val());
+			});
 			//取消搜索
 			$("#btn_so_cancel").click(function(){
-				if(that.o.worktype == 0){
+				if(that.o.way == 0){
 					that.o.beam = 0;
 					that.setBeam();
 				}else{
@@ -719,11 +754,11 @@
 			html = '',
 			_dataclothes;
 			
-			var temp = '';
+			/*var temp = '';
 			for(var i=0; i<that.o.wu.length; i++){
 				temp += that.o.wu[i].k+' '+that.o.wu[i].r+',';
 			}
-			console.log("五属性:"+temp+"特殊属性:"+that.o.te);
+			console.log("五属性:"+temp+"特殊属性:"+that.o.te);*/
 			
 			that.setBeam();
 			
