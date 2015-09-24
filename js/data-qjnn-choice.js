@@ -745,15 +745,15 @@
 					item_telen = item_te.length;
 					
 					if(telen == 2){
-						if(item_telen == 2 && $.inArray(_te[0],item_te) != -1 && $.inArray(_te[1],item_te) != -1){
+						if($.inArray(_te[0],item_te) != -1 && $.inArray(_te[1],item_te) != -1){
 							teArr2.push(_item);
-						}else if(item_telen == 1 && ($.inArray(_te[0],item_te) != -1 || $.inArray(_te[1],item_te) != -1)){
+						}else if($.inArray(_te[0],item_te) != -1 || $.inArray(_te[1],item_te) != -1){
 							teArr1.push(_item);
 						}else{
 							teArr0.push(_item);
 						}
 					}else if(telen == 1){
-						if((item_telen == 2 || item_telen == 1) && $.inArray(_te[0],item_te) != -1){
+						if($.inArray(_te[0],item_te) != -1){
 							teArr1.push(_item);
 						}else{
 							teArr0.push(_item);
