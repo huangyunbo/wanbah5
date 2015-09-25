@@ -70,7 +70,7 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .clothestype_wrap{ float:left; width:0.52rem; height:100%; overflow:hidden}/*overflow:hidden 防止.clothestype_wrap .box -0.5rem无效*/
 .clothestype_back{ display:none; width:0.45rem; height:0.4rem; line-height:0.4rem; font-size:0.13rem; background:#fffeb6; color:#e6668b; box-sizing:border-box; border:0.02rem solid #ff7aa0; border-radius:0.09rem; text-align:center; margin-bottom:0.05rem}
 .clothestype_wrap .box{ position:relative; overflow-y:auto; width:0.52rem; height:100%; -webkit-overflow-scrolling:touch}
-.clothestype{ position:absolute; left:0; top:0}
+.clothestype{ position:absolute; left:0; top:0; padding-bottom:0.5rem}
 .clothestype .item{ width:0.5rem; height:0.4rem; font-size:0.13rem; background:#ff7aa0; color:#fffeb6; margin:0 0.02rem 0.05rem 0; box-sizing:border-box; border:0.02rem solid #ff7aa0; border-right:none; border-radius:0.09rem 0 0 0.09rem; display:table; text-align:center; position:relative}
 .clothestype .item span{ position:absolute; right:0; top:-0.02rem; font-size:0.12rem; background:#ff5630; color:#fff; border-radius:0.14rem; width:0.14rem; text-align:center; height:0.14rem; line-height:0.14rem}
 .clothestype .item.on{ background:#fffeb6; color:#e6668b}
@@ -117,7 +117,8 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .wardrobe .clothes .box_back .t3{ font-size:0.1rem; color:#d54a46}
 /*有返回的二级衣服类别*/
 .clothestype_two .clothestype_back{ display:block}
-.clothestype_two .clothestype_wrap .box{ margin-bottom:-0.5rem}
+.clothestype_two .clothestype_wrap .box{ margin-bottom:-0.45rem}
+.clothestype_two .clothestype_wrap .box .clothestype{ padding-bottom:0.95rem}/*0.45+0.5*/
 .clothestype_two .wardrobe_room{ border-radius:0.09rem 0.09rem 0 0}
 /*已选服饰拉手*/
 .door{ position:absolute; z-index:10; height:1.1rem; width:0.47rem; color:#976907; border-left:0.01rem solid rgba(190,191,160,0.75); border-radius:0.1rem; background:#ffeb8b; right:0.03rem; font-size:0.13rem; top:50%; margin-top:-0.55rem}
