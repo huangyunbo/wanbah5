@@ -85,6 +85,7 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .wardrobe_spe_inner{ width:100%; table-layout:fixed; display:table}
 .wardrobe_spe .item{ width:33%; display:table-cell; padding:0 0.02rem; box-sizing:border-box}
 .wardrobe_spe .item div{ box-shadow:0 0.01rem 0.01rem #b3a450; color:#765000; font-size:0.13rem; border:solid #fffeb6; border-width:0 0.02rem 0.02rem; border-radius:0 0 0.05rem 0.05rem; background:#ffd562; text-align:center}
+.wardrobe_spe .item.on div{ background:#fffeb6}
 .wardrobe{ position:relative; overflow-y:auto; height:100%; -webkit-overflow-scrolling:touch; margin-left:0.05rem; -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0)}
 .wardrobe_filter .wardrobe{ margin:-0.07rem 0 -0.15rem 0.05rem}
 .wardrobe_inner{ position:absolute; width:100%}

@@ -16,6 +16,7 @@
 					isway:[false,false],//竞技场 联盟委托 关卡,第一层默认false,false 确认后true,false 第二层打开true,true
 					wu:[{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}],//五属性
 					te:[],//特殊属性
+					te_back:[],
 					zhuti:"",
 					beam:0
 					//choiceclothes:{"data":[{"id":1,"name":"自己的套装","dress":[]}]}//已选的衣服
@@ -241,6 +242,37 @@
 						
 			$("#dialog_det").html(html);
 		},
+		setTe: function(){//设置特殊属性标签
+			var that = this,
+			html = '',
+			_te = that.o.te,
+			telen = _te.length,
+			_datate = that.datate,
+			$wardrobe_filter = $("#wardrobe_filter");
+			
+			function findTe(){
+				for(var i=0; i<_datate.length; i++){
+					if(_datate[i].id == arguments[0]){
+						return _datate[i].k;
+					}
+				}
+			}
+			
+			if(telen == 2){
+				html = '<div class="item" data-index="0" data-id="0"><div>全部</div></div>'+
+						'<div class="item on" data-index="1" data-id="'+_te[0]+'"><div>'+findTe(_te[0])+'</div></div>'+
+						'<div class="item on" data-index="2" data-id="'+_te[1]+'"><div>'+findTe(_te[1])+'</div></div>';
+				$wardrobe_filter.html(html);
+				$wardrobe_filter.closest(".wardrobe_wrap").addClass("wardrobe_filter");
+			}else if(telen == 1){
+				html = '<div class="item" data-index="0" data-id="0"><div>全部</div></div>'+
+						'<div class="item on" data-index="1" data-id="'+_te[0]+'"><div>'+findTe(_te[0])+'</div></div>';
+				$wardrobe_filter.html(html);
+				$wardrobe_filter.closest(".wardrobe_wrap").addClass("wardrobe_filter");
+			}else{
+				$wardrobe_filter.closest(".wardrobe_wrap").removeClass("wardrobe_filter");
+			}
+		},
 		so: function(){//搜索处理
 			var keyword = arguments[0],
 			_dataclothes = $.extend(true,[],this.dataclothes_back),
@@ -292,9 +324,11 @@
 				}
 				html_dialog_4 += '</div>';
 			}
-
+			
+			this.o.te = this.o.te_back.slice(0);
+			
 			for(var i=0; i<_datate.length; i++){//打印特殊属性的弹窗内容
-				if(this.datate[i].id == this.o.te[0] || this.datate[i].id == this.o.te[1]){
+				if(this.datate[i].id == this.o.te[0] || this.datate[i].id == this.o.te[1]){//也可以直接使用o.te_back
 					html_dialog_5 += '<div class="item on" data-id="'+_datate[i].id+'"><span>'+_datate[i].k+'</span></div>';
 				}else{
 					html_dialog_5 += '<div class="item" data-id="'+_datate[i].id+'"><span>'+_datate[i].k+'</span></div>';
@@ -343,9 +377,11 @@
 					
 					this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}];
 					this.o.te = [];
+					this.o.te_back = [];
 					this.o.way = 0;
 					this.setWay();
 					this.setBeam(0);
+					this.setTe();
 					this.calcWardrobe();
 					easyDialog.close();
 					break;
@@ -362,13 +398,16 @@
 					for(var i=0; i<this.dataarena.length; i++){
 						if(this.dataarena[i].id == _id){
 							this.o.wu = this.dataarena[i].wu;
-							this.o.te = this.dataarena[i].te;
+							this.o.te_back = this.dataarena[i].te;
+							this.o.te = this.o.te_back.slice(0);
 							this.o.zhuti = this.dataarena[i].name;
+							break;
 						}
 					}
 					this.o.way = 1;
 					this.setWay();
 					this.setBeam(1);
+					this.setTe();
 					this.calcWardrobe();
 					easyDialog.close();
 					break;
@@ -385,13 +424,16 @@
 					for(var i=0; i<this.dataarena.length; i++){
 						if(this.dataarena[i].id == _id){
 							this.o.wu = this.dataarena[i].wu;
-							this.o.te = this.dataarena[i].te;
+							this.o.te_back = this.dataarena[i].te;
+							this.o.te = this.o.te_back.slice(0);
 							this.o.zhuti = this.dataarena[i].name;
+							break;
 						}
 					}
 					this.o.way = 2;
 					this.setWay();
 					this.setBeam(1);
+					this.setTe();
 					this.calcWardrobe();
 					easyDialog.close();
 					break;
@@ -409,13 +451,15 @@
 					for(var i=0; i<this.datagates[_index].data.length; i++){
 						if(this.datagates[_index].data[i].id == _id){
 							this.o.wu = this.datagates[_index].data[i].wu;
-							this.o.te = this.datagates[_index].data[i].te;
+							this.o.te_back = this.datagates[_index].data[i].te;
+							this.o.te = this.o.te_back.slice(0);
 							this.o.zhuti = this.datagates[_index].data[i].name;
 						}
 					}
 					this.o.way = 3;
 					this.setWay();
 					this.setBeam(1);
+					this.setTe();
 					this.calcWardrobe();
 					easyDialog.close();
 					break;
@@ -429,6 +473,7 @@
 					easyDialog.close();
 					break;
 				case 5://特殊属性
+					this.setTe();
 					this.calcWardrobe();
 					easyDialog.close();
 					break;
@@ -621,6 +666,36 @@
 					that.setBeam(1);
 				}
 			});
+			//特殊属性 全部 特殊1 特殊2
+			$("#wardrobe_filter").on("click", ".item", function(){
+				var self = $(this);
+				_index = Number(self.attr("data-index")),
+				_id = Number(self.attr("data-id"));
+				
+
+				if(_index == 1){
+					if(self.hasClass("on")){
+						that.o.te.splice(0,1);//删除第一个
+						self.removeClass("on");
+					}else{
+						that.o.te.push(_id);//为0的时候，插入
+						self.addClass("on");
+					}
+				}else if(_index == 2){
+					if(self.hasClass("on")){
+						that.o.te.splice(1,1);//删除第二个
+						self.removeClass("on");
+					}else{
+						that.o.te.push(_id);//为1的时候，插入
+						self.addClass("on");
+					}
+				}else{//全部
+					that.o.te.splice(0,2);
+					self.siblings().removeClass("on");
+				}
+				that.calcWardrobe();
+			});
+			
 			
 			this.setBeam(0);
 			this.calcClothestype();
