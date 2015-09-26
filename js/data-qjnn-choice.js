@@ -24,223 +24,6 @@
 	};
 	
 	Qjnn.prototype = {
-		printClothes2: function(){//打印衣服组
-			var i = 0,
-			_dataclothes = this.dataclothes[this.o.clothestype].data,
-			len = _dataclothes.length,
-			html = '';
-			
-			function printTeshu(){
-				var _te = arguments[0];
-				
-				if(_te.length == 2){
-					return '<div><span>'+_dataclothes[i].te[0]+'</span></div><div><span>'+_dataclothes[i].te[1]+'</span></div>';
-				}else if(_te.length == 1){
-					return '<div><span>'+_dataclothes[i].te[0]+'</span></div><div></div>';
-				}else{
-					return '<div><label>无特殊</label></div><div></div>';
-				}
-			}
-
-			for(; i<len; i++){
-				html += '<div class="item" data-id="'+_dataclothes[i].id+'">'+
-							'<div class="item_inner">'+
-								'<div class="t">'+
-									'<div>'+_dataclothes[i].name+'</div>'+
-									'<i class="t_l"></i>'+
-									'<i class="t_m"></i>'+
-									'<i class="t_r"></i>'+
-								'</div>'+
-								'<div class="m">'+
-									printTeshu(_dataclothes[i].te)+
-								'</div>'+
-								'<div class="b">估算分:<span>'+_dataclothes[i].total+'</span></div>'+
-							'</div>'+
-						'</div>';
-			}
-			$("#clothes").scrollTop(0);
-			$("#clothes").html(html);
-		},
-		showclothes: function(clothes_id){//打开单个衣服展示详情
-			var that = this,
-			_clothestype = that.o.clothestype,
-			_dataclothes = that.dataclothes[_clothestype].data;
-			for(var i=0; i<_dataclothes.length; i++){
-				if(_dataclothes[i].id == clothes_id){
-					_dataclothes = _dataclothes[i];
-				}
-			}
-			function rate(){//评级s
-				var k,
-				r = "",
-				_html = "";
-
-				switch(_clothestype){
-					case 0:
-						for(k in _dataclothes.wu){
-							switch(_dataclothes.wu[k]){
-								case 650:r="B";break;
-								case 825:r="A";break;
-								case 1050:r="S";break;
-								case 1250:r="SS";break;
-								default:r="C";
-							}
-							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
-						}
-						break;
-					case 1:
-						for(k in _dataclothes.wu){
-							switch(_dataclothes.wu[k]){
-								case 2750:r="B";break;
-								case 3400:r="A";break;
-								case 4000:r="S";break;
-								case 5100:r="SS";break;
-								default:r="C";
-							}
-							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
-						}
-						break;
-					case 2:
-						for(k in _dataclothes.wu){
-							switch(_dataclothes.wu[k]){
-								case 255:r="B";break;
-								case 330:r="A";break;
-								case 410:r="S";break;
-								case 505:r="SS";break;
-								default:r="C";
-							}
-							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
-						}
-						break;
-					case 3:
-						for(k in _dataclothes.wu){
-							switch(_dataclothes.wu[k]){
-								case 1325:r="B";break;
-								case 1550:r="A";break;
-								case 1925:r="S";break;
-								case 2725:r="SS";break;
-								default:r="C";
-							}
-							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
-						}
-						break;
-					case 4:
-						for(k in _dataclothes.wu){
-							switch(_dataclothes.wu[k]){
-								case 1325:r="B";break;
-								case 1550:r="A";break;
-								case 1925:r="S";break;
-								case 2725:r="SS";break;
-								default:r="C";
-							}
-							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
-						}
-						break;
-					case 5:
-					case 6:
-						for(k in _dataclothes.wu){
-							switch(_dataclothes.wu[k]){
-								case 420:r="B";break;
-								case 495:r="A";break;
-								case 610:r="S";break;
-								case 860:r="SS";break;
-								default:r="C";
-							}
-							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
-						}
-						break;
-					case 7:
-						for(k in _dataclothes.wu){
-							switch(_dataclothes.wu[k]){
-								case 555:r="B";break;
-								case 600:r="A";break;
-								case 860:r="S";break;
-								case 1000:r="SS";break;
-								default:r="C";
-							}
-							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
-						}
-						break;
-					case 8:
-					case 9:
-					case 10:
-					case 11:
-					case 12:
-					case 13:
-					case 14:
-						for(k in _dataclothes.wu){
-							switch(_dataclothes.wu[k]){
-								case 250:r="B";break;
-								case 310:r="A";break;
-								case 410:r="S";break;
-								case 485:r="SS";break;
-								default:r="C";
-							}
-							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
-						}
-						break;
-					case 15:
-						for(k in _dataclothes.wu){//妆容
-							switch(_dataclothes.wu[k]){
-								case 120:r="B";break;
-								case 130:r="A";break;
-								case 190:r="S";break;
-								case 265:r="SS";break;
-								default:r="C";
-							}
-							_html += '<div class="item">'+that.switchlael(k)+'&middot;'+r+'</div>';
-						}
-						break;
-				}
-				return _html;
-			}
-			function spec(){//特殊属性
-				var _html = "";
-				if(_dataclothes.te.length == 2){
-					_html = '<div class="spe">'+
-								'<div>'+_dataclothes.te[0]+'</div>'+
-								'<div>'+_dataclothes.te[1]+'</div>'+
-							'</div>';
-				}else if(_dataclothes.te.length == 1){
-					_html = '<div class="spe">'+
-								'<div>'+_dataclothes.te[0]+'</div>'+
-								'<div></div>'+
-							'</div>';
-				}
-				return _html;
-			}
-			function gain(){//获取途径
-				var _html = "",
-				_arr;
-				if(_dataclothes.g){
-					_arr = _dataclothes.g.split("/");
-					for(var i=0; i<_arr.length; i++){
-						_html += '<div>'+_arr[i]+'</div>';
-					}
-				}
-				return _html;
-			}
-			
-			var html = '<div class="btn_det_close" id="btn_det_close"></div>'+
-						'<div class="title">'+
-							'<div class="l"><i></i></div>'+
-							'<div class="m">'+_dataclothes.name+'</div>'+
-							'<div class="r"><i></i></div>'+
-						'</div>'+
-						'<div class="content">'+rate()+'</div>'+
-						spec()+
-						'<div class="title">'+
-							'<div class="l"><i></i></div>'+
-							'<div class="m m2">获取途径</div>'+
-							'<div class="r"><i></i></div>'+
-						'</div>'+
-						'<div class="content2">'+
-							gain()+
-						'</div>';
-						
-			$("#dialog_det").html(html);
-		},
-		
 		so: function(){//搜索处理
 			var _keyword = arguments[0],
 			_dataclothes = this.dataclothes,
@@ -487,6 +270,7 @@
 		printWardrobe: function(){//打印衣服
 			var that = this,
 			html = '',
+			_clothestype = that.o.clothestype.oldid,
 			_dataclothes,
 			keywordlen = that.o.keyword.length,
 			head_first = 0;
@@ -497,6 +281,15 @@
 			}
 			console.log("五属性:"+temp+"特殊属性:"+that.o.te_selected);*/
 			
+			for(var i=0; i<that.dataclothes.length; i++){//先找到大类衣服
+				if(_clothestype == that.dataclothes[i].id){//找到无子集的选中的id
+					if(that.o.te_selected == 0){//判断数据源该用哪一个
+						_dataclothes = that.dataclothes[i].data;
+					}else{
+						_dataclothes = that.dataclothes_te[i].data;
+					}
+				}
+			}
 			
 			function printTe(){//打印0-2个特殊
 				var _te = arguments[0],
@@ -519,22 +312,152 @@
 					return '&nbsp;';
 				}
 			}
+			
+			function rate(){//评级s
+				var _wu = arguments[0],
+				k,
+				r = "",
+				_html = "";
 
-			for(var i=0; i<that.dataclothes.length; i++){//先找到大类衣服
-				if(that.o.clothestype.oldid == that.dataclothes[i].id){//找到无子集的选中的id
-					if(that.o.te_selected == 0){//判断数据源该用哪一个
-						_dataclothes = that.dataclothes[i].data;
-					}else{
-						_dataclothes = that.dataclothes_te[i].data;
-					}
+				switch(_clothestype){
+					case 1:
+						for(k in _wu){
+							switch(_wu[k]){
+								case 650:r="B";break;
+								case 825:r="A";break;
+								case 1050:r="S";break;
+								case 1250:r="SS";break;
+								default:r="C";
+							}
+							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+						}
+						break;
+					case 2:
+						for(k in _wu){
+							switch(_wu[k]){
+								case 2750:r="B";break;
+								case 3400:r="A";break;
+								case 4000:r="S";break;
+								case 5100:r="SS";break;
+								default:r="C";
+							}
+							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+						}
+						break;
+					case 3:
+						for(k in _wu){
+							switch(_wu[k]){
+								case 255:r="B";break;
+								case 330:r="A";break;
+								case 410:r="S";break;
+								case 505:r="SS";break;
+								default:r="C";
+							}
+							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+						}
+						break;
+					case 4:
+						for(k in _wu){
+							switch(_wu[k]){
+								case 1325:r="B";break;
+								case 1550:r="A";break;
+								case 1925:r="S";break;
+								case 2725:r="SS";break;
+								default:r="C";
+							}
+							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+						}
+						break;
+					case 5:
+						for(k in _wu){
+							switch(_wu[k]){
+								case 1325:r="B";break;
+								case 1550:r="A";break;
+								case 1925:r="S";break;
+								case 2725:r="SS";break;
+								default:r="C";
+							}
+							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+						}
+						break;
+					case 6:
+					case 7:
+						for(k in _wu){
+							switch(_wu[k]){
+								case 420:r="B";break;
+								case 495:r="A";break;
+								case 610:r="S";break;
+								case 860:r="SS";break;
+								default:r="C";
+							}
+							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+						}
+						break;
+					case 8:
+						for(k in _wu){
+							switch(_wu[k]){
+								case 555:r="B";break;
+								case 600:r="A";break;
+								case 860:r="S";break;
+								case 1000:r="SS";break;
+								default:r="C";
+							}
+							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+						}
+						break;
+					case 9://妆容
+						for(k in _wu){
+							switch(_wu[k]){
+								case 120:r="B";break;
+								case 130:r="A";break;
+								case 190:r="S";break;
+								case 265:r="SS";break;
+								default:r="C";
+							}
+							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+						}
+						break;
+					case 10:
+					case 11:
+					case 12:
+					case 13:
+					case 14:
+					case 15:
+					case 16:
+					case 17:
+					case 18:
+					case 19:
+					case 20:
+					case 21:
+					case 22:
+					case 23:
+					case 24:
+					case 25:
+					case 26:
+					case 27:
+						for(k in _wu){
+							switch(_wu[k]){
+								case 250:r="B";break;
+								case 310:r="A";break;
+								case 410:r="S";break;
+								case 485:r="SS";break;
+								default:r="C";
+							}
+							_html += '<span>'+that.switchlael(k) + r+'</span>';
+						}
+						break;
+					
 				}
+				return _html;
 			}
+
+			
 
 			for(var i=0; i<_dataclothes.length; i++){//再从大类衣服里找具体衣服
 				if(keywordlen == 0 || _dataclothes[i].name.indexOf(that.o.keyword) != -1){
 					html += '<div class="item" data-id="'+_dataclothes[i].id+'">';
-					
-					if(head_first == 0){
+
+					if(head_first == 0){	
 						html += '<div class="head head_first">'+
 									'<i class="icon_gun"></i>'+
 									'<i class="icon_ring"></i>'+
@@ -550,22 +473,31 @@
 					
 					head_first = 1;
 					
-					html +='<div class="clothes">'+
+					html += '<div class="clothes">'+
 								'<i class="icon_top"></i>'+
 								'<div class="add">'+
 									'<i class="icon_x"></i>'+
 									'<i class="icon_y"></i>'+
 								'</div>'+
-								'<div class="box">'+
-									'<div class="t1">'+_dataclothes[i].name+'</div>'+
-									'<div class="t2">'+
-										'<div class="td">'+
-											printTe(_dataclothes[i].te)+
+								'<div class="box box_back">'+
+									'<div class="face_front">'+
+										'<div class="t1">'+_dataclothes[i].name+'</div>'+
+										'<div class="t2">'+
+											'<div class="td">'+
+												printTe(_dataclothes[i].te)+
+											'</div>'+
+											'<div class="td">'+
+												'<span>估算分:</span>'+
+												'<span class="score">'+_dataclothes[i].total+'</span>'+
+											'</div>'+
 										'</div>'+
-										'<div class="td">'+
-											'<span>估算分:</span>'+
-											'<span class="score">'+_dataclothes[i].total+'</span>'+
+									'</div>'+
+									'<div class="face_back">'+
+										'<div class="t1">'+_dataclothes[i].name+'</div>'+
+										'<div class="t2">'+
+											rate(_dataclothes[i].wu)+
 										'</div>'+
+										'<div class="t3">'+_dataclothes[i].g+'</div>'+
 									'</div>'+
 								'</div>'+
 							'</div>'+
@@ -803,6 +735,11 @@
 					that.calcWardrobe();
 				}
 			}).children().eq(0).trigger("click");
+			
+			//点选衣服翻牌的时候
+			$("#wardrobe").on("click", ".item", function(){
+				console.log(1);
+			});
 		},
 		setBeam: function(){//设置中间的横梁 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
 			var _beam = arguments[0] === undefined ? 0 : arguments[0];
