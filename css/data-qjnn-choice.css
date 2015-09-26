@@ -157,7 +157,7 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .basket .foot .btn .icon_line1{ width:0.78rem; height:0.01rem; position:absolute; top:-0.01rem; left:0; background:#835b06}
 .basket .foot .btn .icon_line2{ width:0.76rem; height:0.01rem; position:absolute; top:-0.02rem; left:0.01rem; background:#835b06}
 .basket .foot .btn .icon_line3{ width:0.2rem; height:0.02rem; position:absolute; top:0.03rem; left:50%; margin-left:-0.1rem; background:#835b06}
-/*弹窗:1保存套装,2竞技场,3联盟委托,4关卡,5特殊属性,6五属性*/
+/*弹窗:0清空,1保存套装,2竞技场,3联盟委托,4关卡,5特殊属性,6五属性*/
 .dialog{ width:2.7rem; background:#fff; border-radius:0.1rem; display:none; padding:0.2rem 0.1rem 0.16rem}
 .dialog .foot{ font-size:0.15rem; padding-top:0.16rem; border-top:1px solid #c88800; position:relative}
 .dialog .foot .icon{ position:absolute; top:-3px; -webkit-transform:rotate(-30deg); transform:rotate(-30deg)}
@@ -170,20 +170,18 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .dialog .foot .btn_cancel{ background-position:0 -0.4rem; color:#a2a1a1}
 .dialog .foot .btn_sure{ background-position:0 -0.8rem; color:#fff}
 .dialog_0{ font-size:0.15rem; height:0.57rem}
-
-
 .dialog_1,.dialog_2{ font-size:0.14rem; height:2.6rem; overflow-y:auto; -webkit-overflow-scrolling:touch}
 .dialog_1 .item,.dialog_2 .item{ float:left; width:50%}
 .dialog_1 .item span,.dialog_2 .item span,.dialog_5 .item span{ text-align:center; margin:0.05rem; height:0.3rem; line-height:0.3rem; padding:0 0.07rem; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; border:0.01rem solid #ffb619; display:block; color:#c88800; border-radius:0.15rem}
 .dialog_1 .item.on span,.dialog_2 .item.on span,.dialog_5 .item.on span{ background:#ffb619; color:#fff}
 .dialog_3{ font-size:0.12rem; height:2.6rem}
 .dialog_3 .l{ width:0.51rem; height:100%; float:left; overflow-y:auto; position:relative; -webkit-overflow-scrolling:touch}
-.dialog_3 .l .box{ position:absolute; top:0; left:0}
+.dialog_3 .l .chapter{ position:absolute; top:0; left:0}
 .dialog_3 .l .item{ width:0.5rem; margin:0 0.01rem 0.05rem 0; height:0.27rem; line-height:0.27rem; text-align:center; border:0.01rem solid #e1e1e1; border-right:none; border-radius:0.15rem 0 0 0.15rem; box-sizing:border-box; background:#e1e1e1; color:#999}
 .dialog_3 .l .item.on{ color:#c88800; background:#fff; border-color:#ffb619; position:relative}
 .dialog_3 .l .item.on:before{ content:""; position:absolute; right:-0.01rem; top:0; bottom:0; width:0.01rem; background:#fff}
 .dialog_3 .r{ height:100%; margin-left:0.5rem; border:solid #ffb619; border-width:0.01rem 0.01rem 0; border-radius:0 0.05rem 0 0; box-sizing:border-box}
-.dialog_3 .r .box_wrap{ position:relative; height:100%; overflow-y:auto; -webkit-overflow-scrolling:touch}
+.dialog_3 .r .section{ position:relative; height:100%; overflow-y:auto; -webkit-overflow-scrolling:touch}
 .dialog_3 .r .box{ position:absolute; top:0; left:0; width:100%; padding:0.1rem 0.06rem; box-sizing:border-box}
 .dialog_3 .r .item{ float:left; width:50%}
 .dialog_3 .r .item div{ border:0.01rem solid #ffb619; margin:0.06rem 0.05rem 0; text-align:center; color:#ffb619; border-radius:0.05rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
