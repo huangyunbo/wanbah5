@@ -3,7 +3,7 @@
 		if(arguments[0] === undefined) return false;
 		data_all = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.dataclothes = data_all.data_clothes;
-		this.dataclothes_back = $.extend(true,[],data_all.data_clothes);//是二维数组，需要深度拷贝
+		this.dataclothes_te = [];
 		this.dataarena = data_all.data_arena;
 		this.datate = data_all.data_te;
 		this.datagates = data_all.data_gates;
@@ -14,9 +14,9 @@
 					way:0,//选择的4条路 0:衣柜 1:竞技场 2:联盟委托 3:关卡
 					wu:[{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}],//五属性
 					te:[],//特殊属性
-					te_selected:[],
-					zhuti:"",
-					beam:0
+					te_selected:[],//特殊属性 选中的
+					zhuti:"",//竞技场 联盟委托 关卡 选中的主题
+					keyword:""//关键词
 					//choiceclothes:{"data":[{"id":1,"name":"自己的套装","dress":[]}]}//已选的衣服
 				 };
 
@@ -242,29 +242,30 @@
 		},
 		
 		so: function(){//搜索处理
-			var keyword = arguments[0],
-			_dataclothes = $.extend(true,[],this.dataclothes_back),
-			_dataArr,
+			var _keyword = arguments[0],
+			_dataclothes = this.dataclothes,
+			_baidu,
 			_data,
 			j;
 			
-			keyword = $.trim(keyword);
-			if(keyword.length == 0) return;
+			_keyword = $.trim(_keyword);
+			if(_keyword.length == 0) return;
 			
 			this.o.clothestype.state = 2;
+			this.o.keyword = _keyword;
+			
 			for(var i=0; i<_dataclothes.length; i++){
-				_dataArr = [];
+				_baidu = 0;
 				_data = _dataclothes[i].data;
 				for(j=0; j<_data.length; j++){
-					if(_data[j].name.indexOf(keyword) != -1){
-						_dataArr.push(_data[j]);
+					if(_data[j].name.indexOf(_keyword) != -1){
+						_baidu++;
 					}
 				}
-				_dataclothes[i].data = _dataArr;
+				_dataclothes[i].baidu = _baidu;
 			}
-			this.dataclothes = _dataclothes;
-			this.calcClothestype();
-			this.calcWardrobe();
+			this.printClothestype();
+			this.printWardrobe();
 		},
 		work: function(){//4:基本属性 5:特殊属性 6:保存套装 处理这3种弹窗
 			var worktype = arguments[0];
@@ -321,8 +322,6 @@
 					this.o.te = [];
 					this.o.te_selected = [];
 					this.setBeam();
-					this.setTe();
-					this.calcWardrobe();
 					break;
 				case 1://处理竞技场
 					if(this.o.clothestype.state == 2){
@@ -340,8 +339,6 @@
 						}
 					}
 					this.setBeam(1);
-					this.setTe();
-					this.calcWardrobe();
 					break;
 				case 2://处理联盟委托
 					if(this.o.clothestype.state == 2){
@@ -359,8 +356,6 @@
 						}
 					}
 					this.setBeam(1);
-					this.setTe();
-					this.calcWardrobe();
 					break;
 				case 3://处理关卡
 					if(this.o.clothestype.state == 2){
@@ -378,10 +373,12 @@
 						}
 					}
 					this.setBeam(1);
-					this.setTe();
-					this.calcWardrobe();
 					break;
 			}
+			this.o.keyword = "";
+			$("#so_text").val("");
+			this.setTe();
+			this.calcWardrobe();
 			$("#way").children().eq(this.o.way).addClass("on").siblings().removeClass("on");
 		},
 		setTe: function(){//设置特殊属性标签
@@ -415,101 +412,90 @@
 			}
 		},
 		calcWardrobe:function(){//计算衣服
-			var that = this,
-			_dataclothes,
-			len = 0,//当前类别衣服一共多少
-			htmllen,//冒泡排序需要用来控制减的长度
-			m,
-			tempExchangVal,
-			_te = that.o.te_selected,
-			telen = _te.length;
-			
-			function calcScore(){
-				var clothes_wu = arguments[0].wu,
-				clothes_index = arguments[1],//当前类别下所有衣服的数组下标
-				k,
-				l,
-				radix,
-				total = 0;
+			var _dataclothes = this.dataclothes,
+			dataclothes_len = _dataclothes.length,
+			_te_selected = this.o.te_selected,
+			te_selectedlen = _te_selected.length;
 				
-				for(k in clothes_wu){
-					radix = clothes_wu[k];
-					for(l=0; l<that.o.wu.length; l++){
-						if(k == that.o.wu[l].k){
-							total += radix*that.o.wu[l].r;
-						}
-					}
-				}
-				_dataclothes[clothes_index].total = Math.round(total);
-			}
-			
-			for(var i=0; i<that.dataclothes.length; i++){//计算衣服分数，乘以基数
-				if(that.dataclothes[i].id == that.o.clothestype.id){
-					_dataclothes = that.dataclothes[i].data;
-					len = _dataclothes.length;
-					htmllen = len;
-					for(var j=0; j<len; j++){
-						calcScore(_dataclothes[j],j);
-					}
-					break;
-				}
-			}
-			
-			while(htmllen>0){//冒泡排序，最大的放前面
-				for(m=len-1; m>len-htmllen; m--){
-					if(_dataclothes[m].total > _dataclothes[m-1].total){
-						tempExchangVal = _dataclothes[m];
-						_dataclothes[m] = _dataclothes[m-1];
-						_dataclothes[m-1] = tempExchangVal;
-					}
-				}
-				htmllen--;
-			}
-			
-			if(telen != 0){
-				var teArr2 = [],
-				teArr1 = [],
-				_item,
-				item_te,
-				item_telen = 0;
-
-				for(var i=0; i<len; i++){//把排完分数后的，再拆成有2个特殊属性/有1个特殊属性/没有特殊属性的三组数组最后再组合出来
-					_item = _dataclothes[i];
-					item_te = _item.te;
-					item_telen = item_te.length;
+			for(var i=0; i<dataclothes_len; i++){//衣服大类
+				var _dataclothes_class = _dataclothes[i].data,
+				len = _dataclothes_class.length,//当前类别衣服一共多少
+				htmllen = len,//冒泡排序需要用来控制减的长度
+				tempExchangVal,
+				m;
+				
+				for(var j=0; j<len; j++){//具体衣服
+					var clothes_wu = _dataclothes_class[j].wu,
+					k,
+					l,
+					radix,
+					total = 0;
 					
-					if(telen == 2){
-						if($.inArray(_te[0],item_te) != -1 && $.inArray(_te[1],item_te) != -1){
-							teArr2.push(_item);
-						}else if($.inArray(_te[0],item_te) != -1 || $.inArray(_te[1],item_te) != -1){
-							teArr1.push(_item);
-						}
-					}else if(telen == 1){
-						if($.inArray(_te[0],item_te) != -1){
-							teArr1.push(_item);
+					for(k in clothes_wu){//遍历单件衣服的五属性
+						radix = clothes_wu[k];
+						for(l=0; l<this.o.wu.length; l++){//遍历你选择了的五属性
+							if(k == this.o.wu[l].k){//如果找到对应的五属性
+								total += radix*this.o.wu[l].r;//计算衣服分数，乘以基数
+							}
 						}
 					}
+					_dataclothes_class[j].total = Math.round(total);
 				}
 				
-				for(var i=0; i<that.dataclothes.length; i++){
-					if(that.dataclothes[i].id == that.o.clothestype.id){
-						that.dataclothes[i].data = teArr2.concat(teArr1);//3个特殊属性数组合并回写数据
-						break;
+				while(htmllen>0){//冒泡排序，最大的放前面
+					for(m=len-1; m>len-htmllen; m--){
+						if(_dataclothes_class[m].total > _dataclothes_class[m-1].total){
+							tempExchangVal = _dataclothes_class[m];
+							_dataclothes_class[m] = _dataclothes_class[m-1];
+							_dataclothes_class[m-1] = tempExchangVal;
+						}
 					}
+					htmllen--;
 				}
 			}
-			that.printWardrobe();
+			
+			
+			if(te_selectedlen > 0){
+				this.dataclothes_te = $.extend(true,[],this.dataclothes);
+				for(var i=0; i<dataclothes_len; i++){//大类
+					var _dataclothes_class = _dataclothes[i].data,
+					len = _dataclothes_class.length,//当前类别衣服一共多少
+					teArr2 = [],
+					teArr1 = [];
+					
+					for(var j=0; j<len; j++){//把排完分数后的，再拆成有2个特殊属性/有1个特殊属性/没有特殊属性的三组数组最后再组合出来
+						var _item = _dataclothes_class[j],
+						item_te = _item.te;
+						
+						if(te_selectedlen == 2){
+							if($.inArray(_te_selected[0],item_te) != -1 && $.inArray(_te_selected[1],item_te) != -1){
+								teArr2.push(_item);
+							}else if($.inArray(_te_selected[0],item_te) != -1 || $.inArray(_te_selected[1],item_te) != -1){
+								teArr1.push(_item);
+							}
+						}else if(te_selectedlen == 1){
+							if($.inArray(_te_selected[0],item_te) != -1){
+								teArr1.push(_item);
+							}
+						}
+					}
+					this.dataclothes_te[i].data = teArr2.concat(teArr1);//2个特殊属性数组合并回写数据
+				}
+			}
+			this.printWardrobe();
 		},
 		printWardrobe: function(){//打印衣服
 			var that = this,
 			html = '',
-			_dataclothes;
+			_dataclothes,
+			keywordlen = that.o.keyword.length,
+			head_first = 0;
 			
-			var temp = '';
+			/*var temp = '';
 			for(var i=0; i<that.o.wu.length; i++){
 				temp += that.o.wu[i].k+' '+that.o.wu[i].r+',';
 			}
-			console.log("五属性:"+temp+"特殊属性:"+that.o.te);
+			console.log("五属性:"+temp+"特殊属性:"+that.o.te_selected);*/
 			
 			
 			function printTe(){//打印0-2个特殊
@@ -535,47 +521,56 @@
 			}
 
 			for(var i=0; i<that.dataclothes.length; i++){//先找到大类衣服
-				if(that.o.clothestype.id == that.dataclothes[i].id){
-					_dataclothes = that.dataclothes[i].data;
+				if(that.o.clothestype.oldid == that.dataclothes[i].id){//找到无子集的选中的id
+					if(that.o.te_selected == 0){//判断数据源该用哪一个
+						_dataclothes = that.dataclothes[i].data;
+					}else{
+						_dataclothes = that.dataclothes_te[i].data;
+					}
 				}
 			}
 
 			for(var i=0; i<_dataclothes.length; i++){//再从大类衣服里找具体衣服
-				html += '<div class="item" data-id="'+_dataclothes[i].id+'">';
-				
-				if(i == 0){
-					html += '<div class="head head_first">'+
-								'<i class="icon_gun"></i>'+
-								'<i class="icon_ring"></i>'+
-								'<i class="icon_ring_1"></i>'+
-								'<i class="icon_ring_2"></i>'+
-								'<i class="icon_handle"></i>'+
-							'</div>';
-				}else{
-					html += '<div class="head">'+
-								'<i class="icon_line"></i>'+
-							'</div>';
-				}		
-				html +='<div class="clothes">'+
-							'<i class="icon_top"></i>'+
-							'<div class="add">'+
-								'<i class="icon_x"></i>'+
-								'<i class="icon_y"></i>'+
-							'</div>'+
-							'<div class="box">'+
-								'<div class="t1">'+_dataclothes[i].name+'</div>'+
-								'<div class="t2">'+
-									'<div class="td">'+
-										printTe(_dataclothes[i].te)+
-									'</div>'+
-									'<div class="td">'+
-										'<span>估算分:</span>'+
-										'<span class="score">'+_dataclothes[i].total+'</span>'+
+				if(keywordlen == 0 || _dataclothes[i].name.indexOf(that.o.keyword) != -1){
+					html += '<div class="item" data-id="'+_dataclothes[i].id+'">';
+					
+					if(head_first == 0){
+						html += '<div class="head head_first">'+
+									'<i class="icon_gun"></i>'+
+									'<i class="icon_ring"></i>'+
+									'<i class="icon_ring_1"></i>'+
+									'<i class="icon_ring_2"></i>'+
+									'<i class="icon_handle"></i>'+
+								'</div>';
+					}else{
+						html += '<div class="head">'+
+									'<i class="icon_line"></i>'+
+								'</div>';
+					}
+					
+					head_first = 1;
+					
+					html +='<div class="clothes">'+
+								'<i class="icon_top"></i>'+
+								'<div class="add">'+
+									'<i class="icon_x"></i>'+
+									'<i class="icon_y"></i>'+
+								'</div>'+
+								'<div class="box">'+
+									'<div class="t1">'+_dataclothes[i].name+'</div>'+
+									'<div class="t2">'+
+										'<div class="td">'+
+											printTe(_dataclothes[i].te)+
+										'</div>'+
+										'<div class="td">'+
+											'<span>估算分:</span>'+
+											'<span class="score">'+_dataclothes[i].total+'</span>'+
+										'</div>'+
 									'</div>'+
 								'</div>'+
 							'</div>'+
-						'</div>'+
-					'</div>';
+						'</div>';
+				}
 			}
 			
 			$("#wardrobe").parent().scrollTop(0);
@@ -599,30 +594,24 @@
 		},
 		printClothestype: function(){//打印衣服类别
 			var html = '',
-			that = this,
-			_dataclothes = that.dataclothes,
-			len = _dataclothes.length,
-			i = 0;
-			
-			if(that.o.clothestype.haskid > 0){//有子级菜单的
+			_dataclothes = this.dataclothes,
+			len = _dataclothes.length;
+						
+			if(this.o.clothestype.haskid > 0){//有子级菜单的
 				$("#container").addClass("clothestype_two");
 			}
 
-			for(; i<len; i++){
-				if(that.o.clothestype.parentid == _dataclothes[i].parentid){
-					if(that.o.clothestype.oldid == _dataclothes[i].id){//记住单一级的衣服类别选中状态
-						if(that.o.clothestype.state == 2){
-							html += '<div class="item on" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><span>'+_dataclothes[i].data.length+'</span><div>'+_dataclothes[i].tname+'</div></div>';
+			for(var i=0; i<len; i++){
+				if(this.o.clothestype.parentid == _dataclothes[i].parentid){
+					if(this.o.clothestype.oldid == _dataclothes[i].id){//有子集菜单的不需要记录有on
+						if(this.o.clothestype.state == 2){
+							html += '<div class="item on" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><span>'+_dataclothes[i].baidu+'</span><div>'+_dataclothes[i].tname+'</div></div>';
 						}else{
 							html += '<div class="item on" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><div>'+_dataclothes[i].tname+'</div></div>';
 						}
 					}else{
-						if(that.o.clothestype.state == 2){
-							if(_dataclothes[i].haskid > 0){//有子集菜单的不需要数字
-								html += '<div class="item" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><div>'+_dataclothes[i].tname+'</div></div>';
-							}else{
-								html += '<div class="item" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><span>'+_dataclothes[i].data.length+'</span><div>'+_dataclothes[i].tname+'</div></div>';
-							}
+						if(this.o.clothestype.state == 2 && _dataclothes[i].haskid == 0){
+							html += '<div class="item" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><span>'+_dataclothes[i].baidu+'</span><div>'+_dataclothes[i].tname+'</div></div>';
 						}else{
 							html += '<div class="item" data-id="'+_dataclothes[i].id+'" data-parentid="'+_dataclothes[i].parentid+'" data-haskid="'+_dataclothes[i].haskid+'"><div>'+_dataclothes[i].tname+'</div></div>';
 						}
@@ -755,44 +744,41 @@
 			});
 			//取消搜索
 			$("#btn_so_cancel").click(function(){
+				that.o.keyword = "";
+				$("#so_text").val("");
 				if(that.o.way == 0){
-					that.setBeam(0);
+					that.o.clothestype.state = 0;
+					that.setBeam();
 				}else{
+					that.o.clothestype.state = 1;
 					that.setBeam(1);
 				}
-				that.workData();
+				that.printClothestype();
+				that.printWardrobe();
 			});
 			//特殊属性 全部 特殊1 特殊2
 			$("#wardrobe_filter").on("click", ".item", function(){
-				var self = $(this);
+				var self = $(this),
 				_index = Number(self.attr("data-index")),
-				_id = Number(self.attr("data-id"));
+				_id = Number(self.attr("data-id")),
+				inarr;
 				
-				
-				if(_index == 1){
-					if(self.hasClass("on")){
-						that.o.te_selected.splice(0,1);//删除第一个
-						self.removeClass("on");
-						
-					}else{
-						that.o.te_selected.push(_id);//为0的时候，插入
-						self.addClass("on");
-					}
-				}else if(_index == 2){
-					if(self.hasClass("on")){
-						that.o.te_selected.splice(1,1);//删除第二个
-						self.removeClass("on");
-					}else{
-						that.o.te_selected.push(_id);//为1的时候，插入
-						self.addClass("on");
-					}
-				}else{//全部
+				if(_index == 0){//全部
 					that.o.te_selected.splice(0,2);
 					self.siblings().removeClass("on");
+				}else{
+					if(self.hasClass("on")){
+						inarr = $.inArray(_id,that.o.te_selected);
+						that.o.te_selected.splice(inarr,1);
+						self.removeClass("on");
+					}else{
+						that.o.te_selected.push(_id);
+						self.addClass("on");
+					}
 				}
-				that.dataclothes = $.extend(true,[],that.dataclothes_back);
 				that.calcWardrobe();
 			});
+			
 			//返回衣服类别
 			$("#clothestype_back").click(function(){
 				$("#container").removeClass("clothestype_two");
