@@ -239,7 +239,7 @@
 			
 			
 			if(te_selectedlen > 0){
-				this.datadress_te = $.extend(true,[],this.datadress);
+				this.datadress_te = $.extend(true,[],this.datadress);//取得新的数据源
 				for(var i=0; i<datadress_len; i++){//大类
 					var _datadress_class = _datadress[i].data,
 					len = _datadress_class.length,//当前类别衣服一共多少
@@ -479,7 +479,7 @@
 									'<i class="icon_x"></i>'+
 									'<i class="icon_y"></i>'+
 								'</div>'+
-								'<div class="box box_back">'+
+								'<div class="box box_front">'+
 									'<div class="face_front">'+
 										'<div class="t1">'+_datadress[i].name+'</div>'+
 										'<div class="t2">'+
@@ -738,7 +738,7 @@
 			
 			//点选衣服翻牌的时候
 			$("#dress").on("click", ".item", function(){
-				console.log(1);
+				//console.log(1);
 			});
 		},
 		setBeam: function(){//设置中间的横梁 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
