@@ -473,7 +473,7 @@
 					
 					head_first = 1;
 					
-					html += '<div class="dress">'+
+					html += '<div class="piece">'+
 								'<i class="icon_top"></i>'+
 								'<div class="add">'+
 									'<i class="icon_x"></i>'+
@@ -710,13 +710,37 @@
 				}
 				that.calcDress();
 			});
-			
 			//返回衣服类别
 			$("#dresstype_back").click(function(){
 				$("#container").removeClass("dresstype_two");
 				that.o.dresstype.haskid = 0;
 				that.o.dresstype.parentid = 0;
 				that.printDresstype();
+			});
+			//拉开已选门把手
+			$("#door").click(function(){
+				var self = $(this);
+				if(self.hasClass("door_open")){//关闭
+					$("#bag_inner").stop(true,true).animate({
+						"margin-left": "1.01rem"
+					},300,function(){
+						$("#bag").removeClass("bag_open");
+					});
+					$("#door").stop(true,true).animate({
+						"right": "0.03rem"
+					},300,function(){
+						self.removeClass("door_open");
+					});
+				}else{//打开
+					self.addClass("door_open");
+					$("#bag").addClass("bag_open");
+					$("#bag_inner").stop(true,true).animate({
+						"margin-left": 0
+					},300);
+					$("#door").stop(true,true).animate({
+						"right": "1rem"
+					},300);
+				}
 			});
 			
 			//选中衣服类别
@@ -738,7 +762,7 @@
 			
 			//点选衣服翻牌的时候
 			$("#dress").on("click", ".item", function(){
-				//console.log(1);
+				console.log(1);
 			});
 		},
 		setBeam: function(){//设置中间的横梁 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
