@@ -397,7 +397,7 @@
 				return;
 			}
 			
-			for(var i=0; i<datacards.length; i++){//追加进数组
+			for(var i=0; i<datacards.length; i++){
 				if(datacards[i].c == cardid){
 					cardtmp = datacards[i];
 					
