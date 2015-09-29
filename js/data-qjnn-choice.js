@@ -17,14 +17,23 @@
 					te_selected:[],//特殊属性 选中的
 					zhuti:"",//衣柜(作为保存套装名字用) 竞技场 联盟委托 关卡 选中的主题
 					keyword:"",//关键词
-					bag:[]//已选中的服装
+					bag:[],//已选中的服装
+					score:0//已选中的总分
 				 };
 
 		this.init();
 	};
 	
 	Qjnn.prototype = {
-		printMy: function(){//打印我的套装
+		printMy: function(){//打印我的具体套装
+			
+		},
+		htmlMydetail: function(){//我的具体套装
+			var that = this;
+			
+			that.printMy();
+		},
+		printMy: function(){//打印我的套装列表
 			var wbglqjnnbag = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
 			_data,
 			html = '';
@@ -34,50 +43,62 @@
 			for(var i=0; i<wbglqjnnbag.data.length; i++){
 				_data = wbglqjnnbag.data[i];
 				
-				html += '<div class="item"  data-id="'+_data.id+'">'+
+				html += '<div class="item" data-id="'+_data.id+'">'+
 							'<div class="item_inner">'+
 								'<div class="l">'+
-									'<div class="title">联盟委托—大侦探福尔摩斯</div>'+
-									'<div class="time">2015-09-09</div>'+
-									'<div class="name">关卡8-支2</div>'+
+									'<div class="title">'+_data.name+'</div>'+
+									'<div class="time">'+_data.time+'</div>'+
 								'</div>'+
 								'<div class="r">'+
 									'<div class="close"><i class="icon_x"></i><i class="icon_y"></i></div>'+
 									'<div class="dt">估算分：</div>'+
-									'<div class="dd">532642</div>'+
+									'<div class="dd">'+_data.score+'</div>'+
 								'</div>'+
 							'</div>'+
 						'</div>';
-
 			}
 			$("#my").html(html);
 		},
-		htmlMy: function(){//我的套装页
+		htmlMy: function(){//我的套装列表页
 			var that = this;
 			
 			that.printMy();
+			
+			$("#my").on("click", ".item", function(){
+				that.setsession("wbgl-qjnn-choice-my",$(this).attr("data-id"));
+				if(that.o.platform == "ios"){
+					location.href = that.o.plugin+'/data-qjnn-choice-mydetail.html';
+				}else{
+					location.href = 'data-qjnn-choice-mydetail.html';
+				}
+			});
 		},
 		setBag: function(){//存储一袋子的衣服
-			var wbglqjnnbag,//wbglqjnnbag = [{"id":1,"data":[]}]
-			bag_data;
+			var wbglqjnnbag,//wbglqjnnbag = {"data":[],"growthid":1}
+			bag_data,
+			myDate = new Date(),
+			y = myDate.getFullYear(),
+			m = myDate.getMonth()+1,
+			d = myDate.getDate(),
+			nowtime = y+"-"+m+"-"+d;
 
 			if(this.getsession("wbgl-qjnn-choice-urlfrom") == "index.html"){//如果是index.html过来的就新建保存
 				wbglqjnnbag = {"data":[],"growthid":1};
-				bag_data = {"id":1,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag};
+				bag_data = {"id":1,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime};
 				if(localStorage.getItem("wbgl-qjnn-choice") === null){//如果我的卡组为空时
 					wbglqjnnbag.data.push(bag_data);
 				}else{//如果我的卡组不为空时，就追加
 					wbglqjnnbag = JSON.parse(localStorage.getItem("wbgl-qjnn-choice"));
-					wbglqjnnbag.growthid = ++wbglqjnnbag.growthid;
+					bag_data.id = ++wbglqjnnbag.growthid;
 					wbglqjnnbag.data.unshift(bag_data);
 				}
 				localStorage.setItem("wbgl-qjnn-choice",JSON.stringify(wbglqjnnbag));
 			}else if(this.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){//如果是mydetail.html过来的就在原来的里面编辑保存
-				var id = JSON.parse(getsession("wbgl-qjnn-choice-mybags")).id;				
+				var id = JSON.parse(this.getsession("wbgl-qjnn-choice-mybags")).id;			
 				wbglqjnnbag = JSON.parse(localStorage.getItem("wbgl-qjnn-choice"));
 				for(var i=0; i<wbglqjnnbag.data.length; i++){
-					if(wbglqjnnbag.data[i].growthid == id){
-						wbglqjnnbag.data[i] = {"id":id,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag};
+					if(wbglqjnnbag.data[i].id == id){
+						wbglqjnnbag.data[i] = {"id":id,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime};
 						localStorage.setItem("wbgl-qjnn-choice", JSON.stringify(wbglqjnnbag));
 					}
 				}
@@ -169,6 +190,7 @@
 					}
 				}
 			}
+			this.o.score = score;
 			
 			$("#door_num").html(num);
 			$("#door_score").html(score);
