@@ -90,12 +90,12 @@
 				wbgllscsmycards = JSON.parse(localStorage.getItem("wbgl-lscs-ka-mycards"));
 				if(wbgllscsmycards === null) return;
 				localStorage.setItem("wbgl-lscs-ka-job", wbgllscsmycards.job);
-				localStorage.setItem("wbgl-lscs-ka-urlform", "mycards.html");//当准备去编辑详情页的时候，记录来自于data-lushichuanshuo-ka-mycards.html
+				localStorage.setItem("wbgl-lscs-ka-urlfrom", "mycards.html");//当准备去编辑详情页的时候，记录来自于data-lushichuanshuo-ka-mycards.html
 			}else{
 				wbgllscsmycards = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards"));
 				if(wbgllscsmycards === null) return;
 				sessionStorage.setItem("wbgl-lscs-ka-job", wbgllscsmycards.job);
-				sessionStorage.setItem("wbgl-lscs-ka-urlform", "mycards.html");//当准备去编辑详情页的时候，记录来自于data-lushichuanshuo-ka-mycards.html
+				sessionStorage.setItem("wbgl-lscs-ka-urlfrom", "mycards.html");//当准备去编辑详情页的时候，记录来自于data-lushichuanshuo-ka-mycards.html
 			}
 			
 			$("#header h1").html(wbgllscsmycards.name);
@@ -225,7 +225,7 @@
 				return;
 			}
 			
-			if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "job.html" || localStorage.getItem("wbgl-lscs-ka-urlform") == "job.html"){//如果是job.html过来的就新建保存
+			if(sessionStorage.getItem("wbgl-lscs-ka-urlfrom") == "job.html" || localStorage.getItem("wbgl-lscs-ka-urlfrom") == "job.html"){//如果是job.html过来的就新建保存
 				wbgllscska = {"data":[],id:1};
 				ka = {"id":1,"name":cardname,"job":job,"cards":this.o.cards};
 				
@@ -237,7 +237,7 @@
 					wbgllscska.data.unshift(ka);
 				}
 				localStorage.setItem("wbgl-lscs-ka",JSON.stringify(wbgllscska));
-			}else if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html" || localStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html"){//如果是mycards.html过来的就在原来的里面编辑保存
+			}else if(sessionStorage.getItem("wbgl-lscs-ka-urlfrom") == "mycards.html" || localStorage.getItem("wbgl-lscs-ka-urlfrom") == "mycards.html"){//如果是mycards.html过来的就在原来的里面编辑保存
 				if(this.o.platform == "ios"){
 					var id = JSON.parse(localStorage.getItem("wbgl-lscs-ka-mycards")).id;
 				}else{
@@ -638,7 +638,7 @@
 			});
 			//添加卡牌-点击顶部返回
 			$("#ka_detail_back").click(function(e){
-				if(JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html") || JSON.parse(localStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html")){//如果是从mycards.html过来的就回mycards.html
+				if(JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-urlfrom") == "mycards.html") || JSON.parse(localStorage.getItem("wbgl-lscs-ka-urlfrom") == "mycards.html")){//如果是从mycards.html过来的就回mycards.html
 					e.preventDefault();
 					location.href = 'data-lushichuanshuo-ka-mycards.html';
 				}
@@ -718,9 +718,9 @@
 				case (href == "job"):
 					this.isplatform(2);
 					if(this.o.platform == "ios"){//ios在插件里不识别sessionStorage
-						localStorage.setItem("wbgl-lscs-ka-urlform", "job.html");//记录来自于data-lushichuanshuo-ka-job.html
+						localStorage.setItem("wbgl-lscs-ka-urlfrom", "job.html");//记录来自于data-lushichuanshuo-ka-job.html
 					}else{
-						sessionStorage.setItem("wbgl-lscs-ka-urlform", "job.html");//记录来自于data-lushichuanshuo-ka-job.html
+						sessionStorage.setItem("wbgl-lscs-ka-urlfrom", "job.html");//记录来自于data-lushichuanshuo-ka-job.html
 					}
 					break;
 				case (href == "detail"):
@@ -735,7 +735,7 @@
 					
 					if(this.o.platform == "ios"){
 						this.o.job = localStorage.getItem("wbgl-lscs-ka-job");
-						if(localStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html" && localStorage.getItem("wbgl-lscs-ka-mycards") !== null){//如果是从data-lushichuanshuo-ka-mycards.html过来的就赋值
+						if(localStorage.getItem("wbgl-lscs-ka-urlfrom") == "mycards.html" && localStorage.getItem("wbgl-lscs-ka-mycards") !== null){//如果是从data-lushichuanshuo-ka-mycards.html过来的就赋值
 							var data = JSON.parse(localStorage.getItem("wbgl-lscs-ka-mycards"));
 							this.o.cards = data.cards;
 							$("#ka_add_input").val(data.name);
@@ -743,7 +743,7 @@
 						}
 					}else{
 						this.o.job = sessionStorage.getItem("wbgl-lscs-ka-job");
-						if(sessionStorage.getItem("wbgl-lscs-ka-urlform") == "mycards.html" && sessionStorage.getItem("wbgl-lscs-ka-mycards") !== null){//如果是从data-lushichuanshuo-ka-mycards.html过来的就赋值
+						if(sessionStorage.getItem("wbgl-lscs-ka-urlfrom") == "mycards.html" && sessionStorage.getItem("wbgl-lscs-ka-mycards") !== null){//如果是从data-lushichuanshuo-ka-mycards.html过来的就赋值
 							var data = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards"));
 							this.o.cards = data.cards;
 							$("#ka_add_input").val(data.name);
