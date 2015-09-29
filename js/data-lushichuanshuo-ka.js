@@ -276,9 +276,9 @@
 		showdialogtip: function(){//弹窗
 			var i = Number(arguments[0]),
 			html_1 = '相同卡牌不能超过2张',
-			html_2 = '只能添加30张卡牌';
-			html_3 = '请添加30张卡牌';
-			html_4 = '相同传说级卡牌只能携带一张';
+			html_2 = '只能添加30张卡牌',
+			html_3 = '请添加30张卡牌',
+			html_4 = '相同传说级卡牌只能携带一张',
 			html_5 = '给你的卡组命个名吧';
 			
 			switch(i){
