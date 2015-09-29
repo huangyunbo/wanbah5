@@ -197,7 +197,7 @@
                 <div class="t1">总分</div>
                 <div class="score" id="bag_score">0</div>
                 <div class="t2">
-                    <div class="btn"><i class="icon_line1"></i><i class="icon_line2"></i><i class="icon_line3"></i>保存套装</div>
+                    <div class="btn" id="btn_bag_ok"><i class="icon_line1"></i><i class="icon_line2"></i><i class="icon_line3"></i>保存套装</div>
                 </div>
             </div>
             
@@ -667,7 +667,7 @@
 
 <div class="dialog" id="dialog_6">
     <div class="dialog_6"><!--保存套装-->
-        <input class="ipt_text" type="text" maxlength="10" placeholder="请输入套装名称...">
+        <input class="ipt_text" type="text" maxlength="10" placeholder="请输入套装名称..." id="bag_name">
     </div>
     <div class="foot">
     	<i class="icon icon_l"><code></code></i>
@@ -679,6 +679,7 @@
     </div>
 </div><!--/dialog_6-->
 
+<div class="toast" id="toast"></div>
 
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/easydialog.min.js"></script>

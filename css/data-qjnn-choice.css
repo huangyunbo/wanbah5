@@ -202,6 +202,7 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .dialog_5 .item{ float:left; width:33.33%}
 .dialog_6{ font-size:0.15rem; height:0.57rem}
 .dialog_6 .ipt_text{ width:100%; height:0.35rem; line-height:0.35rem; padding:0 0.05rem; box-sizing:border-box; border:0.01rem solid #ffb619; border-radius:0.08rem}
+.toast{ font-size:0.15rem; color:#fff; background:#616161; border-radius:0.05rem; padding:0 10px; display:none}
 /*我的套装data-qjnn-choice-my.html*/
 .my{ font-size:0.12rem; padding-top:0.15rem}
 .my .item{ background:#fff; border-radius:0.05rem; box-shadow:0 0.02rem rgba(169,145,142,0.8); margin:0 0.1rem 0.1rem; color:#907a4d}
