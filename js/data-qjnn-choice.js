@@ -26,13 +26,14 @@
 	
 	Qjnn.prototype = {
 		printMydetail: function(){//打印我的具体套装
-			var that = this,
-			_datadress = this.datadress,
+			var _datadress = this.datadress,
 			wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
-			id = that.getsession("wbgl-qjnn-choice-mydetailid"),
+			id = Number(this.getsession("wbgl-qjnn-choice-mydetailid")),
 			_data,
 			_bag,
-			html_suit = '';
+			dress_wu,
+			html_suit = '',
+			html_wu = '';
 			
 			if(wbglqjnnchoice === null) return;
 			
@@ -45,13 +46,26 @@
 			
 			if(_data === undefined) return;
 			_bag = _data.bag;
-			
+			this.o.wu = _data.wu;
 
-			for(var i=0; i<_bag.length; i++){
+			for(var i=0; i<_bag.length; i++){//打印套装内容
 				for(var j=0; j<_datadress.length; j++){
 					if(_bag[i].tid == _datadress[j].id){
 						for(var k=0; k<_datadress[j].data.length; k++){
-							if(_bag[i].cid == _datadress[j].data[k].id){
+							if(_bag[i].cid == _datadress[j].data[k].id){//找到这件衣服了
+								for(var l in _datadress[j].data[k].wu){//开始计算五属性分值
+									dress_wu = _datadress[j].data[k].wu;
+									for(var m=0; m<this.o.wu.length; m++){
+										if(l == this.o.wu[m].k){
+											if(this.o.wu[m].s === undefined){
+												this.o.wu[m].s = dress_wu[l]*this.o.wu[m].r;
+											}else{
+												this.o.wu[m].s += dress_wu[l]*this.o.wu[m].r;
+											}
+										}
+									}
+								}
+								
 								html_suit += '<li><span>'+_datadress[j].tname+'：</span>'+_datadress[j].data[k].name+'</li>';
 								break;
 							}
@@ -60,13 +74,28 @@
 				}
 			}
 			
+			for(var i=0; i<this.o.wu.length; i++){//打印五属性
+				html_wu += '<li>'+this.switchlael(this.o.wu[i].k)+'：'+Math.round(this.o.wu[i].s)+'</li>';
+			}
+		
+			
 			$("#mydetailtitle").html(_data.name);
 			$("#mydetailscore").html(_data.score);
+			$("#mydetailwu").html(html_wu);
 			$("#mydetailsuit").html(html_suit);
 		},
 		htmlMydetail: function(){//我的具体套装
 			var that = this;
+			
 			that.printMydetail();
+			
+			$("#btn_bianji").click(function(){
+				if(that.o.platform == "ios"){
+					location.href = that.o.plugin+'/data-qjnn-choice-dress.html';
+				}else{
+					location.href = 'data-qjnn-choice-dress.html';
+				}
+			});
 		},
 		printMy: function(){//打印我的套装列表
 			var wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
@@ -451,7 +480,7 @@
 			}
 			
 			
-			if(te_selectedlen > 0){
+			if(te_selectedlen > 0){//如果有选中特殊属性要进行筛选，那么就重新整合数据源
 				this.datadress_te = $.extend(true,[],this.datadress);//取得新的数据源
 				for(var i=0; i<datadress_len; i++){//大类
 					var _datadress_class = _datadress[i].data,
@@ -552,7 +581,7 @@
 								case 1250:r="SS";break;
 								default:r="C";
 							}
-							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+							_html += '<span>'+that.switchlael(k) + r +'</span>';
 						}
 						break;
 					case 2:
@@ -564,7 +593,7 @@
 								case 5100:r="SS";break;
 								default:r="C";
 							}
-							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+							_html += '<span>'+that.switchlael(k) + r +'</span>';
 						}
 						break;
 					case 3:
@@ -576,7 +605,7 @@
 								case 505:r="SS";break;
 								default:r="C";
 							}
-							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+							_html += '<span>'+that.switchlael(k) + r +'</span>';
 						}
 						break;
 					case 4:
@@ -588,7 +617,7 @@
 								case 2725:r="SS";break;
 								default:r="C";
 							}
-							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+							_html += '<span>'+that.switchlael(k) + r +'</span>';
 						}
 						break;
 					case 5:
@@ -600,7 +629,7 @@
 								case 2725:r="SS";break;
 								default:r="C";
 							}
-							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+							_html += '<span>'+that.switchlael(k) + r +'</span>';
 						}
 						break;
 					case 6:
@@ -613,7 +642,7 @@
 								case 860:r="SS";break;
 								default:r="C";
 							}
-							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+							_html += '<span>'+that.switchlael(k) + r +'</span>';
 						}
 						break;
 					case 8:
@@ -625,7 +654,7 @@
 								case 1000:r="SS";break;
 								default:r="C";
 							}
-							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+							_html += '<span>'+that.switchlael(k) + r +'</span>';
 						}
 						break;
 					case 9://妆容
@@ -637,7 +666,7 @@
 								case 265:r="SS";break;
 								default:r="C";
 							}
-							_html += '<span>'+that.switchlael(k)+''+r+'</span>';
+							_html += '<span>'+that.switchlael(k) + r +'</span>';
 						}
 						break;
 					case 10:
@@ -666,7 +695,7 @@
 								case 485:r="SS";break;
 								default:r="C";
 							}
-							_html += '<span>'+that.switchlael(k) + r+'</span>';
+							_html += '<span>'+that.switchlael(k) + r +'</span>';
 						}
 						break;
 					
@@ -1020,6 +1049,24 @@
 			$("#dialog_6_sure").click(function(){
 				that.waywork(6);
 			});
+			
+			//如果是从我的套装进来的
+			if(that.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){
+				var wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
+				_id = Number(that.getsession("wbgl-qjnn-choice-mydetailid")),
+				_data;
+				
+				/*for(var i=0; i<wbglqjnnchoice.data.length; i++){
+					_data = wbglqjnnchoice.data;
+					if(_data.id == _id){
+						that.o.way = _data.way;
+						
+						
+						break;
+					}
+				}
+				that.printBag();*/
+			}
 		},
 		setBeam: function(){//设置中间的横梁 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
 			var _beam = arguments[0] === undefined ? 0 : arguments[0];
