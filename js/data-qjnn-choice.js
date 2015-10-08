@@ -25,23 +25,58 @@
 	};
 	
 	Qjnn.prototype = {
-		printMy: function(){//打印我的具体套装
+		printMydetail: function(){//打印我的具体套装
+			var that = this,
+			_datadress = this.datadress,
+			wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
+			id = that.getsession("wbgl-qjnn-choice-mydetailid"),
+			_data,
+			_bag,
+			html_suit = '';
 			
+			if(wbglqjnnchoice === null) return;
+			
+			for(var i=0; i<wbglqjnnchoice.data.length; i++){
+				_data = wbglqjnnchoice.data[i];
+				if(_data.id == id){
+					break;
+				}
+			}
+			
+			if(_data === undefined) return;
+			_bag = _data.bag;
+			
+
+			for(var i=0; i<_bag.length; i++){
+				for(var j=0; j<_datadress.length; j++){
+					if(_bag[i].tid == _datadress[j].id){
+						for(var k=0; k<_datadress[j].data.length; k++){
+							if(_bag[i].cid == _datadress[j].data[k].id){
+								html_suit += '<li><span>'+_datadress[j].tname+'：</span>'+_datadress[j].data[k].name+'</li>';
+								break;
+							}
+						}
+					}
+				}
+			}
+			
+			$("#mydetailtitle").html(_data.name);
+			$("#mydetailscore").html(_data.score);
+			$("#mydetailsuit").html(html_suit);
 		},
 		htmlMydetail: function(){//我的具体套装
 			var that = this;
-			
-			that.printMy();
+			that.printMydetail();
 		},
 		printMy: function(){//打印我的套装列表
-			var wbglqjnnbag = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
+			var wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
 			_data,
 			html = '';
 			
-			if(wbglqjnnbag === null) return;
+			if(wbglqjnnchoice === null) return;
 			
-			for(var i=0; i<wbglqjnnbag.data.length; i++){
-				_data = wbglqjnnbag.data[i];
+			for(var i=0; i<wbglqjnnchoice.data.length; i++){
+				_data = wbglqjnnchoice.data[i];
 				
 				html += '<div class="item" data-id="'+_data.id+'">'+
 							'<div class="item_inner">'+
@@ -65,7 +100,7 @@
 			that.printMy();
 			
 			$("#my").on("click", ".item", function(){
-				that.setsession("wbgl-qjnn-choice-my",$(this).attr("data-id"));
+				that.setsession("wbgl-qjnn-choice-mydetailid",Number($(this).attr("data-id")));
 				if(that.o.platform == "ios"){
 					location.href = that.o.plugin+'/data-qjnn-choice-mydetail.html';
 				}else{
@@ -74,7 +109,7 @@
 			});
 		},
 		setBag: function(){//存储一袋子的衣服
-			var wbglqjnnbag,//wbglqjnnbag = {"data":[],"growthid":1}
+			var wbglqjnnchoice,//wbglqjnnchoice = {"data":[],"growthid":1}
 			bag_data,
 			myDate = new Date(),
 			y = myDate.getFullYear(),
@@ -83,25 +118,26 @@
 			nowtime = y+"-"+m+"-"+d;
 
 			if(this.getsession("wbgl-qjnn-choice-urlfrom") == "index.html"){//如果是index.html过来的就新建保存
-				wbglqjnnbag = {"data":[],"growthid":1};
+				wbglqjnnchoice = {"data":[],"growthid":1};
 				bag_data = {"id":1,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime};
 				if(localStorage.getItem("wbgl-qjnn-choice") === null){//如果我的卡组为空时
-					wbglqjnnbag.data.push(bag_data);
+					wbglqjnnchoice.data.push(bag_data);
 				}else{//如果我的卡组不为空时，就追加
-					wbglqjnnbag = JSON.parse(localStorage.getItem("wbgl-qjnn-choice"));
-					bag_data.id = ++wbglqjnnbag.growthid;
-					wbglqjnnbag.data.unshift(bag_data);
+					wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice"));
+					bag_data.id = ++wbglqjnnchoice.growthid;
+					wbglqjnnchoice.data.unshift(bag_data);
 				}
-				localStorage.setItem("wbgl-qjnn-choice",JSON.stringify(wbglqjnnbag));
+				localStorage.setItem("wbgl-qjnn-choice",JSON.stringify(wbglqjnnchoice));
 			}else if(this.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){//如果是mydetail.html过来的就在原来的里面编辑保存
-				var id = JSON.parse(this.getsession("wbgl-qjnn-choice-mybags")).id;			
-				wbglqjnnbag = JSON.parse(localStorage.getItem("wbgl-qjnn-choice"));
-				for(var i=0; i<wbglqjnnbag.data.length; i++){
-					if(wbglqjnnbag.data[i].id == id){
-						wbglqjnnbag.data[i] = {"id":id,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime};
-						localStorage.setItem("wbgl-qjnn-choice", JSON.stringify(wbglqjnnbag));
+				alert(1);
+				/*var id = JSON.parse(this.getsession("wbgl-qjnn-choice-mybags")).id;			
+				wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice"));
+				for(var i=0; i<wbglqjnnchoice.data.length; i++){
+					if(wbglqjnnchoice.data[i].id == id){
+						wbglqjnnchoice.data[i] = {"id":id,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime};
+						localStorage.setItem("wbgl-qjnn-choice", JSON.stringify(wbglqjnnchoice));
 					}
-				}
+				}*/
 			}
 			
 			if(this.o.platform == "ios"){
@@ -158,7 +194,7 @@
 					_bag.push({"tid":_oldid,"cid":_id});
 				}
 			}else{
-				_bag.push({"tid":_oldid,"cid":_id});//[{"tid":1,cid:_id},{}]
+				_bag.push({"tid":_oldid,"cid":_id});//[{"tid":1,cid:_id},{}] tid是类别，cid是衣服id
 			}
 
 			this.printBag();
@@ -1122,6 +1158,7 @@
 					break;
 				case (href == "mydetail"):
 					this.isplatform("mydetail");
+					this.htmlMydetail();
 					this.setsession("wbgl-qjnn-choice-urlfrom", "mydetail.html");//记录来自于data-qjnn-choice-mydetail.html
 					break;
 			}
