@@ -949,7 +949,7 @@
 				that.o.chapterid = _index;
 				$(this).addClass("on").siblings().removeClass("on");
 				$("#dialog_3_section").children().eq(_index).removeClass("hide").siblings().addClass("hide");
-			});
+			}).children().eq(0).trigger("click");
 			//关卡小节点选
 			$("#dialog_3_section").on("click",".item",function(){
 				that.o.sectionid = Number($(this).attr("data-id"));
@@ -1095,7 +1095,7 @@
 						that.o.sectionid = _data.sectionid;
 						$("#bag_name").val(_data.name);
 						
-						$("#dialog_3_chapter").find(".item").eq(0).trigger("click");//默认关卡点选一下
+						
 						
 						switch(that.o.way){
 							case 1:
@@ -1129,11 +1129,6 @@
 						break;
 					}
 				}
-			}else{//初始化选中
-				$("#dialog_1").find(".item").eq(0).trigger("click");
-				$("#dialog_2").find(".item").eq(0).trigger("click");
-				$("#dialog_3_chapter").find(".item").eq(0).trigger("click");
-				$("#dialog_3_section").find(".item").eq(0).trigger("click");
 			}
 			
 			
