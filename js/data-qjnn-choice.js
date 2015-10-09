@@ -127,7 +127,6 @@
 				total = isNaN(total) ? 0 : total;
 				html_wu += '<li>'+this.switchlael(this.o.wu[i].k)+'：'+total+'</li>';
 			}
-		
 			
 			$("#mydetailtitle").html(_data.name);
 			$("#mydetailscore").html(_data.score);
@@ -146,6 +145,29 @@
 					location.href = 'data-qjnn-choice-dress.html';
 				}
 			});
+		},
+		removeMy: function(){//删除我的套装
+			var id = arguments[0];
+			wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice"));
+			
+
+			$("#my").children().each(function(){
+				var self = $(this);
+            	if(id == Number(self.attr("data-id"))){
+					self.remove();
+					for(var i=0; i<wbglqjnnchoice.data.length; i++){
+						if(wbglqjnnchoice.data[i].id == id){
+							wbglqjnnchoice.data.splice(i,1);
+							localStorage.setItem("wbgl-qjnn-choice",JSON.stringify(wbglqjnnchoice));
+							if(wbglqjnnchoice.data.length == 0){
+								localStorage.removeItem("wbgl-qjnn-choice");
+							}
+							break;
+						}
+					}
+					return;
+				}
+            });
 		},
 		printMy: function(){//打印我的套装列表
 			var wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
@@ -186,6 +208,12 @@
 					location.href = 'data-qjnn-choice-mydetail.html';
 				}
 			});
+			
+			$("#my").on("click", ".close", function(){
+				that.removeMy(Number($(this).closest(".item").attr("data-id")));
+				return false;
+			});
+			
 		},
 		setBag: function(){//存储一袋子的衣服
 			var wbglqjnnchoice,//wbglqjnnchoice = {"data":[],"growthid":1}
