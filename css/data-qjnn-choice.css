@@ -112,7 +112,7 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .dress .piece .face_front .t2{ display:table; width:100%; font-size:0.1rem; table-layout:fixed}
 .dress .piece .face_front .t2 .td{ display:table-cell; width:50%; height:0.23rem; line-height:0.24rem; text-align:center; color:#976907; overflow:hidden; white-space:nowrap}
 .dress .piece .face_front .t2 .td:last-child{ border-left:1px solid #cdce99}
-.dress .piece .face_front .t2 .score{ font-size:0.13rem}
+.dress .piece .face_front .t2 .total{ font-size:0.13rem}
 .dress .piece .face_back{ display:none}
 .dress .piece .face_back .t1{ height:0.23rem; line-height:0.23rem; color:#644400; border-bottom:1px solid #cdce99; font-size:0.12rem}
 .dress .piece .face_back .t2{ font-size:0.1rem; color:#976907; padding-top:0.02rem}

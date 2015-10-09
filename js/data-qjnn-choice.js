@@ -19,14 +19,60 @@
 					keyword:"",//关键词
 					bag:[],//已选中的服装
 					score:0,//已选中的总分
-					sectionid:0,
-					chapterid:0
+					sectionid:1,//竞技场id 联盟委托id 关卡小id
+					chapterid:0//关卡大id
 				 };
 
 		this.init();
 	};
 	
 	Qjnn.prototype = {
+		editMydetail: function(){//重新编辑模式进来			
+			switch(this.o.way){
+				case 0://处理衣柜
+					this.setBeam();
+					break;
+				case 1://处理竞技场
+					var _id = this.o.sectionid;
+					for(var i=0; i<this.dataarena.length; i++){
+						if(this.dataarena[i].id == _id){
+							this.o.zhuti = this.dataarena[i].name;
+							this.o.te = this.dataarena[i].te.slice(0);
+							break;
+						}
+					}
+					this.setBeam(1);
+					break;
+				case 2://处理联盟委托
+					var _id = this.o.sectionid;
+					for(var i=0; i<this.dataarena.length; i++){
+						if(this.dataarena[i].id == _id){
+							this.o.zhuti = this.dataarena[i].name;
+							this.o.te = this.dataarena[i].te.slice(0);
+							break;
+						}
+					}
+					this.setBeam(1);
+					break;
+				case 3://处理关卡
+					var _index = this.o.chapterid;
+					var _id = this.o.sectionid;
+					for(var i=0; i<this.datagates[_index].data.length; i++){
+						if(this.datagates[_index].data[i].id == _id){
+							this.o.zhuti = this.datagates[_index].data[i].name;
+							this.o.te = this.datagates[_index].data[i].te.slice(0);
+							break;
+						}
+					}
+					this.setBeam(1);
+					break;
+			}
+			$("#so_text").val("");
+			this.setTe();
+			this.calcDress();
+			this.printBag();
+			$("#way").children().eq(this.o.way).addClass("on").siblings().removeClass("on");
+		},
 		printMydetail: function(){//打印我的具体套装
 			var _datadress = this.datadress,
 			wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
@@ -77,7 +123,9 @@
 			}
 			
 			for(var i=0; i<this.o.wu.length; i++){//打印五属性
-				html_wu += '<li>'+this.switchlael(this.o.wu[i].k)+'：'+Math.round(this.o.wu[i].s)+'</li>';
+				var total = Math.round(this.o.wu[i].s);
+				total = isNaN(total) ? 0 : total;
+				html_wu += '<li>'+this.switchlael(this.o.wu[i].k)+'：'+total+'</li>';
 			}
 		
 			
@@ -320,21 +368,14 @@
 			}
 		},
 		way: function(){//0:衣柜 1:竞技场 2:联盟委托 3:关卡 处理这4种弹窗
-			var urlfrom = "index.html";
-			if(this.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){
-				urlfrom = "mydetail.html";
-			}
-			
 			switch(this.o.way){
 				case 0://处理衣柜
 					if(this.o.dresstype.state == 2){
 						this.o.dresstype.state = 0;
 						this.calcDresstype();
 					}
-					if(urlfrom == "index.html"){
-						this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}];
-						this.o.zhuti = "";
-					}
+					this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}];
+					this.o.zhuti = "";
 					this.o.te = [];
 					this.setBeam();
 					break;
@@ -346,12 +387,9 @@
 					var _id = this.o.sectionid;
 					for(var i=0; i<this.dataarena.length; i++){
 						if(this.dataarena[i].id == _id){
-							if(urlfrom == "index.html"){
-								this.o.wu = this.dataarena[i].wu;
-								this.o.zhuti = this.dataarena[i].name;
-							}
+							this.o.wu = this.dataarena[i].wu;
+							this.o.zhuti = this.dataarena[i].name;
 							this.o.te = this.dataarena[i].te.slice(0);
-							
 							break;
 						}
 					}
@@ -365,10 +403,8 @@
 					var _id = this.o.sectionid;
 					for(var i=0; i<this.dataarena.length; i++){
 						if(this.dataarena[i].id == _id){
-							if(urlfrom == "index.html"){
-								this.o.wu = this.dataarena[i].wu;
-								this.o.zhuti = this.dataarena[i].name;
-							}
+							this.o.wu = this.dataarena[i].wu;
+							this.o.zhuti = this.dataarena[i].name;
 							this.o.te = this.dataarena[i].te.slice(0);
 							break;
 						}
@@ -384,21 +420,17 @@
 					var _id = this.o.sectionid;
 					for(var i=0; i<this.datagates[_index].data.length; i++){
 						if(this.datagates[_index].data[i].id == _id){
-							if(urlfrom == "index.html"){
-								this.o.wu = this.dataarena[i].wu;
-								this.o.zhuti = this.datagates[_index].data[i].name;
-							}
+							this.o.wu = this.dataarena[i].wu;
+							this.o.zhuti = this.datagates[_index].data[i].name;
 							this.o.te = this.datagates[_index].data[i].te.slice(0);
-							
+							break;
 						}
 					}
 					this.setBeam(1);
 					break;
 			}
-			
-			if(urlfrom == "index.html"){
-				this.o.bag = [];
-			}
+
+			this.o.bag = [];
 			this.o.te_selected = [];
 			this.o.keyword = "";
 			$("#so_text").val("");
@@ -843,7 +875,7 @@
 			$("#btn_teshushuxing").click(function(){
 				that.openDialog(5);
 			});
-			//竞技场  联盟委托 关卡 确定弹窗
+			//竞技场 联盟委托 关卡 确定弹窗
 			$("#dialog_1_sure,#dialog_2_sure,#dialog_3_sure").click(function(){
 				easyDialog.close();
 				that.openDialog(0);
@@ -854,12 +886,12 @@
 				easyDialog.close();
 			});
 			//竞技场点选
-			$("#dialog_1").on("click",".item",function(){
+			$("#dialog_1 .dialog_1").on("click",".item",function(){
 				that.o.sectionid = Number($(this).attr("data-id"));
 				$(this).addClass("on").siblings().removeClass("on");
 			});
 			//联盟委托点选
-			$("#dialog_2").on("click",".item",function(){
+			$("#dialog_2 .dialog_2").on("click",".item",function(){
 				that.o.sectionid = Number($(this).attr("data-id"));
 				$(this).addClass("on").siblings().removeClass("on");
 			});
@@ -1011,7 +1043,11 @@
 						that.o.way = _data.way;
 						that.o.bag = _data.bag;
 						that.o.wu = _data.wu;
+						that.o.chapterid = _data.chapterid;
+						that.o.sectionid = _data.sectionid;
 						$("#bag_name").val(_data.name);
+						
+						$("#dialog_3_chapter").find(".item").eq(0).trigger("click");//默认关卡点选一下
 						
 						switch(that.o.way){
 							case 1:
@@ -1041,12 +1077,10 @@
                                 });
 								break;
 						}
-						that.way();
+						that.editMydetail();
 						break;
 					}
 				}
-				
-				
 			}else{//初始化选中
 				$("#dialog_1").find(".item").eq(0).trigger("click");
 				$("#dialog_2").find(".item").eq(0).trigger("click");
@@ -1270,9 +1304,16 @@
 				case "dress":
 					if(this.o.platform == "web"){
 						unios("#way_wrap");
+						if(that.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){
+							$("#header").children(".back").attr("href","data-qjnn-choice-my.html");
+						}
 					}else if(this.o.platform == "android"){
 						unios("#way_wrap");
-						$("#header").children(".back").attr("href","index.html");
+						if(that.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){
+							$("#header").children(".back").attr("href","data-qjnn-choice-my.html");
+						}else{
+							$("#header").children(".back").attr("href","index.html");
+						}
 					}
 				break;
 				case "my":
