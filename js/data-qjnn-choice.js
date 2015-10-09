@@ -367,6 +367,25 @@
 					break;
 			}
 		},
+		autoselected: function(){//1:竞技场 2:联盟委托 3:关卡 确定弹窗的时候自动选择第一个
+			switch(this.o.way){
+				case 1:
+					if(!$("#dialog_1 .dialog_1").children().hasClass("on")){
+						$("#dialog_1 .dialog_1").children().eq(0).trigger("click");
+					}
+					break;
+				case 2:
+					if(!$("#dialog_2 .dialog_2").children().hasClass("on")){
+						$("#dialog_2 .dialog_2").children().eq(0).trigger("click");
+					}
+					break;
+				case 3:
+					if(!$("#dialog_3_section").find(".item").hasClass("on")){
+						$("#dialog_3_section").find(".item").eq(0).trigger("click");
+					}
+					break;
+			}
+		},
 		way: function(){//0:衣柜 1:竞技场 2:联盟委托 3:关卡 处理这4种弹窗
 			switch(this.o.way){
 				case 0://处理衣柜
@@ -877,6 +896,7 @@
 			});
 			//竞技场 联盟委托 关卡 确定弹窗
 			$("#dialog_1_sure,#dialog_2_sure,#dialog_3_sure").click(function(){
+				that.autoselected();
 				easyDialog.close();
 				that.openDialog(0);
 			});
