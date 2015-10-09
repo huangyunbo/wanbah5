@@ -497,6 +497,76 @@ gulp.task('luobo3_ios', function(){
 });
 
 
+//全民超神
+var quanminchaoshen_gameid = 100;
+var quanminchaoshen_plugin = "plugin_1101";
+var quanminchaoshen_path = '../';
+var quanminchaoshen_replace = ['css/', 'js/', 'json/'];
+var quanminchaoshen_replace_data =  ['css/', 'js/', 'json/'];
+var quanminchaoshen_platform = 'android';
+
+/*gulp.task('vainglory_images', function(){
+    gulp.src('./images/vainglory/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/vainglory'));
+	
+	gulp.src('./images/.nomedia', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/'));
+});*/
+
+gulp.task('quanminchaoshen_css', function(){
+    gulp.src(['./css/data-quanminchaoshen.css'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+quanminchaoshen_gameid+'/'+quanminchaoshen_platform+'/DataPlugin/css'));
+});
+
+gulp.task('quanminchaoshen_js', function(){
+    gulp.src(['./js/jquery-2.1.3.min.js','./js/data-quanminchaoshen.js'])
+        .pipe(concat('data-quanminchaoshen.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+quanminchaoshen_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+quanminchaoshen_gameid+'/'+quanminchaoshen_platform+'/DataPlugin/js'));
+});
+
+/*gulp.task('vainglory_json', function(){
+    gulp.src(['./json/json-vainglory.js', './json/json-vainglory.js'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/json'));
+});*/
+
+gulp.task('quanminchaoshen_data', function(){
+	if(quanminchaoshen_platform == 'android'){
+		for(var i=0; i<quanminchaoshen_replace.length; i++){
+			quanminchaoshen_replace_data[i] = quanminchaoshen_path + quanminchaoshen_replace[i];
+		}
+	}
+	
+    gulp.src('data-quanminchaoshen.html')
+		.pipe(merge({
+            'js/data-quanminchaoshen.min.js':['js/jquery-2.1.3.min.js','js/data-quanminchaoshen.js']
+        }))
+		.pipe(replace(quanminchaoshen_replace[0], quanminchaoshen_replace_data[0]))
+		.pipe(replace(quanminchaoshen_replace[1], quanminchaoshen_replace_data[1]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+quanminchaoshen_gameid+'/'+quanminchaoshen_platform+'/DataPlugin/'+quanminchaoshen_plugin));
+});
+
+gulp.task('quanminchaoshen_clean', function(){
+	return gulp.src('../../chajian/'+quanminchaoshen_gameid+'/'+quanminchaoshen_platform+'/DataPlugin/*', {read: false})
+	.pipe(clean({force: true}));
+});
+
+gulp.task('quanminchaoshen_android', ['quanminchaoshen_clean'], function(){
+	gulp.start('quanminchaoshen_css', 'quanminchaoshen_js', 'quanminchaoshen_data');
+});
+
+gulp.task('quanminchaoshen_ios_inner', ['quanminchaoshen_clean'], function(){
+	gulp.start('quanminchaoshen_css', 'quanminchaoshen_js', 'quanminchaoshen_data');
+});
+
+gulp.task('quanminchaoshen_ios', function(){
+	quanminchaoshen_platform = 'ios';
+	gulp.start('quanminchaoshen_ios_inner');
+});
+
+
 
 
 
