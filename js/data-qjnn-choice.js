@@ -18,7 +18,9 @@
 					zhuti:"",//衣柜(作为保存套装名字用) 竞技场 联盟委托 关卡 选中的主题
 					keyword:"",//关键词
 					bag:[],//已选中的服装
-					score:0//已选中的总分
+					score:0,//已选中的总分
+					sectionid:0,
+					chapterid:0
 				 };
 
 		this.init();
@@ -144,11 +146,14 @@
 			y = myDate.getFullYear(),
 			m = myDate.getMonth()+1,
 			d = myDate.getDate(),
-			nowtime = y+"-"+m+"-"+d;
+			nowtime = y+"-"+m+"-"+d,
+			sectionid = 0,//竞技场id 联盟委托id 关卡小id
+			chapterid = 0;//关卡大id
+			
 
 			if(this.getsession("wbgl-qjnn-choice-urlfrom") == "index.html"){//如果是index.html过来的就新建保存
 				wbglqjnnchoice = {"data":[],"growthid":1};
-				bag_data = {"id":1,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime};
+				bag_data = {"id":1,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime,sectionid:this.o.sectionid,chapterid:this.o.chapterid};
 				if(localStorage.getItem("wbgl-qjnn-choice") === null){//如果我的卡组为空时
 					wbglqjnnchoice.data.push(bag_data);
 				}else{//如果我的卡组不为空时，就追加
@@ -158,15 +163,14 @@
 				}
 				localStorage.setItem("wbgl-qjnn-choice",JSON.stringify(wbglqjnnchoice));
 			}else if(this.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){//如果是mydetail.html过来的就在原来的里面编辑保存
-				alert(1);
-				/*var id = JSON.parse(this.getsession("wbgl-qjnn-choice-mybags")).id;			
+				var id = Number(this.getsession("wbgl-qjnn-choice-mydetailid"));			
 				wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice"));
 				for(var i=0; i<wbglqjnnchoice.data.length; i++){
 					if(wbglqjnnchoice.data[i].id == id){
-						wbglqjnnchoice.data[i] = {"id":id,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime};
+						wbglqjnnchoice.data[i] = {"id":id,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime,sectionid:this.o.sectionid,chapterid:this.o.chapterid};
 						localStorage.setItem("wbgl-qjnn-choice", JSON.stringify(wbglqjnnchoice));
 					}
-				}*/
+				}
 			}
 			
 			if(this.o.platform == "ios"){
@@ -245,8 +249,7 @@
 												'<div class="m1">'+_datadress[j].data[k].name+'</div>'+
 												'<div class="m2">估计分：'+_datadress[j].data[k].total+'</div>'+
 											'</div>'+
-										'</div>';
-										
+										'</div>';										
 								score += _datadress[j].data[k].total;
 								num++;
 								break;
@@ -316,35 +319,23 @@
 					break;
 			}
 		},
-		autoselected: function(){//1:竞技场 2:联盟委托 3:关卡 确定弹窗的时候自动选择第一个
-			switch(this.o.way){
-				case 1:
-					if(!$("#dialog_1 .dialog_1").children().hasClass("on")){
-						$("#dialog_1 .dialog_1").children().eq(0).trigger("click");
-					}
-					break;
-				case 2:
-					if(!$("#dialog_2 .dialog_2").children().hasClass("on")){
-						$("#dialog_2 .dialog_2").children().eq(0).trigger("click");
-					}
-					break;
-				case 3:
-					if(!$("#dialog_3_section").find(".item").hasClass("on")){
-						$("#dialog_3_section").find(".item").eq(0).trigger("click");
-					}
-					break;
-			}
-		},
 		way: function(){//0:衣柜 1:竞技场 2:联盟委托 3:关卡 处理这4种弹窗
+			var urlfrom = "index.html";
+			if(this.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){
+				urlfrom = "mydetail.html";
+			}
+			
 			switch(this.o.way){
 				case 0://处理衣柜
 					if(this.o.dresstype.state == 2){
 						this.o.dresstype.state = 0;
 						this.calcDresstype();
 					}
-					this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}];
+					if(urlfrom == "index.html"){
+						this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}];
+						this.o.zhuti = "";
+					}
 					this.o.te = [];
-					this.o.zhuti = "";
 					this.setBeam();
 					break;
 				case 1://处理竞技场
@@ -352,12 +343,15 @@
 						this.o.dresstype.state = 0;
 						this.calcDresstype();
 					}
-					var _id = Number($("#dialog_1").attr("data-id"));
+					var _id = this.o.sectionid;
 					for(var i=0; i<this.dataarena.length; i++){
 						if(this.dataarena[i].id == _id){
-							this.o.wu = this.dataarena[i].wu;
+							if(urlfrom == "index.html"){
+								this.o.wu = this.dataarena[i].wu;
+								this.o.zhuti = this.dataarena[i].name;
+							}
 							this.o.te = this.dataarena[i].te.slice(0);
-							this.o.zhuti = this.dataarena[i].name;
+							
 							break;
 						}
 					}
@@ -368,12 +362,14 @@
 						this.o.dresstype.state = 0;
 						this.calcDresstype();
 					}
-					var _id = Number($("#dialog_2").attr("data-id"));
+					var _id = this.o.sectionid;
 					for(var i=0; i<this.dataarena.length; i++){
 						if(this.dataarena[i].id == _id){
-							this.o.wu = this.dataarena[i].wu;
+							if(urlfrom == "index.html"){
+								this.o.wu = this.dataarena[i].wu;
+								this.o.zhuti = this.dataarena[i].name;
+							}
 							this.o.te = this.dataarena[i].te.slice(0);
-							this.o.zhuti = this.dataarena[i].name;
 							break;
 						}
 					}
@@ -384,26 +380,31 @@
 						this.o.dresstype.state = 0;
 						this.calcDresstype();
 					}
-					var _index = Number($("#dialog_3_chapter").attr("data-index"));
-					var _id = Number($("#dialog_3_section").attr("data-id"));
+					var _index = this.o.chapterid;
+					var _id = this.o.sectionid;
 					for(var i=0; i<this.datagates[_index].data.length; i++){
 						if(this.datagates[_index].data[i].id == _id){
-							this.o.wu = this.datagates[_index].data[i].wu;
+							if(urlfrom == "index.html"){
+								this.o.wu = this.dataarena[i].wu;
+								this.o.zhuti = this.datagates[_index].data[i].name;
+							}
 							this.o.te = this.datagates[_index].data[i].te.slice(0);
-							this.o.zhuti = this.datagates[_index].data[i].name;
+							
 						}
 					}
 					this.setBeam(1);
 					break;
 			}
 			
+			if(urlfrom == "index.html"){
+				this.o.bag = [];
+			}
 			this.o.te_selected = [];
-			this.o.bag = [];
-			this.printBag();
 			this.o.keyword = "";
 			$("#so_text").val("");
 			this.setTe();
 			this.calcDress();
+			this.printBag();
 			$("#way").children().eq(this.o.way).addClass("on").siblings().removeClass("on");
 		},
 		setTe: function(){//设置特殊属性标签
@@ -744,7 +745,7 @@
 											'</div>'+
 											'<div class="td">'+
 												'<span>估算分:</span>'+
-												'<span class="score">'+_datadress[i].total+'</span>'+
+												'<span class="total">'+_datadress[i].total+'</span>'+
 											'</div>'+
 										'</div>'+
 									'</div>'+
@@ -844,7 +845,6 @@
 			});
 			//竞技场  联盟委托 关卡 确定弹窗
 			$("#dialog_1_sure,#dialog_2_sure,#dialog_3_sure").click(function(){
-				that.autoselected();
 				easyDialog.close();
 				that.openDialog(0);
 			});
@@ -855,24 +855,24 @@
 			});
 			//竞技场点选
 			$("#dialog_1").on("click",".item",function(){
-				$("#dialog_1").attr("data-id",$(this).attr("data-id"));
+				that.o.sectionid = Number($(this).attr("data-id"));
 				$(this).addClass("on").siblings().removeClass("on");
 			});
 			//联盟委托点选
 			$("#dialog_2").on("click",".item",function(){
-				$("#dialog_2").attr("data-id",$(this).attr("data-id"));
+				that.o.sectionid = Number($(this).attr("data-id"));
 				$(this).addClass("on").siblings().removeClass("on");
 			});
 			//关卡大章点选
 			$("#dialog_3_chapter").on("click",".item",function(){
 				var _index = Number($(this).attr("data-index"));
-				$("#dialog_3_chapter").attr("data-index",_index);
+				that.o.chapterid = _index;
 				$(this).addClass("on").siblings().removeClass("on");
 				$("#dialog_3_section").children().eq(_index).removeClass("hide").siblings().addClass("hide");
 			});
 			//关卡小节点选
 			$("#dialog_3_section").on("click",".item",function(){
-				$("#dialog_3_section").attr("data-id",$(this).attr("data-id"));
+				that.o.sectionid = Number($(this).attr("data-id"));
 				$("#dialog_3_section").find(".item.on").removeClass("on");
 				$(this).addClass("on");
 			});
@@ -999,6 +999,62 @@
 				}
 			});
 			
+			//如果是从我的套装进来的
+			if(that.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){
+				var wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
+				_id = Number(that.getsession("wbgl-qjnn-choice-mydetailid")),
+				_data;
+				
+				for(var i=0; i<wbglqjnnchoice.data.length; i++){
+					_data = wbglqjnnchoice.data[i];
+					if(_data.id == _id){
+						that.o.way = _data.way;
+						that.o.bag = _data.bag;
+						that.o.wu = _data.wu;
+						$("#bag_name").val(_data.name);
+						
+						switch(that.o.way){
+							case 1:
+								$("#dialog_1 .dialog_1").children(".item").each(function(){
+                                    if(Number($(this).attr("data-id")) == that.o.sectionid){
+										$(this).addClass("on");
+									}
+                                });
+								break;
+							case 2:
+								$("#dialog_2 .dialog_2").children(".item").each(function(){
+                                    if(Number($(this).attr("data-id")) == that.o.sectionid){
+										$(this).addClass("on");
+									}
+                                });
+								break;
+							case 3:
+								$("#dialog_3_chapter").children(".item").each(function(){
+                                    if(Number($(this).attr("data-index")) == that.o.chapterid){
+										$(this).trigger("click");
+									}
+                                });
+								$("#dialog_3_section").find(".item").each(function(){
+                                    if(Number($(this).attr("data-id")) == that.o.sectionid){
+										$(this).trigger("click");
+									}
+                                });
+								break;
+						}
+						that.way();
+						break;
+					}
+				}
+				
+				
+			}else{//初始化选中
+				$("#dialog_1").find(".item").eq(0).trigger("click");
+				$("#dialog_2").find(".item").eq(0).trigger("click");
+				$("#dialog_3_chapter").find(".item").eq(0).trigger("click");
+				$("#dialog_3_section").find(".item").eq(0).trigger("click");
+			}
+			
+			
 			//选中服装类别
 			$("#dresstype").on("click",".item",function(){
 				that.o.dresstype.id = Number($(this).attr("data-id"));
@@ -1049,24 +1105,6 @@
 			$("#dialog_6_sure").click(function(){
 				that.waywork(6);
 			});
-			
-			//如果是从我的套装进来的
-			if(that.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){
-				var wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
-				_id = Number(that.getsession("wbgl-qjnn-choice-mydetailid")),
-				_data;
-				
-				/*for(var i=0; i<wbglqjnnchoice.data.length; i++){
-					_data = wbglqjnnchoice.data;
-					if(_data.id == _id){
-						that.o.way = _data.way;
-						
-						
-						break;
-					}
-				}
-				that.printBag();*/
-			}
 		},
 		setBeam: function(){//设置中间的横梁 0:基本属性 特殊属性 1:爱斯基摩旅行 2:搜索
 			var _beam = arguments[0] === undefined ? 0 : arguments[0];
@@ -1145,13 +1183,8 @@
 				}
 			}
 			for(var i=0; i<_datagates.length; i++){
-				if(i == 0){
-					html_dialog_3_chapter += '<div class="item on" data-index="'+i+'">'+_datagates[i].gname+'</div>';
-					html_dialog_3_section += '<div class="box">';
-				}else{
-					html_dialog_3_chapter += '<div class="item" data-index="'+i+'">'+_datagates[i].gname+'</div>';
-					html_dialog_3_section += '<div class="box hide">';
-				}
+				html_dialog_3_chapter += '<div class="item" data-index="'+i+'">'+_datagates[i].gname+'</div>';
+				html_dialog_3_section += '<div class="box hide">';
 				for(var j=0; j<_datagates[i].data.length; j++){
 					html_dialog_3_section += '<div class="item" data-id="'+_datagates[i].data[j].id+'"><div>'+_datagates[i].data[j].name+'</div></div>';
 				}
