@@ -1,5 +1,5 @@
 /*
-	cnpm install gulp-concat gulp-uglify gulp-merge-link gulp-rename gulp-rename gulp-replace gulp-clean del --save-dev
+	cnpm install gulp gulp-concat gulp-uglify gulp-merge-link gulp-rename gulp-replace gulp-clean del --save-dev
 */
 
 var gulp = require('gulp');
