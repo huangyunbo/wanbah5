@@ -1,5 +1,5 @@
 (function(window){
-	var Quanminchaoshen = function(option){
+	var QmcsHero = function(option){
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.o = {platform:"web",url:"images/chanminchaoshen/"};
@@ -9,7 +9,7 @@
 		this.init();
 	};
 	
-	Quanminchaoshen.prototype = {
+	QmcsHero.prototype = {
 		checkversion: function(){//检查版本
 			if(!window.localStorage){
 				alert("错误，你的版本过低，请升级你的设备");
@@ -59,6 +59,6 @@
 		}
 	}
 	
-	window.Quanminchaoshen = Quanminchaoshen;
+	window.QmcsHero = QmcsHero;
 })(window);
 
