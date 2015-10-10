@@ -23,3 +23,30 @@ body{ background:#241e1c}
 .header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 .container{ margin-top:45px; color:#fff; font-size:1.8rem; text-align:center; padding-top:100px}
+
+
+
+.list_hero {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 0;
+  overflow: hidden;
+}
+
+.list_hero li {
+  width: 21%;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.list_hero a {
+  display: block;
+  position: relative;
+}
+
+.list_hero p {
+  white-space: nowrap;
+  font-size: 1rem;
+  line-height: 24px;
+}
+
