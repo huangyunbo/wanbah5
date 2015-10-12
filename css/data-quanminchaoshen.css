@@ -25,28 +25,22 @@ body{ background:#241e1c}
 .container{ margin-top:45px; color:#fff; font-size:1.8rem; text-align:center; padding-top:100px}
 
 
-
-.list_hero {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 0;
-  overflow: hidden;
-}
-
-.list_hero li {
-  width: 21%;
-  display: inline-block;
-  margin-bottom: 12px;
-}
-
-.list_hero a {
-  display: block;
-  position: relative;
-}
-
-.list_hero p {
-  white-space: nowrap;
-  font-size: 1rem;
-  line-height: 24px;
-}
-
+/*英雄列表*/
+.list_hero { text-align:center; margin-bottom:20px; font-size:0; overflow:hidden}
+.list_hero li { width:21%; display:inline-block; margin-bottom:12px}
+.list_hero a { display:block; position:relative}
+.list_hero p { white-space:nowrap; font-size:1rem; line-height:24px}
+/*英雄详情*/
+#wrapper * { -webkit-box-sizing:border-box}
+header .tit { text-align:center; color:#fff; line-height:50px; font-size:36px; font-weight:bold; font-style:italic; position:absolute; left:0; bottom:30px; width:100%}
+.skills ul { width:100%; height:100%; position:absolute}
+.skills { position:relative}
+.skills li { height:25%; padding-left:28%; font-style:italic; overflow:hidden}
+.skills .desc { color:#bebcbc; font-size:10px; margin-top:2px; padding-right:20px}
+.skills .tit { color:#fff; font-size:16px; margin-top:8%}
+.bginfo { position:relative}
+.bginfo .txt { width:100%; height:100%; padding:42% 8% 0 8%; line-height:24px; position:absolute; top:0; left:0; color:#bebcbc; font-size:12px; font-style:italic}
+.bginfo .txt .smy { margin-bottom:22px; -webkit-box-sizing:border-box}
+.bginfo .txt .word { float:left}
+.bginfo .txt .po { float:right}
+.img_width{ width:100%}
