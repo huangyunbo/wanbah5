@@ -10,7 +10,7 @@
 		this.o = {
 					platform:"web",//针对平台
 					plugin:"plugin_952",//服装搭配器的板块ID
-					dresstype:{id:1,oldid:1,parentid:0,haskid:0,state:0},//id:是选中哪一个,oldid:记录上次点击的id(没有子集的),parentid:父级id是谁,haskid:是否有子集,state:0默认 1已选 2搜索
+					dresstype:{id:1,oldid:1,parentid:0,haskid:0,state:0},//id:是选中哪一个,oldid:记录上次点击的id(没有子集的),parentid:父级id是谁,haskid:是否有子集,state:0默认 2搜索
 					way:0,//选择的4条路 0:衣柜 1:竞技场 2:联盟委托 3:关卡
 					wu:[{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}],//五属性
 					te:[],//特殊属性
@@ -29,11 +29,11 @@
 	Qjnn.prototype = {
 		screenshotAndShare: function(){//截图并分享
 			if(this.o.platform == "android"){
-				window.jstojava.WBScreenshotAndShare('{"title":"这是截图并且分享成功的标题","url":"http://www.wanba123.cn","desc":"这是截图并且分享成功的描述","callback":"screenshotAndShareFun"}');
+				window.jstojava.WBScreenshotAndShare('{"title":"玩吧暖暖服装搭配器分享","url":"http://www.wanba123.cn","desc":"最全面的奇迹暖暖攻略社区，助你搭配出最美暖暖","callback":"screenshotAndShareFun"}');
 			}else if(this.o.platform == "iphone"){
-				window.location.href = 'ios://WBScreenshotAndShare?param={"title":"这是截图并且分享成功的标题","url":"http://www.wanba123.cn","desc":"这是分享成功的描述","callback":"screenshotAndShareFun"}';
+				window.location.href = 'ios://WBScreenshotAndShare?param={"title":"玩吧暖暖服装搭配器分享","url":"http://www.wanba123.cn","desc":"最全面的奇迹暖暖攻略社区，助你搭配出最美暖暖","callback":"screenshotAndShareFun"}';
 			}else{
-				alert("不能分享");
+				alert("暂不支持分享");
 			}
 		},
 		editMydetail: function(){//从编辑模式进来			
@@ -78,6 +78,7 @@
 			}
 			$("#so_text").val("");
 			this.setTe();
+			this.printDresstype();
 			this.calcDress();
 			this.printBag();
 			$("#way").children().eq(this.o.way).addClass("on").siblings().removeClass("on");
@@ -881,23 +882,46 @@
 				$("#container").addClass("dresstype_two");
 			}
 
+			for(var i=0; i<len; i++){//把已选的标记给类别，下面再删掉
+				for(var j=0; j<this.o.bag.length; j++){
+					if(_datadress[i].id == this.o.bag[j].tid){
+						_datadress[i].selected = 1;
+					}
+				}
+			}
+
 			for(var i=0; i<len; i++){
 				if(this.o.dresstype.parentid == _datadress[i].parentid){
-					if(this.o.dresstype.oldid == _datadress[i].id){//有子集菜单的不需要记录有on
-						if(this.o.dresstype.state == 2){
+					if(this.o.dresstype.oldid == _datadress[i].id){//选中类别，有子集菜单类别的不需要记录有on
+						if(this.o.dresstype.state == 2){//选中类别+搜索
 							html += '<div class="item on" data-id="'+_datadress[i].id+'" data-parentid="'+_datadress[i].parentid+'" data-haskid="'+_datadress[i].haskid+'"><span>'+_datadress[i].baidu+'</span><div>'+_datadress[i].tname+'</div></div>';
 						}else{
-							html += '<div class="item on" data-id="'+_datadress[i].id+'" data-parentid="'+_datadress[i].parentid+'" data-haskid="'+_datadress[i].haskid+'"><div>'+_datadress[i].tname+'</div></div>';
+							if(_datadress[i].selected == 1){//选中类别+不搜索+下面有件衣服被已选
+								html += '<div class="item on" data-id="'+_datadress[i].id+'" data-parentid="'+_datadress[i].parentid+'" data-haskid="'+_datadress[i].haskid+'"><label>已选</label><div>'+_datadress[i].tname+'</div></div>';
+							}else{//选中类别+不搜索
+								html += '<div class="item on" data-id="'+_datadress[i].id+'" data-parentid="'+_datadress[i].parentid+'" data-haskid="'+_datadress[i].haskid+'"><div>'+_datadress[i].tname+'</div></div>';
+							}
 						}
 					}else{
-						if(this.o.dresstype.state == 2 && _datadress[i].haskid == 0){
+						if(this.o.dresstype.state == 2 && _datadress[i].haskid == 0){//不选中类别+搜索+菜单没有子集的
 							html += '<div class="item" data-id="'+_datadress[i].id+'" data-parentid="'+_datadress[i].parentid+'" data-haskid="'+_datadress[i].haskid+'"><span>'+_datadress[i].baidu+'</span><div>'+_datadress[i].tname+'</div></div>';
 						}else{
-							html += '<div class="item" data-id="'+_datadress[i].id+'" data-parentid="'+_datadress[i].parentid+'" data-haskid="'+_datadress[i].haskid+'"><div>'+_datadress[i].tname+'</div></div>';
+							if(_datadress[i].selected == 1){//不选中类别+不搜索+下面有件衣服被已选+
+								html += '<div class="item" data-id="'+_datadress[i].id+'" data-parentid="'+_datadress[i].parentid+'" data-haskid="'+_datadress[i].haskid+'"><label>已选</label><div>'+_datadress[i].tname+'</div></div>';
+							}else{//不选中类别(含 有子集菜单)+不搜索
+								html += '<div class="item" data-id="'+_datadress[i].id+'" data-parentid="'+_datadress[i].parentid+'" data-haskid="'+_datadress[i].haskid+'"><div>'+_datadress[i].tname+'</div></div>';
+							}
 						}
 					}
 				}
 			}
+			
+			for(var i=0; i<len; i++){//把已选的标记给删除
+				if(_datadress[i].selected == 1){
+					_datadress[i].selected = undefined;
+				}
+			}
+			
 			$("#dresstype").html(html);
 		},
 		openDialog: function(){//弹窗 0:清空 1:竞技场 2:联盟委托 3:关卡 4:基本属性 5:特殊属性 6:保存套装
@@ -1027,12 +1051,11 @@
 				that.o.keyword = "";
 				$("#so_text").val("");
 				if(that.o.way == 0){
-					that.o.dresstype.state = 0;
 					that.setBeam();
 				}else{
-					that.o.dresstype.state = 1;
 					that.setBeam(1);
 				}
+				that.o.dresstype.state = 0;
 				that.printDresstype();
 				that.printDress();
 			});
@@ -1105,9 +1128,7 @@
 						that.o.wu = _data.wu;
 						that.o.chapterid = _data.chapterid;
 						that.o.sectionid = _data.sectionid;
-						$("#bag_name").val(_data.name);
-						
-						
+						$("#bag_name").val(_data.name);						
 						
 						switch(that.o.way){
 							case 1:
@@ -1143,7 +1164,6 @@
 				}
 			}
 			
-			
 			//选中服装类别
 			$("#dresstype").on("click",".item",function(){
 				that.o.dresstype.id = Number($(this).attr("data-id"));
@@ -1161,7 +1181,7 @@
 				}
 			}).children().eq(0).trigger("click");
 			
-			//点选服装翻牌的时候
+			//点选添加衣服
 			$("#dress").on("click", ".add", function(){
 				var _item = $(this).closest(".item");
 				if(_item.hasClass("on")){
@@ -1171,11 +1191,13 @@
 					_item.addClass("on").siblings().removeClass("on");
 					that.addBag(Number(_item.attr("data-id")));
 				}
+				that.printDresstype();
 				event.stopPropagation();
 			});
-			//已选服饰
+			//已选服饰删除
 			$("#bag_content").on("click", ".item", function(){
 				that.removeBag(Number($(this).attr("data-id")));
+				that.printDresstype();
 				that.printDress();
 			});
 			//保存套装
