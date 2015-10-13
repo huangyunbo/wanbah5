@@ -27,7 +27,16 @@
 	};
 	
 	Qjnn.prototype = {
-		editMydetail: function(){//重新编辑模式进来			
+		screenshotAndShare: function(){//截图并分享
+			if(this.o.platform == "android"){
+				window.jstojava.WBScreenshotAndShare('{"title":"这是截图并且分享成功的标题","url":"http://www.wanba123.cn","desc":"这是截图并且分享成功的描述","callback":"screenshotAndShareFun"}');
+			}else if(this.o.platform == "iphone"){
+				window.location.href = 'ios://WBScreenshotAndShare?param={"title":"这是截图并且分享成功的标题","url":"http://www.wanba123.cn","desc":"这是分享成功的描述","callback":"screenshotAndShareFun"}';
+			}else{
+				alert("不能分享");
+			}
+		},
+		editMydetail: function(){//从编辑模式进来			
 			switch(this.o.way){
 				case 0://处理衣柜
 					this.setBeam();
@@ -144,6 +153,9 @@
 				}else{
 					location.href = 'data-qjnn-choice-dress.html';
 				}
+			});
+			$("#btn_share").click(function(){
+				that.screenshotAndShare();
 			});
 		},
 		removeMy: function(){//删除我的套装
