@@ -2,16 +2,25 @@
 	var QmcsHero = function(){
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
-		this.o = {platform:"web",plugin:"plugin_1101",url:"images/chanminchaoshen/"};
-		if(this.o.platform == "android"){
-			this.o.url="../images/chanminchaoshen/";
-		}
+		this.o = {platform:"web",plugin:"plugin_1101",url:"images/quanminchaoshen/"};
 		this.init();
 	};
 	
 	QmcsHero.prototype = {
 		htmlherodetail: function(){
+			var html_header = '',
+			id = Number(this.getsession("wbgl-quanminchaoshen-hero-id")),
+			_item;
 			
+			for(var i=0; i<this.data.length; i++){
+				_item = this.data[i];
+				if(id == _item.id){
+					html_header = '<div class="tit">'+_item.name+'-'+_item.prename+'<div>职业：<em>'+_item.job+'</em></div></div><img src="'+this.o.url+'DBPic/d_'+_item.id+'.jpg">';
+				}
+			}
+			
+			
+			$("#herodetail_head").html(html_header);
 		},
 		printIndex: function(){
 			var html = '';
@@ -128,10 +137,13 @@
 					}
 				break;
 				case "herodetail":
-					if(this.o.platform == "ios"){
-						$("#herolist").addClass("mt_0");
-					}else{
+					if(this.o.platform == "web"){
 						removehide();
+					}else if(this.o.platform == "android"){
+						$("#header").children(".back").attr("href","index.html");
+						removehide();
+					}if(this.o.platform == "ios"){
+						$("#herodetail").addClass("mt_0");
 					}
 				break;
 			}

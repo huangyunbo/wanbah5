@@ -22,22 +22,28 @@ body{ background:#241e1c}
 .header{ height:44px; border-bottom:1px solid #433d23; background:#1d1d1d; position:fixed; width:100%; top:0; left:0; z-index:100}
 .header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
+.container{ margin-top:45px; color:#fff; font-size:1.8rem; text-align:center; padding-top:100px}
 /*英雄列表*/
 .herolist{ margin-top:45px; padding-top:50px; color:#fff; text-align:center; margin-bottom:20px}
 .herolist li{ width:21%; display:inline-block; margin-bottom:12px}
 .herolist li img{ width:58px; height:58px}
 .herolist p{ white-space:nowrap; font-size:1.4rem}
 /*英雄详情*/
-#wrapper * { -webkit-box-sizing:border-box}
-header .tit { text-align:center; color:#fff; line-height:50px; font-size:36px; font-weight:bold; font-style:italic; position:absolute; left:0; bottom:30px; width:100%}
-.skills ul { width:100%; height:100%; position:absolute}
-.skills { position:relative}
-.skills li { height:25%; padding-left:28%; font-style:italic; overflow:hidden}
-.skills .desc { color:#bebcbc; font-size:10px; margin-top:2px; padding-right:20px}
-.skills .tit { color:#fff; font-size:16px; margin-top:8%}
-.bginfo { position:relative}
-.bginfo .txt { width:100%; height:100%; padding:42% 8% 0 8%; line-height:24px; position:absolute; top:0; left:0; color:#bebcbc; font-size:12px; font-style:italic}
-.bginfo .txt .smy { margin-bottom:22px; -webkit-box-sizing:border-box}
-.bginfo .txt .word { float:left}
-.bginfo .txt .po { float:right}
-.img_width{ width:100%}
+.herodetail .head{ position:relative}
+.herodetail .head .tit{ text-align:center; color:#fff; line-height:50px; font-size:36px; font-style:italic; position:absolute; left:0; bottom:30px; width:100%}
+.herodetail .head .tit div{ font-size:28px}
+.herodetail .head .tit div em{ color:#ffc000; font-style:italic}
+.herodetail .head img{ width:100%}
+
+.herodetail .skills li{ display:table; width:100%; border-bottom:1px solid #352b29; padding-bottom:10px}
+.herodetail .skills li .l{ width:28%; display:table-cell; vertical-align:top; padding:0 15px; box-sizing:border-box}
+.herodetail .skills li .r{ width:72%; display:table-cell; vertical-align:top; padding-right:10px; box-sizing:border-box; color:#fff}
+.herodetail .skills li .r .tit{ padding-top:5%; font-size:16px}
+.herodetail .skills li .r .desc{ font-size:12px; color:#bebcbc}
+
+.herodetail .bginfo{ position:relative}
+.herodetail .bginfo .txt{ width:100%; height:100%; padding:42% 8% 0; box-sizing:border-box; position:absolute; top:0; left:0; color:#bebcbc; font-size:14px; font-style:italic}
+.herodetail .bginfo .txt .smy{ margin-bottom:22px}
+.herodetail .bginfo .txt .word{ float:left}
+.herodetail .bginfo .txt .po{ float:right}
+.herodetail .bginfo img{ width:100%}
