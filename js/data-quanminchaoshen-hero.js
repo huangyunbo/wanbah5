@@ -8,17 +8,46 @@
 	
 	QmcsHero.prototype = {
 		htmlherodetail: function(){
-			var html_header = '',html_skill = '',
+			var that = this,
+			html_header = '',
+			html_skill = '',
+			html_bginfo = '',
 			id = Number(this.getsession("wbgl-quanminchaoshen-hero-id")),
 			_item;
+			
+			function jobimg(){
+				switch(arguments[0]){
+					case 1:
+						return '<img src="'+that.o.url+'zhanshi_bg.jpg">';
+					case 2:
+						return '<img src="'+that.o.url+'roudun_bg.jpg">';
+					case 3:
+						return '<img src="'+that.o.url+'fashi_bg.jpg">';
+					case 4:
+						return '<img src="'+that.o.url+'fuzhu_bg.jpg">';
+				}
+			}
+			
+			function job(){
+				switch(arguments[0]){
+					case 1:
+						return '战士';
+					case 2:
+						return '肉盾';
+					case 3:
+						return '法师';
+					case 4:
+						return '辅助';
+				}
+			}
 			
 			for(var i=0; i<this.data.length; i++){
 				_item = this.data[i];
 				if(id == _item.id){
 					var item_skill = _item.skill;
-					html_header = '<div class="tit">'+_item.name+'-'+_item.prename+'<div>职业：<em>'+_item.job+'</em></div></div><img src="'+this.o.url+'DBPic/d_'+_item.id+'.jpg">';
-					for(var j=0;j<item_skill.sname.length;j++){		
-						
+					html_header = '<div class="tit">'+_item.name+'-'+_item.prename+'<div>职业：<em>'+job(_item.job)+'</em></div></div><img src="'+this.o.url+'DBPic/d_'+_item.id+'.jpg">';
+					
+					for(var j=0; j<item_skill.sname.length; j++){
 						html_skill += '<li>'+
 										'<div class="l"><img src="'+this.o.url+'skillPic/skill'+_item.id+'_'+item_skill.simg[j]+'"></div>'+
 										'<div class="r">'+
@@ -26,14 +55,21 @@
 											'<p class="desc">'+item_skill.desc[j]+'</p>'+
 										'</div>'+
 									'</li>';
-					}			
+					}
 					
+					html_bginfo = '<div class="txt">'+
+										'<p class="smy">'+_item.professional+'</p>'+
+										'<p class="word">'+_item.ana+'</p>'+
+										'<p class="po">&mdash;'+_item.prename+'</p>'+
+									'</div>'+
+									jobimg(_item.job);
 				}
 			}
 			
 			
 			$("#herodetail_head").html(html_header);
 			$("#herodetail_skills ul").html(html_skill);
+			$("#herodetail_bginfo").html(html_bginfo);
 		},
 		printIndex: function(){
 			var html = '';
@@ -183,3 +219,11 @@
 	window.QmcsHero = QmcsHero;
 })(window);
 
+
+/*
+job
+1 战士
+2 肉盾
+3 法师
+4 辅助
+*/
