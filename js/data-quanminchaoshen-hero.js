@@ -8,19 +8,32 @@
 	
 	QmcsHero.prototype = {
 		htmlherodetail: function(){
-			var html_header = '',
+			var html_header = '',html_skill = '',
 			id = Number(this.getsession("wbgl-quanminchaoshen-hero-id")),
 			_item;
 			
 			for(var i=0; i<this.data.length; i++){
 				_item = this.data[i];
 				if(id == _item.id){
+					var item_skill = _item.skill;
 					html_header = '<div class="tit">'+_item.name+'-'+_item.prename+'<div>职业：<em>'+_item.job+'</em></div></div><img src="'+this.o.url+'DBPic/d_'+_item.id+'.jpg">';
+					for(var j=0;j<item_skill.sname.length;j++){		
+						
+						html_skill += '<li>'+
+										'<div class="l"><img src="'+this.o.url+'skillPic/skill'+_item.id+'_'+item_skill.simg[j]+'"></div>'+
+										'<div class="r">'+
+											'<p class="tit">'+item_skill.sname[j]+'</p>'+
+											'<p class="desc">'+item_skill.desc[j]+'</p>'+
+										'</div>'+
+									'</li>';
+					}			
+					
 				}
 			}
 			
 			
 			$("#herodetail_head").html(html_header);
+			$("#herodetail_skills ul").html(html_skill);
 		},
 		printIndex: function(){
 			var html = '';
