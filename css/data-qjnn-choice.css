@@ -73,6 +73,7 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .dresstype{ position:absolute; left:0; top:0; padding-bottom:0.5rem}
 .dresstype .item{ width:0.5rem; height:0.4rem; font-size:0.13rem; background:#ff7aa0; color:#fffeb6; margin:0 0.02rem 0.05rem 0; box-sizing:border-box; border:0.02rem solid #ff7aa0; border-right:none; border-radius:0.09rem 0 0 0.09rem; display:table; text-align:center; position:relative}
 .dresstype .item span{ position:absolute; right:0; top:-0.02rem; font-size:0.12rem; background:#ff5630; color:#fff; border-radius:0.14rem; width:0.14rem; text-align:center; height:0.14rem; line-height:0.14rem}
+.dresstype .item label{ position:absolute; right:-0.01rem; top:-0.02rem; font-size:0.12rem; background:#ff5630; color:#fff; padding:0 0.01rem; height:0.13rem; line-height:0.13rem}
 .dresstype .item.on{ background:#fffeb6; color:#e6668b}
 .dresstype .item.on:before{ content:""; position:absolute; right:-0.02rem; top:0; bottom:0; width:0.02rem; background:#fffeb6}
 .dresstype .item div{ display:table-cell; vertical-align:middle; line-height:1}
@@ -221,9 +222,12 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .mydetail .head{ text-align:center}
 .mydetail .head .title{ font-size:0.15rem; color:#5c5c5c; padding:0.07rem 0 0.03rem}
 .mydetail .head .icon{ background:url(../images/qjnn/choice-mydetail.png) no-repeat; background-size:2.63rem; width:2.63rem; height:0.11rem; display:block; margin:0 auto}
-.mydetail .head .b{ position:relative; height:0.4rem}
+/*先注释掉分享.mydetail .head .b{ position:relative; height:0.4rem}
 .mydetail .head .b .btn{ background:#ffa4a2; border-radius:0.03rem; position:absolute; left:50%; margin-left:-1rem; padding:0.02rem 0.32rem; color:#fff}
-.mydetail .head .b .btn:last-child{ margin-left:0.12rem}
+.mydetail .head .b .btn:last-child{ margin-left:0.12rem}*/
+.mydetail .head .b{ height:0.4rem}
+.mydetail .head .b .btn{ background:#ffa4a2; border-radius:0.03rem; padding:0.02rem 0.32rem; margin-top:0.05rem; color:#fff; display:inline-block}
+
 .mydetail .scoreshow{ width:100%; border:solid #ef7d7b; border-width:1px 0; overflow:hidden}
 .mydetail .scoreshow .l{ float:left; width:52%; box-sizing:border-box; padding:0.25rem 0 0 0.18rem; color:#5c5c5c}
 .mydetail .scoreshow .l .dd{ padding-left:0.2rem; font-size:0.24rem}
