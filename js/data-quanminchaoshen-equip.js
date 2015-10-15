@@ -2,9 +2,9 @@
 	var QmcsEquip = function(option){
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
-		this.o = {platform:"web",url:"images/chanminchaoshen/"};
+		this.o = {platform:"web",url:"images/quanminchaoshen/"};
 		if(this.o.platform == "android"){
-			this.o.url="../images/chanminchaoshen/";
+			this.o.url="../images/quanminchaoshen/";
 		}
 		this.init();
 	};

@@ -3,6 +3,9 @@
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.o = {platform:"web",plugin:"plugin_1101",url:"images/quanminchaoshen/"};
+		if(this.o.platform == "android"){
+			this.o.url="../images/quanminchaoshen/";
+		}
 		this.init();
 	};
 	
@@ -75,7 +78,7 @@
 			var html = '';
 			
 			for(var i=0; i<this.data.length; i++){
-				html += '<li class="wbclick" data-id="'+this.data[i].id+'"><img src="images/quanminchaoshen/DBPic/'+this.data[i].id+'.jpg" alt="'+this.data[i].name+'"><p>'+this.data[i].name+'</p></li>';
+				html += '<li class="wbclick" data-id="'+this.data[i].id+'"><img src="'+this.o.url+'DBPic/'+this.data[i].id+'.jpg" alt="'+this.data[i].name+'"><p>'+this.data[i].name+'</p></li>';
 			}
 			
 			$("#herolist ul").html(html);
@@ -198,6 +201,7 @@
 			}
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
+			if(!this.checkversion()) return;
 			var href = $("body").attr("data-url");
 			
 			switch(true){

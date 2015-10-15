@@ -557,6 +557,16 @@ gulp.task('quanminchaoshen_data', function(){
 		.pipe(rename('index.html'))
         .pipe(gulp.dest('../../chajian/'+quanminchaoshen_gameid+'/'+quanminchaoshen_platform+'/DataPlugin/'+quanminchaoshen_plugin_hero));
 	
+	gulp.src('data-quanminchaoshen-hero-detail.html')
+		.pipe(merge({
+            'js/data-quanminchaoshen-hero.min.js':['js/jquery-2.1.3.min.js','js/data-quanminchaoshen-hero.js']
+        }))
+		.pipe(replace(quanminchaoshen_replace[0], quanminchaoshen_replace_data[0]))
+		.pipe(replace(quanminchaoshen_replace[1], quanminchaoshen_replace_data[1]))
+		.pipe(replace(quanminchaoshen_replace[2], quanminchaoshen_replace_data[2]))
+		.pipe(rename('data-quanminchaoshen-hero-detail.html'))
+        .pipe(gulp.dest('../../chajian/'+quanminchaoshen_gameid+'/'+quanminchaoshen_platform+'/DataPlugin/'+quanminchaoshen_plugin_hero));
+	
 	gulp.src('data-quanminchaoshen-equip.html')
 		.pipe(merge({
             'js/data-quanminchaoshen-equip.min.js':['js/jquery-2.1.3.min.js','js/data-quanminchaoshen-equip.js']
