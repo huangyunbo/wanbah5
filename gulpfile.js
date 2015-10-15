@@ -255,18 +255,20 @@ gulp.task('qjnn_images', function(){
     gulp.src('./images/qjnn/**', {buffer: false})
         .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/images/qjnn'));
 	
-	gulp.src('./images/.nomedia', {buffer: false})
-        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/images/'));
+	if(qjnn_platform == 'android'){
+		gulp.src('./images/.nomedia', {buffer: false})
+			.pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/images'));
+	}
 });
 
 gulp.task('qjnn_css', function(){
-    gulp.src(['./css/data-qjnn.css', './css/data-qjnn-pass.css'], {buffer: false})
+    gulp.src(['./css/data-qjnn-choice.css', './css/data-qjnn-pass.css'], {buffer: false})
         .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/css'));
 });
 
 gulp.task('qjnn_js', function(){
-    gulp.src(['./js/jquery-2.1.3.min.js','./js/easydialog.min.js','./js/data-qjnn.js'])
-        .pipe(concat('data-qjnn.min.js'))
+    gulp.src(['./js/jquery-2.1.3.min.js','./js/easydialog.min.js','./js/data-qjnn-choice.js'])
+        .pipe(concat('data-qjnn-choice.min.js'))
 		.pipe(replace('platform:"web"', 'platform:"'+qjnn_platform+'"'))
         .pipe(uglify())
         .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/js'));
@@ -279,7 +281,7 @@ gulp.task('qjnn_js', function(){
 });
 
 gulp.task('qjnn_json', function(){
-    gulp.src(['./json/json-qjnn.js', './json/json-qjnn-pass.js'], {buffer: false})
+    gulp.src(['./json/json-qjnn-choice.js', './json/json-qjnn-pass.js'], {buffer: false})
         .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/json'));
 });
 
@@ -290,14 +292,51 @@ gulp.task('qjnn_data', function(){
 		}
 	}
 	
-    gulp.src('data-qjnn.html')
+    gulp.src('data-qjnn-choice-index.html')
         .pipe(merge({
-            'js/data-qjnn.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-qjnn.js']
+            'js/data-qjnn-choice.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-qjnn-choice.js']
         }))
 		.pipe(replace(qjnn_replace[0], qjnn_replace_data[0]))
 		.pipe(replace(qjnn_replace[1], qjnn_replace_data[1]))
 		.pipe(replace(qjnn_replace[2], qjnn_replace_data[2]))
 		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/'+qjnn_plugin_data));
+	
+	gulp.src('data-qjnn-choice-dress.html')
+        .pipe(merge({
+            'js/data-qjnn-choice.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-qjnn-choice.js']
+        }))
+		.pipe(replace(qjnn_replace[0], qjnn_replace_data[0]))
+		.pipe(replace(qjnn_replace[1], qjnn_replace_data[1]))
+		.pipe(replace(qjnn_replace[2], qjnn_replace_data[2]))
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/'+qjnn_plugin_data));
+	
+	gulp.src('data-qjnn-choice-my.html')
+        .pipe(merge({
+            'js/data-qjnn-choice.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-qjnn-choice.js']
+        }))
+		.pipe(replace(qjnn_replace[0], qjnn_replace_data[0]))
+		.pipe(replace(qjnn_replace[1], qjnn_replace_data[1]))
+		.pipe(replace(qjnn_replace[2], qjnn_replace_data[2]))
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/'+qjnn_plugin_data));
+	
+	gulp.src('data-qjnn-choice-mydetail.html')
+        .pipe(merge({
+            'js/data-qjnn-choice.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-qjnn-choice.js']
+        }))
+		.pipe(replace(qjnn_replace[0], qjnn_replace_data[0]))
+		.pipe(replace(qjnn_replace[1], qjnn_replace_data[1]))
+		.pipe(replace(qjnn_replace[2], qjnn_replace_data[2]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/'+qjnn_plugin_data));
+	
+	gulp.src('data-qjnn-choice-manual.html')
+        .pipe(merge({
+            'js/data-qjnn-choice.min.js':['js/jquery-2.1.3.min.js','js/easydialog.min.js','js/data-qjnn-choice.js']
+        }))
+		.pipe(replace(qjnn_replace[0], qjnn_replace_data[0]))
+		.pipe(replace(qjnn_replace[1], qjnn_replace_data[1]))
+		.pipe(replace(qjnn_replace[2], qjnn_replace_data[2]))
         .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/'+qjnn_plugin_data));
 		
 	gulp.src('data-qjnn-pass.html')
