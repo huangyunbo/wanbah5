@@ -28,6 +28,15 @@
 	};
 	
 	Qjnn.prototype = {
+		htmlManual: function(){//说明书
+			var winH = $(window).height();
+			
+			if(this.o.platform == "ios"){
+				$("#iframe_manual").height(winH);
+			}else{
+				$("#iframe_manual").height(winH-45);
+			}
+		},
 		screenshotAndShare: function(){//截图并分享
 			if(this.o.platform == "android"){
 				window.jstojava.WBScreenshotAndShare('{"title":"玩吧暖暖服装搭配器分享","url":"http://www.wanba123.cn","desc":"最全面的奇迹暖暖攻略社区，助你搭配出最美暖暖","callback":"screenshotAndShareFun"}');
@@ -264,9 +273,9 @@
 			}
 			
 			if(this.o.platform == "ios"){
-				location.href = this.o.plugin+'/data-qjnn-choice-my.html';
+				location.href = this.o.plugin+'/data-qjnn-choice-mydetail.html';
 			}else{
-				location.href = 'data-qjnn-choice-my.html';
+				location.href = 'data-qjnn-choice-mydetail.html';
 			}
 		},
 		toast: function(){//消息提醒
@@ -1441,6 +1450,10 @@
 					this.htmlMydetail();
 					this.setsession("wbgl-qjnn-choice-urlfrom", "mydetail.html");//记录来自于data-qjnn-choice-mydetail.html
 					break;
+				case (href == "manual"):
+					this.isplatform("manual");
+					this.htmlManual();
+					break;
 			}
 		},
 		isplatform: function(page){//针对打包平台控制路由
@@ -1466,7 +1479,7 @@
 							$(this).attr("href",that.o.plugin+"/"+$(this).attr("href"));
 						});
 					}
-				break;
+					break;
 				case "dress":
 					if(this.o.platform == "web"){
 						unios("#way_wrap");
@@ -1481,7 +1494,7 @@
 							$("#header").children(".back").attr("href","index.html");
 						}
 					}
-				break;
+					break;
 				case "my":
 					if(this.o.platform == "web"){
 						unios("#my");
@@ -1489,12 +1502,20 @@
 						unios("#my");
 						$("#header").children(".back").attr("href","index.html");
 					}
-				break;
+					break;
 				case "mydetail":
 					if(this.o.platform != "ios"){
 						unios("#mydetail");
 					}
-				break;
+					break;
+				case "manual":
+					if(this.o.platform == "web"){
+						unios("#iframe_manual");
+					}else if(this.o.platform == "android"){
+						unios("#iframe_manual");
+						$("#header").children(".back").attr("href","index.html");
+					}
+					break;
 			}
 		},
 		getsession: function(){
@@ -1574,7 +1595,7 @@
 			this.ispage();
 			this.events();
 			this.pageReset();
-			
+
 		}
 	};
 	

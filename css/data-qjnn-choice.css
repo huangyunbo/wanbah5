@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* 2015-09-10 wuyunduoduopiao */
 
-body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td,fieldset,legend{margin:0;padding:0}
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td,fieldset,legend,iframe{margin:0;padding:0}
 html{font:625%/1.5 "Microsoft YaHei",sans-serif}
 img{border:none;max-width:100%;vertical-align:top}
 h1,h2,h3,h4,h5,h6{font-weight:normal}
@@ -237,6 +237,9 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .mydetail .suit li{ width:49%; margin:0 1% 0.05rem 0; float:left; height:0.32rem; border:0.01rem solid #ef7d7b; box-sizing:border-box; border-radius:0.03rem; padding:0.03rem 0.05rem; color:#ef7d7b; line-height:1; overflow:hidden}
 .mydetail .suit li:nth-child(even){ margin:0 0 0.05rem 1%}
 .mydetail .suit li span{ float:left; height:0.24rem}
+/*使用说明data-qjnn-choice-manual.html*/
+.body_manual{ background:#fff}
+#iframe_manual{ width:100%; height:100%; vertical-align:top; border:none}
 
 
 
