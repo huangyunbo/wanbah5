@@ -271,10 +271,12 @@
 		},
 		toast: function(){//消息提醒
 			var i = Number(arguments[0]),
-			html_1 = '衣服太少了';
+			html_1 = '衣服太少了',
+			html_2 = '建议饰品9件左右';
 			
 			switch(i){
 				case 1:$("#toast").html(html_1);break;
+				case 2:$("#toast").html(html_2);break;
 			}
 			
 			easyDialog.open({
@@ -300,10 +302,10 @@
 			var _id = arguments[0],
 			_oldid = this.o.dresstype.oldid,
 			_bag = this.o.bag,
-			hasadd = 0;
-			//需要判断是不是要减分的弹窗
-
-			
+			hasadd = 0,
+			_tid,
+			ornaments = [10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],//饰品
+			ornamentsNum = 0;
 			
 			if(_bag.length > 0){
 				for(var i=0; i<_bag.length; i++){
@@ -318,6 +320,19 @@
 				}
 			}else{
 				_bag.push({"tid":_oldid,"cid":_id});//[{"tid":1,cid:_id},{}] tid是类别，cid是衣服id
+			}
+
+			//需要判断饰品是不是要减分的弹窗
+			for(var i=0; i<_bag.length; i++){
+				_tid = _bag[i].tid;
+				for(var j=0; j<ornaments.length; j++){
+					if(_tid == ornaments[j]){
+						ornamentsNum++;
+					}
+				}
+			}
+			if(ornamentsNum >= 8){
+				this.toast(2);
 			}
 
 			this.printBag();
