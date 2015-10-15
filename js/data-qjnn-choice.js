@@ -17,10 +17,11 @@
 					te_selected:[],//特殊属性 选中的
 					zhuti:"",//衣柜(作为保存套装名字用) 竞技场 联盟委托 关卡 选中的主题
 					keyword:"",//关键词
-					bag:[],//已选中的服装
+					bag:[],//已选中的服装[{tid:1,cid:1}]//tid大类别，cid衣服id
 					score:0,//已选中的总分
 					sectionid:1,//竞技场id 联盟委托id 关卡小id
-					chapterid:0//关卡大id
+					chapterid:0,//关卡大id
+					poker:[]//记录被翻过来的衣服id
 				 };
 
 		this.init();
@@ -306,13 +307,13 @@
 			
 			if(_bag.length > 0){
 				for(var i=0; i<_bag.length; i++){
-					if(_bag[i].tid == _oldid){
+					if(_bag[i].tid == _oldid){//加tid是为了一个类别只选一件衣服
 						_bag[i].cid = _id;
 						hasadd = 1;
 						break;
 					}
 				}
-				if(hasadd == 0){
+				if(hasadd == 0){//如果没有找到以前存过，就push进去
 					_bag.push({"tid":_oldid,"cid":_id});
 				}
 			}else{
@@ -489,7 +490,8 @@
 					this.setBeam(1);
 					break;
 			}
-
+			
+			this.o.poker = [];
 			this.o.bag = [];
 			this.o.te_selected = [];
 			this.o.keyword = "";
@@ -795,8 +797,18 @@
 				}
 				return _html;
 			}
-
 			
+			function ispoker(){//检测是否被翻牌
+				var _id = arguments[0],
+				_poker = that.o.poker;
+				
+				for(var i=0; i<_poker.length; i++){
+					if(_poker[i] == _id){
+						return "box_back";
+					}
+				}
+				return "box_front";
+			}
 
 			for(var i=0; i<_datadress.length; i++){//再从大类服装里找具体服装
 				if(keywordlen == 0 || _datadress[i].name.indexOf(that.o.keyword) != -1){
@@ -828,7 +840,7 @@
 									'<i class="icon_x"></i>'+
 									'<i class="icon_y"></i>'+
 								'</div>'+
-								'<div class="box box_front">'+
+								'<div class="box '+ispoker(_datadress[i].id)+'">'+
 									'<div class="face_front">'+
 										'<div class="t1">'+_datadress[i].name+'</div>'+
 										'<div class="t2">'+
@@ -1181,6 +1193,68 @@
 				}
 			}).children().eq(0).trigger("click");
 			
+			//点衣服翻牌
+			$("#dress").on("click", ".item", function(){
+				var $self = $(this),
+				$piece = $self.children(".piece"),
+				$box = $piece.children(".box"),
+				_id = Number($self.attr("data-id")),
+				_poker = that.o.poker; 
+
+				if($box.hasClass("box_front")){//正面
+					$piece.animate({
+						"backgroundPosition": 90
+					},{
+						duration: 200,
+						step: function(now,tween){
+								  $piece.css('-webkit-transform','rotateX('+now+'deg)');
+							  },
+						done: function(){
+							$box.removeClass("box_front").addClass("box_back");
+							$piece.animate({
+								"backgroundPosition": 0
+							},{
+								duration: 200,
+								step: function(now,tween){
+									$piece.css('-webkit-transform','rotateX('+now+'deg)');
+								},
+								done: function(){//把衣服翻牌的记录下来
+									_poker.push(_id);//[_id] cid是衣服id
+								}
+							});
+						}
+					});
+				}else{//反面
+					$piece.animate({
+						"backgroundPosition": 90
+					},{
+						duration: 200,
+						step: function(now,tween){
+								  $piece.css('-webkit-transform','rotateX('+now+'deg)');
+							  },
+						done: function(){
+							$box.removeClass("box_back").addClass("box_front");
+							$piece.animate({
+								"backgroundPosition": 0
+							},{
+								duration: 200,
+								step: function(now,tween){
+									$piece.css('-webkit-transform','rotateX('+now+'deg)');
+								},
+								done: function(){//把记录翻牌的衣服删掉
+									for(var i=0; i<_poker.length; i++){
+										if(_poker[i] == _id){
+											_poker.splice(i,1);
+											break;
+										}
+									}
+								}
+							});
+						}
+					});
+				}
+			});
+			
 			//点选添加衣服
 			$("#dress").on("click", ".add", function(){
 				var _item = $(this).closest(".item");
@@ -1192,7 +1266,7 @@
 					that.addBag(Number(_item.attr("data-id")));
 				}
 				that.printDresstype();
-				event.stopPropagation();
+				return false;
 			});
 			//已选服饰删除
 			$("#bag_content").on("click", ".item", function(){

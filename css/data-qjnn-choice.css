@@ -106,7 +106,7 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .dress .item.on .piece .add .icon_x{ background:#e96288; -webkit-transform:rotate(45deg); transform:rotate(45deg); -webkit-transform-origin:right top 0; transform-origin:right top 0; width:0.09rem; right:0.14rem; top:0.19rem}
 .dress .item .piece .add .icon_y{ position:absolute; right:0.14rem; top:0.07rem; width:0.01rem; height:0.14rem; background:#fff}
 .dress .item.on .piece .add .icon_y{ background:#e96288; -webkit-transform:rotate(45deg); transform:rotate(45deg); -webkit-transform-origin:right top 0; transform-origin:right top 0; height:0.14rem; right:0.045rem; top:0.1rem}
-.dress .item .piece .box{ margin:-0.16rem 0.01rem 0; padding:0 0.05rem; background:#feffd2; border-radius:0.04rem; height:0.65rem; box-shadow:0.01rem 0.01rem 0.01rem #b3a450; overflow:hidden}
+.dress .item .piece .box{ background-position:0; margin:-0.16rem 0.01rem 0; padding:0 0.05rem; background:#feffd2; border-radius:0.04rem; height:0.65rem; box-shadow:0.01rem 0.01rem 0.01rem #b3a450; overflow:hidden}
 .dress .item.on .piece .box{ background:#ffe1e1}
 .dress .piece .face_front{ display:none}
 .dress .piece .face_front .t1{ height:0.375rem; line-height:0.375rem; font-size:0.15rem; color:#644400; border-bottom:1px solid #cdce99; text-align:center}
