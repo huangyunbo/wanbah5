@@ -327,7 +327,6 @@ gulp.task('qjnn_data', function(){
 		.pipe(replace(qjnn_replace[0], qjnn_replace_data[0]))
 		.pipe(replace(qjnn_replace[1], qjnn_replace_data[1]))
 		.pipe(replace(qjnn_replace[2], qjnn_replace_data[2]))
-		.pipe(rename('index.html'))
         .pipe(gulp.dest('../../chajian/78/'+qjnn_platform+'/DataPlugin/'+qjnn_plugin_data));
 	
 	gulp.src('data-qjnn-choice-manual.html')
