@@ -127,7 +127,7 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .dresstype_two .dresstype_wrap .box .dresstype{ padding-bottom:0.95rem}/*0.45+0.5*/
 .dresstype_two .dress_room{ border-radius:0.09rem 0.09rem 0 0}
 /*已选服饰拉手*/
-.door{ position:absolute; z-index:10; height:1.1rem; width:0.47rem; color:#976907; border-left:0.01rem solid rgba(190,191,160,0.75); border-radius:0.1rem; background:#ffeb8b; right:0.03rem; font-size:0.13rem; top:50%; margin-top:-0.55rem}
+.door{ -webkit-user-select:none; user-select:none; position:absolute; z-index:10; height:1.1rem; width:0.47rem; color:#976907; border-left:0.01rem solid rgba(190,191,160,0.75); border-radius:0.1rem; background:#ffeb8b; right:0.03rem; font-size:0.13rem; top:50%; margin-top:-0.55rem}
 .door .front{ position:relative; height:100%; padding:0.16rem 0 0 0.03rem; box-sizing:border-box}
 .door .front .icon_trig,.door .back .icon_trig{ position:absolute; right:0.03rem; top:50%; margin-top:-0.025rem; width:0.05rem; height:0.05rem; border:solid #9e7210; border-width:0 0 0.01rem 0.01rem; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 .door .front .num{ border:1px solid #9e7210; display:inline-block; padding:0 0.05rem; border-radius:0.03rem}

@@ -348,6 +348,7 @@
 		},
 		printBag: function(){//打印已选中的服装
 			var html = '',
+			html_door = '',
 			_datadress = this.datadress,
 			_bag = this.o.bag,
 			num = 0,
@@ -374,8 +375,14 @@
 			}
 			this.o.score = score;
 			
-			$("#door_num").html(num);
-			$("#door_score").html(score);
+			//ios被变蓝色bug
+			html_door = '<i class="icon_trig"></i>'+
+						'<div>已选</div>'+
+						'<div class="num" id="door_num">'+num+'</div>'+
+						'<div class="t2">总分</div>'+
+						'<div class="score" id="door_score">'+score+'</div>';
+			
+			$("#door_front").html(html_door);
 			$("#bag_score").html(score);
 			$("#bag_content").html(html);
 		},
