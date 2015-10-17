@@ -249,7 +249,6 @@
 			sectionid = 0,//竞技场id 联盟委托id 关卡小id
 			chapterid = 0;//关卡大id
 			
-
 			if(this.getsession("wbgl-qjnn-choice-urlfrom") == "index.html"){//如果是index.html过来的就新建保存
 				wbglqjnnchoice = {"data":[],"growthid":1};
 				bag_data = {"id":1,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime,sectionid:this.o.sectionid,chapterid:this.o.chapterid};
@@ -260,6 +259,7 @@
 					bag_data.id = ++wbglqjnnchoice.growthid;
 					wbglqjnnchoice.data.unshift(bag_data);
 				}
+				this.setsession("wbgl-qjnn-choice-mydetailid",bag_data.id);//因为直接跳详情页了，所以要保持一个mydetailid在session里
 				localStorage.setItem("wbgl-qjnn-choice",JSON.stringify(wbglqjnnchoice));
 			}else if(this.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){//如果是mydetail.html过来的就在原来的里面编辑保存
 				var id = Number(this.getsession("wbgl-qjnn-choice-mydetailid"));			
@@ -271,6 +271,9 @@
 					}
 				}
 			}
+			
+			//ios返回回来不自动关掉的bug
+			easyDialog.close();
 			
 			if(this.o.platform == "ios"){
 				location.href = this.o.plugin+'/data-qjnn-choice-mydetail.html';
@@ -376,13 +379,16 @@
 			this.o.score = score;
 			
 			//ios被变蓝色bug
-			html_door = '<i class="icon_trig"></i>'+
-						'<div>已选</div>'+
-						'<div class="num" id="door_num">'+num+'</div>'+
-						'<div class="t2">总分</div>'+
-						'<div class="score" id="door_score">'+score+'</div>';
-			
-			$("#door_front").html(html_door);
+			html_door = '<div class="front">'+
+							'<i class="icon_trig"></i>'+
+							'<div>已选</div>'+
+							'<div class="num">'+num+'</div>'+
+							'<div class="t2">总分</div>'+
+							'<div class="score">'+score+'</div>'+
+						'</div>'+
+						'<div class="back">收<br>起<i class="icon_trig"></i></div>';
+
+			$("#door").html(html_door);
 			$("#bag_score").html(score);
 			$("#bag_content").html(html);
 		},
@@ -1442,7 +1448,7 @@
 			switch(true){
 				case (href == "index"):
 					this.isplatform("index");
-					this.setsession("wbgl-qjnn-choice-urlfrom", "index.html");//记录来自于data-qjnn-choice-index.html
+					this.setsession("wbgl-qjnn-choice-urlfrom", "index.html");//记录来自于index.html
 					break;
 				case (href == "dress"):
 					this.isplatform("dress");
