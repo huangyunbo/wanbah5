@@ -470,7 +470,6 @@
 				case 0://处理衣柜
 					if(this.o.dresstype.state == 2){
 						this.o.dresstype.state = 0;
-						this.calcDresstype();
 					}
 					this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}];
 					this.o.zhuti = "";
@@ -480,7 +479,6 @@
 				case 1://处理竞技场
 					if(this.o.dresstype.state == 2){
 						this.o.dresstype.state = 0;
-						this.calcDresstype();
 					}
 					var _id = this.o.sectionid;
 					for(var i=0; i<this.dataarena.length; i++){
@@ -496,7 +494,6 @@
 				case 2://处理联盟委托
 					if(this.o.dresstype.state == 2){
 						this.o.dresstype.state = 0;
-						this.calcDresstype();
 					}
 					var _id = this.o.sectionid;
 					for(var i=0; i<this.dataarena.length; i++){
@@ -512,7 +509,6 @@
 				case 3://处理关卡
 					if(this.o.dresstype.state == 2){
 						this.o.dresstype.state = 0;
-						this.calcDresstype();
 					}
 					var _index = this.o.chapterid;
 					var _id = this.o.sectionid;
@@ -534,6 +530,7 @@
 			this.o.keyword = "";
 			$("#so_text").val("");
 			this.setTe();
+			this.calcDresstype();
 			this.calcDress();
 			this.printBag();
 			$("#way").children().eq(this.o.way).addClass("on").siblings().removeClass("on");
