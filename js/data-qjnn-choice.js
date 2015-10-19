@@ -248,6 +248,7 @@
 			nowtime = y+"-"+m+"-"+d,
 			sectionid = 0,//竞技场id 联盟委托id 关卡小id
 			chapterid = 0;//关卡大id
+
 			
 			if(this.getsession("wbgl-qjnn-choice-urlfrom") == "index.html"){//如果是index.html过来的就新建保存
 				wbglqjnnchoice = {"data":[],"growthid":1};
@@ -270,10 +271,13 @@
 						localStorage.setItem("wbgl-qjnn-choice", JSON.stringify(wbglqjnnchoice));
 					}
 				}
+				
 			}
 			
-			//ios返回回来不自动关掉的bug
-			easyDialog.close();
+			if(this.o.way == 0){//ios返回回来不自动关掉的bug
+				easyDialog.close();
+			}
+			
 			
 			if(this.o.platform == "ios"){
 				location.href = this.o.plugin+'/data-qjnn-choice-mydetail.html';
@@ -475,6 +479,7 @@
 					this.o.zhuti = "";
 					this.o.te = [];
 					this.setBeam();
+					$("#bag_name").val("");
 					break;
 				case 1://处理竞技场
 					if(this.o.dresstype.state == 2){
