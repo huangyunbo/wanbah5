@@ -148,7 +148,7 @@ body{ background:#f9ddd3 url(../images/qjnn/choice-bg.jpg) no-repeat fixed; back
 .bag .head .icon_l,.bag .head .icon_r{ background-position:right -0.65rem; width:0.11rem; height:0.18rem; display:inline-block; vertical-align:-0.04rem; margin-right:0.02rem}
 .bag .head .icon_r{ -webkit-transform:scaleX(-1); transform:scaleX(-1); margin:0 0 0 0.02rem}
 .bag .box{ background:#fffeb6; display:table-row}
-.bag_y{ display:table-cell; font-size:0.1rem; position:relative; width:100%; height:100%; overflow-y:auto; -webkit-overflow-scrolling:touch}
+.bag_y{ background:#fffeb6; display:table-cell; font-size:0.1rem; position:relative; width:100%; height:100%; overflow-y:auto; -webkit-overflow-scrolling:touch}
 .bag .content{ position:absolute; left:0.04rem; right:0.01rem; top:0}
 .bag .item{ background:#e6d47c; height:0.35rem; margin-bottom:0.02rem; padding:0.05rem 0.04rem}
 .bag .item:first-child{ border-radius:0.04rem 0.04rem 0 0}

@@ -347,8 +347,14 @@
 					}
 				}
 			}
+			//只有添加的是饰品类别并且数量大于8才提示
 			if(ornamentsNum >= 8){
-				this.toast(2);
+				for(var i=0; i<ornaments.length; i++){
+					if(ornaments[i] == _oldid){
+						this.toast(2);
+						break;
+					}
+				}
 			}
 
 			this.printBag();
