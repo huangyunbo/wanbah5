@@ -337,8 +337,25 @@
 			}else{
 				_bag.push({"tid":_oldid,"cid":_id});//[{"tid":1,cid:_id},{}] tid是类别，cid是衣服id
 			}
+			
+			//连衣裙与上衣/下装互斥
+			if(_oldid == 2){//连衣裙2
+				for(var i=0; i<_bag.length; i++){
+					if(_bag[i].tid == 4 || _bag[i].tid == 5){
+						_bag.splice(i,1);
+						i--;
+					}
+				}
+			}else if(_oldid == 4 || _oldid == 5){//上衣4 下装5
+				for(var i=0; i<_bag.length; i++){
+					if(_bag[i].tid == 2){
+						_bag.splice(i,1);
+						break;
+					}
+				}
+			}
 
-			//需要判断饰品是不是要减分的弹窗
+			//计算饰品是不是要减分的弹窗
 			for(var i=0; i<_bag.length; i++){
 				_tid = _bag[i].tid;
 				for(var j=0; j<ornaments.length; j++){
