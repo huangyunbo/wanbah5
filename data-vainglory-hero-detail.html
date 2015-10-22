@@ -242,6 +242,7 @@
             	<div class="desc">
             		<span>夺命X字斩</span>每当塔卡暴击，她将在极短时间内恢复相当于暴击所造成伤害的20%生命值。每5秒塔卡都必定能暴击一次。每当塔卡使用技能或暴击时就会叠加一层buff（最高5层），此buff能加速他获得暴击的时间0.9秒，减少25%技能冷却时间。<br><span>伤害</span>350/575/800(+120水晶)<br><span>能量消耗</span>120/150/180<br><span>冷却</span>140/110/80<br><span>使用技巧</span>塔卡蜿蜒穿过战场，他的刀消灭了一切他所盯上的目标。他舞蹈在刀尖上，他的敏捷速度和隐身技能弥补了脆弱的防御。<br>
                 </div>
+                <div id="youkuplayer"></div>
             </div>
             <div class="item">
             	<div class="desc">
@@ -285,9 +286,16 @@
 
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/data-vainglory.js"></script>
+<script type="text/javascript" src="http://player.youku.com/jsapi"></script>
 <script type="text/javascript">
 $(function(){
 	var vainglory = new Vainglory(1);
+	var player = new YKU.Player('youkuplayer',{
+						styleid: '0',
+						client_id: '759811013057796d',
+						vid: 'XMTI1ODQzMzA4MA==',
+						show_related: false
+					});
 });
 </script>
 </body>
