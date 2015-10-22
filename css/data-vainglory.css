@@ -16,9 +16,12 @@ em,i,code,cite,address,th{font-style:normal}
 a{ text-decoration:none}
 .hide{ display:none !important}
 .mt_0{ margin-top:0 !important}
+.mb_10{ margin-bottom:10px}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.fs_12{ font-size:12px}
 
-body{ background:#0d0f14}
+
+body{ background:#08121a}
 .header{ height:44px; border-bottom:1px solid #406fe8; background:#091723; position:fixed; width:100%; top:0; left:0; z-index:100}
 .header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
@@ -28,85 +31,64 @@ body{ background:#0d0f14}
 
 /*顶部背景*/
 /*.herod .headbg{ position:relative;width:100%}*/
-
 .herod{margin-top:45px; color:#fff}
-
-.herod .intr{ padding:0 7px}
-
-.herod .top_l{ float:left}
-
-.herod .top_r{ float:right}
-
-.herod .intr .name{ font-size:24px}
-
-
-/*.icon_jobs_fashi,.icon_jobs_zhanshi{font-size:16px}
-.icon_jobs_fashi{ color:red; }
-.icon_jobs_zhanshi{ color:green; }*/
-
-
+.herod .plr_7{ padding:0 7px}
+.herod .intro .top_l{ float:left}
+.herod .intro .top_r{ float:right}
+.herod .intro .name{ font-size:24px}
 .icon_jobs{ width:28px; height:28px; display:inline-block; background:url(../images/vainglory/hero-detail.png); background-size:75px; vertical-align:-6px}
 .icon_jobs_cike{ background-position:0 -35px}
 .icon_jobs_gongjian{ background-position:0 -70px}
 .icon_jobs_huweizhe{ background-position:0 -105px}
 .icon_jobs_fashi{ background-position:0 -140px}
-
-.herod .intr .intr_top .top_r .honor,.herod .intr .intr_top .top_r .ice{ border:1px solid rgba(255,255,255,0.6); border-radius:3px; padding:0 5px; font-size:15px; display:inline-block; margin-top:7px}
-
-.herod .honor .img_honor{ background:url(../images/vainglory/hero-detail.png); background-position:-35px 0; background-size:75px; width:20px; height:21px; display:inline-block; vertical-align:-6px}
-.herod .ice .img_ice{ background:url(../images/vainglory/hero-detail.png); background-position:-55px 0; background-size:75px; width:20px; height:21px; display:inline-block; vertical-align:-6px}
-.herod .intr .intro_middle{ border-bottom:1px solid rgba(255,255,255,0.6);font-size:14px; color:#74c9ff; padding-bottom:3px}
-.herod .intr .intro_buttom{ font-size:12px; margin-top:8px}
-.specialtit{ font-size:17px; color:#74c9ff; margin-top:10px; margin-bottom:10px; padding:0 7px}
-.specialdeta{ font-size:12px; padding:0 7px}
-
-
-.herod .equipchoice,.herod .plusskill{ border:1px solid #46feeb; margin:7px; background:#061731} 
-.herod .equipchoice li,.herod .plusskill li,.herod .heroskills li{ display:table-cell; width:25%; padding-bottom:10px}
-
-.herod  i.ico_hero_data{ position:absolute; background:url(../images/data-mt2-detail.png) no-repeat; width:60px; height:60px}
-.herod  .section .r,.herod .hero_qipo .r{
-  padding: 7px 0 0 60px;
-  box-sizing: border-box;
-}
-
-.herod .section{ padding:5px}
-.herod .section li{
-  margin-bottom: 5px;
-  position: relative;
-  height: 60px;
-}
-
-.herod i.ico_h_d_shuchu{ background-position:0 -180px}
-.herod i.ico_h_d_tank{ background-position:0 -240px}
-.herod i.ico_h_d_shengcun{ background-position:0 -300px}
-.herod i.ico_h_d_fuzhu{ background-position:0 -360px}
-.herod i.ico_h_d_nandu{ background-position:0 -420px}
-
-.herod span{ font-size:1.4em}
-
+.herod .intro .top_r .item{ border:1px solid rgba(255,255,255,0.6); border-radius:3px; padding:0 5px; font-size:15px; display:inline-block; margin-top:7px}
+.herod .intro .icon_honor{ background:url(../images/vainglory/hero-detail.png); background-position:-35px 0; background-size:75px; width:20px; height:21px; display:inline-block; vertical-align:-6px}
+.herod .intro .icon_ice,.herod .skin .icon_ice{ background:url(../images/vainglory/hero-detail.png); background-position:-55px 0; background-size:75px; width:20px; height:21px; display:inline-block; vertical-align:-6px}
+.herod .intro .intro_middle{ border-bottom:1px solid rgba(255,255,255,0.6); font-size:14px; color:#74c9ff; padding-bottom:4px}
+.herod .intro .intro_bottom{ padding-top:8px}
+.herod_h2{ font-size:17px; color:#74c9ff; margin-bottom:5px}
+.herod .equipchoice ul{ text-align:center; box-shadow:0 0 2px #46ffeb; border:1px solid #51daef; background:linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25)); background:-webkit-linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25))} 
+.herod .equipchoice ul li{ display:inline-block; width:14.5%; padding:5px; box-sizing:border-box; margin:10px 0}
+.herod .equipchoice ul li img{ border-radius:100px}
+.herod .specialtit ul{ overflow:hidden; text-align:center; box-shadow:0 0 2px #46ffeb; border:1px solid #51daef; background:linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25)); background:-webkit-linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25))} 
+.herod .specialtit ul li{ float:left; width:20%; padding:5px; box-sizing:border-box}
+.herod .herodata .graphical li{ margin-bottom:5px; position:relative; height:60px}
+.herod .herodata .graphical li .r{ padding:7px 0 0 60px; box-sizing:border-box}
+.herod .herodata .graphical li .r span{ font-size:1.4rem}
+.herod i.icon_herodata{ position:absolute; background:url(../images/data-mt2-detail.png) no-repeat; width:60px; height:60px}
+.herod i.icon_herodata_shuchu{ background-position:0 -180px}
+.herod i.icon_herodata_tank{ background-position:0 -240px}
+.herod i.icon_herodata_shengcun{ background-position:0 -300px}
+.herod i.icon_herodata_fuzhu{ background-position:0 -360px}
+.herod i.icon_herodata_nandu{ background-position:0 -420px}
 .herod .star{ width:100%; overflow:hidden; margin-top:3px}
-.herod .star em{ width:8%; height:15px; margin-right:2%; background:#3a2d57; float:left}
+.herod .star em{ width:8%; height:18px; margin-right:2%; background:#3a2d57; float:left}
 .herod .star1 em:first-child,.herod .star2 em:nth-child(-n+2),.herod .star3 em:nth-child(-n+3){ background:#47c197}
 .herod .star4 em:nth-child(-n+4),.herod .star5 em:nth-child(-n+5),.herod .star6 em:nth-child(-n+6){ background:#4dd2fd}
 .herod .star7 em:nth-child(-n+7),.herod .star8 em:nth-child(-n+8),.herod .star9 em:nth-child(-n+9),.herod .star10 em:nth-child(n){ background:#da5bff}
-
-
-.herod .skill_des_container ul{}
-.herod .skill_des_container li{ box-sizing:border-box; float:left; padding:0 7px; width:50%}
-.herod .skilldetails li span{ box-sizing:border-box; padding:0 7px;  color:#74c9ff}
-
-.herod .skill_des_container span,.herod .hero_qipo span{ color:#74c9ff}
-
-.herod .range{ width:100%}
-.herod .range_div{ margin:7px}
-
-.herod .hero_qipo .r_b{ width:100%; overflow:hidden; margin-top:3px}
-
-.herod .skilldetails p{ color:#74c9ff; margin:7px}
-.herod .skilldetails p1{ margin:7px}
-
-
+.herod .herodata .info{ overflow:hidden}
+.herod .herodata .info li{ box-sizing:border-box; float:left; width:50%; font-size:1.2em}
+.herod .herodata .info li span{ box-sizing:border-box; padding:0 7px;  color:#74c9ff}
+.herod .herodata .herolevel_range{ width:100%}
+.herod .skill_des_container span{ color:#74c9ff}
+.herod .qipo ul{ overflow:hidden}
+.herod .qipo .l{ float:left; width:36px; height:36px}
+.herod .qipo .r{ padding:0 0 0 46px}
+.herod .qipo .r div{ color:#74c9ff; line-height:1; padding-bottom:5px}
+.herod .skills{ border-bottom:1px solid #74c9ff; padding-bottom:10px}
+.herod .skills .title{ padding-bottom:5px; border-bottom:1px solid #74c9ff}
+.herod .skills .title li{ float:left; position:relative; margin:0 20px 0 7px; padding:10px 0}
+.herod .skills .title li img{ width:36px; height:36px}
+.herod .skills .title li.on i{ position:absolute; width:8px; height:8px; border:solid #74c9ff; border-width:1px 0 0 1px; bottom:-10px; left:50%; margin-left:-5px;  transform:rotate(45deg); -webkit-transform:rotate(45deg)}
+.herod .skills .title li.on code{ position:absolute; width:8px; height:8px; background:#08121a; bottom:-11px; left:50%; margin-left:-4px;  transform:rotate(45deg); -webkit-transform:rotate(45deg)}
+.herod .skills .content .item{ display:none}
+.herod .skills .content .item.on{ display:block}
+.herod .skills .content .item .desc span{ color:#74c9ff; padding-right:5px; font-size:1.2rem}
+.herod .skin .head{ overflow:hidden}
+.herod .skin .head .item{ width:40px; height:42px; box-sizing:border-box; padding:7px; float:left}
+.herod .skin .head .item.on{ background:#15232e}
+.herod .skin .box{ background:#15232e; padding:7px}
+.herod .skin .box span{ color:#74c9ff; padding-right:5px}
 
 
 
