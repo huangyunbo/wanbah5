@@ -75,6 +75,8 @@ a{ text-decoration:none}
 .datadetail .list i.ico_powerlever{ background-position:0 -195px}/*动力杆*/
 .datadetail .list i.ico_fieldcapacitor{ background-position:0 -210px}/*场电容器*/
 .datadetail .list i.ico_compoundgear{ background-position:0 -224px}/*复合齿轮*/
+.datadetail .list i.ico_shockduration{ background-position:0 -240px}/*眩晕时间*/
+.datadetail .list i.ico_shieldstrength{ background-position:0 -255px}/*护盾强度*/
 /*阵型详情页*/
 .formation .item{ border-bottom:1px solid #d3d3d3; padding-bottom:10px}
 .formation .item:last-child{ border-bottom:0}
