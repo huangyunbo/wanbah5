@@ -81,6 +81,10 @@ a{ text-decoration:none}
 .equipd .head .r .price{ color:#ffca28; border:1px solid #ffca28; border-radius:20px; padding:0 5px; vertical-align:middle}
 .equipd .head .r .label{ padding-top:5px}
 .equipd .head .r .label span{ padding:0 5px; margin-right:10px}
+.equipd .head .r .label span:first-child{ background:#c64251}
+.equipd .head .r .label span:nth-child(2){ background:#b88a3a}
+.equipd .head .r .label span:nth-child(3){ background:#3d899f}
+.equipd .head .r .label span:nth-child(4){ background:#9c62a6}
 .equipd_h2{ font-size:1.5rem}
 .equipd_h2 .polygon{ position:relative; display:inline-block; width:10px; height:12px; margin-right:6px}
 .equipd_h2 .polygon i{ position:absolute; width:10px; height:6px; top:3px; left:0; background:#ffca28}
