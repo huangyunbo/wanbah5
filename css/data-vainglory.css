@@ -91,6 +91,14 @@ body{ background:#08121a}
 .herod .skin .box span{ color:#74c9ff; padding-right:5px}
 
 
+/*英雄列表*/
+.herolist{ margin-top:45px; overflow:hidden; width:100%; height:40px; position:relative; border-bottom:1px solid #4dd2fd; box-sizing:border-box}
+.herolist ul{ position:absolute; width:100%; height:39px}
+.herolist li{ float:left; font-size:1.6em; color:#b0b8c8; padding:8px 20px 7px 20px; white-space:nowrap; position:relative}
+.herolist ul li i{width: 1px; height: 18px; position: absolute; background: #4dd2fd; right: 0; top: 11px}
+
+
+
 
 
 
