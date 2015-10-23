@@ -79,8 +79,8 @@ body{ background:#08121a}
 .herod .skills .title{ padding-bottom:5px; border-bottom:1px solid #74c9ff}
 .herod .skills .title li{ float:left; position:relative; margin:0 20px 0 7px; padding:10px 0}
 .herod .skills .title li img{ width:36px; height:36px}
-.herod .skills .title li.on i{ position:absolute; width:8px; height:8px; border:solid #74c9ff; border-width:1px 0 0 1px; bottom:-10px; left:50%; margin-left:-5px;  transform:rotate(45deg); -webkit-transform:rotate(45deg)}
-.herod .skills .title li.on code{ position:absolute; width:8px; height:8px; background:#08121a; bottom:-11px; left:50%; margin-left:-4px;  transform:rotate(45deg); -webkit-transform:rotate(45deg)}
+.herod .skills .title li.on:before{ content:""; position:absolute; width:8px; height:8px; border:solid #74c9ff; border-width:1px 0 0 1px; bottom:-10px; left:50%; margin-left:-5px;  transform:rotate(45deg); -webkit-transform:rotate(45deg)}
+.herod .skills .title li.on:after{ content:""; position:absolute; width:8px; height:8px; background:#08121a; bottom:-11px; left:50%; margin-left:-4px;  transform:rotate(45deg); -webkit-transform:rotate(45deg)}
 .herod .skills .content .item{ display:none}
 .herod .skills .content .item.on{ display:block}
 .herod .skills .content .item .desc span{ color:#74c9ff; padding-right:5px; font-size:1.2rem}
