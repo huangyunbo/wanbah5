@@ -39,6 +39,7 @@ a{ text-decoration:none}
 .herolist li img{ width:58px; height:58px}
 .herolist p{ white-space:nowrap; font-size:1.4rem}
 /*英雄详情*/
+.herodetail{ margin-top:45px}
 .herodetail .head{ position:relative}
 .herodetail .head .tit{ text-align:center; color:#fff; line-height:50px; font-size:36px; font-style:italic; position:absolute; left:0; bottom:30px; width:100%}
 .herodetail .head .tit div{ font-size:28px}
