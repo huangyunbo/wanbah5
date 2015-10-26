@@ -2,7 +2,7 @@
 	var QmcsHero = function(){
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
-		this.o = {platform:"web",plugin:"plugin_1101",url:"images/quanminchaoshen/"};
+		this.o = {platform:"web",plugin:"plugin_1101",plugin_equip:"plugin_1103",url:"images/quanminchaoshen/"};
 		if(this.o.platform == "android"){
 			this.o.url="../images/quanminchaoshen/";
 		}
@@ -181,8 +181,10 @@
 				case "index":
 					if(this.o.platform == "web"){
 						removehide();
+						this.setsession("wbgl-quanminchaoshen-equip2hero","n");//重置 从装备跳转过来
 					}else if(this.o.platform == "android"){
 						removehide();
+						this.setsession("wbgl-quanminchaoshen-equip2hero","n");//重置 从装备跳转过来
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
 					}else if(this.o.platform == "ios"){
 						$("#herolist").addClass("mt_0");
@@ -191,9 +193,16 @@
 				case "herodetail":
 					if(this.o.platform == "web"){
 						removehide();
+						if(this.getsession("wbgl-quanminchaoshen-equip2hero") == "y"){//如果是从装备跳转过来的
+							$("#header").children(".back").attr("href","data-quanminchaoshen-equip-detail.html");
+						}
 					}else if(this.o.platform == "android"){
-						$("#header").children(".back").attr("href","index.html");
 						removehide();
+						if(this.getsession("wbgl-quanminchaoshen-equip2hero") == "y"){//如果是从装备跳转过来的
+							$("#header").children(".back").attr("href",'../'+this.o.plugin_equip+'/data-quanminchaoshen-equip-detail.html');
+						}else{
+							$("#header").children(".back").attr("href","index.html");
+						}
 					}if(this.o.platform == "ios"){
 						$("#herodetail").addClass("mt_0");
 					}

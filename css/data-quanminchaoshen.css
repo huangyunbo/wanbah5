@@ -17,11 +17,11 @@ a{ text-decoration:none}
 .hide{ display:none !important}
 .mt_0{ margin-top:0 !important}
 
-.media_mb_10{ margin-bottom:10px}
+.media_mb_20{ margin-bottom:20px}
 .media_ml_16{ margin-left:16px}
 .media_plr_7{ padding:0 7px}
 @media screen and (min-width:640px){
-	.media_mb_10{ margin-bottom:20px}
+	.media_mb_20{ margin-bottom:40px}
 	.media_ml_16{ margin-left:32px}
 	.media_plr_7{ padding:0 14px}
 }
@@ -65,13 +65,15 @@ a{ text-decoration:none}
 .equip .head .item{ width:25%; height:50px; text-align:center; display:table-cell; vertical-align:middle; font-size:1.6rem; position:relative}
 .equip .head .item.on{ color:#ffca28}
 .equip .head .item:nth-child(-n+3):before{ content:""; background:#ffca28; width:1px; height:22px; position:absolute; right:0; top:15px}
-.equip .content li{ display:inline-block; width:25%; padding:10px; box-sizing:border-box; text-align:center; vertical-align:top; line-height:1.2; font-size:1.2rem}
-.equip .content li img{ display:block; margin:0 auto 5px}
+.equip .content ul{ display:none}
+.equip .content ul.on{ display:block}
+.equip .content li{ display:inline-block; width:25%; text-align:center; vertical-align:top; line-height:1.2; font-size:1.2rem}
+.equip .content li div{ padding:15px 15px 5px}
 @media screen and (min-width:640px){
 	.equip .head .item{ height:80px; font-size:3rem}
 	.equip .head .item:nth-child(-n+3):before{ height:36px; top:24px}
-	.equip .content li{ padding:30px 30px 10px; font-size:2.4rem}
-	.equip .content li img{ margin:0 auto 10px}
+	.equip .content li{ font-size:2.4rem}
+	.equip .content li div{ padding:30px 30px 10px}
 }
 /*装备详情*/
 .equipd{ margin-top:45px}
@@ -80,7 +82,7 @@ a{ text-decoration:none}
 .equipd .head .r{ margin-left:82px}
 .equipd .head .r .tit{ font-size:1.6rem; margin-right:10px; vertical-align:middle}
 .equipd .head .r .price{ color:#ffca28; border:1px solid #ffca28; border-radius:20px; padding:0 5px; vertical-align:middle}
-.equipd .head .r .label{ padding-top:5px}
+.equipd .head .r .label{ padding-top:5px; font-size:1.2rem}
 .equipd .head .r .label span{ padding:0 5px; margin-right:10px}
 .equipd .head .r .label span:first-child{ background:#c64251}
 .equipd .head .r .label span:nth-child(2){ background:#b88a3a}
@@ -92,11 +94,12 @@ a{ text-decoration:none}
 .equipd_h2 .polygon:before{ content:""; position:absolute; width:0; top:0; left:0; border-bottom:3px solid #ffca28; border-left:5px solid transparent; border-right:5px solid transparent}
 .equipd_h2 .polygon:after{ content:""; position:absolute; width:0; top:9px; left:0; border-top:3px solid #ffca28; border-left:5px solid transparent; border-right:5px solid transparent}
 .equipd .property p{ color:#ccc; font-size:1.4rem; line-height:1.3}
+.equipd .property .col_4a7621{ color:#4a7621}
 .equipd .need ul{ overflow:hidden; padding-top:5px}
-.equipd .need li{ float:left; width:40px; height:40px; margin-right:10px}
+.equipd .need li{ float:left; width:50px; height:50px; margin-right:15px}
 .equipd .fithero{ margin-bottom:50px}
 .equipd .fithero ul{ overflow:hidden; padding-top:5px}
-.equipd .fithero li{ float:left; width:50px; height:50px; margin-right:20px}
+.equipd .fithero li{ float:left; width:50px; height:50px; margin:0 15px 10px 0}
 @media screen and (min-width:640px){
 	.equipd .head{ padding:30px 14px}
 	.equipd .head .l{ width:140px; height:140px; margin-right:20px; text-align:center}
@@ -112,10 +115,10 @@ a{ text-decoration:none}
 	.equipd_h2 .polygon:after{ top:18px; border-top:6px solid #ffca28; border-left:10px solid transparent; border-right:10px solid transparent}
 	.equipd .property p{ font-size:2.4rem}
 	.equipd .need ul{ padding-top:10px}
-	.equipd .need li{ width:80px; height:80px; margin-right:20px}
+	.equipd .need li{ width:100px; height:100px; margin-right:30px}
 	.equipd .fithero{ margin-bottom:100px}
 	.equipd .fithero ul{ padding-top:10px}
-	.equipd .fithero li{ width:100px; height:100px; margin-right:40px}
+	.equipd .fithero li{ width:100px; height:100px; margin:0 30px 20px 0}
 }
 
 
