@@ -12,6 +12,7 @@
 					plugin:"plugin_952",//服装搭配器的板块ID
 					dresstype:{id:1,oldid:1,parentid:0,haskid:0,state:0},//id:是选中哪一个,oldid:记录上次点击的id(没有子集的),parentid:父级id是谁,haskid:是否有子集,state:0默认 2搜索
 					way:0,//选择的4条路 0:衣柜 1:竞技场 2:联盟委托 3:关卡
+					way_selected:0,//用于在点击4条路，并不是真的选中，可能会取消
 					wu:[{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}],//五属性
 					te:[],//特殊属性
 					te_selected:[],//特殊属性 选中的
@@ -19,7 +20,9 @@
 					keyword:"",//关键词
 					bag:[],//已选中的服装[{tid:1,cid:1}]//tid大类别，cid衣服id
 					score:0,//已选中的总分
-					sectionid:1,//竞技场id 联盟委托id 关卡小id
+					sectionid_j:1,//竞技场id
+					sectionid_l:1,//联盟委托id
+					sectionid_g:1,//关卡小id
 					chapterid:0,//关卡大id
 					poker:[]//记录被翻过来的衣服id
 				 };
@@ -46,13 +49,13 @@
 				alert("暂不支持分享");
 			}
 		},
-		editMydetail: function(){//从编辑模式进来			
+		editToMydetail: function(){//从编辑模式进来			
 			switch(this.o.way){
 				case 0://处理衣柜
-					this.setBeam();
+					this.setBeam();//包含基本属性+特殊属性从数据中提取
 					break;
 				case 1://处理竞技场
-					var _id = this.o.sectionid;
+					var _id = this.o.sectionid_j;
 					for(var i=0; i<this.dataarena.length; i++){
 						if(this.dataarena[i].id == _id){
 							this.o.zhuti = this.dataarena[i].name;
@@ -63,7 +66,7 @@
 					this.setBeam(1);
 					break;
 				case 2://处理联盟委托
-					var _id = this.o.sectionid;
+					var _id = this.o.sectionid_l;
 					for(var i=0; i<this.dataarena.length; i++){
 						if(this.dataarena[i].id == _id){
 							this.o.zhuti = this.dataarena[i].name;
@@ -74,8 +77,8 @@
 					this.setBeam(1);
 					break;
 				case 3://处理关卡
+					var _id = this.o.sectionid_g;
 					var _index = this.o.chapterid;
-					var _id = this.o.sectionid;
 					for(var i=0; i<this.datagates[_index].data.length; i++){
 						if(this.datagates[_index].data[i].id == _id){
 							this.o.zhuti = this.datagates[_index].data[i].name;
@@ -86,7 +89,6 @@
 					this.setBeam(1);
 					break;
 			}
-			$("#so_text").val("");
 			this.setTe();
 			this.printDresstype();
 			this.calcDress();
@@ -159,6 +161,7 @@
 			that.printMydetail();
 			
 			$("#btn_bianji").click(function(){
+				that.setsession("wbgl-qjnn-choice-urlfrom", "mydetail.html");//记录来自于data-qjnn-choice-mydetail.html
 				if(that.o.platform == "ios"){
 					location.href = that.o.plugin+'/data-qjnn-choice-dress.html';
 				}else{
@@ -236,23 +239,47 @@
 				that.removeMy(Number($(this).closest(".item").attr("data-id")));
 				return false;
 			});
+		},
+		resetDress: function(){//ios页面重置
+			easyDialog.close();
 			
+			this.o.dresstype = {id:1,oldid:1,parentid:0,haskid:0,state:0};
+			this.o.way = 0;
+			this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}];
+			this.o.te = [];
+			this.o.te_selected = [];
+			this.o.zhuti = "";
+			this.o.keyword = "";
+			this.o.bag = [];
+			this.o.score = 0;
+			this.o.sectionid_j = 1;
+			this.o.sectionid_l = 1;
+			this.o.sectionid_g = 1;
+			this.o.chapterid = 0;
+			this.o.poker = [];
+			
+			this.setBeam();
+			$("#so_text").val("");
+			$("#bag_name").val("");
+			this.setTe();
+			this.calcDresstype();
+			this.calcDress();
+			this.printBag();
+			
+			$("#way").children().eq(this.o.way).addClass("on").siblings().removeClass("on");
 		},
 		setBag: function(){//存储一袋子的衣服
 			var wbglqjnnchoice,//wbglqjnnchoice = {"data":[],"growthid":1}
-			bag_data,
-			myDate = new Date(),
-			y = myDate.getFullYear(),
-			m = myDate.getMonth()+1,
-			d = myDate.getDate(),
-			nowtime = y+"-"+m+"-"+d,
-			sectionid = 0,//竞技场id 联盟委托id 关卡小id
-			chapterid = 0;//关卡大id
-
+				bag_data,
+				myDate = new Date(),
+				y = myDate.getFullYear(),
+				m = myDate.getMonth()+1,
+				d = myDate.getDate(),
+				nowtime = y+"-"+m+"-"+d;
 			
 			if(this.getsession("wbgl-qjnn-choice-urlfrom") == "index.html"){//如果是index.html过来的就新建保存
 				wbglqjnnchoice = {"data":[],"growthid":1};
-				bag_data = {"id":1,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime,sectionid:this.o.sectionid,chapterid:this.o.chapterid};
+				bag_data = {"id":1,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime,te_selected:this.o.te_selected,sectionid_j:this.o.sectionid_j,sectionid_l:this.o.sectionid_l,sectionid_g:this.o.sectionid_g,chapterid:this.o.chapterid};
 				if(localStorage.getItem("wbgl-qjnn-choice") === null){//如果我的卡组为空时
 					wbglqjnnchoice.data.push(bag_data);
 				}else{//如果我的卡组不为空时，就追加
@@ -267,19 +294,15 @@
 				wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice"));
 				for(var i=0; i<wbglqjnnchoice.data.length; i++){
 					if(wbglqjnnchoice.data[i].id == id){
-						wbglqjnnchoice.data[i] = {"id":id,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime,sectionid:this.o.sectionid,chapterid:this.o.chapterid};
+						wbglqjnnchoice.data[i] = {"id":id,"name":this.o.zhuti,"way":this.o.way,"bag":this.o.bag,"score":this.o.score,"wu":this.o.wu,time:nowtime,te_selected:this.o.te_selected,sectionid_j:this.o.sectionid_j,sectionid_l:this.o.sectionid_l,sectionid_g:this.o.sectionid_g,chapterid:this.o.chapterid};
 						localStorage.setItem("wbgl-qjnn-choice", JSON.stringify(wbglqjnnchoice));
 					}
 				}
-				
 			}
-			
-			if(this.o.way == 0){//ios返回回来不自动关掉的bug
-				easyDialog.close();
-			}
-			
+					
 			
 			if(this.o.platform == "ios"){
+				this.resetDress();
 				location.href = this.o.plugin+'/data-qjnn-choice-mydetail.html';
 			}else{
 				location.href = 'data-qjnn-choice-mydetail.html';
@@ -421,10 +444,10 @@
 		},
 		so: function(){//搜索处理
 			var _keyword = arguments[0],
-			_datadress = this.datadress,
-			_baidu,
-			_data,
-			j;
+				_datadress = this.datadress,
+				_baidu,
+				_data,
+				j;
 			
 			_keyword = $.trim(_keyword);
 			if(_keyword.length == 0) return;
@@ -474,7 +497,7 @@
 			}
 		},
 		autoselected: function(){//1:竞技场 2:联盟委托 3:关卡 确定弹窗的时候自动选择第一个
-			switch(this.o.way){
+			switch(this.o.way_selected){
 				case 1:
 					if(!$("#dialog_1 .dialog_1").children().hasClass("on")){
 						$("#dialog_1 .dialog_1").children().eq(0).trigger("click");
@@ -493,58 +516,49 @@
 			}
 		},
 		way: function(){//0:衣柜 1:竞技场 2:联盟委托 3:关卡 处理这4种弹窗
+			this.o.dresstype.state = 0;
+			
 			switch(this.o.way){
 				case 0://处理衣柜
-					if(this.o.dresstype.state == 2){
-						this.o.dresstype.state = 0;
-					}
 					this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}];
-					this.o.zhuti = "";
 					this.o.te = [];
+					this.o.zhuti = "";
 					this.setBeam();
 					$("#bag_name").val("");
 					break;
 				case 1://处理竞技场
-					if(this.o.dresstype.state == 2){
-						this.o.dresstype.state = 0;
-					}
-					var _id = this.o.sectionid;
+					var _id = this.o.sectionid_j;
 					for(var i=0; i<this.dataarena.length; i++){
 						if(this.dataarena[i].id == _id){
 							this.o.wu = this.dataarena[i].wu;
-							this.o.zhuti = this.dataarena[i].name;
 							this.o.te = this.dataarena[i].te.slice(0);
+							this.o.zhuti = this.dataarena[i].name;
 							break;
 						}
 					}
 					this.setBeam(1);
 					break;
 				case 2://处理联盟委托
-					if(this.o.dresstype.state == 2){
-						this.o.dresstype.state = 0;
-					}
-					var _id = this.o.sectionid;
+					var _id = this.o.sectionid_l;
 					for(var i=0; i<this.dataarena.length; i++){
 						if(this.dataarena[i].id == _id){
 							this.o.wu = this.dataarena[i].wu;
-							this.o.zhuti = this.dataarena[i].name;
 							this.o.te = this.dataarena[i].te.slice(0);
+							this.o.zhuti = this.dataarena[i].name;
+							
 							break;
 						}
 					}
 					this.setBeam(1);
 					break;
 				case 3://处理关卡
-					if(this.o.dresstype.state == 2){
-						this.o.dresstype.state = 0;
-					}
 					var _index = this.o.chapterid;
-					var _id = this.o.sectionid;
+					var _id = this.o.sectionid_g;
 					for(var i=0; i<this.datagates[_index].data.length; i++){
 						if(this.datagates[_index].data[i].id == _id){
 							this.o.wu = this.dataarena[i].wu;
-							this.o.zhuti = this.datagates[_index].data[i].name;
 							this.o.te = this.datagates[_index].data[i].te.slice(0);
+							this.o.zhuti = this.datagates[_index].data[i].name;
 							break;
 						}
 					}
@@ -552,11 +566,12 @@
 					break;
 			}
 			
-			this.o.poker = [];
-			this.o.bag = [];
 			this.o.te_selected = [];
 			this.o.keyword = "";
 			$("#so_text").val("");
+			this.o.bag = [];
+			this.o.poker = [];
+			
 			this.setTe();
 			this.calcDresstype();
 			this.calcDress();
@@ -565,10 +580,11 @@
 		},
 		setTe: function(){//设置特殊属性标签
 			var html = '',
-			_te = this.o.te,
-			telen = _te.length,
-			_datate = this.datate,
-			$dress_filter = $("#dress_filter");
+				_te = this.o.te,
+				telen = _te.length,
+				_datate = this.datate,
+				_te_selectedlen = this.o.te_selected.length;
+				$dress_filter = $("#dress_filter");
 			
 			function findTe(){
 				for(var i=0; i<_datate.length; i++){
@@ -576,42 +592,67 @@
 						return _datate[i].k;
 					}
 				}
-			}
+			}			
 			
-			if(telen == 2){
-				html = '<div class="item" data-index="0" data-id="0"><div>全部</div></div>'+
+			if(telen == 2){//竞技场/联盟委托/关卡 的主题本身拥有2个特殊属性
+				if(_te_selectedlen == 2){//选中了2个
+					html = '<div class="item" data-index="0" data-id="0"><div>全部</div></div>'+
+						'<div class="item on" data-index="1" data-id="'+_te[0]+'"><div>'+findTe(_te[0])+'</div></div>'+
+						'<div class="item on" data-index="2" data-id="'+_te[1]+'"><div>'+findTe(_te[1])+'</div></div>';
+				}else if(_te_selectedlen == 1){//选中了1个
+					var te_index = $.inArray(this.o.te_selected[0], _te);
+					if(te_index == 0){
+						html = '<div class="item" data-index="0" data-id="0"><div>全部</div></div>'+
+							'<div class="item on" data-index="1" data-id="'+_te[0]+'"><div>'+findTe(_te[0])+'</div></div>'+
+							'<div class="item" data-index="2" data-id="'+_te[1]+'"><div>'+findTe(_te[1])+'</div></div>';
+					}else{
+						html = '<div class="item" data-index="0" data-id="0"><div>全部</div></div>'+
+							'<div class="item" data-index="1" data-id="'+_te[0]+'"><div>'+findTe(_te[0])+'</div></div>'+
+							'<div class="item on" data-index="2" data-id="'+_te[1]+'"><div>'+findTe(_te[1])+'</div></div>';
+					}
+				}else{//1个都没选
+					html = '<div class="item" data-index="0" data-id="0"><div>全部</div></div>'+
 						'<div class="item" data-index="1" data-id="'+_te[0]+'"><div>'+findTe(_te[0])+'</div></div>'+
 						'<div class="item" data-index="2" data-id="'+_te[1]+'"><div>'+findTe(_te[1])+'</div></div>';
+				}
+				
 				$dress_filter.html(html);
 				$dress_filter.closest(".dress_wrap").addClass("dress_filter");
-			}else if(telen == 1){
-				html = '<div class="item" data-index="0" data-id="0"><div>全部</div></div>'+
+			}else if(telen == 1){//竞技场/联盟委托/关卡 的主题本身拥有1个特殊属性
+				var te_index = $.inArray(this.o.te_selected[0], _te);
+				if(te_index == -1){
+					html = '<div class="item" data-index="0" data-id="0"><div>全部</div></div>'+
 						'<div class="item" data-index="1" data-id="'+_te[0]+'"><div>'+findTe(_te[0])+'</div></div>';
+				}else{
+					html = '<div class="item" data-index="0" data-id="0"><div>全部</div></div>'+
+						'<div class="item on" data-index="1" data-id="'+_te[0]+'"><div>'+findTe(_te[0])+'</div></div>';
+				}
+				
 				$dress_filter.html(html);
 				$dress_filter.closest(".dress_wrap").addClass("dress_filter");
 			}else{
 				$dress_filter.closest(".dress_wrap").removeClass("dress_filter");
 			}
 		},
-		calcDress:function(){//计算服装
+		calcDress: function(){//计算服装
 			var _datadress = this.datadress,
-			datadress_len = _datadress.length,
-			_te_selected = this.o.te_selected,
-			te_selectedlen = _te_selected.length;
+				datadress_len = _datadress.length,
+				_te_selected = this.o.te_selected,
+				te_selectedlen = _te_selected.length;
 				
 			for(var i=0; i<datadress_len; i++){//服装大类
 				var _datadress_class = _datadress[i].data,
-				len = _datadress_class.length,//当前类别服装一共多少
-				htmllen = len,//冒泡排序需要用来控制减的长度
-				tempExchangVal,
-				m;
+					len = _datadress_class.length,//当前类别服装一共多少
+					htmllen = len,//冒泡排序需要用来控制减的长度
+					tempExchangVal,
+					m;
 				
 				for(var j=0; j<len; j++){//具体服装
 					var dress_wu = _datadress_class[j].wu,
-					k,
-					l,
-					radix,
-					total = 0;
+						k,
+						l,
+						radix,
+						total = 0;
 					
 					for(k in dress_wu){//遍历单件服装的五属性
 						radix = dress_wu[k];
@@ -641,13 +682,13 @@
 				this.datadress_te = $.extend(true,[],this.datadress);//取得新的数据源
 				for(var i=0; i<datadress_len; i++){//大类
 					var _datadress_class = _datadress[i].data,
-					len = _datadress_class.length,//当前类别服装一共多少
-					teArr2 = [],
-					teArr1 = [];
+						len = _datadress_class.length,//当前类别服装一共多少
+						teArr2 = [],
+						teArr1 = [];
 					
-					for(var j=0; j<len; j++){//把排完分数后的，再拆成有2个特殊属性/有1个特殊属性/没有特殊属性的三组数组最后再组合出来
+					for(var j=0; j<len; j++){//把排完分数后的，再拆成有2个特殊属性/有1个特殊属性的两组数组最后再组合出来
 						var _item = _datadress_class[j],
-						item_te = _item.te;
+							item_te = _item.te;
 						
 						if(te_selectedlen == 2){
 							if($.inArray(_te_selected[0],item_te) != -1 && $.inArray(_te_selected[1],item_te) != -1){
@@ -668,12 +709,12 @@
 		},
 		printDress: function(){//打印服装
 			var that = this,
-			html = '',
-			_oldid = that.o.dresstype.oldid,
-			_datadress,
-			bag_index,
-			keywordlen = that.o.keyword.length,
-			head_first = 0;
+				html = '',
+				_oldid = that.o.dresstype.oldid,
+				_datadress,
+				bag_index,
+				keywordlen = that.o.keyword.length,
+				head_first = 0;
 			
 			/*var temp = '';
 			for(var i=0; i<that.o.wu.length; i++){
@@ -1005,14 +1046,14 @@
 			easyDialog.open({
 				container: dom,
 				fixed : false
-			});			
+			});
 		},
 		htmlDress: function(){//服装页
 			var that = this;
 			
-			this.printWay();//打印竞技场 联盟委托 关卡
-			this.setBeam();//设置横梁
-			this.calcDresstype();//计算服装类别
+			that.printWay();//打印竞技场 联盟委托 关卡
+			that.setBeam();//设置横梁
+			that.calcDresstype();//计算服装类别
 			
 			//关闭所有弹窗
 			$(".btn_cancel").click(function(){
@@ -1021,7 +1062,7 @@
 			//选择四大路打开
 			$("#way .item").click(function(){
 				var _index = $("#way .item").index($(this));
-				that.o.way = _index;
+				that.o.way_selected = _index;
 				that.openDialog(_index);
 			});
 			//基本属性弹窗
@@ -1040,34 +1081,35 @@
 			});
 			//四大路最终确认
 			$("#dialog_0_sure").click(function(){
+				that.o.way = that.o.way_selected;
 				that.way();
 				easyDialog.close();
 			});
 			//竞技场点选
-			$("#dialog_1 .dialog_1").on("click",".item",function(){
-				that.o.sectionid = Number($(this).attr("data-id"));
+			$("#dialog_1 .dialog_1").on("click", ".item", function(){
+				that.o.sectionid_j = Number($(this).attr("data-id"));
 				$(this).addClass("on").siblings().removeClass("on");
 			});
 			//联盟委托点选
-			$("#dialog_2 .dialog_2").on("click",".item",function(){
-				that.o.sectionid = Number($(this).attr("data-id"));
+			$("#dialog_2 .dialog_2").on("click", ".item", function(){
+				that.o.sectionid_l = Number($(this).attr("data-id"));
 				$(this).addClass("on").siblings().removeClass("on");
 			});
 			//关卡大章点选
-			$("#dialog_3_chapter").on("click",".item",function(){
+			$("#dialog_3_chapter").on("click", ".item", function(){
 				var _index = Number($(this).attr("data-index"));
 				that.o.chapterid = _index;
 				$(this).addClass("on").siblings().removeClass("on");
 				$("#dialog_3_section").children().eq(_index).removeClass("hide").siblings().addClass("hide");
 			}).children().eq(0).trigger("click");
 			//关卡小节点选
-			$("#dialog_3_section").on("click",".item",function(){
-				that.o.sectionid = Number($(this).attr("data-id"));
+			$("#dialog_3_section").on("click", ".item", function(){
+				that.o.sectionid_g = Number($(this).attr("data-id"));
 				$("#dialog_3_section").find(".item.on").removeClass("on");
 				$(this).addClass("on");
 			});
 			//基本属性点选
-			$("#dialog_4").on("click","a",function(){
+			$("#dialog_4").on("click", "a", function(){
 				$(this).addClass("on").siblings().removeClass("on");
 			});
 			//基本属性确认
@@ -1075,7 +1117,7 @@
 				that.waywork(4);
 			});
 			//特殊属性点选
-			$("#dialog_5_box").on("click",".item",function(){
+			$("#dialog_5_box").on("click", ".item", function(){
 				var _te = that.o.te_selected,
 				_id = Number($(this).attr("data-id"));
 				
@@ -1136,16 +1178,15 @@
 			//特殊属性 全部 特殊1 特殊2
 			$("#dress_filter").on("click", ".item", function(){
 				var self = $(this),
-				_index = Number(self.attr("data-index")),
-				_id = Number(self.attr("data-id")),
-				inarr;
+					_index = Number(self.attr("data-index")),
+					_id = Number(self.attr("data-id"));
 				
 				if(_index == 0){//全部
 					that.o.te_selected.splice(0,2);
 					self.siblings().removeClass("on");
 				}else{
 					if(self.hasClass("on")){
-						inarr = $.inArray(_id,that.o.te_selected);
+						var inarr = $.inArray(_id,that.o.te_selected);
 						that.o.te_selected.splice(inarr,1);
 						self.removeClass("on");
 					}else{
@@ -1191,30 +1232,34 @@
 			//如果是从我的套装进来的
 			if(that.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){
 				var wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
-				_id = Number(that.getsession("wbgl-qjnn-choice-mydetailid")),
-				_data;
+					_id = Number(that.getsession("wbgl-qjnn-choice-mydetailid")),
+					_data;
 				
 				for(var i=0; i<wbglqjnnchoice.data.length; i++){
 					_data = wbglqjnnchoice.data[i];
 					if(_data.id == _id){
 						that.o.way = _data.way;
-						that.o.bag = _data.bag;
 						that.o.wu = _data.wu;
+						that.o.te_selected = _data.te_selected;
+						that.o.bag = _data.bag;
+						that.o.sectionid_j = _data.sectionid_j;
+						that.o.sectionid_l = _data.sectionid_l;
+						that.o.sectionid_g = _data.sectionid_g;
 						that.o.chapterid = _data.chapterid;
-						that.o.sectionid = _data.sectionid;
+						
 						$("#bag_name").val(_data.name);						
 						
 						switch(that.o.way){
 							case 1:
 								$("#dialog_1 .dialog_1").children(".item").each(function(){
-                                    if(Number($(this).attr("data-id")) == that.o.sectionid){
+                                    if(Number($(this).attr("data-id")) == that.o.sectionid_j){
 										$(this).addClass("on");
 									}
                                 });
 								break;
 							case 2:
 								$("#dialog_2 .dialog_2").children(".item").each(function(){
-                                    if(Number($(this).attr("data-id")) == that.o.sectionid){
+                                    if(Number($(this).attr("data-id")) == that.o.sectionid_l){
 										$(this).addClass("on");
 									}
                                 });
@@ -1226,20 +1271,20 @@
 									}
                                 });
 								$("#dialog_3_section").find(".item").each(function(){
-                                    if(Number($(this).attr("data-id")) == that.o.sectionid){
+                                    if(Number($(this).attr("data-id")) == that.o.sectionid_g){
 										$(this).trigger("click");
 									}
                                 });
 								break;
 						}
-						that.editMydetail();
+						that.editToMydetail();
 						break;
 					}
 				}
 			}
 			
 			//选中服装类别
-			$("#dresstype").on("click",".item",function(){
+			$("#dresstype").on("click", ".item", function(){
 				that.o.dresstype.id = Number($(this).attr("data-id"));
 				that.o.dresstype.parentid = Number($(this).attr("data-parentid"));
 				$(this).addClass("on").siblings().removeClass("on");
@@ -1251,7 +1296,7 @@
 					that.printDresstype();
 				}else{
 					that.o.dresstype.oldid = that.o.dresstype.id;//记住单一级的服装类别选中状态
-					that.calcDress();
+					that.calcDress();//因为第一次需要计算
 				}
 			}).children().eq(0).trigger("click");
 			
@@ -1364,8 +1409,9 @@
 		},
 		printNature: function(){//基本属性和特殊属性的弹窗
 			var html_dialog_4 = '',//基本属性
-			html_dialog_5_box = '',//特殊属性
-			_datate = this.datate;
+				html_dialog_5_box = '',//特殊属性
+				_datate = this.datate,
+				te_piece;
 			
 			for(var i=0; i<this.o.wu.length; i++){//打印基本属性的弹窗内容
 				html_dialog_4 += '<div class="item">';
@@ -1380,7 +1426,12 @@
 			}
 			
 			for(var i=0; i<_datate.length; i++){//打印特殊属性的弹窗内容
-				html_dialog_5_box += '<div class="item" data-id="'+_datate[i].id+'"><span>'+_datate[i].k+'</span></div>';
+				te_piece = _datate[i];
+				if($.inArray(te_piece.id, this.o.te_selected) != -1){
+					html_dialog_5_box += '<div class="item on" data-id="'+te_piece.id+'"><span>'+te_piece.k+'</span></div>';
+				}else{
+					html_dialog_5_box += '<div class="item" data-id="'+te_piece.id+'"><span>'+te_piece.k+'</span></div>';
+				}
 			}
 			
 			$("#dialog_4").children(".dialog_4").html(html_dialog_4);
@@ -1416,11 +1467,11 @@
 		},
 		printWay: function(){//打印竞技场 联盟委托 关卡
 			var html_dialog_1 = '',//竞技场
-			html_dialog_2 = '',//联盟委托
-			html_dialog_3_chapter = '',//关卡大章
-			html_dialog_3_section = '',//关卡小节
-			_dataarena = this.dataarena,
-			_datagates = this.datagates;
+				html_dialog_2 = '',//联盟委托
+				html_dialog_3_chapter = '',//关卡大章
+				html_dialog_3_section = '',//关卡小节
+				_dataarena = this.dataarena,
+				_datagates = this.datagates;
 			
 			for(var i=0; i<_dataarena.length; i++){
 				if(_dataarena[i].type == 2){
@@ -1446,8 +1497,8 @@
 		htmlIndex: function(){
 			var that = this;
 			$(".item_1").click(function(){
+				that.setsession("wbgl-qjnn-choice-urlfrom", "index.html");//解决ios返回首页进去服装搭配还是旧的保存bug
 				if(that.o.platform == "ios"){
-					that.setsession("wbgl-qjnn-choice-urlfrom", "index.html");//解决ios返回首页进去服装搭配还是旧的保存bug
 					location.href = that.o.plugin+'/data-qjnn-choice-dress.html';
 				}else{
 					location.href = 'data-qjnn-choice-dress.html';
@@ -1512,7 +1563,6 @@
 				case (href == "mydetail"):
 					this.isplatform("mydetail");
 					this.htmlMydetail();
-					this.setsession("wbgl-qjnn-choice-urlfrom", "mydetail.html");//记录来自于data-qjnn-choice-mydetail.html
 					break;
 				case (href == "manual"):
 					this.isplatform("manual");
@@ -1543,12 +1593,12 @@
 					if(this.o.platform == "web"){
 						unios("#way_wrap");
 						if(that.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){
-							$("#header").children(".back").attr("href","data-qjnn-choice-my.html");
+							$("#header").children(".back").attr("href","data-qjnn-choice-mydetail.html");
 						}
 					}else if(this.o.platform == "android"){
 						unios("#way_wrap");
 						if(that.getsession("wbgl-qjnn-choice-urlfrom") == "mydetail.html"){
-							$("#header").children(".back").attr("href","data-qjnn-choice-my.html");
+							$("#header").children(".back").attr("href","data-qjnn-choice-mydetail.html");
 						}else{
 							$("#header").children(".back").attr("href","index.html");
 						}
