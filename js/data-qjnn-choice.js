@@ -1443,6 +1443,31 @@
 			$("#dialog_3_chapter").html(html_dialog_3_chapter);
 			$("#dialog_3_section").html(html_dialog_3_section);
 		},
+		htmlIndex: function(){
+			var that = this;
+			$(".item_1").click(function(){
+				if(that.o.platform == "ios"){
+					that.setsession("wbgl-qjnn-choice-urlfrom", "index.html");//解决ios返回首页进去服装搭配还是旧的保存bug
+					location.href = that.o.plugin+'/data-qjnn-choice-dress.html';
+				}else{
+					location.href = 'data-qjnn-choice-dress.html';
+				}
+			});
+			$(".item_2").click(function(){
+				if(that.o.platform == "ios"){
+					location.href = that.o.plugin+'/data-qjnn-choice-my.html';
+				}else{
+					location.href = 'data-qjnn-choice-my.html';
+				}
+			});
+			$(".item_3").click(function(){
+				if(that.o.platform == "ios"){
+					location.href = that.o.plugin+'/data-qjnn-choice-manual.html';
+				}else{
+					location.href = 'data-qjnn-choice-manual.html';
+				}
+			});
+		},
 		events: function(){
 			var that = this;
 			//旋转屏幕重新设置
@@ -1473,7 +1498,8 @@
 			switch(true){
 				case (href == "index"):
 					this.isplatform("index");
-					this.setsession("wbgl-qjnn-choice-urlfrom", "index.html");//记录来自于index.html
+					this.htmlIndex();
+					//this.setsession("wbgl-qjnn-choice-urlfrom", "index.html");//记录来自于index.html，ios的后退到index将不执行，导致bug，换成每次click的时候设置wbgl-qjnn-choice-urlfrom
 					break;
 				case (href == "dress"):
 					this.isplatform("dress");
@@ -1511,11 +1537,6 @@
 					}else if(this.o.platform == "android"){
 						unios("#index");
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
-					}else if(this.o.platform == "ios"){
-						var index_item = $("#index").children(".item");
-						index_item.each(function(index){
-							$(this).attr("href",that.o.plugin+"/"+$(this).attr("href"));
-						});
 					}
 					break;
 				case "dress":
