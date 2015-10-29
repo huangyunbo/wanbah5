@@ -9,7 +9,7 @@
 		this.datagates = data_all.data_gates;
 		this.o = {
 					platform:"web",//针对平台
-					plugin:"plugin_952",//服装搭配器的板块ID
+					plugin:"plugin_952",//服装搭配器的板块ID plugin_952
 					dresstype:{id:1,oldid:1,parentid:0,haskid:0,state:0},//id:是选中哪一个,oldid:记录上次点击的id(没有子集的),parentid:父级id是谁,haskid:是否有子集,state:0默认 2搜索
 					way:0,//选择的4条路 0:衣柜 1:竞技场 2:联盟委托 3:关卡
 					way_selected:0,//用于在点击4条路，并不是真的选中，可能会取消
@@ -19,7 +19,7 @@
 					zhuti:"",//衣柜(作为保存套装名字用) 竞技场 联盟委托 关卡 选中的主题
 					keyword:"",//关键词
 					bag:[],//已选中的服装[{tid:1,cid:1}]//tid大类别，cid衣服id
-					score:0,//已选中的总分
+					score:0,//已选中的总分 我的套装列表以及我的套装需要用到
 					sectionid_j:1,//竞技场id
 					sectionid_l:1,//联盟委托id
 					sectionid_g:1,//关卡小id
@@ -97,13 +97,13 @@
 		},
 		printMydetail: function(){//打印我的具体套装
 			var _datadress = this.datadress,
-			wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
-			id = Number(this.getsession("wbgl-qjnn-choice-mydetailid")),
-			_data,
-			_bag,
-			dress_wu,
-			html_suit = '',
-			html_wu = '';
+				wbglqjnnchoice = JSON.parse(localStorage.getItem("wbgl-qjnn-choice")),
+				id = Number(this.getsession("wbgl-qjnn-choice-mydetailid")),
+				_data,
+				_bag,
+				dress_wu,
+				html_suit = '',
+				html_wu = '';
 			
 			if(wbglqjnnchoice === null) return;
 			
@@ -146,6 +146,7 @@
 			
 			for(var i=0; i<this.o.wu.length; i++){//打印五属性
 				var total = Math.round(this.o.wu[i].s);
+				
 				total = isNaN(total) ? 0 : total;
 				html_wu += '<li>'+this.switchlael(this.o.wu[i].k)+'：'+total+'</li>';
 			}
@@ -240,16 +241,20 @@
 				return false;
 			});
 		},
-		resetDress: function(){//ios页面重置
-			easyDialog.close();
+		iosResetDress: function(){//ios页面重置
+			if(this.o.way == 0){
+				easyDialog.close();
+			}
 			
 			this.o.dresstype = {id:1,oldid:1,parentid:0,haskid:0,state:0};
 			this.o.way = 0;
+			this.o.way_selected = 0;
 			this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}];
 			this.o.te = [];
 			this.o.te_selected = [];
 			this.o.zhuti = "";
 			this.o.keyword = "";
+			$("#so_text").val("");
 			this.o.bag = [];
 			this.o.score = 0;
 			this.o.sectionid_j = 1;
@@ -257,15 +262,15 @@
 			this.o.sectionid_g = 1;
 			this.o.chapterid = 0;
 			this.o.poker = [];
+			$("#bag_name").val("");
 			
 			this.setBeam();
-			$("#so_text").val("");
-			$("#bag_name").val("");
 			this.setTe();
 			this.calcDresstype();
 			this.calcDress();
 			this.printBag();
 			
+			$("#door").trigger("click");
 			$("#way").children().eq(this.o.way).addClass("on").siblings().removeClass("on");
 		},
 		setBag: function(){//存储一袋子的衣服
@@ -302,7 +307,7 @@
 					
 			
 			if(this.o.platform == "ios"){
-				this.resetDress();
+				this.iosResetDress();
 				location.href = this.o.plugin+'/data-qjnn-choice-mydetail.html';
 			}else{
 				location.href = 'data-qjnn-choice-mydetail.html';
@@ -339,12 +344,12 @@
 		},
 		addBag: function(){//添加进已选中的服装
 			var _id = arguments[0],
-			_oldid = this.o.dresstype.oldid,
-			_bag = this.o.bag,
-			hasadd = 0,
-			_tid,
-			ornaments = [10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],//饰品
-			ornamentsNum = 0;
+				_oldid = this.o.dresstype.oldid,
+				_bag = this.o.bag,
+				hasadd = 0,
+				_tid,
+				ornaments = [10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],//饰品
+				ornamentsNum = 0;
 			
 			if(_bag.length > 0){
 				for(var i=0; i<_bag.length; i++){
@@ -1303,10 +1308,10 @@
 			//点衣服翻牌
 			$("#dress").on("click", ".item", function(){
 				var $self = $(this),
-				$piece = $self.children(".piece"),
-				$box = $piece.children(".box"),
-				_id = Number($self.attr("data-id")),
-				_poker = that.o.poker; 
+					$piece = $self.children(".piece"),
+					$box = $piece.children(".box"),
+					_id = Number($self.attr("data-id")),
+					_poker = that.o.poker; 
 
 				if($box.hasClass("box_front")){//正面
 					$piece.animate({
