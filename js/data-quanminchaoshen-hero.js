@@ -11,6 +11,37 @@
 	
 	QmcsHero.prototype = {
 		htmlherodetail: function(){
+			var that = this;
+			that.gaussBlur();
+		},
+		gaussBlur: function(){//高斯模糊
+			var $win = $(window);
+			
+			function calcBlur(){
+				var scrollTopH = $win.scrollTop(),
+					$herod_bg = $("#herod_bg"),
+					herodBgH = $("#herod_bg_transparent").height(),
+					blankH = herodBgH*0.2, //图片顶部的20%不模糊高度
+					actualH = herodBgH*0.8, //实际需要模糊的80%高度
+					blurValueOne = actualH/20, //再计算出20段，每段距离是多少
+					blurValue = 0;
+				
+				if(scrollTopH >= herodBgH){
+					$herod_bg.addClass("last_blur");
+				}else if(scrollTopH < blankH){
+					$herod_bg.addClass("first_blur");
+				}else if(scrollTopH >= blankH){
+					$herod_bg.removeClass("first_blur last_blur");
+					blurValue = (scrollTopH-blankH)/blurValueOne;
+					$herod_bg.css({"-webkit-filter":"blur("+blurValue+"px)"});
+				}
+			}
+			
+			$win.scroll(function(){
+				calcBlur();
+			});
+		},
+		htmlherodetail2: function(){
 			var that = this,
 			html_header = '',
 			html_skill = '',
