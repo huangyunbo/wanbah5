@@ -14,6 +14,35 @@
 			var that = this;
 			that.gaussBlur();
 			that.circle();
+			that.slideBar();
+		},
+		slideBar: function(){//滑动条
+			var $barlevel = $("#barlevel"),
+				$bar = $("#bar"),
+				$barhandle = $("#barhandle"),
+				barW = $bar.width(),
+				barhandleW = $barhandle.width(),
+				barhandleW_max = barW-barhandleW,
+				touchMoveX,
+				barO_l = $bar.offset().left,
+				distanceX;
+
+			function slide(){
+				$barhandle.css({"left":distanceX+"px"});
+				//console.log(touchMoveX);
+			}
+			document.getElementById("barhandle").addEventListener("touchmove", function(e){
+				console.log(e.targetTouches[0].pageX);
+			},false);
+			/*$barhandle.on("touchmove", function(e){
+				e.preventDefault();
+    			touchMoveX = e.originalEvent.changedTouches[0].pageX;
+				distanceX = touchMoveX - barO_l;
+							console.log(touchMoveX);
+				if(distanceX >= 0 && distanceX <= barhandleW_max){
+					slide();
+				}
+			});*/
 		},
 		circle: function(){//伤害 辅助 生存 上手
 			var pieArray = [9,2,5,2];

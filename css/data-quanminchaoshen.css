@@ -87,7 +87,7 @@ a{ text-decoration:none}
 .herod .star4 em:nth-child(-n+4),.herod .star5 em:nth-child(-n+5),.herod .star6 em:nth-child(-n+6){ background:#4dd2fd}
 .herod .star7 em:nth-child(-n+7),.herod .star8 em:nth-child(-n+8),.herod .star9 em:nth-child(-n+9),.herod .star10 em:nth-child(n){ background:#da5bff}
 .herod .figure{ width:100%; border-collapse:separate; border-spacing:6px; table-layout:fixed}
-.herod .figure td{ background:rgba(0,0,0,0.6); width:60%; text-align:center; position:relative; padding:5px 0}
+.herod .figure td{ background:rgba(0,0,0,0.6); width:60%; text-align:center; position:relative}
 .herod .figure td:first-child{ width:40%}
 .herod .figure .num{ font-size:2.4rem}
 .herod .figure .num_green{ color:#29dd68}
@@ -102,6 +102,7 @@ a{ text-decoration:none}
 .herod .figure .tips .area{ position:relative; top:18px; right:0}
 .herod .figure .tips .area .tria{ border-bottom:10px solid rgba(0,0,0,0.7); border-left:10px solid transparent; border-right:10px solid transparent; position:absolute; top:0; right:0}
 .herod .figure .tips .area .c{ text-align:left; background:rgba(0,0,0,0.7); position:relative; top:10px; padding:5px; font-size:1.4rem; color:#ffca28}
+.herod .figure .tips .area .c span{ color:#da5bff}
 .herod .bar{ overflow:hidden; -webkit-user-select:none; user-select:none}
 .herod .bar .l{ float:left; width:15%; font-size:1.2rem; text-align:center}
 .herod .bar .l div{ font-size:1.5rem}
@@ -110,7 +111,7 @@ a{ text-decoration:none}
 .herod .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:2px; background:#ffca28; top:14px}
 .herod .bar .r .point_m{ left:50%; margin-left:-2px}
 .herod .bar .r .point_r{ right:0}
-.herod .bar .r span{ width:20px; height:18px; background:url(../images/quanminchaoshen/hero_detail.png) 0 -140px no-repeat; background-size:35px; position:absolute; top:7px}
+.herod .bar .r span{ width:20px; height:18px; background:url(../images/quanminchaoshen/hero_detail.png) 0 -140px no-repeat; background-size:35px; position:absolute; top:7px; left:0}
 .herod .skills{ border-bottom:1px solid #ffca28; padding-bottom:10px; box-shadow:0 1px 1px #48636a}
 .herod .skills .title{ border-bottom:1px solid #ffca28}
 .herod .skills .title li{ display:inline-block; width:20%; padding-right:15px; box-sizing:border-box}

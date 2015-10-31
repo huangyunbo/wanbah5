@@ -171,7 +171,7 @@
                     	<i class="question"></i>
                         <div class="area">
                         	<i class="tria"></i>
-                            <div class="c">你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好</div>
+                            <div class="c">本数据只考虑英雄的<span>基础属性</span>，没有PVE属性加成。</div>
                         </div>
                     </div>
                     
@@ -185,13 +185,7 @@
                         <dt>法术抗性</dt><dd>23(+5每级)</dd>
                     </dl>
                     <dl>
-                        <dt>暴击率</dt><dd>23(+5每级)</dd>
-                    </dl>
-                    <dl>
-                        <dt>暴击抵抗率</dt><dd>23(+5每级)</dd>
-                    </dl>
-                    <dl>
-                        <dt>生命回复/5s</dt><dd>23(+5每级)</dd>
+                        <dt>生命恢复/5s</dt><dd>23(+5每级)</dd>
                     </dl>
                 </td>
             </tr>
@@ -205,13 +199,13 @@
         </table><!--/figure-->
         
         <div class="bar">
-            <div class="l"><div>1</div>LEVEL</div>
-            <div class="r">
+            <div class="l"><div id="barlevel">1</div>LEVEL</div>
+            <div class="r" id="bar">
                 <i class="x_line"></i>
                 <i class="point point_l"></i>
                 <i class="point point_m"></i>
                 <i class="point point_r"></i>
-                <span></span>
+                <span id="barhandle"></span>
             </div>
         </div><!--/bar-->
     </div><!--/herodata-->
