@@ -13,6 +13,55 @@
 		htmlherodetail: function(){
 			var that = this;
 			that.gaussBlur();
+			that.circle();
+		},
+		circle: function(){//伤害 辅助 生存 上手
+			var pieArray = [9,2,5,2];
+			
+			$("#labelvalue").children(".item").each(function(index, element){
+				var $circle = $(this).children(".circle"),
+					$num = $circle.children(".num"),
+					pie = pieArray[index]*36,
+					duration = 0;
+					
+				$num.html(pieArray[index]);
+				if(index == 0){//每个挨着延迟500ms再动
+					duration = 500;
+				}else{
+					duration = index*500+500;
+				}
+
+				if(pie > 180){//如果超过180度，先转右边的，到-135至45度就满180度，再转左边的
+					$circle.children(".r").children("i").delay(duration).animate({
+						"backgroundPosition": 45
+					},{
+						duration: 500,
+						step: function(now,tween){
+							$(this).css('-webkit-transform','rotate('+now+'deg)');
+						},
+						done: function(){
+							var pie_over = pie-180;
+							$circle.children(".l").children("i").animate({
+								"backgroundPosition": -135+pie_over
+							},{
+								duration: 500,
+								step: function(now,tween){
+									$(this).css('-webkit-transform','rotate('+now+'deg)');
+								}
+							});
+						}
+					});
+				}else{//如果小于等于180度，就只转右边，从-135度也就是0度开始
+					$circle.children(".r").children("i").delay(duration).animate({
+						"backgroundPosition": -135+pie
+					},{
+						duration: 1000,
+						step: function(now,tween){
+							$(this).css('-webkit-transform','rotate('+now+'deg)');
+						}
+					});
+				}
+			});
 		},
 		gaussBlur: function(){//高斯模糊
 			var $win = $(window);

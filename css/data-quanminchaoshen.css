@@ -45,14 +45,29 @@ a{ text-decoration:none}
 .herod_bg_transparent{ width:100%}
 .herod .head .tit{ font-size:2.1rem; padding-bottom:5px; margin-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.4)}
 .herod .head .tit div{ font-size:1.5rem; color:#ffca28}
-.herod .head .label span{ padding:0 5px; margin-right:10px; font-size:1.4rem}
+.herod .head .label span{ padding:0 5px; margin-right:12px; font-size:1.4rem}
 .herod .head .label span:first-child{ background:#c64251}
 .herod .head .label span:nth-child(2){ background:#b88a3a}
 .herod .head .label span:nth-child(3){ background:#3d899f}
 .herod .head .label span:nth-child(4){ background:#9c62a6}
 .herod .head .labelvalue{ padding:10px 0}
-.herod .head .labelvalue .item{ display:inline-block}
+.herod .head .labelvalue .item{ display:inline-block; margin-right:15px}
 .herod .head .labelvalue .item span{ font-size:1.4rem}
+/*标签数值旋转特效*/
+.herod .head .circle{ display:inline-block; vertical-align:-3px; position:relative; width:16px; height:16px; background:rgba(255,255,255,0.2); border-radius:50%}
+.herod .head .circle .num{ position:absolute; top:2px; left:2px; width:12px; height:12px; line-height:1; overflow:hidden; text-align:center; font-size:1.2rem; background:#23100c; border-radius:50%}
+.herod .head .circle .pie{ width:16px; height:16px; position:absolute; top:0; left:0}
+.herod .head .circle .l{ clip:rect(0 8px auto 0)}
+.herod .head .circle .r{ clip:rect(0 auto auto 8px)}
+.herod .head .circle .pie i{ width:12px; height:12px; position:absolute; top:0; left:0; border:2px solid transparent; border-radius:50%; -webkit-transform:rotate(-135deg); background-position:-135px}
+.herod .head .circle_red .l i{ border-bottom:2px solid #e92b41; border-left:2px solid #e92b41}
+.herod .head .circle_red .r i{ border-top:2px solid #e92b41; border-right:2px solid #e92b41}
+.herod .head .circle_purple .l i{ border-bottom:2px solid #9d33c2; border-left:2px solid #9d33c2}
+.herod .head .circle_purple .r i{ border-top:2px solid #9d33c2; border-right:2px solid #9d33c2}
+.herod .head .circle_green .l i{ border-bottom:2px solid #20d48a; border-left:2px solid #20d48a}
+.herod .head .circle_green .r i{ border-top:2px solid #20d48a; border-right:2px solid #20d48a}
+.herod .head .circle_blue .l i{ border-bottom:2px solid #23baf8; border-left:2px solid #23baf8}
+.herod .head .circle_blue .r i{ border-top:2px solid #23baf8; border-right:2px solid #23baf8}
 .herod_h2{ font-size:1.5rem; color:#ffca28; border-bottom:1px solid rgba(255,255,255,0.4); padding-bottom:5px; margin-bottom:10px}
 .herod .equipchoice ul{ margin-left:-14px}
 .herod .equipchoice ul li{ display:inline-block; width:16.6%; padding-left:14px; box-sizing:border-box; text-align:center}
@@ -72,7 +87,7 @@ a{ text-decoration:none}
 .herod .star4 em:nth-child(-n+4),.herod .star5 em:nth-child(-n+5),.herod .star6 em:nth-child(-n+6){ background:#4dd2fd}
 .herod .star7 em:nth-child(-n+7),.herod .star8 em:nth-child(-n+8),.herod .star9 em:nth-child(-n+9),.herod .star10 em:nth-child(n){ background:#da5bff}
 .herod .figure{ width:100%; border-collapse:separate; border-spacing:6px; table-layout:fixed}
-.herod .figure td{ background:rgba(0,0,0,0.6); width:60%; text-align:center}
+.herod .figure td{ background:rgba(0,0,0,0.6); width:60%; text-align:center; position:relative; padding:5px 0}
 .herod .figure td:first-child{ width:40%}
 .herod .figure .num{ font-size:2.4rem}
 .herod .figure .num_green{ color:#29dd68}
@@ -82,6 +97,11 @@ a{ text-decoration:none}
 .herod .figure dl{ margin-bottom:5px; font-size:1.2rem}
 .herod .figure dt{ display:inline-block; color:#a3a9ba;  width:50%; text-align:right; padding-right:5px; box-sizing:border-box}
 .herod .figure dd{ display:inline-block; width:50%; text-align:left}
+.herod .figure .tips{ position:absolute; right:5px; left:5px; top:5px}
+.herod .figure .tips .question{ background:url(../images/quanminchaoshen/hero_detail.png) 0 -210px no-repeat; background-size:35px; width:18px; height:15px; position:absolute; top:0; right:0}
+.herod .figure .tips .area{ position:relative; top:18px; right:0}
+.herod .figure .tips .area .tria{ border-bottom:10px solid rgba(0,0,0,0.7); border-left:10px solid transparent; border-right:10px solid transparent; position:absolute; top:0; right:0}
+.herod .figure .tips .area .c{ text-align:left; background:rgba(0,0,0,0.7); position:relative; top:10px; padding:5px; font-size:1.4rem; color:#ffca28}
 .herod .bar{ overflow:hidden; -webkit-user-select:none; user-select:none}
 .herod .bar .l{ float:left; width:15%; font-size:1.2rem; text-align:center}
 .herod .bar .l div{ font-size:1.5rem}
