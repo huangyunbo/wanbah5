@@ -2,7 +2,14 @@
 	var QmcsHero = function(){
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
-		this.o = {platform:"web",plugin:"plugin_1101",plugin_equip:"plugin_1103",url:"images/quanminchaoshen/"};
+		this.o = {
+			platform:"web",
+			plugin:"plugin_1101",
+			plugin_equip:"plugin_1103",
+			url:"images/quanminchaoshen/",
+			tindex:0,//英雄类别数组下标
+			piece:{}//英雄单个详情object
+		};
 		if(this.o.platform == "android"){
 			this.o.url="../images/quanminchaoshen/";
 		}
@@ -10,14 +17,162 @@
 	};
 	
 	QmcsHero.prototype = {
-		htmlherodetail: function(){
+		printherodetail: function(){//打印英雄详情
+			var id = Number(this.getsession("wbgl-quanminchaoshen-hero-id")),
+				tindex = this.o.tindex,
+				piece,
+				html_herod_head_tit ='',
+				html_herod_head_label = '',
+				html_equipchoice = '',
+				html_addskill = '',
+				html_skills_head = '',
+				html_skills_content = '',
+				html_getsuipian = '';
+			
+			for(var i=0; i<this.data[tindex].length; i++){
+				if(this.data[tindex][i].id == id){
+					piece = this.data[tindex][i];
+					this.o.piece = piece;
+					break;
+				}
+			}
+			
+			if(piece === undefined) return;
+			
+			$("#herod_bg").attr("src",this.o.url+"DBPic/d_"+id+".jpg");//大背景图片
+			
+			function job(){
+				switch(arguments[0]){
+					case 0:return '战士';
+					case 1:return '法师';
+					case 2:return '肉盾';
+					case 3:return '辅助';
+				}
+			}
+			html_herod_head_tit = piece.title + '-' + piece.name + '<div>' + job(tindex) + '</div>';
+			$("#herod_head").children(".tit").html(html_herod_head_tit);//称号+名字+职业
+			
+			for(var i=0; i<piece.label.length; i++){
+				html_herod_head_label += '<span>'+piece.label[i]+'</span>';
+			}
+			$("#herod_head").children(".label").html(html_herod_head_label);//标签
+			
+			this.circle(piece.pie);//绘制圆形进度条
+
+			$("#herod_head").children("p").html(piece.aword);//描述
+			
+			$("#groom").html(piece.groom);//推荐玩法
+			
+			for(var i=0; i<piece.equip.length; i++){
+				html_equipchoice += '<li><img src="'+this.o.url+'equip/'+piece.equip[i]+'.png"></li>';
+			}
+			$("#equipchoice").html(html_equipchoice);//装备选择
+			
+			for(var i=0; i<piece.addskill.length; i++){
+				html_addskill += '<li><img src="'+this.o.url+'skillPic/skill'+piece.id+'_'+piece.addskill[i]+'.png"></li>';
+			}
+			$("#addskill").html(html_addskill);//加点路线
+			
+			$("#graphical").children("li").each(function(index){//英雄数据
+				$(this).find(".star").addClass("star"+piece.graphical[index]);
+			});
+			
+			this.setFigure(1);//设置英雄等级数值数据
+			
+			for(var i=0; i<piece.sname.length; i++){//英雄技能
+				html_skills_head += '<li>'+
+										'<div><img src="'+this.o.url+'skillPic/skill'+piece.id+'_'+(i+1)+'.png"></div>'+
+									'</li>';
+				
+				html_skills_content += '<div class="item">'+
+													'<div class="key">'+
+														'<div class="name">'+piece.sname[i]+'</div>'+
+														'<p>'+piece.sdesc[i]+'</p>'+
+													'</div>'+
+													'<div class="desc">'+
+														piece.sintro[i]+
+													'</div>'+
+												'</div>';
+			}
+			$("#skills_head").html(html_skills_head);
+			$("#skills_content").html(html_skills_content);
+			
+			$("#suipian").html(piece.suipian);//获得途径
+			$("#zuanshi").html(piece.zuanshi);
+			
+			for(var i=0; i<piece.getsuipian.length; i++){
+				html_getsuipian += '<label>'+piece.getsuipian[i]+'</label>';
+			}
+			$("#suipian").parent("span").after(html_getsuipian);
+			
+			$("#story").html(piece.story);//英雄故事
+			
+		},
+		htmlherodetail: function(){//英雄详情
 			var that = this;
-			that.gaussBlur();
-			that.circle();
-			that.slideBar();
+			
+			this.o.tindex = Number(this.getsession("wbgl-quanminchaoshen-hero-tindex"));
+			that.printherodetail();
+			
+			that.gaussBlur();//高斯模糊
+			that.slideBar();//滑动条
+			
+			$("#question").click(function(){
+				$("#tips").toggleClass("hide");
+			});
+			$("#skills_head").on("click", "li",function(){
+				var _index = $(this).parents().children().index($(this));
+				$(this).addClass("on").siblings().removeClass("on");
+				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");
+			}).children("li").eq(0).trigger("click");
+		},
+		setFigure: function(level){//设置英雄等级数值数据
+			var tindex = this.o.tindex,
+				piece = this.o.piece,
+				html_figure_lt = '',
+				html_figure_other = '',
+				html_figure_lb = '',
+				level = level === 1 ? 0 : level-1;
+			
+			if($.isEmptyObject(piece)) return;
+			
+			html_figure_lt = '<div class="num num_green">'+(piece.figure.shengming[0]+level*piece.figure.shengming[1])+'</div>'+
+								'<div class="k">生命值</div>'+
+								'<div class="v">每级增加'+piece.figure.shengming[1]+'</div>';
+			
+			if(tindex == 0 || tindex == 2){
+				html_figure_lb += '<div class="num num_red">'+(piece.figure.gongji[0]+level*piece.figure.gongji[1])+'</div>'+
+								  '<div class="k">攻击力</div>'+
+								  '<div class="v">每级增加'+piece.figure.gongji[1]+'</div>';
+				html_figure_other = '<dl>'+
+										'<dt>法术强度</dt><dd>'+(piece.figure.fashu[0]+level*piece.figure.fashu[1])+'(+'+piece.figure.fashu[1]+'每级)</dd>'+
+									'</dl>';
+				
+			}else{
+				html_figure_lb += '<div class="num num_red">'+(piece.figure.fashu[0]+level*piece.figure.fashu[1])+'</div>'+
+								  '<div class="k">法术强度</div>'+
+								  '<div class="v">每级增加'+piece.figure.fashu[1]+'</div>';
+				html_figure_other = '<dl>'+
+										'<dt>攻击力</dt><dd>'+(piece.figure.gongji[0]+level*piece.figure.gongji[1])+'(+'+piece.figure.gongji[1]+'每级)</dd>'+
+									'</dl>';
+			}
+			html_figure_other += '<dl>'+
+									'<dt>护甲值</dt><dd>'+(piece.figure.hujia[0]+level*piece.figure.hujia[1])+'(+'+piece.figure.hujia[1]+'每级)</dd>'+
+								'</dl>'+
+								'<dl>'+
+									'<dt>法术抗性</dt><dd>'+(piece.figure.fakang[0]+level*piece.figure.fakang[1])+'(+'+piece.figure.fakang[1]+'每级)</dd>'+
+								'</dl>'+
+								'<dl>'+
+									'<dt>生命恢复/5s</dt><dd>'+(piece.figure.shenghui[0]+level*piece.figure.shenghui[1])+'(+'+piece.figure.shenghui[1]+'每级)</dd>'+
+								'</dl>';
+									
+			$("#figure_lt").html(html_figure_lt);
+			$("#figure_other").html(html_figure_other);
+			$("#figure_lb").html(html_figure_lb);
 		},
 		slideBar: function(){//滑动条
-			var $barlevel = $("#barlevel"),
+			var that = this,
+				$barlevel = $("#barlevel"),
 				$bar = $("#bar"),
 				$barhandle = $("#barhandle"),
 				$thumb = $barhandle.children(),
@@ -38,6 +193,7 @@
 				if(_level == level) return;//减少后面的调用
 				level = _level;
 				$("#barlevel").html(level);
+				that.setFigure(level);
 			}
 
 			$thumb.on("touchstart", function(e){
@@ -56,9 +212,7 @@
 				}
 			});
 		},
-		circle: function(){//伤害 辅助 生存 上手
-			var pieArray = [9,2,5,2];
-			
+		circle: function(pieArray){//伤害 辅助 生存 上手			
 			$("#labelvalue").children(".item").each(function(index, element){
 				var $circle = $(this).children(".circle"),
 					$num = $circle.children(".num"),
@@ -131,88 +285,29 @@
 				calcBlur();
 			});
 		},
-		htmlherodetail2: function(){
-			var that = this,
-			html_header = '',
-			html_skill = '',
-			html_bginfo = '',
-			id = Number(this.getsession("wbgl-quanminchaoshen-hero-id")),
-			_item;
-			
-			function jobimg(){
-				switch(arguments[0]){
-					case 1:
-						return '<img src="'+that.o.url+'zhanshi_bg.jpg">';
-					case 2:
-						return '<img src="'+that.o.url+'roudun_bg.jpg">';
-					case 3:
-						return '<img src="'+that.o.url+'fashi_bg.jpg">';
-					case 4:
-						return '<img src="'+that.o.url+'fuzhu_bg.jpg">';
-				}
-			}
-			
-			function job(){
-				switch(arguments[0]){
-					case 1:
-						return '战士';
-					case 2:
-						return '肉盾';
-					case 3:
-						return '法师';
-					case 4:
-						return '辅助';
-				}
-			}
+		printIndex: function(){//打印英雄列表
+			var piece,
+				html = '';
 			
 			for(var i=0; i<this.data.length; i++){
-				_item = this.data[i];
-				if(id == _item.id){
-					var item_skill = _item.skill;
-					html_header = '<div class="tit">'+_item.name+'-'+_item.prename+'<div>职业：<em>'+job(_item.job)+'</em></div></div><img src="'+this.o.url+'DBPic/d_'+_item.id+'.jpg">';
-					
-					for(var j=0; j<item_skill.sname.length; j++){
-						html_skill += '<li>'+
-										'<div class="l"><img src="'+this.o.url+'skillPic/skill'+_item.id+'_'+item_skill.simg[j]+'"></div>'+
-										'<div class="r">'+
-											'<p class="tit">'+item_skill.sname[j]+'</p>'+
-											'<p class="desc">'+item_skill.desc[j]+'</p>'+
-										'</div>'+
-									'</li>';
-					}
-					
-					html_bginfo = '<div class="txt">'+
-										'<p class="smy">'+_item.professional+'</p>'+
-										'<p class="word">'+_item.ana+'</p>'+
-										'<p class="po">&mdash;'+_item.prename+'</p>'+
-									'</div>'+
-									jobimg(_item.job);
+				for(var j=0; j<this.data[i].length; j++){
+					piece = this.data[i][j];
+					html += '<li class="wbclick" data-id="'+piece.id+'" data-tindex="'+i+'"><img src="'+this.o.url+'DBPic/'+piece.id+'.jpg" alt="'+piece.title+'"><p>'+piece.title+'</p></li>';
 				}
 			}
-			
-			
-			$("#herodetail_head").html(html_header);
-			$("#herodetail_skills ul").html(html_skill);
-			$("#herodetail_bginfo").html(html_bginfo);
-		},
-		printIndex: function(){
-			var html = '';
-			
-			for(var i=0; i<this.data.length; i++){
-				html += '<li class="wbclick" data-id="'+this.data[i].id+'"><img src="'+this.o.url+'DBPic/'+this.data[i].id+'.jpg" alt="'+this.data[i].name+'"><p>'+this.data[i].name+'</p></li>';
-			}
-			
 			$("#herolist ul").html(html);
 		},
-		htmlIndex: function(){
+		htmlIndex: function(){//英雄列表
 			var that = this;
 			
 			that.printIndex();
 			
 			$("#herolist").on("click", "li", function(){
-				var _id = Number($(this).attr("data-id"));
+				var _id = Number($(this).attr("data-id")),
+					_tindex = Number($(this).attr("data-tindex"));
 				
 				that.setsession("wbgl-quanminchaoshen-hero-id",_id);
+				that.setsession("wbgl-quanminchaoshen-hero-tindex",_tindex);
 				if(that.o.platform == "ios"){
 					location.href = that.o.plugin+'/data-quanminchaoshen-hero-detail.html';
 				}else{
@@ -355,9 +450,12 @@
 
 
 /*
-job
-1 战士
-2 肉盾
-3 法师
-4 辅助
+第1数组 战士
+第2数组 法师
+第3数组 肉盾
+第4数组 辅助
+
+
+[[{"id":1,"title":"精灵女神",name:"狄安娜","label":["治疗","辅助","AOE"],"score":[3,9,2,5],"aword":"具备高伤害的远程战士，攻击范围远且上手难度低。","groom":"被动嗜血，让他的普通攻击获得了吸血效果的加成，配合技能撕裂的被动，让他在打野的时候可以做到几乎无损耗!迅速的清野效果加上技能扑击的范围性眩晕。","equip":[1,2,3,4,5,6],"special":[1,2,3,4,5,6,7,8,9,10],"graphical":[1,2,3,4],"figure":{"shengming":[1,2],"gongji":[3,4],"fashu":[5,6],"hujia":[7,8],"fakang":[9,10],"shenghui":[11,12]},"sname":["虚拟一击1","虚拟一击2","虚拟一击3","虚拟一击4"],"sdesc":["每当...","每当...","每当...","每当..."],"sintro":["技能描述朵朵","技能描述朵朵","技能描述朵朵","技能描述朵朵"],"suipian":80,"zuanshi":80,"getsuipian":["挑战模式","闯关模式"],"story":"故事..."}]]
+
 */
