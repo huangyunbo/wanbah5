@@ -20,29 +20,41 @@
 			var $barlevel = $("#barlevel"),
 				$bar = $("#bar"),
 				$barhandle = $("#barhandle"),
+				$thumb = $barhandle.children(),
 				barW = $bar.width(),
 				barhandleW = $barhandle.width(),
-				barhandleW_max = barW-barhandleW,
+				barW_max = barW-barhandleW,
 				touchMoveX,
 				barO_l = $bar.offset().left,
-				distanceX;
+				distanceX,
+				paragraph = barW_max/10,
+				level = 1;//初始化
 
-			function slide(){
-				$barhandle.css({"left":distanceX+"px"});
-				//console.log(touchMoveX);
+			function slide(rangeX){
+				var _level = Math.ceil(rangeX/paragraph);
+				
+				_level = _level == 0 ? 1 : _level;
+				$barhandle.css({"left":rangeX+"px"});
+				if(_level == level) return;//减少后面的调用
+				level = _level;
+				$("#barlevel").html(level);
 			}
-			document.getElementById("barhandle").addEventListener("touchmove", function(e){
-				console.log(e.targetTouches[0].pageX);
-			},false);
-			/*$barhandle.on("touchmove", function(e){
+
+			$thumb.on("touchstart", function(e){
+				e.preventDefault();
+			});
+			$thumb.on("touchmove", function(e){
 				e.preventDefault();
     			touchMoveX = e.originalEvent.changedTouches[0].pageX;
 				distanceX = touchMoveX - barO_l;
-							console.log(touchMoveX);
-				if(distanceX >= 0 && distanceX <= barhandleW_max){
-					slide();
+				if(distanceX < 0){
+					slide(0);
+				}else if(distanceX > barW_max){
+					slide(barW_max);
+				}else{
+					slide(distanceX);
 				}
-			});*/
+			});
 		},
 		circle: function(){//伤害 辅助 生存 上手
 			var pieArray = [9,2,5,2];
