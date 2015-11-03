@@ -46,10 +46,12 @@ a{ text-decoration:none}
 .herolist .content li img{ width:58px; height:58px}
 .herolist .content li p{ font-size:1.4rem; line-height:1; padding:5px 0}
 @media screen and (min-width:640px){
-	.herolist .head .item{ height:80px; font-size:3rem}
-	.herolist .head .item:nth-child(-n+3):before{ height:36px; top:24px}
-	.herolist .content li{ font-size:2.4rem}
-	.herolist .content li div{ padding:30px 30px 10px}
+	.herolist .head .item{ height:70px; font-size:3rem}
+	.herolist .head .item:before{ height:34px; top:18px}
+	.herolist .content{ margin-bottom:60px}
+	.herolist .content li{ padding-top:30px}
+	.herolist .content li img{ width:116px; height:116px}
+	.herolist .content li p{ font-size:2.6rem; padding:10px 0}
 }
 /*英雄详情*/
 .herod_bg{ position:fixed; width:100%}
@@ -91,7 +93,7 @@ a{ text-decoration:none}
 .herod .graphical li{ margin-bottom:5px; position:relative; height:35px}
 .herod .graphical li .r{ margin-left:40px}
 .herod .graphical li .r span{ font-size:1.2rem; line-height:1}
-.herod i.icon_herodata{ position:absolute; background:url(../images/quanminchaoshen/hero_detail.png) no-repeat; width:35px; height:35px; background-size:35px}
+.herod i.icon_herodata{ position:absolute; left:0; top:0; background:url(../images/quanminchaoshen/hero_detail.png) no-repeat; width:35px; height:35px; background-size:35px}
 .herod i.icon_herodata_wugong{ background-position:0 -35px}
 .herod i.icon_herodata_fagong{ background-position:0 -70px}
 .herod i.icon_herodata_nandu{ background-position:0 -105px}
@@ -109,7 +111,7 @@ a{ text-decoration:none}
 .herod .figure .k{ font-size:1.2rem}
 .herod .figure .v{ color:#9c9895; padding-bottom:5px}
 .herod .figure dl{ margin-bottom:5px; font-size:1.2rem}
-.herod .figure dt{ display:inline-block; color:#a3a9ba;  width:50%; text-align:right; padding-right:5px; box-sizing:border-box}
+.herod .figure dt{ display:inline-block; color:#9c9895; width:50%; text-align:right; padding-right:5px; box-sizing:border-box}
 .herod .figure dd{ display:inline-block; width:50%; text-align:left}
 .herod .figure .tips{ position:absolute; right:5px; left:5px; top:5px}
 .herod .figure .tips .question{ background:url(../images/quanminchaoshen/hero_detail.png) 0 -210px no-repeat; background-size:35px; width:18px; height:15px; position:absolute; top:0; right:0}
@@ -123,7 +125,7 @@ a{ text-decoration:none}
 .herod .bar .l div{ font-size:1.5rem}
 .herod .bar .r{ margin:0 6px 0 15%; height:55px; position:relative}
 .herod .bar .r .x_line{ width:100%; height:2px; position:absolute; top:15px; background:rgba(255,202,40,0.6)}
-.herod .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:2px; background:rgba(255,202,40,0.6); top:14px}
+.herod .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:50%; background:rgba(255,202,40,0.6); top:14px}
 .herod .bar .r .point_m{ left:50%; margin-left:-12px}/*-(4/2)+-(20/2)*/
 .herod .bar .r .point_r{ right:0}
 .herod .bar .r .barhandle{ width:20px; height:18px; background:url(../images/quanminchaoshen/hero_detail.png) 0 -140px no-repeat; background-size:35px; position:absolute; top:7px; left:0}
@@ -149,23 +151,98 @@ a{ text-decoration:none}
 .herod .access .item code{ font-family:Arial}
 .herod .icon_suipian,.herod .icon_zuanshi{ background:url(../images/quanminchaoshen/hero_detail.png) 0 -160px no-repeat; background-size:35px; width:20px; height:25px; display:inline-block; vertical-align:-7px}
 .herod .icon_zuanshi{ background-position:0 -185px}
-.herod .access .item label{ font-size:1rem; border:1px solid #ffca28; color:#ffca28; line-height:1; padding:0 2px; margin-right:5px}
+.herod .access .item label{ font-size:1.2rem; border:1px solid #ffca28; color:#ffca28; line-height:1; padding:0 2px; margin-right:5px}
+@media screen and (min-width:640px){
+	.herod .head .tit{ font-size:4.2rem; padding-bottom:10px; margin-bottom:20px}
+	.herod .head .tit div{ font-size:3rem}
+	.herod .head .label span{ padding:0 10px; margin-right:24px; font-size:2.8rem}
+	.herod .head .labelvalue{ padding:20px 0}
+	.herod .head .labelvalue .item{ margin-right:30px}
+	.herod .head .labelvalue .item span{ font-size:2.8rem}
+	/*标签数值旋转特效*/
+	.herod .head .circle{ vertical-align:-6px; width:32px; height:32px}
+	.herod .head .circle .num{ top:4px; left:4px; width:24px; height:24px; font-size:2.4rem}
+	.herod .head .circle .pie{ width:32px; height:32px}
+	.herod .head .circle .l{ clip:rect(0 16px auto 0)}
+	.herod .head .circle .r{ clip:rect(0 auto auto 16px)}
+	.herod .head .circle .pie i{ width:24px; height:24px; border:4px solid transparent}
+	.herod .head .circle_red .l i{ border-bottom:4px solid #e92b41; border-left:4px solid #e92b41}
+	.herod .head .circle_red .r i{ border-top:4px solid #e92b41; border-right:4px solid #e92b41}
+	.herod .head .circle_purple .l i{ border-bottom:4px solid #9d33c2; border-left:4px solid #9d33c2}
+	.herod .head .circle_purple .r i{ border-top:4px solid #9d33c2; border-right:4px solid #9d33c2}
+	.herod .head .circle_green .l i{ border-bottom:4px solid #20d48a; border-left:4px solid #20d48a}
+	.herod .head .circle_green .r i{ border-top:4px solid #20d48a; border-right:4px solid #20d48a}
+	.herod .head .circle_blue .l i{ border-bottom:4px solid #23baf8; border-left:4px solid #23baf8}
+	.herod .head .circle_blue .r i{ border-top:4px solid #23baf8; border-right:4px solid #23baf8}
+	.herod_h2{ font-size:3rem; padding-bottom:10px; margin-bottom:20px}
+	.herod .equipchoice ul{ margin-left:-40px}
+	.herod .equipchoice ul li{ padding-left:40px}
+	.herod .addskill ul{ margin-left:-30px} 
+	.herod .addskill ul li{ padding-left:30px}
+	.herod .graphical{ margin:0 40px 0 20px}
+	.herod .graphical li{ margin-bottom:10px; height:70px}
+	.herod .graphical li .r{ margin-left:80px; padding-top:3px}
+	.herod .graphical li .r span{ font-size:2.4rem}
+	.herod i.icon_herodata{ width:70px; height:70px; background-size:70px}
+	.herod i.icon_herodata_wugong{ background-position:0 -70px}
+	.herod i.icon_herodata_fagong{ background-position:0 -140px}
+	.herod i.icon_herodata_nandu{ background-position:0 -210px}
+	.herod .star{ margin-top:6px}
+	.herod .star em{ height:26px}
+	.herod .figure{ border-spacing:12px}
+	.herod .figure .num{ font-size:4.8rem}
+	.herod .figure .k{ font-size:2.4rem}
+	.herod .figure .v{ padding-bottom:10px; font-size:2rem}
+	.herod .figure dl{ margin-bottom:10px; font-size:2.4rem}
+	.herod .figure dt{ padding-right:10px}
+	.herod .figure .tips{right:10px; left:10px; top:10px}
+	.herod .figure .tips .question{ background-position:0 -420px; background-size:70px; width:36px; height:30px}
+	.herod .figure .tips .area{ top:36px}
+	.herod .figure .tips .area .tria{ border-bottom:20px solid #000; border-left:20px solid transparent; border-right:20px solid transparent}
+	.herod .figure .tips .area .c{ top:20px; padding:10px; font-size:2.8rem}
+	/*滑动条*/
+	.herod .bar .l{ font-size:2.4rem}
+	.herod .bar .l div{ font-size:3rem}
+	.herod .bar .r{ margin-right:12px; height:110px}
+	.herod .bar .r .x_line{ height:4px; top:30px}
+	.herod .bar .r .point{ width:8px; height:8px; background:rgba(255,202,40,0.6); top:28px}
+	.herod .bar .r .point_m{ margin-left:-24px}/*-(8/2)+-(40/2)*/
+	.herod .bar .r .barhandle{ width:40px; height:36px; background-position:0 -280px; background-size:70px; top:14px}
+	.herod .bar .r .barhandle span{ width:92px; height:92px; display:block; margin-left:-26px}/*12+14=26*/
+	.herod .skills{ padding-bottom:20px}
+	.herod .skills .title li{ padding-right:30px}
+	.herod .skills .title li div{ padding-bottom:10px}
+	.herod .skills .title li.on div:before{ border-left:12px solid transparent; border-right:12px solid transparent; border-bottom:12px solid #ffca28; margin-left:-12px}
+	.herod .skills .content .item{ font-size:2.8rem; padding-top:10px}
+	.herod .skills .content .key{ margin-bottom:20px}
+	.herod .skills .content .key .name,.herod .skills .content .desc .col_ffca28{ padding-right:10px}
+	.herod .access{ margin-bottom:100px}
+	.herod .access .content{ font-size:2.8rem}
+	.herod .access .item{ margin-bottom:20px}
+	.herod .access .item div,.herod .access .item em{ margin-right:10px}
+	.herod .icon_suipian,.herod .icon_zuanshi{ background-position:0 -320px; background-size:70px; width:40px; height:50px; vertical-align:-14px}
+	.herod .icon_zuanshi{ background-position:0 -370px}
+	.herod .access .item label{ font-size:2.4rem; padding:0 4px; margin-right:10px}
+}
 /*装备*/
 .equip_body{ background:#11141f; color:#fff}
 .equip{ margin-top:45px}
 .equip .head{ border-bottom:1px solid #ffca28; display:table; width:100%}
 .equip .head .item{ width:25%; height:50px; text-align:center; display:table-cell; vertical-align:middle; font-size:1.6rem; position:relative}
 .equip .head .item.on{ color:#ffca28}
-.equip .head .item:nth-child(-n+3):before{ content:""; background:#ffca28; width:1px; height:22px; position:absolute; right:0; top:15px}
-.equip .content ul{ display:none}
+.equip .head .item:before{ content:""; background:#ffca28; width:1px; height:22px; position:absolute; right:0; top:15px}
+.equip .head .item:last-child:before{ background:none}
+.equip .content ul{ display:none; margin-bottom:20px}
 .equip .content ul.on{ display:block}
-.equip .content li{ display:inline-block; width:25%; text-align:center; vertical-align:top; line-height:1.2; font-size:1.2rem}
-.equip .content li div{ padding:15px 15px 5px}
+.equip .content li{ display:inline-block; width:25%; text-align:center; padding-top:15px; vertical-align:top; font-size:1.4rem}
+.equip .content li img{ width:58px; height:58px}
 @media screen and (min-width:640px){
-	.equip .head .item{ height:80px; font-size:3rem}
-	.equip .head .item:nth-child(-n+3):before{ height:36px; top:24px}
-	.equip .content li{ font-size:2.4rem}
-	.equip .content li div{ padding:30px 30px 10px}
+	.equip .head .item{ height:70px; font-size:3rem}
+	.equip .head .item:before{ height:34px; top:18px}
+	.equip .content ul{ margin-bottom:40px}
+	.equip .content li{ width:20%; padding-top:30px}
+	.equip .content li img{ width:116px; height:116px}
+	.equip .content li p{ font-size:2.6rem}
 }
 /*装备详情*/
 .equipd{ margin-top:45px}
