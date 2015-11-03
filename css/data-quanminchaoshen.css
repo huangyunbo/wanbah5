@@ -127,7 +127,7 @@ a{ text-decoration:none}
 .herod .access{ margin-bottom:50px}
 .herod .access .content{ font-size:1.4rem}
 .herod .access .item{ margin-bottom:10px}
-.herod .access .item span{ margin-right:5px}
+.herod .access .item div{ margin-right:5px; display:inline-block}
 .herod .access .item em{ color:#ffca28; margin-right:5px}
 .herod .access .item code{ font-family:Arial}
 .herod .icon_suipian,.herod .icon_zuanshi{ background:url(../images/quanminchaoshen/hero_detail.png) 0 -160px no-repeat; background-size:35px; width:20px; height:25px; display:inline-block; vertical-align:-7px}

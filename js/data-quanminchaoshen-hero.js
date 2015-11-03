@@ -8,7 +8,8 @@
 			plugin_equip:"plugin_1103",
 			url:"images/quanminchaoshen/",
 			tindex:0,//英雄类别数组下标
-			piece:{}//英雄单个详情object
+			piece:{},//英雄单个详情object
+			beatTime:[]//清空生命力、攻击力/法强跳动时间
 		};
 		if(this.o.platform == "android"){
 			this.o.url="../images/quanminchaoshen/";
@@ -27,11 +28,12 @@
 				html_addskill = '',
 				html_skills_head = '',
 				html_skills_content = '',
+				html_zuanshi = '',
 				html_getsuipian = '';
 			
-			for(var i=0; i<this.data[tindex].length; i++){
-				if(this.data[tindex][i].id == id){
-					piece = this.data[tindex][i];
+			for(var i=0; i<this.data[tindex].data.length; i++){
+				if(this.data[tindex].data[i].id == id){
+					piece = this.data[tindex].data[i];
 					this.o.piece = piece;
 					break;
 				}
@@ -41,16 +43,8 @@
 			
 			$("#herod_bg").attr("src",this.o.url+"DBPic/d_"+id+".jpg");//大背景图片
 			
-			function job(){
-				switch(arguments[0]){
-					case 0:return '战士';
-					case 1:return '法师';
-					case 2:return '肉盾';
-					case 3:return '辅助';
-				}
-			}
-			html_herod_head_tit = piece.title + '-' + piece.name + '<div>' + job(tindex) + '</div>';
-			$("#herod_head").children(".tit").html(html_herod_head_tit);//称号+名字+职业
+			html_herod_head_tit = piece.title + '-' + piece.name + '<div>' + piece.pos + '</div>';
+			$("#herod_head").children(".tit").html(html_herod_head_tit);//称号+名字+定位
 			
 			for(var i=0; i<piece.label.length; i++){
 				html_herod_head_label += '<span>'+piece.label[i]+'</span>';
@@ -97,24 +91,30 @@
 			$("#skills_head").html(html_skills_head);
 			$("#skills_content").html(html_skills_content);
 			
-			$("#suipian").html(piece.suipian);//获得途径
-			$("#zuanshi").html(piece.zuanshi);
-			
+			$("#suipian").html(piece.suipian);//获得途径			
 			for(var i=0; i<piece.getsuipian.length; i++){
 				html_getsuipian += '<label>'+piece.getsuipian[i]+'</label>';
 			}
-			$("#suipian").parent("span").after(html_getsuipian);
+			$("#suipian").parent().after(html_getsuipian);
+			
+			if(piece.zuanshi == -1){
+				html_zuanshi = '暂时不卖';
+			}else{
+				html_zuanshi = '<i class="icon_zuanshi"></i>x<code>'+piece.zuanshi+'</code>';
+			}
+			$("#zuanshi").html(html_zuanshi);
 			
 			$("#story").html(piece.story);//英雄故事
 			
 		},
 		htmlherodetail: function(){//英雄详情
-			var that = this;
+			var that = this,
+				$win = $(window),
+				numberSrollTopH = 0,
+				isNumberSroll = 0;
 			
-			this.o.tindex = Number(this.getsession("wbgl-quanminchaoshen-hero-tindex"));
+			that.o.tindex = Number(that.getsession("wbgl-quanminchaoshen-hero-tindex"));
 			that.printherodetail();
-			
-			that.gaussBlur();//高斯模糊
 			that.slideBar();//滑动条
 			
 			$("#question").click(function(){
@@ -125,6 +125,31 @@
 				$(this).addClass("on").siblings().removeClass("on");
 				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");
 			}).children("li").eq(0).trigger("click");
+			
+			numberSrollTopH = $("#equipchoice").offset().top;//从装备选择开始数值跳动
+			$win.scroll(function(){
+				var scrollTopH = $win.scrollTop();
+				
+				that.gaussBlur(scrollTopH);//高斯模糊
+				if(isNumberSroll == 0 && scrollTopH >= numberSrollTopH){//数值跳动
+					isNumberSroll = 1;
+					that.numberSroll("num_green", 1);
+					that.numberSroll("num_red", 40);
+				}
+			});
+		},
+		numberSroll: function(element, millisec){//数值跳动(生命值、攻击力/法强)
+			var dom = $("."+element),
+				num = dom.text(),
+				i = 0,
+				beat = function(){
+					i++;
+					if(num >= i){
+						dom.html(i);
+					}
+				};
+			
+            this.o.beatTime.push(setInterval(beat, millisec));//拖动滑动条的时候需要立马清空
 		},
 		setFigure: function(level){//设置英雄等级数值数据
 			var tindex = this.o.tindex,
@@ -191,6 +216,8 @@
 				_level = _level == 0 ? 1 : _level;
 				$barhandle.css({"left":rangeX+"px"});
 				if(_level == level) return;//减少后面的调用
+				clearInterval(that.o.beatTime[0]);//清空第1个跑数值跳动
+				clearInterval(that.o.beatTime[1]);//清空第2个跑数值跳动
 				level = _level;
 				$("#barlevel").html(level);
 				that.setFigure(level);
@@ -258,40 +285,31 @@
 				}
 			});
 		},
-		gaussBlur: function(){//高斯模糊
-			var $win = $(window);
+		gaussBlur: function(scrollTopH){//高斯模糊
+			var $herod_bg = $("#herod_bg"),
+				herodBgH = $("#herod_bg_transparent").height(),
+				blankH = herodBgH*0.2, //图片顶部的20%不模糊高度
+				actualH = herodBgH*0.8, //实际需要模糊的80%高度
+				blurValueOne = actualH/20, //再计算出20段，每段距离是多少
+				blurValue = 0;
 			
-			function calcBlur(){
-				var scrollTopH = $win.scrollTop(),
-					$herod_bg = $("#herod_bg"),
-					herodBgH = $("#herod_bg_transparent").height(),
-					blankH = herodBgH*0.2, //图片顶部的20%不模糊高度
-					actualH = herodBgH*0.8, //实际需要模糊的80%高度
-					blurValueOne = actualH/20, //再计算出20段，每段距离是多少
-					blurValue = 0;
-				
-				if(scrollTopH >= herodBgH){
-					$herod_bg.addClass("last_blur");
-				}else if(scrollTopH < blankH){
-					$herod_bg.addClass("first_blur");
-				}else if(scrollTopH >= blankH){
-					$herod_bg.removeClass("first_blur last_blur");
-					blurValue = (scrollTopH-blankH)/blurValueOne;
-					$herod_bg.css({"-webkit-filter":"blur("+blurValue+"px)"});
-				}
+			if(scrollTopH >= herodBgH){
+				$herod_bg.addClass("last_blur");
+			}else if(scrollTopH < blankH){
+				$herod_bg.addClass("first_blur");
+			}else if(scrollTopH >= blankH){
+				$herod_bg.removeClass("first_blur last_blur");
+				blurValue = (scrollTopH-blankH)/blurValueOne;
+				$herod_bg.css({"-webkit-filter":"blur("+blurValue+"px)"});
 			}
-			
-			$win.scroll(function(){
-				calcBlur();
-			});
 		},
 		printIndex: function(){//打印英雄列表
 			var piece,
 				html = '';
 			
 			for(var i=0; i<this.data.length; i++){
-				for(var j=0; j<this.data[i].length; j++){
-					piece = this.data[i][j];
+				for(var j=0; j<this.data[i].data.length; j++){
+					piece = this.data[i].data[j];
 					html += '<li class="wbclick" data-id="'+piece.id+'" data-tindex="'+i+'"><img src="'+this.o.url+'DBPic/'+piece.id+'.jpg" alt="'+piece.title+'"><p>'+piece.title+'</p></li>';
 				}
 			}
