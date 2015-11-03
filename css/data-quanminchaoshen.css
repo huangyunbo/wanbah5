@@ -33,10 +33,24 @@ a{ text-decoration:none}
 .header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 /*英雄列表*/
-.herolist{ margin-top:45px; padding-top:50px; color:#fff; text-align:center; margin-bottom:20px}
-.herolist li{ width:21%; display:inline-block; margin-bottom:12px}
-.herolist li img{ width:58px; height:58px}
-.herolist p{ white-space:nowrap; font-size:1.4rem}
+.herolist{color:#fff; margin-top:45px}
+.herolist .head{ border-bottom:1px solid #ffca28; display:table; width:100%}
+.herolist .head .item{ width:20%; height:50px; text-align:center; display:table-cell; vertical-align:middle; font-size:1.6rem; position:relative}
+.herolist .head .item.on{ color:#ffca28}
+.herolist .head .item:before{ content:""; background:#ffca28; width:1px; height:22px; position:absolute; right:0; top:15px}
+.herolist .head .item:last-child:before{ background:none}
+.herolist .content{ text-align:center; margin-bottom:30px}
+.herolist .content ul{ display:none}
+.herolist .content ul.on{ display:block}
+.herolist .content li{ display:inline-block; width:22%; text-align:center; padding-top:15px; vertical-align:top}
+.herolist .content li img{ width:58px; height:58px}
+.herolist .content li p{ font-size:1.4rem; line-height:1; padding:5px 0}
+@media screen and (min-width:640px){
+	.herolist .head .item{ height:80px; font-size:3rem}
+	.herolist .head .item:nth-child(-n+3):before{ height:36px; top:24px}
+	.herolist .content li{ font-size:2.4rem}
+	.herolist .content li div{ padding:30px 30px 10px}
+}
 /*英雄详情*/
 .herod_bg{ position:fixed; width:100%}
 .herod_bg.first_blur{ -webkit-filter:blur(0px) !important; filter:blur(0px) !important}
@@ -100,16 +114,16 @@ a{ text-decoration:none}
 .herod .figure .tips{ position:absolute; right:5px; left:5px; top:5px}
 .herod .figure .tips .question{ background:url(../images/quanminchaoshen/hero_detail.png) 0 -210px no-repeat; background-size:35px; width:18px; height:15px; position:absolute; top:0; right:0}
 .herod .figure .tips .area{ position:relative; top:18px; right:0}
-.herod .figure .tips .area .tria{ border-bottom:10px solid rgba(0,0,0,0.7); border-left:10px solid transparent; border-right:10px solid transparent; position:absolute; top:0; right:0}
-.herod .figure .tips .area .c{ text-align:left; background:rgba(0,0,0,0.7); position:relative; top:10px; padding:5px; font-size:1.4rem; color:#ffca28}
+.herod .figure .tips .area .tria{ border-bottom:10px solid #000; border-left:10px solid transparent; border-right:10px solid transparent; position:absolute; top:0; right:0}
+.herod .figure .tips .area .c{ text-align:left; background:#000; position:relative; top:10px; padding:5px; font-size:1.4rem; color:#ffca28}
 .herod .figure .tips .area .c span{ color:#da5bff}
 /*滑动条*/
 .herod .bar{ overflow:hidden; -webkit-user-select:none; user-select:none}
 .herod .bar .l{ float:left; width:15%; font-size:1.2rem; text-align:center}
 .herod .bar .l div{ font-size:1.5rem}
 .herod .bar .r{ margin:0 6px 0 15%; height:55px; position:relative}
-.herod .bar .r .x_line{ width:100%; height:2px; position:absolute; top:15px; background:#ffca28}
-.herod .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:2px; background:#ffca28; top:14px}
+.herod .bar .r .x_line{ width:100%; height:2px; position:absolute; top:15px; background:rgba(255,202,40,0.6)}
+.herod .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:2px; background:rgba(255,202,40,0.6); top:14px}
 .herod .bar .r .point_m{ left:50%; margin-left:-12px}/*-(4/2)+-(20/2)*/
 .herod .bar .r .point_r{ right:0}
 .herod .bar .r .barhandle{ width:20px; height:18px; background:url(../images/quanminchaoshen/hero_detail.png) 0 -140px no-repeat; background-size:35px; position:absolute; top:7px; left:0}
@@ -123,7 +137,10 @@ a{ text-decoration:none}
 .herod .skills .content .item{ display:none; font-size:1.4rem; padding-top:5px}
 .herod .skills .content .item.on{ display:block}
 .herod .skills .content .key{ margin-bottom:10px}
-.herod .skills .content .key .name,.herod .skills .content .desc span{ color:#ffca28; padding-right:5px}
+.herod .skills .content .key .name,.herod .skills .content .desc .col_ffca28{ color:#ffca28; padding-right:5px}
+.herod .skills .content .key .col_00baff{ color:#00baff}
+.herod .skills .content .key .col_f66e01{ color:#f66e01}
+.herod .skills .content .key .col_96ff00{ color:#96ff00}
 .herod .access{ margin-bottom:50px}
 .herod .access .content{ font-size:1.4rem}
 .herod .access .item{ margin-bottom:10px}

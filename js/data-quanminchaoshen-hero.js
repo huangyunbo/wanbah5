@@ -7,7 +7,7 @@
 			plugin:"plugin_1101",
 			plugin_equip:"plugin_1103",
 			url:"images/quanminchaoshen/",
-			tindex:0,//英雄类别数组下标
+			type:0,//英雄类别数组下标
 			piece:{},//英雄单个详情object
 			beatTime:[]//清空生命力、攻击力/法强跳动时间
 		};
@@ -20,7 +20,7 @@
 	QmcsHero.prototype = {
 		printherodetail: function(){//打印英雄详情
 			var id = Number(this.getsession("wbgl-quanminchaoshen-hero-id")),
-				tindex = this.o.tindex,
+				type = this.o.type,
 				piece,
 				html_herod_head_tit ='',
 				html_herod_head_label = '',
@@ -31,9 +31,9 @@
 				html_zuanshi = '',
 				html_getsuipian = '';
 			
-			for(var i=0; i<this.data[tindex].data.length; i++){
-				if(this.data[tindex].data[i].id == id){
-					piece = this.data[tindex].data[i];
+			for(var i=0; i<this.data[type].data.length; i++){
+				if(this.data[type].data[i].id == id){
+					piece = this.data[type].data[i];
 					this.o.piece = piece;
 					break;
 				}
@@ -113,7 +113,7 @@
 				numberSrollTopH = 0,
 				isNumberSroll = 0;
 			
-			that.o.tindex = Number(that.getsession("wbgl-quanminchaoshen-hero-tindex"));
+			that.o.type = Number(that.getsession("wbgl-quanminchaoshen-hero-type"));
 			that.printherodetail();
 			that.slideBar();//滑动条
 			
@@ -152,7 +152,7 @@
             this.o.beatTime.push(setInterval(beat, millisec));//拖动滑动条的时候需要立马清空
 		},
 		setFigure: function(level){//设置英雄等级数值数据
-			var tindex = this.o.tindex,
+			var type = this.o.type,
 				piece = this.o.piece,
 				html_figure_lt = '',
 				html_figure_other = '',
@@ -165,7 +165,7 @@
 								'<div class="k">生命值</div>'+
 								'<div class="v">每级增加'+piece.figure.shengming[1]+'</div>';
 			
-			if(tindex == 0 || tindex == 2){
+			if(type == 0 || type == 2){
 				html_figure_lb += '<div class="num num_red">'+(piece.figure.gongji[0]+level*piece.figure.gongji[1])+'</div>'+
 								  '<div class="k">攻击力</div>'+
 								  '<div class="v">每级增加'+piece.figure.gongji[1]+'</div>';
@@ -305,27 +305,54 @@
 		},
 		printIndex: function(){//打印英雄列表
 			var piece,
-				html = '';
+				html_head = '',
+				html_content = '',
+				html_content_temp = '',
+				html_content_all = '';
 			
 			for(var i=0; i<this.data.length; i++){
+				if(i == 0){
+					html_head += '<div class="item">全部</div>';
+				}
+				html_head += '<div class="item">'+this.data[i].tname+'</div>';
+				html_content += '<ul>';
+				html_content_temp = '';
 				for(var j=0; j<this.data[i].data.length; j++){
 					piece = this.data[i].data[j];
-					html += '<li class="wbclick" data-id="'+piece.id+'" data-tindex="'+i+'"><img src="'+this.o.url+'DBPic/'+piece.id+'.jpg" alt="'+piece.title+'"><p>'+piece.title+'</p></li>';
+					html_content_temp += '<li data-id="'+piece.id+'" data-type="'+i+'"><img src="'+this.o.url+'DBPic/'+piece.id+'.jpg" alt="'+piece.title+'"><p>'+piece.title+'</p></li>';
+					
 				}
+				html_content += html_content_temp;
+				html_content_all += html_content_temp;
+				html_content += '</ul>';
 			}
-			$("#herolist ul").html(html);
+			
+			html_content_all = '<ul>' + html_content_all + '</ul>' + html_content;
+			
+			$("#herolist_head").html(html_head);
+			$("#herolist_content").html(html_content_all);
 		},
 		htmlIndex: function(){//英雄列表
-			var that = this;
+			var that = this,
+				$herolist_head = $("#herolist_head"),
+				$herolist_content = $("#herolist_content"),
+				tindex = Number(that.getsession("wbgl-quanminchaoshen-hero-tindex"));
 			
 			that.printIndex();
 			
-			$("#herolist").on("click", "li", function(){
+			$herolist_head.on("click", ".item", function(){
+				tindex = $herolist_head.children().index(this);
+				that.setsession("wbgl-quanminchaoshen-hero-tindex",tindex);
+				$herolist_head.children().eq(tindex).addClass("on").siblings().removeClass("on");
+				$herolist_content.children().eq(tindex).addClass("on").siblings().removeClass("on");
+			}).children().eq(tindex).trigger("click");
+			
+			$herolist_content.on("click", "li", function(){
 				var _id = Number($(this).attr("data-id")),
-					_tindex = Number($(this).attr("data-tindex"));
+					_herotype = Number($(this).attr("data-type"));
 				
 				that.setsession("wbgl-quanminchaoshen-hero-id",_id);
-				that.setsession("wbgl-quanminchaoshen-hero-tindex",_tindex);
+				that.setsession("wbgl-quanminchaoshen-hero-type",_herotype);
 				if(that.o.platform == "ios"){
 					location.href = that.o.plugin+'/data-quanminchaoshen-hero-detail.html';
 				}else{
@@ -474,6 +501,5 @@
 第4数组 辅助
 
 
-[[{"id":1,"title":"精灵女神",name:"狄安娜","label":["治疗","辅助","AOE"],"score":[3,9,2,5],"aword":"具备高伤害的远程战士，攻击范围远且上手难度低。","groom":"被动嗜血，让他的普通攻击获得了吸血效果的加成，配合技能撕裂的被动，让他在打野的时候可以做到几乎无损耗!迅速的清野效果加上技能扑击的范围性眩晕。","equip":[1,2,3,4,5,6],"special":[1,2,3,4,5,6,7,8,9,10],"graphical":[1,2,3,4],"figure":{"shengming":[1,2],"gongji":[3,4],"fashu":[5,6],"hujia":[7,8],"fakang":[9,10],"shenghui":[11,12]},"sname":["虚拟一击1","虚拟一击2","虚拟一击3","虚拟一击4"],"sdesc":["每当...","每当...","每当...","每当..."],"sintro":["技能描述朵朵","技能描述朵朵","技能描述朵朵","技能描述朵朵"],"suipian":80,"zuanshi":80,"getsuipian":["挑战模式","闯关模式"],"story":"故事..."}]]
-
+[{"tid":1,"tname":"战士","data":[{"id":1,"title":"精灵女神",name:"狄安娜","pos":"近战 肉盾 攻击型","label":["治疗","辅助","AOE2"],"pie":[3,9,2,5],"aword":"具备高伤害的远程战士，攻击范围远且上手难度低","groom":"让他的普通攻击获得了吸血效果的加成，配合技能撕裂的被动，让他在打野的时候可以做到几乎无损耗!迅速的清野效果加上技能扑击的范围性眩晕。","equip":[1,2,3,4,5,6],"addskill":[1,2,3,4,1,2,3,4,1,2],"graphical":[1,2,3,10],"figure":{"shengming":[645,2],"gongji":[64,4],"fashu":[5,6],"hujia":[7,8],"fakang":[9,10],"shenghui":[11,12]},"sname":["虚拟一击1","虚拟一击2","虚拟一击3","虚拟一击4"],"sdesc":["每当...","每当...","每当...","每当..."],"sintro":["技能描述朵朵","技能描述朵朵","技能描述朵朵","技能描述朵朵"],"svideo":[],"suipian":18,"zuanshi":-1,"getsuipian":["挑战模式3","闯关模式"],"story":"故事..."}]}];
 */
