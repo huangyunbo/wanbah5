@@ -134,7 +134,7 @@
 				for(var j=0; j<that.data[i].data.length; j++){
 					piece = that.data[i].data[j];
 					html_equip_content += '<li data-id="'+piece.id+'">'+
-											'<div><img src="'+that.o.url+'equip/'+piece.id+'.png"></div>'+piece.name+
+											'<img src="'+that.o.url+'equip/'+piece.id+'.png"><p>'+piece.name+'</p>'+
 										'</li>';
 				}
 				html_equip_content += '</ul>';
