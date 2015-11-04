@@ -536,8 +536,8 @@ gulp.task('luobo3_ios', function(){
 
 
 //全民超神
-var quanminchaoshen_gameid = 100;
-var quanminchaoshen_plugin_hero = "plugin_1101";
+var quanminchaoshen_gameid = 82;//100
+var quanminchaoshen_plugin_hero = "plugin_1119";//plugin_1101
 var quanminchaoshen_plugin_equip = "plugin_1103";
 var quanminchaoshen_path = '../';
 var quanminchaoshen_replace = ['css/', 'js/', 'json/'];
@@ -560,7 +560,7 @@ gulp.task('quanminchaoshen_css', function(){
 });
 
 gulp.task('quanminchaoshen_js', function(){
-    gulp.src(['./js/jquery-2.1.3.min.js','./js/data-quanminchaoshen-hero.js'])
+    gulp.src(['./js/jquery-2.1.3.min.js','./js/tvp.player.js','./js/data-quanminchaoshen-hero.js'])
         .pipe(concat('data-quanminchaoshen-hero.min.js'))
 		.pipe(replace('platform:"web"', 'platform:"'+quanminchaoshen_platform+'"'))
         .pipe(uglify())
@@ -570,7 +570,7 @@ gulp.task('quanminchaoshen_js', function(){
         .pipe(concat('data-quanminchaoshen-equip.min.js'))
 		.pipe(replace('platform:"web"', 'platform:"'+quanminchaoshen_platform+'"'))
         .pipe(uglify())
-        .pipe(gulp.dest('../../chajian/'+quanminchaoshen_gameid+'/'+quanminchaoshen_platform+'/DataPlugin/js'));	
+        .pipe(gulp.dest('../../chajian/'+quanminchaoshen_gameid+'/'+quanminchaoshen_platform+'/DataPlugin/js'));
 });
 
 gulp.task('quanminchaoshen_json', function(){
@@ -587,7 +587,7 @@ gulp.task('quanminchaoshen_data', function(){
 	
     gulp.src('data-quanminchaoshen-hero.html')
 		.pipe(merge({
-            'js/data-quanminchaoshen-hero.min.js':['js/jquery-2.1.3.min.js','js/data-quanminchaoshen-hero.js']
+            'js/data-quanminchaoshen-hero.min.js':['js/jquery-2.1.3.min.js','js/tvp.player.js','js/data-quanminchaoshen-hero.js']
         }))
 		.pipe(replace(quanminchaoshen_replace[0], quanminchaoshen_replace_data[0]))
 		.pipe(replace(quanminchaoshen_replace[1], quanminchaoshen_replace_data[1]))
@@ -597,7 +597,7 @@ gulp.task('quanminchaoshen_data', function(){
 	
 	gulp.src('data-quanminchaoshen-hero-detail.html')
 		.pipe(merge({
-            'js/data-quanminchaoshen-hero.min.js':['js/jquery-2.1.3.min.js','js/data-quanminchaoshen-hero.js']
+            'js/data-quanminchaoshen-hero.min.js':['js/jquery-2.1.3.min.js','js/tvp.player.js','js/data-quanminchaoshen-hero.js']
         }))
 		.pipe(replace(quanminchaoshen_replace[0], quanminchaoshen_replace_data[0]))
 		.pipe(replace(quanminchaoshen_replace[1], quanminchaoshen_replace_data[1]))

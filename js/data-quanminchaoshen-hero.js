@@ -4,7 +4,7 @@
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.o = {
 			platform:"web",
-			plugin:"plugin_1101",
+			plugin:"plugin_1119",//plugin_1101
 			plugin_equip:"plugin_1103",
 			url:"images/quanminchaoshen/",
 			type:0,//英雄类别数组下标
@@ -310,7 +310,8 @@
 				$win = $(window),
 				numberSrollTopH = 0,
 				isNumberSroll = 0;
-			
+
+			$("#herod_bg_transparent").attr("src", this.o.url+'hero_detail_bg.png');
 			that.o.type = Number(that.getsession("wbgl-quanminchaoshen-hero-type"));
 			that.printherodetail();
 			that.slideBar();//滑动条
@@ -329,7 +330,7 @@
 			numberSrollTopH = $("#equipchoice").offset().top;//从装备选择开始数值跳动
 			$win.scroll(function(){
 				var scrollTopH = $win.scrollTop();
-				
+
 				that.gaussBlur(scrollTopH);//高斯模糊
 				if(isNumberSroll == 0 && scrollTopH >= numberSrollTopH){//数值跳动
 					isNumberSroll = 1;
@@ -500,7 +501,7 @@
 							$("#header").children(".back").attr("href","index.html");
 						}
 					}if(this.o.platform == "ios"){
-						$("#herodetail").addClass("mt_0");
+						$("#herod").addClass("mt_0");
 					}
 				break;
 			}
