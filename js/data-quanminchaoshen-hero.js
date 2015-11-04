@@ -18,125 +18,32 @@
 	};
 	
 	QmcsHero.prototype = {
-		printherodetail: function(){//打印英雄详情
-			var id = Number(this.getsession("wbgl-quanminchaoshen-hero-id")),
-				type = this.o.type,
-				piece,
-				html_herod_head_tit ='',
-				html_herod_head_label = '',
-				html_equipchoice = '',
-				html_addskill = '',
-				html_skills_head = '',
-				html_skills_content = '',
-				html_zuanshi = '',
-				html_getsuipian = '';
-			
-			for(var i=0; i<this.data[type].data.length; i++){
-				if(this.data[type].data[i].id == id){
-					piece = this.data[type].data[i];
-					this.o.piece = piece;
-					break;
-				}
-			}
-			
-			if(piece === undefined) return;
-			
-			$("#herod_bg").attr("src",this.o.url+"DBPic/d_"+id+".jpg");//大背景图片
-			
-			html_herod_head_tit = piece.title + '-' + piece.name + '<div>' + piece.pos + '</div>';
-			$("#herod_head").children(".tit").html(html_herod_head_tit);//称号+名字+定位
-			
-			for(var i=0; i<piece.label.length; i++){
-				html_herod_head_label += '<span>'+piece.label[i]+'</span>';
-			}
-			$("#herod_head").children(".label").html(html_herod_head_label);//标签
-			
-			this.circle(piece.pie);//绘制圆形进度条
-
-			$("#herod_head").children("p").html(piece.aword);//描述
-			
-			$("#groom").html(piece.groom);//推荐玩法
-			
-			for(var i=0; i<piece.equip.length; i++){
-				html_equipchoice += '<li><img src="'+this.o.url+'equip/'+piece.equip[i]+'.png"></li>';
-			}
-			$("#equipchoice").html(html_equipchoice);//装备选择
-			
-			for(var i=0; i<piece.addskill.length; i++){
-				html_addskill += '<li><img src="'+this.o.url+'skillPic/skill'+piece.id+'_'+piece.addskill[i]+'.png"></li>';
-			}
-			$("#addskill").html(html_addskill);//加点路线
-			
-			$("#graphical").children("li").each(function(index){//英雄数据
-				$(this).find(".star").addClass("star"+piece.graphical[index]);
-			});
-			
-			this.setFigure(1);//设置英雄等级数值数据
-			
-			for(var i=0; i<piece.sname.length; i++){//英雄技能
-				html_skills_head += '<li>'+
-										'<div><img src="'+this.o.url+'skillPic/skill'+piece.id+'_'+(i+1)+'.png"></div>'+
-									'</li>';
-				
-				html_skills_content += '<div class="item">'+
-													'<div class="key">'+
-														'<div class="name">'+piece.sname[i]+'</div>'+
-														'<p>'+piece.sdesc[i]+'</p>'+
-													'</div>'+
-													'<div class="desc">'+
-														piece.sintro[i]+
-													'</div>'+
-												'</div>';
-			}
-			$("#skills_head").html(html_skills_head);
-			$("#skills_content").html(html_skills_content);
-			
-			$("#suipian").html(piece.suipian);//获得途径			
-			for(var i=0; i<piece.getsuipian.length; i++){
-				html_getsuipian += '<label>'+piece.getsuipian[i]+'</label>';
-			}
-			$("#suipian").parent().after(html_getsuipian);
-			
-			if(piece.zuanshi == -1){
-				html_zuanshi = '暂时不卖';
-			}else{
-				html_zuanshi = '<i class="icon_zuanshi"></i>x<code>'+piece.zuanshi+'</code>';
-			}
-			$("#zuanshi").html(html_zuanshi);
-			
-			$("#story").html(piece.story);//英雄故事
-			
-		},
-		htmlherodetail: function(){//英雄详情
+		skillVideo: function(){
 			var that = this,
-				$win = $(window),
-				numberSrollTopH = 0,
-				isNumberSroll = 0;
-			
-			that.o.type = Number(that.getsession("wbgl-quanminchaoshen-hero-type"));
-			that.printherodetail();
-			that.slideBar();//滑动条
-			
-			$("#question").click(function(){
-				$("#tips").toggleClass("hide");
-			});
-			$("#skills_head").on("click", "li",function(){
-				var _index = $(this).parents().children().index($(this));
-				$(this).addClass("on").siblings().removeClass("on");
-				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");
-			}).children("li").eq(0).trigger("click");
-			
-			numberSrollTopH = $("#equipchoice").offset().top;//从装备选择开始数值跳动
-			$win.scroll(function(){
-				var scrollTopH = $win.scrollTop();
-				
-				that.gaussBlur(scrollTopH);//高斯模糊
-				if(isNumberSroll == 0 && scrollTopH >= numberSrollTopH){//数值跳动
-					isNumberSroll = 1;
-					that.numberSroll("num_green", 1);
-					that.numberSroll("num_red", 40);
+				$skills_content = $("#skills_content"),
+				v_width = $skills_content.width(),
+				v_height = parseInt(v_width/320*189),
+				video,
+				player;
+
+			$skills_content.children().each(function(index, element){
+                if(index <= 2){//只有前3个主动技能有视频
+					var self = $(element).children(".video"),
+						videoid = self.attr("data-id");
+
+					video = new tvp.VideoInfo();
+					video.setVid(videoid);//视频vid
+					player = new tvp.Player(v_width, v_height);//视频宽高
+					player.setCurVideo(video);
+					player.addParam("autoplay", "0");//是否自动播放，1为自动播放，0为不自动播放
+					player.addParam("player", "html5");//设置html5
+					player.addParam("pic", that.o.url+"video_default.png");//默认图片地址
+					player.addParam("showend",0);//结束是该视频本身结束
+					//player.addParam("wmode","opaque");//flash才用到
+					//player.addParam("flashskin", "http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf");//是否调用精简皮肤，不使用则删掉此行代码
+					player.write("videocon"+index);//elementId
 				}
-			});
+            });			
 		},
 		numberSroll: function(element, millisec){//数值跳动(生命值、攻击力/法强)
 			var dom = $("."+element),
@@ -302,6 +209,134 @@
 				blurValue = (scrollTopH-blankH)/blurValueOne;
 				$herod_bg.css({"-webkit-filter":"blur("+blurValue+"px)"});
 			}
+		},
+		printherodetail: function(){//打印英雄详情
+			var id = Number(this.getsession("wbgl-quanminchaoshen-hero-id")),
+				type = this.o.type,
+				piece,
+				html_herod_head_tit ='',
+				html_herod_head_label = '',
+				html_equipchoice = '',
+				html_addskill = '',
+				html_skills_head = '',
+				html_skills_content = '',
+				html_zuanshi = '',
+				html_getsuipian = '';
+			
+			for(var i=0; i<this.data[type].data.length; i++){
+				if(this.data[type].data[i].id == id){
+					piece = this.data[type].data[i];
+					this.o.piece = piece;
+					break;
+				}
+			}
+			
+			if(piece === undefined) return;
+			
+			$("#herod_bg").attr("src",this.o.url+"DBPic/d_"+id+".jpg");//大背景图片
+			
+			html_herod_head_tit = piece.title + '-' + piece.name + '<div>' + piece.pos + '</div>';
+			$("#herod_head").children(".tit").html(html_herod_head_tit);//称号+名字+定位
+			
+			for(var i=0; i<piece.label.length; i++){
+				html_herod_head_label += '<span>'+piece.label[i]+'</span>';
+			}
+			$("#herod_head").children(".label").html(html_herod_head_label);//标签
+			
+			this.circle(piece.pie);//绘制圆形进度条
+
+			$("#herod_head").children("p").html(piece.aword);//描述
+			
+			$("#groom").html(piece.groom);//推荐玩法
+			
+			for(var i=0; i<piece.equip.length; i++){
+				html_equipchoice += '<li><img src="'+this.o.url+'equip/'+piece.equip[i]+'.png"></li>';
+			}
+			$("#equipchoice").html(html_equipchoice);//装备选择
+			
+			for(var i=0; i<piece.addskill.length; i++){
+				html_addskill += '<li><img src="'+this.o.url+'skillPic/skill'+piece.id+'_'+piece.addskill[i]+'.png"></li>';
+			}
+			$("#addskill").html(html_addskill);//加点路线
+			
+			$("#graphical").children("li").each(function(index){//英雄数据
+				$(this).find(".star").addClass("star"+piece.graphical[index]);
+			});
+			
+			this.setFigure(1);//设置英雄等级数值数据
+			
+			for(var i=0; i<piece.sname.length; i++){//英雄技能
+				html_skills_head += '<li>'+
+										'<div><img src="'+this.o.url+'skillPic/skill'+piece.id+'_'+(i+1)+'.png"></div>'+
+									'</li>';
+				
+				html_skills_content += '<div class="item">'+
+											'<div class="key">'+
+												'<div class="name">'+piece.sname[i]+'</div>'+
+												'<p>'+piece.sdesc[i]+'</p>'+
+											'</div>'+
+											'<div class="desc">'+
+												piece.sintro[i]+
+											'</div>';
+
+				if(i != piece.sname.length-1){//视频只有前3个
+					html_skills_content += '<div class="video" id="videocon'+i+'" data-id="'+piece.svideo[i]+'"></div>';
+				}
+
+				html_skills_content += '</div>';
+			}
+			$("#skills_head").html(html_skills_head);
+			$("#skills_content").html(html_skills_content);
+			
+			
+			$("#suipian").html(piece.suipian);//获得途径			
+			for(var i=0; i<piece.getsuipian.length; i++){
+				html_getsuipian += '<label>'+piece.getsuipian[i]+'</label>';
+			}
+			$("#suipian").parent().after(html_getsuipian);
+			
+			if(piece.zuanshi == -1){
+				html_zuanshi = '暂时不卖';
+			}else{
+				html_zuanshi = '<i class="icon_zuanshi"></i>x<code>'+piece.zuanshi+'</code>';
+			}
+			$("#zuanshi").html(html_zuanshi);
+			
+			$("#story").html(piece.story);//英雄故事
+			
+		},
+		htmlherodetail: function(){//英雄详情
+			var that = this,
+				$win = $(window),
+				numberSrollTopH = 0,
+				isNumberSroll = 0;
+			
+			that.o.type = Number(that.getsession("wbgl-quanminchaoshen-hero-type"));
+			that.printherodetail();
+			that.slideBar();//滑动条
+			that.skillVideo();//英雄技能视频
+			
+			$("#question").click(function(){
+				$("#tips").toggleClass("hide");
+			});
+			$("#skills_head").on("click", "li",function(){
+				var _index = $(this).parents().children().index($(this));
+				$(this).addClass("on").siblings().removeClass("on");
+				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");
+				
+			}).children("li").eq(0).trigger("click");
+			
+			numberSrollTopH = $("#equipchoice").offset().top;//从装备选择开始数值跳动
+			$win.scroll(function(){
+				var scrollTopH = $win.scrollTop();
+				
+				that.gaussBlur(scrollTopH);//高斯模糊
+				if(isNumberSroll == 0 && scrollTopH >= numberSrollTopH){//数值跳动
+					isNumberSroll = 1;
+					that.numberSroll("num_green", 1);
+					that.numberSroll("num_red", 40);
+				}
+			});
 		},
 		printIndex: function(){//打印英雄列表
 			var piece,
