@@ -9,7 +9,8 @@
 			url:"images/quanminchaoshen/",
 			type:0,//英雄类别数组下标
 			piece:{},//英雄单个详情object
-			beatTime:[]//清空生命力、攻击力/法强跳动时间
+			herodHeight:300,//默认距顶部高度
+			danceTime:[]//清空生命力、攻击力/法强跳动时间
 		};
 		if(this.o.platform == "android"){
 			this.o.url="../images/quanminchaoshen/";
@@ -18,7 +19,159 @@
 	};
 	
 	QmcsHero.prototype = {
-		skillVideo: function(){
+		setBlur: function(scrollTopH){//模糊
+			var $win = $(window),
+				scrollTopH = 0,//滑动条的实时高度
+				h = this.o.herodHeight,
+				blankH = h*0.2, //图片顶部的20%不模糊高度
+				actualH = h*0.8, //实际需要模糊的80%高度
+				blurOne = actualH/20, //再计算出20段，每段距离是多少
+				blurValue = 0,//模糊的值
+				dom = $("#herod_bg"),//模糊对象
+				$baike = $("#baike"),//ios需要的定级遮罩层
+				$herod = $("#herod"),
+				touchStarY,
+				touchMoveY,
+				starMarginTop,
+				marginTop,
+				leave = 0;
+			
+			function calcGaussblur(){//计算高斯模糊
+				if(scrollTopH < blankH){
+					dom.removeClass("last_blur").addClass("first_blur");
+				}else if(scrollTopH >= h){
+					dom.removeClass("first_blur").addClass("last_blur");
+				}else if(scrollTopH >= blankH){
+					dom.removeClass("first_blur last_blur");
+					blurValue = (scrollTopH-blankH)/blurOne;
+					dom.css({"-webkit-filter":"blur("+blurValue+"px)"});
+				}
+			}
+			
+			//if(this.o.platform == "ios"){
+				$baike.addClass("baike");
+				$baike.on("touchstart", function(e){
+					e.preventDefault();
+					touchStarY = e.originalEvent.changedTouches[0].pageY;
+					starMarginTop = parseInt($herod.css("margin-top"));
+				});
+				$baike.on("touchmove", function(e){
+					e.preventDefault();
+					if(leave != 0) return;
+					touchMoveY = e.originalEvent.changedTouches[0].pageY;
+					marginTop = starMarginTop + (touchMoveY - touchStarY);//设置的距离=起始的点+滑动的距离
+					
+					if(marginTop >= h){//超出往下滑范围，禁止
+						$herod.css("margin-top",h);
+						scrollTopH = 0;
+					}else{//往上滑(正常范围+超出往上滑范围)
+						$herod.css("margin-top",marginTop);
+						scrollTopH = h - marginTop;
+					}
+					calcGaussblur();
+				});
+				$baike.on("touchend", function(e){
+					if(leave == 0 && marginTop <= 0){
+						leave = 1;
+						$herod.css("margin-top",h);
+						$win.scrollTop(scrollTopH);
+						$baike.removeClass("baike");
+					}
+				});
+				$win.scroll(function(){
+					scrollTopH = $win.scrollTop();
+					if(leave == 1 && scrollTopH < h){
+						leave = 0;
+						console.log(scrollTopH);
+						/*$herod.css("margin-top",h - scrollTopH);
+						$win.scrollTop(0);*/
+						//$herod.css("margin-top",h);
+						$baike.addClass("baike");
+						calcGaussblur();
+					}
+				});
+			//}
+			/*else{
+				$win.scroll(function(){
+					scrollTopH = $win.scrollTop();
+					calcGaussblur();
+				});
+			}*/
+		},
+		setSlidebar: function(){//滑动条
+			var that = this,
+				$barlevel = $("#barlevel"),
+				$bar = $("#bar"),
+				$barhandle = $("#barhandle"),
+				$thumb = $barhandle.children(),
+				barW = $bar.width(),
+				barhandleW = $barhandle.width(),
+				barW_max = barW-barhandleW,
+				touchMoveX,
+				barO_l = $bar.offset().left,
+				distanceX,
+				paragraph = barW_max/10,
+				level = 1;//初始化
+
+			function slide(rangeX){
+				var _level = Math.ceil(rangeX/paragraph);
+				
+				_level = _level == 0 ? 1 : _level;
+				$barhandle.css({"left":rangeX+"px"});
+				if(_level == level) return;//减少后面的调用
+				clearInterval(that.o.danceTime[0]);//清空第1个跑数值跳动
+				clearInterval(that.o.danceTime[1]);//清空第2个跑数值跳动
+				level = _level;
+				$("#barlevel").html(level);
+				that.setFigure(level);
+			}
+
+			$thumb.on("touchstart", function(e){
+				e.preventDefault();
+			});
+			$thumb.on("touchmove", function(e){
+				e.preventDefault();
+    			touchMoveX = e.originalEvent.changedTouches[0].pageX;
+				distanceX = touchMoveX - barO_l;
+				if(distanceX < 0){
+					slide(0);
+				}else if(distanceX > barW_max){
+					slide(barW_max);
+				}else{
+					slide(distanceX);
+				}
+			});
+		},
+		setNumbersroll: function(){//数值跳动(生命值、攻击力/法强)
+			var that = this,
+				$win = $(window),
+				scrollTopH,//滑动条的实时高度
+				startTopH = $("#equipchoice").offset().top,//从装备选择开始数值跳动
+				isDance = 0;
+
+			function dance(element, millisec){
+				var dom = $("."+element),
+					num = dom.text(),
+					i = 0,
+					beat = function(){
+						i++;
+						if(num >= i){
+							dom.html(i);
+						}
+					};
+				
+				that.o.danceTime.push(setInterval(beat, millisec));//拖动滑动条的时候需要立马清空
+			}
+			$win.scroll(function(){
+				scrollTopH = $win.scrollTop();
+				if(isDance == 0 && scrollTopH >= startTopH){//数值跳动
+					isDance = 1;
+					dance("num_green", 1);
+					dance("num_red", 40);
+				}
+			});
+		},
+		setVideo: function(){
 			var that = this,
 				$skills_content = $("#skills_content"),
 				v_width = $skills_content.width(),
@@ -45,18 +198,21 @@
 				}
             });			
 		},
-		numberSroll: function(element, millisec){//数值跳动(生命值、攻击力/法强)
-			var dom = $("."+element),
-				num = dom.text(),
-				i = 0,
-				beat = function(){
-					i++;
-					if(num >= i){
-						dom.html(i);
-					}
-				};
+		setHerodtop: function(){//初始设置英雄详情的高度
+			var win_h = $(window).height(),
+				head_h = $("#herod_head").height(),
+				h = 0;
 			
-            this.o.beatTime.push(setInterval(beat, millisec));//拖动滑动条的时候需要立马清空
+			if(win_h >= 400){
+				h = win_h - head_h;
+			}else{
+				h = 300;
+			}
+			if(this.o.platform != "ios"){
+				$("#herod_bg").css("top",45);
+			}
+			this.o.herodHeight = h;
+			$("#herod").css("margin-top",h);
 		},
 		setFigure: function(level){//设置英雄等级数值数据
 			var type = this.o.type,
@@ -102,51 +258,7 @@
 			$("#figure_other").html(html_figure_other);
 			$("#figure_lb").html(html_figure_lb);
 		},
-		slideBar: function(){//滑动条
-			var that = this,
-				$barlevel = $("#barlevel"),
-				$bar = $("#bar"),
-				$barhandle = $("#barhandle"),
-				$thumb = $barhandle.children(),
-				barW = $bar.width(),
-				barhandleW = $barhandle.width(),
-				barW_max = barW-barhandleW,
-				touchMoveX,
-				barO_l = $bar.offset().left,
-				distanceX,
-				paragraph = barW_max/10,
-				level = 1;//初始化
-
-			function slide(rangeX){
-				var _level = Math.ceil(rangeX/paragraph);
-				
-				_level = _level == 0 ? 1 : _level;
-				$barhandle.css({"left":rangeX+"px"});
-				if(_level == level) return;//减少后面的调用
-				clearInterval(that.o.beatTime[0]);//清空第1个跑数值跳动
-				clearInterval(that.o.beatTime[1]);//清空第2个跑数值跳动
-				level = _level;
-				$("#barlevel").html(level);
-				that.setFigure(level);
-			}
-
-			$thumb.on("touchstart", function(e){
-				e.preventDefault();
-			});
-			$thumb.on("touchmove", function(e){
-				e.preventDefault();
-    			touchMoveX = e.originalEvent.changedTouches[0].pageX;
-				distanceX = touchMoveX - barO_l;
-				if(distanceX < 0){
-					slide(0);
-				}else if(distanceX > barW_max){
-					slide(barW_max);
-				}else{
-					slide(distanceX);
-				}
-			});
-		},
-		circle: function(pieArray){//伤害 辅助 生存 上手			
+		setCircle: function(pieArray){//伤害 辅助 生存 上手			
 			$("#labelvalue").children(".item").each(function(index, element){
 				var $circle = $(this).children(".circle"),
 					$num = $circle.children(".num"),
@@ -192,25 +304,7 @@
 				}
 			});
 		},
-		gaussBlur: function(scrollTopH){//高斯模糊
-			var $herod_bg = $("#herod_bg"),
-				herodBgH = $("#herod_bg_transparent").height(),
-				blankH = herodBgH*0.2, //图片顶部的20%不模糊高度
-				actualH = herodBgH*0.8, //实际需要模糊的80%高度
-				blurValueOne = actualH/20, //再计算出20段，每段距离是多少
-				blurValue = 0;
-			
-			if(scrollTopH >= herodBgH){
-				$herod_bg.addClass("last_blur");
-			}else if(scrollTopH < blankH){
-				$herod_bg.addClass("first_blur");
-			}else if(scrollTopH >= blankH){
-				$herod_bg.removeClass("first_blur last_blur");
-				blurValue = (scrollTopH-blankH)/blurValueOne;
-				$herod_bg.css({"-webkit-filter":"blur("+blurValue+"px)"});
-			}
-		},
-		printherodetail: function(){//打印英雄详情
+		printHerodetail: function(){//打印英雄详情
 			var id = Number(this.getsession("wbgl-quanminchaoshen-hero-id")),
 				type = this.o.type,
 				piece,
@@ -243,7 +337,7 @@
 			}
 			$("#herod_head").children(".label").html(html_herod_head_label);//标签
 			
-			this.circle(piece.pie);//绘制圆形进度条
+			this.setCircle(piece.pie);//绘制圆形进度条
 
 			$("#herod_head").children("p").html(piece.aword);//描述
 			
@@ -305,17 +399,13 @@
 			$("#story").html(piece.story);//英雄故事
 			
 		},
-		htmlherodetail: function(){//英雄详情
-			var that = this,
-				$win = $(window),
-				numberSrollTopH = 0,
-				isNumberSroll = 0;
+		htmlHerodetail: function(){//英雄详情
+			var that = this;
 
-			$("#herod_bg_transparent").attr("src", this.o.url+'hero_detail_bg.png');
 			that.o.type = Number(that.getsession("wbgl-quanminchaoshen-hero-type"));
-			that.printherodetail();
-			that.slideBar();//滑动条
-			that.skillVideo();//英雄技能视频
+			that.printHerodetail();
+			that.setHerodtop();
+			//that.setVideo();//英雄技能视频
 			
 			$("#question").click(function(){
 				$("#tips").toggleClass("hide");
@@ -327,17 +417,9 @@
 				
 			}).children("li").eq(0).trigger("click");
 			
-			numberSrollTopH = $("#equipchoice").offset().top;//从装备选择开始数值跳动
-			$win.scroll(function(){
-				var scrollTopH = $win.scrollTop();
-
-				that.gaussBlur(scrollTopH);//高斯模糊
-				if(isNumberSroll == 0 && scrollTopH >= numberSrollTopH){//数值跳动
-					isNumberSroll = 1;
-					that.numberSroll("num_green", 1);
-					that.numberSroll("num_red", 40);
-				}
-			});
+			that.setBlur();//模糊
+			that.setNumbersroll();//数值跳动
+			that.setSlidebar();//滑动条
 		},
 		printIndex: function(){//打印英雄列表
 			var piece,
@@ -500,8 +582,6 @@
 						}else{
 							$("#header").children(".back").attr("href","index.html");
 						}
-					}if(this.o.platform == "ios"){
-						$("#herod").addClass("mt_0");
 					}
 				break;
 			}
@@ -517,7 +597,7 @@
 					break;
 				case (href == "herodetail.html"):
 					this.isplatform("herodetail");
-					this.htmlherodetail();
+					this.htmlHerodetail();
 					break;
 			}
 		},

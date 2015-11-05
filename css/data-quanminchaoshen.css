@@ -28,11 +28,11 @@ a{ text-decoration:none}
 	.media_ml_16{ margin-left:32px}
 	.media_plr_7{ padding:0 14px}
 }
-.hero_body{ background:#2e2623; color:#fff; -webkit-overflow-scrolling:touch;}
 .header{ height:44px; border-bottom:1px solid #433d23; background:#1d1d1d; position:fixed; width:100%; top:0; left:0; z-index:100}
 .header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 /*英雄列表*/
+.hero_body{ background:#2e2623; color:#fff}
 .herolist{color:#fff; margin-top:45px}
 .herolist .head{ border-bottom:1px solid #ffca28; display:table; width:100%}
 .herolist .head .item{ width:20%; height:50px; text-align:center; display:table-cell; vertical-align:middle; font-size:1.6rem; position:relative}
@@ -54,11 +54,11 @@ a{ text-decoration:none}
 	.herolist .content li p{ font-size:2.6rem; padding:10px 0}
 }
 /*英雄详情*/
-.herod_bg{ position:fixed; width:100%}
+.baike{ position:fixed; z-index:101; top:0; left:0; width:100%; height:100%; /*background:rgba(0,0,0,0.5)*/}
+.herod_bg{ position:fixed; width:100%; top:0}
 .herod_bg.first_blur{ -webkit-filter:blur(0px) !important; filter:blur(0px) !important}
 .herod_bg.last_blur{ -webkit-filter:blur(20px) !important; filter:blur(20px) !important}
-.herod{ position:relative; z-index:10; margin-top:45px}
-.herod_bg_transparent{ width:100%}
+.herod{ position:relative; z-index:10}
 .herod .head .tit{ font-size:2.1rem; padding-bottom:5px; margin-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.4)}
 .herod .head .tit div{ font-size:1.5rem; color:#ffca28}
 .herod .head .label span{ padding:0 5px; margin-right:12px; font-size:1.4rem}
