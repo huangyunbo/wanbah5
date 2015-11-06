@@ -22,7 +22,7 @@ a{ text-decoration:none}
 
 
 body{ background:#08121a}
-.header{ height:44px; border-bottom:1px solid #406fe8; background:#091723; position:fixed; width:100%; top:0; left:0; z-index:100}
+.header{ height:44px; border-bottom:1px solid #355cbf; background:#091723; position:fixed; width:100%; top:0; left:0; z-index:100}
 .header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 .container{ margin-top:45px; color:#fff; font-size:1.8rem; text-align:center; padding-top:100px}
@@ -32,6 +32,8 @@ body{ background:#08121a}
 /*顶部背景*/
 /*.herod .headbg{ position:relative;width:100%}*/
 .herod{margin-top:45px; color:#fff}
+.herod_bg.first_blur{ -webkit-filter:blur(0px) !important; filter:blur(0px) !important}
+.herod_bg.last_blur{ -webkit-filter:blur(20px) !important; filter:blur(20px) !important}
 .herod .plr_7{ padding:0 7px}
 .herod .intro .top_l{ float:left}
 .herod .intro .top_r{ float:right}
@@ -92,10 +94,37 @@ body{ background:#08121a}
 
 
 /*英雄列表*/
-.herolist{ margin-top:45px; overflow:hidden; width:100%; height:40px; position:relative; border-bottom:1px solid #4dd2fd; box-sizing:border-box}
-.herolist ul{ position:absolute; width:100%; height:39px}
-.herolist li{ float:left; font-size:1.6em; color:#b0b8c8; padding:8px 20px 7px 20px; white-space:nowrap; position:relative}
-.herolist ul li i{width: 1px; height: 18px; position: absolute; background: #4dd2fd; right: 0; top: 11px}
+.herolist{ margin-top:45px}
+.herolist .nav{ border-bottom:1px solid #355cbf; position:relative}
+.herolist .nav .top li{ text-align:center; font-size:1.6rem; color:#b0b8c8; padding:8px 0px; position:relative; width:33.33%; display: inline-block}
+.herolist .nav .top li.on{}
+.herolist .nav .top li:after{ content:""; width: 1px; height: 18px; position: absolute; background: #355cbf; right: 0; top: 11px}
+.herolist .nav .top li:last-child:after{ background:none}
+.herolist .nav .top li i{ content: ""; display:inline-block; width: 8px; height: 8px; border: solid #fff; border-width: 1px 0 0 1px; vertical-align:3px; margin-left: 10px; -webkit-transform: rotate(225deg); transform:rotate(225deg)}
+.herolist .nav .top li.on i{ vertical-align:-3px; -webkit-transform: rotate(45deg); transform:rotate(45deg)}
+
+.herolist .heroitem{ text-align:center; color:#fff}
+.herolist .heroitem li{ float:left; width:33.33%; padding:5px; box-sizing:border-box; margin:10px 0; position:relative}	
+.herolist .heroitem .img{ padding:0 6px}
+.herolist .heroitem .icon_heroitem{ display:inline-block; background:url(../images/vainglory/hero-detail.png); background-size:56.25px; vertical-align:-3px; margin-right:3px}
+.herolist .heroitem .icon_jobs{ width:18px; height:18px;}
+.herolist .heroitem .icon_jobs_cike{ background-position:0 -26.25px}
+.herolist .heroitem .icon_jobs_gongjian{ background-position:0 -52.5px}
+.herolist .heroitem .icon_jobs_huweizhe{ background-position:0 -78.75px}
+.herolist .heroitem .icon_jobs_fashi{ background-position:0 -105px}
+.herolist .heroitem .name{ font-size:14px}
+.herolist .heroitem .gold{ background:#141b22; border:1px solid #646569; border-radius:3px; padding:0 5px; font-size:10px}
+.herolist .heroitem .gold i{ width:12px; height:12px; background-size:45px}
+.herolist .heroitem .gold .icon_honor{ background-position:-21px 0}
+.herolist .heroitem .gold .icon_ice{ background-position:-33px 0}
+
+.herolist .select{ font-size:1.4em; position:absolute; width:100%; color:#b0b8c8; z-index:3; left:0; top:40px}
+
+.herolist .select ul{ display:none; width:33.33%; background:rgba(41,48,58,0.9)}
+.herolist .select ul:nth-child(2){ margin-left:33.33%}
+.herolist .select ul:nth-child(3){ margin-left:66.66%}
+.herolist .select ul.on{ display:block}
+.herolist .select li{ text-align:center; padding:8px 0; border:solid #0e0f14; border-width:0 0 1px 0}
 
 
 

@@ -15,18 +15,113 @@
 </div>
 
 <div class="herolist">
-  <ul>
-      <li>定位<i></i></li>
-      <li>职责<i></i></li>
-      <li>排序</li>
-  </ul>
-</div>
+  <div class="nav">
+    <ul class="top" id="herolist_nav_top">
+        <li><span>定位</span><i></i></li><li><span>职责</span><i></i></li><li><span>排序</span><i></i></li>
+    </ul>
+    <div class="select" id="herolist_nav_select">        
+      <ul id="hero_location">
+          <li>全部定位</li>
+          <li>战士</li>
+          <li>护卫者</li>
+          <li>刺客</li>
+          <li>射手</li>
+          <li>法师</li>
+      </ul>
+      <ul id="hero_duty">
+          <li>全部职责</li>
+          <li>对线</li>
+          <li>打野</li>
+          <li>游走</li>
+      </ul>
+      <ul id="hero_price">
+          <li>默认</li>
+          <li>价格</li>
+      </ul>
+    </div>
+  </div><!-- /nav -->
 
+
+
+  <div class="heroitem clearfix" id="heroitem">
+  
+    <ul>
+    <!--
+    	<li data-id="1">
+        <div class="img">
+          <img src="images/vainglory/dbpic/image_1.jpg">        
+        </div>  		
+        <div class="name">
+          <i class="icon_heroitem icon_jobs icon_jobs_gongjian"></i>影狐塔卡
+        </div>
+        <div class="gold">
+          <span>
+            <i class="icon_heroitem icon_honor"></i>9999        
+          </span>
+          <span>
+            <i class="icon_heroitem icon_ice"></i>9999
+          </span>
+        </div>
+      </li>
+      <li data-id="2">
+        <div class="img">
+          <img src="images/vainglory/dbpic/image_1.jpg">        
+        </div>      
+        <div class="name">
+          <i class="icon_heroitem icon_jobs icon_jobs_gongjian"></i>影狐塔卡
+        </div>
+        <div class="gold">
+          <span>
+            <i class="icon_heroitem icon_honor"></i>9999        
+          </span>
+          <span>
+            <i class="icon_heroitem icon_ice"></i>9999
+          </span>
+        </div>
+      </li>
+      <li data-id="3">
+        <div class="img">
+          <img src="images/vainglory/dbpic/image_1.jpg">        
+        </div>      
+        <div class="name">
+          <i class="icon_heroitem icon_jobs icon_jobs_gongjian"></i>影狐塔卡
+        </div>
+        <div class="gold">
+          <span>
+            <i class="icon_heroitem icon_honor"></i>9999        
+          </span>
+          <span>
+            <i class="icon_heroitem icon_ice"></i>9999
+          </span>
+        </div>
+      </li>
+      <li data-id="4">
+        <div class="img">
+          <img src="images/vainglory/dbpic/image_1.jpg">        
+        </div>      
+        <div class="name">
+          <i class="icon_heroitem icon_jobs icon_jobs_gongjian"></i>影狐塔卡
+        </div>
+        <div class="gold">
+          <span>
+            <i class="icon_heroitem icon_honor"></i>9999
+          </span>
+          <span>
+            <i class="icon_heroitem icon_ice"></i>9999
+          </span>
+        </div>
+      </li>
+      -->
+    </ul>    
+  </div><!-- /heroitem -->
+</div><!-- /herolist -->
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="js/data-vainglory.js"></script>
+<script type="text/javascript" src="json/json-vainglory.js"></script>
+<script type="text/javascript" src="js/data-vainglory-hero.js"></script>
 <script type="text/javascript">
 $(function(){
-	var vainglory = new Vainglory(1);
+	var vainglory = new Vainglory(data_hero);  
+
 });
 </script>
 </body>

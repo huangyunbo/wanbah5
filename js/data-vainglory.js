@@ -50,7 +50,7 @@
 			switch(true){
 				case (href == "index"):
 					this.isplatform("index");
-					//this.printindex();
+					this.printindex();
 					break;
 			}
 		},
