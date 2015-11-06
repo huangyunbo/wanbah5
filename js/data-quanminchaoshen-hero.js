@@ -19,9 +19,10 @@
 	};
 	
 	QmcsHero.prototype = {
-		setBlur: function(scrollTopH){//模糊
+		setBlur: function(){//模糊
 			var $win = $(window),
 				scrollTopH = 0,//滑动条的实时高度
+				starScrollTopH = 0,
 				h = this.o.herodHeight,
 				blankH = h*0.2, //图片顶部的20%不模糊高度
 				actualH = h*0.8, //实际需要模糊的80%高度
@@ -48,12 +49,13 @@
 				}
 			}
 			
-			//if(this.o.platform == "ios"){
+			if(this.o.platform == "ios"){
 				$baike.addClass("baike");
 				$baike.on("touchstart", function(e){
 					e.preventDefault();
 					touchStarY = e.originalEvent.changedTouches[0].pageY;
 					starMarginTop = parseInt($herod.css("margin-top"));
+					starScrollTopH = $win.scrollTop();
 				});
 				$baike.on("touchmove", function(e){
 					e.preventDefault();
@@ -61,12 +63,12 @@
 					touchMoveY = e.originalEvent.changedTouches[0].pageY;
 					marginTop = starMarginTop + (touchMoveY - touchStarY);//设置的距离=起始的点+滑动的距离
 					
-					if(marginTop >= h){//超出往下滑范围，禁止
-						$herod.css("margin-top",h);
+					if(marginTop >= h + starScrollTopH){//超出往下滑范围，禁止
+						$herod.css("margin-top",h + starScrollTopH);
 						scrollTopH = 0;
 					}else{//往上滑(正常范围+超出往上滑范围)
 						$herod.css("margin-top",marginTop);
-						scrollTopH = h - marginTop;
+						scrollTopH = h - marginTop + starScrollTopH;
 					}
 					calcGaussblur();
 				});
@@ -78,25 +80,21 @@
 						$baike.removeClass("baike");
 					}
 				});
+				
 				$win.scroll(function(){
 					scrollTopH = $win.scrollTop();
-					if(leave == 1 && scrollTopH < h){
+					if(leave == 1 && scrollTopH < h){//当进入顶部区域，只需要执行一次
 						leave = 0;
-						console.log(scrollTopH);
-						/*$herod.css("margin-top",h - scrollTopH);
-						$win.scrollTop(0);*/
-						//$herod.css("margin-top",h);
 						$baike.addClass("baike");
-						calcGaussblur();
 					}
+					calcGaussblur();
 				});
-			//}
-			/*else{
+			}else{
 				$win.scroll(function(){
 					scrollTopH = $win.scrollTop();
 					calcGaussblur();
 				});
-			}*/
+			}
 		},
 		setSlidebar: function(){//滑动条
 			var that = this,
@@ -123,7 +121,7 @@
 				clearInterval(that.o.danceTime[1]);//清空第2个跑数值跳动
 				level = _level;
 				$("#barlevel").html(level);
-				that.setFigure(level);
+				that.setFigure("no",level);
 			}
 
 			$thumb.on("touchstart", function(e){
@@ -146,12 +144,13 @@
 			var that = this,
 				$win = $(window),
 				scrollTopH,//滑动条的实时高度
-				startTopH = $("#equipchoice").offset().top,//从装备选择开始数值跳动
+				startTopH = $("#figure_lt").offset().top - that.o.herodHeight,//数值跳动从屏幕刚到开始跳动
 				isDance = 0;
 
+			startTopH = startTopH < 0 ? 0 : startTopH;
 			function dance(element, millisec){
 				var dom = $("."+element),
-					num = dom.text(),
+					num = Number(dom.attr("data-num")),
 					i = 0,
 					beat = function(){
 						i++;
@@ -214,7 +213,7 @@
 			this.o.herodHeight = h;
 			$("#herod").css("margin-top",h);
 		},
-		setFigure: function(level){//设置英雄等级数值数据
+		setFigure: function(isstart,level){//设置英雄等级数值数据
 			var type = this.o.type,
 				piece = this.o.piece,
 				html_figure_lt = '',
@@ -224,21 +223,32 @@
 			
 			if($.isEmptyObject(piece)) return;
 			
-			html_figure_lt = '<div class="num num_green">'+(piece.figure.shengming[0]+level*piece.figure.shengming[1])+'</div>'+
-								'<div class="k">生命值</div>'+
-								'<div class="v">每级增加'+piece.figure.shengming[1]+'</div>';
+			if(isstart === 1){//第一次的时候需要从0开始数值跳动
+				html_figure_lt = '<div class="num num_green" data-num="'+piece.figure.shengming[0]+'">0</div>';
+			}else{
+				html_figure_lt = '<div class="num num_green">'+(piece.figure.shengming[0]+level*piece.figure.shengming[1])+'</div>';
+			}
+			html_figure_lt += '<div class="k">生命值</div>'+
+							 '<div class="v">每级增加'+piece.figure.shengming[1]+'</div>';
 			
 			if(type == 0 || type == 2){
-				html_figure_lb += '<div class="num num_red">'+(piece.figure.gongji[0]+level*piece.figure.gongji[1])+'</div>'+
-								  '<div class="k">攻击力</div>'+
+				if(isstart === 1){//第一次的时候需要从0开始数值跳动
+					html_figure_lb = '<div class="num num_red" data-num="'+piece.figure.gongji[0]+'">0</div>';
+				}else{
+					html_figure_lb = '<div class="num num_red">'+(piece.figure.gongji[0]+level*piece.figure.gongji[1])+'</div>';
+				}
+				html_figure_lb += '<div class="k">攻击力</div>'+
 								  '<div class="v">每级增加'+piece.figure.gongji[1]+'</div>';
 				html_figure_other = '<dl>'+
 										'<dt>法术强度</dt><dd>'+(piece.figure.fashu[0]+level*piece.figure.fashu[1])+'(+'+piece.figure.fashu[1]+'每级)</dd>'+
 									'</dl>';
-				
 			}else{
-				html_figure_lb += '<div class="num num_red">'+(piece.figure.fashu[0]+level*piece.figure.fashu[1])+'</div>'+
-								  '<div class="k">法术强度</div>'+
+				if(isstart === 1){//第一次的时候需要从0开始数值跳动
+					html_figure_lb = '<div class="num num_red" data-num="'+piece.figure.fashu[0]+'">0</div>';
+				}else{
+					html_figure_lb = '<div class="num num_red">'+(piece.figure.fashu[0]+level*piece.figure.fashu[1])+'</div>';
+				}
+				html_figure_lb += '<div class="k">法术强度</div>'+
 								  '<div class="v">每级增加'+piece.figure.fashu[1]+'</div>';
 				html_figure_other = '<dl>'+
 										'<dt>攻击力</dt><dd>'+(piece.figure.gongji[0]+level*piece.figure.gongji[1])+'(+'+piece.figure.gongji[1]+'每级)</dd>'+
@@ -357,7 +367,7 @@
 				$(this).find(".star").addClass("star"+piece.graphical[index]);
 			});
 			
-			this.setFigure(1);//设置英雄等级数值数据
+			this.setFigure(1,1);//第一次设置英雄等级数值数据
 			
 			for(var i=0; i<piece.sname.length; i++){//英雄技能
 				html_skills_head += '<li>'+
@@ -405,7 +415,7 @@
 			that.o.type = Number(that.getsession("wbgl-quanminchaoshen-hero-type"));
 			that.printHerodetail();
 			that.setHerodtop();
-			//that.setVideo();//英雄技能视频
+			that.setVideo();//英雄技能视频
 			
 			$("#question").click(function(){
 				$("#tips").toggleClass("hide");
