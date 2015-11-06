@@ -536,8 +536,8 @@ gulp.task('luobo3_ios', function(){
 
 
 //全民超神
-var quanminchaoshen_gameid = 82;//100
-var quanminchaoshen_plugin_hero = "plugin_1119";//plugin_1101
+var quanminchaoshen_gameid = 100;//100
+var quanminchaoshen_plugin_hero = "plugin_1101";//plugin_1101
 var quanminchaoshen_plugin_equip = "plugin_1103";
 var quanminchaoshen_path = '../';
 var quanminchaoshen_replace = ['css/', 'js/', 'json/'];

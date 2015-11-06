@@ -4,7 +4,7 @@
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.o = {
 			platform:"web",
-			plugin:"plugin_1119",//plugin_1101
+			plugin:"plugin_1101",//plugin_1101
 			plugin_equip:"plugin_1103",
 			url:"images/quanminchaoshen/",
 			type:0,//英雄类别数组下标
