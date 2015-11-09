@@ -21,19 +21,19 @@ a{ text-decoration:none}
 .fs_12{ font-size:12px}
 
 
-body{ background:#08121a}
+
+body{ background:#08121a; color:#fff}
 .header{ height:44px; border-bottom:1px solid #355cbf; background:#091723; position:fixed; width:100%; top:0; left:0; z-index:100}
-.header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
+.header h1{ font-size:18px; padding-top:8px; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
-.container{ margin-top:45px; color:#fff; font-size:1.8rem; text-align:center; padding-top:100px}
+
 
 /*英雄详情*/
-
-/*顶部背景*/
-/*.herod .headbg{ position:relative;width:100%}*/
-.herod{margin-top:45px; color:#fff}
+.baike{ position:fixed; z-index:101; top:0; left:0; width:100%; height:100%; /*background:rgba(0,0,0,0.5)*/}
+.herod_bg{ position:fixed; width:100%; top:0; z-index:9}
 .herod_bg.first_blur{ -webkit-filter:blur(0px) !important; filter:blur(0px) !important}
 .herod_bg.last_blur{ -webkit-filter:blur(20px) !important; filter:blur(20px) !important}
+.herod{ position:relative; z-index:10; -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0)}
 .herod .plr_7{ padding:0 7px}
 .herod .intro .top_l{ float:left}
 .herod .intro .top_r{ float:right}
@@ -103,7 +103,7 @@ body{ background:#08121a}
 .herolist .nav .top li i{ content: ""; display:inline-block; width: 8px; height: 8px; border: solid #fff; border-width: 1px 0 0 1px; vertical-align:3px; margin-left: 10px; -webkit-transform: rotate(225deg); transform:rotate(225deg)}
 .herolist .nav .top li.on i{ vertical-align:-3px; -webkit-transform: rotate(45deg); transform:rotate(45deg)}
 
-.herolist .heroitem{ text-align:center; color:#fff}
+.herolist .heroitem{ text-align:center}
 .herolist .heroitem li{ float:left; width:33.33%; padding:5px; box-sizing:border-box; margin:10px 0; position:relative}	
 .herolist .heroitem .img{ padding:0 6px}
 .herolist .heroitem .icon_heroitem{ display:inline-block; background:url(../images/vainglory/hero-detail.png); background-size:56.25px; vertical-align:-3px; margin-right:3px}
