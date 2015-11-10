@@ -598,7 +598,7 @@
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			if(!this.checkversion()) return;
-			var href = $("body").attr("data-url");			
+			var href = $("body").attr("data-url");
 			switch(true){
 				case (href == "index.html"):
 					this.isplatform("index");
@@ -610,7 +610,7 @@
 					break;
 			}
 		},
-		init: function(){			
+		init: function(){
 			this.ispage();
 		}
 	}
