@@ -105,6 +105,7 @@
 				that.setsession("wbgl-quanminchaoshen-hero-id", _id);
 				
 				if(that.o.platform == "ios"){
+					that.setsession("wbgl-quanminchaoshen-equip2hero", "y");//保证跳转到英雄详情页，然后再跳回来
 					location.href = that.o.plugin_hero+'/data-quanminchaoshen-hero-detail.html';
 				}else if(that.o.platform == "android"){
 					that.setsession("wbgl-quanminchaoshen-equip2hero", "y");//保证跳转到英雄详情页，然后再跳回来

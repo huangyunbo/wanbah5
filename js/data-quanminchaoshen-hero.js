@@ -314,9 +314,8 @@
 				}
 			});
 		},
-		printHerodetail: function(){//打印英雄详情
-			var id = Number(this.getsession("wbgl-quanminchaoshen-hero-id")),
-				type = this.o.type,
+		printHerodetail: function(id){//打印英雄详情
+			var type = this.o.type,
 				piece,
 				html_herod_head_tit ='',
 				html_herod_head_label = '',
@@ -334,8 +333,8 @@
 					break;
 				}
 			}
-			
 			if(piece === undefined) return;
+			
 			
 			$("#herod_bg").attr("src",this.o.url+"DBPic/d_"+id+".jpg");//大背景图片
 			
@@ -359,7 +358,7 @@
 			$("#equipchoice").html(html_equipchoice);//装备选择
 			
 			for(var i=0; i<piece.addskill.length; i++){
-				html_addskill += '<li><img src="'+this.o.url+'skillPic/skill'+piece.id+'_'+piece.addskill[i]+'.png"></li>';
+				html_addskill += '<li><img src="'+this.o.url+'skillPic/skill'+id+'_'+piece.addskill[i]+'.png"></li>';
 			}
 			$("#addskill").html(html_addskill);//加点路线
 			
@@ -371,7 +370,7 @@
 			
 			for(var i=0; i<piece.sname.length; i++){//英雄技能
 				html_skills_head += '<li>'+
-										'<div><img src="'+this.o.url+'skillPic/skill'+piece.id+'_'+(i+1)+'.png"></div>'+
+										'<div><img src="'+this.o.url+'skillPic/skill'+id+'_'+(i+1)+'.png"></div>'+
 									'</li>';
 				
 				html_skills_content += '<div class="item">'+
@@ -392,7 +391,6 @@
 			$("#skills_head").html(html_skills_head);
 			$("#skills_content").html(html_skills_content);
 			
-			
 			$("#suipian").html(piece.suipian);//获得途径			
 			for(var i=0; i<piece.getsuipian.length; i++){
 				html_getsuipian += '<label>'+piece.getsuipian[i]+'</label>';
@@ -410,10 +408,26 @@
 			
 		},
 		htmlHerodetail: function(){//英雄详情
-			var that = this;
-
-			that.o.type = Number(that.getsession("wbgl-quanminchaoshen-hero-type"));
-			that.printHerodetail();
+			var that = this,
+				id = Number(this.getsession("wbgl-quanminchaoshen-hero-id")),
+				isequip2hero = 0;
+			
+			if(that.getsession("wbgl-quanminchaoshen-equip2hero") == "y"){//如果是从装备跳转过来的，则没有hero-type
+				for(var i=0; i<that.data.length; i++){
+					if(isequip2hero == 0){//找到了就别循环了
+						for(var j=0; j<that.data[i].data.length; j++){
+							if(that.data[i].data[j].id == id){
+								that.o.type = i;
+								isequip2hero = 1;
+								break;
+							}
+						}
+					}
+				}
+			}else{
+				that.o.type = Number(that.getsession("wbgl-quanminchaoshen-hero-type"));
+			}
+			that.printHerodetail(id);
 			that.setHerodtop();
 			that.setVideo();//英雄技能视频
 			
@@ -576,6 +590,7 @@
 						this.setsession("wbgl-quanminchaoshen-equip2hero","n");//重置 从装备跳转过来
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
 					}else if(this.o.platform == "ios"){
+						this.setsession("wbgl-quanminchaoshen-equip2hero","n");//重置 从装备跳转过来
 						$("#herolist").addClass("mt_0");
 					}
 				break;
