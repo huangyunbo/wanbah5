@@ -218,13 +218,49 @@
 
 		htmlHeroDetail: function(){
 			var that = this;
-			that.o.type = Number(that.getsession("wbgl-vainglory-hero-type"));
+			that.o.type = Number(that.getsession("wbgl-vainglory-hero-type"));			
 			that.printHeroDetail();
+			$("#skills_head").on("click", "li",function(){
+				var _index = $(this).parents().children().index($(this));
+				$(this).addClass("on").siblings().removeClass("on");
+				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");
+				
+			}).find("li").eq(0).trigger("click");
+
+			$("#skin").on("click", "div",function(){
+				var _index = $(this).parents().children().index($(this));
+				$(this).addClass("on").siblings().removeClass("on");
+				$("#skin_inf").children().siblings().removeClass("on").eq(_index).addClass("on");
+				
+			}).find("div").eq(0).trigger("click");			
+
 			that.setHerodtop();
 			that.setBlur();//模糊
+			that.setSlidebar();//滑动条
 		},
 
 		printHeroDetail: function(){
+			var that = this;
+			function getHardLevel(level){
+			switch(level){
+				case 1:
+				return "初级";
+				case 2:
+				return "中级";
+				case 3:
+				return "高级"; 
+				}			
+			}
+			function getLocation(duty){
+				switch(duty){
+					case 1:
+					return "对线";
+					case 2:
+					return "打野";
+					case 3:
+					return "游走"; 
+				}			
+			}
 			var id = Number(this.getsession("wbgl-vainglory-hero-id")),
 				type = this.o.type,
 				piece;		
@@ -239,8 +275,164 @@
 
 			if(piece == undefined) return;			
 			console.log(id);
-			$("#herod_bg").attr("src",this.o.url+"DBPic/image_"+id+".jpg");//大背景图片
+			$("#herod_bg").attr("src",this.o.url+"DBPic/image_"+id+".jpg");//大背景图片			
+
+			
+
+           
+            var intro_top ='<div class="intro_top">'+
+					    	'<div class="top_l">'+
+					        	'<span class="name">'+piece.name+'</span>'+
+					            '<i class="icon_jobs icon_jobs_gongjian"></i>'+ 
+					        '</div>'+            
+					        '<div class="top_r">'+
+					            '<div class="item">'+
+					                '<i class="icon_honor"></i>'+piece.honor+
+					            '</div>'+                           
+					            '<div class="item">'+
+					                '<i class="icon_ice"></i>'+piece.ice+
+					            '</div>'+
+					        '</div>'+
+					    '</div><!--/intr-top-->'+
+					    '<div class="clear"></div>'+        
+					    '<div class="intro_middle">'+
+					    	''+"难度:"+getHardLevel(piece.diff)+' | '+"位置:"+getLocation(piece.duty)+
+					    '</div>'+      
+					    '<div class="intro_bottom fs_12">'+
+					    	''+piece.desc+''+
+					    '</div>';
+
+			$("#herod_head").html(intro_top);
+			var summary = '<p class="fs_12">'+piece.summary+'</p>';
+			$("#summary").html(summary);
+			var html_equipchoice='';
+			for(var i=0; i<piece.item.length; i++){
+				html_equipchoice += '<li><img src="'+this.o.url+'equip/'+'item'+piece.item[i]+'.png"></li>';
+			}
+			$("#equipchoice").html(html_equipchoice);//装备选择
+			var html_addskill='';
+			for(var i=0; i<piece.build.length; i++){
+				html_addskill += '<li><img src="'+this.o.url+'dbpic/skill'+piece.id+'_'+piece.build[i]+'.jpg"></li>';
+			}
+			$("#addskill").html(html_addskill);//加点路线
+			$("#graphical").children("li").each(function(index){//英雄数据
+				$(this).find(".star").addClass("star"+piece.ability[index]);
+			}); 
+
+			 
+
+	        var hero_qipo = '<li><div class="l"><img src="'+this.o.url+'dbpic/spec'+piece.id+'.jpg"></div>'+
+                '<div class="r fs_12">'+
+                '<div>'+piece.spec_name+
+                '</div><p>'+piece.spec_tips+'</p>'+
+                '</div><div class="r fs_12"><div class="qp_skill">气魄技巧</div><p>'+piece.spec_des+'</p></div>'+
+                '</li>';
+            $("#hero_qipo").html(hero_qipo);
+
+            var html_skills_head='',
+            	html_skills_content='';
+            for(var i=0; i<piece.skill_name.length; i++){//英雄技能
+				html_skills_head += '<li>'+
+										'<img src="'+this.o.url+'dbpic/skill'+piece.id+'_'+(i+1)+'.jpg">'+
+									'</li>';				
+				html_skills_content += '<div class="item">'+
+											'<div class="desc"><div>'+
+							            		'<span>'+piece.skill_name[i]+'</span>'+piece.skill_desc[i]+'</div>'+'<div>'+piece.skill_data[i]+'</div>'+
+							                '</div>'+
+						                '</div>';	
+				// html_skills_content += '<div class="video" id="videocon'+i+'" data-id="'+piece.svideo[i]+'"></div>';				
+			}
+			$("#skills_head").children().html(html_skills_head);
+			$("#skills_content").html(html_skills_content);
+
+			var html_skin_pic='',
+				html_skin_content='';
+			for(var i=0;i<piece.skin.length && piece.skin[i].trim().length>0;i++){				
+				html_skin_pic +='<div class="item">'+
+									'<img src="'+this.o.url+'dbpic/skinicon'+piece.id+'_'+(i+1)+'.jpg">'+
+									'</div>';
+				if(piece.skin_ice[i].trim().length == 0){
+					piece.skin_ice[i] = 0;
+				}
+				html_skin_content +='<div class="item">'+
+				'<div class="mb_10"><img src="'+this.o.url+'dbpic/skinpic'+piece.id+'_'+(i+1)+'.jpg"></div>'+
+				'<div><span>售价</span><i class="icon_ice"></i><h4>'+piece.skin_ice[i]+'</h4></div>'+
+				'<div><span>合成</span>'+piece.skin_composes+'</div>'+
+				'</div>';				
+			}
+			$("#skin").html(html_skin_pic);
+			$("#skin_inf").html(html_skin_content);
+			that.setFigure(0);
 		},
+
+		setFigure: function(level){
+			console.log(level);
+			var piece = this.o.piece;
+			var basic_data = '<li>'+
+				'<span>生命:</span>'+(parseInt(piece.figure.hp[0]+level*piece.figure.hp[1]))+'(+'+piece.figure.hp[1]+'每级)'+
+				'</li>'+
+	            '<li><span>护甲:</span>'+(parseInt(piece.figure.armor[0]+level*piece.figure.armor[1]))+'(+'+piece.figure.armor[1]+'每级)'+
+	            '</li>'+
+	            '<li><span>'+piece.figure.mpname+'</span>'+(parseInt(piece.figure.mp[0]+level*piece.figure.mp[1]))+'(+'+piece.figure.mp[1]+'每级)'+
+	            '</li>'+
+	            '<li><span>魔抗:</span>'+(parseInt(piece.figure.res[0]+level*piece.figure.res[1]))+'(+'+piece.figure.res[1]+'每级)'+
+	            '</li>'+
+	            '<li><span>攻击:</span>'+(parseInt(piece.figure.atk[0]+level*piece.figure.atk[1]))+'(+'+piece.figure.atk[1]+'每级)'+
+	            '</li>'+
+	            '<li><span>攻击范围:</span>'+parseInt(piece.figure.atkrange[0])+
+	            '</li>'+
+	            '<li><span>攻击速度:</span>'+(parseInt(piece.figure.aspd[0]+level*piece.figure.aspd[1]))+'(+'+piece.figure.aspd[1]+'每级)'+
+	            '</li>'+
+	            '<li><span>移动速度:</span>'+parseInt(piece.figure.mspd[0])+
+	            '</li>';	             
+	        $("#hero_basic_data").html(basic_data);//英雄数据
+
+		},
+
+		setSlidebar: function(){//滑动条
+			var that = this,
+				$barlevel = $("#barlevel"),
+				$bar = $("#bar"),
+				$barhandle = $("#barhandle"),
+				$thumb = $barhandle.children(),
+				barW = $bar.width(),
+				barhandleW = $barhandle.width(),
+				barW_max = barW-barhandleW,
+				touchMoveX,
+				barO_l = $bar.offset().left,
+				distanceX,
+				paragraph = barW_max/10,
+				level = 1;//初始化
+
+			function slide(rangeX){
+				var _level = Math.ceil(rangeX/paragraph);
+				
+				_level = _level == 0 ? 1 : _level;
+				$barhandle.css({"left":rangeX+"px"});
+				if(_level == level) return;//减少后面的调用				
+				level = _level;
+				$("#barlevel").html(level);
+				that.setFigure(level);
+			}
+
+			$thumb.on("touchstart", function(e){
+				e.preventDefault();
+			});
+			$thumb.on("touchmove", function(e){
+				e.preventDefault();
+    			touchMoveX = e.originalEvent.changedTouches[0].pageX;
+				distanceX = touchMoveX - barO_l;
+				if(distanceX < 0){
+					slide(0);
+				}else if(distanceX > barW_max){
+					slide(barW_max);
+				}else{
+					slide(distanceX);
+				}
+			});
+		},
+
+		
 
 		getsession: function(){
 			var sessionname = arguments[0];

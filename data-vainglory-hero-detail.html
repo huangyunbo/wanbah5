@@ -49,12 +49,12 @@
     
     <div class="plr_7 mb_10">
     	<h2 class="herod_h2">推荐玩法</h2>
-        <p class="fs_12">被动嗜血,让他的普通攻击获得了吸血效果加成，配合新技能撕裂的被动，让他在打野的时候可以做到几乎无损耗！迅速的清野效果加上技能扑击的范围性眩晕。</p>
+        <p class="fs_12" id="summary">被动嗜血,他的普通攻击获得了吸血效果加成，配合新技能撕裂的被动，让他在打野的时候可以做到几乎无损耗！迅速的清野效果加上技能扑击的范围性眩晕。</p>
     </div>
     
     <div class="equipchoice plr_7 mb_10">
     	<h2 class="herod_h2">装备选择</h2>
-        <ul>
+        <ul id="equipchoice">
             <li><img src="images/itemthumb-bb2.png"></li>
             <li><img src="images/itemthumb-bb2.png"></li>
             <li><img src="images/itemthumb-bb2.png"></li>
@@ -66,7 +66,7 @@
     
     <div class="specialtit plr_7 mb_10">
     	<h2 class="herod_h2">加点线路</h2>
-        <ul>
+        <ul id="addskill">
             <li><img src="images/itemthumb-bb2.png"></li>
             <li><img src="images/itemthumb-bb2.png"></li>
             <li><img src="images/itemthumb-bb2.png"></li>
@@ -82,7 +82,7 @@
     
     <div class="herodata plr_7 mb_10">
     	<h2 class="herod_h2">英雄数据</h2>
-        <ul class="graphical mb_10">
+        <ul class="graphical mb_10" id="graphical">
             <li>
                 <i class="icon_herodata icon_herodata_shuchu"></i>
                 <div class="r">
@@ -175,7 +175,7 @@
             </li>
         </ul>
         
-        <ul class="info mb_10 fs_12">
+        <ul class="info mb_10 fs_12" id="hero_basic_data">
             <li>
             	<span>生命:</span>761(+61.42每级)
             </li>
@@ -202,16 +202,32 @@
             </li>
         </ul>
         
-        <input type="range" class="herolevel_range">
+        <!-- <input type="range" class="herolevel_range"> -->
+
+        <div class="bar">
+            <div class="l"><div id="barlevel">1</div>LEVEL</div>
+            <div class="r" id="bar">
+                <i class="x_line"></i>
+                <i class="point point_l"></i>
+                <i class="point point_m"></i>
+                <i class="point point_r"></i>
+                <div class="barhandle" id="barhandle"><span class="wbclick"></span></div>
+            </div>
+        </div><!--/bar-->
+        
     </div><!--/herodata-->   
 
     <div class="qipo plr_7 mb_10">
     	<h2 class="herod_h2">英雄气魄</h2>
-        <ul>
+        <ul id="hero_qipo">
             <li>
                 <div class="l"><img src="images/quanminchaoshen/DBPic/1.jpg"></div>
                 <div class="r fs_12">
                     <div>刺客奥义</div>
+                    <p>每当塔卡暴击，她将在短时间内恢复相当于暴击造成伤害的20%生命值。</p>
+                </div>
+                <div class="r fs_12">
+                    <div class="qp_skill">气魄技巧</div>
                     <p>每当塔卡暴击，她将在短时间内恢复相当于暴击造成伤害的20%生命值。</p>
                 </div>
             </li>
@@ -220,8 +236,8 @@
     
     <div class="skills mb_10">
     	<h2 class="herod_h2 plr_7">英雄技能</h2>
-        <div class="title mb_10">
-        	<ul>
+        <div class="title mb_10" id="skills_head">
+        	<ul class="clearfix">
             	<li class="on">
                 	<img src="images/quanminchaoshen/DBPic/1.jpg">
                 </li>
@@ -231,25 +247,48 @@
                 <li>
                 	<img src="images/quanminchaoshen/DBPic/1.jpg">
                 </li>
-                <div class="clear"></div>
             </ul>
         </div>
         
-        <div class="content plr_7">
+        <div class="content plr_7" id="skills_content">
         	<div class="item on">
             	<div class="desc">
-            		<span>夺命X字斩</span>每当塔卡暴击，她将在极短时间内恢复相当于暴击所造成伤害的20%生命值。每5秒塔卡都必定能暴击一次。每当塔卡使用技能或暴击时就会叠加一层buff（最高5层），此buff能加速他获得暴击的时间0.9秒，减少25%技能冷却时间。<br><span>伤害</span>350/575/800(+120水晶)<br><span>能量消耗</span>120/150/180<br><span>冷却</span>140/110/80<br><span>使用技巧</span>塔卡蜿蜒穿过战场，他的刀消灭了一切他所盯上的目标。他舞蹈在刀尖上，他的敏捷速度和隐身技能弥补了脆弱的防御。<br>
+                    <div>
+            		    <span>夺命X字斩</span>每当塔卡暴击，她将在极短时间内恢复相当于暴击所造成伤害的20%生命值。每5秒塔卡都必定能暴击一次。每当塔卡使用技能或暴击时就会叠加一层buff（最高5层），此buff能加速他获得暴击的时间0.9秒，减少25%技能冷却时间。<br>
+                    </div>
+                    <div>
+                        <span>伤害</span>350/575/800(+120水晶)<br>
+                        <span>能量消耗</span>120/150/180<br>
+                        <span>冷却</span>140/110/80<br>
+                        <span>使用技巧</span>塔卡蜿蜒穿过战场，他的刀消灭了一切他所盯上的目标。他舞蹈在刀尖上，他的敏捷速度和隐身技能弥补了脆弱的防御。<br>
+                    </div>
                 </div>
                 <div id="youkuplayer"></div>
             </div>
             <div class="item">
             	<div class="desc">
-            		<span>夺命X字斩</span>每当塔卡暴击，她将在极短时间内恢复相当于暴击所造成伤害的20%生命值。每5秒塔卡都必定能暴击一次。每当塔卡使用技能或暴击时就会叠加一层buff（最高5层），此buff能加速他获得暴击的时间0.9秒，减少25%技能冷却时间。<br><span>伤害</span>350/575/800(+120水晶)<br><span>能量消耗</span>120/150/180<br><span>冷却</span>140/110/80<br><span>使用技巧</span>塔卡蜿蜒穿过战场，他的刀消灭了一切他所盯上的目标。他舞蹈在刀尖上，他的敏捷速度和隐身技能弥补了脆弱的防御。<br>
+            		<div>
+                        <span>夺命X字斩</span>每当塔卡暴击，她将在极短时间内恢复相当于暴击所造成伤害的20%生命值。每5秒塔卡都必定能暴击一次。每当塔卡使用技能或暴击时就会叠加一层buff（最高5层），此buff能加速他获得暴击的时间0.9秒，减少25%技能冷却时间。<br>
+                    </div>
+                    <div>
+                        <span>伤害</span>350/575/800(+120水晶)<br>
+                        <span>能量消耗</span>120/150/180<br>
+                        <span>冷却</span>140/110/80<br>
+                        <span>使用技巧</span>塔卡蜿蜒穿过战场，他的刀消灭了一切他所盯上的目标。他舞蹈在刀尖上，他的敏捷速度和隐身技能弥补了脆弱的防御。<br>
+                    </div>
                 </div>
             </div>
             <div class="item">
             	<div class="desc">
-            		<span>夺命X字斩</span>每当塔卡暴击，她将在极短时间内恢复相当于暴击所造成伤害的20%生命值。每5秒塔卡都必定能暴击一次。每当塔卡使用技能或暴击时就会叠加一层buff（最高5层），此buff能加速他获得暴击的时间0.9秒，减少25%技能冷却时间。<br><span>伤害</span>350/575/800(+120水晶)<br><span>能量消耗</span>120/150/180<br><span>冷却</span>140/110/80<br><span>使用技巧</span>塔卡蜿蜒穿过战场，他的刀消灭了一切他所盯上的目标。他舞蹈在刀尖上，他的敏捷速度和隐身技能弥补了脆弱的防御。<br>
+            		<div>
+                        <span>夺命X字斩</span>每当塔卡暴击，她将在极短时间内恢复相当于暴击所造成伤害的20%生命值。每5秒塔卡都必定能暴击一次。每当塔卡使用技能或暴击时就会叠加一层buff（最高5层），此buff能加速他获得暴击的时间0.9秒，减少25%技能冷却时间。<br>
+                    </div>
+                    <div>
+                        <span>伤害</span>350/575/800(+120水晶)<br>
+                        <span>能量消耗</span>120/150/180<br>
+                        <span>冷却</span>140/110/80<br>
+                        <span>使用技巧</span>塔卡蜿蜒穿过战场，他的刀消灭了一切他所盯上的目标。他舞蹈在刀尖上，他的敏捷速度和隐身技能弥补了脆弱的防御。<br>
+                    </div>
                 </div>
             </div>
         </div><!--/content-->
@@ -257,7 +296,7 @@
     
     <div class="skin mb_10">
     	<h2 class="herod_h2 plr_7">英雄皮肤</h2>
-        <div class="head">
+        <div class="head" id="skin">
         	<div class="item on">
             	<img src="images/quanminchaoshen/DBPic/1.jpg">
             </div>
@@ -269,10 +308,10 @@
             </div>
         </div>
         
-        <div class="box">
+        <div class="box" id="skin_inf">
         	<div class="item">
         		<div class="mb_10"><img src="images/download.jpg"></div>
-                <div><span>售价</span><i class="icon_ice"></i>1000</div>
+                <div><span>售价</span><i class="icon_ice"></i><h4>1000</h4></div>
                 <div><span>合成</span>魔法叶X8 花火矿石X8 原罪宽恕X</div>
             </div>
         </div><!--/box-->
