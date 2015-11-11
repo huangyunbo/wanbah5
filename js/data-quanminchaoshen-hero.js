@@ -10,7 +10,7 @@
 			type:0,//英雄类别数组下标
 			piece:{},//英雄单个详情object
 			herodHeight:300,//默认距顶部高度
-			danceTime:[]//清空生命力、攻击力/法强跳动时间
+			numDance:[]//[{k:element,v:time}]需要清空数值跳动time
 		};
 		if(this.o.platform == "android"){
 			this.o.url="../images/quanminchaoshen/";
@@ -117,8 +117,8 @@
 				_level = _level == 0 ? 1 : _level;
 				$barhandle.css({"left":rangeX+"px"});
 				if(_level == level) return;//减少后面的调用
-				clearInterval(that.o.danceTime[0]);//清空第1个跑数值跳动
-				clearInterval(that.o.danceTime[1]);//清空第2个跑数值跳动
+				clearInterval(that.o.numDance[0].v);//清空第1个跑数值跳动
+				clearInterval(that.o.numDance[1].v);//清空第2个跑数值跳动
 				level = _level;
 				$("#barlevel").html(level);
 				that.setFigure("no",level);
@@ -144,7 +144,7 @@
 			var that = this,
 				$win = $(window),
 				scrollTopH,//滑动条的实时高度
-				startTopH = $("#figure_lt").offset().top - that.o.herodHeight,//数值跳动从屏幕刚到开始跳动
+				startTopH = $("#figure_lt").offset().top - that.o.herodHeight,//数字距顶部的距离-英雄名字距顶部的距离 = 每次滚动到数字距离屏幕跟英雄在第一次屏幕高度一样的距离处
 				isDance = 0;
 
 			startTopH = startTopH < 0 ? 0 : startTopH;
@@ -156,10 +156,16 @@
 						i++;
 						if(num >= i){
 							dom.html(i);
+						}else{
+							for(var j=0; j<that.o.numDance.length; j++){
+								if(element == that.o.numDance[j].k){
+									clearInterval(that.o.numDance[j].v);//清空数值跳动
+									break;
+								}
+							}
 						}
 					};
-				
-				that.o.danceTime.push(setInterval(beat, millisec));//拖动滑动条的时候需要立马清空
+				that.o.numDance.push({k:element,v:setInterval(beat, millisec)});//拖动滑动条的时候以及跑完的时候需要立马清空
 			}
 			$win.scroll(function(){
 				scrollTopH = $win.scrollTop();
