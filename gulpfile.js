@@ -713,7 +713,89 @@ gulp.task('zhilongmicheng_ios', function(){
 });
 
 
+//王者荣耀
+var wangzherongyao_gameid = 104;
+var wangzherongyao_plugin_hero = "plugin_1133";
+var wangzherongyao_plugin_equip = "plugin_1134";
+var wangzherongyao_path = '../';
+var wangzherongyao_replace = ['css/', 'js/', 'json/'];
+var wangzherongyao_replace_data =  ['css/', 'js/', 'json/'];
+var wangzherongyao_platform = 'android';
 
+/*gulp.task('wangzherongyao_images', function(){
+    gulp.src('./images/wangzherongyao/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/images/wangzherongyao'));
+	
+	gulp.src('./images/.nomedia', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/images/'));
+});*/
+
+gulp.task('wangzherongyao_css', function(){
+    gulp.src(['./css/data-wangzherongyao.css'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/css'));
+});
+
+gulp.task('wangzherongyao_js', function(){
+    gulp.src(['./js/jquery-2.1.3.min.js','./js/data-wangzherongyao-hero.js'])
+        .pipe(concat('data-wangzherongyao-hero.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+wangzherongyao_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/js'));
+	gulp.src(['./js/jquery-2.1.3.min.js','./js/data-wangzherongyao-equip.js'])
+        .pipe(concat('data-wangzherongyao-equip.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+wangzherongyao_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/js'));
+});
+
+/*gulp.task('wangzherongyao_json', function(){
+    gulp.src(['./json/json-wangzherongyao.js', './json/json-wangzherongyao.js'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/json'));
+});*/
+
+gulp.task('wangzherongyao_data', function(){
+	if(wangzherongyao_platform == 'android'){
+		for(var i=0; i<wangzherongyao_replace.length; i++){
+			wangzherongyao_replace_data[i] = wangzherongyao_path + wangzherongyao_replace[i];
+		}
+	}
+	
+    gulp.src('data-wangzherongyao-hero.html')
+		.pipe(merge({
+            'js/data-wangzherongyao-hero.min.js':['js/jquery-2.1.3.min.js','js/data-wangzherongyao-hero.js']
+        }))
+		.pipe(replace(wangzherongyao_replace[0], wangzherongyao_replace_data[0]))
+		.pipe(replace(wangzherongyao_replace[1], wangzherongyao_replace_data[1]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/'+wangzherongyao_plugin_hero));
+		
+	gulp.src('data-wangzherongyao-equip.html')
+		.pipe(merge({
+			'js/data-wangzherongyao-equip.min.js':['js/jquery-2.1.3.min.js','js/data-wangzherongyao-equip.js']
+		}))
+		.pipe(replace(wangzherongyao_replace[0], wangzherongyao_replace_data[0]))
+		.pipe(replace(wangzherongyao_replace[1], wangzherongyao_replace_data[1]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/'+wangzherongyao_plugin_equip));
+});
+
+gulp.task('wangzherongyao_clean', function(){
+	return gulp.src('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/*', {read: false})
+	.pipe(clean({force: true}));
+});
+
+gulp.task('wangzherongyao_android', ['wangzherongyao_clean'], function(){
+	gulp.start('wangzherongyao_css', 'wangzherongyao_js', 'wangzherongyao_data');
+});
+
+gulp.task('wangzherongyao_ios_inner', ['wangzherongyao_clean'], function(){
+	gulp.start('wangzherongyao_css', 'wangzherongyao_js', 'wangzherongyao_data');
+});
+
+gulp.task('wangzherongyao_ios', function(){
+	wangzherongyao_platform = 'ios';
+	gulp.start('wangzherongyao_ios_inner');
+});
 
 
 
