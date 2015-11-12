@@ -221,9 +221,10 @@
 			that.o.type = Number(that.getsession("wbgl-vainglory-hero-type"));			
 			that.printHeroDetail();
 			$("#skills_head").on("click", "li",function(){
-				var _index = $(this).parents().children().index($(this));
+				var _index = $(this).parents().children().index($(this));				
 				$(this).addClass("on").siblings().removeClass("on");
 				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");
+				that.setVideo(that.o.piece.skill_video[_index],_index);//英雄技能视频
 				
 			}).find("li").eq(0).trigger("click");
 
@@ -233,10 +234,10 @@
 				$("#skin_inf").children().siblings().removeClass("on").eq(_index).addClass("on");
 				
 			}).find("div").eq(0).trigger("click");			
-
-			that.setHerodtop();
+			that.setHerodtop();			
 			that.setBlur();//模糊
-			that.setSlidebar();//滑动条
+			that.setSlidebar();//滑动条			
+			that.setVideoWH();			
 		},
 
 		printHeroDetail: function(){
@@ -273,8 +274,7 @@
 				}
 			}
 
-			if(piece == undefined) return;			
-			console.log(id);
+			if(piece == undefined) return;		
 			$("#herod_bg").attr("src",this.o.url+"DBPic/image_"+id+".jpg");//大背景图片			
 
 			
@@ -338,9 +338,10 @@
 				html_skills_content += '<div class="item">'+
 											'<div class="desc"><div>'+
 							            		'<span>'+piece.skill_name[i]+'</span>'+piece.skill_desc[i]+'</div>'+'<div>'+piece.skill_data[i]+'</div>'+
-							                '</div>'+
-						                '</div>';	
-				// html_skills_content += '<div class="video" id="videocon'+i+'" data-id="'+piece.svideo[i]+'"></div>';				
+							                '</div><div class="youku" id="youkuplayer'+i+'"></div></div>';	
+				// html_skills_content += '<div class="youkuplayer" id="videocon'+i+'" data-id="'+piece.svideo[i]+'"></div>';				
+				// html_skills_content += '<div id="youkuplayer'+i+'"></div>';		
+						
 			}
 			$("#skills_head").children().html(html_skills_head);
 			$("#skills_content").html(html_skills_content);
@@ -365,8 +366,7 @@
 			that.setFigure(0);
 		},
 
-		setFigure: function(level){
-			console.log(level);
+		setFigure: function(level){			
 			var piece = this.o.piece;
 			var basic_data = '<li>'+
 				'<span>生命:</span>'+(parseInt(piece.figure.hp[0]+level*piece.figure.hp[1]))+'(+'+piece.figure.hp[1]+'每级)'+
@@ -387,6 +387,34 @@
 	            '</li>';	             
 	        $("#hero_basic_data").html(basic_data);//英雄数据
 
+		},
+
+		setVideo: function(videoId,index){		
+
+			try{
+				var player = new YKU.Player('youkuplayer'+index,{
+                                    styleid: '0',
+                                    client_id: '759811013057796d',
+                                    vid: videoId,
+                                    show_related: false
+                                }); 
+			}catch(error){
+			}
+			
+		},
+
+		setVideoWH: function(){
+			alert($("#youkuplayer0").children("#youku-player").length);
+			if($("#youkuplayer0").children("#youku-player").length == 1){
+				alert(1);			
+				var that = this,
+				$skills_content = $("#skills_content"),
+				v_width = $skills_content.width(),
+				v_height = parseInt(v_width/306*172);
+				$skills_content.find(".youku").each( function(){
+					$(this).height(v_height);
+				});
+			}
 		},
 
 		setSlidebar: function(){//滑动条
@@ -543,8 +571,7 @@
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			if(!this.checkversion()) return;
-			var href = $("body").attr("data-url");
-			console.log(href);
+			var href = $("body").attr("data-url");			
 			switch(true){
 				case (href == "index.html"):
 					this.isplatform("index");

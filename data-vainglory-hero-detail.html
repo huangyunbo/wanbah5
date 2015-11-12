@@ -263,7 +263,7 @@
                         <span>使用技巧</span>塔卡蜿蜒穿过战场，他的刀消灭了一切他所盯上的目标。他舞蹈在刀尖上，他的敏捷速度和隐身技能弥补了脆弱的防御。<br>
                     </div>
                 </div>
-                <div id="youkuplayer"></div>
+                <div class="youku" id="youkuplayer"></div>
             </div>
             <div class="item">
             	<div class="desc">
@@ -276,6 +276,7 @@
                         <span>冷却</span>140/110/80<br>
                         <span>使用技巧</span>塔卡蜿蜒穿过战场，他的刀消灭了一切他所盯上的目标。他舞蹈在刀尖上，他的敏捷速度和隐身技能弥补了脆弱的防御。<br>
                     </div>
+                    
                 </div>
             </div>
             <div class="item">
@@ -289,6 +290,7 @@
                         <span>冷却</span>140/110/80<br>
                         <span>使用技巧</span>塔卡蜿蜒穿过战场，他的刀消灭了一切他所盯上的目标。他舞蹈在刀尖上，他的敏捷速度和隐身技能弥补了脆弱的防御。<br>
                     </div>
+                    
                 </div>
             </div>
         </div><!--/content-->
@@ -321,21 +323,14 @@
 
 
 
+
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="json/json-vainglory.js"></script>
 <script type="text/javascript" src="js/data-vainglory-hero.js"></script>
-<!--
 <script type="text/javascript" src="http://player.youku.com/jsapi"></script>
--->
 <script type="text/javascript">
 $(function(){
-	var vainglory = new Vainglory(data_hero);
-	// var player = new YKU.Player('youkuplayer',{
-	// 					styleid: '0',
-	// 					client_id: '759811013057796d',
-	// 					vid: 'XMTI1ODQzMzA4MA==',
-	// 					show_related: false
-	// 				});
+	var vainglory = new Vainglory(data_hero);    
 });
 </script>
 </body>

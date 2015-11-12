@@ -105,6 +105,7 @@ body{ background:#08121a; color:#fff}
 .herod .skills .content .item{ display:none}
 .herod .skills .content .item.on{ display:block}
 .herod .skills .content .item .desc span{ color:#74c9ff; padding-right:5px; font-size:1.2rem}
+.herod .skills .content .item .youku{ margin-top:8px}
 .herod .skin .head{ overflow:hidden}
 .herod .skin .head .item{ width:40px; height:42px; box-sizing:border-box; padding:7px; float:left}
 .herod .skin .head .item.on{ background:#15232e}
