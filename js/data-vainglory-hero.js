@@ -7,8 +7,7 @@
 			url:"images/vainglory/",
 			type:0,//英雄类别数组下标
 			piece:{},//英雄单个详情object
-			herodHeight:300,//默认距顶部高度
-			isnetwork:1
+			herodHeight:300//默认距顶部高度
 		};	
 
 		if(this.o.platform == "android"){
@@ -219,18 +218,24 @@
 
 
 		htmlHeroDetail: function(){
-			var that = this;
+			var that = this,
+				isnetwork = 1;
+
 			that.o.type = Number(that.getsession("wbgl-vainglory-hero-type"));			
-			that.printHeroDetail();				
+			that.printHeroDetail();
+			if(window.navigator.onLine){
+				isnetwork = 1;//有网
+				that.setVideoWH();
+			}else{
+				isnetwork = 0;//无网
+			}
 			$("#skills_head").on("click", "li",function(){
 				var _index = $(this).parents().children().index($(this));				
 				$(this).addClass("on").siblings().removeClass("on");
 				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");			
-				that.setVideo(that.o.piece.skill_video[_index],_index);//英雄技能视频
-				if(that.o.isnetwork == 1){				
-					that.setVideoWH();		
-				}			
-				
+				if(isnetwork == 1){
+					that.setVideo(that.o.piece.skill_video[_index],_index);//英雄技能视频
+				}
 			}).find("li").eq(0).trigger("click");
 
 			$("#skin").on("click", "div",function(){
@@ -342,9 +347,7 @@
 				html_skills_content += '<div class="item">'+
 											'<div class="desc"><div>'+
 							            		'<span>'+piece.skill_name[i]+'</span>'+piece.skill_desc[i]+'</div>'+'<div>'+piece.skill_data[i]+'</div>'+
-							                '</div><div class="youku" id="youkuplayer'+i+'"></div></div>';	
-				// html_skills_content += '<div class="youkuplayer" id="videocon'+i+'" data-id="'+piece.svideo[i]+'"></div>';				
-				// html_skills_content += '<div id="youkuplayer'+i+'"></div>';		
+							                '</div><div class="youku" id="youkuplayer'+i+'"></div></div>';
 						
 			}
 			$("#skills_head").children().html(html_skills_head);
@@ -392,37 +395,23 @@
 	        $("#hero_basic_data").html(basic_data);//英雄数据
 
 		},
-
-		setVideo: function(videoId,index){	
-			var that = this;	
-
-			try{
-				var player = new YKU.Player('youkuplayer'+index,{
-                                    styleid: '0',
-                                    client_id: '759811013057796d',
-                                    vid: videoId,
-                                    show_related: false
-                                }); 
-			}catch(e){
-				that.o.isnetwork = 0;
-				alert(that.o.isnetwork);
-			}
-			
-			
+		setVideo: function(videoId,index){
+	  		var player = new YKU.Player('youkuplayer'+index,{
+	                                    styleid: '0',
+	                                    client_id: '759811013057796d',
+	                                    vid: videoId,
+	                                    show_related: false
+	                                });
 		},
-
-		setVideoWH: function(){			
-			if($("#youkuplayer0").children("#youku-player").length == 1){						
-				var that = this,
-				$skills_content = $("#skills_content"),
+		setVideoWH: function(){
+			var $skills_content = $("#skills_content"),
 				v_width = $skills_content.width(),
 				v_height = parseInt(v_width/306*172);
-				$skills_content.find(".youku").each( function(){
-					$(this).height(v_height);
-				});
-			}
-		},
 
+			$skills_content.find(".youku").each(function(){
+				$(this).height(v_height);
+			});
+		},
 		setSlidebar: function(){//滑动条
 			var that = this,
 				$barlevel = $("#barlevel"),
@@ -549,6 +538,7 @@
 			
 			switch(i){
 				case "index":
+					this.setsession("wbgl-vainglory-equip2hero","n");
 					if(this.o.platform == "web"){
 						removehide();
 					}else if(this.o.platform == "android"){

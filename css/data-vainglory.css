@@ -104,8 +104,8 @@ body{ background:#08121a; color:#fff}
 /*.herod .skills .title li.on:after{ content:""; position:absolute; width:8px; height:8px; background:#08121a; bottom:-11px; left:50%; margin-left:-4px;  transform:rotate(45deg); -webkit-transform:rotate(45deg)}*/
 .herod .skills .content .item{ display:none}
 .herod .skills .content .item.on{ display:block}
+.herod .skills .content .item .desc{ padding-bottom:8px}
 .herod .skills .content .item .desc span{ color:#74c9ff; padding-right:5px; font-size:1.2rem}
-.herod .skills .content .item .youku{ margin-top:8px}
 .herod .skin .head{ overflow:hidden}
 .herod .skin .head .item{ width:40px; height:42px; box-sizing:border-box; padding:7px; float:left}
 .herod .skin .head .item.on{ background:#15232e}
@@ -149,6 +149,8 @@ body{ background:#08121a; color:#fff}
 .herolist .select ul:nth-child(3){ margin-left:66.66%}
 .herolist .select ul.on{ display:block}
 .herolist .select li{ text-align:center; padding:8px 0; border:solid #0e0f14; border-width:0 0 1px 0}
+@media screen and (min-width:640px){
+}
 
 /*装备*/
 .equip_body{ background:#11141f; color:#fff}
