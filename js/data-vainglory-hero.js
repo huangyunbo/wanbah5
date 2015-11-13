@@ -8,13 +8,15 @@
 			type:0,//英雄类别数组下标
 			piece:{},//英雄单个详情object
 			herodHeight:300,//默认距顶部高度
-		};
+			isnetwork:1
+		};	
 
 		if(this.o.platform == "android"){
 			this.o.url="../images/vainglory/";
 		}
 		this.init();
 	};
+	
 	
 	Vainglory.prototype = {
 
@@ -219,12 +221,15 @@
 		htmlHeroDetail: function(){
 			var that = this;
 			that.o.type = Number(that.getsession("wbgl-vainglory-hero-type"));			
-			that.printHeroDetail();
+			that.printHeroDetail();				
 			$("#skills_head").on("click", "li",function(){
 				var _index = $(this).parents().children().index($(this));				
 				$(this).addClass("on").siblings().removeClass("on");
-				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");
+				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");			
 				that.setVideo(that.o.piece.skill_video[_index],_index);//英雄技能视频
+				if(that.o.isnetwork == 1){				
+					that.setVideoWH();		
+				}			
 				
 			}).find("li").eq(0).trigger("click");
 
@@ -236,8 +241,7 @@
 			}).find("div").eq(0).trigger("click");			
 			that.setHerodtop();			
 			that.setBlur();//模糊
-			that.setSlidebar();//滑动条			
-			that.setVideoWH();			
+			that.setSlidebar();//滑动条		
 		},
 
 		printHeroDetail: function(){
@@ -389,7 +393,8 @@
 
 		},
 
-		setVideo: function(videoId,index){		
+		setVideo: function(videoId,index){	
+			var that = this;	
 
 			try{
 				var player = new YKU.Player('youkuplayer'+index,{
@@ -398,15 +403,16 @@
                                     vid: videoId,
                                     show_related: false
                                 }); 
-			}catch(error){
+			}catch(e){
+				that.o.isnetwork = 0;
+				alert(that.o.isnetwork);
 			}
+			
 			
 		},
 
-		setVideoWH: function(){
-			alert($("#youkuplayer0").children("#youku-player").length);
-			if($("#youkuplayer0").children("#youku-player").length == 1){
-				alert(1);			
+		setVideoWH: function(){			
+			if($("#youkuplayer0").children("#youku-player").length == 1){						
 				var that = this,
 				$skills_content = $("#skills_content"),
 				v_width = $skills_content.width(),
