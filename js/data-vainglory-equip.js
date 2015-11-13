@@ -2,7 +2,7 @@
 	var QmcsEquip = function(option){
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
-		this.o = {platform:"web",plugin:"plugin_1103",plugin_hero:"plugin_1101",url:"images/vainglory/"};
+		this.o = {platform:"web",plugin:"plugin_1162",plugin_hero:"plugin_1119",url:"images/vainglory/"};
 		if(this.o.platform == "android"){
 			this.o.url="../images/vainglory/";
 		}

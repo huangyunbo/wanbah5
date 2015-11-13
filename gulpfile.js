@@ -425,7 +425,7 @@ gulp.task('vainglory_js', function(){
 });
 
 gulp.task('vainglory_json', function(){
-    gulp.src('./json/json-vainglory-equip.js', {buffer: false})
+    gulp.src('./json/json-vainglory.js', {buffer: false})
         .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/json/'));
 });
 

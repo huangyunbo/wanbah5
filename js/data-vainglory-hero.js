@@ -3,6 +3,7 @@
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.o = {
+			plugin:"plugin_1119",
 			platform:"web",
 			url:"images/vainglory/",
 			type:0,//英雄类别数组下标
@@ -130,7 +131,8 @@
 			$("#hero_location").children().click(function(){
 				var self = this;				
 				$("#hero_location").removeClass("on");	
-				tlocation = $("#hero_location").children().index(self);		
+				tlocation = $("#hero_location").children().index(self);	
+				console.log(tlocation);	
 				that.printIndex(tlocation,tduty,tprice);
 				$("#herolist_nav_top").children().eq(0).children("span").html($(self).text());
 
@@ -165,14 +167,9 @@
 		},
 
 
-		
 
-		printIndex: function(mloction,mduty,mprice){//打印英雄列表
-			var hero_data,				
-				html_content_temp='';
-
-			function getLocation(i){
-				switch(i){
+		getLocation: function(location){
+				switch(location){
 					case 1:
 					return "zhanshi";
 					case 2:
@@ -180,11 +177,19 @@
 					case 3:
 					return "cike";
 					case 4:
-					return "sheshou";
+					return "gongjian";
 					case 5:
 					return "fashi";
 				}
-			}
+			},
+		
+
+		printIndex: function(mloction,mduty,mprice){//打印英雄列表
+			var hero_data,				
+				html_content_temp='';
+			var that = this;
+
+			
 
 			// var a = [{k:'c3',v:3},{k:'c1',v:1},{k:'c5',v:5},{k:'c9',v:9},{k:'c7',v:7},{k:'c11',v:11},{k:'c1',v:1},{k:'c20',v:20},{k:'c2',v:2}];			
 			function sortNumber(a,b)
@@ -194,13 +199,14 @@
 			this.data.sort(sortNumber);			
 			for(var i=0; i<this.data.length; i++){
 				hero_data = this.data[i];
-				if((mloction == 0 || mloction == hero_data.location) && (mduty == 0 || mduty == hero_data.duty)){		
+				if((mloction == 0 || mloction == hero_data.location) && (mduty == 0 || mduty == hero_data.duty)){	
+					console.log(mloction);					
 					html_content_temp += '<li data-id="'+hero_data.id+'">'+
 								        '<div class="img">'+
 								          '<img src="'+this.o.url+'dbpic/image_'+hero_data.id+'.jpg">'+
 								        '</div>'+	
 								        '<div class="name">'+
-								          '<i class="icon_heroitem icon_jobs icon_jobs_'+getLocation(hero_data.location)+'"></i>'+hero_data.name+
+								          '<i class="icon_heroitem icon_jobs icon_jobs_'+that.getLocation(hero_data.location)+'"></i>'+hero_data.name+
 								        '</div>'+
 								        '<div class="gold">'+
 								          '<span>'+
@@ -261,7 +267,7 @@
 				return "高级"; 
 				}			
 			}
-			function getLocation(duty){
+			function getDuty(duty){
 				switch(duty){
 					case 1:
 					return "对线";
@@ -284,15 +290,13 @@
 			}
 
 			if(piece == undefined) return;		
-			$("#herod_bg").attr("src",this.o.url+"DBPic/image_"+id+".jpg");//大背景图片			
-
-			
+			$("#herod_bg").attr("src",that.o.url+"DBPic/image_"+id+".jpg");//大背景图片	
 
            
             var intro_top ='<div class="intro_top">'+
 					    	'<div class="top_l">'+
 					        	'<span class="name">'+piece.name+'</span>'+
-					            '<i class="icon_jobs icon_jobs_gongjian"></i>'+ 
+					            '<i class="icon_jobs icon_jobs_'+this.getLocation(piece.location)+'"></i>'+
 					        '</div>'+            
 					        '<div class="top_r">'+
 					            '<div class="item">'+
@@ -305,7 +309,7 @@
 					    '</div><!--/intr-top-->'+
 					    '<div class="clear"></div>'+        
 					    '<div class="intro_middle">'+
-					    	''+"难度:"+getHardLevel(piece.diff)+' | '+"位置:"+getLocation(piece.duty)+
+					    	''+"难度:"+getHardLevel(piece.diff)+' | '+"位置:"+getDuty(piece.duty)+
 					    '</div>'+      
 					    '<div class="intro_bottom fs_12">'+
 					    	''+piece.desc+''+
@@ -333,8 +337,8 @@
 	        var hero_qipo = '<li><div class="l"><img src="'+this.o.url+'dbpic/spec'+piece.id+'.jpg"></div>'+
                 '<div class="r fs_12">'+
                 '<div>'+piece.spec_name+
-                '</div><p>'+piece.spec_tips+'</p>'+
-                '</div><div class="r fs_12"><div class="qp_skill">气魄技巧</div><p>'+piece.spec_des+'</p></div>'+
+                '</div><p>'+piece.spec_des+'</p>'+
+                '</div><div class="r fs_12"><div class="qp_skill">气魄技巧</div><p>'+piece.spec_tips+'</p></div>'+
                 '</li>';
             $("#hero_qipo").html(hero_qipo);
 
@@ -355,7 +359,7 @@
 
 			var html_skin_pic='',
 				html_skin_content='';
-			for(var i=0;i<piece.skin.length && piece.skin[i].trim().length>0;i++){				
+			for(var i=0;i<piece.skin.length>0 && piece.skin[i].trim().length>0;i++){							
 				html_skin_pic +='<div class="item">'+
 									'<img src="'+this.o.url+'dbpic/skinicon'+piece.id+'_'+(i+1)+'.jpg">'+
 									'</div>';
@@ -365,9 +369,10 @@
 				html_skin_content +='<div class="item">'+
 				'<div class="mb_10"><img src="'+this.o.url+'dbpic/skinpic'+piece.id+'_'+(i+1)+'.jpg"></div>'+
 				'<div><span>售价</span><i class="icon_ice"></i><h4>'+piece.skin_ice[i]+'</h4></div>'+
-				'<div><span>合成</span>'+piece.skin_composes+'</div>'+
-				'</div>';				
+				'<div><span>合成</span>'+piece.skin_composes[i]+'</div></div>';
+				console.log(html_skin_content);
 			}
+			console.log(html_skin_pic);
 			$("#skin").html(html_skin_pic);
 			$("#skin_inf").html(html_skin_content);
 			that.setFigure(0);
@@ -380,7 +385,7 @@
 				'</li>'+
 	            '<li><span>护甲:</span>'+(parseInt(piece.figure.armor[0]+level*piece.figure.armor[1]))+'(+'+piece.figure.armor[1]+'每级)'+
 	            '</li>'+
-	            '<li><span>'+piece.figure.mpname+'</span>'+(parseInt(piece.figure.mp[0]+level*piece.figure.mp[1]))+'(+'+piece.figure.mp[1]+'每级)'+
+	            '<li><span>'+piece.figure.mpname+':'+'</span>'+(parseInt(piece.figure.mp[0]+level*piece.figure.mp[1]))+'(+'+piece.figure.mp[1]+'每级)'+
 	            '</li>'+
 	            '<li><span>魔抗:</span>'+(parseInt(piece.figure.res[0]+level*piece.figure.res[1]))+'(+'+piece.figure.res[1]+'每级)'+
 	            '</li>'+
@@ -406,7 +411,7 @@
 		setVideoWH: function(){
 			var $skills_content = $("#skills_content"),
 				v_width = $skills_content.width(),
-				v_height = parseInt(v_width/306*172);
+				v_height = parseInt(v_width/306*190);
 
 			$skills_content.find(".youku").each(function(){
 				$(this).height(v_height);
@@ -424,7 +429,7 @@
 				touchMoveX,
 				barO_l = $bar.offset().left,
 				distanceX,
-				paragraph = barW_max/10,
+				paragraph = barW_max/12,
 				level = 1;//初始化
 
 			function slide(rangeX){
@@ -545,7 +550,7 @@
 						removehide();
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
 					}else if(this.o.platform == "ios"){
-						$("#container").addClass("mt_0");
+						$("#herolist").addClass("mt_0");
 					}
 				break;
 				case "herodetail":

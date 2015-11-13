@@ -57,9 +57,10 @@ body{ background:#08121a; color:#fff}
 .herod .intro .name{ font-size:24px}
 .icon_jobs{ width:28px; height:28px; display:inline-block; background:url(../images/vainglory/hero-detail.png); background-size:75px; vertical-align:-6px}
 .icon_jobs_cike{ background-position:0 -35px}
-.icon_jobs_gongjian{ background-position:0 -70px}
-.icon_jobs_huweizhe{ background-position:0 -105px}
-.icon_jobs_fashi{ background-position:0 -140px}
+.icon_jobs_sheshou{ background-position:0 -70px}
+.icon_jobs_gongjian{ background-position:0 -105px}
+.icon_jobs_huweizhe{ background-position:0 -140px}
+.icon_jobs_fashi{ background-position:0 -175px}
 .herod .intro .top_r .item{ border:1px solid rgba(255,255,255,0.6); border-radius:3px; padding:0 5px; font-size:15px; display:inline-block; margin-top:7px; margin-left:5px}
 .herod .intro .icon_honor{ background:url(../images/vainglory/hero-detail.png); background-position:-35px 0; background-size:75px; width:20px; height:21px; display:inline-block; vertical-align:-6px}
 .herod .intro .icon_ice,.herod .skin .icon_ice{ background:url(../images/vainglory/hero-detail.png); background-position:-55px 0; background-size:75px; width:20px; height:21px; display:inline-block; vertical-align:-6px}
@@ -72,14 +73,14 @@ body{ background:#08121a; color:#fff}
 .herod .specialtit ul{ overflow:hidden; text-align:center; box-shadow:0 0 2px #46ffeb; border:1px solid #51daef; background:linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25)); background:-webkit-linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25))} 
 .herod .specialtit ul li{ float:left; width:20%; padding:5px; box-sizing:border-box}
 .herod .herodata .graphical li{ margin-bottom:5px; position:relative; height:60px}
-.herod .herodata .graphical li .r{ padding:7px 0 0 60px; box-sizing:border-box}
-.herod .herodata .graphical li .r span{ font-size:1.4rem}
-.herod i.icon_herodata{ position:absolute; background:url(../images/data-mt2-detail.png) no-repeat; width:60px; height:60px}
-.herod i.icon_herodata_shuchu{ background-position:0 -180px}
-.herod i.icon_herodata_tank{ background-position:0 -240px}
-.herod i.icon_herodata_shengcun{ background-position:0 -300px}
-.herod i.icon_herodata_fuzhu{ background-position:0 -360px}
-.herod i.icon_herodata_nandu{ background-position:0 -420px}
+.herod .herodata .graphical li .r{ padding-left:50px; box-sizing:border-box}
+.herod .herodata .graphical li .r span{ font-size:1.4rem; line-height:1}
+.herod i.icon_herodata{ position:absolute; background:url(../images/vainglory/hero-detail.png) no-repeat; width:40px; height:40px; background-size:75px}
+.herod i.icon_herodata_shuchu{ background-position:0 -175px}
+.herod i.icon_herodata_tank{ background-position:0 -225px}
+.herod i.icon_herodata_shengcun{ background-position:0 -275px}
+.herod i.icon_herodata_fuzhu{ background-position:0 -325px}
+.herod i.icon_herodata_nandu{ background-position:0 -375px}
 .herod .star{ width:100%; overflow:hidden; margin-top:3px}
 .herod .star em{ width:7%; height:16px; margin-right:2.5%; background:#3a2d57; float:left}
 .herod .star1 em:first-child,.herod .star2 em:nth-child(-n+2),.herod .star3 em:nth-child(-n+3){ background:#47c197}
@@ -100,8 +101,6 @@ body{ background:#08121a; color:#fff}
 .herod .skills .title li{ float:left; position:relative; margin:0 20px 0 7px; padding:10px 0}
 .herod .skills .title li img{ width:36px; height:36px}
 .herod .skills .title li.on:before{content:""; position:absolute; border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:6px solid #74c9ff; bottom:-5px; left:50%; margin-left:-6px}
-/*.herod .skills .title li.on:before{ content:""; position:absolute; width:8px; height:8px; border:solid #74c9ff; border-width:1px 0 0 1px; bottom:-10px; left:50%; margin-left:-5px;  transform:rotate(45deg); -webkit-transform:rotate(45deg)}*/
-/*.herod .skills .title li.on:after{ content:""; position:absolute; width:8px; height:8px; background:#08121a; bottom:-11px; left:50%; margin-left:-4px;  transform:rotate(45deg); -webkit-transform:rotate(45deg)}*/
 .herod .skills .content .item{ display:none}
 .herod .skills .content .item.on{ display:block}
 .herod .skills .content .item .desc{ padding-bottom:8px}
@@ -114,11 +113,65 @@ body{ background:#08121a; color:#fff}
 .herod .skin .box .item.on{ display:block}
 .herod .skin .box span{ color:#74c9ff; padding-right:5px}
 .herod .skin .box .item div h4{ padding-left:5px; display:inline}
+@media screen and (min-width:640px){
+	/*滑动条*/	
+	.herod .bar .l{ font-size:2.4rem}
+	.herod .bar .l div{ font-size:3.0rem}
+	.herod .bar .r{ margin:0 12px 0 15%; height:110px}
+	.herod .bar .r .x_line{ height:4px; top:30px}
+	.herod .bar .r .point{ width:8px; height:8px; top:28px}
+	.herod .bar .r .point_m{ left:50%; margin-left:-24px}/*-(4/2)+-(20/2)*/
+	.herod .bar .r .barhandle{ width:40px; height:36px; background:url(../images/vainglory/hero-detail.png) -70px -70px; background-size:150px; top:14px}
+	.herod .bar .r .barhandle span{ width:92px; height:92px; margin-left:-26px}/*6+7=13*/
+
+
+	.fs_12{ font-size:24px}
+	.herod .plr_7{ padding:0 14px}
+	.herod .intro .name{ font-size:48px}
+
+	.icon_jobs{ width:56px; height:56px; background-size:150px; vertical-align:-12px}
+	.icon_jobs_cike{ background-position:0 -70px}
+	.icon_jobs_gongjian{ background-position:0 -140px}
+	.icon_jobs_huweizhe{ background-position:0 -210px}
+	.icon_jobs_fashi{ background-position:0 -280px}
+	.herod .intro .icon_honor{ background-position:-70px 0; background-size:150px; width:40px; height:42px; vertical-align:-12px}
+	.herod .intro .icon_ice,.herod .skin .icon_ice{ background-position:-110px 0; background-size:150px; width:40px; height:42px; vertical-align:-12px}
+
+
+	.herod .intro .top_r .item{ font-size:30px}
+	.herod .intro .intro_middle{font-size:28px}
+	.herod_h2{ font-size:34px}
+	.herod .herodata .graphical li{ margin-bottom:5px; height:120px}
+	.herod .herodata .graphical li .r{ padding-left:100px}
+	.herod .herodata .graphical li .r span{ font-size:2.8rem; line-height:2}
+	.herod i.icon_herodata{ width:80px; height:80px; background-size:150px}
+	.herod i.icon_herodata_shuchu{ background-position:0 -350px}
+	.herod i.icon_herodata_tank{ background-position:0 -450px}
+	.herod i.icon_herodata_shengcun{ background-position:0 -550px}
+	.herod i.icon_herodata_fuzhu{ background-position:0 -650px}
+	.herod i.icon_herodata_nandu{ background-position:0 -750px}
+	.herod .star{ margin-top:6px}
+	.herod .star em{ width:6%; height:20px; margin-right:3%}
+
+	.herod .qipo ul .r .qp_skill{ padding-top:10px}
+	.herod .qipo .l{ width:72px; height:72px}
+	.herod .qipo .r{ padding:0 0 0 92px}
+	.herod .qipo .r div{ line-height:2; padding-bottom:10px}
+	.herod .skills .title li img{ width:72px; height:72px}
+	.herod .skills .content .item .desc{ font-size:2.0rem}
+	.herod .skills .content .item .desc span{ padding-right:10px; font-size:2.4rem}
+	.herod .skin .head .item{ width:80px; height:84px; padding:14px}	
+	.herod .skin .box .item{ font-size:2.0rem}
+	.herod .skin .box span{ font-size:2.0rem; padding-right:10px}
+
+
+
+}
 
 
 /*英雄列表*/
 .herolist{ margin-top:45px}
-.herolist .nav{ border-bottom:1px solid #355cbf; position:relative}
+.herolist .nav{ border-bottom:1px solid #355cbf; position:relative; height:45px}
 .herolist .nav .top li{ text-align:center; font-size:1.6rem; color:#b0b8c8; padding:8px 0px; position:relative; width:33.33%; display: inline-block}
 .herolist .nav .top li.on{}
 .herolist .nav .top li:after{ content:""; width: 1px; height: 18px; position: absolute; background: #355cbf; right: 0; top: 11px}
@@ -138,18 +191,35 @@ body{ background:#08121a; color:#fff}
 .herolist .heroitem .name{ font-size:14px}
 .herolist .heroitem .gold{ background:#141b22; border:1px solid #646569; border-radius:3px; padding:0 5px; font-size:10px}
 .herolist .heroitem .gold i{ width:12px; height:12px; background-size:45px}
-.herolist .heroitem .gold .icon_honor{ background-position:-21px 0}
-.herolist .heroitem .gold .icon_ice{ background-position:-33px 0}
-
-
+.herolist .heroitem .gold span{ vertical-align:2px; padding-right:5px}
+.herolist .heroitem .gold .icon_honor{ background-position:-21px 0; vertical-align:-3px}
+.herolist .heroitem .gold .icon_ice{ background-position:-33px 0; vertical-align:-3px}
 .herolist .select{ font-size:1.4em; position:absolute; width:100%; color:#b0b8c8; z-index:3; left:0; top:40px}
-
 .herolist .select ul{ display:none; width:33.33%; background:rgba(41,48,58,0.9)}
 .herolist .select ul:nth-child(2){ margin-left:33.33%}
 .herolist .select ul:nth-child(3){ margin-left:66.66%}
 .herolist .select ul.on{ display:block}
 .herolist .select li{ text-align:center; padding:8px 0; border:solid #0e0f14; border-width:0 0 1px 0}
-@media screen and (min-width:640px){
+@media screen and (min-width:640px){	
+	.herolist .nav{ height:60px}
+	.herolist .nav .top li{ font-size:2.4rem; padding:10px 0}
+	.herolist .heroitem li{ width:25%}	
+	.herolist .nav .top li:after{ content:""; width: 2px; height: 28px; top: 16px}
+
+	.herolist .heroitem .icon_heroitem{background-size:112.5px; vertical-align:-3px; margin-right:3px}
+	.herolist .heroitem .icon_jobs{ width:36px; height:36px;}
+	.herolist .heroitem .icon_jobs_cike{ background-position:0 -52.5px}
+	.herolist .heroitem .icon_jobs_gongjian{ background-position:0 -105px}
+	.herolist .heroitem .icon_jobs_huweizhe{ background-position:0 -156.5px}
+	.herolist .heroitem .icon_jobs_fashi{ background-position:0 -210px}
+	.herolist .heroitem .name{ font-size:18px}
+	.herolist .heroitem .gold{ font-size:12px}
+	.herolist .heroitem .gold i{ width:24px; height:24px; background-size:90px}
+	.herolist .heroitem .gold span{ vertical-align:4px; font-size:14px}
+	.herolist .heroitem .gold .icon_honor{ background-position:-42px 0; vertical-align:-6px}
+	.herolist .heroitem .gold .icon_ice{ background-position:-66px 0; vertical-align:-6px}
+	}
+
 }
 
 /*装备*/
