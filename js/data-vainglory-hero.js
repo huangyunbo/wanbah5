@@ -3,7 +3,7 @@
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.o = {
-			plugin:"plugin_1119",
+			plugin:"plugin_1080",
 			platform:"web",
 			url:"images/vainglory/",
 			type:0,//英雄类别数组下标

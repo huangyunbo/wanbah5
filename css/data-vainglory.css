@@ -70,8 +70,8 @@ body{ background:#08121a; color:#fff}
 .herod .equipchoice ul{ text-align:center; box-shadow:0 0 2px #46ffeb; border:1px solid #51daef; background:linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25)); background:-webkit-linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25))} 
 .herod .equipchoice ul li{ display:inline-block; width:16.6%; padding:3px; box-sizing:border-box; margin:6px 0}
 .herod .equipchoice ul li img{ border-radius:100px}
-.herod .specialtit ul{ overflow:hidden; text-align:center; box-shadow:0 0 2px #46ffeb; border:1px solid #51daef; background:linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25)); background:-webkit-linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25))} 
-.herod .specialtit ul li{ float:left; width:20%; padding:5px; box-sizing:border-box}
+.herod .specialtit ul{ overflow:hidden; box-shadow:0 0 2px #46ffeb; border:1px solid #51daef; background:linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25)); background:-webkit-linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25))} 
+.herod .specialtit ul li{ text-align:center; display:inline-block; width:20%; padding:5px; box-sizing:border-box}
 .herod .herodata .graphical li{ margin-bottom:5px; position:relative; height:60px}
 .herod .herodata .graphical li .r{ padding-left:50px; box-sizing:border-box}
 .herod .herodata .graphical li .r span{ font-size:1.4rem; line-height:1}
