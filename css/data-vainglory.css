@@ -265,7 +265,7 @@ body{ background:#08121a; color:#fff}
 .equipd .need li{ float:left; width:50px; height:50px; margin-right:15px}
 .equipd .fithero{ margin-bottom:50px}
 .equipd .fithero ul{ overflow:hidden; padding-top:5px}
-.equipd .fithero li{ float:left; width:50px; height:50px; margin:0 15px 10px 0}
+.equipd .fithero li{ float:left; width:50px; height:50px; margin:15px 15px 10px 0}
 @media screen and (min-width:640px){
 	.equipd .head{ padding:30px 14px}
 	.equipd .head .l{ width:140px; height:140px; margin-right:20px; text-align:center}
@@ -284,7 +284,7 @@ body{ background:#08121a; color:#fff}
 	.equipd .need li{ width:100px; height:100px; margin-right:30px}
 	.equipd .fithero{ margin-bottom:100px}
 	.equipd .fithero ul{ padding-top:10px}
-	.equipd .fithero li{ width:100px; height:100px; margin:0 30px 20px 0}
+	.equipd .fithero li{ width:100px; height:100px; margin:30px 30px 20px 0}
 }
 
 

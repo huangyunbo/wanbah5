@@ -194,7 +194,7 @@
 			// var a = [{k:'c3',v:3},{k:'c1',v:1},{k:'c5',v:5},{k:'c9',v:9},{k:'c7',v:7},{k:'c11',v:11},{k:'c1',v:1},{k:'c20',v:20},{k:'c2',v:2}];			
 			function sortNumber(a,b)
 			{				
-				return a.honor - b.honor;
+				return b.id - a.id;
 			}			
 			this.data.sort(sortNumber);			
 			for(var i=0; i<this.data.length; i++){
