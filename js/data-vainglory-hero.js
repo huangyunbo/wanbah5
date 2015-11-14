@@ -131,8 +131,8 @@
 			$("#hero_location").children().click(function(){
 				var self = this;				
 				$("#hero_location").removeClass("on");	
-				tlocation = $("#hero_location").children().index(self);	
-				console.log(tlocation);	
+				$("#herolist_nav_top").children().removeClass("on");
+				tlocation = $("#hero_location").children().index(self);						
 				that.printIndex(tlocation,tduty,tprice);
 				$("#herolist_nav_top").children().eq(0).children("span").html($(self).text());
 
@@ -140,13 +140,15 @@
 			$("#hero_duty").children().click(function(){
 				var self = this;				
 				$("#hero_duty").removeClass("on");	
+				$("#herolist_nav_top").children().removeClass("on");
 				tduty = $("#hero_duty").children().index(self);				
 				that.printIndex(tlocation,tduty,tprice);	
 				$("#herolist_nav_top").children().eq(1).children("span").html($(self).text());			
 			});
 			$("#hero_price").children().click(function(){
 				var self = this;				
-				$("#hero_price").removeClass("on");		
+				$("#hero_price").removeClass("on");	
+				$("#herolist_nav_top").children().removeClass("on");	
 				tprice = $("#hero_price").children().index(self);			
 				that.printIndex(tlocation,tduty,tprice);	
 				$("#herolist_nav_top").children().eq(2).children("span").html($(self).text());		
@@ -194,13 +196,15 @@
 			// var a = [{k:'c3',v:3},{k:'c1',v:1},{k:'c5',v:5},{k:'c9',v:9},{k:'c7',v:7},{k:'c11',v:11},{k:'c1',v:1},{k:'c20',v:20},{k:'c2',v:2}];			
 			function sortNumber(a,b)
 			{				
+				if(mprice == 1){
+					return b.honor - a.honor;
+				}
 				return b.id - a.id;
 			}			
 			this.data.sort(sortNumber);			
 			for(var i=0; i<this.data.length; i++){
 				hero_data = this.data[i];
-				if((mloction == 0 || mloction == hero_data.location) && (mduty == 0 || mduty == hero_data.duty)){	
-					console.log(mloction);					
+				if((mloction == 0 || mloction == hero_data.location) && (mduty == 0 || mduty == hero_data.duty)){									
 					html_content_temp += '<li data-id="'+hero_data.id+'">'+
 								        '<div class="img">'+
 								          '<img src="'+this.o.url+'dbpic/image_'+hero_data.id+'.jpg">'+
@@ -306,7 +310,7 @@
 			}
 
 			if(piece == undefined) return;		
-			$("#herod_bg").attr("src",that.o.url+"DBPic/image_"+id+".jpg");//大背景图片	
+			$("#herod_bg").attr("src",that.o.url+"dbpic/image_"+id+".jpg");//大背景图片	
 
            
             var intro_top ='<div class="intro_top">'+
@@ -327,12 +331,12 @@
 					    '<div class="intro_middle">'+
 					    	''+"难度:"+getHardLevel(piece.diff)+' | '+"位置:"+getDuty(piece.duty)+
 					    '</div>'+      
-					    '<div class="intro_bottom fs_12">'+
+					    '<div class="intro_bottom media_fs_14">'+
 					    	''+piece.desc+''+
 					    '</div>';
 
 			$("#herod_head").html(intro_top);
-			var summary = '<p class="fs_12">'+piece.summary+'</p>';
+			var summary = '<p class="media_fs_14">'+piece.summary+'</p>';
 			$("#summary").html(summary);
 			var html_equipchoice='';
 			for(var i=0; i<piece.item.length; i++){
@@ -351,10 +355,10 @@
 			 
 
 	        var hero_qipo = '<li><div class="l"><img src="'+this.o.url+'dbpic/spec'+piece.id+'.jpg"></div>'+
-                '<div class="r fs_12">'+
+                '<div class="r media_fs_14">'+
                 '<div>'+piece.spec_name+
                 '</div><p>'+piece.spec_des+'</p>'+
-                '</div><div class="r fs_12"><div class="qp_skill">气魄技巧</div><p>'+piece.spec_tips+'</p></div>'+
+                '</div><div class="r media_fs_14"><div class="qp_skill">气魄技巧</div><p>'+piece.spec_tips+'</p></div>'+
                 '</li>';
             $("#hero_qipo").html(hero_qipo);
 
@@ -387,7 +391,7 @@
 					            '</li>';
 
 				html_skin_box += '<div class="item">'+
-									'<div class="mb_10"><img src="'+this.o.url+'dbpic/skinpic'+piece.id+'_'+(i+1)+'.jpg"></div>';
+									'<div class="mb_10 center"><img src="'+this.o.url+'dbpic/skinpic'+piece.id+'_'+(i+1)+'.jpg"></div>';
 					            			          
 				if($.trim(piece.skin_ice[i]).length != 0){
 					html_skin_box += '<div><span>售价</span><i class="icon_ice"></i><h4>'+piece.skin_ice[i]+'</h4></div>';
@@ -405,12 +409,13 @@
 				$("#skin").html(html_skin);
 			}	
 			
-			that.setFigure(0);
+			that.setFigure(1);
 		},
 
 		setFigure: function(level){			
-			var piece = this.o.piece;
-			var basic_data = '<li>'+
+			var piece = this.o.piece,
+			level = level === 1 ? 0 : level-1;
+			var basic_data = '<ul class="info mb_10 media_fs_14" id="hero_basic_data"><li>'+
 				'<span>生命:</span>'+(parseInt(piece.figure.hp[0]+level*piece.figure.hp[1]))+'(+'+piece.figure.hp[1]+'每级)'+
 				'</li>'+
 	            '<li><span>护甲:</span>'+(parseInt(piece.figure.armor[0]+level*piece.figure.armor[1]))+'(+'+piece.figure.armor[1]+'每级)'+
@@ -426,7 +431,7 @@
 	            '<li><span>攻击速度:</span>'+(parseInt(piece.figure.aspd[0]+level*piece.figure.aspd[1]))+'(+'+piece.figure.aspd[1]+'每级)'+
 	            '</li>'+
 	            '<li><span>移动速度:</span>'+parseInt(piece.figure.mspd[0])+
-	            '</li>';	             
+	            '</li></ul>';	             
 	        $("#hero_basic_data").html(basic_data);//英雄数据
 
 		},
@@ -574,14 +579,28 @@
 			switch(i){
 				case "index":
 					this.setsession("wbgl-vainglory-equip2hero","n");
+					// if(this.o.platform == "web"){
+					// 	removehide();
+					// }else if(this.o.platform == "android"){
+					// 	removehide();
+					// 	$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
+					// }else if(this.o.platform == "ios"){
+					// 	$("#herolist").addClass("mt_0");
+					// }
+
 					if(this.o.platform == "web"){
 						removehide();
+						this.setsession("wbgl-vainglory-equip2hero","n");//重置 从装备跳转过来
 					}else if(this.o.platform == "android"){
 						removehide();
-						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
+						this.setsession("wbgl-vainglory-equip2hero","n");//重置 从装备跳转过来
+						$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
 					}else if(this.o.platform == "ios"){
+						this.setsession("wbgl-vainglory-equip2hero","n");//重置 从装备跳转过来
 						$("#herolist").addClass("mt_0");
-					}
+					}	
+
+
 				break;
 				case "herodetail":
 					if(this.o.platform == "web"){

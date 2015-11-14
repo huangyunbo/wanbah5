@@ -386,12 +386,12 @@ gulp.task('qjnn_ios', function(){
 });
 
 //虚荣
-var vainglory_gameid = 82;//99
-var vainglory_plugin_hero = "plugin_1119";//plugin_1101
-var vainglory_plugin_equip = "plugin_1162";
-// var vainglory_gameid = 99;
-// var vainglory_plugin_hero = "plugin_1080";
-// var vainglory_plugin_equip = "plugin_1083";
+// var vainglory_gameid = 82;//99
+// var vainglory_plugin_hero = "plugin_1119";//plugin_1101
+// var vainglory_plugin_equip = "plugin_1162";
+var vainglory_gameid = 99;
+var vainglory_plugin_hero = "plugin_1080";
+var vainglory_plugin_equip = "plugin_1083";
 var vainglory_path = '../';
 var vainglory_replace = ['css/', 'js/', 'json/'];
 var vainglory_replace_data =  ['css/', 'js/', 'json/'];
