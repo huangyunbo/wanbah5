@@ -236,10 +236,23 @@
 				isnetwork = 0;//无网
 			}
 			$("#skills_head").on("click", "li",function(){
-				var _index = $(this).parents().children().index($(this));				
-				$(this).addClass("on").siblings().removeClass("on");
-				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");			
+				var self = this,
+					$self = $(self),
+					$skills_head_children = $self.parents().children(),
+					_index = $skills_head_children.index(self),
+					oldindex = 0;
+				
+				$skills_head_children.each(function(index, element) {
+                    if($(element).hasClass("on")){
+						oldindex = index;
+					}
+                });
+				$skills_head_children.eq(oldindex).removeClass("on");
+				$self.addClass("on");
+				
+				$("#skills_content").children().eq(_index).addClass("on").siblings().removeClass("on");
 				if(isnetwork == 1){
+					$("#skills_content").find(".youku").eq(oldindex).html("");
 					that.setVideo(that.o.piece.skill_video[_index],_index);//英雄技能视频
 				}
 			}).find("li").eq(0).trigger("click");
