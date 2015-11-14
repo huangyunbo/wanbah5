@@ -57,10 +57,9 @@ body{ background:#08121a; color:#fff}
 .herod .intro .name{ font-size:24px}
 .icon_jobs{ width:28px; height:28px; display:inline-block; background:url(../images/vainglory/hero-detail.png); background-size:75px; vertical-align:-6px}
 .icon_jobs_cike{ background-position:0 -35px}
-.icon_jobs_sheshou{ background-position:0 -70px}
-.icon_jobs_gongjian{ background-position:0 -105px}
-.icon_jobs_huweizhe{ background-position:0 -140px}
-.icon_jobs_fashi{ background-position:0 -175px}
+.icon_jobs_gongjian{ background-position:0 -70px}
+.icon_jobs_huweizhe{ background-position:0 -105px}
+.icon_jobs_fashi{ background-position:0 -140px}
 .herod .intro .top_r .item{ border:1px solid rgba(255,255,255,0.6); border-radius:3px; padding:0 5px; font-size:15px; display:inline-block; margin-top:7px; margin-left:5px}
 .herod .intro .icon_honor{ background:url(../images/vainglory/hero-detail.png); background-position:-35px 0; background-size:75px; width:20px; height:21px; display:inline-block; vertical-align:-6px}
 .herod .intro .icon_ice,.herod .skin .icon_ice{ background:url(../images/vainglory/hero-detail.png); background-position:-55px 0; background-size:75px; width:20px; height:21px; display:inline-block; vertical-align:-6px}
@@ -106,13 +105,13 @@ body{ background:#08121a; color:#fff}
 .herod .skills .content .item .desc{ padding-bottom:8px}
 .herod .skills .content .item .desc span{ color:#74c9ff; padding-right:5px; font-size:1.2rem}
 .herod .skin .head{ overflow:hidden}
-.herod .skin .head .item{ width:40px; height:42px; box-sizing:border-box; padding:7px; float:left}
-.herod .skin .head .item.on{ background:#15232e}
+.herod .skin .head li{ width:40px; height:42px; box-sizing:border-box; padding:7px; float:left}
+.herod .skin .head li.on{ background:#15232e}
 .herod .skin .box{ background:#15232e; padding:7px}
 .herod .skin .box .item{ display:none}
 .herod .skin .box .item.on{ display:block}
 .herod .skin .box span{ color:#74c9ff; padding-right:5px}
-.herod .skin .box .item div h4{ padding-left:5px; display:inline}
+.herod .skin .box .item h4{ padding-left:5px; display:inline}
 @media screen and (min-width:640px){
 	/*滑动条*/	
 	.herod .bar .l{ font-size:2.4rem}
@@ -160,7 +159,7 @@ body{ background:#08121a; color:#fff}
 	.herod .skills .title li img{ width:72px; height:72px}
 	.herod .skills .content .item .desc{ font-size:2.0rem}
 	.herod .skills .content .item .desc span{ padding-right:10px; font-size:2.4rem}
-	.herod .skin .head .item{ width:80px; height:84px; padding:14px}	
+	.herod .skin .head li{ width:80px; height:84px; padding:14px}	
 	.herod .skin .box .item{ font-size:2.0rem}
 	.herod .skin .box span{ font-size:2.0rem; padding-right:10px}
 

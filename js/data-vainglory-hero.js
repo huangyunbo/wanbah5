@@ -244,12 +244,15 @@
 				}
 			}).find("li").eq(0).trigger("click");
 
-			$("#skin").on("click", "div",function(){
-				var _index = $(this).parents().children().index($(this));
-				$(this).addClass("on").siblings().removeClass("on");
-				$("#skin_inf").children().siblings().removeClass("on").eq(_index).addClass("on");
-				
-			}).find("div").eq(0).trigger("click");			
+			$("#skin").on("click", "li", function(){
+				var self = $(this),
+					head = self.parents(),
+					_index = head.children().index(this);
+
+				self.addClass("on").siblings().removeClass("on");
+				head.next(".box").children().eq(_index).addClass("on").siblings().removeClass("on");
+			}).find("li").eq(0).trigger("click");
+
 			that.setHerodtop();			
 			that.setBlur();//模糊
 			that.setSlidebar();//滑动条		
@@ -327,8 +330,8 @@
 			for(var i=0; i<piece.build.length; i++){
 				html_addskill += '<li><img src="'+this.o.url+'dbpic/skill'+piece.id+'_'+piece.build[i]+'.jpg"></li>';
 			}
-			$("#addskill").html(html_addskill);//加点路线
-			$("#graphical").children("li").each(function(index){//英雄数据
+			$("#addskill").html(html_addskill);//加点路线			
+			$("#graphical").children("li").each(function(index){//英雄数据				
 				$(this).find(".star").addClass("star"+piece.ability[index]);
 			}); 
 
@@ -357,24 +360,38 @@
 			$("#skills_head").children().html(html_skills_head);
 			$("#skills_content").html(html_skills_content);
 
-			var html_skin_pic='',
-				html_skin_content='';
-			for(var i=0;i<piece.skin.length>0 && piece.skin[i].trim().length>0;i++){							
-				html_skin_pic +='<div class="item">'+
-									'<img src="'+this.o.url+'dbpic/skinicon'+piece.id+'_'+(i+1)+'.jpg">'+
-									'</div>';
-				if(piece.skin_ice[i].trim().length == 0){
-					piece.skin_ice[i] = 0;
+			var html_skin_head = '',
+				html_skin_box = '',
+				isskin = 0,
+				html_skin = '<h2 class="herod_h2 plr_7">英雄皮肤</h2>'+
+						        '<ul class="head">';
+
+			for(var i=0; i<piece.skin.length; i++){
+				if($.trim(piece.skin[i]).length == 0) continue;
+				isskin = 1;
+				html_skin_head += '<li>'+
+					            	'<img src="'+this.o.url+'dbpic/skinicon'+piece.id+'_'+(i+1)+'.jpg">'+
+					            '</li>';
+
+				html_skin_box += '<div class="item">'+
+									'<div class="mb_10"><img src="'+this.o.url+'dbpic/skinpic'+piece.id+'_'+(i+1)+'.jpg"></div>';
+					            			          
+				if($.trim(piece.skin_ice[i]).length != 0){
+					html_skin_box += '<div><span>售价</span><i class="icon_ice"></i><h4>'+piece.skin_ice[i]+'</h4></div>';
 				}
-				html_skin_content +='<div class="item">'+
-				'<div class="mb_10"><img src="'+this.o.url+'dbpic/skinpic'+piece.id+'_'+(i+1)+'.jpg"></div>'+
-				'<div><span>售价</span><i class="icon_ice"></i><h4>'+piece.skin_ice[i]+'</h4></div>'+
-				'<div><span>合成</span>'+piece.skin_composes[i]+'</div></div>';
-				console.log(html_skin_content);
+				if($.trim(piece.skin_composes[i]).length != 0){
+					html_skin_box += '<div><span>合成</span>'+piece.skin_composes[i]+'</div>';
+				}
+				html_skin_box += '</div>';
+
 			}
-			console.log(html_skin_pic);
-			$("#skin").html(html_skin_pic);
-			$("#skin_inf").html(html_skin_content);
+			html_skin_box = '<div class=box>'+html_skin_box+'</div>';
+			html_skin += html_skin_head + '</ul>' + html_skin_box;
+
+			if(isskin != 0){
+				$("#skin").html(html_skin);
+			}	
+			
 			that.setFigure(0);
 		},
 
