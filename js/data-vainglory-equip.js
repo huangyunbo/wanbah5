@@ -1,5 +1,5 @@
 (function(window){
-	var QmcsEquip = function(option){
+	var VaingloryEquip = function(option){
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.o = {platform:"web",plugin:"plugin_1083",plugin_hero:"plugin_1080",url:"images/vainglory/"};
@@ -9,7 +9,7 @@
 		this.init();
 	};
 	
-	QmcsEquip.prototype = {
+	VaingloryEquip.prototype = {
 		htmlDetail: function(){//详情页
 			var that = this,
 				t_index = Number(that.getsession("wbgl-vainglory-equip-tindex")),//类别数组下标
@@ -58,15 +58,18 @@
 				html_equipd_group_ul += '<li data-id="'+piece.group[i]+'"><img src="'+that.o.url + 'equip/item' + piece.group[i] +'.png"></li>';
 			}
 			
-			for(var i=0; i<piece.hero.length; i++){
-				html_equipd_fithero += '<li data-id="'+piece.hero[i]+'"><img src="'+that.o.url + 'dbpic/pic_' + piece.hero[i] +'.jpg"></li>';
+			for(var i=0; i<piece.hero.length; i++){				
+				html_equipd_fithero += '<li data-id="'+	piece.hero[i]+'"><img src="'+that.o.url + 'dbpic/pic_' + piece.hero[i] +'.jpg"></li>';
+			}
+			if(jQuery.trim(html_equipd_fithero).length != 0){
+				html_equipd_fithero = '<h2 class="e4quipd_h2"><span class="polygon"><i></i></span>适合英雄</h2><ul class="media_ml_16 wbclick" id="equipd_fithero">'+html_equipd_fithero;
 			}
 			
 			$("#equipd_head").html(html_equipd_head);
 			$("#equipd_property").html(html_equipd_property);
 			$("#equipd_need_ul").html(html_equipd_need_ul);
 			$("#equipd_group_ul").html(html_equipd_group_ul);
-			$("#equipd_fithero").html(html_equipd_fithero);
+			$("#fithero").html(html_equipd_fithero);
 			
 			if(piece.need.length > 0){
 				$("#equipd_need").removeClass("hide");
@@ -132,8 +135,7 @@
 				html_equip_content += '<ul>';
 				
 				for(var j=0; j<that.data[i].data.length; j++){
-					piece = that.data[i].data[j];
-					console.log(piece);
+					piece = that.data[i].data[j];				
 					html_equip_content += '<li data-id="'+piece.id+'">'+
 											'<img src="'+that.o.url+'equip/item'+piece.id+'.png"><p>'+piece.name+'</p>'+
 										'</li>';
@@ -285,6 +287,6 @@
 		}
 	}
 	
-	window.QmcsEquip = QmcsEquip;
+	window.VaingloryEquip = VaingloryEquip;
 })(window);
 
