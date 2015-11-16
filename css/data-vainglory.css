@@ -106,7 +106,7 @@ body{ background:#08121a; color:#fff}
 .herod .skills .content .item .desc{ padding-bottom:8px; font-size:1.4rem}
 .herod .skills .content .item .desc span{ color:#74c9ff; padding-right:5px}
 .herod .skin .head{ overflow:hidden}
-.herod .skin .head li{ width:40px; height:42px; box-sizing:border-box; padding:3px; float:left}
+.herod .skin .head li{ width:48px; height:50px; box-sizing:border-box; padding:3px; float:left}
 .herod .skin .head li.on{ background:#15232e}
 .herod .skin .box{ background:#15232e; padding:7px}
 .herod .skin .box .item{ display:none}
@@ -161,7 +161,7 @@ body{ background:#08121a; color:#fff}
 	.herod .skills .title li img{ width:72px; height:72px}
 	.herod .skills .content .item .desc{ font-size:2.0rem}
 	.herod .skills .content .item .desc span{ padding-right:10px; font-size:2.4rem}
-	.herod .skin .head li{ width:80px; height:84px; padding:14px}	
+	.herod .skin .head li{ width:96px; height:100px; padding:7px}	
 	.herod .skin .box .item{ font-size:2.0rem}
 	.herod .skin .box span{ font-size:2.0rem; padding-right:10px}
 

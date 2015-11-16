@@ -62,7 +62,7 @@
 				html_equipd_fithero += '<li data-id="'+	piece.hero[i]+'"><img src="'+that.o.url + 'dbpic/pic_' + piece.hero[i] +'.jpg"></li>';
 			}
 			if(jQuery.trim(html_equipd_fithero).length != 0){
-				html_equipd_fithero = '<h2 class="e4quipd_h2"><span class="polygon"><i></i></span>适合英雄</h2><ul class="media_ml_16 wbclick" id="equipd_fithero">'+html_equipd_fithero;
+				html_equipd_fithero = '<h2 class="equipd_h2"><span class="polygon"><i></i></span>适合英雄</h2><ul class="media_ml_16 wbclick" id="equipd_fithero">'+html_equipd_fithero;
 			}
 			
 			$("#equipd_head").html(html_equipd_head);
