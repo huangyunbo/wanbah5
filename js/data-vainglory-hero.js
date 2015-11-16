@@ -371,6 +371,8 @@
 				html_skills_content += '<div class="item">'+
 											'<div class="desc"><div>'+
 							            		'<span>'+piece.skill_name[i]+'</span>'+piece.skill_desc[i]+'</div>'+'<div>'+piece.skill_data[i]+'</div>'+
+							            		'<div class="desc"><div>'+
+							            		'<span>技能技巧 :</span>'+piece.skill_tips[i]+'</div>'+'</div>'+
 							                '</div><div class="youku" id="youkuplayer'+i+'"></div></div>';
 						
 			}
