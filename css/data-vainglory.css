@@ -109,10 +109,11 @@ body{ background:#08121a; color:#fff}
 .herod .skin .head li{ width:48px; height:50px; box-sizing:border-box; padding:3px; float:left}
 .herod .skin .head li.on{ background:#15232e}
 .herod .skin .box{ background:#15232e; padding:7px}
-.herod .skin .box .item{ display:none}
+.herod .skin .box .item{ display:none; font-size:1.4rem}
 .herod .skin .box .item.on{ display:block}
 .herod .skin .box span{ color:#74c9ff; padding-right:5px}
 .herod .skin .box .item h4{ padding-left:5px; display:inline}
+
 @media screen and (min-width:640px){
 	/*滑动条*/	
 	.herod .bar .l{ font-size:2.4rem}
@@ -163,7 +164,7 @@ body{ background:#08121a; color:#fff}
 	.herod .skills .content .item .desc span{ padding-right:10px; font-size:2.4rem}
 	.herod .skin .head li{ width:96px; height:100px; padding:7px}	
 	.herod .skin .box .item{ font-size:2.0rem}
-	.herod .skin .box span{ font-size:2.0rem; padding-right:10px}
+	.herod .skin .box span{ padding-right:10px}
 
 
 
