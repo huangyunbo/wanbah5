@@ -4,25 +4,25 @@
  */
 
 (function($){
-	var posterPicMobile = function(option){
-		if(typeof(arguments[0]) == 'undefined'){ return false; }
-		var option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
-		this.domid = option.id;
-		this.dom = document.getElementById(this.domid);
-		this.delay = option.delay;
-		this.data = option.data;
-		if(this.data.length == 0){ return; }
+	var posterPicMobile = function(){
+		if(arguments[0] === undefined) return false;
+		this.option = typeof(arguments[0]) == 'object' ? arguments[0] : {};
+		if(this.option.data.length == 0) return;
 		
-		this.pic = {width: 414, height: 207}//预设图片高度，动态获取会因图片加载延迟造成获取不到
-		this.limit = 9;//最大限制9张
-		this.total = this.data.length > this.limit ? this.limit : this.data.length;
-		this.current = -1;
-		this.items = [];//所有图片组
-		this.thumbs = [];//所有点点组
-		this.timer = null;
-		this.locked = false;
-		this.imgplace = '../images/spacer.gif';
-		this.pos_start = 0;
+		this.o = {
+			dom: document.getElementById(this.option.id),
+			delay: this.option.delay,
+			data: this.option.data,
+			pic: {width: 414, height: 207},//预设图片高度，动态获取会因图片加载延迟造成获取不到
+			limit: 9,//最大限制9张
+			total: 0,
+			current: -1,
+			items: [],//所有图片组
+			thumbs: [],//所有点点组
+			timer: null,
+			imgplace: '../images/spacer.gif'
+		};
+		this.o.data.length = this.o.data.length > this.o.limit ? this.o.limit : this.o.data.length;
 		
 		this.init();
 	}
@@ -101,7 +101,7 @@
 			
 			var _this = this;
 			var _pos = parseInt(this.dompicul.style.left ? this.dompicul.style.left : 0, 10);
-			$(this.dompicul).animate({left: ((direction == 'left') ? _pos - _rect : _pos + _rect) + 'px'}, 500, function(){
+			$(this.dompicul).animate({left: ((direction == 'left') ? _pos - _rect : _pos + _rect) + 'px'}, 5000, function(){
 				_this.loadimage(index);
 				_this.items[index].style.left = '0px';
 				_this.dompicul.style.left = '0px';
