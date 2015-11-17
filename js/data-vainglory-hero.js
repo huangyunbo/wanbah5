@@ -275,9 +275,24 @@
 			that.setSlidebar();//滑动条		
 		},
 
-		printHeroDetail: function(){
-			var that = this;
-			function getHardLevel(level){
+		
+		printHeroDetail: function(){//打印英雄详情
+			var that = this,
+				id = 0,
+				intro_top = '',
+				summary = '',
+				html_equipchoice = '',
+				html_addskill = '',
+				hero_qipo = '',
+				html_skills_head = '',
+				html_skills_content = '',
+				html_skin_head = '',
+				html_skin_box = '',
+				isskin = 0,
+				html_skin = '',
+				type = this.o.type,
+				piece = this.o.piece;		;
+			function getHardLevel(level){//难度等级
 			switch(level){
 				case 1:
 				return "初级";
@@ -287,7 +302,7 @@
 				return "高级"; 
 				}			
 			}
-			function getDuty(duty){
+			function getDuty(duty){//职责
 				switch(duty){
 					case 1:
 					return "对线";
@@ -297,9 +312,8 @@
 					return "游走"; 
 				}			
 			}
-			var id = Number(this.getsession("wbgl-vainglory-hero-id")),
-				type = this.o.type,
-				piece;		
+			id = Number(this.getsession("wbgl-vainglory-hero-id"));
+				
 			
 			for(var i=0; i<this.data.length; i++){
 				if(this.data[i].id == id){
@@ -312,8 +326,7 @@
 			if(piece == undefined) return;		
 			$("#herod_bg").attr("src",that.o.url+"dbpic/image_"+id+".jpg");//大背景图片	
 
-           
-            var intro_top ='<div class="intro_top">'+
+            intro_top ='<div class="intro_top">'+
 					    	'<div class="top_l">'+
 					        	'<span class="name">'+piece.name+'</span>'+
 					            '<i class="icon_jobs icon_jobs_'+this.getLocation(piece.location)+'"></i>'+
@@ -336,34 +349,30 @@
 					    '</div>';
 
 			$("#herod_head").html(intro_top);
-			var summary = '<p class="media_fs_14">'+piece.summary+'</p>';
+			summary = '<p class="media_fs_14">'+piece.summary+'</p>';
 			$("#summary").html(summary);
-			var html_equipchoice='';
+			html_equipchoice='';
 			for(var i=0; i<piece.item.length; i++){
 				html_equipchoice += '<li><img src="'+this.o.url+'equip/'+'item'+piece.item[i]+'.png"></li>';
 			}
 			$("#equipchoice").html(html_equipchoice);//装备选择
-			var html_addskill='';
+			html_addskill='';
 			for(var i=0; i<piece.build.length; i++){
 				html_addskill += '<li><img src="'+this.o.url+'dbpic/skill'+piece.id+'_'+piece.build[i]+'.jpg"></li>';
 			}
 			$("#addskill").html(html_addskill);//加点路线			
 			$("#graphical").children("li").each(function(index){//英雄数据				
 				$(this).find(".star").addClass("star"+piece.ability[index]);
-			}); 
+			});			 
 
-			 
-
-	        var hero_qipo = '<li><div class="l"><img src="'+this.o.url+'dbpic/spec'+piece.id+'.jpg"></div>'+
+	        hero_qipo = '<li><div class="l"><img src="'+this.o.url+'dbpic/spec'+piece.id+'.jpg"></div>'+
                 '<div class="r media_fs_14">'+
                 '<div>'+piece.spec_name+
                 '</div><p>'+piece.spec_des+'</p>'+
                 '</div><div class="r media_fs_14"><div class="qp_skill">气魄技巧</div><p>'+piece.spec_tips+'</p></div>'+
                 '</li>';
-            $("#hero_qipo").html(hero_qipo);
-
-            var html_skills_head='',
-            	html_skills_content='';
+            $("#hero_qipo").html(hero_qipo);//英雄气魄
+            
             for(var i=0; i<piece.skill_name.length; i++){//英雄技能
 				html_skills_head += '<li>'+
 										'<img src="'+this.o.url+'dbpic/skill'+piece.id+'_'+(i+1)+'.jpg">'+
@@ -376,24 +385,21 @@
 							                '</div><div class="youku" id="youkuplayer'+i+'"></div></div>';
 						
 			}
-			$("#skills_head").children().html(html_skills_head);
-			$("#skills_content").html(html_skills_content);
-
-			var html_skin_head = '',
-				html_skin_box = '',
-				isskin = 0,
-				html_skin = '<h2 class="herod_h2 plr_7">英雄皮肤</h2>'+
+			$("#skills_head").children().html(html_skills_head);//技能icon
+			$("#skills_content").html(html_skills_content);//技能详情
+			
+			html_skin = '<h2 class="herod_h2 plr_7">英雄皮肤</h2>'+
 						        '<ul class="head">';
 
-			for(var i=0; i<piece.skin.length; i++){
+			for(var i=0; i<piece.skin.length; i++){//英雄皮肤相关
 				if($.trim(piece.skin[i]).length == 0) continue;
 				isskin = 1;
 				html_skin_head += '<li>'+
 					            	'<img src="'+this.o.url+'dbpic/skinicon'+piece.id+'_'+(i+1)+'.jpg">'+
-					            '</li>';
-
-				html_skin_box += '<div class="item">'+
-									'<div class="mb_10 center"><img src="'+this.o.url+'dbpic/skinpic'+piece.id+'_'+(i+1)+'.jpg"></div>';
+					              '</li>';
+				html_skin_box +=  '<div class="item">'+
+									'<div class="mb_10 center"><img src="'+this.o.url+'dbpic/skinpic'+piece.id+'_'+(i+1)+'.jpg">'+
+								  '</div>';
 					            			          
 				if($.trim(piece.skin_ice[i]).length != 0){
 					html_skin_box += '<div><span>售价</span><i class="icon_ice"></i><h4>'+piece.skin_ice[i]+'</h4></div>';
@@ -409,12 +415,11 @@
 
 			if(isskin != 0){
 				$("#skin").html(html_skin);
-			}	
-			
+			}			
 			that.setFigure(1);
 		},
-
-		setFigure: function(level){			
+		
+		setFigure: function(level){	//设置英雄基本属性值		
 			var piece = this.o.piece,
 			level = level === 1 ? 0 : level-1;
 			var basic_data = '<ul class="info mb_10 media_fs_14" id="hero_basic_data"><li>'+
@@ -437,7 +442,8 @@
 	        $("#hero_basic_data").html(basic_data);//英雄数据
 
 		},
-		setVideo: function(videoId,index){
+		
+		setVideo: function(videoId,index){//设置播放视频
 	  		var player = new YKU.Player('youkuplayer'+index,{
 	                                    styleid: '0',
 	                                    client_id: '759811013057796d',
@@ -445,7 +451,8 @@
 	                                    show_related: false
 	                                });
 		},
-		setVideoWH: function(){
+		
+		setVideoWH: function(){//设置视频宽高
 			var $skills_content = $("#skills_content"),
 				v_width = $skills_content.width(),
 				v_height = parseInt(v_width/306*190);
@@ -454,7 +461,8 @@
 				$(this).height(v_height);
 			});
 		},
-		setSlidebar: function(){//滑动条
+		
+		setSlidebar: function(){//设置属性值滑动栏
 			var that = this,
 				$barlevel = $("#barlevel"),
 				$bar = $("#bar"),
@@ -469,7 +477,7 @@
 				paragraph = barW_max/12,
 				level = 1;//初始化
 
-			function slide(rangeX){
+			function slide(rangeX){//计算滑动
 				var _level = Math.ceil(rangeX/paragraph);
 				
 				_level = _level == 0 ? 1 : _level;
@@ -495,9 +503,7 @@
 					slide(distanceX);
 				}
 			});
-		},
-
-		
+		},		
 
 		getsession: function(){
 			var sessionname = arguments[0];
