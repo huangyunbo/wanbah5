@@ -52,7 +52,8 @@ a{ text-decoration:none; outline:none}
 .footer .menu a{color:#999; padding:0 10px; display:inline-block}
 /*海报移动*/
 .posterPicMobile{ position:relative; overflow:hidden}
-.posterPicMobile .pic ul{ position:relative; width:100%; height:100%}
+.posterPicMobile .pic{ position:relative; overflow:hidden}
+.posterPicMobile .pic ul{ position:absolute; width:100%; height:100%}
 .posterPicMobile .pic li{ position:absolute; width:100%; height:100%; background:url(../images/posterPicMobile_loader.gif) no-repeat center center}
 .posterPicMobile .pic li a{ display:block; width:100%; height:100%}
 .posterPicMobile .pic li a img{ width:100%}
