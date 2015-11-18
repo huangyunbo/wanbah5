@@ -106,12 +106,19 @@
 
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
-var w = 1;
+var isNav = 0,
+	w = 1;
 
 $("#nav_slide").children("li").each(function(index, element){
+	if(isNav == 0){
+		isNav = 1;
+	}
 	w += $(this).outerWidth();
 });
-$("#nav_slide").width(w);
+if(isNav == 1){
+	$("#nav_slide").closest(".nav_slide").height(42);
+	$("#nav_slide").width(w);
+}
 </script>
 </body>
 </html>

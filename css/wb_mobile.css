@@ -69,7 +69,7 @@ a{ text-decoration:none; outline:none}
 .gameindex li div{ margin:18px 18px 10px}
 .gameindex li h2{ font-size:1.4em; color:#454545; white-space:nowrap; overflow:hidden; width:100%}
 /*横向滑动通用导航*/
-.nav_slide{ height:42px; position:relative; overflow:hidden}
+.nav_slide{ height:0; position:relative; overflow:hidden}
 .nav_slide .line_x{ position:absolute; left:0; right:0; bottom:0; background:#d3d3d3; height:1px}
 .nav_slide div{ overflow-x:auto; width:100%; height:70px; position:relative; -webkit-overflow-scrolling:touch}
 .nav_slide ul{ position:absolute; width:1000px; height:42px}
