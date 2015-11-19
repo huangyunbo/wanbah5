@@ -743,7 +743,6 @@ gulp.task('zhilongmicheng_ios', function(){
 });
 
 
-
 //王者荣耀
 var wangzherongyao_gameid = 104;
 var wangzherongyao_plugin_hero = "plugin_1133";
@@ -829,3 +828,71 @@ gulp.task('wangzherongyao_ios', function(){
 });
 
 
+//CF
+var cf_gameid = 105;
+var cf_plugin = "plugin_1153";
+var cf_path = '../';
+var cf_replace = ['css/', 'js/', 'json/'];
+var cf_replace_data =  ['css/', 'js/', 'json/'];
+var cf_platform = 'android';
+
+/*gulp.task('vainglory_images', function(){
+    gulp.src('./images/vainglory/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/vainglory'));
+	
+	gulp.src('./images/.nomedia', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/'));
+});*/
+
+gulp.task('cf_css', function(){
+    gulp.src(['./css/data-cf.css'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+cf_gameid+'/'+cf_platform+'/DataPlugin/css'));
+});
+
+gulp.task('cf_js', function(){
+    gulp.src(['./js/jquery-2.1.3.min.js','./js/data-cf.js'])
+        .pipe(concat('data-cf.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+cf_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+cf_gameid+'/'+cf_platform+'/DataPlugin/js'));
+});
+
+/*gulp.task('vainglory_json', function(){
+    gulp.src(['./json/json-vainglory.js', './json/json-vainglory.js'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/json'));
+});*/
+
+gulp.task('cf_data', function(){
+	if(cf_platform == 'android'){
+		for(var i=0; i<cf_replace.length; i++){
+			cf_replace_data[i] = cf_path + cf_replace[i];
+		}
+	}
+	
+    gulp.src('data-cf.html')
+		.pipe(merge({
+            'js/data-cf.min.js':['js/jquery-2.1.3.min.js','js/data-cf.js']
+        }))
+		.pipe(replace(cf_replace[0], cf_replace_data[0]))
+		.pipe(replace(cf_replace[1], cf_replace_data[1]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+cf_gameid+'/'+cf_platform+'/DataPlugin/'+cf_plugin));
+});
+
+gulp.task('cf_clean', function(){
+	return gulp.src('../../chajian/'+cf_gameid+'/'+cf_platform+'/DataPlugin/*', {read: false})
+	.pipe(clean({force: true}));
+});
+
+gulp.task('cf_android', ['cf_clean'], function(){
+	gulp.start('cf_css', 'cf_js', 'cf_data');
+});
+
+gulp.task('cf_ios_inner', ['cf_clean'], function(){
+	gulp.start('cf_css', 'cf_js', 'cf_data');
+});
+
+gulp.task('cf_ios', function(){
+	cf_platform = 'ios';
+	gulp.start('cf_ios_inner');
+});

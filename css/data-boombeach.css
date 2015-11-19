@@ -1,0 +1,90 @@
+@charset "utf-8";
+/* 海岛奇兵 2015-11-18 lucas */
+
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
+html{font:62.5%/1.5 "Microsoft YaHei",sans-serif}
+img{border:none;max-width:100%;vertical-align:top}
+h1,h2,h3,h4,h5,h6{font-weight:normal}
+input,select,textarea{font-size:100%;vertical-align:baseline}
+ol,ul{list-style:none}
+textarea{overflow:auto;vertical-align:top;resize:vertical}
+table{border-collapse:collapse;border-spacing:0}
+em,i,code,cite,address,th{font-style:normal}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+a{ text-decoration:none}
+.hide{ display:none !important}
+.mt_0{ margin-top:0 !important}
+.mb_10{ margin-bottom:10px}
+.mlf_7{ margin:0 7px}
+.center{ text-align:center}
+.wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.fs_12{ font-size:12px}
+.media_fs_14{ font-size:1.4rem}
+.media_mb_20{ margin-bottom:20px}
+.media_ml_16{ margin-left:16px}
+.media_plr_7{ padding:0 7px}
+/*大字体*/
+.max_fs{ font-size:24px}
+/*中字体*/
+.middle_fs{ font-size:12px}
+/*小字体*/
+.small_fs{ font-size:9px}
+
+.header{ height:44px; border-bottom:1px solid #355cbf; background:#6ca9de; position:fixed; width:100%; top:0; left:0; z-index:100}
+.header h1{ font-size:18px; padding-top:8px; text-align:center}
+.header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
+
+body{ background:#08121a; color:#fff}
+.armsd_bg {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9;
+}
+.armsd{ margin-top:45px}
+.armsd .top_img{ margin-bottom:10px}
+.armsd .top_part1{ border-bottom: 1px solid #9bc9ed; padding-bottom:4px}
+.armsd .top .top_part1 .armsn{ color:#3a93e6}
+.armsd .top .top_part1 .label{ float:right; color:#fff; margin-top:12px}
+.armsd .top .top_part1 .label span{ padding:0 5px}
+.armsd .top .top_part1 .label span:first-child{ background:#ec3a4a}
+.armsd .top .top_part1 .label span:nth-child(2){ background:#ffb642}
+.armsd .top .top_part1 .label span:nth-child(3){ background:#46ac27}
+.armsd .arm_des{ color:#5f88be; margin-top:8px}
+.armsd .specialist,.armsd .basicinfo,.armsd .data_detail{ margin-top:20px}
+.armsd .small_square{ display:inline-block; height:13px; width:1.5px; border:1px solid #2d8ce4; background:#2d8ce4; border-radius:35%}
+.armsd .specialist .comment_tit span,.armsd .basicinfo .basicinfot_tit span,.armsd .data_detail .data_tit span{ padding-left:3px; font-size:16px; color:#5f88be}
+.armsd .basicinfo table{
+  border-collapse: separate;
+  border-spacing: 1px;
+}
+tbody{
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+tr{
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+td{
+  padding: 3px 5px;  
+  text-align: center;
+}
+.armsd .basicinfo .on{
+  background: #43b9de;
+  color: #fff;
+}
+.armsd .leveld span{ color:#5d82bc}
+
+
+}
+
+
+
+
+
+

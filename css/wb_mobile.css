@@ -2,7 +2,6 @@
 /* 2015/3/24 */
 
 body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td,iframe{ margin:0; padding:0}
-article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{ display:block}
 html{ font:62.5%/1.5 "Microsoft YaHei", sans-serif}
 img{border:none; max-width:100%; vertical-align:top}
 h1,h2,h3,h4,h5,h6{ font-weight:normal}
@@ -14,66 +13,72 @@ em,i,code,cite,address,th{font-style:normal}
 .clear{clear:both;line-height:0;font-size:0}
 .clearfix{*zoom:1;_height:1px}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 
 
 a{ text-decoration:none; outline:none}
-.header{ height:50px; background:#fbbc0e; overflow:hidden; position:relative}
-.header .wblogo,.header .wblogo_index{ position:absolute; left:5px; top:0; height:50px; line-height:50px; padding-left:90px; background:url(../images/wblogo.png) no-repeat; background-size:contain; color:#fff}
-.header .wblogo_index{ background-position:-24px 0; padding-left:66px}
+.header{ height:50px; background:#fbbc0e; overflow:hidden}
+.header .wblogo,.header .wblogo_index{ font-size:20px; margin-left:5px; height:50px; line-height:50px; padding-left:90px; background-image:url(../images/wblogo_1x.png); background-repeat:no-repeat; color:#fff; display:inline-block}
+.header .wblogo_index{ background-position:-14px 0; padding-left:76px}
+@media only screen{
+	.header .wblogo,.header .wblogo_index{ background-image:url(../images/wblogo_3x.png); background-size:90px}
+}
 /*首页*/
-.index_nav{ font-size:1.5em; width:100%; display:table}
-.index_nav div{  width:50%; text-align:center; display:table-cell; border-right:1px solid #d3d3d3}
-.index_nav a{ color:#1a1a1a; border-bottom:2px solid transparent; padding:5px 20px; display:inline-block}
-.index_nav .on a{color:#fbbc0e; border-color:#fbbc0e}
-.index_nav div:last-child{ border:none}
-.index .gamearea{ margin-top:10px}
+.index_nav{ font-size:1.5em; position:relative; overflow:hidden; height:34px}
+.index_nav .line_y{ height:20px; width:1px; position:absolute; left:50%; top:8px; background:#d3d3d3}
+.index_nav .item{ width:50%; float:left; text-align:center}
+.index_nav .item a{ color:#1a1a1a; padding:0 24px; height:32px; line-height:32px; display:inline-block}
+.index_nav .on a{ color:#fbbc0e; border-bottom:2px solid #fbbc0e}
 .gamearea .title{ font-size:1.8em; padding:5px 0 5px 10px; background:#f5f5f5}
-.gamearea .title .icon{ width:2px; height:9px; background:#fbbc0e; display:inline-block; vertical-align:4px; margin-right:3px}
-.gamearea li a{ display:table; width:100%; padding:15px 0; border-bottom:1px solid #ccc}
-.gamearea .img{ display:table-cell; width:86px; padding:0 10px; box-sizing:border-box; text-align:center}
-.gamearea .desc{ display:table-cell; vertical-align:top}
+.gamearea .title .icon{ width:2px; height:9px; background:#fbbc0e; display:inline-block; vertical-align:4px; margin-right:3px; overflow:hidden}
+.gamearea li a{ position:relative; display:block; padding:10px 0 10px; _padding-bottom:28px; min-height:66px; border-bottom:1px solid #ccc}
+.gamearea .img{ position:absolute; left:10px; top:10px; width:66px; height:66px; text-align:center}
+.gamearea .desc{ margin-left:86px}
 .gamearea .desc h2{ font-size:1.8em; color:#1a1a1a}
 .gamearea .desc p,.gamearea .desc .info{ font-size:1.4em; color:#8f8f8f}
 .gamearea .desc .info span{ margin-right:6px}
-.gamearea .icon_look{ display:table-cell; width:10%; vertical-align:middle}
-.gamearea .icon_look i{ width:13px; height:13px; display:inline-block; border-width:0 1px 1px 0; border-color:#8f8f8f; border-style:solid; transform:rotate(-45deg); -webkit-transform:rotate(-45deg)}
+.gamearea .icon_look{ position:absolute; right:15px; top:50%; margin-top:-5px; width:14px}
+.gamearea .icon_look i{ width:13px; height:13px; display:inline-block; border-width:0 1px 1px 0; border-color:#8f8f8f; border-style:solid; -webkit-transform:rotate(-45deg); transform:rotate(-45deg)}
 .lookmore{ font-size:1.6em; color:#8f8f8f; text-align:center; padding:15px 0; display:block}
-
+.index_ad img{ width:100%}
 .index_videoarea{ margin-top:10px}
 .index_videoarea .title{ font-size:1.8em; padding:5px 0 5px 10px; background:#f5f5f5}
-.index_videoarea .title .icon{ width:2px; height:9px; background:#fbbc0e; display:inline-block; vertical-align:4px; margin-right:3px}
-.index_videoarea .list{ display:table; width:100%; padding:5px; box-sizing:border-box}
-.index_videoarea .item{ display:table-cell; width:50%; padding:5px; box-sizing:border-box}
+.index_videoarea .title .icon{ width:2px; height:9px; background:#fbbc0e; display:inline-block; vertical-align:4px; margin-right:3px; overflow:hidden}
+.index_videoarea .item{ float:left; width:50%}
+.index_videoarea .item a{ padding:5px; display:block}
 .index_videoarea .item h3{ color:#454545; font-size:1.6em}
 .index_videoarea .item img{ width:100%}
-.footer{ text-align:center; margin:50px 0 20px}
-.footer a{ border:1px solid #ccc; color:#ccc; padding:2px 10px; font-size:1.6em}
+.footer{ text-align:center; margin:50px 0 20px; color:#999; font-size:14px}
+.footer .menu{ margin-bottom:5px}
+.footer .menu a{color:#999; padding:0 10px; display:inline-block}
 /*海报移动*/
+.posterPicMobile{ position:relative; overflow:hidden}
 .posterPicMobile .pic{ position:relative; overflow:hidden}
-.posterPicMobile .pic ul{ position:relative; width:100%; height:100%}
+.posterPicMobile .pic ul{ position:absolute; width:100%; height:100%}
 .posterPicMobile .pic li{ position:absolute; width:100%; height:100%; background:url(../images/posterPicMobile_loader.gif) no-repeat center center}
 .posterPicMobile .pic li a{ display:block; width:100%; height:100%}
 .posterPicMobile .pic li a img{ width:100%}
-.posterPicMobile .pager{ position:relative; bottom:20px}
-.posterPicMobile .pager ul{ float:right; margin-right:10px}
+.posterPicMobile .pager{ position:absolute; bottom:20px; right:10px}
 .posterPicMobile .pager li{ width:10px; height:10px; border-radius:10px; background:#c3c3c3; display:inline-block; margin-right:10px}
 .posterPicMobile .pager li.current{ background:#fbbc0e}
 /*游戏专区*/
 .game .gamearea .title{ border-top:1px solid #d3d3d3}
 /*游戏专区首页*/
-.gameindex ul{ overflow:hidden; width:100%}
-.gameindex li{ width:25%; text-align:center; float:left; padding-bottom:18px}
-.gameindex li img{ padding:18px 18px 10px; width:100%; box-sizing:border-box}
+.gameindex li{ width:25%; text-align:center; display:inline-block; _float:left}
+.gameindex li a{ display:block}
+.gameindex li div{ margin:18px 18px 10px}
 .gameindex li h2{ font-size:1.4em; color:#454545; white-space:nowrap; overflow:hidden; width:100%}
 /*横向滑动通用导航*/
-.x_slide_nav{ overflow:hidden; width:100%; height:42px; position:relative}
-.x_slide_nav ul{ position:absolute; width:2000px; height:41px; border-bottom:1px solid #d3d3d3; box-sizing:border-box}
-.x_slide_nav li{ float:left; font-size:1.6em; color:#454545; padding:8px 20px 7px 20px; white-space:nowrap}
-.x_slide_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e}
+.nav_slide{ height:0; position:relative; overflow:hidden}
+.nav_slide .line_x{ position:absolute; left:0; right:0; bottom:0; background:#d3d3d3; height:1px}
+.nav_slide div{ overflow-x:auto; width:100%; height:70px; position:relative; -webkit-overflow-scrolling:touch}
+.nav_slide ul{ position:absolute; width:1000px; height:42px}
+.nav_slide li{ height:40px; line-height:40px; float:left; font-size:1.6em; color:#454545; padding:0 20px; white-space:nowrap; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.nav_slide li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e}
 
-.x_nav ul{ display:table; width:100%; table-layout:fixed}
-.x_nav li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center; border-bottom:1px solid #d3d3d3}
-.x_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e; padding-bottom:7px}
+.nav_fixed ul{ display:table; width:100%; table-layout:fixed}
+.nav_fixed li{ display:table-cell; font-size:1.6em; padding:8px 0; text-align:center; border-bottom:1px solid #d3d3d3}
+.nav_fixed li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e; padding-bottom:7px}
 /*新闻列表页*/
 .news li.item a{ border-bottom:1px solid #d3d3d3; padding:10px; display:block}
 .news li.item table{ width:100%}
@@ -81,36 +86,20 @@ a{ text-decoration:none; outline:none}
 .news li.item .note{ color:#1a1a1a; vertical-align:top}
 .news li.item .note h2{ font-size:1.6em; line-height:1.2}
 .news li.item .note p{ font-size:1.4em; margin-bottom:10px; color:#8f8f8f}
-.news li.item .info{ color:#8f8f8f; font-size:1.4em; vertical-align:bottom}
+.news li.item .info{ color:#8f8f8f; font-size:1.4em; vertical-align:bottom; line-height:1}
 .news li.item .info span{ margin-right:5px; white-space:nowrap}
-.news_icon_essence,.news_icon_look,.news_icon_comment,.news_icon_praise{ background:url(../images/news_icon.png) no-repeat; background-size:cover; width:15px; height:15px; display:inline-block}
-.news_icon_look{ background-position:0 -15px; vertical-align:sub}
-.news_icon_comment{ background-position:0 -30px; vertical-align:sub}
-.news_icon_praise{ background-position:0 -45px; vertical-align:sub}
-/*游戏动态*/
-.news li.item2 a{ border-bottom:1px solid #d3d3d3; padding:10px; color:#8f8f8f; display:block}
-.news li.item2 .head{ overflow:hidden; margin-bottom:2px}
-.news li.item2 .head img{ float:left; width:40px; height:40px; border-radius:40px; margin-right:8px}
-.news li.item2 .head .title{ font-size:1.6em}
-.news li.item2 .head .title span{ color:#fbbc0e; margin-right:10px}
-.news li.item2 .head .info{ color:#8f8f8f; font-size:1.4em}
-.news li.item2 .head .info span{ margin-right:5px; white-space:nowrap}
-.news li.item2 .content{ overflow:hidden; width:100%}
-.news li.item2 .content .data{ float:left; width:68%}
-.news li.item2 .content .img{ float:right; width:30%; position:relative}
-.news li.item2 .content h2{ color:#8f8f8f; font-size:1.6em; color:#1a1a1a; line-height:1.2; padding-bottom:5px}
-.news li.item2 .content p{ font-size:1.4em; white-space:nowrap; text-overflow:ellipsis; overflow:hidden}
-.news li.item2 .content .v-overlay{ width:100%; background:rgba(0,0,0,0.6); position:absolute; bottom:0px; height:18px; z-index:2}
-.news li.item2 .content .v-time{  position:absolute; bottom:0; left:3px; z-index:3; color:#fff; font-size:1.2em}
-.news li.item2 .content .v-num{  position:absolute; bottom:0; right:3px; z-index:3; color:#ffb309; font-size:1.2em}
-.news li.item2 .content .v-num .iconw{ width:12px; height:12px; background:#ffb309; border-radius:12px; display:inline-block; position:relative; vertical-align:-2px; margin-right:3px}
-.news li.item2 .content .v-num .icon{ width:0; height:0; border-top:3px solid transparent; border-bottom:3px solid transparent; border-left:3px solid rgba(0,0,0,0.6); position:absolute; left:5px; top:3px}
-/*新闻详情*/
-.newsdetail .art{ padding:10px; border-bottom:1px solid #d3d3d3}
-.newsdetail .art h2{ font-size:1.8em; font-weight:normal; line-height:1.2; margin:10px 0}
-.newsdetail .art .from{ font-size:1.3em; color:#8f8f8f}
-.newsdetail .art .from span{ margin-right:10px}
-.newsdetail .pagebody{ padding:10px; font-size:1.6em}
+.news_icon_look,.news_icon_comment{ background:url(../images/icon_news_1x.png) no-repeat; background-size:cover; width:15px; height:15px; display:inline-block; overflow:hidden; vertical-align:-3px; *vertical-align:2px}
+.news_icon_comment{ background-position:0 -15px}
+@media only screen{
+	.news_icon_look,.news_icon_comment{ background-image:url(../images/icon_news_3x.png); background-size:15px}
+	.news_icon_comment{ background-position:0 -15px}
+}
+/*文章详情*/
+.article .top{ padding:10px; border-bottom:1px solid #d3d3d3}
+.article .top h1{ font-size:1.8em; font-weight:normal; line-height:1.2; margin:10px 0}
+.article .top .info{ font-size:1.3em; color:#8f8f8f}
+.article .top .info span{ margin-right:10px}
+.article .pagebody{ padding:10px; font-size:1.6em; word-break:break-all}
 /*视频*/
 .videolist{ display:table; width:100%; box-sizing:border-box; padding:5px; overflow:hidden}
 .videolist .item{ display:table-cell; width:50%; padding:5px; box-sizing:border-box; float:left}
@@ -130,21 +119,7 @@ a{ text-decoration:none; outline:none}
 .videodetail .info{ padding:10px}
 .videodetail .info h3{ font-size:1.6em; color:#111}
 .videodetail .info { font-size:1.4em; color:#555}
-/*提示下载*/
-.downpage{ background:url(../images/downpage_bg.jpg) #fbf8eb fixed no-repeat; background-size:cover}
-.downpage .pagebody{ margin:100px auto 0; width:280px}
-.downpage .pagebody .t{ text-align:center; border-bottom:1px solid #454545; padding-bottom:15px; position:relative; margin-bottom:40px}
-.downpage h2{ font-size:4.5em; color:#111}
-.downpage .pagebody .t p{ font-size:2em; color:#454545}
-.downpage .pagebody .t i{ position:absolute; width:20px; height:20px; left:130px; bottom:-17px; background:url(../images/downpage_icon.png) no-repeat 0 -20px; background-size:20px}
-.downpage .pagebody .m{ overflow:hidden; color:#4545t45}
-.downpage .pagebody .m .l{ float:left; background:#ffb309; width:72px; height:72px; border-radius:15px; margin-right:15px}
-.downpage .pagebody .m .l .mlogo{ width:72px; height:72px; background:url(../images/wblogo.png) -18px 10px no-repeat; background-size:90px}
-.downpage .pagebody .m .r{ float:left}
-.downpage .pagebody .m .r .name{ font-size:1.8em}
-.downpage .pagebody .m .r .star i{ display:inline-block; width:20px; height:20px; left:130px; bottom:-17px; background:url(../images/downpage_icon.png) no-repeat; background-size:20px}
-.downpage .pagebody .m .r .other{ font-size:1.5em}
-.downpage .pagebody .b{ display:block; margin-top:20px; color:#6b6b6b; width:100%; height:40px; line-height:40px; text-align:center; font-size:1.6em; background:rgba(255,255,255,0.3); border-radius:10px}
+
 
 
 

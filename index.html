@@ -11,16 +11,16 @@
 </head>
 
 <body>
-<header class="header">
-	<a href="javascript:;" class="wblogo_index"><h1>玩吧</h1></a>
-</header><!--/header-->
+<div class="header">
+	<h1><a href="javascript:;" class="wblogo_index">玩吧</a></h1>
+</div><!--/header-->
 
-<nav class="index_nav">
-	<div class="on"><a href="javascript:;">首页</a></div>
-    <div><a href="javascript:;">专区</a></div>
-</nav><!--/index_nav-->
+<div class="index_nav">
+	<div class="item on"><a href="javascript:;">首页</a></div><div class="item"><a href="javascript:;">专区</a></div>
+    <i class="line_y"></i>
+</div><!--/index_nav-->
 
-<section class="index">
+<div class="index">
 	<div id="posterPicMobile" class="posterPicMobile">
     	<!--<div class="pic">
             <ul>
@@ -43,7 +43,7 @@
         <ul>
             <li>
                 <a href="javascript:;">
-                    <div class="img"><img class="lazy" src="images/gameicon_default.png" data-original="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png"></div>
+                    <img src="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png" class="img">
                     <div class="desc">
                         <h2>海盗奇兵</h2>
                         <p>玩吧教你打博士</p>
@@ -57,7 +57,7 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <div class="img"><img class="lazy" src="images/gameicon_default.png" data-original="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png"></div>
+                    <img src="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png" class="img">
                     <div class="desc">
                         <h2>海盗奇兵</h2>
                         <p>玩吧教你打博士</p>
@@ -71,7 +71,7 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <div class="img"><img class="lazy" src="images/gameicon_default.png" data-original="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png"></div>
+                    <img src="http://res.wanba123.cn/release/gameLogo/gameLogo_82.png" class="img">
                     <div class="desc">
                         <h2>海盗奇兵</h2>
                         <p>玩吧教你打博士</p>
@@ -94,40 +94,40 @@
     
     <div class="index_videoarea">
     	<div class="title"><i class="icon"></i>精彩视频</div>
-        <div class="list">
+        <div class="list clearfix">
         	<div class="item">
                 <a href="javascript:;">
-                    <div class="img"><img class="lazy" src="images/video_default.jpg" data-original="http://res.wanba123.cn/video/52/2015-04-08_111015.png"></div>
+                    <div class="img"><img src="http://res.wanba123.cn/video/52/2015-04-08_111015.png"></div>
                     <h3>海盗奇兵</h3>
                 </a>
             </div>
             <div class="item">
                 <a href="javascript:;">
-                    <div class="img"><img class="lazy" src="images/video_default.jpg" data-original="http://res.wanba123.cn/video/52/2015-04-08_111015.png"></div>
+                    <div class="img"><img src="http://res.wanba123.cn/video/52/2015-04-08_111015.png"></div>
                     <h3>海盗奇兵</h3>
                 </a>
             </div>
         </div><!--/list-->
     </div><!--/index_videoarea-->
     <a href="javascript:;" class="lookmore">查看更多视频&gt;</a>
-</section><!--/index-->
+</div><!--/index-->
 
-<footer class="footer">
-	<a href="http://www.wanba123.cn" target="_blank">电脑版</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="http://t.cn/RAohCUk">客户端</a>
-</footer><!--/footer-->
-<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<div class="footer">
+	<div class="menu">
+    	<a href="http://www.wanba123.cn" target="_blank">玩吧专业版</a>
+        <a href="http://m.wanba123.cn" target="_blank">首页</a>
+    </div>
+    <p>Copyright &copy; 2013 - 2015 wanba123.cn</p>
+</div><!--/footer-->
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/posterPicMobile.js"></script>
-<script type="text/javascript" src="js/jquery.lazyload.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	var posterPicMobileVar = new posterPicMobile({//首页海报特效
 		id: 'posterPicMobile',
 		delay: 6000,
-		data: [{"img":"http://res.wanba123.cn//ad/52-2015-03-31-01.jpg","url":"#","title":"第一张图"},{"img":"http://res.wanba123.cn//ad/74_2015_3_4.jpg","url":"#","title":"第二张图"}]
+		data: [{"img":"http://res.wanba123.cn//ad/52-2015-03-31-01.jpg","url":"http://www.qq.com","title":"第一张图"},{"img":"http://res.wanba123.cn//ad/74_2015_3_4.jpg","url":"http://www.baidu.com","title":"第二张图"}]
 	});
-	
-   $(".lazy").lazyload();
 });
 </script>
 </body>
