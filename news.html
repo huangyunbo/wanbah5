@@ -15,84 +15,74 @@
 	<h1><a href="javascript:;" class="wblogo">海岛奇兵</a></h1>
 </div><!--/header-->
 
-<div class="nav_slide">
+<div class="nav_slide_wrap">
 	<i class="line_x"></i>
-    <div>
-        <ul id="nav_slide">
-            <li class="on">资讯速递</li>
-            <li>新手指引</li>
-            <li>新手指引</li>
-            <li>新手指引</li>
-            <li>新手指引</li>
-            <li>新手指引</li>
-            <li>新手指引</li>
-            <li>新手指引</li>
-            <li>新手指引</li>
-            <li>新手指引</li>
-            <li>新手指引</li>
-        </ul>
+    <div class="nav_slide">
+        <div class="nav_slide_inner" id="nav_slide">
+            <a class="on">资讯速递</a>
+            <a>新手指引</a>
+            <a>新手指引</a>
+        </div>
     </div>
-</div><!--/nav_slide-->
+</div><!--/nav_slide_wrap-->
 
 <div class="news">
-	<div>
-        <ul>
-            <li class="item">
-                <a href="javascript:;">
-                    <table>
-                        <tr>
-                            <td rowspan="2" class="img"><img src="http://res.wanba123.cn/pic/thumbnail_13736.jpg"></td>
-                            <td class="note"><h2>公会本第三章攻略公会本第三章攻</h2></td>
-                        </tr>
-                        <tr>
-                            <td class="info">
-                                <span>02-17 13:54</span>
-                                <span><i class="news_icon_look"></i>23478</span>
-                                <span><i class="news_icon_comment"></i>125248</span>
-                            </td>
-                        </tr>
-                    </table>
-                </a>
-            </li>
-            <li class="item">
-                <a href="javascript:;">
-                    <table>
-                        <tr>
-                            <td class="note">
-                                <h2>公会本第三章攻略公会本第三章攻</h2>
-                                <p>傻馒</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="info">
-                                <span>02-17 13:54</span>
-                                <span><i class="news_icon_look"></i>23478</span>
-                                <span><i class="news_icon_comment"></i>125248</span>
-                            </td>
-                        </tr>
-                    </table>
-                </a>
-            </li>
-            <li class="item">
-                <a href="javascript:;">
-                    <table>
-                        <tr>
-                            <td rowspan="2" class="img"><img src="http://res.wanba123.cn/pic/thumbnail_13736.jpg"></td>
-                            <td class="note"><h2>公会本第三章攻略公会本第三章攻<i class="news_icon_essence"></i></h2></td>
-                        </tr>
-                        <tr>
-                            <td class="info">
-                                <span>02-17 13:54</span>
-                                <span><i class="news_icon_look"></i>23478</span>
-                                <span><i class="news_icon_comment"></i>125248</span>
-                            </td>
-                        </tr>
-                    </table>
-                </a>
-            </li>
-        </ul>
-        <a href="javascript:;" class="lookmore">点击加载更多</a>
-    </div>
+    <ul>
+        <li class="item">
+            <a href="javascript:;">
+                <table>
+                    <tr>
+                        <td rowspan="2" class="img"><img src="http://res.wanba123.cn/pic/thumbnail_13736.jpg"></td>
+                        <td class="note"><h2>公会本第三章攻略公会本第三章攻</h2></td>
+                    </tr>
+                    <tr>
+                        <td class="info">
+                            <span>02-17 13:54</span>
+                            <span><i class="news_icon_look"></i>23478</span>
+                            <span><i class="news_icon_comment"></i>125248</span>
+                        </td>
+                    </tr>
+                </table>
+            </a>
+        </li>
+        <li class="item">
+            <a href="javascript:;">
+                <table>
+                    <tr>
+                        <td class="note">
+                            <h2>公会本第三章攻略公会本第三章攻</h2>
+                            <p>傻馒</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="info">
+                            <span>02-17 13:54</span>
+                            <span><i class="news_icon_look"></i>23478</span>
+                            <span><i class="news_icon_comment"></i>125248</span>
+                        </td>
+                    </tr>
+                </table>
+            </a>
+        </li>
+        <li class="item">
+            <a href="javascript:;">
+                <table>
+                    <tr>
+                        <td rowspan="2" class="img"><img src="http://res.wanba123.cn/pic/thumbnail_13736.jpg"></td>
+                        <td class="note"><h2>公会本第三章攻略公会本第三章攻<i class="news_icon_essence"></i></h2></td>
+                    </tr>
+                    <tr>
+                        <td class="info">
+                            <span>02-17 13:54</span>
+                            <span><i class="news_icon_look"></i>23478</span>
+                            <span><i class="news_icon_comment"></i>125248</span>
+                        </td>
+                    </tr>
+                </table>
+            </a>
+        </li>
+    </ul>
+    <a href="javascript:;" class="lookmore">点击加载更多</a>
 </div><!--/news-->
 
 
@@ -109,16 +99,18 @@
 var isNav = 0,
 	w = 1;
 
-$("#nav_slide").children("li").each(function(index, element){
+$("#nav_slide").children().each(function(index, element){
 	if(isNav == 0){
 		isNav = 1;
 	}
 	w += $(this).outerWidth();
 });
 if(isNav == 1){
-	$("#nav_slide").closest(".nav_slide").height(42);
+	$("#nav_slide").closest(".nav_slide_wrap").height(42);
 	$("#nav_slide").width(w);
 }
+
+console.log(parseInt(-1.1,10));
 </script>
 </body>
 </html>
