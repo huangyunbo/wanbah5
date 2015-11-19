@@ -41,10 +41,12 @@ body{ background:#08121a; color:#fff}
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 9;
+  z-index: 9; 
+  height:100%; 
+  width:100%
 }
-.armsd{ margin-top:45px}
-.armsd .top_img{ margin-bottom:10px}
+.armsd{ margin-top:45px; position:relative; z-index:10}
+.armsd .top_img{ margin-bottom:10px; height:100%; width:100%}
 .armsd .top_part1{ border-bottom: 1px solid #9bc9ed; padding-bottom:4px}
 .armsd .top .top_part1 .armsn{ color:#3a93e6}
 .armsd .top .top_part1 .label{ float:right; color:#fff; margin-top:12px}
@@ -60,31 +62,24 @@ body{ background:#08121a; color:#fff}
   border-collapse: separate;
   border-spacing: 1px;
 }
-tbody{
-  display: table-row-group;
-  vertical-align: middle;
-  border-color: inherit;
-}
-tr{
-  display: table-row;
-  vertical-align: inherit;
-  border-color: inherit;
-}
-td{
-  padding: 3px 5px;  
-  text-align: center;
-}
-.armsd .basicinfo .on{
-  background: #43b9de;
-  color: #fff;
-}
+tbody{ display: table-row-group; vertical-align: middle; border-color: inherit}
+tr{ display: table-row; vertical-align: inherit; border-color: inherit}
+td{ padding: 3px 5px; text-align: center}
+.armsd .basicinfo .on{background: #43b9de; color: #fff}
 .armsd .leveld span{ color:#5d82bc}
 
 
+.armsd .data_detail .figure { width: 100%; border-collapse: separate; border-spacing: 6px; table-layout: fixed}
+.armsd .f_tr{ display: table-row; vertical-align: inherit; border-color: inherit}
+.armsd .f_td{ background: rgba(0,0,0,0.6); width: 60%; text-align: center; position: relative}
+.armsd .f_td:first-child {width: 40%}
+.armsd .data_detail .num { font-size: 2.4rem}
+.armsd .data_detail .num_green { color: #29dd68}
+.armsd .data_detail .num_red { color: #fe4462}
+.armsd .data_detail .k { font-size: 1.2rem}
+.armsd .data_detail .v { color: #9c9895; padding-bottom: 5px}
+.armsd .data_detail .dl{ display: block; -webkit-margin-before: 1em; -webkit-margin-after: 1em; -webkit-margin-start: 0px; -webkit-margin-end: 0px}
+.armsd .data_detail dt{ display: inline-block; color: #9c9895; width: 50%; text-align: right; padding-right: 5px; box-sizing: border-box}
+.armsd .data_detail dd{ display: inline-block; width: 50%; text-align: left}
+
 }
-
-
-
-
-
-
