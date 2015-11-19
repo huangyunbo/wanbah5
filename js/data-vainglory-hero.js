@@ -232,13 +232,7 @@
 				isnetwork = 1;
 
 			that.o.type = Number(that.getsession("wbgl-vainglory-hero-type"));			
-			that.printHeroDetail();
-			if(window.navigator.onLine){
-				isnetwork = 1;//有网
-				that.setVideoWH();
-			}else{
-				isnetwork = 0;//无网
-			}
+			that.printHeroDetail();			
 			$("#skills_head").on("click", "li",function(){
 				var self = this,
 					$self = $(self),
@@ -255,9 +249,15 @@
 				$self.addClass("on");
 				
 				$("#skills_content").children().eq(_index).addClass("on").siblings().removeClass("on");
-				if(isnetwork == 1){
+				if(isnetwork == 1 && jQuery.trim(that.o.piece.skill_video[_index]).length>0){
 					$("#skills_content").find(".youku").eq(oldindex).html("");
 					that.setVideo(that.o.piece.skill_video[_index],_index);//英雄技能视频
+				}
+				if(window.navigator.onLine && jQuery.trim(that.o.piece.skill_video[_index]).length>0){
+					isnetwork = 1;//有网
+					that.setVideoWH();
+				}else{
+					isnetwork = 0;//无网
 				}
 			}).find("li").eq(0).trigger("click");
 
