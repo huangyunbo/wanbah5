@@ -1,7 +1,9 @@
 (function(window){
 	var Vainglory = function(option){
 		if(arguments[0] === undefined) return false;
-		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
+		data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
+		this.data_hero = data.data_hero;		
+		this.data_equip = data.data_equip;
 		this.o = {
 			plugin:"plugin_1080",
 			platform:"web",
@@ -30,7 +32,7 @@
 				blurOne = actualH/20, //再计算出20段，每段距离是多少
 				blurValue = 0,//模糊的值
 				dom = $("#herod_bg"),//模糊对象
-				$baike = $("#baike"),//ios需要的定级遮罩层
+				// $baike = $("#baike"),//ios需要的定级遮罩层
 				$herod = $("#herod"),
 				touchStarY,
 				touchMoveY,
@@ -51,50 +53,50 @@
 			}
 			
 			if(this.o.platform == "ios"){
-				$baike.addClass("baike");
-				$baike.on("touchstart", function(e){
-					e.preventDefault();
-					touchStarY = e.originalEvent.changedTouches[0].pageY;
-					starMarginTop = parseInt($herod.css("margin-top"));
-					starScrollTopH = $win.scrollTop();
-				});
-				$baike.on("touchmove", function(e){
-					e.preventDefault();
-					if(leave != 0) return;
-					touchMoveY = e.originalEvent.changedTouches[0].pageY;
-					marginTop = starMarginTop + (touchMoveY - touchStarY);//设置的距离=起始的点+滑动的距离
+				// $baike.addClass("baike");
+				// $baike.on("touchstart", function(e){
+				// 	e.preventDefault();
+				// 	touchStarY = e.originalEvent.changedTouches[0].pageY;
+				// 	starMarginTop = parseInt($herod.css("margin-top"));
+				// 	starScrollTopH = $win.scrollTop();
+				// });
+				// $baike.on("touchmove", function(e){
+				// 	e.preventDefault();
+				// 	if(leave != 0) return;
+				// 	touchMoveY = e.originalEvent.changedTouches[0].pageY;
+				// 	marginTop = starMarginTop + (touchMoveY - touchStarY);//设置的距离=起始的点+滑动的距离
 					
-					if(marginTop >= h + starScrollTopH){//超出往下滑范围，禁止
-						$herod.css("margin-top",h + starScrollTopH);
-						scrollTopH = 0;
-					}else{//往上滑(正常范围+超出往上滑范围)
-						$herod.css("margin-top",marginTop);
-						scrollTopH = h - marginTop + starScrollTopH;
-					}
-					calcGaussblur();
-				});
-				$baike.on("touchend", function(e){
-					if(leave == 0 && marginTop <= 0){
-						leave = 1;
-						$herod.css("margin-top",h);
-						$win.scrollTop(scrollTopH);
-						$baike.removeClass("baike");
-					}
-				});
+				// 	if(marginTop >= h + starScrollTopH){//超出往下滑范围，禁止
+				// 		$herod.css("margin-top",h + starScrollTopH);
+				// 		scrollTopH = 0;
+				// 	}else{//往上滑(正常范围+超出往上滑范围)
+				// 		$herod.css("margin-top",marginTop);
+				// 		scrollTopH = h - marginTop + starScrollTopH;
+				// 	}
+				// 	calcGaussblur();
+				// });
+				// $baike.on("touchend", function(e){
+				// 	if(leave == 0 && marginTop <= 0){
+				// 		leave = 1;
+				// 		$herod.css("margin-top",h);
+				// 		$win.scrollTop(scrollTopH);
+				// 		$baike.removeClass("baike");
+				// 	}
+				// });
 				
-				$win.scroll(function(){
-					scrollTopH = $win.scrollTop();
-					if(leave == 1 && scrollTopH < h){//当进入顶部区域，只需要执行一次
-						leave = 0;
-						$baike.addClass("baike");
-					}
-					calcGaussblur();
-				});
+				// $win.scroll(function(){
+				// 	scrollTopH = $win.scrollTop();
+				// 	if(leave == 1 && scrollTopH < h){//当进入顶部区域，只需要执行一次
+				// 		leave = 0;
+				// 		$baike.addClass("baike");
+				// 	}
+				// 	calcGaussblur();
+				// });
 			}else{
-				$win.scroll(function(){
-					scrollTopH = $win.scrollTop();
-					calcGaussblur();
-				});
+				// $win.scroll(function(){
+				// 	scrollTopH = $win.scrollTop();
+				// 	calcGaussblur();
+				// });
 			}
 		},
 		setHerodtop: function(){//初始设置英雄详情的高度
@@ -201,9 +203,9 @@
 				}
 				return b.id - a.id;
 			}			
-			this.data.sort(sortNumber);			
-			for(var i=0; i<this.data.length; i++){
-				hero_data = this.data[i];
+			this.data_hero.sort(sortNumber);			
+			for(var i=0; i<this.data_hero.length; i++){
+				hero_data = this.data_hero[i];
 				if((mloction == 0 || mloction == hero_data.location) && (mduty == 0 || mduty == hero_data.duty)){									
 					html_content_temp += '<li data-id="'+hero_data.id+'">'+
 								        '<div class="img">'+
@@ -232,7 +234,8 @@
 				isnetwork = 1;
 
 			that.o.type = Number(that.getsession("wbgl-vainglory-hero-type"));			
-			that.printHeroDetail();			
+			that.printHeroDetail();		
+			//英雄技能点击	
 			$("#skills_head").on("click", "li",function(){
 				var self = this,
 					$self = $(self),
@@ -261,6 +264,27 @@
 				}
 			}).find("li").eq(0).trigger("click");
 
+			//装备选择点击
+			$("#equipchoice_head").on("click", "li",function(){
+				var self = this,
+					$self = $(self),
+					$equipchoice_head_children = $self.parents().children(),
+					_index = $equipchoice_head_children.index(self),
+					oldindex = 0;
+				
+				$equipchoice_head_children.each(function(index, element) {
+                    if($(element).hasClass("on")){
+						oldindex = index;
+					}
+                });
+				$equipchoice_head_children.eq(oldindex).removeClass("on");
+				$self.addClass("on");
+				
+				$("#equipchoice_content").children().eq(_index).addClass("on").siblings().removeClass("on");			
+				
+			}).find("li").eq(0).trigger("click");
+
+			//皮肤点击
 			$("#skin").on("click", "li", function(){
 				var self = $(this),
 					head = self.parents(),
@@ -270,8 +294,8 @@
 				head.next(".box").children().eq(_index).addClass("on").siblings().removeClass("on");
 			}).find("li").eq(0).trigger("click");
 
-			that.setHerodtop();			
-			that.setBlur();//模糊
+			// that.setHerodtop();			
+			// that.setBlur();//模糊
 			that.setSlidebar();//滑动条		
 		},
 
@@ -281,7 +305,8 @@
 				id = 0,
 				intro_top = '',
 				summary = '',
-				html_equipchoice = '',
+				html_equipchoice_head = '',
+				html_equipchoice_content = '',
 				html_addskill = '',
 				hero_qipo = '',
 				html_skills_head = '',
@@ -315,9 +340,9 @@
 			id = Number(this.getsession("wbgl-vainglory-hero-id"));
 				
 			
-			for(var i=0; i<this.data.length; i++){
-				if(this.data[i].id == id){
-					piece = this.data[i];
+			for(var i=0; i<this.data_hero.length; i++){
+				if(this.data_hero[i].id == id){
+					piece = this.data_hero[i];
 					this.o.piece = piece;
 					break;
 				}
@@ -350,13 +375,39 @@
 
 			$("#herod_head").html(intro_top);
 			summary = '<p class="media_fs_14">'+piece.summary+'</p>';
-			$("#summary").html(summary);
-			html_equipchoice='';
+			$("#summary").html(summary);			
 			for(var i=0; i<piece.item.length; i++){
-				html_equipchoice += '<li><img src="'+this.o.url+'equip/'+'item'+piece.item[i]+'.png"></li>';
+				// html_equipchoice += '<li><img src="'+this.o.url+'equip/'+'item'+piece.item[i]+'.png"></li>';
+				var choice_equip='';
+				html_equipchoice_head += '<li class="on"><img src="images/vainglory/equip/item'+piece.item[i]+'.png"></li>';  
+				for(var j=0; j<this.data_equip.length; j++)  
+				if(piece.item[i] == this.data_equip[j].tid){
+					choice_equip = this.data_equip[j];					
+					function equiplabel(){
+						var _html = '';
+						for(var i=0; i<choice_equip.label.length; i++){
+							_html += '<span>'+choice_equip.label[i]+'</span>';
+						}
+						return _html;
+					}	
+
+					html_equipchoice_content += '<div>'
+					+'<span class="polygon"><i></i></span>'+
+		                '<span class="equip_name">'+choice_equip.data.name+'</span>'+
+		                '<label class="price">'+choice_equip.data.price+'</label>'+
+		                '</div>'+
+		                '<div class="ml_16 label">'+
+		               		equiplabel()
+		                '</div>'+
+		                '<div class="ml_16">'+
+		                	choice_equip.data.info+
+		                '</div>';
+		                console.log(choice_equip.data.info);
+				}
 			}
-			$("#equipchoice").html(html_equipchoice);//装备选择
-			html_addskill='';
+
+			$("#equipchoice").html(html_equipchoice_head+html_equipchoice_content);//装备选择		
+
 			for(var i=0; i<piece.build.length; i++){
 				html_addskill += '<li><img src="'+this.o.url+'dbpic/skill'+piece.id+'_'+piece.build[i]+'.jpg"></li>';
 			}

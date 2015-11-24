@@ -14,7 +14,7 @@
     <h1>虚荣-英雄详情</h1>
 </div>
 
-<div id="baike"></div>
+<!-- <div id="baike"></div> -->
 
 <img src="images/vainglory/hero_detail_bg.png" class="herod_bg first_blur" id="herod_bg">
 
@@ -54,14 +54,31 @@
     
     <div class="equipchoice plr_7 mb_10">
     	<h2 class="herod_h2">装备选择</h2>
-        <ul id="equipchoice">
-            <li><img src="images/itemthumb-bb2.png"></li>
-            <li><img src="images/itemthumb-bb2.png"></li>
-            <li><img src="images/itemthumb-bb2.png"></li>
-            <li><img src="images/itemthumb-bb2.png"></li>
-            <li><img src="images/itemthumb-bb2.png"></li>
-            <li><img src="images/itemthumb-bb2.png"></li>
-        </ul>
+        <div class="equipchoice equipchoice_head" id="equipchoice_head">
+            <ul id="equipchoice">            
+                <li class="on"><img src="images/vainglory/equip/item6.png"></li>
+                <li><img src="images/vainglory/equip/item1.png"></li>
+                <li><img src="images/vainglory/equip/item2.png"></li>
+                <li><img src="images/vainglory/equip/item3.png"></li>
+                <li><img src="images/vainglory/equip/item4.png"></li>
+                <li><img src="images/vainglory/equip/item5.png"></li>
+
+            </ul>
+        </div><!--/equipchoice_head-->
+        <div class="equipchoice_content" id="equipchoice_content">
+            <div>
+                <span class="polygon"><i></i></span>
+                <span class="equip_name">幽冥之刃</span>
+                <label class="price">售价300</label>                
+            </div>
+            <div class="ml_16 label">
+                <span>续航</span>
+                <span>吸血</span>
+            </div>
+            <div class="ml_16">
+                攻击力：+100
+            </div>                        
+        </div><!--/equipchoice_content-->        
     </div><!--/equipchoice-->
     
     <div class="specialtit plr_7 mb_10">
@@ -330,7 +347,8 @@
 <script type="text/javascript" src="http://player.youku.com/jsapi"></script>
 <script type="text/javascript">
 $(function(){
-	var vainglory = new Vainglory(data_hero);    
+    var data_all = {data_hero:data_hero, data_equip:data_equip};
+	var vainglory = new Vainglory(data_all);    
 });
 </script>
 </body>

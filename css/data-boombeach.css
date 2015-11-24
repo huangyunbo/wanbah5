@@ -71,8 +71,8 @@ td{ padding: 3px 5px; text-align: center}
 
 .armsd .data_detail .figure { width: 100%; border-collapse: separate; border-spacing: 6px; table-layout: fixed}
 .armsd .f_tr{ display: table-row; vertical-align: inherit; border-color: inherit}
-.armsd .f_td{ background: rgba(0,0,0,0.6); width: 60%; text-align: center; position: relative}
-.armsd .f_td:first-child {width: 40%}
+.armsd .data_detail .figure td{ background: rgba(0,0,0,0.6); width: 60%; text-align: center; position: relative}
+.armsd .data_detail .figure td:first-child {width: 40%}
 .armsd .data_detail .num { font-size: 2.4rem}
 .armsd .data_detail .num_green { color: #29dd68}
 .armsd .data_detail .num_red { color: #fe4462}
