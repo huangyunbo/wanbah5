@@ -71,9 +71,12 @@ body{ background:#08121a; color:#fff; -webkit-user-select:none; user-select:none
 .herod_h2{ font-size:17px; color:#74c9ff; margin-bottom:5px}
 /*.herod .equipchoice ul{ text-align:center; box-shadow:0 0 2px #46ffeb; border:1px solid #51daef; background:linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25)); background:-webkit-linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25))} */
 .herod .equipchoice{ border-bottom: 1px solid #74c9ff; padding-bottom: 10px}
+.herod .equipchoice1{ padding-bottom: 10px}
 .herod .equipchoice ul{ text-align:center}
 .herod .equipchoice ul li{ position:relative; display:inline-block; width:15%; padding:3px; box-sizing:border-box; margin:6px 0}
 .herod .equipchoice ul li img{ border-radius:100px}
+.herod .equipchoice1 .equipchoice_content .item.on{ display: block}
+.herod .equipchoice1 .equipchoice_content .item{ display: none}
 .herod .equipchoice ul li.on:before{ content: ""; position: absolute; border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:6px solid #74c9ff; bottom: -16px; left: 50%; margin-left: -6px}
 .herod .polygon { position: relative; display: inline-block; width: 10px; height: 12px; margin-right: 6px}
 .herod .polygon i { position: absolute; width: 10px; height: 6px; top: 3px; left: 0; background: #74c9ff}
@@ -134,7 +137,7 @@ body{ background:#08121a; color:#fff; -webkit-user-select:none; user-select:none
 .herod .skin .box span{ color:#74c9ff; padding-right:5px}
 .herod .skin .box .item h4{ padding-left:5px; display:inline}
 
-@media screen and (min-width:640px){
+@media screen and (min-width:640px){	
 	/*滑动条*/	
 	.herod .bar .l{ font-size:2.4rem}
 	.herod .bar .l div{ font-size:3.0rem}
@@ -173,6 +176,15 @@ body{ background:#08121a; color:#fff; -webkit-user-select:none; user-select:none
 	.herod i.icon_herodata_nandu{ background-position:0 -750px}
 	.herod .star{ margin-top:6px}
 	.herod .star em{ width:6%; height:20px; margin-right:3%}
+
+
+	.herod .polygon{ width:20px; height:24px; margin-right:12px}
+	.herod .polygon i{ width:20px; height:12px; top:6px; left:0}
+	.herod .polygon:before{ border-bottom:6px solid #74c9ff; border-left:10px solid transparent; border-right:10px solid transparent}
+	.herod .polygon:after{ top:18px; border-top:6px solid #74c9ff; border-left:10px solid transparent; border-right:10px solid transparent}
+	.herod .equipchoice_content .equip_name{ font-size:28px}
+	.herod .equipchoice_content .label{ padding-top:8px; font-size:24px}
+	.herod .equipchoice_content .price { font-size:24px; margin-left:15px; padding: 0 7px}
 
 	.herod .qipo ul .r .qp_skill{ padding-top:10px}
 	.herod .qipo .l{ width:72px; height:72px}

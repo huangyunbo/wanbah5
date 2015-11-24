@@ -392,20 +392,20 @@
 								console.log(piece.item[i]);
 
 								choice_equip = this.data_equip[j].data[n];								
-								html_equipchoice_content += '<div>'+
+								html_equipchoice_content += '<div class="item"><div>'+
 									'<span class="polygon"><i></i>'+
 									'</span>'+
-					                '<span class="equip_name">'+choice_equip.name+
+					                '<span class="equip_name media_fs_14">'+choice_equip.name+
 					                '</span>'+
-					                '<label class="price">'+choice_equip.price+
+					                '<label class="price ">'+choice_equip.price+
 					                '</label>'+
 					                '</div>'+
 					                '<div class="ml_16 label">'+
 					               		equiplabel()+
 					                '</div>'+
-					                '<div class="ml_16">'+
+					                '<div class="ml_16 media_fs_14">'+
 					                	choice_equip.prop+
-					                '</div>';
+					                '</div></div>';
 						}
 					}
 				}  
