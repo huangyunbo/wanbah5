@@ -120,7 +120,9 @@
 <script type="text/javascript" src="js/data-vainglory-hero.js"></script>
 <script type="text/javascript">
 $(function(){
-	var vainglory_hero = new Vainglory(data_hero);
+	// var vainglory_hero = new Vainglory(data_hero);
+  var data_all = {data_hero:data_hero, data_equip:data_equip};
+  var vainglory = new Vainglory(data_all);  
 });
 </script>
 </body>

@@ -11,8 +11,7 @@
 			type:0,//英雄类别数组下标
 			piece:{},//英雄单个详情object
 			herodHeight:300//默认距顶部高度
-		};	
-
+		};
 		if(this.o.platform == "android"){
 			this.o.url="../images/vainglory/";
 		}
@@ -139,6 +138,7 @@
 				$("#herolist_nav_top").children().eq(0).children("span").html($(self).text());
 
 			});
+
 			$("#hero_duty").children().click(function(){
 				var self = this;				
 				$("#hero_duty").removeClass("on");	
@@ -147,6 +147,7 @@
 				that.printIndex(tlocation,tduty,tprice);	
 				$("#herolist_nav_top").children().eq(1).children("span").html($(self).text());			
 			});
+
 			$("#hero_price").children().click(function(){
 				var self = this;				
 				$("#hero_price").removeClass("on");	
@@ -254,7 +255,7 @@
 				$("#skills_content").children().eq(_index).addClass("on").siblings().removeClass("on");
 				if(isnetwork == 1 && jQuery.trim(that.o.piece.skill_video[_index]).length>0){
 					$("#skills_content").find(".youku").eq(oldindex).html("");
-					that.setVideo(that.o.piece.skill_video[_index],_index);//英雄技能视频
+					// that.setVideo(that.o.piece.skill_video[_index],_index);//英雄技能视频
 				}
 				if(window.navigator.onLine && jQuery.trim(that.o.piece.skill_video[_index]).length>0){
 					isnetwork = 1;//有网
@@ -282,7 +283,8 @@
 				
 				$("#equipchoice_content").children().eq(_index).addClass("on").siblings().removeClass("on");			
 				
-			}).find("li").eq(0).trigger("click");
+			})
+			// .find("li").eq(0).trigger("click");
 
 			//皮肤点击
 			$("#skin").on("click", "li", function(){
@@ -375,38 +377,50 @@
 
 			$("#herod_head").html(intro_top);
 			summary = '<p class="media_fs_14">'+piece.summary+'</p>';
-			$("#summary").html(summary);			
+			$("#summary").html(summary);	
+
+			
 			for(var i=0; i<piece.item.length; i++){
 				// html_equipchoice += '<li><img src="'+this.o.url+'equip/'+'item'+piece.item[i]+'.png"></li>';
 				var choice_equip='';
-				html_equipchoice_head += '<li class="on"><img src="images/vainglory/equip/item'+piece.item[i]+'.png"></li>';  
-				for(var j=0; j<this.data_equip.length; j++)  
-				if(piece.item[i] == this.data_equip[j].tid){
-					choice_equip = this.data_equip[j];					
-					function equiplabel(){
-						var _html = '';
-						for(var i=0; i<choice_equip.label.length; i++){
-							_html += '<span>'+choice_equip.label[i]+'</span>';
+				html_equipchoice_head += '<li><img src="images/vainglory/equip/item'+piece.item[i]+'.png"></li>';				
+				for(var j=0; j<this.data_equip.length; j++){						
+						
+						for(var n=0;n<this.data_equip[j].data.length;n++){
+
+							if(piece.item[i] == this.data_equip[j].data[n].id){
+								console.log(piece.item[i]);
+
+								choice_equip = this.data_equip[j].data[n];								
+								html_equipchoice_content += '<div>'+
+									'<span class="polygon"><i></i>'+
+									'</span>'+
+					                '<span class="equip_name">'+choice_equip.name+
+					                '</span>'+
+					                '<label class="price">'+choice_equip.price+
+					                '</label>'+
+					                '</div>'+
+					                '<div class="ml_16 label">'+
+					               		equiplabel()+
+					                '</div>'+
+					                '<div class="ml_16">'+
+					                	choice_equip.prop+
+					                '</div>';
 						}
-						return _html;
-					}	
-
-					html_equipchoice_content += '<div>'
-					+'<span class="polygon"><i></i></span>'+
-		                '<span class="equip_name">'+choice_equip.data.name+'</span>'+
-		                '<label class="price">'+choice_equip.data.price+'</label>'+
-		                '</div>'+
-		                '<div class="ml_16 label">'+
-		               		equiplabel()
-		                '</div>'+
-		                '<div class="ml_16">'+
-		                	choice_equip.data.info+
-		                '</div>';
-		                console.log(choice_equip.data.info);
-				}
-			}
-
-			$("#equipchoice").html(html_equipchoice_head+html_equipchoice_content);//装备选择		
+					}
+				}  
+				function equiplabel(){
+							var _html = '';
+							for(var i=0; i<choice_equip.label.length; i++){
+								_html += '<span>'+choice_equip.label[i]+'</span>';
+							}							
+							return _html;
+						}	
+				
+			}		
+			
+			$("#equipchoice").html(html_equipchoice_head);//装备选择
+			$("#equipchoice_content").html(html_equipchoice_content);//装备选择		
 
 			for(var i=0; i<piece.build.length; i++){
 				html_addskill += '<li><img src="'+this.o.url+'dbpic/skill'+piece.id+'_'+piece.build[i]+'.jpg"></li>';
@@ -494,14 +508,14 @@
 
 		},
 		
-		setVideo: function(videoId,index){//设置播放视频
-	  		var player = new YKU.Player('youkuplayer'+index,{
-	                                    styleid: '0',
-	                                    client_id: '759811013057796d',
-	                                    vid: videoId,
-	                                    show_related: false
-	                                });
-		},
+		// setVideo: function(videoId,index){//设置播放视频
+	 //  		var player = new YKU.Player('youkuplayer'+index,{
+	 //                                    styleid: '0',
+	 //                                    client_id: '759811013057796d',
+	 //                                    vid: videoId,
+	 //                                    show_related: false
+	 //                                });
+		// },
 		
 		setVideoWH: function(){//设置视频宽高
 			var $skills_content = $("#skills_content"),
