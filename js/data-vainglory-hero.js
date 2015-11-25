@@ -383,14 +383,19 @@
 			for(var i=0; i<piece.item.length; i++){
 				// html_equipchoice += '<li><img src="'+this.o.url+'equip/'+'item'+piece.item[i]+'.png"></li>';
 				var choice_equip='';
-				html_equipchoice_head += '<li><img src="images/vainglory/equip/item'+piece.item[i]+'.png"></li>';				
+				html_equipchoice_head += '<li><img src="images/vainglory/equip/item'+piece.item[i]+'.png"></li>';	
+				function equiplabel(){
+							var _html = '';
+							for(var i=0; i<choice_equip.label.length; i++){
+								_html += '<span>'+choice_equip.label[i]+'</span>';
+							}							
+							return _html;
+						}			
 				for(var j=0; j<this.data_equip.length; j++){						
 						
 						for(var n=0;n<this.data_equip[j].data.length;n++){
 
 							if(piece.item[i] == this.data_equip[j].data[n].id){
-								console.log(piece.item[i]);
-
 								choice_equip = this.data_equip[j].data[n];								
 								html_equipchoice_content += '<div class="item"><div>'+
 									'<span class="polygon"><i></i>'+
@@ -409,13 +414,7 @@
 						}
 					}
 				}  
-				function equiplabel(){
-							var _html = '';
-							for(var i=0; i<choice_equip.label.length; i++){
-								_html += '<span>'+choice_equip.label[i]+'</span>';
-							}							
-							return _html;
-						}	
+				
 				
 			}		
 			
