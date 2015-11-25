@@ -399,7 +399,7 @@
 									'</span>'+
 					                '<span class="equip_name media_fs_14">'+choice_equip.name+
 					                '</span>'+
-					                '<label class="price ">'+choice_equip.price+
+					                '<label class="price ">售价: '+choice_equip.price+
 					                '</label>'+
 					                '</div>'+
 					                '<div class="ml_16 label">'+
