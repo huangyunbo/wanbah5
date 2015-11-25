@@ -52,7 +52,7 @@ body{ background:#08121a; color:#fff; -webkit-user-select:none; user-select:none
 .herod_bg{ position:fixed; width:100%; top:0; z-index:9}	
 .herod_bg.first_blur{ -webkit-filter:blur(0px) !important; filter:blur(0px) !important}
 .herod_bg.last_blur{ -webkit-filter:blur(20px) !important; filter:blur(20px) !important}
-.herod{ position:relative; z-index:10; -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0)}
+.herod{ position:relative; z-index:10}
 .herod .bg{ margin-bottom: 10px; height: 100%; width: 100%}
 .herod .plr_7{ padding:0 7px}
 .herod .intro .top_l{ float:left}
@@ -70,7 +70,7 @@ body{ background:#08121a; color:#fff; -webkit-user-select:none; user-select:none
 .herod .intro .intro_bottom{ padding-top:8px}
 .herod_h2{ font-size:17px; color:#74c9ff; margin-bottom:5px}
 /*.herod .equipchoice ul{ text-align:center; box-shadow:0 0 2px #46ffeb; border:1px solid #51daef; background:linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25)); background:-webkit-linear-gradient(rgba(0,33,91,0.25), rgba(0,63,242,0.25))} */
-.herod .equipchoice{ border-bottom: 1px solid #74c9ff; padding-bottom: 6px}
+.herod .equipchoice{ border-bottom: 1px solid #74c9ff; padding-bottom: 5px}
 .herod .equipchoice1{ padding-bottom: 10px}
 .herod .equipchoice ul{ text-align:center}
 .herod .equipchoice ul li{ position:relative; display:inline-block; width:15%; padding:3px; box-sizing:border-box; margin:6px 0}
