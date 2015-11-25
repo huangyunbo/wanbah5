@@ -9,8 +9,7 @@
 			platform:"web",
 			url:"images/vainglory/",
 			type:0,//英雄类别数组下标
-			piece:{},//英雄单个详情object
-			herodHeight:300//默认距顶部高度
+			piece:{}//英雄单个详情object
 		};
 		if(this.o.platform == "android"){
 			this.o.url="../images/vainglory/";
@@ -20,101 +19,22 @@
 	
 	
 	Vainglory.prototype = {
-
-		setBlur: function(){//模糊
-			var $win = $(window),
-				scrollTopH = 0,//滑动条的实时高度
-				starScrollTopH = 0,
-				h = this.o.herodHeight,
-				blankH = h*0.2, //图片顶部的20%不模糊高度
-				actualH = h*0.8, //实际需要模糊的80%高度
-				blurOne = actualH/20, //再计算出20段，每段距离是多少
-				blurValue = 0,//模糊的值
-				dom = $("#herod_bg"),//模糊对象
-				// $baike = $("#baike"),//ios需要的定级遮罩层
-				$herod = $("#herod"),
-				touchStarY,
-				touchMoveY,
-				starMarginTop,
-				marginTop,
-				leave = 0;
-			
-			function calcGaussblur(){//计算高斯模糊
-				if(scrollTopH < blankH){
-					dom.removeClass("last_blur").addClass("first_blur");
-				}else if(scrollTopH >= h){
-					dom.removeClass("first_blur").addClass("last_blur");
-				}else if(scrollTopH >= blankH){
-					dom.removeClass("first_blur last_blur");
-					blurValue = (scrollTopH-blankH)/blurOne;
-					dom.css({"-webkit-filter":"blur("+blurValue+"px)"});
-				}
-			}
-			
-			if(this.o.platform == "ios"){
-				// $baike.addClass("baike");
-				// $baike.on("touchstart", function(e){
-				// 	e.preventDefault();
-				// 	touchStarY = e.originalEvent.changedTouches[0].pageY;
-				// 	starMarginTop = parseInt($herod.css("margin-top"));
-				// 	starScrollTopH = $win.scrollTop();
-				// });
-				// $baike.on("touchmove", function(e){
-				// 	e.preventDefault();
-				// 	if(leave != 0) return;
-				// 	touchMoveY = e.originalEvent.changedTouches[0].pageY;
-				// 	marginTop = starMarginTop + (touchMoveY - touchStarY);//设置的距离=起始的点+滑动的距离
-					
-				// 	if(marginTop >= h + starScrollTopH){//超出往下滑范围，禁止
-				// 		$herod.css("margin-top",h + starScrollTopH);
-				// 		scrollTopH = 0;
-				// 	}else{//往上滑(正常范围+超出往上滑范围)
-				// 		$herod.css("margin-top",marginTop);
-				// 		scrollTopH = h - marginTop + starScrollTopH;
-				// 	}
-				// 	calcGaussblur();
-				// });
-				// $baike.on("touchend", function(e){
-				// 	if(leave == 0 && marginTop <= 0){
-				// 		leave = 1;
-				// 		$herod.css("margin-top",h);
-				// 		$win.scrollTop(scrollTopH);
-				// 		$baike.removeClass("baike");
-				// 	}
-				// });
-				
-				// $win.scroll(function(){
-				// 	scrollTopH = $win.scrollTop();
-				// 	if(leave == 1 && scrollTopH < h){//当进入顶部区域，只需要执行一次
-				// 		leave = 0;
-				// 		$baike.addClass("baike");
-				// 	}
-				// 	calcGaussblur();
-				// });
-			}else{
-				// $win.scroll(function(){
-				// 	scrollTopH = $win.scrollTop();
-				// 	calcGaussblur();
-				// });
-			}
-		},
 		setHerodtop: function(){//初始设置英雄详情的高度
 			var win_h = $(window).height(),
-				head_h = $("#herod_head").height(),
+				head_h = $("#herod_head").outerHeight(true),
+				img = new Image(),
+				img_h = 0,
 				h = 0;
 			
-			if(win_h >= 400){
-				h = win_h - head_h;
-			}else{
-				h = 300;
+			img.onload = function(){
+				img_h = $("#herod_bg").height();
+				if(win_h - head_h > img_h) return;
+				h = img_h + head_h - win_h;
+				$("#herod").css("margin-top",-h);
+				$("#herod_bg").prev().css("height",h);
 			}
-			if(this.o.platform != "ios"){
-				$("#herod_bg").css("top",45);
-			}
-			this.o.herodHeight = h;
-			$("#herod").css("margin-top",h);
+			img.src = $("#herod_bg").attr("src");		
 		},
-
 		htmlIndex: function(){
 			var that = this,
 				tlocation = 0,
@@ -281,10 +201,8 @@
 				$equipchoice_head_children.eq(oldindex).removeClass("on");
 				$self.addClass("on");
 				
-				$("#equipchoice_content").children().eq(_index).addClass("on").siblings().removeClass("on");			
-				
+				$("#equipchoice_content").children().eq(_index).addClass("on").siblings().removeClass("on");	
 			})
-			// .find("li").eq(0).trigger("click");
 
 			//皮肤点击
 			$("#skin").on("click", "li", function(){
@@ -296,8 +214,7 @@
 				head.next(".box").children().eq(_index).addClass("on").siblings().removeClass("on");
 			}).find("li").eq(0).trigger("click");
 
-			// that.setHerodtop();			
-			// that.setBlur();//模糊
+			that.setHerodtop();
 			that.setSlidebar();//滑动条		
 		},
 
@@ -348,7 +265,7 @@
 				}
 			}			
 			if(piece === undefined) return;			
-			$("#herod_bg").attr("src",that.o.url+"dbpic/image_"+id+".jpg");//大背景图片	
+			$("#herod_bg").attr("src",that.o.url+"dbpic/image_"+id+".jpg");//大背景图片
 
             intro_top ='<div class="intro_top">'+
 					    	'<div class="top_l">'+
