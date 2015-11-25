@@ -255,7 +255,7 @@
 				$("#skills_content").children().eq(_index).addClass("on").siblings().removeClass("on");
 				if(isnetwork == 1 && jQuery.trim(that.o.piece.skill_video[_index]).length>0){
 					$("#skills_content").find(".youku").eq(oldindex).html("");
-					// that.setVideo(that.o.piece.skill_video[_index],_index);//英雄技能视频
+					that.setVideo(that.o.piece.skill_video[_index],_index);//英雄技能视频
 				}
 				if(window.navigator.onLine && jQuery.trim(that.o.piece.skill_video[_index]).length>0){
 					isnetwork = 1;//有网
@@ -318,7 +318,7 @@
 				isskin = 0,
 				html_skin = '',
 				type = this.o.type,
-				piece = this.o.piece;		;
+				piece;
 			function getHardLevel(level){//难度等级
 			switch(level){
 				case 1:
@@ -339,18 +339,15 @@
 					return "游走"; 
 				}			
 			}
-			id = Number(this.getsession("wbgl-vainglory-hero-id"));
-				
-			
+			id = Number(this.getsession("wbgl-vainglory-hero-id"));			
 			for(var i=0; i<this.data_hero.length; i++){
 				if(this.data_hero[i].id == id){
 					piece = this.data_hero[i];
 					this.o.piece = piece;
 					break;
 				}
-			}
-
-			if(piece == undefined) return;		
+			}			
+			if(piece === undefined) return;			
 			$("#herod_bg").attr("src",that.o.url+"dbpic/image_"+id+".jpg");//大背景图片	
 
             intro_top ='<div class="intro_top">'+
@@ -507,14 +504,14 @@
 
 		},
 		
-		// setVideo: function(videoId,index){//设置播放视频
-	 //  		var player = new YKU.Player('youkuplayer'+index,{
-	 //                                    styleid: '0',
-	 //                                    client_id: '759811013057796d',
-	 //                                    vid: videoId,
-	 //                                    show_related: false
-	 //                                });
-		// },
+		setVideo: function(videoId,index){//设置播放视频
+	  		var player = new YKU.Player('youkuplayer'+index,{
+	                                    styleid: '0',
+	                                    client_id: '759811013057796d',
+	                                    vid: videoId,
+	                                    show_related: false
+	                                });
+		},
 		
 		setVideoWH: function(){//设置视频宽高
 			var $skills_content = $("#skills_content"),
