@@ -190,20 +190,16 @@
 				var self = this,
 					$self = $(self),
 					$equipchoice_head_children = $self.parents().children(),
-					_index = $equipchoice_head_children.index(self),
-					oldindex = 0;
+					_index = $equipchoice_head_children.index(self);
 				
-				$equipchoice_head_children.each(function(index, element) {
-                    if($(element).hasClass("on")){
-						oldindex = index;
-					}
-                });
-				$equipchoice_head_children.eq(oldindex).removeClass("on");
-				$self.addClass("on");
-				
-				$("#equipchoice_content").children().eq(_index).addClass("on").siblings().removeClass("on");
-					
-			})
+				if($self.hasClass("on")){
+					$equipchoice_head_children.eq(_index).removeClass("on");
+					$("#equipchoice_content").children().eq(_index).removeClass("on");
+				}else{
+					$equipchoice_head_children.eq(_index).addClass("on").siblings().removeClass("on");
+					$("#equipchoice_content").children().eq(_index).addClass("on").siblings().removeClass("on");
+				}	
+			});
 
 			//皮肤点击
 			$("#skin").on("click", "li", function(){
