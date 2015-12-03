@@ -339,7 +339,7 @@
 					break;
 				}
 			}
-			console.log(piece);
+
 			if(piece === undefined) return;
 			
 			
