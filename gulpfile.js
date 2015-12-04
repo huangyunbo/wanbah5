@@ -26,6 +26,7 @@ var rename = require('gulp-rename');*/
 });*/
 
 
+
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var merge = require('gulp-merge-link');
@@ -34,6 +35,13 @@ var replace = require('gulp-replace');
 var clean = require('gulp-clean');
 var del = require('del');
 
+//压缩kindeditor
+gulp.task('kindeditor', function() {
+  gulp.src(['kindeditor.js'])
+    .pipe(uglify())
+    .pipe(concat('kindeditor.min.js'))
+    .pipe(gulp.dest('.'));
+});
 
 //炉石传说
 var lscs_plugin_data = "plugin_964";
