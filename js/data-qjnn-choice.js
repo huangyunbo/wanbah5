@@ -890,6 +890,8 @@
 					case 25:
 					case 26:
 					case 27:
+					case 28:
+					case 29:
 						for(k in _wu){
 							switch(_wu[k]){
 								case 250:r="B";break;
