@@ -3,7 +3,7 @@
 
 body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
 html{font:62.5%/1.5 "Microsoft YaHei",sans-serif}
-img{border:none; width:100%; height:100%; vertical-align:top; display:block}
+img{border:none; width:100%; vertical-align:top; display:block}
 h1,h2,h3,h4,h5,h6{font-weight:normal}
 input,select,textarea{font-size:100%;vertical-align:baseline}
 ol,ul{list-style:none}

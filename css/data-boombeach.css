@@ -10,6 +10,7 @@ ol,ul{list-style:none}
 textarea{overflow:auto;vertical-align:top;resize:vertical}
 table{border-collapse:collapse;border-spacing:0}
 em,i,code,cite,address,th{font-style:normal}
+nav,section{ display:block}
 .clear{clear:both;line-height:0;font-size:0}
 .clearfix{*zoom:1;_height:1px}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
@@ -21,6 +22,7 @@ a{ text-decoration:none}
 .center{ text-align:center}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .fs_12{ font-size:12px}
+.mt_45{ margin-top:45px}
 .media_fs_14{ font-size:1.4rem}
 .media_mb_20{ margin-bottom:20px}
 .media_ml_16{ margin-left:16px}
@@ -36,15 +38,8 @@ a{ text-decoration:none}
 .header h1{ font-size:18px; padding-top:8px; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 
-body{ background:#08121a; color:#fff}
-.armsd_bg {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 9; 
-  height:100%; 
-  width:100%
-}
+body{ color:#fff; background: #fff3dc}
+.armsd_bg { position: fixed; width: 100%; top: 0; z-index: 9; height:100%; width:100%}
 .armsd{ margin-top:45px; position:relative; z-index:10}
 .armsd .top_img{ margin-bottom:10px; height:100%; width:100%}
 .armsd .top_part1{ border-bottom: 1px solid #9bc9ed; padding-bottom:4px}
@@ -55,18 +50,26 @@ body{ background:#08121a; color:#fff}
 .armsd .top .top_part1 .label span:nth-child(2){ background:#ffb642}
 .armsd .top .top_part1 .label span:nth-child(3){ background:#46ac27}
 .armsd .arm_des{ color:#5f88be; margin-top:8px}
-.armsd .specialist,.armsd .basicinfo,.armsd .data_detail{ margin-top:20px}
-.armsd .small_square{ display:inline-block; height:13px; width:1.5px; border:1px solid #2d8ce4; background:#2d8ce4; border-radius:35%}
-.armsd .specialist .comment_tit span,.armsd .basicinfo .basicinfot_tit span,.armsd .data_detail .data_tit span{ padding-left:3px; font-size:16px; color:#5f88be}
-.armsd .basicinfo table{
-  border-collapse: separate;
-  border-spacing: 1px;
-}
+.armsd .specialist,.armsd .basicinfo,.armsd .data_detail,.armsd .act_dis{ margin-top:20px}
+.armsd .small_square{ background: #43b9de; width: 3px; height: 1.5em; display: inline-block; vertical-align: text-bottom}
+.armsd .specialist .comment_tit span,.armsd .basicinfo .basicinfot_tit span,.armsd .data_detail .data_tit span,.armsd .act_dis .data_tit span{ padding-left:3px; font-size:16px; color:#5f88be}
+.armsd .basicinfo table{ border-collapse: separate; border-spacing: 1px}
 tbody{ display: table-row-group; vertical-align: middle; border-color: inherit}
 tr{ display: table-row; vertical-align: inherit; border-color: inherit}
 td{ padding: 3px 5px; text-align: center}
 .armsd .basicinfo .on{background: #43b9de; color: #fff}
 .armsd .leveld span{ color:#5d82bc}
+
+/*兵种道具*/
+.datalist_nav{ margin-top:45px}
+.datalist_nav ul { display: table; width: 100%; table-layout: fixed}
+.datalist_nav li.on { color: #fbbc0e; border-bottom: 2px solid #fbbc0e; padding-bottom: 7px}
+.datalist_nav li { display: table-cell; color: #333; font-size: 1.6em; padding: 8px 0; text-align: center; border-bottom: 1px solid #d3d3d3}
+.datalist li .img { width: 18%; display: table-cell; text-align: center; padding: 10px 15px 10px 5px; box-sizing: border-box}
+.datalist li a { border-bottom: 1px solid #d3d3d3; display: table; width: 100%; padding: 10px; box-sizing: border-box}
+.datalist li .note { display: table-cell; vertical-align: middle; color: #333}
+.datalist li .look { display: table-cell; width: 10%; vertical-align: middle}
+.datalist li .look .icon { width: 13px; height: 13px; display: inline-block; border-width: 0 1px 1px 0; border-color: #8f8f8f; border-style: solid; -webkit-transform: rotate(-45deg); transform: rotate(-45deg)}
 
 
 .armsd .data_detail .figure { width: 100%; border-collapse: separate; border-spacing: 6px; table-layout: fixed}
@@ -81,5 +84,17 @@ td{ padding: 3px 5px; text-align: center}
 .armsd .data_detail .dl{ display: block; -webkit-margin-before: 1em; -webkit-margin-after: 1em; -webkit-margin-start: 0px; -webkit-margin-end: 0px}
 .armsd .data_detail dt{ display: inline-block; color: #9c9895; width: 50%; text-align: right; padding-right: 5px; box-sizing: border-box}
 .armsd .data_detail dd{ display: inline-block; width: 50%; text-align: left}
+
+/*滑动条*/
+.armsd .bar{ overflow:hidden; margin-top:15px}
+.armsd .bar .l{ float:left; width:15%; font-size:1.2rem; text-align:center}
+.armsd .bar .l div{ font-size:1.5rem}
+.armsd .bar .r{ margin:0 6px 0 15%; height:55px; position:relative}
+.armsd .bar .r .x_line{ width:100%; height:2px; position:absolute; top:15px; background:rgba(255,202,40,0.6)}
+.armsd .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:50%; background:rgba(255,202,40,0.6); top:14px}
+.armsd .bar .r .point_m{ left:50%; margin-left:-12px}/*-(4/2)+-(20/2)*/
+.armsd .bar .r .point_r{ right:0}
+.armsd .bar .r .barhandle{ width:20px; height:18px; background:url(../images/boombeach/armsd_icon_detail.png) 0 -140px no-repeat; background-size:35px; position:absolute; top:7px; left:0}
+.armsd .bar .r .barhandle span{ width:46px; height:46px; display:block; margin-left:-13px}/*6+7=13*/
 
 }
