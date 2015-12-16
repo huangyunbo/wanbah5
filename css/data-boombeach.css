@@ -8,7 +8,7 @@ h1,h2,h3,h4,h5,h6{font-weight:normal}
 input,select,textarea{font-size:100%;vertical-align:baseline}
 ol,ul{list-style:none}
 textarea{overflow:auto;vertical-align:top;resize:vertical}
-table{border-collapse:collapse;border-spacing:0}
+table{border-collapse:collapse; border-spacing:0}
 em,i,code,cite,address,th{font-style:normal}
 nav,section{ display:block}
 .clear{clear:both;line-height:0;font-size:0}
@@ -53,10 +53,15 @@ body{ color:#fff; background: #fff3dc}
 .armsd .specialist,.armsd .basicinfo,.armsd .data_detail,.armsd .act_dis{ margin-top:20px}
 .armsd .small_square{ background: #43b9de; width: 3px; height: 1.5em; display: inline-block; vertical-align: text-bottom}
 .armsd .specialist .comment_tit span,.armsd .basicinfo .basicinfot_tit span,.armsd .data_detail .data_tit span,.armsd .act_dis .data_tit span{ padding-left:3px; font-size:16px; color:#5f88be}
-.armsd .basicinfo table{border-collapse:collapse; border:none}
+.armsd .basicinfo .leveld { overflow: hidden; padding: 10px 0px; font-size: 1.2em; color: #333}
+.armsd .basicinfo table{border-collapse:collapse; border:none; width:100%}
 tbody{ display: table-row-group; vertical-align: middle; border-color: inherit}
 tr{ display: table-row; vertical-align: inherit; border-color: inherit}
-td{ padding: 3px 5px; text-align: center; background:white; border:solid #c4d5de 1px}
+td{ padding: 3px 5px; text-align: center; background:white}
+.armsd .basicinfo .leveld td{ border:solid #c4d5de 1px}
+.armsd .basicinfo .leveld .dt{ float: left; width: 25%}
+.armsd .basicinfo .leveld .l{ padding: 3px 5px; background: #43b9de; color: #fff; border-top: 1px solid #fff3dc; text-align: center}
+.armsd .basicinfo .leveld .dd{ float: left; width: 75%; overflow-x: auto; color:#5d82bc}
 .armsd .basicinfo .on{background: #43b9de; color: #fff}
 .armsd .leveld span{ color:#5d82bc}
 
