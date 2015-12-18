@@ -445,6 +445,7 @@
 				$thumb = $barhandle.children(),
 				barW = $bar.width(),
 				barhandleW = $barhandle.width(),
+				barhandleM = barhandleW/2,
 				barW_max = barW-barhandleW,
 				touchMoveX,
 				barO_l = $bar.offset().left,
@@ -468,7 +469,7 @@
 			});
 			$thumb.on("touchmove", function(e){
 				e.preventDefault();
-    			touchMoveX = e.originalEvent.changedTouches[0].pageX;
+    			touchMoveX = e.originalEvent.changedTouches[0].pageX - barhandleM;//修正移动的时候，从中间的时候开始算
 				distanceX = touchMoveX - barO_l;
 				if(distanceX < 0){
 					slide(0);
