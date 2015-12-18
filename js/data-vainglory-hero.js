@@ -212,7 +212,7 @@
 			}).find("li").eq(0).trigger("click");
 
 			that.setHerodtop();
-			that.setSlidebar();//滑动条		
+			that.setSlidebar(12);//滑动条		
 		},
 
 		
@@ -437,7 +437,7 @@
 			});
 		},
 		
-		setSlidebar: function(){//设置属性值滑动栏
+		setSlidebar: function(mLevel){//设置属性值滑动栏
 			var that = this,
 				$barlevel = $("#barlevel"),
 				$bar = $("#bar"),
@@ -445,23 +445,27 @@
 				$thumb = $barhandle.children(),
 				barW = $bar.width(),
 				barhandleW = $barhandle.width(),
-				barW_max = barW-barhandleW,
+				barW_max = barW-barhandleW/2,
 				touchMoveX,
 				barO_l = $bar.offset().left,
 				distanceX,
-				paragraph = barW_max/12,
+				paragraph = barW_max/mLevel,
 				level = 1;//初始化
 
 			function slide(rangeX){//计算滑动
 				var _level = Math.ceil(rangeX/paragraph);
+				if(_level > mLevel){
+					_level = mLevel;
+				}
 				
 				_level = _level == 0 ? 1 : _level;
-				$barhandle.css({"left":rangeX+"px"});
+				$barhandle.css({"left":rangeX-5+"px"});
 				if(_level == level) return;//减少后面的调用				
 				level = _level;
 				$("#barlevel").html(level);
 				that.setFigure(level);
 			}
+			slide(0);//初始化handleBar
 
 			$thumb.on("touchstart", function(e){
 				e.preventDefault();
@@ -470,13 +474,16 @@
 				e.preventDefault();
     			touchMoveX = e.originalEvent.changedTouches[0].pageX;
 				distanceX = touchMoveX - barO_l;
-				if(distanceX < 0){
-					slide(0);
-				}else if(distanceX > barW_max){
-					slide(barW_max);
-				}else{
+				if(distanceX>-5 && distanceX<barW_max+5){
 					slide(distanceX);
 				}
+				// if(distanceX < 0){
+				// 	slide(0);
+				// }else if(distanceX > barW_max){
+				// 	slide(barW_max);
+				// }else{
+				// 	slide(distanceX);
+				// }
 			});
 		},		
 
@@ -612,6 +619,7 @@
 					break;		
 				case (href == "herodetail.html"):
 					this.isplatform("herodetail");
+
 					this.htmlHeroDetail();
 					break;		
 			}

@@ -33,12 +33,13 @@ body{ background:#08121a; color:#fff; -webkit-user-select:none; user-select:none
 .header h1{ font-size:18px; padding-top:8px; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 /*滑动条*/
-.herod .bar{ overflow:hidden}
+.herod .bar{ overflow:hidden; padding-right:5px}
 .herod .bar .l{ float:left; width:15%; font-size:1.2rem; text-align:center}
 .herod .bar .l div{ font-size:1.5rem}
 .herod .bar .r{ margin:0 6px 0 15%; height:55px; position:relative}
 .herod .bar .r .x_line{ width:100%; height:2px; position:absolute; top:15px; background:rgba(255,255,255,0.6)}
 .herod .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.6); top:14px}
+.herod .bar .r .point_l{}
 .herod .bar .r .point_m{ left:50%; margin-left:-12px}/*-(4/2)+-(20/2)*/
 .herod .bar .r .point_r{ right:0}
 .herod .bar .r .barhandle{ width:20px; height:18px; background:url(../images/vainglory/hero-detail.png) -35px -35px; no-repeat; background-size:75px; position:absolute; top:7px; left:0}
