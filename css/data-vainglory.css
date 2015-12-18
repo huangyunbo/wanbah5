@@ -291,7 +291,7 @@ body{ background:#08121a; color:#fff; -webkit-user-select:none; user-select:none
 .equipd .need li{ float:left; width:50px; height:50px; margin-right:15px}
 .equipd .fithero{ margin-bottom:50px}
 .equipd .fithero ul{ overflow:hidden; padding-top:5px}
-.equipd .fithero li{ float:left; width:50px; height:50px; margin:15px 15px 10px 0}
+.equipd .fithero li{ float:left; width:50px; margin:15px 15px 0 0}
 @media screen and (min-width:640px){
 	.equipd .head{ padding:30px 14px}
 	.equipd .head .l{ width:140px; height:140px; margin-right:20px; text-align:center}
