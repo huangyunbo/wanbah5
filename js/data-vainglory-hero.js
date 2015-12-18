@@ -480,7 +480,6 @@
 				}
 			});
 		},
-		
 		getsession: function(){
 			var sessionname = arguments[0];
 			if(this.o.platform == "ios"){
