@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/data-boombeach.css">
 </head>
 
-<body>
+<body data-url="arms.html">
 <div class="header" id="header">
 	<a class="back wbclick"></a>
     <h1>兵种道具</h1>
@@ -19,10 +19,10 @@
         <li>攻击道具</li>        
     </ul>
 </nav>
-<section id="datalist">
+<section id="container">
 	<div class="datalist" style="display: block;">
         <ul>
-            <li>
+            <li id="data_item">
                 <a href="javascript:;">
                     <div class="img"><img src="images/itemthumb-bb2.png"></div>
                     <div class="note">
@@ -31,18 +31,18 @@
                     </div>
                     <div class="look"><i class="icon"></i></div>
                 </a>
-            </li>
-            <li>
-                <a href="javascript:;">
-                    <div class="img"><img src="images/itemthumb-bb2.png"></div>
-                    <div class="note">
-                        <h2>钢材库</h2>
-                    </div>
-                    <div class="look"><i class="icon"></i></div>
-                </a>
-            </li>
+            </li>           
         </ul>       
     </div>    
 </section>
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="json/json-boombeach.js"></script>
+<script type="text/javascript" src="js/data-boombeach-arms.js"></script>
+<script type="text/javascript">
+$(function(){
+    var boombeach_arms = new BoombeachArms(data_arms);
+});
+</script>
+
 </body>
 </html>
