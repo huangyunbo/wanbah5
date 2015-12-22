@@ -2,7 +2,7 @@
 	var BoombeachArms = function(){
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
-		console.log("this.data[0].cname = "+this.data[0].cname);
+		
 		
 		this.o = {
 			platform:"web",
@@ -19,21 +19,56 @@
 	
 	BoombeachArms.prototype = {
 
-		htmlArms: function(){
-			var that = this,
-			$datalist_nav = &("#datalist_nav"),
-			$data_content_item = &("#data_item");
+		htmlArms: function(){			
+			var $species_nav=$("#datalist_nav"),
+			that = this,
+			tindex = Number(that.getsession("wbgl-boombeach-arms-tindex"));				
+			that.printArmsSpecies();
+			$species_nav.on("click","li", function(){
+				tindex = $species_nav.children().children().index(this);
+				that.setsession("wbgl-boombeach-arms-tindex",tindex);
+				$species_nav.children().children().eq(tindex).addClass("on").siblings().removeClass("on");
+				// $("#container").children().children().children().addClass("on").siblings().removeClass("on");
+			}).children().children().eq(tindex).trigger("click");		
+		},
+
+		//打印兵种导航栏
+		printArmsSpecies: function(){
+			var species = this.data,
+			that = this;
+			html_species='',
+			$species_nav=$("#datalist_nav");					
+			for(var i=0;i<species.length;i++){
+				html_species += '<li class="on" id="arm_species_item">'+species[i].cname+'</li>';				
+			}
+			$species_nav.html('<ul>'+html_species+'</ul>');	
+			that.printArmsDetails();	
 		},
 
 		htmlArmsDetails: function(){
 
-		},
+		},	
 
-		printHeader: function(){
-
-		}
-
-		printArms: function(){
+		//打印兵种单个数据
+		printArmsDetails: function(){
+			var that = this,
+			html_detail_item='';
+			for(var i=0;i<that.data.length;i++){
+				for(var j=0;j<that.data[i].cdata.length;j++){					
+					html_detail_item += '<li><a><div class="img"><img src="'+
+					that.o.url+
+					that.data[i].cdata[j].img+
+					'"></div><div class="note"><h2>'+
+					that.data[i].cdata[j].name+
+					'</h2><p>'+
+					that.data[i].cdata[j].sdesc+
+					'</p></div><div class="look"><i class="icon"></i></div></a></li>';					
+				}				
+				if(i == Number(that.getsession("wbgl-boombeach-arms-tindex"))){
+					
+				}				
+			}
+			$("#arm_ul").html(html_detail_item);
 
 		},
 
@@ -144,7 +179,7 @@
 			// 			}
 			// 		}
 			// 	break;
-			}
+			// }
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			if(!this.checkversion()) return;
@@ -165,7 +200,7 @@
 		}
 	}
 	
-	window.QmcsHero = QmcsHero;
+	window.BoombeachArms = BoombeachArms;
 })(window);
 
 
