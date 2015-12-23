@@ -1,5 +1,5 @@
 (function(window){
-	var BoombeachArms = function(){
+	var BoombeachBuild = function(){
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		
@@ -17,13 +17,13 @@
 		this.init();
 	};
 	
-	BoombeachArms.prototype = {
+	BoombeachBuild.prototype = {
 
-		htmlArms: function(){			
+		htmlBuild: function(){			
 			var $species_nav=$("#datalist_nav"),
 			that = this,
-			t_index = Number(that.getsession("wbgl-boombeach-arms-tindex"));
-			that.printArmsSpecies();
+			t_index = Number(that.getsession("wbgl-boombeach-build-tindex"));
+			that.printBuildSpecies();
 			$species_nav.on("click","li", function(){				
 				t_index = Number($(this).attr("data-index"));				
 				$species_nav.children().children().eq(t_index).addClass("on").siblings().removeClass("on");
@@ -33,24 +33,24 @@
 
 			$("#datalist").on("click", "li", function(){
 				var _id = Number($(this).attr("data-id"));
-				that.setsession("wbgl-boombeach-arms-tindex", t_index);
-				that.setsession("wbgl-boombeach-arms-id", _id);				
+				that.setsession("wbgl-boombeach-build-tindex", t_index);
+				that.setsession("wbgl-boombeach-build-id", _id);				
 				// if(that.o.platform == "ios"){
 				// 	location.href = that.o.plugin+'/data-vainglory-equip-detail.html';
 				// }else{
-					location.href = 'data-boombeach-arms-details.html';
+					location.href = 'data-boombeach-building-details.html';
 				// }
 			});
 		},
 
-		//打印兵种
-		printArmsSpecies: function(){
+		//打印建筑
+		printBuildSpecies: function(){
 			var species = this.data,
 			that = this;
 			html_species='',
 			html_detail_content='';								
 			for(var i=0;i<species.length;i++){
-				html_species += '<li id="arm_species_item" data-index="'+i+'">'+species[i].cname+'</li>';
+				html_species += '<li id="build_species_item" data-index="'+i+'">'+species[i].cname+'</li>';
 				html_detail_content += '<ul>';	
 				for(var j=0;j<species[i].cdata.length;j++){					
 					html_detail_content += '<li data-id="'+species[i].cdata[j].id+'"><a><div class="img"><img src="'+
@@ -69,7 +69,7 @@
 			$("#datalist").html(html_detail_content);	
 		},
 
-		htmlArmsDetails: function(){
+		htmlBuildDetails: function(){
 
 		},		
 
@@ -186,12 +186,12 @@
 			if(!this.checkversion()) return;
 			var href = $("body").attr("data-url");
 			switch(true){
-				case (href == "arms.html"):
-					this.isplatform("arms");
-					this.htmlArms();
+				case (href == "build.html"):
+					this.isplatform("build");
+					this.htmlBuild();
 					break;
-				case (href == "arms-details.html"):
-					this.isplatform("arms-details");
+				case (href == "build-details.html"):
+					this.isplatform("build-details");
 					this.htmlArmsDetails();
 					break;
 			}
@@ -201,5 +201,5 @@
 		}
 	}
 	
-	window.BoombeachArms = BoombeachArms;
+	window.BoombeachBuild = BoombeachBuild;
 })(window);

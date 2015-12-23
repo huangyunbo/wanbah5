@@ -1,9 +1,7 @@
 (function(window){
-	var BoombeachArms = function(){
+	var BoombeachStatue = function(){
 		if(arguments[0] === undefined) return false;
-		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
-		
-		
+		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};		
 		this.o = {
 			platform:"web",
 			// plugin:"plugin_1101",//plugin_1101
@@ -17,13 +15,13 @@
 		this.init();
 	};
 	
-	BoombeachArms.prototype = {
+	BoombeachStatue.prototype = {
 
-		htmlArms: function(){			
+		htmlStatue: function(){			
 			var $species_nav=$("#datalist_nav"),
 			that = this,
-			t_index = Number(that.getsession("wbgl-boombeach-arms-tindex"));
-			that.printArmsSpecies();
+			t_index = Number(that.getsession("wbgl-boombeach-statue-tindex"));
+			that.printStatueSpecies();
 			$species_nav.on("click","li", function(){				
 				t_index = Number($(this).attr("data-index"));				
 				$species_nav.children().children().eq(t_index).addClass("on").siblings().removeClass("on");
@@ -33,24 +31,24 @@
 
 			$("#datalist").on("click", "li", function(){
 				var _id = Number($(this).attr("data-id"));
-				that.setsession("wbgl-boombeach-arms-tindex", t_index);
-				that.setsession("wbgl-boombeach-arms-id", _id);				
+				that.setsession("wbgl-boombeach-statue-tindex", t_index);
+				that.setsession("wbgl-boombeach-statue-id", _id);				
 				// if(that.o.platform == "ios"){
 				// 	location.href = that.o.plugin+'/data-vainglory-equip-detail.html';
 				// }else{
-					location.href = 'data-boombeach-arms-details.html';
+					location.href = 'data-boombeach-statue-details.html';
 				// }
 			});
 		},
 
-		//打印兵种
-		printArmsSpecies: function(){
+		//打印神像
+		printStatueSpecies: function(){
 			var species = this.data,
 			that = this;
 			html_species='',
 			html_detail_content='';								
 			for(var i=0;i<species.length;i++){
-				html_species += '<li id="arm_species_item" data-index="'+i+'">'+species[i].cname+'</li>';
+				html_species += '<li id="statue_species_item" data-index="'+i+'">'+species[i].cname+'</li>';
 				html_detail_content += '<ul>';	
 				for(var j=0;j<species[i].cdata.length;j++){					
 					html_detail_content += '<li data-id="'+species[i].cdata[j].id+'"><a><div class="img"><img src="'+
@@ -69,7 +67,7 @@
 			$("#datalist").html(html_detail_content);	
 		},
 
-		htmlArmsDetails: function(){
+		htmlStatueDetails: function(){
 
 		},		
 
@@ -184,15 +182,15 @@
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			if(!this.checkversion()) return;
-			var href = $("body").attr("data-url");
+			var href = $("body").attr("data-url");			
 			switch(true){
-				case (href == "arms.html"):
-					this.isplatform("arms");
-					this.htmlArms();
+				case (href == "statue.html"):
+					this.isplatform("statue");
+					this.htmlStatue();
 					break;
-				case (href == "arms-details.html"):
-					this.isplatform("arms-details");
-					this.htmlArmsDetails();
+				case (href == "statue-details.html"):
+					this.isplatform("statue-details");
+					this.htmlStatueDetails();
 					break;
 			}
 		},
@@ -201,5 +199,5 @@
 		}
 	}
 	
-	window.BoombeachArms = BoombeachArms;
+	window.BoombeachStatue = BoombeachStatue;
 })(window);

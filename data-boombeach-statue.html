@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/data-boombeach.css">
 </head>
 
-<body>
+<body data-url="statue.html">
 <div class="header" id="header">
 	<a class="back wbclick"></a>
     <h1>神像系统</h1>
@@ -20,11 +20,11 @@
         <li>小巧神像</li>        
     </ul>
 </nav>
-<section id="datalist">
-	<div class="datalist" style="display: block;">
+
+<div class="datalist" id="datalist">
         <ul>
             <li>
-                <a href="javascript:;">
+                <a>
                     <div class="img"><img src="images/itemthumb-bb2.png"></div>
                     <div class="note">
                         <h2>生命水晶</h2>                        
@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:;">
+                <a>
                     <div class="img"><img src="images/itemthumb-bb2.png"></div>
                     <div class="note">
                         <h2>熔岩水晶</h2>
@@ -42,7 +42,15 @@
                 </a>
             </li>
         </ul>       
-    </div>    
-</section>
+</div> 
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="json/json-boombeach.js"></script>
+<script type="text/javascript" src="js/data-boombeach-statue.js"></script>
+<script type="text/javascript">
+$(function(){
+    var boombeach_statue = new BoombeachStatue(data_joss);
+});   
+</script>
+
 </body>
 </html>

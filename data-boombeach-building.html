@@ -8,24 +8,23 @@
 <link rel="stylesheet" type="text/css" href="css/data-boombeach.css">
 </head>
 
-<body>
+<body data-url="build.html">
 <div class="header" id="header">
 	<a class="back wbclick"></a>
     <h1>建筑设施</h1>
 </div>
 <nav class="datalist_nav" id="datalist_nav">
-	<ul>
+	<!-- <ul>
         <li class="on">经济设施</li>
         <li>支持设施</li> 
         <li>防御设施</li> 
         <li>原型设施</li>        
-    </ul>
+    </ul> -->
 </nav>
-<section id="datalist">
-	<div class="datalist">
+<div class="datalist" id="datalist">
         <ul>
             <li>
-                <a href="javascript:;">
+                <a>
                     <div class="img"><img src="images/itemthumb-bb2.png"></div>
                     <div class="note">
                         <h2>民房</h2>
@@ -35,7 +34,7 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:;">
+                <a>
                     <div class="img"><img src="images/itemthumb-bb2.png"></div>
                     <div class="note">
                         <h2>金库</h2>
@@ -45,7 +44,14 @@
                 </a>
             </li>
         </ul>       
-    </div>    
-</section>
+</div>
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="json/json-boombeach.js"></script>
+<script type="text/javascript" src="js/data-boombeach-build.js"></script>
+<script type="text/javascript">
+$(function(){
+    var boombeach_build = new BoombeachBuild(data_building);
+});
+</script>
 </body>
 </html>
