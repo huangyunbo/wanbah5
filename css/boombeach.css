@@ -25,8 +25,6 @@ a{ text-decoration:none}
 .datalist_nav ul{ display:table; width:100%; table-layout:fixed}
 .datalist_nav li{ display:table-cell; color:#333; font-size:1.6em; padding:8px 0; text-align:center; border-bottom:1px solid #d3d3d3}
 .datalist_nav li.on{ color:#fbbc0e; border-bottom:2px solid #fbbc0e; padding-bottom:7px}
-.datalist ul { display:none}
-.datalist ul.on{ display:block}
 .datalist li a{ border-bottom:1px solid #d3d3d3; display:table; width:100%; padding:10px; box-sizing:border-box}
 .datalist li .img{ width:18%; display:table-cell; text-align:center; padding:10px 15px 10px 5px; box-sizing:border-box}
 .datalist li .note{ display:table-cell; vertical-align:middle; color:#333}
