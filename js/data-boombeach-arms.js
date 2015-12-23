@@ -22,55 +22,56 @@
 		htmlArms: function(){			
 			var $species_nav=$("#datalist_nav"),
 			that = this,
-			tindex = Number(that.getsession("wbgl-boombeach-arms-tindex"));				
+			t_index = Number(that.getsession("wbgl-boombeach-arms-tindex"));
 			that.printArmsSpecies();
-			$species_nav.on("click","li", function(){
-				tindex = $species_nav.children().children().index(this);
-				that.setsession("wbgl-boombeach-arms-tindex",tindex);
-				$species_nav.children().children().eq(tindex).addClass("on").siblings().removeClass("on");
-				// $("#container").children().children().children().addClass("on").siblings().removeClass("on");
-			}).children().children().eq(tindex).trigger("click");		
+			$species_nav.on("click","li", function(){				
+				t_index = Number($(this).attr("data-index"));				
+				$species_nav.children().children().eq(t_index).addClass("on").siblings().removeClass("on");
+				$("#datalist").children().eq(t_index).addClass("on").siblings().removeClass("on");
+			}).children().children().eq(t_index).trigger("click");	
+
+
+			$("#datalist").on("click", "li", function(){
+				var _id = Number($(this).attr("data-id"));
+				that.setsession("wbgl-boombeach-arms-tindex", t_index);
+				that.setsession("wbgl-boombeach-arms-id", _id);
+				// if(that.o.platform == "ios"){
+				// 	location.href = that.o.plugin+'/data-vainglory-equip-detail.html';
+				// }else{
+				// 	location.href = 'data-vainglory-equip-detail.html';
+				// }
+			});
 		},
 
-		//打印兵种导航栏
+		//打印兵种
 		printArmsSpecies: function(){
 			var species = this.data,
 			that = this;
 			html_species='',
-			$species_nav=$("#datalist_nav");					
+			html_detail_content='';								
 			for(var i=0;i<species.length;i++){
-				html_species += '<li class="on" id="arm_species_item">'+species[i].cname+'</li>';				
+				html_species += '<li id="arm_species_item" data-index="'+i+'">'+species[i].cname+'</li>';
+				html_detail_content += '<ul>';	
+				for(var j=0;j<species[i].cdata.length;j++){					
+					html_detail_content += '<li data-id="'+species[i].cdata[j].id+'"><a><div class="img"><img src="'+
+					that.o.url+
+					species[i].cdata[j].img+
+					'"></div><div class="note"><h2>'+
+					species[i].cdata[j].name+
+					'</h2><p>'+
+					species[i].cdata[j].sdesc+
+					'</p></div><div class="look"><i class="icon"></i></div></a></li>';					
+				}	
+				html_detail_content += '</ul>';	
+
 			}
-			$species_nav.html('<ul>'+html_species+'</ul>');	
-			that.printArmsDetails();	
+			$("#datalist_nav").html('<ul>'+html_species+'</ul>');			
+			$("#datalist").html(html_detail_content);	
 		},
 
 		htmlArmsDetails: function(){
 
-		},	
-
-		//打印兵种单个数据
-		printArmsDetails: function(){
-			var that = this,
-			html_detail_item='';
-			for(var i=0;i<that.data.length;i++){
-				for(var j=0;j<that.data[i].cdata.length;j++){					
-					html_detail_item += '<li><a><div class="img"><img src="'+
-					that.o.url+
-					that.data[i].cdata[j].img+
-					'"></div><div class="note"><h2>'+
-					that.data[i].cdata[j].name+
-					'</h2><p>'+
-					that.data[i].cdata[j].sdesc+
-					'</p></div><div class="look"><i class="icon"></i></div></a></li>';					
-				}				
-				if(i == Number(that.getsession("wbgl-boombeach-arms-tindex"))){
-					
-				}				
-			}
-			$("#arm_ul").html(html_detail_item);
-
-		},
+		},		
 
 		getsession: function(){
 			var sessionname = arguments[0];
