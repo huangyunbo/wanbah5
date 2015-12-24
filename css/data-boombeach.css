@@ -39,9 +39,9 @@ a{ text-decoration:none}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 
 body{ color:#fff; background: #fff3dc}
-.armsd_bg { position: fixed; width: 100%; top: 0; z-index: 9; height:100%; width:100%}
-.armsd{ margin-top:45px; position:relative; z-index:10}
-.armsd .top_img{ margin-bottom:10px; height:100%; width:100%}
+.armsd_bg_d{ text-align:center}
+.armsd_bg { margin-top:80px}
+.armsd{ margin-top:20px; position:relative}
 .armsd .top_part1{ border-bottom: 1px solid #9bc9ed; padding-bottom:4px}
 .armsd .top .top_part1 .armsn{ color:#3a93e6}
 .armsd .top .top_part1 .label{ float:right; color:#fff; margin-top:12px}

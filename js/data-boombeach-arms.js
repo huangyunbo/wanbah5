@@ -1,5 +1,6 @@
 (function(window){
 	var BoombeachArms = function(){
+		console.log("start");
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		
@@ -69,9 +70,33 @@
 			$("#datalist").html(html_detail_content);	
 		},
 
+		//打印兵种详情
 		htmlArmsDetails: function(){
+			var species = this.data,
+			data,			
+			that = this;
+			for(var i=0;i<species.length;i++){
+				
+				for(var j=0;j<species[i].cdata.length;j++){
+					data = species[i].cdata[j];					
+					if(that.getsession("wbgl-boombeach-arms-id") == data.id){
+						console.log(data);
+						that.printDetail(data);
+					}						
+				}	
+					
 
-		},		
+			}
+		},	
+
+		printDetail:function(data){
+			var mData = data,
+			that = this;
+			console.log(mData.img);
+			console.log('<img class="armsd_bg" src="'+that.o.url+mData.img+'">');
+			$("armsd_bg_d").html('<img class="armsd_bg" src="'+that.o.url+mData.img+'">');	
+				
+		},	
 
 		getsession: function(){
 			var sessionname = arguments[0];
@@ -150,6 +175,7 @@
 			function removehide(){
 				$("#header").removeClass("hide");
 			}
+			removehide();
 			
 			// switch(i){
 			// 	case "arms":
@@ -185,6 +211,7 @@
 		ispage: function(){//判断当前打开的是哪一个页面
 			if(!this.checkversion()) return;
 			var href = $("body").attr("data-url");
+			console.log(href);
 			switch(true){
 				case (href == "arms.html"):
 					this.isplatform("arms");
