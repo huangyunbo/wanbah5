@@ -1,6 +1,5 @@
 (function(window){
-	var BoombeachArms = function(){
-		console.log("start");
+	var BoombeachArms = function(){		
 		if(arguments[0] === undefined) return false;
 		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		
@@ -91,11 +90,59 @@
 
 		printDetail:function(data){
 			var mData = data,
-			that = this;
-			console.log(mData.img);
-			console.log('<img class="armsd_bg" src="'+that.o.url+mData.img+'">');
-			$("armsd_bg_d").html('<img class="armsd_bg" src="'+that.o.url+mData.img+'">');	
+			that = this,
+			td_one_key='',
+			td_one_value='',
+			td_two_key=''
+			html_td_two_key='',
+			td_two_value=''
+			html_td_two_value='',
+			html_td_two_value1='';
 				
+			$("#header").children("h1").html(mData.name);
+			//顶部图片		
+			$("#armsd_bg_d").html('<img class="armsd_bg" src="'+that.o.url+mData.img+'">');
+			$("#label_d").children("span").html(mData.name);
+			for(var i=0;i<mData.label.length;i++){			
+				//Label	
+				$("#armsd").children("label").html('<span>'+mData.label[i]+'</span>');
+			}
+			console.log(mData.ldesc);	
+			//描述
+			$("#arm_des").html(mData.ldesc);
+			//专家点评
+			$("#arm_comm").html(mData.comment);
+			//打印表格
+			for(var i=0;i<mData.table.length;i++){
+				
+				if(mData.table[i].type == 1){
+					//1.兵种数据表格	
+					for(var j=0;j<mData.table[i].tbody.length;j++){						
+						td_one_key += '<td class="on">'+mData.table[i].tbody[j].k+'</td>';
+						td_one_value += '<td><span>'+mData.table[i].tbody[j].v+'</span></td>';
+					}
+					$("#levelt").html('<tbody><tr>'+td_one_key+'</td></tr><tr>'+td_one_value+'</tr></tbody>');			
+				}else{					
+					for(var j=0;j<mData.table[i].tbody.length;j++){						
+						td_two_key += '<div class="l">'+mData.table[i].tbody[j].k+'</div>';				
+
+						if(mData.table[i].tbody[j].v instanceof Array){
+							for(var k=0;k<mData.table[i].tbody[j].v.length;k++){
+								td_two_value += '<td>'+mData.table[i].tbody[j].v[k]+'</td>';							
+							}						
+						}else{
+							td_two_value += '<td>'+mData.table[i].tbody[j].v+'</td>';
+						}
+						html_td_two_value += '<tr>'+ td_two_value +'</tr>';
+						td_two_value = '';					
+					}					
+					html_td_two_key +='<div class="dt">'+td_two_key+'</div>';					
+					html_td_two_value1 += '<div class="dd"><table><tbody>'+html_td_two_value+'</tbody></table></div>';														
+					$("#leveltt").html(html_td_two_key+html_td_two_value1);					
+				}
+			}
+			
+
 		},	
 
 		getsession: function(){
@@ -210,8 +257,7 @@
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			if(!this.checkversion()) return;
-			var href = $("body").attr("data-url");
-			console.log(href);
+			var href = $("body").attr("data-url");		
 			switch(true){
 				case (href == "arms.html"):
 					this.isplatform("arms");
