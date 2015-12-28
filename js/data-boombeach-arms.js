@@ -106,8 +106,7 @@
 			for(var i=0;i<mData.label.length;i++){			
 				//Label	
 				$("#armsd").children("label").html('<span>'+mData.label[i]+'</span>');
-			}
-			console.log(mData.ldesc);	
+			}			
 			//描述
 			$("#arm_des").html(mData.ldesc);
 			//专家点评
@@ -125,7 +124,7 @@
 				}else{					
 					for(var j=0;j<mData.table[i].tbody.length;j++){						
 						td_two_key += '<div class="l">'+mData.table[i].tbody[j].k+'</div>';				
-
+						//判断是否是数组数据
 						if(mData.table[i].tbody[j].v instanceof Array){
 							for(var k=0;k<mData.table[i].tbody[j].v.length;k++){
 								td_two_value += '<td>'+mData.table[i].tbody[j].v[k]+'</td>';							
@@ -141,8 +140,74 @@
 					$("#leveltt").html(html_td_two_key+html_td_two_value1);					
 				}
 			}
+
+			//数据详情
+			var id='',
+			id1='',
+			html_data='',
+			html_data1='',
+			html_data2='';	
+			console.log("mData.showdataid.length  = "+mData.showdataid.length );		
+			if(mData.showdataid.length == 1){ 
+				id = mData.showdataid[0];
+				for(var i=0;i<mData.data.length;i++){
+					if(id != mData.data[i].id){
+						
+		    				html_data += '<dl>'+
+		    				'<dt>'+mData.data[i].k+'</dt>'+
+		    				'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[i].img+'.png'+'">'+
+		    				'<dd>'+mData.data[i].v[0]+'</dd>'+
+		    				'</dl>';
+				           
+					}else{
+						html_data1 +='<div class="num num_blue" data-num="532">'+mData.data[i].v[0]+'</div>'+
+						'<div class="k">'+mData.data[i].k+'</div>';
+					}
+				}
+
+				$("#f_tr").html('<td class="f_td" id="figure_lt">'+html_data1+'</td>'+
+					'<td class="f_td" rowspan="2" id="figure_lt1">'+
+					'<div class="figure_other" id="figure_other">'+html_data+'</div>'+
+					'</td>');
+
+			}else{
+				id = mData.showdataid[0];
+				id1= mData.showdataid[1];
+				console.log("id = "+id);
+				console.log("id1 = "+id1)
+				for(var j=0;j<mData.data.length;j++){
+					if(id != mData.data[j].id && id1 != mData.data[j].id){
+						
+		    				html_data += '<dl>'+
+		    				'<dt>'+mData.data[j].k+'</dt>'+
+		    				'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
+		    				'<dd>'+mData.data[j].v[0]+'</dd>'+
+		    				'</dl>';
+				           
+					}else{
+							if(id == mData.data[j].id){
+								html_data1 +='<div class="num num_blue">'+mData.data[j].v[0]+'</div>'+
+								'<div class="k">'+mData.data[j].k+'</div>';
+							}
+							if(id1 == mData.data[j].id){
+								html_data2 +='<div class="num num_blue">'+mData.data[j].v[0]+'</div>'+
+								'<div class="k">'+mData.data[j].k+'</div>';
+								console.log(html_data2);
+							}
+					}
+					
+				}
+				
+				
+				$("#t_body").html('<tr class="f_tr" id="f_tr"><td class="f_td" id="figure_lt">'+html_data1+'</td>'+
+						'<td class="f_td" rowspan="2" id="figure_lt1">'+
+						'<div class="figure_other" id="figure_other">'+html_data+'</div>'+
+						'</td></tr>'+
+	                	'<tr id="f_tr_2"><td class="f_td" id="figure_lb">'+html_data2+
+	                	'</td></tr>');				
 			
 
+				}
 		},	
 
 		getsession: function(){
