@@ -54,7 +54,7 @@
 				html_detail_content += '<ul>';	
 				for(var j=0;j<species[i].cdata.length;j++){					
 					html_detail_content += '<li data-id="'+species[i].cdata[j].id+'"><a><div class="img"><img src="'+
-					that.o.url+
+					that.o.url+'arms/'+
 					species[i].cdata[j].img+
 					'"></div><div class="note"><h2>'+
 					species[i].cdata[j].name+
@@ -101,7 +101,7 @@
 				
 			$("#header").children("h1").html(mData.name);
 			//顶部图片		
-			$("#armsd_bg_d").html('<img class="armsd_bg" src="'+that.o.url+mData.img+'">');
+			$("#armsd_bg_d").html('<img class="armsd_bg" src="'+that.o.url+'arms/'+mData.img+'">');
 			$("#label_d").children("span").html(mData.name);
 			for(var i=0;i<mData.label.length;i++){			
 				//Label	
