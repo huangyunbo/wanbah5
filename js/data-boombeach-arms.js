@@ -9,6 +9,7 @@
 			// plugin:"plugin_1101",//plugin_1101
 			// plugin_equip:"plugin_1103",
 			url:"images/boombeach/",
+			total_level:0
 				
 		};
 		if(this.o.platform == "android"){
@@ -141,26 +142,85 @@
 				}
 			}
 
-			//数据详情
-			var id='',
+			//攻击距离图片,id小于9并且id不为6的时候才显示
+			if(mData.id<9 && mData.id != 6){
+				$("#act_dis").html('<div class="data_tit">'+
+					'<div class="small_square"></div>'+
+					'<span>攻击距离</span>'+
+					'</div>'+
+					'<div>'+
+					'<img src="'+that.o.url+'ack_distance/'+mData.id+'.png'+'">'+
+					'</div>');		
+			}			
+				that.o.total_level = mData.data[0].v.length; 
+				that.setFigure(mData,0);
+				that.setSlidebar(mData,that.o.total_level);//滑动条
+		},	
+
+		//设置属性值滑动栏
+		setSlidebar: function(mData,level){
+			var that = this,
+				$barlevel = $("#barlevel"),
+				$bar = $("#bar"),
+				$barhandle = $("#barhandle"),
+				$thumb = $barhandle.children(),
+				barW = $bar.width(),
+				barhandleW = $barhandle.width(),
+				barhandleM = barhandleW/2,
+				barW_max = barW-barhandleW,
+				touchMoveX,
+				barO_l = $bar.offset().left,
+				distanceX,
+				paragraph = barW_max/level,
+				level = 1;//初始化
+
+			function slide(rangeX){//计算滑动
+				var _level = Math.ceil(rangeX/paragraph);
+				
+				_level = _level == 0 ? 1 : _level;
+				$barhandle.css({"left":rangeX+"px"});
+				if(_level == level) return;//减少后面的调用				
+				level = _level;
+				$("#barlevel").html(level);				
+				that.setFigure(mData,level-1);
+			}
+
+			$thumb.on("touchstart", function(e){
+				e.preventDefault();
+			});
+			$thumb.on("touchmove", function(e){
+				e.preventDefault();				
+    			touchMoveX = e.originalEvent.changedTouches[0].pageX - barhandleM;//修正移动的时候，从中间的时候开始算    			
+				distanceX = touchMoveX - barO_l;
+				if(distanceX < 0){
+					slide(0);
+				}else if(distanceX > barW_max){
+					slide(barW_max);
+				}else{
+					slide(distanceX);
+				}
+			});
+		},
+
+		//数据详情
+		setFigure: function(mData,level){//计算数值			
+			var that = this, 
+			id='',
 			id1='',
 			html_data='',
 			html_data1='',
-			html_data2='';	
-			console.log("mData.showdataid.length  = "+mData.showdataid.length );		
+			html_data2='';												
 			if(mData.showdataid.length == 1){ 
-				id = mData.showdataid[0];
+				id = mData.showdataid[0];				
 				for(var i=0;i<mData.data.length;i++){
-					if(id != mData.data[i].id){
-						
+					if(id != mData.data[i].id){						
 		    				html_data += '<dl>'+
 		    				'<dt>'+mData.data[i].k+'</dt>'+
 		    				'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[i].img+'.png'+'">'+
-		    				'<dd>'+mData.data[i].v[0]+'</dd>'+
-		    				'</dl>';
-				           
+		    				'<dd>'+mData.data[i].v[level]+'</dd>'+
+		    				'</dl>';				           
 					}else{
-						html_data1 +='<div class="num num_blue" data-num="532">'+mData.data[i].v[0]+'</div>'+
+						html_data1 +='<div class="num num_blue" data-num="532">'+mData.data[i].v[level]+'</div>'+
 						'<div class="k">'+mData.data[i].k+'</div>';
 					}
 				}
@@ -172,43 +232,36 @@
 
 			}else{
 				id = mData.showdataid[0];
-				id1= mData.showdataid[1];
-				console.log("id = "+id);
-				console.log("id1 = "+id1)
+				id1= mData.showdataid[1];				
 				for(var j=0;j<mData.data.length;j++){
 					if(id != mData.data[j].id && id1 != mData.data[j].id){
 						
 		    				html_data += '<dl>'+
 		    				'<dt>'+mData.data[j].k+'</dt>'+
 		    				'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
-		    				'<dd>'+mData.data[j].v[0]+'</dd>'+
+		    				'<dd>'+mData.data[j].v[level]+'</dd>'+
 		    				'</dl>';
 				           
 					}else{
 							if(id == mData.data[j].id){
-								html_data1 +='<div class="num num_blue">'+mData.data[j].v[0]+'</div>'+
+								html_data1 +='<div class="num num_blue">'+mData.data[j].v[level]+'</div>'+
 								'<div class="k">'+mData.data[j].k+'</div>';
 							}
 							if(id1 == mData.data[j].id){
-								html_data2 +='<div class="num num_blue">'+mData.data[j].v[0]+'</div>'+
-								'<div class="k">'+mData.data[j].k+'</div>';
-								console.log(html_data2);
+								html_data2 +='<div class="num num_blue">'+mData.data[j].v[level]+'</div>'+
+								'<div class="k">'+mData.data[j].k+'</div>';								
 							}
-					}
-					
-				}
-				
+					}					
+				}				
 				
 				$("#t_body").html('<tr class="f_tr" id="f_tr"><td class="f_td" id="figure_lt">'+html_data1+'</td>'+
 						'<td class="f_td" rowspan="2" id="figure_lt1">'+
 						'<div class="figure_other" id="figure_other">'+html_data+'</div>'+
 						'</td></tr>'+
 	                	'<tr id="f_tr_2"><td class="f_td" id="figure_lb">'+html_data2+
-	                	'</td></tr>');				
-			
-
-				}
-		},	
+	                	'</td></tr>');
+			}			
+		},
 
 		getsession: function(){
 			var sessionname = arguments[0];
@@ -289,36 +342,29 @@
 			}
 			removehide();
 			
-			// switch(i){
-			// 	case "arms":
-			// 		if(this.o.platform == "web"){
-			// 			removehide();
-			// 			this.setsession("wbgl-quanminchaoshen-equip2hero","n");//重置 从装备跳转过来
-			// 		}else if(this.o.platform == "android"){
-			// 			removehide();
-			// 			this.setsession("wbgl-quanminchaoshen-equip2hero","n");//重置 从装备跳转过来
-			// 			$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
-			// 		}else if(this.o.platform == "ios"){
-			// 			this.setsession("wbgl-quanminchaoshen-equip2hero","n");//重置 从装备跳转过来
-			// 			$("#herolist").addClass("mt_0");
-			// 		}
-			// 	break;
-			// 	case "arms-details":
-			// 		if(this.o.platform == "web"){
-			// 			removehide();
-			// 			if(this.getsession("wbgl-quanminchaoshen-equip2hero") == "y"){//如果是从装备跳转过来的
-			// 				$("#header").children(".back").attr("href","data-quanminchaoshen-equip-detail.html");
-			// 			}
-			// 		}else if(this.o.platform == "android"){
-			// 			removehide();
-			// 			if(this.getsession("wbgl-quanminchaoshen-equip2hero") == "y"){//如果是从装备跳转过来的
-			// 				$("#header").children(".back").attr("href",'../'+this.o.plugin_equip+'/data-quanminchaoshen-equip-detail.html');
-			// 			}else{
-			// 				$("#header").children(".back").attr("href","index.html");
-			// 			}
-			// 		}
-			// 	break;
-			// }
+			switch(i){
+				case "arms":	
+				// if(this.o.platform == "web"){
+				// 		removehide();						
+				// 	}else if(this.o.platform == "android"){
+				// 		removehide();						
+				// 		$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
+				// 	}else if(this.o.platform == "ios"){						
+				// 		$("#herolist").addClass("mt_0");
+				// 	}
+				// 	$("#header").children(".back").attr("href","javascript:window.jstojava.close();");				
+				case "arms-details":
+				// if(this.o.platform == "web"){
+				// 		removehide();						
+				// 	}else if(this.o.platform == "android"){
+				// 		removehide();						
+				// 		$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
+				// 	}else if(this.o.platform == "ios"){						
+				// 		$("#herolist").addClass("mt_0");
+				// 	}
+				// 	$("#header").children(".back").attr("href","javascript:window.jstojava.close();");					
+				break;
+			}
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			if(!this.checkversion()) return;

@@ -84,7 +84,7 @@ td{ padding: 3px 5px; text-align: center; background:white}
 .armsd .f_tr{ display: table-row; vertical-align: inherit; border-color: inherit}
 .armsd .data_detail .figure td{ width: 60%; text-align: center; position: relative; background:white}
 .armsd .data_detail .figure td:first-child {width: 40%}
-.armsd .data_detail .num { font-size: 2.4rem}
+.armsd .data_detail .num { font-size: 1.6rem}
 .armsd .data_detail .num_blue { color: #5fb2fe}
 .armsd .data_detail .num_red { color: #fe4462}
 .armsd .data_detail .k { font-size: 1.2rem; color:#284470}
@@ -98,10 +98,10 @@ td{ padding: 3px 5px; text-align: center; background:white}
 .armsd .bar .l{ float:left; width:15%; font-size:1.2rem; text-align:center; color:#66b5ff}
 .armsd .bar .l div{ font-size:1.5rem}
 .armsd .bar .r{ margin:0 6px 0 15%; height:55px; position:relative}
-.armsd .bar .r .x_line{ width:100%; height:2px; position:absolute; top:15px; background:rgba(102,121,255,0.6)}
-.armsd .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:50%; background:rgba(102,121,255,0.6); top:14px}
+.armsd .bar .r .x_line{ height:2px; position:absolute; top:15px; left:10px; right:10px; background:rgba(102,121,255,0.6)}
+.armsd .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:50%; background:rgba(102,121,255,0.6); top:14px; margin-left:7px}
 .armsd .bar .r .point_m{ left:50%; margin-left:-12px}/*-(4/2)+-(20/2)*/
-.armsd .bar .r .point_r{ right:0}
+.armsd .bar .r .point_r{ right:0; margin-right:7px}
 .armsd .bar .r .barhandle{ width:20px; height:18px; background:url(../images/boombeach/armsd_icon_detail.png) 0 -140px no-repeat; background-size:35px; position:absolute; top:7px; left:0}
 .armsd .bar .r .barhandle span{ width:46px; height:46px; display:block; margin-left:-13px}/*6+7=13*/
 
