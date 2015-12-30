@@ -9,6 +9,7 @@
 			// plugin:"plugin_1101",//plugin_1101
 			// plugin_equip:"plugin_1103",
 			url:"images/boombeach/",
+			total_level:0
 				
 		};
 		if(this.o.platform == "android"){
@@ -67,11 +68,199 @@
 			}
 			$("#datalist_nav").html('<ul>'+html_species+'</ul>');			
 			$("#datalist").html(html_detail_content);	
+		},	
+
+
+		//打印建筑详情
+		htmlBuildDetails: function(){
+			var species = this.data,
+			data,			
+			that = this;
+			for(var i=0;i<species.length;i++){
+				
+				for(var j=0;j<species[i].cdata.length;j++){
+					data = species[i].cdata[j];					
+					if(that.getsession("wbgl-boombeach-build-id") == data.id){
+						console.log(data);
+						that.printDetail(data);
+					}						
+				}	
+					
+
+			}
+		},	
+
+		printDetail:function(data){
+			var mData = data,
+			that = this,
+			td_one_key='',
+			td_one_value='',
+			td_two_key=''
+			html_td_two_key='',
+			td_two_value=''
+			html_td_two_value='',
+			html_td_two_value1='';
+				
+			$("#header").children("h1").html(mData.name);
+			//顶部图片		
+			$("#armsd_bg_d").html('<img class="armsd_bg" src="'+that.o.url+'building/'+mData.img+'">');
+			$("#label_d").children("span").html(mData.name);
+			for(var i=0;i<mData.label.length;i++){			
+				//Label	
+				$("#armsd").children("label").html('<span>'+mData.label[i]+'</span>');
+			}			
+			//描述
+			$("#arm_des").html(mData.ldesc);
+			//专家点评
+			$("#arm_comm").html(mData.comment);
+			//打印表格
+			for(var i=0;i<mData.table.length;i++){
+				
+				if(mData.table[i].type == 1){
+					//1.兵种数据表格	
+					for(var j=0;j<mData.table[i].tbody.length;j++){						
+						td_one_key += '<td class="on">'+mData.table[i].tbody[j].k+'</td>';
+						td_one_value += '<td><span>'+mData.table[i].tbody[j].v+'</span></td>';
+					}
+					$("#levelt").html('<tbody><tr>'+td_one_key+'</td></tr><tr>'+td_one_value+'</tr></tbody>');			
+				}else{					
+					for(var j=0;j<mData.table[i].tbody.length;j++){						
+						td_two_key += '<div class="l">'+mData.table[i].tbody[j].k+'</div>';				
+						//判断是否是数组数据
+						if(mData.table[i].tbody[j].v instanceof Array){
+							for(var k=0;k<mData.table[i].tbody[j].v.length;k++){
+								td_two_value += '<td>'+mData.table[i].tbody[j].v[k]+'</td>';							
+							}						
+						}else{
+							td_two_value += '<td>'+mData.table[i].tbody[j].v+'</td>';
+						}
+						html_td_two_value += '<tr>'+ td_two_value +'</tr>';
+						td_two_value = '';					
+					}					
+					html_td_two_key +='<div class="dt">'+td_two_key+'</div>';					
+					html_td_two_value1 += '<div class="dd"><table><tbody>'+html_td_two_value+'</tbody></table></div>';														
+					$("#leveltt").html(html_td_two_key+html_td_two_value1);					
+				}
+			}
+						
+				that.o.total_level = mData.data[0].v.length; 
+				that.setFigure(mData,0);
+				that.setSlidebar(mData,that.o.total_level);//滑动条
+		},	
+
+		//设置属性值滑动栏
+		setSlidebar: function(mData,level){
+			var that = this,
+				$barlevel = $("#barlevel"),
+				$bar = $("#bar"),
+				$barhandle = $("#barhandle"),
+				$thumb = $barhandle.children(),
+				barW = $bar.width(),
+				barhandleW = $barhandle.width(),
+				barhandleM = barhandleW/2,
+				barW_max = barW-barhandleW,
+				touchMoveX,
+				barO_l = $bar.offset().left,
+				distanceX,
+				paragraph = barW_max/level,
+				level = 1;//初始化
+
+			function slide(rangeX){//计算滑动
+				var _level = Math.ceil(rangeX/paragraph);
+				
+				_level = _level == 0 ? 1 : _level;
+				$barhandle.css({"left":rangeX+"px"});
+				if(_level == level) return;//减少后面的调用				
+				level = _level;
+				$("#barlevel").html(level);				
+				that.setFigure(mData,level-1);
+			}
+
+			$thumb.on("touchstart", function(e){
+				e.preventDefault();
+			});
+			$thumb.on("touchmove", function(e){
+				e.preventDefault();				
+    			touchMoveX = e.originalEvent.changedTouches[0].pageX - barhandleM;//修正移动的时候，从中间的时候开始算    			
+				distanceX = touchMoveX - barO_l;
+				if(distanceX < 0){
+					slide(0);
+				}else if(distanceX > barW_max){
+					slide(barW_max);
+				}else{
+					slide(distanceX);
+				}
+			});
 		},
 
-		htmlBuildDetails: function(){
+		//数据详情
+		setFigure: function(mData,level){//计算数值			
+			var that = this, 
+			id='',
+			id1='',
+			html_data='',
+			html_data1='',
+			html_data2='';												
+			if(mData.showdataid.length == 1){ 
+				id = mData.showdataid[0];				
+				for(var i=0;i<mData.data.length;i++){
+					if(id != mData.data[i].id){						
+		    				html_data += '<dl>'+
+		    				'<dt>'+mData.data[i].k+'</dt>'+
+		    				'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[i].img+'.png'+'">'+
+		    				'<dd>'+mData.data[i].v[level]+'</dd>'+
+		    				'</dl>';				           
+					}else{
+						
+							html_data1 +='<div class="num num_blue" data-num="532">'+mData.data[i].v[level]+'</div>'+
+							'<div class="k">'+mData.data[i].k+'</div>';
+						
+					}
+				}
 
-		},		
+				$("#f_tr").html('<td class="f_td" id="figure_lt">'+html_data1+'</td>'+
+					'<td class="f_td" rowspan="2" id="figure_lt1">'+
+					'<div class="figure_other" id="figure_other">'+html_data+'</div>'+
+					'</td>');
+
+			}else{
+				id = mData.showdataid[0];
+				id1= mData.showdataid[1];				
+				for(var j=0;j<mData.data.length;j++){
+					if(id != mData.data[j].id && id1 != mData.data[j].id){
+						
+		    				html_data += '<dl>'+
+		    				'<dt>'+mData.data[j].k+'</dt>'+
+		    				'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
+		    				'<dd>'+mData.data[j].v[level]+'</dd>'+
+		    				'</dl>';
+				           
+					}else{
+							if(id == mData.data[j].id){
+
+								
+
+								html_data1 +='<div class="num num_blue">'+mData.data[j].v[level]+'</div>'+
+								'<div class="k">'+mData.data[j].k+'</div>';
+							}
+							if(id1 == mData.data[j].id){								
+
+								html_data2 +='<div class="num num_blue">'+mData.data[j].v[level]+'</div>'+
+								'<div class="k">'+mData.data[j].k+'</div>';								
+							}
+					}					
+				}				
+				
+				$("#t_body").html('<tr class="f_tr" id="f_tr"><td class="f_td" id="figure_lt">'+html_data1+'</td>'+
+						'<td class="f_td" rowspan="2" id="figure_lt1">'+
+						'<div class="figure_other" id="figure_other">'+html_data+'</div>'+
+						'</td></tr>'+
+	                	'<tr id="f_tr_2"><td class="f_td" id="figure_lb">'+html_data2+
+	                	'</td></tr>');
+			}			
+		},
+
+
 
 		getsession: function(){
 			var sessionname = arguments[0];
@@ -185,14 +374,15 @@
 		ispage: function(){//判断当前打开的是哪一个页面
 			if(!this.checkversion()) return;
 			var href = $("body").attr("data-url");
+			console.log(href);
 			switch(true){
 				case (href == "build.html"):
 					this.isplatform("build");
 					this.htmlBuild();
 					break;
-				case (href == "build-details.html"):
-					this.isplatform("build-details");
-					this.htmlArmsDetails();
+				case (href == "building-details.html"):
+					this.isplatform("building-details");
+					this.htmlBuildDetails();
 					break;
 			}
 		},
