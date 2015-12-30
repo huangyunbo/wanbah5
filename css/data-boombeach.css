@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* 海岛奇兵 2015-11-18 lucas */
 
-body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
 html{font:62.5%/1.5 "Microsoft YaHei",sans-serif}
 img{border:none;max-width:100%;vertical-align:top}
 h1,h2,h3,h4,h5,h6{font-weight:normal}
@@ -33,15 +33,16 @@ a{ text-decoration:none}
 .middle_fs{ font-size:12px}
 /*小字体*/
 .small_fs{ font-size:9px}
+.small_icon{ display:inline; background-size:15px; width:15px; height:15px; margin-left:5px; margin-right:5px}
 
 .header{ height:44px; border-bottom:1px solid #355cbf; background:#6ca9de; position:fixed; width:100%; top:0; left:0; z-index:100}
 .header h1{ font-size:18px; padding-top:8px; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 
 body{ color:#fff; background: #fff3dc}
-.armsd_bg { position: fixed; width: 100%; top: 0; z-index: 9; height:100%; width:100%}
-.armsd{ margin-top:45px; position:relative; z-index:10}
-.armsd .top_img{ margin-bottom:10px; height:100%; width:100%}
+.armsd_bg_d{ text-align:center}
+.armsd_bg { margin-top:80px}
+.armsd{ margin-top:20px; position:relative}
 .armsd .top_part1{ border-bottom: 1px solid #9bc9ed; padding-bottom:4px}
 .armsd .top .top_part1 .armsn{ color:#3a93e6}
 .armsd .top .top_part1 .label{ float:right; color:#fff; margin-top:12px}
@@ -49,7 +50,7 @@ body{ color:#fff; background: #fff3dc}
 .armsd .top .top_part1 .label span:first-child{ background:#ec3a4a}
 .armsd .top .top_part1 .label span:nth-child(2){ background:#ffb642}
 .armsd .top .top_part1 .label span:nth-child(3){ background:#46ac27}
-.armsd .arm_des{ color:#5f88be; margin-top:8px}
+.armsd .arm_des,.armsd .arm_comm{ color:#5f88be; margin-top:8px}
 .armsd .specialist,.armsd .basicinfo,.armsd .data_detail,.armsd .act_dis{ margin-top:20px}
 .armsd .small_square{ background: #43b9de; width: 3px; height: 1.5em; display: inline-block; vertical-align: text-bottom}
 .armsd .specialist .comment_tit span,.armsd .basicinfo .basicinfot_tit span,.armsd .data_detail .data_tit span,.armsd .act_dis .data_tit span{ padding-left:3px; font-size:16px; color:#5f88be}
@@ -70,6 +71,8 @@ td{ padding: 3px 5px; text-align: center; background:white}
 .datalist_nav ul { display: table; width: 100%; table-layout: fixed}
 .datalist_nav li.on { color: #fbbc0e; border-bottom: 2px solid #fbbc0e; padding-bottom: 7px}
 .datalist_nav li { display: table-cell; color: #333; font-size: 1.6em; padding: 8px 0; text-align: center; border-bottom: 1px solid #d3d3d3}
+.datalist ul { display:none}
+.datalist ul.on{ display:block}
 .datalist li .img { width: 18%; display: table-cell; text-align: center; padding: 10px 15px 10px 5px; box-sizing: border-box}
 .datalist li a { border-bottom: 1px solid #d3d3d3; display: table; width: 100%; padding: 10px; box-sizing: border-box}
 .datalist li .note { display: table-cell; vertical-align: middle; color: #333}
@@ -81,24 +84,24 @@ td{ padding: 3px 5px; text-align: center; background:white}
 .armsd .f_tr{ display: table-row; vertical-align: inherit; border-color: inherit}
 .armsd .data_detail .figure td{ width: 60%; text-align: center; position: relative; background:white}
 .armsd .data_detail .figure td:first-child {width: 40%}
-.armsd .data_detail .num { font-size: 2.4rem}
+.armsd .data_detail .num { font-size: 1.6rem}
 .armsd .data_detail .num_blue { color: #5fb2fe}
 .armsd .data_detail .num_red { color: #fe4462}
 .armsd .data_detail .k { font-size: 1.2rem; color:#284470}
 .armsd .data_detail .v { color: #9c9895; padding-bottom: 5px}
 .armsd .data_detail .dl{ display: block; -webkit-margin-before: 1em; -webkit-margin-after: 1em; -webkit-margin-start: 0px; -webkit-margin-end: 0px}
-.armsd .data_detail dt{ display: inline-block; color: #284470; width: 50%; text-align: right; padding-right: 5px; box-sizing: border-box}
-.armsd .data_detail dd{ display: inline-block; width: 50%; text-align: left; color:#66b5ff}
+.armsd .data_detail dt{ display: inline-block; color: #284470; text-align: right; padding-right: 5px; box-sizing: border-box}
+.armsd .data_detail dd{ display: inline-block; text-align: left; color:#66b5ff}
 
 /*滑动条*/
 .armsd .bar{ overflow:hidden; margin-top:15px}
 .armsd .bar .l{ float:left; width:15%; font-size:1.2rem; text-align:center; color:#66b5ff}
 .armsd .bar .l div{ font-size:1.5rem}
 .armsd .bar .r{ margin:0 6px 0 15%; height:55px; position:relative}
-.armsd .bar .r .x_line{ width:100%; height:2px; position:absolute; top:15px; background:rgba(102,121,255,0.6)}
-.armsd .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:50%; background:rgba(102,121,255,0.6); top:14px}
+.armsd .bar .r .x_line{ height:2px; position:absolute; top:15px; left:10px; right:10px; background:rgba(102,121,255,0.6)}
+.armsd .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:50%; background:rgba(102,121,255,0.6); top:14px; margin-left:7px}
 .armsd .bar .r .point_m{ left:50%; margin-left:-12px}/*-(4/2)+-(20/2)*/
-.armsd .bar .r .point_r{ right:0}
+.armsd .bar .r .point_r{ right:0; margin-right:7px}
 .armsd .bar .r .barhandle{ width:20px; height:18px; background:url(../images/boombeach/armsd_icon_detail.png) 0 -140px no-repeat; background-size:35px; position:absolute; top:7px; left:0}
 .armsd .bar .r .barhandle span{ width:46px; height:46px; display:block; margin-left:-13px}/*6+7=13*/
 

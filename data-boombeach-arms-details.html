@@ -7,24 +7,26 @@
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" type="text/css" href="css/data-boombeach.css">
 </head>
-<body>
-<div class="header" id="header">
-	<a href="data-boombeach-arms-spices.html" class="back wbclick"></a>
+
+<body data-url="arms-details.html">
+<div class="header hide" id="header">
+	<a href="data-boombeach-arms.html" class="back wbclick"></a>
     <h1>坦克</h1>
 </div>
-<img class="armsd_bg" src="images/boombeach/armsd_bg.png">
-<div class="armsd">
-	<img class="top_img" src="images/boombeach/image_17.jpg">
+<div class="armsd_bg_d" id="armsd_bg_d">
+	<!-- <img class="armsd_bg" src="images/boombeach/2_1.png"> -->
+</div>
+<div class="armsd">	
 	<div class="top mlf_7">
-		<div class="top_part1 clearfix">
+		<div class="top_part1 clearfix" id="label_d">
 			<span class="armsn max_fs">坦克</span>
-			<div class="label middle_fs">
+			<div class="label middle_fs" id="label_container">
 				<span>血多</span>
 				<span>无损</span>
 				<span>速度慢</span>				
 			</div>			
 		</div>		
-		<div class="arm_des middlefs">拥有火力强大的火炮和厚重的装甲！由于重量庞大，每辆坦克都需要消耗额外的能量才能登陆。加农炮，巨型加农炮和高地地雷都可以对坦克造成双倍伤害。
+		<div class="arm_des middlefs" id="arm_des">拥有火力强大的火炮和厚重的装甲！由于重量庞大，每辆坦克都需要消耗额外的能量才能登陆。加农炮，巨型加农炮和高地地雷都可以对坦克造成双倍伤害。
 		</div>
 	</div>
 	<div class="specialist mlf_7">
@@ -32,7 +34,7 @@
 			<div class="small_square"></div>
 			<span>专家点评</span>
 		</div>
-		<div class="arm_des middlefs">钢材库是用来给我们储存钢材的地方，要关注他的储存上限，避免出现想要升级某一个建筑时上限不足的尴尬。---流光细雨</div>
+		<div class="arm_comm middlefs" id="arm_comm">钢材库是用来给我们储存钢材的地方，要关注他的储存上限，避免出现想要升级某一个建筑时上限不足的尴尬。---流光细雨</div>
 	</div>
 	<div class="basicinfo mlf_7">
 		<div class="basicinfot_tit">
@@ -40,49 +42,50 @@
 			<span>基本信息</span>
 		</div>			
 		<div class="leveld">
-			<table>
-                <tbody><tr>
-                    <td class="on">占用空间</td>
-                    <td class="on">训练时间</td>
-                    <td class="on">移动速度</td>
-                    <td class="on">攻击速度</td>
-                    <td class="on">攻击距离</td>
-                </tr>
-                <tr>
-                    <td><span>8</span></td>
-                    <td><span>36分钟</span></td>
-                    <td><span>150</span></td>
-                    <td><span>3.5秒</span></td>
-                    <td><span>8.2格</span></td>
-                </tr>
-            </tbody></table>
+			<table id="levelt">
+                <!-- <tbody>
+	                <tr>
+	                    <td class="on">占用空间</td>
+	                    <td class="on">训练时间</td>
+	                    <td class="on">移动速度</td>
+	                    <td class="on">攻击速度</td>
+	                    <td class="on">攻击距离</td>
+	                </tr>
+	                <tr>
+	                    <td><span>8</span></td>
+	                    <td><span>36分钟</span></td>
+	                    <td><span>150</span></td>
+	                    <td><span>3.5秒</span></td>
+	                    <td><span>8.2格</span></td>
+	                </tr>
+            	</tbody> -->
+            </table>
 		</div>
 
-		<div class="leveld">
+		<div class="leveld" id="leveltt">
 			<div class="dt">
-				<div class="l">第X个炮弹</div>
-				<div class="l">消耗能量</div>
-				<div class="l">炮弹总数</div>
+				<!-- <div class="l">第X个炮弹</div>
+				<div class="l">消耗能量</div> -->
+				<!-- <div class="l">炮弹总数</div> -->
 			</div>
 			<div class="dd">
 				<table>
 					<tbody>
-					<tr>
-					<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12			</td>	
-					</tr>
-					<tr>
-					<td>10</td><td>16</td><td>22</td><td>28</td><td>34</td><td>40</td><td>46</td><td>52</td><td>58</td><td>64</td><td>70</td><td>76</td>	
-					</tr>
-					<tr>
-					<td colspan="1">15</td>
-						<td colspan="4" class="l">攻击范围</td>
-
-						<td colspan="2">1.4格</td>
-						<td colspan="3" class="l">影响范围</td>
-
-						<td colspan="2">300</td>
-					</tr>
-				</tbody></table>
+						<!-- <tr>
+							<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>	
+						</tr> -->
+						<!-- <tr>
+							<td>10</td><td>16</td><td>22</td><td>28</td><td>34</td><td>40</td><td>46</td><td>52</td><td>58</td><td>64</td><td>70</td><td>76</td>	
+						</tr> -->
+						<!-- <tr> -->
+							<!-- <td colspan="1">15</td>
+							<td colspan="4" class="l">攻击范围</td>
+							<td colspan="2">1.4格</td>
+							<td colspan="3" class="l">影响范围</td>
+							<td colspan="2">300</td> -->
+						<!-- </tr> -->
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
@@ -92,34 +95,55 @@
 			<div class="small_square"></div>
 			<span>数据详情</span>
 		</div>	
-		<table class="figure">
-            <tbody class="f_tbody">
-            	<tr class="f_tr">
-	                <td class="f_td" id="figure_lt">
-	                <div class="num num_blue" data-num="532">532</div>
-	                <div class="k">每秒伤害</div>	                
+		<table class="figure" id="figure">
+            <tbody class="f_tbody" id="t_body">
+            	<tr class="f_tr" id="f_tr">
+	               <!--  <td class="f_td" id="figure_lt">
+		                <div class="num num_blue" data-num="532">532</div>
+		                <div class="k">每秒伤害</div>	                
 	                </td>
-	                <td class="f_td" rowspan="2">	                	                
+	                <td class="f_td" rowspan="2" id="figure_lt1">	                	                
 	                    <div class="figure_other" id="figure_other">
-		                    <dl><dt>所需司令部等级:</dt><dd>12</dd></dl>
-		                    <dl><dt>升级所需资源:</dt><dd>4500</dd></dl>
-		                    <dl><dt>训练费用:</dt><dd>4500</dd></dl>
-		                    <dl><dt>升级所需时间:</dt><dd>1小时</dd></dl>
-		                    <dl><dt>升级获得经验:</dt><dd>32</dd></dl>
+		                    <dl>
+			                    <dt>所需司令部等级:</dt>
+			                    <img class="small_icon" src="images/boombeach/icon/ico_exp.png">
+			                    <dd>12</dd>
+		                    </dl>
+		                    <dl>
+			                    <dt>升级所需资源:</dt>
+			                    <img class="small_icon" src="images/boombeach/icon/ico_exp.png">
+			                    <dd>4500</dd>
+		                    </dl>
+		                    <dl>
+			                    <dt>训练费用:</dt>
+			                    <img class="small_icon" src="images/boombeach/icon/ico_exp.png">
+			                    <dd>4500</dd>
+		                    </dl>
+		                    <dl>
+			                    <dt>升级所需时间:</dt>
+			                    <img class="small_icon" src="images/boombeach/icon/ico_exp.png">
+			                    <dd>1小时</dd>
+		                    </dl>
+		                    <dl>
+			                    <dt>升级获得经验:</dt>
+			                    <img class="small_icon" src="images/boombeach/icon/ico_exp.png">
+			                    <dd>32</dd>
+		                    </dl>
 	                    </div>
-	                </td>
+	                </td> -->
             	</tr>
-            	<tr>
-                	<td class="f_td" id="figure_lb">
+            	<tr id="f_tr_2">
+                	<!-- <td class="f_td" id="figure_lb">
 	                	<div class="num num_red" data-num="55">55</div>
 	                	<div class="k">生命值</div>
-                	</td>
+                	</td> -->
             	</tr>
-        </tbody></table>
+        	</tbody>
+        </table>
 	</div>
 
 	<div class="bar">
-            <div class="l"><div id="barlevel">1</div></div>
+            <div class="l"><div id="barlevel">1</div>LEVEL</div>
             <div class="r" id="bar">
                 <i class="x_line"></i>
                 <i class="point point_l"></i>
@@ -129,14 +153,24 @@
             </div>
         </div>
 
-	<div class="act_dis mlf_7">
-		<div class="data_tit">
+	<div class="act_dis mlf_7" id="act_dis">
+		<!-- <div class="data_tit">
 			<div class="small_square"></div>
 			<span>攻击距离</span>
-		</div>	
+		</div>
+		<div>
+			<img src="images/boombeach/ack_distance/1.png">
+		</div>	 -->
 	</div>
 </div>
 
 <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="json/json-boombeach.js"></script>
+<script type="text/javascript" src="js/data-boombeach-arms.js"></script>
+<script type="text/javascript">
+$(function(){
+    var boombeach_arms_detail = new BoombeachArms(data_arms);
+});
+</script>
 </body>
 </html>

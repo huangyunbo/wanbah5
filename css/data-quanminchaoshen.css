@@ -124,10 +124,10 @@ a{ text-decoration:none}
 .herod .bar .l{ float:left; width:15%; font-size:1.2rem; text-align:center}
 .herod .bar .l div{ font-size:1.5rem}
 .herod .bar .r{ margin:0 6px 0 15%; height:55px; position:relative}
-.herod .bar .r .x_line{ width:100%; height:2px; position:absolute; top:15px; background:rgba(255,202,40,0.6)}
-.herod .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:50%; background:rgba(255,202,40,0.6); top:14px}
+.herod .bar .r .x_line{ height:2px; position:absolute; top:15px; left:10px; right:10px; background:rgba(255,202,40,0.6)}
+.herod .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:50%; background:rgba(255,202,40,0.6); top:14px; margin-left:7px}
 .herod .bar .r .point_m{ left:50%; margin-left:-12px}/*-(4/2)+-(20/2)*/
-.herod .bar .r .point_r{ right:0}
+.herod .bar .r .point_r{ right:0; margin-right:7px}
 .herod .bar .r .barhandle{ width:20px; height:18px; background:url(../images/quanminchaoshen/hero_detail.png) 0 -140px no-repeat; background-size:35px; position:absolute; top:7px; left:0}
 .herod .bar .r .barhandle span{ width:46px; height:46px; display:block; margin-left:-13px}/*6+7=13*/
 .herod .skills{ border-bottom:1px solid #ffca28; padding-bottom:10px; box-shadow:0 1px 1px #48636a}
