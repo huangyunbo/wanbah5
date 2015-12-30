@@ -65,6 +65,7 @@ td{ padding: 3px 5px; text-align: center; background:white}
 .armsd .basicinfo .leveld .dd{ float: left; width: 75%; overflow-x: auto; color:#5d82bc}
 .armsd .basicinfo .on{background: #43b9de; color: #fff}
 .armsd .leveld span{ color:#5d82bc}
+.armsd .act_dis img{ width:100%}
 
 /*兵种道具*/
 .datalist_nav{ margin-top:45px}
@@ -99,9 +100,10 @@ td{ padding: 3px 5px; text-align: center; background:white}
 .armsd .bar .l div{ font-size:1.5rem}
 .armsd .bar .r{ margin:0 6px 0 15%; height:55px; position:relative}
 .armsd .bar .r .x_line{ height:2px; position:absolute; top:15px; left:10px; right:10px; background:rgba(102,121,255,0.6)}
-.armsd .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:50%; background:rgba(102,121,255,0.6); top:14px; margin-left:7px}
+.armsd .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:50%; background:rgba(102,121,255,0.6); top:14px}
+.armsd .bar .r .point_l{ left:8px}
 .armsd .bar .r .point_m{ left:50%; margin-left:-12px}/*-(4/2)+-(20/2)*/
-.armsd .bar .r .point_r{ right:7px}
+.armsd .bar .r .point_r{ right:8px}
 .armsd .bar .r .barhandle{ width:20px; height:18px; background:url(../images/boombeach/armsd_icon_detail.png) 0 -140px no-repeat; background-size:35px; position:absolute; top:7px; left:0}
 .armsd .bar .r .barhandle span{ width:46px; height:46px; display:block; margin-left:-13px}/*6+7=13*/
 
