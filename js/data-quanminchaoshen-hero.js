@@ -105,6 +105,7 @@
 				barW = $bar.width(),
 				barhandleW = $barhandle.width(),
 				barW_max = barW-barhandleW,
+				barhandleM = barhandleW/2,
 				touchMoveX,
 				barO_l = $bar.offset().left,
 				distanceX,
@@ -129,7 +130,7 @@
 			});
 			$thumb.on("touchmove", function(e){
 				e.preventDefault();
-    			touchMoveX = e.originalEvent.changedTouches[0].pageX;
+    			touchMoveX = e.originalEvent.changedTouches[0].pageX-barhandleM;
 				distanceX = touchMoveX - barO_l;
 				if(distanceX < 0){
 					slide(0);
