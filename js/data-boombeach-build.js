@@ -194,13 +194,14 @@
 		},
 
 		//数据详情
-		setFigure: function(mData,level){//计算数值			
+		setFigure: function(mData,level){		
 			var that = this, 
 			id='',
 			id1='',
 			html_data='',
 			html_data1='',
-			html_data2='';												
+			html_data2='';			
+			//左边只显示一个数据									
 			if(mData.showdataid.length == 1){ 
 				id = mData.showdataid[0];				
 				for(var i=0;i<mData.data.length;i++){
@@ -210,11 +211,15 @@
 		    				'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[i].img+'.png'+'">'+
 		    				'<dd>'+mData.data[i].v[level]+'</dd>'+
 		    				'</dl>';				           
-					}else{
-						
-							html_data1 +='<div class="num num_blue" data-num="532">'+mData.data[i].v[level]+'</div>'+
-							'<div class="k">'+mData.data[i].k+'</div>';
-						
+					}else{						
+						var part0 = '';
+						html_data1 +='<div class="k">'+mData.data[i].k+'</div>';
+						for(var k=0;k<mData.data[i].img.length;k++){
+							part0 += '<div class="k">'+
+								'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[i].img[k]+'.png'+'">'+
+								mData.data[i].v[level][k]+'</div>';
+							}
+						html_data1 += part0;						
 					}
 				}
 
@@ -224,8 +229,9 @@
 					'</td>');
 
 			}else{
-				id = mData.showdataid[0];
-				id1= mData.showdataid[1];				
+				//左边有两项数据
+				id = mData.showdataid[0];//上边数据
+				id1= mData.showdataid[1];//下边数据				
 				for(var j=0;j<mData.data.length;j++){
 					if(id != mData.data[j].id && id1 != mData.data[j].id){
 						
@@ -237,16 +243,37 @@
 				           
 					}else{
 							if(id == mData.data[j].id){
+								//不止一张图片								
+								if(mData.data[j].img instanceof Array && mData.data[j].img.length>1){								
+									var part1 = '';
+									html_data1 +='<div class="k">'+mData.data[j].k+'</div>';
+									for(var k=0;k<mData.data[j].img.length;k++){
+										part1 += '<div class="k">'+
+										'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img[k]+'.png'+'">'+
+										mData.data[j].v[level][k]+'</div>';
+									}
+									html_data1 += part1;
 
-								
-
-								html_data1 +='<div class="num num_blue">'+mData.data[j].v[level]+'</div>'+
-								'<div class="k">'+mData.data[j].k+'</div>';
+								}else{
+									html_data1 +='<div class="num num_blue">'+mData.data[j].v[level]+'</div>'+
+									'<div class="k">'+mData.data[j].k+'</div>';
+								}
 							}
-							if(id1 == mData.data[j].id){								
+							if(id1 == mData.data[j].id){
+								if(mData.data[j].img instanceof Array && mData.data[j].img.length>1){									
+									var part2 = '';
+									html_data2 +='<div class="k">'+mData.data[j].k+'</div>';
+									for(var k=0;k<mData.data[j].img.length;k++){
+										part2 += '<div class="k">'+
+										'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img[k]+'.png'+'">'+
+										mData.data[j].v[level][k]+'</div>';
+									}
+									html_data2 += part2;
 
-								html_data2 +='<div class="num num_blue">'+mData.data[j].v[level]+'</div>'+
-								'<div class="k">'+mData.data[j].k+'</div>';								
+								}else{
+									html_data2 +='<div class="num num_blue">'+mData.data[j].v[level]+'</div>'+
+									'<div class="k">'+mData.data[j].k+'</div>';
+								}								
 							}
 					}					
 				}				
