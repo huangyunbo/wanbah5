@@ -316,7 +316,7 @@
 		toast: function(){//消息提醒
 			var i = Number(arguments[0]),
 			html_1 = '衣服太少了',
-			html_2 = '建议饰品9件左右';
+			html_2 = '饰品新规则，建议饰品选择越多越好！';
 			
 			switch(i){
 				case 1:$("#toast").html(html_1);break;
@@ -348,7 +348,7 @@
 				_bag = this.o.bag,
 				hasadd = 0,
 				_tid,
-				ornaments = [10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],//饰品
+				ornaments = [10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,29,30],//饰品
 				ornamentsNum = 0;
 			
 			if(_bag.length > 0){
@@ -392,8 +392,8 @@
 					}
 				}
 			}
-			//只有添加的是饰品类别并且数量大于8才提示
-			if(ornamentsNum >= 8){
+			//只有添加的是饰品类别并且数量等于9才提示
+			if(ornamentsNum == 9){
 				for(var i=0; i<ornaments.length; i++){
 					if(ornaments[i] == _oldid){
 						this.toast(2);
