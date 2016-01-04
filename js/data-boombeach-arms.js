@@ -20,21 +20,20 @@
 	
 	BoombeachArms.prototype = {
 
-		htmlArms: function(){			
-			var $species_nav=$("#datalist_nav"),
-			that = this,
-			t_index = Number(that.getsession("wbgl-boombeach-arms-tindex"));
-			that.printArmsSpecies();
+		events:function(){//兵种页面事件监听
+			var that = this,
+			$species_nav = $("#datalist_nav"),			
+			t_index = Number(that.getsession("wbgl-boombeach-arms-tindex"));			
 			$species_nav.on("click","li", function(){				
 				t_index = Number($(this).attr("data-index"));				
 				$species_nav.children().children().eq(t_index).addClass("on").siblings().removeClass("on");
 				$("#datalist").children().eq(t_index).addClass("on").siblings().removeClass("on");
-			}).children().children().eq(t_index).trigger("click");	
+				that.setsession("wbgl-boombeach-arms-tindex", t_index);
+			}).children().children().eq(t_index).trigger("click");
 
 
 			$("#datalist").on("click", "li", function(){
-				var _id = Number($(this).attr("data-id"));
-				that.setsession("wbgl-boombeach-arms-tindex", t_index);
+				var _id = Number($(this).attr("data-id"));				
 				that.setsession("wbgl-boombeach-arms-id", _id);				
 				// if(that.o.platform == "ios"){
 				// 	location.href = that.o.plugin+'/data-vainglory-equip-detail.html';
@@ -44,8 +43,13 @@
 			});
 		},
 
-		//打印兵种
-		printArmsSpecies: function(){
+		htmlArms: function(){//兵种页面		
+			var that = this;
+			that.printArmsSpecies();
+			that.events();				
+		},
+		
+		printArmsSpecies: function(){//打印兵种页面
 			var species = this.data,
 			that = this;
 			html_species='',
@@ -69,19 +73,20 @@
 			$("#datalist_nav").html('<ul>'+html_species+'</ul>');			
 			$("#datalist").html(html_detail_content);	
 		},
-
-		//打印兵种详情
-		htmlArmsDetails: function(){
+		
+		htmlArmsDetails: function(){//兵种详情页面
 			var species = this.data,
 			data,			
 			that = this;
-			for(var i=0;i<species.length;i++){
+			for(var i=0;i<species.length;i++){//找到对应的数据
 				
 				for(var j=0;j<species[i].cdata.length;j++){
 					data = species[i].cdata[j];					
-					if(that.getsession("wbgl-boombeach-arms-id") == data.id){
-						console.log(data);
+					if(that.getsession("wbgl-boombeach-arms-id") == data.id){					
 						that.printDetail(data);
+						that.o.total_level = data.data[0].v.length; 
+						that.setFigure(data,0);
+						that.setSlidebar(data,that.o.total_level);//滑动条
 					}						
 				}	
 					
@@ -89,7 +94,7 @@
 			}
 		},	
 
-		printDetail:function(data){
+		printDetail:function(data){//打印兵种详情页面
 			var mData = data,
 			that = this,
 			td_one_key='',
@@ -152,13 +157,11 @@
 					'<img src="'+that.o.url+'ack_distance/'+mData.id+'.png'+'">'+
 					'</div>');		
 			}			
-				that.o.total_level = mData.data[0].v.length; 
-				that.setFigure(mData,0);
-				that.setSlidebar(mData,that.o.total_level);//滑动条
+				
 		},	
 
-		//设置属性值滑动栏
-		setSlidebar: function(mData,level){
+		
+		setSlidebar: function(mData,level){//设置属性值滑动栏
 			var that = this,
 				$barlevel = $("#barlevel"),
 				$bar = $("#bar"),
@@ -202,8 +205,8 @@
 			});
 		},
 
-		//数据详情
-		setFigure: function(mData,level){//计算数值			
+		
+		setFigure: function(mData,level){//数据详情		
 			var that = this, 
 			id='',
 			id1='',
