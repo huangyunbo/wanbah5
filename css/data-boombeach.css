@@ -151,6 +151,9 @@ td{ padding: 3px 5px; text-align: center; background:white}
 	.armsd .data_detail dt{ font-size:1.6rem; padding-right: 10px; }
 	.armsd .data_detail dd{  font-size:1.6rem}
 
+	.armsd .pic_scroll li{ width:106px; margin-right:12px}
+	.armsd .pic_scroll li span{ font-size:1.6rem}
+
 
 	.armsd .bar{ margin-top:30px; padding-left:14px}
 	.armsd .bar .l{ font-size:2.4rem; padding-top:6px}	

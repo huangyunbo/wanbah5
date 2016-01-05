@@ -384,8 +384,7 @@
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			if(!this.checkversion()) return;
-			var href = $("body").attr("data-url");
-			console.log(href);
+			var href = $("body").attr("data-url");		
 			switch(true){
 				case (href == "build.html"):
 					this.isplatform("build");					
