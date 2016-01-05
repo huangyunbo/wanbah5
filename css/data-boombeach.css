@@ -75,6 +75,8 @@ td{ padding: 3px 5px; text-align: center; background:white}
 .datalist ul { display:none}
 .datalist ul.on{ display:block}
 .datalist li .img { width: 18%; display: table-cell; text-align: center; padding: 10px 15px 10px 5px; box-sizing: border-box}
+.datalist h2{ font-size:16px}
+.datalist p{ font-size:10px}
 .datalist li a { border-bottom: 1px solid #d3d3d3; display: table; width: 100%; padding: 10px; box-sizing: border-box}
 .datalist li .note { display: table-cell; vertical-align: middle; color: #333}
 .datalist li .look { display: table-cell; width: 10%; vertical-align: middle}
@@ -91,8 +93,8 @@ td{ padding: 3px 5px; text-align: center; background:white}
 .armsd .data_detail .k { font-size: 1.2rem; color:#284470}
 .armsd .data_detail .v { color: #9c9895; padding-bottom: 5px}
 .armsd .data_detail .dl{ display: block; -webkit-margin-before: 1em; -webkit-margin-after: 1em; -webkit-margin-start: 0px; -webkit-margin-end: 0px}
-.armsd .data_detail dt{ display: inline-block; color: #284470; text-align: right; padding-right: 5px; box-sizing: border-box}
-.armsd .data_detail dd{ display: inline-block; text-align: left; color:#66b5ff}
+.armsd .data_detail dt{ display: inline-block; font-size:1.2rem; color: #284470; text-align: right; padding-right: 5px; box-sizing: border-box}
+.armsd .data_detail dd{ display: inline-block; font-size:1.2rem; text-align: left; color:#66b5ff}
 
 /*图片滑动栏*/
 .armsd .pic_scroll{ overflow-x:auto}
@@ -118,4 +120,50 @@ td{ padding: 3px 5px; text-align: center; background:white}
 .armsd .bar .r .barhandle{ width:24px; height:24px; background:url(../images/boombeach/armsd_icon_detail.png) no-repeat; background-size:24px; position:absolute; top:5px; left:0}
 .armsd .bar .r .barhandle span{ width:46px; height:46px; display:block; margin-left:-13px}/*6+7=13*/
 
+@media screen and (min-width:640px){
+	.mb_10{ margin-bottom:20px}
+	.mlf_7{ margin:0 14px}
+	.media_fs_14{ font-size:2.8rem}
+	.media_mb_20{ margin-bottom:40px}
+	.media_ml_16{ margin-left:32px}
+	.media_plr_7{ padding:0 14px}
+	/*大字体*/
+	.max_fs{ font-size:42px}
+	/*中字体*/
+	.middle_fs{ font-size:20px}
+	/*小字体*/
+	.small_fs{ font-size:16px}
+	.small_icon{ display:inline; background-size:30px; width:30px; height:30px; margin-left:10px; margin-right:10px}
+	.datalist_nav li { font-size: 2.4em; padding: 16px 0}
+	
+	.datalist h2{ font-size:24px}
+	.datalist p{ font-size:16px}
+
+	.armsd_bg { margin-top:160px}
+	.armsd{ margin-top:40px; position:relative}
+	.armsd .arm_des,.armsd .arm_comm{ margin-top:16px}
+	.armsd .basicinfo .leveld { padding: 20px 0px; font-size: 2.0em}
+	.armsd .specialist .comment_tit span,.armsd .basicinfo .basicinfot_tit span,.armsd .data_detail .data_tit span,.armsd .act_dis .data_tit span{ padding-left:6px; font-size:24px; color:#5f88be}
+
+	.armsd .data_detail .num { font-size: 2.0rem}	
+	.armsd .data_detail .k { font-size: 1.6rem}
+	.armsd .data_detail .v { padding-bottom: 10px}
+	.armsd .data_detail dt{ font-size:1.6rem; padding-right: 10px; }
+	.armsd .data_detail dd{  font-size:1.6rem}
+
+
+	.armsd .bar{ margin-top:30px; padding-left:14px}
+	.armsd .bar .l{ font-size:2.4rem; padding-top:6px}	
+	.armsd .bar .l .icon_level{ width:48px; height:48px; background-size:48px; background:url(../images/boombeach/armsd_icon_detail.png) 0 -48px no-repeat; vertical-align:-28px}
+	.armsd .bar .r{ margin:0 12px 0 12%; height:110px}
+	.armsd .bar .r .x_line{ height:4px; top:30px; left:20px; right:20px}
+	.armsd .bar .r .point{ width:8px; height:8px; top:28px}
+	.armsd .bar .r .point_l{ left:16px}
+	.armsd .bar .r .point_m{ margin-left:-28px}/*-(8/2)+-(48/2)*/
+	.armsd .bar .r .point_r{ right:16px}
+	.armsd .bar .r .barhandle{ width:48px; height:48px; background-size:48px; top:10px}
+	.armsd .bar .r .barhandle span{ width:96px; height:96px; margin-left:-26px}
 }
+
+
+

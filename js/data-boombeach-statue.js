@@ -88,10 +88,12 @@
 				html_species += '<li id="arm_species_item" data-index="'+i+'">'+species[i].cname+'</li>';
 				html_detail_content += '<ul>';	
 				for(var j=0;j<species[i].cdata.length;j++){					
-					html_detail_content += '<li data-id="'+species[i].cdata[j].id+'"><a><div class="img"><img src="'+
+					html_detail_content += '<li data-id="'+species[i].cdata[j].id+'"><a>'+
+					'<div class="img"><img src="'+
 					that.o.url+'statue/'+
 					species[i].cdata[j].img+
-					'"></div><div class="note"><h2>'+
+					'"></div>'+
+					'<div class="note"><h2>'+
 					species[i].cdata[j].name+
 					'</h2><p>'+
 					species[i].cdata[j].sdesc+
@@ -207,10 +209,14 @@
 			if(mData.showdataid.length == 1){ 
 				id = mData.showdataid[0];				
 				for(var i=0;i<mData.data.length;i++){
-					if(id != mData.data[i].id){						
+					if(id != mData.data[i].id){		
+							var icon_img='';
+							if(mData.data[i].img.length>0){
+								icon_img = '<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[i].img+'.png'+'">';
+							}				
 		    				html_data += '<dl>'+
 		    				'<dt>'+mData.data[i].k+'</dt>'+
-		    				'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[i].img+'.png'+'">'+
+		    				icon_img+
 		    				'<dd>'+mData.data[i].v[level]+'</dd>'+
 		    				'</dl>';				           
 					}else{
@@ -229,10 +235,13 @@
 				id1= mData.showdataid[1];				
 				for(var j=0;j<mData.data.length;j++){
 					if(id != mData.data[j].id && id1 != mData.data[j].id){
-						
+							var icon_img1='';
+							if(mData.data[j].img.length>0){
+								icon_img1 = '<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">';
+							}
 		    				html_data += '<dl>'+
 		    				'<dt>'+mData.data[j].k+'</dt>'+
-		    				'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
+		    				icon_img1+
 		    				'<dd>'+mData.data[j].v[level]+'</dd>'+
 		    				'</dl>';
 				           
