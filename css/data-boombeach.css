@@ -112,8 +112,8 @@ td{ padding: 3px 5px; text-align: center; background:white}
 .armsd .bar .l .barlevel{ display:inline-block}
 .armsd .bar .l .icon_level{ display:inline-block; width:24px; height:24px; background:url(../images/boombeach/armsd_icon_detail.png) 0 -24px no-repeat; background-size:24px; vertical-align:-14px}
 .armsd .bar .r{ margin:0 6px 0 12%; height:55px; position:relative}
-.armsd .bar .r .x_line{ height:2px; position:absolute; top:15px; left:10px; right:10px; background:rgba(102,121,255,0.6)}
-.armsd .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:50%; background:rgba(102,121,255,0.6); top:14px}
+.armsd .bar .r .x_line{ height:2px; position:absolute; top:15px; left:10px; right:10px; background:rgba(82,167,246,0.6)}
+.armsd .bar .r .point{ position:absolute; width:4px; height:4px; border-radius:50%; background:rgba(82,167,246,0.6); top:14px}
 .armsd .bar .r .point_l{ left:8px}
 .armsd .bar .r .point_m{ left:50%; margin-left:-14px}/*-(4/2)+-(24/2)*/
 .armsd .bar .r .point_r{ right:8px}
