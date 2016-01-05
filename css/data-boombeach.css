@@ -142,6 +142,7 @@ td{ padding: 3px 5px; text-align: center; background:white}
 	.armsd_bg { margin-top:160px}
 	.armsd{ margin-top:40px; position:relative}
 	.armsd .arm_des,.armsd .arm_comm{ margin-top:16px}
+	.armsd .small_square{ width: 4px; height: 2.0em}
 	.armsd .basicinfo .leveld { padding: 20px 0px; font-size: 2.0em}
 	.armsd .specialist .comment_tit span,.armsd .basicinfo .basicinfot_tit span,.armsd .data_detail .data_tit span,.armsd .act_dis .data_tit span{ padding-left:6px; font-size:24px; color:#5f88be}
 
