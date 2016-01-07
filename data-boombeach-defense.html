@@ -184,7 +184,7 @@
 <script type="text/javascript">
 $(".a").click(function(){
 	var id = Number($(this).attr("data-id"));
-	$.getJSON('http://127.0.0.1:3000/h5data/articlelist?jsoncallback=?', {
+	$.getJSON('http://m.wanba123.cn/h5data/articlelist?jsoncallback=?', {
 		groupid: id,
 		startpage: 0
 	}).done(function(data){
@@ -195,7 +195,7 @@ $(".a").click(function(){
 });
 $("h1").click(function(){
 	var id = Number($(this).attr("data-id"));
-	$.getJSON('http://127.0.0.1:3000/h5data/article?jsoncallback=?', {
+	$.getJSON('http://m.wanba123.cn/h5data/article?jsoncallback=?', {
 		artid: 3000507
 	}).done(function(data){
 		console.log(data);
