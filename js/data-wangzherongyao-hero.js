@@ -1,7 +1,9 @@
 (function(window){
 	var WzryHero = function(){
 		if(arguments[0] === undefined) return false;
-		this.data = typeof(arguments[0]) == 'object' ? arguments[0] : {};		
+		this.mData = typeof(arguments[0]) == 'object' ? arguments[0] : {};
+		this.data = this.mData.data_hero;	
+		this.data_equip = this.mData.data_equip;	
 		this.o = {
 			platform:"web",
 			plugin:"plugin_1101",//plugin_1101
@@ -121,17 +123,13 @@
 		},
 		setVideo: function(){
 			var that = this,
-				$skills_content = $("#skills_content"),
-				v_width = $skills_content.width(),
+				$hero_video = $("#video"),
+				v_width = $hero_video.width(),
 				v_height = parseInt(v_width/320*189),
 				video,
-				player;
-
-			$skills_content.children().each(function(index, element){
-                if(index <= 2){//只有前3个主动技能有视频
-					var self = $(element).children(".video"),
-						videoid = self.attr("data-id");
-
+				player;		
+                
+				var	videoid = $hero_video.attr("data-id");
 					video = new tvp.VideoInfo();
 					video.setVid(videoid);//视频vid
 					player = new tvp.Player(v_width, v_height);//视频宽高
@@ -142,9 +140,8 @@
 					player.addParam("showend",0);//结束是该视频本身结束
 					//player.addParam("wmode","opaque");//flash才用到
 					//player.addParam("flashskin", "http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf");//是否调用精简皮肤，不使用则删掉此行代码
-					player.write("videocon"+index);//elementId
-				}
-            });			
+					player.write("video");//elementId
+						
 		},		
 		setFigure: function(isstart,level){//设置英雄等级数值数据
 			var type = this.o.type,
@@ -155,37 +152,17 @@
 				level = level === 1 ? 0 : level-1;			
 						
 			if($.isEmptyObject(piece)) return;
-			
-			if(isstart === 1){//第一次的时候需要从0开始数值跳动
-				html_figure_lt = '<div class="num num_green" data-num="'+piece.figure.shengming[0]+'">0</div>';
-			}else{
-				// html_figure_lt = '<div class="num num_green">'+(piece.figure.shengming[0]+level*piece.figure.shengming[1])+'</div>';
-			}
+
+			html_figure_lt = '<div class="num num_green" data-num="'+piece.figure.shengming[0]+'"></div>';
 			html_figure_lt += '<div class="k">生命值</div>';
-			
-			
-			if(type == 0 || type == 2){
-				if(isstart === 1){//第一次的时候需要从0开始数值跳动
-					html_figure_lb = '<div class="num num_red" data-num="'+piece.figure.gongji[0]+'">0</div>';
-				}else{
-					html_figure_lb = '<div class="num num_red">'+(piece.figure.gongji[0]+level*piece.figure.gongji[1])+'</div>';
-				}
-				html_figure_lb += '<div class="k">攻击力</div>';
-				html_figure_other = '<dl>'+
-										'<dt>法术强度</dt><dd>'+piece.figure.fashu[0]+'</dd>'+
-									'</dl>';
-			}else{
-				if(isstart === 1){//第一次的时候需要从0开始数值跳动
-					html_figure_lb = '<div class="num num_red" data-num="'+piece.figure.fashu[0]+'">0</div>';
-				}else{
-					html_figure_lb = '<div class="num num_red">'+(piece.figure.fashu[0]+level*piece.figure.fashu[1])+'</div>';
-				}
-				html_figure_lb += '<div class="k">法术强度</div>'+piece.figure.fashu[0]+'</div>';
-				html_figure_other = '<dl>'+
-										'<dt>攻击力</dt><dd>'+piece.figure.gongji[0]+'</dd>'+
-									'</dl>';
-			}
-			html_figure_other += '<dl>'+
+
+			html_figure_lb = '<div class="num num_red" data-num="'+piece.figure.gongji[0]+'"></div>';
+			html_figure_lb += '<div class="k">攻击力</div>';
+
+			html_figure_other +='<dl>'+
+									'<dt>法术强度</dt><dd>'+piece.figure.fashu[0]+'</dd>'+
+								'</dl>'+	 
+								'<dl>'+
 									'<dt>物理防御</dt><dd>'+(piece.figure.wufang[0]+level*piece.figure.wufang[1])+'(+'+piece.figure.wufang[1]+'%)</dd>'+
 								'</dl>'+
 								'<dl>'+
@@ -193,7 +170,45 @@
 								'</dl>'+								
 								'<dl>'+
 									'<dt>移速</dt><dd>'+piece.figure.yidong[0]+'</dd>'+
-								'</dl>';
+								'</dl>';			
+			// if(isstart === 1){//第一次的时候需要从0开始数值跳动
+			// 	html_figure_lt = '<div class="num num_green" data-num="'+piece.figure.shengming[0]+'"></div>';
+			// }else{
+			// 	// html_figure_lt = '<div class="num num_green">'+(piece.figure.shengming[0]+level*piece.figure.shengming[1])+'</div>';
+			// }
+			// html_figure_lt += '<div class="k">生命值</div>';
+			
+			
+			// if(type == 0 || type == 2){
+			// 	if(isstart === 1){//第一次的时候需要从0开始数值跳动
+			// 		html_figure_lb = '<div class="num num_red" data-num="'+piece.figure.gongji[0]+'"></div>';
+			// 	}else{
+			// 		html_figure_lb = '<div class="num num_red">'+(piece.figure.gongji[0]+level*piece.figure.gongji[1])+'</div>';
+			// 	}
+			// 	html_figure_lb += '<div class="k">攻击力</div>';
+			// 	html_figure_other = '<dl>'+
+			// 							'<dt>法术强度</dt><dd>'+piece.figure.fashu[0]+'</dd>'+
+			// 						'</dl>';
+			// }else{
+			// 	if(isstart === 1){//第一次的时候需要从0开始数值跳动
+			// 		html_figure_lb = '<div class="num num_red" data-num="'+piece.figure.fashu[0]+'"></div>';
+			// 	}else{
+			// 		html_figure_lb = '<div class="num num_red">'+(piece.figure.fashu[0]+level*piece.figure.fashu[1])+'</div>';
+			// 	}
+			// 	// html_figure_lb += '<div class="k">法术强度</div>'+piece.figure.fashu[0]+'</div>';
+			// 	html_figure_other = '<dl>'+
+			// 							'<dt>攻击力</dt><dd>'+piece.figure.gongji[0]+'</dd>'+
+			// 						'</dl>';
+			// }
+			// html_figure_other += '<dl>'+
+			// 						'<dt>物理防御</dt><dd>'+(piece.figure.wufang[0]+level*piece.figure.wufang[1])+'(+'+piece.figure.wufang[1]+'%)</dd>'+
+			// 					'</dl>'+
+			// 					'<dl>'+
+			// 						'<dt>法术防御</dt><dd>'+(piece.figure.mokang[0]+level*piece.figure.mokang[1])+'(+'+piece.figure.mokang[1]+'%)</dd>'+
+			// 					'</dl>'+								
+			// 					'<dl>'+
+			// 						'<dt>移速</dt><dd>'+piece.figure.yidong[0]+'</dd>'+
+			// 					'</dl>';
 									
 			$("#figure_lt").html(html_figure_lt);
 			$("#figure_other").html(html_figure_other);
@@ -251,11 +266,15 @@
 				html_herod_head_tit ='',
 				html_herod_head_label = '',
 				html_equipchoice = '',
+				html_equipchoice_head = '',
+				html_equipchoice_content = '',
 				html_addskill = '',
 				html_skills_head = '',
 				html_skills_content = '',
-				html_zuanshi = '',
-				html_getsuipian = '';
+				html_access='',
+				html_jinbi = '',
+				html_dianjuan = '',
+				html_j_d_all='';
 			
 			for(var i=0; i<this.data[type].data.length; i++){
 				if(this.data[type].data[i].id == id){
@@ -282,11 +301,52 @@
 			$("#herod_head").children("p").html(piece.aword);//描述
 			
 			$("#groom").html(piece.groom);//推荐玩法
-			
+
 			for(var i=0; i<piece.equip.length; i++){
-				html_equipchoice += '<li><img src="'+this.o.url+'equip/'+piece.equip[i]+'.png"></li>';
-			}
-			$("#equipchoice").html(html_equipchoice);//装备选择
+				
+				var choice_equip='';
+				html_equipchoice_head += '<li><img src="'+this.o.url+'equip/'+piece.equip[i]+'.png"></li>';					
+				function equiplabel(){
+							var _html = '';
+							for(var i=0; i<choice_equip.label.length; i++){
+								_html += '<span>'+choice_equip.label[i]+'</span>';
+							}							
+							return _html;
+						}			
+				for(var j=0; j<this.data_equip.length; j++){						
+						
+						for(var n=0;n<this.data_equip[j].data.length;n++){
+
+							if(piece.equip[i] == this.data_equip[j].data[n].id){
+								choice_equip = this.data_equip[j].data[n];								
+								html_equipchoice_content += '<div class="item"><div>'+
+									'<span class="polygon"><i></i>'+
+									'</span>'+
+					                '<span class="equip_name media_fs_14">'+choice_equip.name+
+					                '</span>'+
+					                '<label class="price ">售价: '+choice_equip.price+
+					                '</label>'+
+					                '</div>'+
+					                '<div class="ml_16 label">'+
+					               		equiplabel()+
+					                '</div>'+
+					                '<div class="ml_16 media_fs_14">'+
+					                	choice_equip.prop+
+					                '</div></div>';
+						}
+					}
+				}  
+				
+				
+			}		
+			
+			$("#equipchoice").html(html_equipchoice_head);//装备选择
+			$("#equipchoice_content").html(html_equipchoice_content);//装备选择		
+			
+			// for(var i=0; i<piece.equip.length; i++){
+			// 	html_equipchoice += '<li><img src="'+this.o.url+'equip/'+piece.equip[i]+'.png"></li>';
+			// }
+			// $("#equipchoice").html(html_equipchoice);//装备选择
 			
 			for(var i=0; i<piece.addskill.length; i++){
 				html_addskill += '<li><img src="'+this.o.url+'skill/'+id+'_'+piece.addskill[i]+'.png"></li>';
@@ -313,9 +373,9 @@
 												piece.sintro[i]+
 											'</div>';
 
-				if(i != piece.sname.length-1){//视频只有前3个
-					html_skills_content += '<div class="video" id="videocon'+i+'" data-id="'+piece.svideo[i]+'"></div>';
-				}
+				// if(i != piece.sname.length-1){//视频只有前3个
+				// 	html_skills_content += '<div class="video" id="videocon'+i+'" data-id="'+piece.svideo[i]+'"></div>';
+				// }
 
 				html_skills_content += '</div>';
 			}
@@ -324,16 +384,29 @@
 			
 			$("#suipian").html(piece.suipian);//获得途径			
 			for(var i=0; i<piece.getsuipian.length; i++){
-				html_getsuipian += '<label>'+piece.getsuipian[i]+'</label>';
+				html_access += '<div class="d_label"><label>'+piece.getsuipian[i]+'</label></div>';
 			}
-			$("#suipian").parent().after(html_getsuipian);
-			
-			if(piece.zuanshi == -1){
-				html_zuanshi = '暂时不卖';
-			}else{
-				html_zuanshi = '<i class="icon_zuanshi"></i>x<code>'+piece.zuanshi+'</code>';
+		
+			if(piece.suipian>0){
+				html_jinbi +='<div class="item">'+
+				'<div>'+
+				'<em>所需金币</em>'+
+				'<i class="icon_suipian"></i>x<code id="suipian">'+piece.suipian+'</code>'+
+				'</div>'+
+				'</div>'; 
 			}
-			$("#zuanshi").html(html_zuanshi);
+			if(piece.zuanshi>0){
+				html_dianjuan +='<div class="item">'+
+				'<div>'+
+				'<em>所需点卷</em>'+
+				'<i class="icon_zuanshi"></i>x<code id="suipian">'+piece.zuanshi+'</code>'+
+				'</div>'+
+				'</div>'; 
+			}
+			html_j_d_all = '<div class="content">'+html_jinbi+html_dianjuan+'</div>';
+			$("#access").html('<h2 class="herod_h2">获得途径</h2>'+html_access+html_j_d_all);
+
+			$("#hero_video").html('<h2 class="herod_h2">英雄解说教学</h2><div class="video" id="video" data-id="'+piece.svideo+'"></div>')					
 			
 			$("#story").html(piece.story);//英雄故事
 			
@@ -370,6 +443,22 @@
 				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");
 				
 			}).children("li").eq(0).trigger("click");
+
+			//装备选择点击
+			$("#equipchoice_head").on("click", "li",function(){
+				var self = this,
+					$self = $(self),
+					$equipchoice_head_children = $self.parents().children(),
+					_index = $equipchoice_head_children.index(self);
+				
+				if($self.hasClass("on")){
+					$equipchoice_head_children.eq(_index).removeClass("on");
+					$("#equipchoice_content").children().eq(_index).removeClass("on");
+				}else{
+					$equipchoice_head_children.eq(_index).addClass("on").siblings().removeClass("on");
+					$("#equipchoice_content").children().eq(_index).addClass("on").siblings().removeClass("on");
+				}	
+			});
 			
 			
 			that.setNumbersroll();//数值跳动
@@ -510,13 +599,19 @@
 			function removehide(){
 				$("#header").removeClass("hide");
 			}
+
+			function unios(){				
+				$("#herod_bg").addClass("mt_44");
+			}
 			
 			switch(i){
 				case "index":
 					if(this.o.platform == "web"){
+						unios();
 						removehide();
 						this.setsession("wbgl-wangzherongyao-equip2hero","n");//重置 从装备跳转过来
 					}else if(this.o.platform == "android"){
+						unios();
 						removehide();
 						this.setsession("wbgl-wangzherongyao-equip2hero","n");//重置 从装备跳转过来
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
@@ -527,11 +622,13 @@
 				break;
 				case "herodetail":
 					if(this.o.platform == "web"){
+						unios();
 						removehide();
 						if(this.getsession("wbgl-wangzherongyao-equip2hero") == "y"){//如果是从装备跳转过来的
 							$("#header").children(".back").attr("href","data-wangzherongyao-equip-detail.html");
 						}
 					}else if(this.o.platform == "android"){
+						unios();
 						removehide();
 						if(this.getsession("wbgl-wangzherongyao-equip2hero") == "y"){//如果是从装备跳转过来的
 							$("#header").children(".back").attr("href",'../'+this.o.plugin_equip+'/data-wangzherongyao-equip-detail.html');

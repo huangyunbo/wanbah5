@@ -774,12 +774,12 @@ gulp.task('wangzherongyao_css', function(){
 });
 
 gulp.task('wangzherongyao_js', function(){
-    gulp.src(['./js/jquery-2.1.3.min.js','./js/data-wangzherongyao-hero.js'])
+    gulp.src(['./js/jquery-2.1.4.min.js','./js/data-wangzherongyao-hero.js'])
         .pipe(concat('data-wangzherongyao-hero.min.js'))
 		.pipe(replace('platform:"web"', 'platform:"'+wangzherongyao_platform+'"'))
         .pipe(uglify())
         .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/js'));
-	gulp.src(['./js/jquery-2.1.3.min.js','./js/data-wangzherongyao-equip.js'])
+	gulp.src(['./js/jquery-2.1.4.min.js','./js/data-wangzherongyao-equip.js'])
         .pipe(concat('data-wangzherongyao-equip.min.js'))
 		.pipe(replace('platform:"web"', 'platform:"'+wangzherongyao_platform+'"'))
         .pipe(uglify())
@@ -800,7 +800,7 @@ gulp.task('wangzherongyao_data', function(){
 	
     gulp.src('data-wangzherongyao-hero.html')
 		.pipe(merge({
-            'js/data-wangzherongyao-hero.min.js':['js/jquery-2.1.3.min.js','js/data-wangzherongyao-hero.js']
+            'js/data-wangzherongyao-hero.min.js':['js/jquery-2.1.4.min.js','js/data-wangzherongyao-hero.js']
         }))
 		.pipe(replace(wangzherongyao_replace[0], wangzherongyao_replace_data[0]))
 		.pipe(replace(wangzherongyao_replace[1], wangzherongyao_replace_data[1]))
@@ -809,7 +809,7 @@ gulp.task('wangzherongyao_data', function(){
 		
 	gulp.src('data-wangzherongyao-equip.html')
 		.pipe(merge({
-			'js/data-wangzherongyao-equip.min.js':['js/jquery-2.1.3.min.js','js/data-wangzherongyao-equip.js']
+			'js/data-wangzherongyao-equip.min.js':['js/jquery-2.1.4.min.js','js/data-wangzherongyao-equip.js']
 		}))
 		.pipe(replace(wangzherongyao_replace[0], wangzherongyao_replace_data[0]))
 		.pipe(replace(wangzherongyao_replace[1], wangzherongyao_replace_data[1]))
@@ -928,7 +928,7 @@ gulp.task('huoyingrenzhe_css', function(){
 });
 
 gulp.task('huoyingrenzhe_js', function(){
-    gulp.src(['./js/jquery-2.1.3.min.js','./js/data-huoyingrenzhe.js'])
+    gulp.src(['./js/jquery-2.1.4.min.js','./js/data-huoyingrenzhe.js'])
         .pipe(concat('data-huoyingrenzhe.min.js'))
 		.pipe(replace('platform:"web"', 'platform:"'+huoyingrenzhe_platform+'"'))
         .pipe(uglify())
@@ -949,7 +949,7 @@ gulp.task('huoyingrenzhe_data', function(){
 	
     gulp.src('data-huoyingrenzhe.html')
 		.pipe(merge({
-            'js/data-huoyingrenzhe.min.js':['js/jquery-2.1.3.min.js','js/data-huoyingrenzhe.js']
+            'js/data-huoyingrenzhe.min.js':['js/jquery-2.1.4.min.js','js/data-huoyingrenzhe.js']
         }))
 		.pipe(replace(huoyingrenzhe_replace[0], huoyingrenzhe_replace_data[0]))
 		.pipe(replace(huoyingrenzhe_replace[1], huoyingrenzhe_replace_data[1]))

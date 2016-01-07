@@ -64,13 +64,42 @@
     	<h2 class="herod_h2">推荐玩法</h2>
         <p class="media_fs_14" id="groom"><!--被动嗜血，让他的普通攻击获得了吸血效果的加成，配合技能撕裂的被动，让他在打野的时候可以做到几乎无损耗!迅速的清野效果加上技能扑击的范围性眩晕。--></p>
     </div><!--/groom-->
+
+
+    <div class="equipchoice1 media_plr_7 media_mb_20">
+        <h2 class="herod_h2">装备选择</h2>
+        <div class="equipchoice equipchoice_head" id="equipchoice_head">
+            <ul id="equipchoice">            
+               <!--  <li class="on"><img src="images/vainglory/equip/item6.png"></li>
+                <li><img src="images/vainglory/equip/item1.png"></li>
+                <li><img src="images/vainglory/equip/item2.png"></li>
+                <li><img src="images/vainglory/equip/item3.png"></li>
+                <li><img src="images/vainglory/equip/item4.png"></li>
+                <li><img src="images/vainglory/equip/item5.png"></li> -->
+            </ul>
+        </div><!--/equipchoice_head-->
+        <div class="equipchoice_content" id="equipchoice_content">
+           <!--  <div>
+                <span class="polygon"><i></i></span>
+                <span class="equip_name">幽冥之刃</span>
+                <label class="price">售价300</label>                
+            </div>
+            <div class="ml_16 label">
+                <span>续航</span>
+                <span>吸血</span>
+            </div>
+            <div class="ml_16">
+                攻击力：+100
+            </div>                  -->       
+        </div><!--/equipchoice_content-->        
+    </div><!--/equipchoice-->
     
-    <div class="equipchoice media_plr_7 media_mb_20">
+    <!-- <div class="equipchoice media_plr_7 media_mb_20">
     	<h2 class="herod_h2">装备选择</h2>
         <ul id="equipchoice">
-            <!--<li><img src="images/quanminchaoshen/equip/1.png"></li><li><img src="images/quanminchaoshen/equip/1.png"></li><li><img src="images/quanminchaoshen/equip/1.png"></li><li><img src="images/quanminchaoshen/equip/1.png"></li><li><img src="images/quanminchaoshen/equip/1.png"></li><li><img src="images/quanminchaoshen/equip/1.png"></li>-->
-        </ul>
-    </div><!--/equipchoice-->
+            <li><img src="images/quanminchaoshen/equip/1.png"></li><li><img src="images/quanminchaoshen/equip/1.png"></li><li><img src="images/quanminchaoshen/equip/1.png"></li><li><img src="images/quanminchaoshen/equip/1.png"></li><li><img src="images/quanminchaoshen/equip/1.png"></li><li><img src="images/quanminchaoshen/equip/1.png"></li>
+        </ul> -->
+    <!-- </div>/equipchoice -->
     
     <div class="addskill media_plr_7 media_mb_20">
     	<h2 class="herod_h2">加点线路</h2>
@@ -212,10 +241,10 @@
         </div> --><!--/bar-->
     </div><!--/herodata-->
     
-    <div class="skills media_mb_20">
-    	<div class="media_plr_7"><h2 class="herod_h2">英雄技能</h2></div>
+    <div class="skills media_plr_7 media_mb_20">
+    	<div class="pb_10"><h2 class="herod_h2">英雄技能</h2></div>
         <div class="title">
-        	<ul class="media_plr_7 wbclick" id="skills_head">
+        	<ul class="pb_10 wbclick" id="skills_head">
             	<!--<li class="on">
                 	<div><img src="images/quanminchaoshen/skillPic/skill20_1.png"></div>
                 </li><li>
@@ -226,7 +255,7 @@
             </ul>
         </div>
         
-        <div class="content media_plr_7" id="skills_content">
+        <div class="content pb_10" id="skills_content">
         	<!--<div class="item on">
             	<div class="key">
                 	<div class="name">夺命X字斩</div>
@@ -255,14 +284,15 @@
                 </div>
             </div>-->
         </div><!--/content-->
- </div><!--/skills-->
+    </div><!--/skills-->
     
-    <div class="access media_plr_7">
+    <div class="access media_plr_7" id="access">
     	<h2 class="herod_h2">获得途径</h2>
+        <label>商城购买</label>
         <div class="content">
         	<div class="item">
             	<div>
-                	<em>碎片兑换</em>
+                	<em>所需金币</em>
                     <i class="icon_suipian"></i>x<code id="suipian">0</code>
                 </div>
                 <!--<label>挑战模式</label>
@@ -270,12 +300,17 @@
             </div>
             <div class="item">
             	<div>
-                	<em>商城购买</em>
+                	<em>所需点卷</em>
                     <span id="zuanshi"><i class="icon_zuanshi"></i>x<code>0</code></span>
                 </div>
             </div>
         </div>
     </div><!--/access-->
+
+    <div class="video media_plr_7 media_mb_20" id="hero_video">
+        <!-- <h2 class="herod_h2">英雄解说教学</h2> -->
+        
+    </div><!--/video-->
     
     <div class="story media_plr_7 media_mb_20">
     	<h2 class="herod_h2">英雄故事</h2>
@@ -283,13 +318,15 @@
     </div><!--/story-->
 </div><!--/herod-->
 
-<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="json/json-wangzherongyao.js"></script>
 <script type="text/javascript" src="js/tvp.player.js"></script>
 <script type="text/javascript" src="js/data-wangzherongyao-hero.js"></script>
 <script type="text/javascript">
 $(function(){
-	var wzryhero = new WzryHero(data_hero);
+    var data_all = {data_hero:data_hero, data_equip:data_equip};
+      
+	var wzryhero = new WzryHero(data_all);
 });
 </script>
 </body>

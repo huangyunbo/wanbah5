@@ -66,7 +66,7 @@
 			$("#equipd_property").html(html_equipd_property);
 			$("#equipd_need_ul").html(html_equipd_need_ul);
 			$("#equipd_group_ul").html(html_equipd_group_ul);
-			$("#equipd_fithero").html(html_equipd_fithero);
+			// $("#equipd_fithero").html(html_equipd_fithero);
 			
 			if(piece.need.length > 0){
 				$("#equipd_need").removeClass("hide");
