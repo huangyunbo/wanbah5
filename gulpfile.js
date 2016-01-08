@@ -779,6 +779,8 @@ gulp.task('wangzherongyao_js', function(){
 		.pipe(replace('platform:"web"', 'platform:"'+wangzherongyao_platform+'"'))
         .pipe(uglify())
         .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/js'));
+    gulp.src('./js/tvp.player.js')
+        .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/js'));
 	gulp.src(['./js/jquery-2.1.4.min.js','./js/data-wangzherongyao-equip.js'])
         .pipe(concat('data-wangzherongyao-equip.min.js'))
 		.pipe(replace('platform:"web"', 'platform:"'+wangzherongyao_platform+'"'))
@@ -804,6 +806,7 @@ gulp.task('wangzherongyao_data', function(){
         }))
 		.pipe(replace(wangzherongyao_replace[0], wangzherongyao_replace_data[0]))
 		.pipe(replace(wangzherongyao_replace[1], wangzherongyao_replace_data[1]))
+		.pipe(replace(wangzherongyao_replace[2], wangzherongyao_replace_data[2]))
 		.pipe(rename('index.html'))
         .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/'+wangzherongyao_plugin_hero));
 		
@@ -813,6 +816,7 @@ gulp.task('wangzherongyao_data', function(){
 		}))
 		.pipe(replace(wangzherongyao_replace[0], wangzherongyao_replace_data[0]))
 		.pipe(replace(wangzherongyao_replace[1], wangzherongyao_replace_data[1]))
+		.pipe(replace(wangzherongyao_replace[2], wangzherongyao_replace_data[2]))
 		.pipe(rename('index.html'))
         .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/'+wangzherongyao_plugin_equip));
 });
