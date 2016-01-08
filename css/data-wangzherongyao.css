@@ -142,7 +142,7 @@ a{ text-decoration:none}
 .herod .figure dt{ display:inline-block; color:#9c9895; width:50%; text-align:right; padding-right:5px; box-sizing:border-box}
 .herod .figure dd{ display:inline-block; width:50%; text-align:left}
 .herod .figure .tips{ position:absolute; right:5px; left:5px; top:5px}
-.herod .figure .tips .question{ background:url(../images/wangzherongyao/hero_detail.png) 0 -140px no-repeat; background-size:30px; width:20px; height:18px; position:absolute; top:0; right:0}
+.herod .figure .tips .question{ background:url(../images/wangzherongyao/hero_detail.png) 0 -230px no-repeat; background-size:30px; width:18px; height:20px; position:absolute; top:0; right:0}
 .herod .figure .tips .area{ position:relative; top:18px; right:0}
 .herod .figure .tips .area .tria{ border-bottom:10px solid #000; border-left:10px solid transparent; border-right:10px solid transparent; position:absolute; top:0; right:0}
 .herod .figure .tips .area .c{ text-align:left; background:#000; position:relative; top:10px; padding:5px; font-size:1.4rem; color:#ffca28}
@@ -180,7 +180,7 @@ a{ text-decoration:none}
 .herod .access .item code{ font-family:Arial}
 .herod .icon_suipian,.herod .icon_zuanshi{ background:url(../images/wangzherongyao/hero_detail.png) 0 -160px no-repeat; background-size:30px; width:15px; height:15px; display:inline-block; vertical-align:-4px}
 .herod .icon_zuanshi{ background-position:0 -180px}
-.herod .access .d_label{ margin-top:5px}
+.herod .access .d_label{ margin-top:5px; margin-bottom:5px}
 .herod .access label{ font-size:1.2rem; border:1px solid #ffca28; color:#ffca28; line-height:1; padding:0 2px; margin-right:5px}
 @media screen and (min-width:640px){
 	.herod .head .tit{ font-size:4.2rem; padding-bottom:10px; margin-bottom:20px}
@@ -226,7 +226,7 @@ a{ text-decoration:none}
 	.herod .figure dl{ margin-bottom:10px; font-size:2.8rem}
 	.herod .figure dt{ padding-right:10px}
 	.herod .figure .tips{right:10px; left:10px; top:10px}
-	.herod .figure .tips .question{ background-position:0 -280px; background-size:60px; width:40px; height:36px}
+	.herod .figure .tips .question{ background-position:0 -460px; background-size:60px; width:36px; height:40px}
 	.herod .figure .tips .area{ top:36px}
 	.herod .figure .tips .area .tria{ border-bottom:20px solid #000; border-left:20px solid transparent; border-right:20px solid transparent}
 	.herod .figure .tips .area .c{ top:20px; padding:10px; font-size:2.8rem}
@@ -254,7 +254,9 @@ a{ text-decoration:none}
 	.herod .access .item div,.herod .access .item em{ margin-right:10px}
 	.herod .icon_suipian,.herod .icon_zuanshi{ background-position:0 -320px; background-size:60px; width:30px; height:30px; vertical-align:-8px}
 	.herod .icon_zuanshi{ background-position:0 -360px}
+	.herod .access .d_label{ margin-top:10px; margin-bottom:10px}
 	.herod .access label{ font-size:2.4rem; padding:0 4px; margin-right:10px}
+
 }
 /*装备*/
 .equip_body{ background:#05090c; color:#fff}
