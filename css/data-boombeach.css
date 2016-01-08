@@ -120,6 +120,12 @@ td{ padding: 3px 5px; text-align: center; background:white}
 .armsd .bar .r .barhandle{ width:24px; height:24px; background:url(../images/boombeach/armsd_icon_detail.png) no-repeat; background-size:24px; position:absolute; top:5px; left:0}
 .armsd .bar .r .barhandle span{ width:46px; height:46px; display:block; margin-left:-13px}/*6+7=13*/
 
+/*防御阵型*/
+.b_defense_list{ background: #fff}
+.d_img { width: 70%}
+.datalist ul li div{ display:inline-block}
+.datalist ul li .d_note{ text-align:center; color: #333 }
+
 @media screen and (min-width:640px){
 	.mb_10{ margin-bottom:20px}
 	.mlf_7{ margin:0 14px}
