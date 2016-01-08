@@ -153,10 +153,10 @@
 						
 			if($.isEmptyObject(piece)) return;
 
-			html_figure_lt = '<div class="num num_green" data-num="'+piece.figure.shengming[0]+'"></div>';
+			html_figure_lt = '<div class="num num_green">'+piece.figure.shengming[0]+'</div>';
 			html_figure_lt += '<div class="k">生命值</div>';
 
-			html_figure_lb = '<div class="num num_red" data-num="'+piece.figure.gongji[0]+'"></div>';
+			html_figure_lb = '<div class="num num_red">'+piece.figure.gongji[0]+'</div>';
 			html_figure_lb += '<div class="k">攻击力</div>';
 
 			html_figure_other +='<dl>'+
@@ -461,7 +461,7 @@
 			});
 			
 			
-			that.setNumbersroll();//数值跳动
+			// that.setNumbersroll();//数值跳动
 			that.setHerodtop();//设置顶部图片高度
 			// that.setSlidebar();//滑动条
 		},
