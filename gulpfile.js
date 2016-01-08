@@ -809,6 +809,16 @@ gulp.task('wangzherongyao_data', function(){
 		.pipe(replace(wangzherongyao_replace[2], wangzherongyao_replace_data[2]))
 		.pipe(rename('index.html'))
         .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/'+wangzherongyao_plugin_hero));
+
+    gulp.src('data-wangzherongyao-hero-detail.html')
+		.pipe(merge({
+            'js/data-wangzherongyao-hero.min.js':['js/jquery-2.1.4.min.js','js/data-wangzherongyao-hero.js']
+        }))
+		.pipe(replace(wangzherongyao_replace[0], wangzherongyao_replace_data[0]))
+		.pipe(replace(wangzherongyao_replace[1], wangzherongyao_replace_data[1]))
+		.pipe(replace(wangzherongyao_replace[2], wangzherongyao_replace_data[2]))
+		.pipe(rename('data-wangzherongyao-hero-detail.html'))
+        .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/'+wangzherongyao_plugin_hero));
 		
 	gulp.src('data-wangzherongyao-equip.html')
 		.pipe(merge({
@@ -818,6 +828,16 @@ gulp.task('wangzherongyao_data', function(){
 		.pipe(replace(wangzherongyao_replace[1], wangzherongyao_replace_data[1]))
 		.pipe(replace(wangzherongyao_replace[2], wangzherongyao_replace_data[2]))
 		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/'+wangzherongyao_plugin_equip));
+
+    gulp.src('data-wangzherongyao-equip-detail.html')
+		.pipe(merge({
+			'js/data-wangzherongyao-equip.min.js':['js/jquery-2.1.4.min.js','js/data-wangzherongyao-equip.js']
+		}))
+		.pipe(replace(wangzherongyao_replace[0], wangzherongyao_replace_data[0]))
+		.pipe(replace(wangzherongyao_replace[1], wangzherongyao_replace_data[1]))
+		.pipe(replace(wangzherongyao_replace[2], wangzherongyao_replace_data[2]))
+		.pipe(rename('data-wangzherongyao-equip-detail.html'))
         .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/'+wangzherongyao_plugin_equip));
 });
 
