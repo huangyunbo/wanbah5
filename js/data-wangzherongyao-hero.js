@@ -6,8 +6,8 @@
 		this.data_equip = this.mData.data_equip;	
 		this.o = {
 			platform:"web",
-			plugin:"plugin_1101",//plugin_1101
-			plugin_equip:"plugin_1103",
+			plugin:"plugin_1133",//plugin_1133
+			plugin_equip:"plugin_1134",
 			url:"images/wangzherongyao/",
 			type:0,//英雄类别数组下标
 			piece:{},//英雄单个详情object

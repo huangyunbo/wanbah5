@@ -760,13 +760,13 @@ var wangzherongyao_replace = ['css/', 'js/', 'json/'];
 var wangzherongyao_replace_data =  ['css/', 'js/', 'json/'];
 var wangzherongyao_platform = 'android';
 
-/*gulp.task('wangzherongyao_images', function(){
+gulp.task('wangzherongyao_images', function(){
     gulp.src('./images/wangzherongyao/**', {buffer: false})
         .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/images/wangzherongyao'));
 	
 	gulp.src('./images/.nomedia', {buffer: false})
         .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/images/'));
-});*/
+});
 
 gulp.task('wangzherongyao_css', function(){
     gulp.src(['./css/data-wangzherongyao.css'], {buffer: false})
@@ -786,10 +786,10 @@ gulp.task('wangzherongyao_js', function(){
         .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/js'));
 });
 
-/*gulp.task('wangzherongyao_json', function(){
+gulp.task('wangzherongyao_json', function(){
     gulp.src(['./json/json-wangzherongyao.js', './json/json-wangzherongyao.js'], {buffer: false})
         .pipe(gulp.dest('../../chajian/'+wangzherongyao_gameid+'/'+wangzherongyao_platform+'/DataPlugin/json'));
-});*/
+});
 
 gulp.task('wangzherongyao_data', function(){
 	if(wangzherongyao_platform == 'android'){
@@ -823,11 +823,11 @@ gulp.task('wangzherongyao_clean', function(){
 });
 
 gulp.task('wangzherongyao_android', ['wangzherongyao_clean'], function(){
-	gulp.start('wangzherongyao_css', 'wangzherongyao_js', 'wangzherongyao_data');
+	gulp.start('wangzherongyao_images', 'wangzherongyao_css', 'wangzherongyao_js', 'wangzherongyao_json', 'wangzherongyao_data');
 });
 
 gulp.task('wangzherongyao_ios_inner', ['wangzherongyao_clean'], function(){
-	gulp.start('wangzherongyao_css', 'wangzherongyao_js', 'wangzherongyao_data');
+	gulp.start('wangzherongyao_images', 'wangzherongyao_css', 'wangzherongyao_js', 'wangzherongyao_json', 'wangzherongyao_data');
 });
 
 gulp.task('wangzherongyao_ios', function(){
