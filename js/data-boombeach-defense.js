@@ -32,18 +32,26 @@
 			this.eventsBen();
 		},
 
-		printDefenseList:function(list_data){		
+		printDefenseList:function(err, list_data){		
 			var html_ben_list = ''
 				title = '';
-			for(var i=0;i<list_data.data.length;i++){
-				html_ben_list += '<li>'+
-				'<a href="javascript:;" class="a" list-data-id="'+list_data.data[i].Id+'">'+
-				'<div><img class="d_img" src="'+'http://res.wanba123.cn/pic/'+list_data.data[i].thumbPicName+'"></div>'+
-				'<div class="d_note">'+
-				'<h2>'+list_data.data[i].Title+'</h2>'+
-				'</div></a></li>'
-				title = list_data.data[i].Title;
-			}			
+			if(err === 1){
+				$("#container").html("网络错误");
+				return;
+			}
+			if(list_data.data.length > 0){	
+				for(var i=0;i<list_data.data.length;i++){
+					html_ben_list += '<li>'+
+					'<a href="javascript:;" class="a" list-data-id="'+list_data.data[i].Id+'">'+
+					'<div><img class="d_img" src="'+'http://res.wanba123.cn/pic/'+list_data.data[i].thumbPicName+'"></div>'+
+					'<div class="d_note">'+
+					'<h2>'+list_data.data[i].Title+'</h2>'+
+					'</div></a></li>'
+					title = list_data.data[i].Title;
+				}			
+			}else{
+				html_ben_list = "暂无数据";
+			}
 			$("#defense_datalist").html(html_ben_list);		
 			$("#list_title").html(title);	
 			this.eventsList();
@@ -115,10 +123,8 @@
 			$.getJSON('http://m.wanba123.cn/h5data/articlelist?jsoncallback=?', {
 					groupid: id,
 					startpage: 0
-				}).done(function(data){					
-					if(data.code === 1){
-						that.printDefenseList(data);	
-					}				
+				}).done(function(data){						
+					that.printDefenseList(data.error, data);									
 				}).fail(function(){
 					console.log('失败');
 				});

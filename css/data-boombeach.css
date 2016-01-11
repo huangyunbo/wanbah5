@@ -123,11 +123,13 @@ td{ padding: 3px 5px; text-align: center; background:white}
 /*防御阵型*/
 .b_defense_list{ background: #fff}
 .d_img { width: 70%}
+.datalist{ color:#000000}
 .datalist ul li div{ display:inline-block}
 .datalist ul li .d_note{ text-align:center; color: #333 }
 .footer{ text-align: center; margin: 50px 0 20px; color: #999; font-size: 14px}
 .footer .menu{ margin-bottom: 5px}
 .footer .menu a{ color: #999; padding: 0 10px; display: inline-block}
+.pagebody{ color:#000000};
 
 @media screen and (min-width:640px){
 	.mb_10{ margin-bottom:20px}
