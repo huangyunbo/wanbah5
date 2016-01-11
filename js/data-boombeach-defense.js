@@ -22,7 +22,7 @@
 			var html_ben = '';
 			for(var i=0;i<this.data.length;i++){
 				html_ben += '<li>'+
-				'<a href="javascript:;" class="a" data-id="'+this.data[i].gid+'">'+
+				'<a href="javascript:;" class="a" data-title="'+this.data[i].k+'" data-id="'+this.data[i].gid+'">'+
 				'<div class="img"><img src="'+this.o.url+'building/'+this.data[i].img+'"></div>'+
 				'<div class="note">'+
 				'<h2>'+this.data[i].k+'</h2>'+
@@ -33,7 +33,8 @@
 		},
 
 		printDefenseList:function(list_data){		
-			var html_ben_list = '';
+			var html_ben_list = ''
+				title = '';
 			for(var i=0;i<list_data.data.length;i++){
 				html_ben_list += '<li>'+
 				'<a href="javascript:;" class="a" list-data-id="'+list_data.data[i].Id+'">'+
@@ -41,22 +42,47 @@
 				'<div class="d_note">'+
 				'<h2>'+list_data.data[i].Title+'</h2>'+
 				'</div></a></li>'
-			}
-			console.log("html_ben_list = "+html_ben_list);
-			$("#defense_datalist").html(html_ben_list);			
+				title = list_data.data[i].Title;
+			}			
+			$("#defense_datalist").html(html_ben_list);		
+			$("#list_title").html(title);	
 			this.eventsList();
 		},
 
-		printDefenseDetail:function(){
+		printDefenseDetail:function(err, detail_data){			
+			var	html_content='',
+				html_footer='';	
+			if(err === 1){
+				$("#container").html("网络错误");
+				return;
+			}
+			$("#title").html(detail_data.data.Name);			
 
+			html_content = '<div class="article">'+
+							'<div class="top">'+
+								'<h1>'+detail_data.data.Title+'</h1>'+
+							'<div class="info">'+
+							'<span>'+detail_data.data.ReleaseTime+'</span>'+
+							'<span>'+'作者:'+detail_data.data.NickName+'</span>'+
+							'<span>'+'来源:'+detail_data.data.Source+'</span>'+
+							'</div></div><!--/top-->'+
+							'<div class="pagebody">'+detail_data.data.Content+'</div></div><!--/pagebody-->';
+			html_footer = '<div class="footer">'+
+			'<div class="menu">'+
+			'<a href="http://www.wanba123.cn" target="_blank">玩吧专业版</a>'+
+			'<a href="http://m.wanba123.cn" target="_blank">首页</a>'+
+			'</div>'+
+			'<p>Copyright © 2013 - 2016 wanba123.cn</p>'+
+			'</div>';		
+			
+			$("#container").html(html_content + html_footer);
 		},
 
 		eventsBen:function(){	
-			var that = this;
-			
+			var that = this;			
 			$(".a").click(function(){
-				var id = Number($(this).attr("data-id"));				
-				that.setsession("wbgl-boombeach-ben-id", id);				
+				var id = Number($(this).attr("data-id"));						
+				that.setsession("wbgl-boombeach-ben-id", id);							
 				location.href = 'data-boombeach-defense-list.html';				
 			});				
 		},
@@ -64,27 +90,28 @@
 		eventsList:function(){
 			var that = this;
 			$("a").click(function(){
-				var list_id = Number($(this).attr("list-data-id"));
-				console.log(list_id);
+				var list_id = Number($(this).attr("list-data-id"));				
 				that.setsession("wbgl-boombeach-ben-list-id", list_id);
-				$.getJSON('http://m.wanba123.cn/h5data/article?jsoncallback=?', {
+				location.href = 'data-boombeach-defense-details.html';			
+			});
+		},
+
+		getDefenseDetailData:function(){
+			var that = this,
+			list_id = that.getsession("wbgl-boombeach-ben-list-id");
+			$.getJSON('http://m.wanba123.cn/h5data/article?jsoncallback=?', {
 					artid: list_id
-				}).done(function(data){
-					console.log(data);
-					if(data.code === 1){
-						that.printDefenseDetail(data);
-					}					
+				}).done(function(data){										
+					that.printDefenseDetail(data.error, data);										
 				}).fail(function(){
 					console.log('失败');
 				});
-			});
 		},
 
 		getDefenseListData:function(){
 			
 			var that = this;
-			var id = that.getsession("wbgl-boombeach-ben-id");
-			console.log("id = "+id);
+			var id = that.getsession("wbgl-boombeach-ben-id");			
 			$.getJSON('http://m.wanba123.cn/h5data/articlelist?jsoncallback=?', {
 					groupid: id,
 					startpage: 0
@@ -174,49 +201,49 @@
 		isplatform: function(i){//判断打包平台显示相应内容
 			function removehide(){
 				$("#header").removeClass("hide");
-			}
-			removehide();
+			}	
 			
 			switch(i){
 				case "defense-ben":	
-				// if(this.o.platform == "web"){
-				// 		removehide();						
-				// 	}else if(this.o.platform == "android"){
-				// 		removehide();						
-				// 		$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
-				// 	}else if(this.o.platform == "ios"){						
-				// 		$("#herolist").addClass("mt_0");
-				// 	}
-				// 	$("#header").children(".back").attr("href","javascript:window.jstojava.close();");				
+					if(this.o.platform == "web"){
+						removehide();						
+					}else if(this.o.platform == "android"){
+						removehide();						
+						$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
+					}								
 				case "defense-list":
-				// if(this.o.platform == "web"){
-				// 		removehide();						
-				// 	}else if(this.o.platform == "android"){
-				// 		removehide();						
-				// 		$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
-				// 	}else if(this.o.platform == "ios"){						
-				// 		$("#herolist").addClass("mt_0");
-				// 	}
-				// 	$("#header").children(".back").attr("href","javascript:window.jstojava.close();");					
+					if(this.o.platform == "web"){
+						removehide();
+					}else if(this.o.platform == "android"){
+						removehide();		
+						$("#header").children(".back").attr("href","index.html");				
+					}											
 				break;
 				case "defense-details":
+					if(this.o.platform == "web"){
+						removehide();						
+					}else if(this.o.platform == "android"){
+						removehide();	
+					}
 				break;
 			}
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			var that = this;
 			if(!this.checkversion()) return;
-			var href = $("body").attr("data-url");
-			console.log(href);
+			var href = $("body").attr("data-url");			
 			switch(true){
 				case (href == "defense-ben.html"):
+					this.isplatform("defense-ben");
 					this.printDefenseBen();
 					break;
 				case (href == "defense-list.html"):
+					this.isplatform("defense-list");
 					this.getDefenseListData();					
 					break;
 				case (href == "defense-details.html"):
-					this.printDefenseDetail();
+					this.isplatform("defense-details");
+					this.getDefenseDetailData();
 					break;
 			}
 		},
