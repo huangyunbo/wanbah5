@@ -4,9 +4,8 @@
 		this.data = [{"k":"三本推荐阵型","gid":1171,"img":"31_1.png"},{"k":"四本推荐阵型","gid":1172,"img":"31_1.png"},{"k":"五本推荐阵型","gid":1173,"img":"31_1.png"},{"k":"六本推荐阵型","gid":1174,"img":"31_1.png"},{"k":"七本推荐阵型","gid":1175,"img":"31_2.png"},{"k":"八本推荐阵型","gid":1176,"img":"31_2.png"},{"k":"九本推荐阵型","gid":1177,"img":"31_2.png"},{"k":"十本推荐阵型","gid":1178,"img":"31_2.png"},{"k":"十一本推荐阵型","gid":1179,"img":"31_3.png"},{"k":"十二本推荐阵型","gid":1180,"img":"31_3.png"},{"k":"十三本推荐阵型","gid":1181,"img":"31_3.png"},{"k":"十四本推荐阵型","gid":1182,"img":"31_4.png"},{"k":"十五本推荐阵型","gid":1183,"img":"31_4.png"},{"k":"十六本推荐阵型","gid":1184,"img":"31_4.png"},{"k":"十七本推荐阵型","gid":1185,"img":"31_4.png"},{"k":"十八本推荐阵型","gid":1186,"img":"31_5.png"},{"k":"十九本推荐阵型","gid":1187,"img":"31_5.png"},{"k":"二十本推荐阵型","gid":1188,"img":"31_6.png"},{"k":"二十一本推荐阵型","gid":1189,"img":"31_7.png"}] 
 
 		this.o = {
-			platform:"web",
-			// plugin:"plugin_1101",//plugin_1101
-			// plugin_equip:"plugin_1103",
+			platform:"web",			
+			plugin_defense:"plugin_714",
 			url:"images/boombeach/"			
 				
 		};
@@ -90,8 +89,12 @@
 			var that = this;			
 			$(".a").click(function(){
 				var id = Number($(this).attr("data-id"));						
-				that.setsession("wbgl-boombeach-ben-id", id);							
-				location.href = 'data-boombeach-defense-list.html';				
+				that.setsession("wbgl-boombeach-ben-id", id);					
+				if(that.o.platform == "ios"){
+					location.href = that.o.plugin_defense+'/data-boombeach-defense-list.html';
+				}else{
+					location.href = 'data-boombeach-defense-list.html';
+				}			
 			});				
 		},
 
@@ -99,8 +102,12 @@
 			var that = this;
 			$("a").click(function(){
 				var list_id = Number($(this).attr("list-data-id"));				
-				that.setsession("wbgl-boombeach-ben-list-id", list_id);
-				location.href = 'data-boombeach-defense-details.html';			
+				that.setsession("wbgl-boombeach-ben-list-id", list_id);					
+				if(that.o.platform == "ios"){
+					location.href = that.o.plugin_defense+'/data-boombeach-defense-details.html';
+				}else{
+					location.href = 'data-boombeach-defense-details.html';
+				}		
 			});
 		},
 
@@ -216,7 +223,8 @@
 					}else if(this.o.platform == "android"){
 						removehide();						
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
-					}								
+					}	
+				break;							
 				case "defense-list":
 					if(this.o.platform == "web"){
 						removehide();

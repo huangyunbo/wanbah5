@@ -3,7 +3,7 @@
 
 body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
 html{font:62.5%/1.5 "Microsoft YaHei",sans-serif}
-img{border:none;max-width:100%;vertical-align:top}
+img{ border:none; max-width:100%; vertical-align:top}
 h1,h2,h3,h4,h5,h6{font-weight:normal}
 input,select,textarea{font-size:100%;vertical-align:baseline}
 ol,ul{list-style:none}
@@ -30,7 +30,7 @@ a{ text-decoration:none}
 /*大字体*/
 .max_fs{ font-size:24px}
 /*中字体*/
-.middle_fs{ font-size:12px}
+.middle_fs{ font-size:14px}
 /*小字体*/
 .small_fs{ font-size:9px}
 .small_icon{ display:inline; background-size:15px; width:15px; height:15px; margin-left:5px; margin-right:5px}
@@ -76,7 +76,7 @@ td{ padding: 3px 5px; text-align: center; background:white}
 .datalist ul.on{ display:block}
 .datalist li .img { width: 18%; display: table-cell; text-align: center; padding: 10px 15px 10px 5px; box-sizing: border-box}
 .datalist h2{ font-size:16px}
-.datalist p{ font-size:10px}
+.datalist p{ font-size:12px}
 .datalist li a { border-bottom: 1px solid #d3d3d3; display: table; width: 100%; padding: 10px; box-sizing: border-box}
 .datalist li .note { display: table-cell; vertical-align: middle; color: #333}
 .datalist li .look { display: table-cell; width: 10%; vertical-align: middle}
@@ -122,14 +122,14 @@ td{ padding: 3px 5px; text-align: center; background:white}
 
 /*防御阵型*/
 .b_defense_list{ background: #fff}
-.d_img { width: 70%}
+.d_img { width: 100px; vertical-align:middle}
 .datalist{ color:#000000}
 .datalist ul li div{ display:inline-block}
-.datalist ul li .d_note{ text-align:center; color: #333 }
+.datalist ul li .d_note{ text-align:center; color: #333; margin-left:15px}
 .footer{ text-align: center; margin: 50px 0 20px; color: #999; font-size: 14px}
 .footer .menu{ margin-bottom: 5px}
 .footer .menu a{ color: #999; padding: 0 10px; display: inline-block}
-.pagebody{ color:#000000};
+.pagebody{ color:#000}
 
 @media screen and (min-width:640px){
 	.mb_10{ margin-bottom:20px}
@@ -148,7 +148,7 @@ td{ padding: 3px 5px; text-align: center; background:white}
 	.datalist_nav li { font-size: 2.4em; padding: 16px 0}
 	
 	.datalist h2{ font-size:24px}
-	.datalist p{ font-size:16px}
+	.datalist p{ font-size:18px}
 
 	.armsd_bg { margin-top:160px}
 	.armsd{ margin-top:40px; position:relative}

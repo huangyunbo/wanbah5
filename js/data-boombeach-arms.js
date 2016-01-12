@@ -5,9 +5,8 @@
 		
 		
 		this.o = {
-			platform:"web",
-			// plugin:"plugin_1101",//plugin_1101
-			// plugin_equip:"plugin_1103",
+			platform:"web",			
+			plugin_arms:"plugin_716",
 			url:"images/boombeach/",
 			total_level:0
 				
@@ -35,11 +34,11 @@
 			$("#datalist").on("click", "li", function(){
 				var _id = Number($(this).attr("data-id"));				
 				that.setsession("wbgl-boombeach-arms-id", _id);				
-				// if(that.o.platform == "ios"){
-				// 	location.href = that.o.plugin+'/data-vainglory-equip-detail.html';
-				// }else{
+				if(that.o.platform == "ios"){
+					location.href = that.o.plugin_arms+'/data-boombeach-arms-details';
+				}else{
 					location.href = 'data-boombeach-arms-details.html';
-				// }
+				}
 			});
 		},
 
@@ -343,29 +342,23 @@
 			function removehide(){
 				$("#header").removeClass("hide");
 			}
-			removehide();
 			
 			switch(i){
 				case "arms":	
-				// if(this.o.platform == "web"){
-				// 		removehide();						
-				// 	}else if(this.o.platform == "android"){
-				// 		removehide();						
-				// 		$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
-				// 	}else if(this.o.platform == "ios"){						
-				// 		$("#herolist").addClass("mt_0");
-				// 	}
-				// 	$("#header").children(".back").attr("href","javascript:window.jstojava.close();");				
+					if(this.o.platform == "web"){
+							removehide();						
+						}else if(this.o.platform == "android"){
+							removehide();						
+							$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
+						}
+				break;				
 				case "arms-details":
-				// if(this.o.platform == "web"){
-				// 		removehide();						
-				// 	}else if(this.o.platform == "android"){
-				// 		removehide();						
-				// 		$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
-				// 	}else if(this.o.platform == "ios"){						
-				// 		$("#herolist").addClass("mt_0");
-				// 	}
-				// 	$("#header").children(".back").attr("href","javascript:window.jstojava.close();");					
+					if(this.o.platform == "web"){
+							removehide();						
+						}else if(this.o.platform == "android"){
+							removehide();	
+							$("#header").children(".back").attr("href","index.html");						
+						}					
 				break;
 			}
 		},

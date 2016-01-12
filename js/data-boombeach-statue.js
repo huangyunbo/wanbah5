@@ -5,9 +5,8 @@
 		
 		
 		this.o = {
-			platform:"web",
-			// plugin:"plugin_1101",//plugin_1101
-			// plugin_equip:"plugin_1103",
+			platform:"web",			
+			plugin_statue:"plugin_717",
 			url:"images/boombeach/",
 			total_level:0
 				
@@ -70,11 +69,11 @@
 				var _id = Number($(this).attr("data-id"));
 				that.setsession("wbgl-boombeach-statue-tindex", t_index);
 				that.setsession("wbgl-boombeach-statue-id", _id);				
-				// if(that.o.platform == "ios"){
-				// 	location.href = that.o.plugin+'/data-vainglory-equip-detail.html';
-				// }else{
+				if(that.o.platform == "ios"){
+					location.href = that.o.plugin_statue+'/data-boombeach-statue-details.html';
+				}else{
 					location.href = 'data-boombeach-statue-details.html';
-				// }
+				}
 			});
 			
 		},		
@@ -113,18 +112,14 @@
 			for(var i=0;i<species.length;i++){//找到对应的数据
 				
 				for(var j=0;j<species[i].cdata.length;j++){
-					data = species[i].cdata[j];		
-					console.log(that.getsession("wbgl-boombeach-statue-id"));
-					console.log(data.id);
+					data = species[i].cdata[j];							
 					if(that.getsession("wbgl-boombeach-statue-id") == data.id){					
 						that.printDetail(data);
 						that.o.total_level = data.data[0].v.length; 
 						that.setFigure(data,0);
 						that.setSlidebar(data,that.o.total_level);//滑动条
 					}						
-				}	
-					
-
+				}
 			}
 		},	
 
@@ -347,25 +342,20 @@
 			
 			switch(i){
 				case "statue":	
-				// if(this.o.platform == "web"){
-				// 		removehide();						
-				// 	}else if(this.o.platform == "android"){
-				// 		removehide();						
-				// 		$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
-				// 	}else if(this.o.platform == "ios"){						
-				// 		$("#herolist").addClass("mt_0");
-				// 	}
-				// 	$("#header").children(".back").attr("href","javascript:window.jstojava.close();");				
+					if(this.o.platform == "web"){
+							removehide();						
+						}else if(this.o.platform == "android"){
+							removehide();						
+							$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
+						}
+				break;					
 				case "statue-details":
-				// if(this.o.platform == "web"){
-				// 		removehide();						
-				// 	}else if(this.o.platform == "android"){
-				// 		removehide();						
-				// 		$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
-				// 	}else if(this.o.platform == "ios"){						
-				// 		$("#herolist").addClass("mt_0");
-				// 	}
-				// 	$("#header").children(".back").attr("href","javascript:window.jstojava.close();");					
+					if(this.o.platform == "web"){
+							removehide();						
+						}else if(this.o.platform == "android"){
+							removehide();						
+							$("#header").children(".back").attr("href","index.html");	
+						}				
 				break;
 			}
 		},

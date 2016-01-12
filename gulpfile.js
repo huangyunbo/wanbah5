@@ -1000,5 +1000,182 @@ gulp.task('huoyingrenzhe_ios', function(){
 });
 
 
+//海岛奇兵
+var boombeach_gameid = 52;
+var boombeach_plugin_arms = "plugin_716";
+var boombeach_plugin_build = "plugin_715";
+var boombeach_plugin_defense = "plugin_714";
+var boombeach_plugin_statue = "plugin_717";
+var boombeach_path = '../';
+var boombeach_replace = ['css/', 'js/', 'json/'];
+var boombeach_replace_data =  ['css/', 'js/', 'json/'];
+var boombeach_platform = 'android';
+
+gulp.task('boombeach_images', function(){
+    gulp.src('./images/boombeach/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/images/boombeach'));
+	
+	gulp.src('./images/.nomedia', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/images/'));
+});
+
+gulp.task('boombeach_css', function(){
+    gulp.src(['./css/data-boombeach.css'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/css'));
+});
+
+gulp.task('boombeach_js', function(){
+    gulp.src(['./js/jquery-2.1.4.min.js','./js/data-boombeach-arms.js'])
+        .pipe(concat('data-boombeach-arms.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+boombeach_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/js'));
+    gulp.src('./js/tvp.player.js')
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/js'));
+	gulp.src(['./js/jquery-2.1.4.min.js','./js/data-boombeach-build.js'])
+        .pipe(concat('data-boombeach-build.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+boombeach_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/js'));
+
+    gulp.src(['./js/jquery-2.1.4.min.js','./js/data-boombeach-defense.js'])
+        .pipe(concat('data-boombeach-defense.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+boombeach_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/js'));
+
+    gulp.src(['./js/jquery-2.1.4.min.js','./js/data-boombeach-statue.js'])
+        .pipe(concat('data-boombeach-statue.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+boombeach_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/js'));    
+
+});
+
+gulp.task('boombeach_json', function(){
+    gulp.src(['./json/json-boombeach.js', './json/json-boombeach.js'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/json'));
+});
+
+gulp.task('boombeach_data', function(){
+	if(boombeach_platform == 'android'){
+		for(var i=0; i<boombeach_replace.length; i++){
+			boombeach_replace_data[i] = boombeach_path + boombeach_replace[i];
+		}
+	}
+	
+    gulp.src('data-boombeach-arms.html')
+		.pipe(merge({
+            'js/data-boombeach-arms.min.js':['js/jquery-2.1.4.min.js','js/data-boombeach-arms.js']
+        }))
+		.pipe(replace(boombeach_replace[0], boombeach_replace_data[0]))
+		.pipe(replace(boombeach_replace[1], boombeach_replace_data[1]))
+		.pipe(replace(boombeach_replace[2], boombeach_replace_data[2]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/'+boombeach_plugin_arms));
+
+    gulp.src('data-boombeach-arms-details.html')
+		.pipe(merge({
+            'js/data-boombeach-arms.min.js':['js/jquery-2.1.4.min.js','js/data-boombeach-arms.js']
+        }))
+		.pipe(replace(boombeach_replace[0], boombeach_replace_data[0]))
+		.pipe(replace(boombeach_replace[1], boombeach_replace_data[1]))
+		.pipe(replace(boombeach_replace[2], boombeach_replace_data[2]))
+		.pipe(rename('data-boombeach-arms-details.html'))
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/'+boombeach_plugin_arms));
+		
+	gulp.src('data-boombeach-building.html')
+		.pipe(merge({
+			'js/data-boombeach-build.min.js':['js/jquery-2.1.4.min.js','js/data-boombeach-build.js']
+		}))
+		.pipe(replace(boombeach_replace[0], boombeach_replace_data[0]))
+		.pipe(replace(boombeach_replace[1], boombeach_replace_data[1]))
+		.pipe(replace(boombeach_replace[2], boombeach_replace_data[2]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/'+boombeach_plugin_build));
+
+    gulp.src('data-boombeach-building-details.html')
+		.pipe(merge({
+			'js/data-boombeach-build.min.js':['js/jquery-2.1.4.min.js','js/data-boombeach-build.js']
+		}))
+		.pipe(replace(boombeach_replace[0], boombeach_replace_data[0]))
+		.pipe(replace(boombeach_replace[1], boombeach_replace_data[1]))
+		.pipe(replace(boombeach_replace[2], boombeach_replace_data[2]))
+		.pipe(rename('data-boombeach-building-details.html'))
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/'+boombeach_plugin_build));
+
+    gulp.src('data-boombeach-defense.html')
+		.pipe(merge({
+			'js/data-boombeach-defense.min.js':['js/jquery-2.1.4.min.js','js/data-boombeach-defense.js']
+		}))
+		.pipe(replace(boombeach_replace[0], boombeach_replace_data[0]))
+		.pipe(replace(boombeach_replace[1], boombeach_replace_data[1]))
+		.pipe(replace(boombeach_replace[2], boombeach_replace_data[2]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/'+boombeach_plugin_defense));
+
+
+    gulp.src('data-boombeach-defense-list.html')
+		.pipe(merge({
+			'js/data-boombeach-defense.min.js':['js/jquery-2.1.4.min.js','js/data-boombeach-defense.js']
+		}))
+		.pipe(replace(boombeach_replace[0], boombeach_replace_data[0]))
+		.pipe(replace(boombeach_replace[1], boombeach_replace_data[1]))
+		.pipe(replace(boombeach_replace[2], boombeach_replace_data[2]))
+		.pipe(rename('data-boombeach-defense-list.html'))
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/'+boombeach_plugin_defense));    
+
+    gulp.src('data-boombeach-defense-details.html')
+		.pipe(merge({
+			'js/data-boombeach-defense.min.js':['js/jquery-2.1.4.min.js','js/data-boombeach-defense.js']
+		}))
+		.pipe(replace(boombeach_replace[0], boombeach_replace_data[0]))
+		.pipe(replace(boombeach_replace[1], boombeach_replace_data[1]))
+		.pipe(replace(boombeach_replace[2], boombeach_replace_data[2]))
+		.pipe(rename('data-boombeach-defense-details.html'))
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/'+boombeach_plugin_defense));
+
+
+    gulp.src('data-boombeach-statue.html')
+		.pipe(merge({
+			'js/data-boombeach-statue.min.js':['js/jquery-2.1.4.min.js','js/data-boombeach-statue.js']
+		}))
+		.pipe(replace(boombeach_replace[0], boombeach_replace_data[0]))
+		.pipe(replace(boombeach_replace[1], boombeach_replace_data[1]))
+		.pipe(replace(boombeach_replace[2], boombeach_replace_data[2]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/'+boombeach_plugin_statue));
+
+
+    gulp.src('data-boombeach-statue-details.html')
+		.pipe(merge({
+			'js/data-boombeach-statue.min.js':['js/jquery-2.1.4.min.js','js/data-boombeach-statue.js']
+		}))
+		.pipe(replace(boombeach_replace[0], boombeach_replace_data[0]))
+		.pipe(replace(boombeach_replace[1], boombeach_replace_data[1]))
+		.pipe(replace(boombeach_replace[2], boombeach_replace_data[2]))
+		.pipe(rename('data-boombeach-statue-details.html'))
+        .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/'+boombeach_plugin_statue));      
+});
+
+gulp.task('boombeach_clean', function(){
+	return gulp.src('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/*', {read: false})
+	.pipe(clean({force: true}));
+});
+
+gulp.task('boombeach_android', ['boombeach_clean'], function(){
+	gulp.start('boombeach_images', 'boombeach_css', 'boombeach_js', 'boombeach_json', 'boombeach_data');
+});
+
+gulp.task('boombeach_ios_inner', ['boombeach_clean'], function(){
+	gulp.start('boombeach_images', 'boombeach_css', 'boombeach_js', 'boombeach_json', 'boombeach_data');
+});
+
+gulp.task('boombeach_ios', function(){
+	boombeach_platform = 'ios';
+	gulp.start('boombeach_ios_inner');
+});
+
+
 
 

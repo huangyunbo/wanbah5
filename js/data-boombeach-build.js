@@ -5,9 +5,8 @@
 		
 		
 		this.o = {
-			platform:"web",
-			// plugin:"plugin_1101",//plugin_1101
-			// plugin_equip:"plugin_1103",
+			platform:"web",			
+			plugin_build:"plugin_715",
 			url:"images/boombeach/",
 			singleData:null,
 			total_level:0
@@ -218,11 +217,11 @@
 			$("#datalist").on("click", "li", function(){
 				var _id = Number($(this).attr("data-id"));				
 				that.setsession("wbgl-boombeach-build-id", _id);				
-				// if(that.o.platform == "ios"){
-				// 	location.href = that.o.plugin+'/data-vainglory-equip-detail.html';
-				// }else{
+				if(that.o.platform == "ios"){
+					location.href = that.o.plugin_build+'/data-boombeach-building-details.html';
+				}else{
 					location.href = 'data-boombeach-building-details.html';
-				// }
+				}
 			});			
 		},
 
@@ -351,36 +350,25 @@
 				$("#header").removeClass("hide");
 			}
 			
-			// switch(i){
-			// 	case "arms":
-			// 		if(this.o.platform == "web"){
-			// 			removehide();
-			// 			this.setsession("wbgl-quanminchaoshen-equip2hero","n");//重置 从装备跳转过来
-			// 		}else if(this.o.platform == "android"){
-			// 			removehide();
-			// 			this.setsession("wbgl-quanminchaoshen-equip2hero","n");//重置 从装备跳转过来
-			// 			$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
-			// 		}else if(this.o.platform == "ios"){
-			// 			this.setsession("wbgl-quanminchaoshen-equip2hero","n");//重置 从装备跳转过来
-			// 			$("#herolist").addClass("mt_0");
-			// 		}
-			// 	break;
-			// 	case "arms-details":
-			// 		if(this.o.platform == "web"){
-			// 			removehide();
-			// 			if(this.getsession("wbgl-quanminchaoshen-equip2hero") == "y"){//如果是从装备跳转过来的
-			// 				$("#header").children(".back").attr("href","data-quanminchaoshen-equip-detail.html");
-			// 			}
-			// 		}else if(this.o.platform == "android"){
-			// 			removehide();
-			// 			if(this.getsession("wbgl-quanminchaoshen-equip2hero") == "y"){//如果是从装备跳转过来的
-			// 				$("#header").children(".back").attr("href",'../'+this.o.plugin_equip+'/data-quanminchaoshen-equip-detail.html');
-			// 			}else{
-			// 				$("#header").children(".back").attr("href","index.html");
-			// 			}
-			// 		}
-			// 	break;
-			// }
+			switch(i){
+				case "build":
+					if(this.o.platform == "web"){
+						removehide();
+						
+					}else if(this.o.platform == "android"){
+						removehide();						
+						$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
+					}
+				break;
+				case "building-details":
+					if(this.o.platform == "web"){
+						removehide();						
+					}else if(this.o.platform == "android"){
+						removehide();						
+						$("#header").children(".back").attr("href","index.html");						
+					}
+				break;
+			}
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
 			if(!this.checkversion()) return;
