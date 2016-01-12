@@ -1030,8 +1030,10 @@ gulp.task('boombeach_js', function(){
 		.pipe(replace('platform:"web"', 'platform:"'+boombeach_platform+'"'))
         .pipe(uglify())
         .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/js'));
+
     gulp.src('./js/tvp.player.js')
         .pipe(gulp.dest('../../chajian/'+boombeach_gameid+'/'+boombeach_platform+'/DataPlugin/js'));
+        
 	gulp.src(['./js/jquery-2.1.4.min.js','./js/data-boombeach-build.js'])
         .pipe(concat('data-boombeach-build.min.js'))
 		.pipe(replace('platform:"web"', 'platform:"'+boombeach_platform+'"'))

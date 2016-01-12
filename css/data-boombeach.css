@@ -51,7 +51,8 @@ body{ color:#fff; background: #fff3dc}
 .armsd .top .top_part1 .label span:nth-child(2){ background:#ffb642}
 .armsd .top .top_part1 .label span:nth-child(3){ background:#46ac27}
 .armsd .arm_des,.armsd .arm_comm{ color:#5f88be; margin-top:8px}
-.armsd .specialist,.armsd .basicinfo,.armsd .data_detail,.armsd .act_dis{ margin-top:20px}
+.armsd .basicinfo,.armsd .data_detail,.armsd .act_dis{ margin-top:20px}
+.armsd .specialist{ margin-top:20px; margin-bottom:50px}
 .armsd .small_square{ background: #43b9de; width: 3px; height: 1.5em; display: inline-block; vertical-align: text-bottom}
 .armsd .specialist .comment_tit span,.armsd .basicinfo .basicinfot_tit span,.armsd .data_detail .data_tit span,.armsd .act_dis .data_tit span{ padding-left:3px; font-size:16px; color:#5f88be}
 .armsd .basicinfo .leveld { overflow: hidden; padding: 10px 0px; font-size: 1.2em; color: #333}

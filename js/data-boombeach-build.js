@@ -34,17 +34,20 @@
 			id1='',
 			html_data='',
 			html_data1='',
-			html_data2='';			
-			//左边只显示一个数据									
-			if(mData.showdataid.length == 1){ 
+			html_data2='';
+			if(mData.showdataid.length == 1){ //左边只显示一个数据(现在的json不会有这种情况)
 				id = mData.showdataid[0];				
 				for(var i=0;i<mData.data.length;i++){
-					if(id != mData.data[i].id){						
+					if(id != mData.data[i].id){	
+							var s_pic1='';
+							if(mData.data[j].img.trim().length > 0){
+								s_pic1 = '<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">';
+							}
 		    				html_data += '<dl>'+
 		    				'<dt>'+mData.data[i].k+'</dt>'+
-		    				'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[i].img+'.png'+'">'+
+		    				s_pic1+
 		    				'<dd>'+mData.data[i].v[level]+'</dd>'+
-		    				'</dl>';				           
+		    				'</dl>';
 					}else{						
 						var part0 = '';
 						html_data1 +='<div class="k">'+mData.data[i].k+'</div>';
@@ -68,13 +71,28 @@
 				id1= mData.showdataid[1];//下边数据				
 				for(var j=0;j<mData.data.length;j++){
 					if(id != mData.data[j].id && id1 != mData.data[j].id){
-						
-		    				html_data += '<dl>'+
-		    				'<dt>'+mData.data[j].k+'</dt>'+
-		    				'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
-		    				'<dd>'+mData.data[j].v[level]+'</dd>'+
-		    				'</dl>';
-				           
+							var s_pic = '';							
+							if(mData.data[j].img instanceof Array && mData.data[j].img.length>1){
+
+								var part3='', 
+								html_data_pic ='<div class="k">'+mData.data[j].k+'</div>';
+									for(var k=0;k<mData.data[j].img.length;k++){
+										part3 += '<div class="k">'+
+										'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img[k]+'.png'+'">'+
+										mData.data[j].v[level][k]+'</div>';
+									}
+								html_data += html_data_pic+part3;
+							}
+							else{
+								if(mData.data[j].img.trim().length == 1){
+									s_pic = '<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">';
+								}
+								html_data += '<dl>'+
+			    				'<dt>'+mData.data[j].k+'</dt>'+
+			    				s_pic+
+			    				'<dd>'+mData.data[j].v[level]+'</dd>'+
+			    				'</dl>';
+							}      
 					}else{
 							if(id == mData.data[j].id){
 								//不止一张图片								

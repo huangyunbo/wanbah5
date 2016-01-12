@@ -35,7 +35,7 @@
 				var _id = Number($(this).attr("data-id"));				
 				that.setsession("wbgl-boombeach-arms-id", _id);				
 				if(that.o.platform == "ios"){
-					location.href = that.o.plugin_arms+'/data-boombeach-arms-details';
+					location.href = that.o.plugin_arms+'/data-boombeach-arms-details.html';
 				}else{
 					location.href = 'data-boombeach-arms-details.html';
 				}
@@ -211,7 +211,7 @@
 			id1='',
 			html_data='',
 			html_data1='',
-			html_data2='';												
+			html_data2='';
 			if(mData.showdataid.length == 1){ 
 				id = mData.showdataid[0];				
 				for(var i=0;i<mData.data.length;i++){
