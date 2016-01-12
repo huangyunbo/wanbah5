@@ -18,13 +18,15 @@
 	BoombeachDefense.prototype = {
 
 		printDefenseBen:function(){			
-			var html_ben = '';
-			for(var i=0;i<this.data.length;i++){
+			var html_ben = '',
+			r_data = this.data.reverse();
+
+			for(var i=0;i<r_data.length;i++){
 				html_ben += '<li>'+
-				'<a href="javascript:;" class="a" data-title="'+this.data[i].k+'" data-id="'+this.data[i].gid+'">'+
-				'<div class="img"><img src="'+this.o.url+'building/'+this.data[i].img+'"></div>'+
+				'<a href="javascript:;" class="a" data-title="'+r_data[i].k+'" data-id="'+r_data[i].gid+'">'+
+				'<div class="img"><img src="'+this.o.url+'building/'+r_data[i].img+'"></div>'+
 				'<div class="note">'+
-				'<h2>'+this.data[i].k+'</h2>'+
+				'<h2>'+r_data[i].k+'</h2>'+
 				'</div><div class="look"><i class="icon"></i></div></a></li>'
 			}
 			$("#ul_ben").html(html_ben);
@@ -223,7 +225,9 @@
 					}else if(this.o.platform == "android"){
 						removehide();						
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
-					}	
+					}if(this.o.platform == "ios"){
+						$("#selection").addClass("mt_0");
+					}		
 				break;							
 				case "defense-list":
 					if(this.o.platform == "web"){
@@ -231,13 +235,17 @@
 					}else if(this.o.platform == "android"){
 						removehide();		
 						$("#header").children(".back").attr("href","index.html");				
+					}else if(this.o.platform == "ios"){						
+						$("#datalist").addClass("mt_0");
 					}											
 				break;
 				case "defense-details":
 					if(this.o.platform == "web"){
 						removehide();						
 					}else if(this.o.platform == "android"){
-						removehide();	
+						removehide();
+						$("#header").children(".back").attr("href","data-boombeach-defense-list.html");		
+					}else if(this.o.platform == "ios"){						
 					}
 				break;
 			}

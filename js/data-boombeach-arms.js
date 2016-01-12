@@ -211,8 +211,8 @@
 			id1='',
 			html_data='',
 			html_data1='',
-			html_data2='';
-			if(mData.showdataid.length == 1){ 
+			html_data2='';						
+			if(mData.showdataid.length == 1){//现在的json数据不存在这种情况 
 				id = mData.showdataid[0];				
 				for(var i=0;i<mData.data.length;i++){
 					if(id != mData.data[i].id){						
@@ -246,12 +246,14 @@
 				           
 					}else{
 							if(id == mData.data[j].id){
-								html_data1 +='<div class="num num_blue">'+mData.data[j].v[level]+'</div>'+
-								'<div class="k">'+mData.data[j].k+'</div>';
+								html_data1 +='<div class="k">'+mData.data[j].k+'</div>'+
+								'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
+								'<div class="num num_blue d_inline">'+mData.data[j].v[level]+'</div>';
 							}
 							if(id1 == mData.data[j].id){
-								html_data2 +='<div class="num num_blue">'+mData.data[j].v[level]+'</div>'+
-								'<div class="k">'+mData.data[j].k+'</div>';								
+								html_data2 +='<div class="k">'+mData.data[j].k+'</div>'+
+								'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
+								'<div class="num num_blue d_inline">'+mData.data[j].v[level]+'</div>';								
 							}
 					}					
 				}				
@@ -350,6 +352,8 @@
 						}else if(this.o.platform == "android"){
 							removehide();						
 							$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
+						}else if(this.o.platform == "ios"){
+							$("#datalist_nav").addClass("mt_0");
 						}
 				break;				
 				case "arms-details":
@@ -358,7 +362,9 @@
 						}else if(this.o.platform == "android"){
 							removehide();	
 							$("#header").children(".back").attr("href","index.html");						
-						}					
+						}else if(this.o.platform == "ios"){
+							$("#armsd_bg_d").addClass("mt_0");		
+						}			
 				break;
 			}
 		},

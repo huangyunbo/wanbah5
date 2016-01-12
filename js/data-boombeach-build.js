@@ -34,7 +34,7 @@
 			id1='',
 			html_data='',
 			html_data1='',
-			html_data2='';
+			html_data2='';			
 			if(mData.showdataid.length == 1){ //左边只显示一个数据(现在的json不会有这种情况)
 				id = mData.showdataid[0];				
 				for(var i=0;i<mData.data.length;i++){
@@ -84,7 +84,7 @@
 								html_data += html_data_pic+part3;
 							}
 							else{
-								if(mData.data[j].img.trim().length == 1){
+								if(mData.data[j].img.trim().length > 0){
 									s_pic = '<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">';
 								}
 								html_data += '<dl>'+
@@ -107,8 +107,10 @@
 									html_data1 += part1;
 
 								}else{
-									html_data1 +='<div class="num num_blue">'+mData.data[j].v[level]+'</div>'+
-									'<div class="k">'+mData.data[j].k+'</div>';
+									html_data1 +='<div class="k">'+mData.data[j].k+'</div>'+
+									'<div class="num num_blue d_inline">'+
+									'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
+									mData.data[j].v[level]+'</div>';
 								}
 							}
 							if(id1 == mData.data[j].id){
@@ -123,8 +125,10 @@
 									html_data2 += part2;
 
 								}else{
-									html_data2 +='<div class="num num_blue">'+mData.data[j].v[level]+'</div>'+
-									'<div class="k">'+mData.data[j].k+'</div>';
+									html_data2 +='<div class="k">'+mData.data[j].k+'</div>'+
+									'<div class="num num_blue d_inline">'+
+									'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
+									mData.data[j].v[level]+'</div>';
 								}								
 							}
 					}					
@@ -175,34 +179,41 @@
 			//专家点评
 			$("#arm_comm").html(mData.comment);
 			//打印表格
-			for(var i=0;i<mData.table.length;i++){
-				
-				if(mData.table[i].type == 1){
-					//1.兵种数据表格	
-					for(var j=0;j<mData.table[i].tbody.length;j++){						
-						td_one_key += '<td class="on">'+mData.table[i].tbody[j].k+'</td>';
-						td_one_value += '<td><span>'+mData.table[i].tbody[j].v+'</span></td>';
-					}
-					$("#levelt").html('<tbody><tr>'+td_one_key+'</td></tr><tr>'+td_one_value+'</tr></tbody>');			
-				}else{					
-					for(var j=0;j<mData.table[i].tbody.length;j++){						
-						td_two_key += '<div class="l">'+mData.table[i].tbody[j].k+'</div>';				
-						//判断是否是数组数据
-						if(mData.table[i].tbody[j].v instanceof Array){
-							for(var k=0;k<mData.table[i].tbody[j].v.length;k++){
-								td_two_value += '<td>'+mData.table[i].tbody[j].v[k]+'</td>';							
-							}						
-						}else{
-							td_two_value += '<td>'+mData.table[i].tbody[j].v+'</td>';
+			if(mData.table.length > 0){
+				$("#basicinfot_tit").html('<div class="small_square"></div>'+
+					'<span>基本信息</span>');
+				for(var i=0;i<mData.table.length;i++){				
+					if(mData.table[i].type == 1){
+						//1.兵种数据表格	
+						for(var j=0;j<mData.table[i].tbody.length;j++){						
+							td_one_key += '<td class="on">'+mData.table[i].tbody[j].k+'</td>';
+							td_one_value += '<td><span>'+mData.table[i].tbody[j].v+'</span></td>';
 						}
-						html_td_two_value += '<tr>'+ td_two_value +'</tr>';
-						td_two_value = '';					
-					}					
-					html_td_two_key +='<div class="dt">'+td_two_key+'</div>';					
-					html_td_two_value1 += '<div class="dd"><table><tbody>'+html_td_two_value+'</tbody></table></div>';														
-					$("#leveltt").html(html_td_two_key+html_td_two_value1);					
-				}
-			}					
+						$("#levelt").html('<tbody><tr>'+td_one_key+'</td></tr><tr>'+td_one_value+'</tr></tbody>');			
+					}else{					
+						for(var j=0;j<mData.table[i].tbody.length;j++){						
+							td_two_key += '<div class="l">'+mData.table[i].tbody[j].k+'</div>';				
+							//判断是否是数组数据
+							if(mData.table[i].tbody[j].v instanceof Array){
+								for(var k=0;k<mData.table[i].tbody[j].v.length;k++){
+									td_two_value += '<td>'+mData.table[i].tbody[j].v[k]+'</td>';							
+								}						
+							}else{
+								td_two_value += '<td>'+mData.table[i].tbody[j].v+'</td>';
+							}
+							html_td_two_value += '<tr>'+ td_two_value +'</tr>';
+							td_two_value = '';					
+						}					
+						html_td_two_key +='<div class="dt">'+td_two_key+'</div>';					
+						html_td_two_value1 += '<div class="dd"><table><tbody>'+html_td_two_value+'</tbody></table></div>';														
+						$("#leveltt").html(html_td_two_key+html_td_two_value1);					
+					}
+				}	
+
+			}else{
+				$("#basicinfo").removeClass("basicinfo");
+			}
+							
 						
 		},
 	
@@ -212,8 +223,8 @@
 			if(this.o.singleData === null){
 				return;
 			}
-			this.total_level = this.o.singleData.data[0].v.length; 
-			this.setFigure(this.o.singleData,0);//数据详情			
+			this.total_level = this.o.singleData.data[0].v.length;
+						
 			this.printPicScroll();//图片滚动栏		
 
 			this.eventsDetails();//详情页事件
@@ -376,6 +387,8 @@
 					}else if(this.o.platform == "android"){
 						removehide();						
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
+					}else if(this.o.platform == "ios"){
+						$("#datalist_nav").addClass("mt_0");
 					}
 				break;
 				case "building-details":
@@ -384,6 +397,8 @@
 					}else if(this.o.platform == "android"){
 						removehide();						
 						$("#header").children(".back").attr("href","index.html");						
+					}else if(this.o.platform == "ios"){
+						$("#armsd_bg_d").addClass("mt_0");
 					}
 				break;
 			}
