@@ -17,6 +17,7 @@ nav,section{ display:block}
 a{ text-decoration:none}
 .hide{ display:none !important}
 .d_inline{ display:inline-block}
+.dt_nowrap{ white-space:nowrap}
 .mt_0{ margin-top:0 !important}
 .mb_10{ margin-bottom:10px}
 .mlf_7{ margin:0 7px}
@@ -60,7 +61,7 @@ body{ color:#fff; background: #faf5ed}
 .armsd .basicinfo table{border-collapse:collapse; border:none; width:100%}
 tbody{ display: table-row-group; vertical-align: middle; border-color: inherit}
 tr{ display: table-row; vertical-align: inherit; border-color: inherit}
-td{ padding: 3px 5px; text-align: center; background:white}
+td{ padding: 3px 5px; text-align: center; background:#fefdfb}
 .armsd .basicinfo .leveld td{ border:solid #c4d5de 1px}
 .armsd .basicinfo .leveld .dt{ float: left; width: 25%}
 .armsd .basicinfo .leveld .l{ padding: 3px 5px; background: #2d8ce4; color: #fff; border-top: 1px solid #fff3dc; text-align: center}
@@ -87,7 +88,7 @@ td{ padding: 3px 5px; text-align: center; background:white}
 
 .armsd .data_detail .figure { width: 100%; border-collapse: separate; border-spacing: 6px; table-layout: fixed}
 .armsd .f_tr{ display: table-row; vertical-align: inherit; border-color: inherit}
-.armsd .data_detail .figure td{ width: 60%; text-align: center; position: relative; background:white}
+.armsd .data_detail .figure td{ width: 60%; text-align: center; position: relative; background:#fefdfb}
 .armsd .data_detail .figure td:first-child {width: 40%}
 .armsd .data_detail .num { font-size: 1.6rem}
 .armsd .data_detail .num_blue { color: #5fb2fe}

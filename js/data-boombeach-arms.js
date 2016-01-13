@@ -131,11 +131,11 @@
 						td_two_key += '<div class="l">'+mData.table[i].tbody[j].k+'</div>';				
 						//判断是否是数组数据
 						if(mData.table[i].tbody[j].v instanceof Array){
-							for(var k=0;k<mData.table[i].tbody[j].v.length;k++){
+							for(var k=0;k<mData.table[i].tbody[j].v.length;k++){								
 								td_two_value += '<td>'+mData.table[i].tbody[j].v[k]+'</td>';							
 							}						
-						}else{
-							td_two_value += '<td>'+mData.table[i].tbody[j].v+'</td>';
+						}else{							
+							td_two_value += '<td colspan="'+mData.table[i].tbody[j].v.length*mData.table[i].tbody.length+'" class="dt_nowrap">'+mData.table[i].tbody[j].v+'</td>';
 						}
 						html_td_two_value += '<tr>'+ td_two_value +'</tr>';
 						td_two_value = '';					
