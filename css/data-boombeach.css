@@ -29,6 +29,8 @@ a{ text-decoration:none}
 .media_mb_20{ margin-bottom:20px}
 .media_ml_16{ margin-left:16px}
 .media_plr_7{ padding:0 7px}
+.d_2_t{ display:table;}
+.no_net{ font-size:2.0rem; text-align:center}
 /*大字体*/
 .max_fs{ font-size:24px}
 /*中字体*/
@@ -37,11 +39,11 @@ a{ text-decoration:none}
 .small_fs{ font-size:9px}
 .small_icon{ display:inline; background-size:15px; width:15px; height:15px; margin-left:5px; margin-right:5px; margin-top:3px}
 
-.header{ height:44px; border-bottom:1px solid #355cbf; background:#6ca9de; position:fixed; width:100%; top:0; left:0; z-index:100}
+.header{ color:#fff; height:44px; border-bottom:1px solid #355cbf; background:#6ca9de; position:fixed; width:100%; top:0; left:0; z-index:100}
 .header h1{ font-size:18px; padding-top:8px; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 
-body{ color:#fff; background: #faf5ed}
+body{ background: #faf5ed}
 .armsd_bg_d{ text-align:center}
 .armsd_bg { margin-top:80px}
 .armsd{ margin-top:20px; position:relative}
@@ -61,8 +63,8 @@ body{ color:#fff; background: #faf5ed}
 .armsd .basicinfo table{border-collapse:collapse; border:none; width:100%}
 tbody{ display: table-row-group; vertical-align: middle; border-color: inherit}
 tr{ display: table-row; vertical-align: inherit; border-color: inherit}
-td{ padding: 3px 5px; text-align: center; background:#fefdfb}
-.armsd .basicinfo .leveld td{ border:solid #c4d5de 1px}
+/*td{ padding: 3px 5px; text-align: center; background:#fefdfb}*/
+.armsd .basicinfo .leveld td{ border:solid #c4d5de 1px; padding: 3px 5px; text-align: center;}
 .armsd .basicinfo .leveld .dt{ float: left; width: 25%}
 .armsd .basicinfo .leveld .l{ padding: 3px 5px; background: #2d8ce4; color: #fff; border-top: 1px solid #fff3dc; text-align: center}
 .armsd .basicinfo .leveld .dd{ float: left; width: 75%; overflow-x: auto; color:#5d82bc}
@@ -88,12 +90,19 @@ td{ padding: 3px 5px; text-align: center; background:#fefdfb}
 
 .armsd .data_detail .figure { width: 100%; border-collapse: separate; border-spacing: 6px; table-layout: fixed}
 .armsd .f_tr{ display: table-row; vertical-align: inherit; border-color: inherit}
-.armsd .data_detail .figure td{ width: 60%; text-align: center; position: relative; background:#fefdfb}
+.armsd .data_detail .figure .d_l{ width:65%; float:left}
+.armsd .data_detail .figure .d_l span{ float:right; padding-top:5px; color:#365079}
+.armsd .data_detail .figure .d_r{ width:35%; float:right}
+.armsd .data_detail .figure .d_r span,.armsd .data_detail .figure .d_r_f_l span{ font-size: 1.2rem; text-align: left; color: #66b5ff}
+.armsd .data_detail .figure .d_r_f_l{ float:left; padding-top:5px}
+.armsd .data_detail .figure .d_r_f_center{ text-align:left; margin-left:30%; padding-top:5px; color:#66b5ff}
+.armsd .data_detail .figure .d_r div{ float:left; padding-top:5px}
+.armsd .data_detail .figure td{ width: 60%; position: relative; padding: 3px 5px; text-align: center; background:#fefdfb}
 .armsd .data_detail .figure td:first-child {width: 40%}
 .armsd .data_detail .num { font-size: 1.6rem}
 .armsd .data_detail .num_blue { color: #5fb2fe}
 .armsd .data_detail .num_red { color: #fe4462}
-.armsd .data_detail .k { font-size: 1.2rem; color:#284470}
+.armsd .data_detail .k { font-size: 1.2rem; color:#365079}
 .armsd .data_detail .v { color: #9c9895; padding-bottom: 5px}
 .armsd .data_detail .dl{ display: block; -webkit-margin-before: 1em; -webkit-margin-after: 1em; -webkit-margin-start: 0px; -webkit-margin-end: 0px}
 .armsd .data_detail dt{ display: inline-block; font-size:1.2rem; color: #284470; text-align: right; padding-right: 5px; box-sizing: border-box}
@@ -132,7 +141,7 @@ td{ padding: 3px 5px; text-align: center; background:#fefdfb}
 .footer{ text-align: center; margin: 50px 0 20px; color: #999; font-size: 14px}
 .footer .menu{ margin-bottom: 5px}
 .footer .menu a{ color: #999; padding: 0 10px; display: inline-block}
-.pagebody{ color:#000}
+.pagebody{}
 
 @media screen and (min-width:640px){
 	.mb_10{ margin-bottom:20px}
@@ -161,13 +170,17 @@ td{ padding: 3px 5px; text-align: center; background:#fefdfb}
 	.armsd .specialist .comment_tit span,.armsd .basicinfo .basicinfot_tit span,.armsd .data_detail .data_tit span,.armsd .act_dis .data_tit span{ padding-left:6px; font-size:24px; color:#5f88be}
 
 	.armsd .data_detail .num { font-size: 2.0rem}	
-	.armsd .data_detail .k { font-size: 1.6rem}
+	.armsd .data_detail .k { font-size: 2.0rem}
 	.armsd .data_detail .v { padding-bottom: 10px}
 	.armsd .data_detail dt{ font-size:1.6rem; padding-right: 10px; }
 	.armsd .data_detail dd{  font-size:1.6rem}
+	.armsd .data_detail .figure .d_l span{ font-size:1.6rem}
 
 	.armsd .pic_scroll li{ width:106px; margin-right:12px}
 	.armsd .pic_scroll li span{ font-size:1.6rem}
+	.armsd .data_detail .figure .d_r_f_center span{ font-size:1.6rem}
+	.armsd .data_detail .figure .d_r span{ font-size:1.6rem; vertical-align:-6px}
+	.armsd .data_detail .figure .d_r_f_center div span{ vertical-align:-8px}
 
 
 	.armsd .bar{ margin-top:30px; padding-left:14px}

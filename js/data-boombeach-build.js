@@ -34,7 +34,9 @@
 			id1='',
 			html_data='',
 			html_data1='',
-			html_data2='';			
+			html_data2='';
+				
+			
 			if(mData.showdataid.length == 1){ //左边只显示一个数据(现在的json不会有这种情况)
 				id = mData.showdataid[0];				
 				for(var i=0;i<mData.data.length;i++){
@@ -59,7 +61,6 @@
 						html_data1 += part0;						
 					}
 				}
-
 				$("#f_tr").html('<td class="f_td" id="figure_lt">'+html_data1+'</td>'+
 					'<td class="f_td" rowspan="2" id="figure_lt1">'+
 					'<div class="figure_other" id="figure_other">'+html_data+'</div>'+
@@ -71,27 +72,37 @@
 				id1= mData.showdataid[1];//下边数据				
 				for(var j=0;j<mData.data.length;j++){
 					if(id != mData.data[j].id && id1 != mData.data[j].id){
-							var s_pic = '';							
+							var s_pic = '';		
+							//有多张图片					
 							if(mData.data[j].img instanceof Array && mData.data[j].img.length>1){
 
-								var part3='', 
-								html_data_pic ='<div class="k">'+mData.data[j].k+'</div>';
+								var part3='',
+									part4='';
+								html_data_pic ='<div class="d_l"><span>'+mData.data[j].k+'</span></div>';
 									for(var k=0;k<mData.data[j].img.length;k++){
-										part3 += '<div class="k">'+
-										'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img[k]+'.png'+'">'+
-										mData.data[j].v[level][k]+'</div>';
+										part3 += '<div><img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img[k]+'.png'+'">'+
+										'<span>'+mData.data[j].v[level][k]+'</span></div>';
 									}
-								html_data += html_data_pic+part3;
+									part4 += '<div class="d_r_f_l">'+part3+'</div><div class="clear"></div>';
+								html_data += '<div>'+html_data_pic+part4+'</div>';
 							}
-							else{
+							else{//只有一张图片
+								var part3='',
+									part4='';
+								html_data_pic ='<div class="d_l"><span>'+mData.data[j].k+'</span></div>';
 								if(mData.data[j].img.trim().length > 0){
-									s_pic = '<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">';
+									part3 += '<div><img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
+										'<span>'+mData.data[j].v[level]+'</span></div>';									
+								}else{//没有图片
+									if(mData.data[j].v instanceof Array && mData.data[j].v.length>1){//描述是数组										
+										part3 += '<div><span>'+mData.data[j].v[level]+'</span></div>'	
+									}else{//描述是值
+										part3 += '<div><span>'+mData.data[j].v+'</span></div>';		
+									}
+									
 								}
-								html_data += '<dl>'+
-			    				'<dt>'+mData.data[j].k+'</dt>'+
-			    				s_pic+
-			    				'<dd>'+mData.data[j].v[level]+'</dd>'+
-			    				'</dl>';
+								part4 += '<div class="d_r">'+part3+'</div>'+'<div class="clear"></div>';
+								html_data += '<div>'+html_data_pic+part4+'</div>';
 							}      
 					}else{
 							if(id == mData.data[j].id){
@@ -100,39 +111,58 @@
 									var part1 = '';
 									html_data1 +='<div class="k">'+mData.data[j].k+'</div>';
 									for(var k=0;k<mData.data[j].img.length;k++){
-										part1 += '<div class="k">'+
-										'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img[k]+'.png'+'">'+
-										mData.data[j].v[level][k]+'</div>';
+										part1 += '<div><img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img[k]+'.png'+'">'+
+										'<span>'+mData.data[j].v[level][k]+'</span></div>';
 									}
-									html_data1 += part1;
+									html_data1 += '<div class="d_r_f_center">'+part1+'</div>';
 
 								}else{
-									html_data1 +='<div class="k">'+mData.data[j].k+'</div>'+
-									'<div class="num num_blue d_inline">'+
-									'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
-									mData.data[j].v[level]+'</div>';
+									var part1 = '';
+									html_data1 +='<div class="k">'+mData.data[j].k+'</div>';
+
+									if(mData.data[j].img.trim().length > 0){
+										part1 += '<div><img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
+											'<span>'+mData.data[j].v[level]+'</span></div>';									
+									}else{
+										if(mData.data[j].v instanceof Array && mData.data[j].v.length>1){										
+											part1 += '<div><span>'+mData.data[j].v[level]+'</span></div>'	
+										}else{
+											part1 += '<div><span>'+mData.data[j].v+'</span></div>';		
+										}
+									}					
+									html_data1 += '<div class="d_r_f_center">'+part1+'</div>';									
 								}
 							}
 							if(id1 == mData.data[j].id){
+								console.log(id1);
+								console.log(mData.data[j].img.length);
 								if(mData.data[j].img instanceof Array && mData.data[j].img.length>1){									
-									var part2 = '';
+									var part3 = '';
 									html_data2 +='<div class="k">'+mData.data[j].k+'</div>';
 									for(var k=0;k<mData.data[j].img.length;k++){
-										part2 += '<div class="k">'+
-										'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img[k]+'.png'+'">'+
-										mData.data[j].v[level][k]+'</div>';
+										part3 += '<div><img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img[k]+'.png'+'">'+
+										'<span>'+mData.data[j].v[level][k]+'</span></div>';
 									}
-									html_data2 += part2;
+									html_data2 += '<div class="d_r_f_center">'+part3+'</div>';
 
 								}else{
-									html_data2 +='<div class="k">'+mData.data[j].k+'</div>'+
-									'<div class="num num_blue d_inline">'+
-									'<img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
-									mData.data[j].v[level]+'</div>';
+									var part2 = '';
+									html_data2 +='<div class="k">'+mData.data[j].k+'</div>';	
+									if(mData.data[j].img.trim().length > 0){
+										part2 += '<div><img class="small_icon" src="'+that.o.url+'icon/'+mData.data[j].img+'.png'+'">'+
+											'<span>'+mData.data[j].v[level]+'</span></div>';									
+									}else{
+										if(mData.data[j].v instanceof Array && mData.data[j].v.length>1){										
+											part2 += '<div><span>'+mData.data[j].v[level]+'</span></div>'	
+										}else{
+											part2 += '<div><span>'+mData.data[j].v+'</span></div>';		
+										}
+									}																
+									html_data2 += '<div class="d_r_f_center">'+part2+'</div>';	
 								}								
 							}
 					}					
-				}				
+				}			
 				
 				$("#t_body").html('<tr class="f_tr" id="f_tr"><td class="f_td" id="figure_lt">'+html_data1+'</td>'+
 						'<td class="f_td" rowspan="2" id="figure_lt1">'+

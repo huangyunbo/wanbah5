@@ -52,6 +52,7 @@
 				}			
 			}else{
 				html_ben_list = "暂无数据";
+				$("#defense_datalist").addClass("no_net");	
 			}
 			$("#defense_datalist").html(html_ben_list);		
 			$("#list_title").html(title);	
@@ -62,7 +63,7 @@
 			var	html_content='',
 				html_footer='';	
 			if(err === 1){
-				$("#container").html("网络错误");
+				$("#container").addClass("no_net").html("网络错误");
 				return;
 			}
 			$("#title").html(detail_data.data.Name);			
@@ -77,10 +78,6 @@
 							'</div></div><!--/top-->'+
 							'<div class="pagebody">'+detail_data.data.Content+'</div></div><!--/pagebody-->';
 			html_footer = '<div class="footer">'+
-			'<div class="menu">'+
-			'<a href="http://www.wanba123.cn" target="_blank">玩吧专业版</a>'+
-			'<a href="http://m.wanba123.cn" target="_blank">首页</a>'+
-			'</div>'+
 			'<p>Copyright © 2013 - 2016 wanba123.cn</p>'+
 			'</div>';		
 			
