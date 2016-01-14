@@ -35,7 +35,7 @@
 
 		printDefenseList:function(err, list_data){		
 			var html_ben_list = ''
-				title = '';
+				title = '';				
 			if(err === 1){
 				$("#container").html("网络错误");
 				return;
@@ -62,6 +62,7 @@
 		printDefenseDetail:function(err, detail_data){			
 			var	html_content='',
 				html_footer='';	
+			console.log(detail_data);
 			if(err === 1){
 				$("#container").addClass("no_net").html("网络错误");
 				return;
@@ -75,7 +76,7 @@
 							'<span>'+detail_data.data.ReleaseTime+'</span>'+
 							'<span>'+'作者:'+detail_data.data.NickName+'</span>'+
 							'<span>'+'来源:'+detail_data.data.Source+'</span>'+
-							'</div></div><!--/top-->'+
+							'</div></div>'+
 							'<div class="pagebody">'+detail_data.data.Content+'</div></div><!--/pagebody-->';
 			html_footer = '<div class="footer">'+
 			'<p>Copyright © 2013 - 2016 wanba123.cn</p>'+
