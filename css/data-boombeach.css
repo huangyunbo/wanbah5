@@ -134,9 +134,9 @@ tr{ display: table-row; vertical-align: inherit; border-color: inherit}
 
 /*防御阵型*/
 .b_defense_list{ background: #fff}
-.d_img { width: 100px; vertical-align:middle}
+.d_img { width: 40%;  display: table-cell;  text-align: center;  padding: 10px 15px 10px 5px;  box-sizing: border-box;}
 .datalist{ color:#000000}
-.datalist ul li div{ display:inline-block}
+.datalist ul li div{}
 .datalist ul li .d_note{ text-align:center; color: #333; margin-left:15px}
 .footer{ text-align: center; margin: 50px 0 20px; color: #999; font-size: 14px}
 .article .top { padding: 10px 0; border-bottom: 1px solid #d3d3d3}

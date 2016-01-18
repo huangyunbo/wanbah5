@@ -35,25 +35,26 @@
 
 		printDefenseList:function(err, list_data){		
 			var html_ben_list = ''
-				title = '';				
+				title = '',
+				that = this;				
 			if(err === 1){
 				$("#container").html("网络错误");
 				return;
-			}
+			}			
+			title = that.getsession("wbgl-boombeach-ben-title");
 			if(list_data.data.length > 0){	
 				for(var i=0;i<list_data.data.length;i++){
 					html_ben_list += '<li>'+
-					'<a href="javascript:;" class="a" list-data-id="'+list_data.data[i].Id+'">'+
-					'<div><img class="d_img" src="'+'http://res.wanba123.cn/pic/'+list_data.data[i].thumbPicName+'"></div>'+
-					'<div class="d_note">'+
+					'<a list-data-id="'+list_data.data[i].Id+'">'+
+					'<div class="d_img"><img src="'+'http://res.wanba123.cn/pic/'+list_data.data[i].thumbPicName+'"></div>'+
+					'<div class="note">'+
 					'<h2>'+list_data.data[i].Title+'</h2>'+
-					'</div></a></li>'
-					title = list_data.data[i].Title;
-				}			
+					'</div></a></li>'					
+				}
 			}else{
 				html_ben_list = "暂无数据";
 				$("#defense_datalist").addClass("no_net");	
-			}
+			}			
 			$("#defense_datalist").html(html_ben_list);		
 			$("#list_title").html(title);	
 			this.eventsList();
@@ -61,8 +62,7 @@
 
 		printDefenseDetail:function(err, detail_data){			
 			var	html_content='',
-				html_footer='';	
-			console.log(detail_data);
+				html_footer='';				
 			if(err === 1){
 				$("#container").addClass("no_net").html("网络错误");
 				return;
@@ -88,8 +88,11 @@
 		eventsBen:function(){	
 			var that = this;			
 			$(".a").click(function(){
-				var id = Number($(this).attr("data-id"));						
-				that.setsession("wbgl-boombeach-ben-id", id);					
+				var id = Number($(this).attr("data-id")),
+				date_title = ($(this).attr("data-title"));	
+
+				that.setsession("wbgl-boombeach-ben-id", id);
+				that.setsession("wbgl-boombeach-ben-title", date_title);					
 				if(that.o.platform == "ios"){
 					location.href = that.o.plugin_defense+'/data-boombeach-defense-list.html';
 				}else{
@@ -243,7 +246,8 @@
 					}else if(this.o.platform == "android"){
 						removehide();
 						$("#header").children(".back").attr("href","data-boombeach-defense-list.html");		
-					}else if(this.o.platform == "ios"){						
+					}else if(this.o.platform == "ios"){	
+						$("#container").addClass("mt_0");					
 					}
 				break;
 			}
