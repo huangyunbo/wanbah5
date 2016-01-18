@@ -146,7 +146,7 @@ tr{ display: table-row; vertical-align: inherit; border-color: inherit}
 .footer .menu{ margin-bottom: 5px}
 .footer .menu a{ color: #999; padding: 0 10px; display: inline-block}
 .container{ margin-top:45px; margin-left:7px; margin-right:7px}
-.pagebody{ padding-top:5px}
+.pagebody{ padding-top:5px; font-size: 1.7rem !important}
 
 @media screen and (min-width:640px){
 	.mb_10{ margin-bottom:20px}
