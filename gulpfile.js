@@ -1179,5 +1179,75 @@ gulp.task('boombeach_ios', function(){
 });
 
 
+//部落冲突:皇室战争
+var huangshizhanzheng_gameid = 106;
+var huangshizhanzheng_plugin = "plugin_1194";
+var huangshizhanzheng_path = '../';
+var huangshizhanzheng_replace = ['css/', 'js/', 'json/'];
+var huangshizhanzheng_replace_data =  ['css/', 'js/', 'json/'];
+var huangshizhanzheng_platform = 'android';
+
+/*gulp.task('vainglory_images', function(){
+    gulp.src('./images/vainglory/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/vainglory'));
+	
+	gulp.src('./images/.nomedia', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/'));
+});*/
+
+gulp.task('huangshizhanzheng_css', function(){
+    gulp.src(['./css/data-huangshizhanzheng.css'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+huangshizhanzheng_gameid+'/'+huangshizhanzheng_platform+'/DataPlugin/css'));
+});
+
+gulp.task('huangshizhanzheng_js', function(){
+    gulp.src(['./js/jquery-2.1.3.min.js','./js/data-huangshizhanzheng.js'])
+        .pipe(concat('data-huangshizhanzheng.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+huangshizhanzheng_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+huangshizhanzheng_gameid+'/'+huangshizhanzheng_platform+'/DataPlugin/js'));
+});
+
+/*gulp.task('vainglory_json', function(){
+    gulp.src(['./json/json-vainglory.js', './json/json-vainglory.js'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/json'));
+});*/
+
+gulp.task('huangshizhanzheng_data', function(){
+	if(huangshizhanzheng_platform == 'android'){
+		for(var i=0; i<huangshizhanzheng_replace.length; i++){
+			huangshizhanzheng_replace_data[i] = huangshizhanzheng_path + huangshizhanzheng_replace[i];
+		}
+	}
+	
+    gulp.src('data-huangshizhanzheng.html')
+		.pipe(merge({
+            'js/data-huangshizhanzheng.min.js':['js/jquery-2.1.3.min.js','js/data-huangshizhanzheng.js']
+        }))
+		.pipe(replace(huangshizhanzheng_replace[0], huangshizhanzheng_replace_data[0]))
+		.pipe(replace(huangshizhanzheng_replace[1], huangshizhanzheng_replace_data[1]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+huangshizhanzheng_gameid+'/'+huangshizhanzheng_platform+'/DataPlugin/'+huangshizhanzheng_plugin));
+});
+
+gulp.task('huangshizhanzheng_clean', function(){
+	return gulp.src('../../chajian/'+huangshizhanzheng_gameid+'/'+huangshizhanzheng_platform+'/DataPlugin/*', {read: false})
+	.pipe(clean({force: true}));
+});
+
+gulp.task('huangshizhanzheng_android', ['huangshizhanzheng_clean'], function(){
+	gulp.start('huangshizhanzheng_css', 'huangshizhanzheng_js', 'huangshizhanzheng_data');
+});
+
+gulp.task('huangshizhanzheng_ios_inner', ['huangshizhanzheng_clean'], function(){
+	gulp.start('huangshizhanzheng_css', 'huangshizhanzheng_js', 'huangshizhanzheng_data');
+});
+
+gulp.task('huangshizhanzheng_ios', function(){
+	huangshizhanzheng_platform = 'ios';
+	gulp.start('huangshizhanzheng_ios_inner');
+});
+
+
 
 
