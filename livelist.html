@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>炉石直播-玩吧</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/livelist.css">
+</head>
+
+<body>
+<div class="live" id="live">
+	<div class="item">
+    	<div class="v">
+            <video class="video" preload="none" poster="" controls="controls"><source src="" type="application/x-mpegURL"></video>
+            <div class="info">
+                <span class="name">苍老师</span>
+                <span class="num"><i></i>1.8W</span>
+            </div>
+        </div>
+        <div class="title">[玩吧直播间] koe决战到底12312123123</div>
+    </div>
+    <div class="item">
+    	<div class="v">
+            <video class="video" preload="none" poster="" controls="controls"><source src="" type="application/x-mpegURL"></video>
+            <div class="info">
+                <span class="name">苍老师123123123</span>
+                <span class="num"><i></i>1.8W123123</span>
+            </div>
+        </div>
+        <div class="title">[玩吧直播间] koe决战到底</div>
+    </div>
+    <div class="item">
+    	<div class="v">
+            <video class="video" preload="none" poster="" controls="controls"><source src="" type="application/x-mpegURL"></video>
+            <div class="info">
+                <span class="name">苍老师</span>
+                <span class="num"><i></i>1.8W</span>
+            </div>
+        </div>
+        <div class="title">[玩吧直播间] koe决战到底</div>
+    </div>
+</div><!--/live-->
+
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	function setfontSize(){
+		var doc = document,
+			docEle = doc.documentElement,
+			docEleW = docEle.clientWidth,
+			fs = docEleW/320*100;
+			
+		docEle.style.fontSize = fs+"px";
+		
+		var $v = $(".v"),
+			v_w = $v.width(),
+			v_h = v_w/320*180;
+	
+		$v.height(v_h);
+	}
+	
+	setfontSize();
+	$(window).resize(function(e){
+		setfontSize();
+	});
+});
+</script>
+</body>
+</html>
