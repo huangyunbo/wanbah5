@@ -11,34 +11,28 @@
 <body>
 <div class="live" id="live">
 	<div class="item">
-    	<div class="v">
-            <video class="video" preload="none" poster="" controls="controls"><source src="" type="application/x-mpegURL"></video>
-            <div class="info">
-                <span class="name">苍老师</span>
-                <span class="num"><i></i>1.8W</span>
-            </div>
+        <video class="video" preload="none" poster="" controls><source src="" type="application/x-mpegURL"></video>
+        <div class="info">
+            <span class="name">苍老师</span>
+            <span class="num"><i></i>1.8W</span>
         </div>
         <div class="title">[玩吧直播间] koe决战到底12312123123</div>
     </div>
     <div class="item">
-    	<div class="v">
-            <video class="video" preload="none" poster="" controls="controls"><source src="" type="application/x-mpegURL"></video>
-            <div class="info">
-                <span class="name">苍老师123123123</span>
-                <span class="num"><i></i>1.8W123123</span>
-            </div>
+    	<video class="video" preload="none" poster="" controls><source src="" type="application/x-mpegURL"></video>
+        <div class="info">
+            <span class="name">苍老师</span>
+            <span class="num"><i></i>1.8W</span>
         </div>
-        <div class="title">[玩吧直播间] koe决战到底</div>
+        <div class="title">[玩吧直播间] koe决战到底12312123123</div>
     </div>
     <div class="item">
-    	<div class="v">
-            <video class="video" preload="none" poster="" controls="controls"><source src="" type="application/x-mpegURL"></video>
-            <div class="info">
-                <span class="name">苍老师</span>
-                <span class="num"><i></i>1.8W</span>
-            </div>
+    	<video class="video" preload="none" poster="" controls><source src="" type="application/x-mpegURL"></video>
+        <div class="info">
+            <span class="name">苍老师</span>
+            <span class="num"><i></i>1.8W</span>
         </div>
-        <div class="title">[玩吧直播间] koe决战到底</div>
+        <div class="title">[玩吧直播间] koe决战到底12312123123</div>
     </div>
 </div><!--/live-->
 
@@ -53,11 +47,11 @@ $(function(){
 			
 		docEle.style.fontSize = fs+"px";
 		
-		var $v = $(".v"),
-			v_w = $v.width(),
-			v_h = v_w/320*180;
+		var $video = $(".video"),
+			video_w = $video.width(),
+			video_h = video_w/320*180;
 	
-		$v.height(v_h);
+		$video.height(video_h);
 	}
 	
 	setfontSize();

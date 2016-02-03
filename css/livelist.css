@@ -19,12 +19,11 @@ a{ text-decoration:none}
 
 body{ background:#000; color:#fff}
 .live .item{ width:50%; float:left; padding:0.1rem; box-sizing:border-box}
-.live .item .v{ position:relative}
-.live .v .video{ width:100%; height:100%; position:absolute}
-.live .v .info{ position:absolute; left:0; bottom:0; font-size:0.1rem; width:100%; background:linear-gradient(transparent, #000); background:-webkit-linear-gradient(transparent, #000)}
-.live .v .name,.live .v .num{ width:50%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; box-sizing:border-box}
-.live .v .name{ float:left; padding-left:0.05rem}
-.live .v .num{ float:right; padding-right:0.05rem; text-align:right}
-.live .v .num i{ width:0.08rem; height:0.08rem; display:inline-block; background:url(../images/icon_livelist.png) no-repeat; background-size:0.08rem; margin-right:0.02rem}
+.live .item .video{ width:100%; vertical-align:top; display:block}
+.live .item .info{ font-size:0.1rem; overflow:hidden}
+.live .item .name,.live .item .num{ width:50%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; box-sizing:border-box}
+.live .item .name{ float:left}
+.live .item .num{ float:right; text-align:right}
+.live .item .num i{ width:0.08rem; height:0.08rem; display:inline-block; background:url(../images/icon_livelist.png) no-repeat; background-size:0.08rem; margin-right:0.02rem}
 .live .item .title{ font-size:0.1rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 
