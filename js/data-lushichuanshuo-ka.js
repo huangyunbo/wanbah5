@@ -4,7 +4,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {platform:"web",plugin:"plugin_963",job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,feimin:0,feimax:100};//platform:打包平台,plugin:插件板块名925/926内侧 963/964正式,job:职业,url:前缀路径,cards:选中的卡牌,cardnum:当前一共选了多少张牌了,rarity:稀有度0所有,fei:费法力0所有
+		this.o = {platform:"web",plugin:"plugin_963",job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,fei:-1,keyword:""};//platform:打包平台,plugin:插件板块名925/926内侧 963/964正式,job:职业,url:前缀路径,cards:选中的卡牌,cardnum:当前一共选了多少张牌了,rarity:稀有度0所有,fei:费法力0所有
 		if(this.o.platform == "android"){
 			this.o.url="../images/lushichuanshuo/";
 		}
@@ -79,12 +79,14 @@
 		},
 		printmycards: function(){//打印我的某个卡组
 			var wbgllscsmycards,
-			newcards = [],
-			newcards_l = [],
-			newcards_r = [],
-			card,
-			html = '',
-			dic = [0,0,0,0,0,0,0,0];//0-7+的卡牌法力消耗值图表
+				newcards = [],
+				newcards_l = [],
+				newcards_r = [],
+				card,
+				html = '',
+				dic = [0,0,0,0,0,0,0,0],//0-7+的卡牌法力消耗值图表
+				dust_ordinary = 0,//普通奥术之尘
+				dust_gold = 0;//金奥术之尘
 			
 			if(this.o.platform == "ios"){
 				wbgllscsmycards = JSON.parse(localStorage.getItem("wbgl-lscs-ka-mycards"));
@@ -108,7 +110,6 @@
 					return '<div class="num"><em>'+num+'</em></div>';
 				}
 			}
-			
 			
 			for(var i=0; i<wbgllscsmycards.cards.length; i++){//先把30张牌排出来
 				card = wbgllscsmycards.cards[i];
@@ -150,9 +151,31 @@
 								'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
 							'</div>'+
 						'</div>';
+				//奥术之尘
+				switch(card.f){
+					case 2:
+						dust_ordinary += 40;
+						dust_gold += 400;
+						break;
+					case 3:
+						dust_ordinary += 100;
+						dust_gold += 800;
+						break;
+					case 4:
+						dust_ordinary += 400;
+						dust_gold += 1600;
+						break;
+					case 5:
+						dust_ordinary += 1600;
+						dust_gold += 3200;
+						break;
+				}
 			}
 		
 			$("#ka_mycards").html(html);
+			
+			$("#dust_ordinary").html(dust_ordinary);
+			$("#dust_gold").html(dust_gold);
 			
 			$("#ka_mycards_chart").children("li").each(function(index){
 				var _h = dic[index] / 30 * 2 * 100;//翻倍效果更加明显
@@ -339,7 +362,6 @@
 			card,
 			num = 0;
 			
-			
 			function isLegend(f){//是否是传说级别
 				if(f==5){
 					return " item_glod";
@@ -468,15 +490,32 @@
 		},
 		printdetail: function(){//打印卡牌
 			var cardshtml = '',
-			datacards = this.datacards[this.switchjob(this.o.job)].b,
-			rarity = this.o.rarity,
-			feimin = this.o.feimin,
-			feimax = this.o.feimax,
-			card;
+				datacards = this.datacards[this.switchjob(this.o.job)].b,
+				rarity = this.o.rarity,
+				fei = this.o.fei,
+				feimin = 0,
+				feimax = 100,
+				keyword = this.o.keyword,
+				card;
+
+			(function feiFn(){
+				switch(fei){
+					case -1:
+						feimin = 0;
+						feimax = 100;
+						break;
+					case 7:
+						feimin = 7;
+						feimax = 100;
+						break;
+					default:
+						feimax = feimin = fei;
+				}
+			})();
 			
 			for(var i=0; i<datacards.length; i++){
 				card = datacards[i];
-				if((rarity==0 || card.f==rarity) && ((card.e>=feimin && card.e<=feimax))){
+				if((rarity==0 || card.f==rarity) && (card.e >= feimin && card.e <= feimax) && (keyword.length == 0 || card.d.indexOf(keyword) != -1)){
 					cardshtml += '<div class="item" data-id="'+card.c+'">'+
 									'<div class="w">'+
 										'<img src="'+this.o.url+'ka-defaultpic.png">'+
@@ -579,10 +618,37 @@
 				that.removecardlist($(this).attr("data-id"));
 			});
 			
+			//搜索关键词
+			var $so_btn = $("#so_btn"),
+				$so_text = $("#so_text"),
+				$so_cancel = $("#so_cancel");
+			$so_btn.click(function(){
+				var keyword = $.trim($so_text.val());
+				that.o.keyword = keyword;
+				that.printdetail();
+			});
+			$so_text.keyup(function(){
+				var keyword = $.trim(this.value);
+				
+				if(keyword.length > 0){
+					$so_cancel.removeClass("hide");
+				}else{
+					$so_cancel.addClass("hide");
+					that.o.keyword = "";
+					that.printdetail();
+				}
+			});
+			$so_cancel.click(function(){
+				that.o.keyword = "";
+				$so_text.val("");
+				$so_cancel.addClass("hide");
+				that.printdetail();
+			});
+			
 			var $ka_add_rarity = $("#ka_add_rarity"),
-			$ka_add_rarity_ul = $("#ka_add_rarity_ul"),
-			$ka_add_fei = $("#ka_add_fei"),
-			$ka_add_fei_ul = $("#ka_add_fei_ul");
+				$ka_add_rarity_ul = $("#ka_add_rarity_ul"),
+				$ka_add_fei = $("#ka_add_fei"),
+				$ka_add_fei_ul = $("#ka_add_fei_ul");
 			//添加卡牌-职业/中立切换
 			$("#ka_add_group .item").click(function(){
 				var job = $(this).attr("data-job");
@@ -604,6 +670,7 @@
 				$ka_add_rarity.children().eq(0).html(self.children().html());
 				$ka_add_rarity_ul.hide();
 				that.printdetail();
+				return false;
 			});
 			//添加卡牌-费用切换
 			$ka_add_fei.click(function(){
@@ -612,12 +679,12 @@
 			});
 			$ka_add_fei_ul.children().click(function(){
 				var self = $(this);
-				that.o.feimin = Number(self.attr("data-fei-min"));
-				that.o.feimax = Number(self.attr("data-fei-max"));
+				that.o.fei = Number(self.attr("data-fei"));
 				self.addClass("on").siblings().removeClass("on");
 				$ka_add_fei.children().eq(0).html(self.children().html());
 				$ka_add_fei_ul.hide();
 				that.printdetail();
+				return false;
 			});
 			//添加卡牌-点击卡牌放大镜
 			$("#ka_add_maincard").on("click", ".zoom", function(e){
@@ -725,9 +792,9 @@
 					break;
 				case (href == "detail"):
 					var win_h = $(window).height(),
-					$ka_add_maincard = $("#ka_add_maincard"),
-					head_h = $ka_add_maincard.siblings(".head").innerHeight(),
-					header_h = this.o.platform == "ios" ? 0 : 50;
+						$ka_add_maincard = $("#ka_add_maincard"),
+						head_h = $ka_add_maincard.prev(".head").innerHeight(),
+						header_h = this.o.platform == "ios" ? 0 : 50;
 					
 					$ka_add_maincard.height(win_h-head_h-header_h);
 					

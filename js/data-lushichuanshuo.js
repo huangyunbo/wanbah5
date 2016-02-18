@@ -4,7 +4,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {platform:"web",plugin:"plugin_963",type:0,manacost:0,url:"images/lushichuanshuo/",isData_type:true};//platform:打包平台,plugin:插件板块名,type:9职业+中立 0-9,manacost:费法力 0-8,url:图片路径,isData_type:打开弹窗不需要开启隐藏上下
+		this.o = {platform:"web",plugin:"plugin_963",type:0,manacost:0,url:"images/lushichuanshuo/",isData_type:true,keyword:""};//platform:打包平台,plugin:插件板块名,type:9职业+中立 0-9,manacost:费法力 0-8,url:图片路径,isData_type:打开弹窗不需要开启隐藏上下
 		if(this.o.platform == "android"){
 			this.o.url="../images/lushichuanshuo/";
 		}
@@ -12,27 +12,32 @@
 	}
 	
 	Lscs.prototype = {
-		mana: function(){//费法力
-			var _card = arguments[0];
-			if(this.o.manacost == 0 || _card.e == this.o.manacost - 1){
-				return true;
-			}else if(this.o.manacost == 8 && _card.e > 7){
-				return true;
-			}
-			return false;
-		},
 		printdatacard: function(){//打印卡牌
-			var _html = '';
-			_datacards = this.datacards[this.o.type].b,
-			_url = this.o.url;
+			var that = this,
+				html = '',
+				_datacards = this.datacards[this.o.type].b,
+				url = this.o.url,
+				card = "",
+				keyword = this.o.keyword;
+			
+			//费法力
+			function mana(){
+				if(that.o.manacost == 0 || card.e == that.o.manacost - 1){
+					return true;
+				}else if(that.o.manacost == 8 && card.e > 7){
+					return true;
+				}
+				return false;
+			}
 
 			for(var i=0; i<_datacards.length; i++){
-				if(this.mana(_datacards[i])){
-					_html += '<li data-id="'+_datacards[i].c+'"><div class="pic"><div style="background-image:url('+_url+'DBPic/79_'+_datacards[i].c+'_thumb.png)"></div><img src="'+_url+'ka-defaultpic.png"></div><p>'+_datacards[i].d+'</p></li>';
+				card = _datacards[i];
+				if(mana() && (keyword.length == 0 || card.d.indexOf(keyword) != -1)){
+					html += '<li data-id="'+_datacards[i].c+'"><div class="pic"><div style="background-image:url('+url+'DBPic/79_'+_datacards[i].c+'_thumb.png)"></div><img src="'+url+'ka-defaultpic.png"></div><p>'+_datacards[i].d+'</p></li>';
 				}
 			}
 			
-			$("#data_card").html(_html);
+			$("#data_card").html(html);
 			$(".data_body").scrollTop(0);
 			this.slidingHide();
 		},
@@ -155,6 +160,32 @@
 				$("body").css("overflow-y","auto");
 				that.o.isData_type = true;
 				$(this).addClass("hide");
+			});
+			//搜索关键词
+			var $so_btn = $("#so_btn"),
+				$so_text = $("#so_text"),
+				$so_cancel = $("#so_cancel");
+			$so_btn.click(function(){
+				var keyword = $.trim($so_text.val());
+				that.o.keyword = keyword;
+				that.printdatacard();
+			});
+			$so_text.keyup(function(){
+				var keyword = $.trim(this.value);
+				
+				if(keyword.length > 0){
+					$so_cancel.removeClass("hide");
+				}else{
+					$so_cancel.addClass("hide");
+					that.o.keyword = "";
+					that.printdatacard();
+				}
+			});
+			$so_cancel.click(function(){
+				that.o.keyword = "";
+				$so_text.val("");
+				$so_cancel.addClass("hide");
+				that.printdatacard();
 			});
 		},
 		isplatform: function(){//判断打包平台显示相应内容
