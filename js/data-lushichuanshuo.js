@@ -36,6 +36,9 @@
 					html += '<li data-id="'+_datacards[i].c+'"><div class="pic"><div style="background-image:url('+url+'DBPic/79_'+_datacards[i].c+'_thumb.png)"></div><img src="'+url+'ka-defaultpic.png"></div><p>'+_datacards[i].d+'</p></li>';
 				}
 			}
+			if(html.length == 0){
+				html += '<span style="padding-left:5px">暂无数据</span>';
+			}
 			
 			$("#data_card").html(html);
 			$(".data_body").scrollTop(0);
@@ -187,6 +190,15 @@
 				$so_cancel.addClass("hide");
 				that.printdatacard();
 			});
+			//解决ios下软键盘弹出问题
+			if(that.o.platform == "ios"){
+				$so_text.focus(function(){
+					$("#data_fei").addClass("hide");
+				});
+				$so_text.blur(function(){
+					$("#data_fei").removeClass("hide");
+				});
+			}
 		},
 		isplatform: function(){//判断打包平台显示相应内容
 			if(this.o.platform == "android"){

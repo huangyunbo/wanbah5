@@ -527,6 +527,9 @@
 								'</div>';
 				}
 			}
+			if(cardshtml.length == 0){
+				cardshtml += '<span style="padding-left:10px; color:#fff">暂无数据</span>';
+			}
 			$("#ka_add_maincard").html(cardshtml);
 		},
 		setkaaddboxbg: function(){//设置添加卡牌右侧顶部职业旗帜
