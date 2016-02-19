@@ -4,7 +4,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {platform:"web",plugin:"plugin_963",type:0,manacost:0,url:"images/lushichuanshuo/",isData_type:true,keyword:""};//platform:打包平台,plugin:插件板块名,type:9职业+中立 0-9,manacost:费法力 0-8,url:图片路径,isData_type:打开弹窗不需要开启隐藏上下
+		this.o = {platform:"web",plugin_ka:"plugin_963",type:0,manacost:0,url:"images/lushichuanshuo/",isData_type:true,keyword:""};//platform:打包平台,plugin_ka:跳转卡组模拟器的文件包名,type:9职业+中立 0-9,manacost:费法力 0-8,url:图片路径,isData_type:打开弹窗不需要开启隐藏上下
 		if(this.o.platform == "android"){
 			this.o.url="../images/lushichuanshuo/";
 		}
@@ -191,7 +191,7 @@
 		isplatform: function(){//判断打包平台显示相应内容
 			if(this.o.platform == "android"){
 				$("#header").removeClass("hide");
-				$("#header").children(".more").attr("href","../"+this.o.plugin+"/index.html");
+				$("#header").children(".more").attr("href","../"+this.o.plugin_ka+"/index.html");
 			}else if(this.o.platform == "ios"){
 				$("#data_type").addClass("data_type_ios");
 				$("#data_card").parent().addClass("data_card_ios");
