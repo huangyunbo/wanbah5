@@ -528,7 +528,7 @@
 				}
 			}
 			if(cardshtml.length == 0){
-				cardshtml += '<span style="padding-left:10px; color:#fff">暂无数据</span>';
+				cardshtml += '<span class="nodata" style="color:#fff">暂无数据，换个关键词试试</span>';
 			}
 			$("#ka_add_maincard").html(cardshtml);
 		},

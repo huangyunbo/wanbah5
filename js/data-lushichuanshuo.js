@@ -37,7 +37,7 @@
 				}
 			}
 			if(html.length == 0){
-				html += '<span style="padding-left:5px">暂无数据</span>';
+				html += '<span class="nodata">暂无数据，换个关键词试试</span>';
 			}
 			
 			$("#data_card").html(html);
@@ -193,10 +193,10 @@
 			//解决ios下软键盘弹出问题
 			if(that.o.platform == "ios"){
 				$so_text.focus(function(){
-					$("#data_fei").addClass("hide");
+					$("#data_fei").fadeTo(10,0);
 				});
 				$so_text.blur(function(){
-					$("#data_fei").removeClass("hide");
+					$("#data_fei").delay(500).fadeTo(10,1);
 				});
 			}
 		},

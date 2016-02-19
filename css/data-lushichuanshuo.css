@@ -17,6 +17,7 @@ a{ text-decoration:none}
 .hide{ display:none !important}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 
+body{ -webkit-user-select:none; user-select:none}
 .data_body{ background:#ead0a2 url(../images/lushichuanshuo/data-bg.jpg) no-repeat fixed center bottom; background-size:cover}
 .header{ height:49px; background:#845832; position:relative; border-bottom:1px solid #dba542}
 .data_body .header{ width:100%; position:fixed; z-index:10; top:0; left:0}
@@ -48,6 +49,7 @@ a{ text-decoration:none}
 .data_type_animate{ top:-88px; transition:top 0.5s ease-out}
 .data_card{ width:100%; margin:148px 0 50px}
 .data_card_ios{ margin-top:98px}
+.nodata{ padding-left:5px; font-size:1.2rem}
 /*公用搜索*/
 .so{ height:40px; position:relative; padding:10px 5px 0; font-size:1.4rem}
 .so .box{ margin-right:50px}
@@ -75,6 +77,7 @@ a{ text-decoration:none}
 .data_fei .item i.item_7{ background-position:-240px 0}
 .data_fei .item.on span{ background:url(../images/lushichuanshuo/data-fei.png) -270px 0px no-repeat; background-size:320px; height:40px; width:40px; left:50%; top:-4px; position:absolute; margin-left:-19px}
 @media screen and (min-width:640px){
+	.nodata{ padding-left:10px; font-size:2rem}
 	/*公用搜索*/
 	.so{ height:80px; padding:20px 10px 0; font-size:2.2rem}
 	.so .box{ margin-right:100px}
