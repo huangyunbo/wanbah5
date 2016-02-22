@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* 怪物猎人107 2016-02-17 lucas */
+
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
+html{font:625%/1.5 "Microsoft YaHei",sans-serif}
+img{border:none;max-width:100%;vertical-align:top}
+h1,h2,h3,h4,h5,h6{font-weight:normal}
+input,select,textarea{font-size:100%;vertical-align:baseline}
+ol,ul{list-style:none}
+textarea{overflow:auto;vertical-align:top;resize:vertical}
+table{border-collapse:collapse;border-spacing:0}
+em,i,code,cite,address,th{font-style:normal}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:0.01rem}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+a{ text-decoration:none}
+.hide{ display:none !important}
+.mt_0{ margin-top:0 !important}
+.wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.scroll{ overflow-x:auto}
+
+body{ background:#241a11}
+.header{ height:0.44rem; border-bottom:0.01rem solid #907353; background:#40281c; position:fixed; width:100%; top:0; left:0; z-index:100}
+.header h1{ font-size:0.18rem; padding-top:0.08rem; color:#fff; text-align:center}
+.header .back{ position:absolute; top:0.13rem; left:0.15rem; border:solid #fff; border-width:0 0 0.01rem 0.01rem; width:0.15rem; height:0.15rem; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
+.content{ text-align:center; margin-top:0.45rem; margin-bottom: 0.30rem}
+.content ul{ font-size: 0; line-height: 0}
+.content li{ display:inline-block; width:30%; text-align:center; padding-top:0.15rem; vertical-align:top}
+.content li img{ width:0.58rem; height:0.58rem}
+.content li p{ font-size:0.14rem; line-height:1; padding: 0.05rem 0; color:#fff}
+
+
+.weaponlist{ color: #fff; margin-top: 0.45rem}
+.weaponlist .head{ border-bottom:0.01rem solid #ffca28; display:table; width:100%}
+.weaponlist .head .item.on{ color:#ffca28}
+.weaponlist .head .item{ width:12%; height:0.50rem; text-align:center; display:table-cell; vertical-align:middle; font-size:0.14rem; position:relative}
+.weaponlist .head .item:before{ content: ""; background:#ffca28; width:0.01rem; height:0.22rem; position:absolute; right:0; top:0.15rem}
+.weaponlist .weapon_content{ height: 9rem}
+.weaponlist .weapon_content .move{ margin-left: 0.2rem; width: 100%; height: 1.5rem}
+.oldiv{ position:absolute; width:0.32rem; height:0.32rem; cursor:pointer; background-color:#41403c; border:0.02rem solid #53504b; border-radius:0.03rem; box-shadow: 0 0 0.08rem 0 rgba(0, 0, 0, 0.4) inset; text-align: center}
+.weapon_icon{ width:0.30rem; height: 0.30rem}
+.icon_chuizi { display:inline-block; position:absolute; bottom:-0.06rem; right:-0.11rem; width:0.16rem; height:0.16rem; background: url(../images/guaiwulieren/date-icon.png) 0 0 no-repeat; z-index:101}
+.left1{ left:0.4rem}
+.left2{ left:0.6rem}
+.left3{ left:0.8rem}
+.left4{ left:1.0rem}
+.left5{ left:1.2rem}
+.left6{ left:1.4rem}
+.left7{ left:1.6rem}
+.left8{ left:1.8rem}
+.left9{ left:2.0rem}
+.left10{ left:2.2rem}
+.left11{ left:2.4rem}
+.left12{ left:2.6rem}
+.left13{ left:2.8rem}
+
+.top1{ top:1.2rem}
+.top2{ top:1.9rem}
+.top3{ top:2.6rem}
+.top4{ top:3.3rem}
+.top5{ top:4.0rem}
+.top6{ top:4.7rem}
+.top7{ top:5.4rem}
+.top8{ top:6.1rem}
+.top9{ top:6.8rem}
+.top10{ top:7.5rem}
+.top11{ top:8.2rem}
+.top12{ top:8.9rem}
+.top13{ top:9.6rem}
+
