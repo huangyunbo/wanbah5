@@ -53,7 +53,7 @@
 			var weaponIcon = ["weapons_chq.png","weapons_psj.png","weapons_dj.png","weapons_td.png","weapons_dc.png","weapons_sd.png","weapons_np.png","weapons_g.png","weapons_sld.png"];
 			var type_html='',weaponType='';
 			for(var i=0;i<weaponName.length;i++){				
-				type_html += '<li weaponType="'+i+'"><img src="'+that.o.url+'weapon_type/'+weaponIcon[i]+'"><p>'+weaponName[i]+'</p></li>';
+				type_html += '<li weaponType="'+i+'"><img src="'+that.o.url+'weapontype/'+weaponIcon[i]+'"><p>'+weaponName[i]+'</p></li>';
 			}			
 			$("#content").html('<ul>'+type_html+'</ul>');
 
