@@ -13,7 +13,7 @@
 					dresstype:{id:1,oldid:1,parentid:0,haskid:0,state:0},//id:是选中哪一个,oldid:记录上次点击的id(没有子集的),parentid:父级id是谁,haskid:是否有子集,state:0默认 2搜索
 					way:0,//选择的4条路 0:衣柜 1:竞技场 2:联盟委托 3:关卡
 					way_selected:0,//用于在点击4条路，并不是真的选中，可能会取消
-					wu:[{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}],//五属性
+					wu:[{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"qingliang",r:1}],//五属性
 					te:[],//特殊属性
 					te_selected:[],//特殊属性 选中的
 					zhuti:"",//衣柜(作为保存套装名字用) 竞技场 联盟委托 关卡 选中的主题
@@ -249,7 +249,7 @@
 			this.o.dresstype = {id:1,oldid:1,parentid:0,haskid:0,state:0};
 			this.o.way = 0;
 			this.o.way_selected = 0;
-			this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}];
+			this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"qingliang",r:1}];
 			this.o.te = [];
 			this.o.te_selected = [];
 			this.o.zhuti = "";
@@ -348,7 +348,7 @@
 				_bag = this.o.bag,
 				hasadd = 0,
 				_tid,
-				ornaments = [10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,29,30],//饰品
+				ornaments = [10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,29,30,31,32,33],//饰品
 				ornamentsNum = 0;
 			
 			if(_bag.length > 0){
@@ -525,7 +525,7 @@
 			
 			switch(this.o.way){
 				case 0://处理衣柜
-					this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"baonuan",r:1}];
+					this.o.wu = [{k:"jianyue",r:1},{k:"keai",r:1},{k:"huopo",r:1},{k:"qingchun",r:1},{k:"qingliang",r:1}];
 					this.o.te = [];
 					this.o.zhuti = "";
 					this.setBeam();
@@ -893,6 +893,9 @@
 					case 28:
 					case 29:
 					case 30:
+					case 31:
+					case 32:
+					case 33:
 						for(k in _wu){
 							switch(_wu[k]){
 								case 250:r="B";break;
