@@ -249,7 +249,7 @@
 						part3 = part3 + '<tr><td><em>'+data[78+k]+'</em></td><td><em>'+data[79+k]+'</em></td></tr>';
 					else
 					{
-						break;
+						// break;
 					}
 				}
 				part3 = part3 + '<tr>\
