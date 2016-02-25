@@ -23,7 +23,7 @@ body{ background:#241a11}
 .header{ height:0.44rem; border-bottom:0.01rem solid #907353; background:#40281c; position:fixed; width:100%; top:0; left:0; z-index:100}
 .header h1{ font-size:0.18rem; padding-top:0.08rem; color:#fff; text-align:center}
 .header .back{ position:absolute; top:0.13rem; left:0.15rem; border:solid #fff; border-width:0 0 0.01rem 0.01rem; width:0.15rem; height:0.15rem; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
-.content{ text-align:center; margin-top:0.45rem; margin-bottom: 0.30rem}
+.content{ text-align:center; margin-top:1.05rem}
 .content ul{ font-size: 0; line-height: 0}
 .content li{ display:inline-block; width:30%; text-align:center; padding-top:0.15rem; vertical-align:top}
 .content li img{ width:0.58rem; height:0.58rem}
@@ -70,3 +70,39 @@ body{ background:#241a11}
 .top12{ top:8.9rem}
 .top13{ top:9.6rem}
 
+.dialogcard{ background:rgba(0,0,0,0.9); color:#fff; width:100%; height:100%; z-index:9999; position:fixed; top:0; left:0; overflow-y:auto}
+.hoverdiv{ position:absolute; font-size:0.12rem; margin:0 0.05rem; top:0.45rem; width:3.08rem; background-color:#18100b; border:0.01rem solid #89836f; z-index:102}
+.hoverdiv h3{/* border-bottom: 1px solid #302824; */ text-align: center; font-size: 0.14rem; font-weight: bold; color: #f7f7f7; height: 0.40rem; line-height: 0.40rem; position: relative;}
+.hoverdiv .table-div { border-bottom: 0.01rem solid #302824; padding: 0.05rem 0 0.05rem 0.14rem; font-size:0.12rem;}
+.hoverdiv .ol-table { text-align: left;}
+ body table { border-collapse: collapse;}
+.hoverdiv .ol-table td, .hoverdiv .ol-table th { padding: 0.01rem 0; color: #d5d4c2;}
+.hoverdiv .ol-table td em, .hoverdiv .ol-table th em { color: #fff;}
+.hoverdiv .ol-table .blocktr { position: relative; display: block;}
+.hoverdiv .ol-music .tit-p { text-align: left; padding: 3px 0; color: #d5d4c2; }
+.hoverdiv .ol-music .ol-table { width: 100%; }
+.hoverdiv .more-table .ol-table { width: 100%; text-align: left; }
+/*basePro*/
+/*.basePro { position: absolute; background: url(../images/guaiwulieren/datebase-pro-bg.gif) 0 center no-repeat; width: 2.14rem; height: 0.06rem; padding: 0.03rem 0.17rem 0.05rem 0.14rem; top: 0.06rem; left: 0.35rem;}*/
+.basePro { position: absolute; 
+	        -webkit-transform: skew(-40deg);
+			-moz-transform: skew(-40deg);
+			-o-transform: skew(-40deg);
+			-ms-transform: skew(-40deg);
+			transform: skew(-40deg);
+			/*background: #353334; */
+			width: 2.14rem; 
+			height: 0.06rem; 
+			padding: 0.03rem 0.17rem 0.05rem 0.14rem; 
+			top: 0.06rem; 
+			left: 0.35rem }
+
+.basePro .colorBar { float: left; width: 10%; height: 0.06rem;}
+.basePro .leaveBar { float: right; height: 0.06rem; width: 50%; background-color: #353334; position: relative; top: -0.06rem;}
+.basePro .bar-1 { background-color: #9f2e10;}
+.basePro .bar-2 { background-color: #bb7a27;}
+.basePro .bar-3 { background-color: #ccd52a;}
+.basePro .bar-4 { background-color: #01af14;}
+.basePro .bar-5 { background-color: #304ecf;}
+.basePro .bar-6 { background-color: #fff;}
+body .clearfix {zoom: 1}
