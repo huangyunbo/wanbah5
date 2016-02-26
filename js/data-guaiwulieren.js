@@ -11,6 +11,7 @@
 			url:"images/guaiwulieren/",
 			plugin:"plugin_1101"
 		};
+		this.weaponName = ["铳枪","片手剑","大剑","太刀","大锤","双刀","弩炮","弓","狩猎笛"];
 		if(this.o.platform == "android"){
 			this.o.url="../images/guaiwulieren/";
 		}
@@ -381,6 +382,7 @@
 				single_weapon_data= '',
 				tindex='',
 				tmep_c1='',
+				$titlename = $("#titlename"),
 				$weapon_head = $("#weapon_head"),
 				$weapon_content = $("#weapon_content");				
 			for(var i=0;i<this.data_layout[index].data.length;i++){				
@@ -403,18 +405,19 @@
 						html_content='';
 				// }
 			}
+			$titlename.html(that.getTypeName());
 			$weapon_head.html(html_title);
 			$weapon_content.html(tmep_c1);		
 			
 		},
 
 		printindex:function(){//打印Index,武器类型
-			var that = this;
-			var weaponName = ["铳枪","片手剑","大剑","太刀","大锤","双刀","弩炮","弓","狩猎笛"];
+			var that = this;			
 			var weaponIcon = ["weapons_chq.png","weapons_psj.png","weapons_dj.png","weapons_td.png","weapons_dc.png","weapons_sd.png","weapons_np.png","weapons_g.png","weapons_sld.png"];
-			var type_html='',weaponType='';
-			for(var i=0;i<weaponName.length;i++){				
-				type_html += '<li weaponType="'+i+'"><img src="'+that.o.url+'weapontype/'+weaponIcon[i]+'"><p>'+weaponName[i]+'</p></li>';
+			var type_html='',
+				weaponType='';
+			for(var i=0;i<that.weaponName.length;i++){				
+				type_html += '<li weaponType="'+i+'"><img src="'+that.o.url+'weapontype/'+weaponIcon[i]+'"><p>'+that.weaponName[i]+'</p></li>';
 			}			
 			$("#content").html('<ul>'+type_html+'</ul>');
 		},
@@ -456,9 +459,18 @@
 							$("#header").children(".back").attr("href","data-guaiwulieren-weapon.html");
 						}else if(this.o.platform == "android"){							
 							$("#header").children(".back").attr("href","data-guaiwulieren-weapon.html");							
-						}					
+						}			
 				break;
 			}
+		},
+
+		getTypeName:function(){
+			var type = this.getsession("wbgl-guaiwulieren-weapon-type");	
+					for(var i=0;i<this.weaponName.length;i++){
+						if( i== type){
+							return this.weaponName[i];							
+						}
+					}	
 		},
 
 		ispage: function(){//判断当前打开的是哪一个页面
