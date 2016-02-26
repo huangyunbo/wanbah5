@@ -19,6 +19,8 @@ a{ text-decoration:none}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .scroll{ overflow-x:auto}
 
+.container{ margin-top:0.45rem; color:#f8f8f8; font-size:0.18rem; text-align:center; padding-top:1rem}
+
 body{ background:#241a11}
 .header{ height:0.44rem; border-bottom:0.01rem solid #907353; background:#40281c; position:fixed; width:100%; top:0; left:0; z-index:100}
 .header h1{ font-size:0.18rem; padding-top:0.08rem; color:#fff; text-align:center}

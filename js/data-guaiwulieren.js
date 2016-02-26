@@ -9,7 +9,7 @@
 		this.o={
 			platform:"web",
 			url:"images/guaiwulieren/",
-			plugin:"plugin_1101"
+			plugin:"plugin_1217"
 		};
 		this.weaponName = ["铳枪","片手剑","大剑","太刀","大锤","双刀","弩炮","弓","狩猎笛"];
 		if(this.o.platform == "android"){
@@ -443,6 +443,8 @@
 				$("#header").removeClass("hide");
 			}
 			switch(i){
+				case "find-data":
+				case "find-dapeiqi":
 				case "index":
 					if(this.o.platform == "web"){
 						removehide();
@@ -460,7 +462,8 @@
 						}else if(this.o.platform == "android"){							
 							$("#header").children(".back").attr("href","data-guaiwulieren-weapon.html");							
 						}			
-				break;
+				break;		
+
 			}
 		},
 
@@ -486,6 +489,12 @@
 				case (href == "index-detail.html"):
 					this.isplatform("index-detail");
 					this.printDetail();
+					break;
+				case (href == "find-data.html"):
+					this.isplatform("find-data");
+					break;
+				case (href =="find-dapeiqi.html"):
+					this.isplatform("find-dapeiqi");
 					break;
 			}
 		},

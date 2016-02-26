@@ -1249,5 +1249,107 @@ gulp.task('huangshizhanzheng_ios', function(){
 });
 
 
+//怪物猎人
+var guaiwulieren_gameid = 107;
+var guaiwulieren_plugin_data = "plugin_1214";
+var guaiwulieren_plugin_dapeiqi = "plugin_1216";
+var guaiwulieren_plugin_weapon = "plugin_1217";
+var guaiwulieren_path = '../';
+var guaiwulieren_replace = ['css/', 'js/', 'json/'];
+var guaiwulieren_replace_data =  ['css/', 'js/', 'json/'];
+var guaiwulieren_platform = 'android';
+
+
+gulp.task('guaiwulieren_images', function(){
+    gulp.src('./images/guaiwulieren/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+guaiwulieren_gameid+'/'+guaiwulieren_platform+'/DataPlugin/images/guaiwulieren'));
+	if(guaiwulieren_platform == 'android'){
+		gulp.src('./images/.nomedia', {buffer: false})
+	        .pipe(gulp.dest('../../chajian/'+guaiwulieren_gameid+'/'+guaiwulieren_platform+'/DataPlugin/images/'));
+    }
+});
+
+gulp.task('guaiwulieren_css', function(){
+    gulp.src(['./css/data-guaiwulieren.css'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+guaiwulieren_gameid+'/'+guaiwulieren_platform+'/DataPlugin/css'));
+});
+
+gulp.task('guaiwulieren_js', function(){
+    gulp.src(['./js/jquery-2.1.3.min.js','./js/data-guaiwulieren.js'])
+        .pipe(concat('data-guaiwulieren.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+guaiwulieren_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+guaiwulieren_gameid+'/'+guaiwulieren_platform+'/DataPlugin/js'));
+});
+
+gulp.task('guaiwulieren_json', function(){
+    gulp.src(['./json/json-guaiwulieren.js', './json/json-guaiwulieren.js'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+guaiwulieren_gameid+'/'+guaiwulieren_platform+'/DataPlugin/json'));
+});
+
+gulp.task('guaiwulieren_data', function(){
+	if(guaiwulieren_platform == 'android'){
+		for(var i=0; i<guaiwulieren_replace.length; i++){
+			guaiwulieren_replace_data[i] = guaiwulieren_path + guaiwulieren_replace[i];
+		}
+	}
+	
+    gulp.src('data-guaiwulieren-data.html')
+		.pipe(merge({
+            'js/data-guaiwulieren.min.js':['js/jquery-2.1.3.min.js','js/data-guaiwulieren.js']
+        }))
+		.pipe(replace(guaiwulieren_replace[0], guaiwulieren_replace_data[0]))
+		.pipe(replace(guaiwulieren_replace[1], guaiwulieren_replace_data[1]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+guaiwulieren_gameid+'/'+guaiwulieren_platform+'/DataPlugin/'+guaiwulieren_plugin_data));
+
+    gulp.src('data-guaiwulieren-dapeiqi.html')
+	.pipe(merge({
+        'js/data-guaiwulieren.min.js':['js/jquery-2.1.3.min.js','js/data-guaiwulieren.js']
+    }))
+	.pipe(replace(guaiwulieren_replace[0], guaiwulieren_replace_data[0]))
+	.pipe(replace(guaiwulieren_replace[1], guaiwulieren_replace_data[1]))
+	.pipe(rename('index.html'))
+    .pipe(gulp.dest('../../chajian/'+guaiwulieren_gameid+'/'+guaiwulieren_platform+'/DataPlugin/'+guaiwulieren_plugin_dapeiqi));
+
+    gulp.src('data-guaiwulieren-weapon.html')
+	.pipe(merge({
+        'js/data-guaiwulieren.min.js':['js/jquery-2.1.3.min.js','js/data-guaiwulieren.js']
+    }))
+	.pipe(replace(guaiwulieren_replace[0], guaiwulieren_replace_data[0]))
+	.pipe(replace(guaiwulieren_replace[1], guaiwulieren_replace_data[1]))
+	.pipe(replace(guaiwulieren_replace[2], guaiwulieren_replace_data[2]))
+	.pipe(rename('index.html'))
+    .pipe(gulp.dest('../../chajian/'+guaiwulieren_gameid+'/'+guaiwulieren_platform+'/DataPlugin/'+guaiwulieren_plugin_weapon));
+
+    gulp.src('data-guaiwulieren-weapon-detail.html')
+	.pipe(merge({
+        'js/data-guaiwulieren.min.js':['js/jquery-2.1.3.min.js','js/data-guaiwulieren.js']
+    }))
+	.pipe(replace(guaiwulieren_replace[0], guaiwulieren_replace_data[0]))
+	.pipe(replace(guaiwulieren_replace[1], guaiwulieren_replace_data[1]))
+	.pipe(replace(guaiwulieren_replace[2], guaiwulieren_replace_data[2]))	
+	.pipe(rename('data-guaiwulieren-weapon-detail.html'))
+    .pipe(gulp.dest('../../chajian/'+guaiwulieren_gameid+'/'+guaiwulieren_platform+'/DataPlugin/'+guaiwulieren_plugin_weapon));
+});
+
+gulp.task('guaiwulieren_clean', function(){
+	return gulp.src('../../chajian/'+guaiwulieren_gameid+'/'+guaiwulieren_platform+'/DataPlugin/*', {read: false})
+	.pipe(clean({force: true}));
+});
+
+gulp.task('guaiwulieren_android', ['guaiwulieren_clean'], function(){
+	gulp.start('guaiwulieren_images','guaiwulieren_json','guaiwulieren_css', 'guaiwulieren_js', 'guaiwulieren_data');
+});
+
+gulp.task('guaiwulieren_ios_inner', ['guaiwulieren_clean'], function(){
+	gulp.start('guaiwulieren_images','guaiwulieren_json','guaiwulieren_css', 'guaiwulieren_js', 'guaiwulieren_data');
+});
+
+gulp.task('guaiwulieren_ios', function(){
+	guaiwulieren_platform = 'ios';
+	gulp.start('guaiwulieren_ios_inner');
+});
+
 
 
