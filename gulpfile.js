@@ -1275,7 +1275,7 @@ gulp.task('guaiwulieren_css', function(){
 });
 
 gulp.task('guaiwulieren_js', function(){
-    gulp.src(['./js/jquery-2.1.3.min.js','./js/data-guaiwulieren.js'])
+    gulp.src(['./js/jquery-2.1.4.min.js','./js/data-guaiwulieren.js'])
         .pipe(concat('data-guaiwulieren.min.js'))
 		.pipe(replace('platform:"web"', 'platform:"'+guaiwulieren_platform+'"'))
         .pipe(uglify())
@@ -1296,7 +1296,7 @@ gulp.task('guaiwulieren_data', function(){
 	
     gulp.src('data-guaiwulieren-data.html')
 		.pipe(merge({
-            'js/data-guaiwulieren.min.js':['js/jquery-2.1.3.min.js','js/data-guaiwulieren.js']
+            'js/data-guaiwulieren.min.js':['js/jquery-2.1.4.min.js','js/data-guaiwulieren.js']
         }))
 		.pipe(replace(guaiwulieren_replace[0], guaiwulieren_replace_data[0]))
 		.pipe(replace(guaiwulieren_replace[1], guaiwulieren_replace_data[1]))
@@ -1305,7 +1305,7 @@ gulp.task('guaiwulieren_data', function(){
 
     gulp.src('data-guaiwulieren-dapeiqi.html')
 	.pipe(merge({
-        'js/data-guaiwulieren.min.js':['js/jquery-2.1.3.min.js','js/data-guaiwulieren.js']
+        'js/data-guaiwulieren.min.js':['js/jquery-2.1.4.min.js','js/data-guaiwulieren.js']
     }))
 	.pipe(replace(guaiwulieren_replace[0], guaiwulieren_replace_data[0]))
 	.pipe(replace(guaiwulieren_replace[1], guaiwulieren_replace_data[1]))
@@ -1314,7 +1314,7 @@ gulp.task('guaiwulieren_data', function(){
 
     gulp.src('data-guaiwulieren-weapon.html')
 	.pipe(merge({
-        'js/data-guaiwulieren.min.js':['js/jquery-2.1.3.min.js','js/data-guaiwulieren.js']
+        'js/data-guaiwulieren.min.js':['js/jquery-2.1.4.min.js','js/data-guaiwulieren.js']
     }))
 	.pipe(replace(guaiwulieren_replace[0], guaiwulieren_replace_data[0]))
 	.pipe(replace(guaiwulieren_replace[1], guaiwulieren_replace_data[1]))
@@ -1324,7 +1324,7 @@ gulp.task('guaiwulieren_data', function(){
 
     gulp.src('data-guaiwulieren-weapon-detail.html')
 	.pipe(merge({
-        'js/data-guaiwulieren.min.js':['js/jquery-2.1.3.min.js','js/data-guaiwulieren.js']
+        'js/data-guaiwulieren.min.js':['js/jquery-2.1.4.min.js','js/data-guaiwulieren.js']
     }))
 	.pipe(replace(guaiwulieren_replace[0], guaiwulieren_replace_data[0]))
 	.pipe(replace(guaiwulieren_replace[1], guaiwulieren_replace_data[1]))

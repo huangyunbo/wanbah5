@@ -9,24 +9,16 @@
 		this.o={
 			platform:"web",
 			url:"images/guaiwulieren/",
-			plugin:"plugin_1217"
-		};
-		this.weaponName = ["铳枪","片手剑","大剑","太刀","大锤","双刀","弩炮","弓","狩猎笛"];
+			plugin:"plugin_1217",
+			weaponName:["铳枪","片手剑","大剑","太刀","大锤","双刀","弩炮","弓","狩猎笛"]
+		};		
 		if(this.o.platform == "android"){
 			this.o.url="../images/guaiwulieren/";
 		}
-		this.init();
-		// console.log(this.data[8].result[0].data[1]);
-		// console.log(this.data_layout.length);
-		// for(var i=0;i<this.data_layout.length;i++){
-		// 	console.log(this.data_layout[i].tname);
-		// }
+		this.init();		
 	};
 	
 	Guaiwulieren.prototype = {
-
-
-
 		printdialogcard:function(id){//打印武器属性dialog
 			var that = this,
 			data = that.getWeaponData(id),
@@ -67,14 +59,14 @@
 				zhanwei = '<tr class="blocktr">'+                                
 				                    '<td><em>斩味：</em></td>'+                              
 				                    '<td>'+
-				                    	'<div class="basePro clearfix">'+
-											'<span class="colorBar bar-1" style="width:'+width[0]+'%"></span>'+
-											'<span class="colorBar bar-2" style="width:'+width[1]+'%"></span>'+
-											'<span class="colorBar bar-3" style="width:'+width[2]+'%"></span>'+
-											'<span class="colorBar bar-4" style="width:'+width[3]+'%"></span>'+
-											'<span class="colorBar bar-5" style="width:'+width[4]+'%"></span>'+
-											'<span class="colorBar bar-6" style="width:'+width[5]+'%"></span>'+
-											'<span class="leaveBar" style="width:'+width[6]+'%"></span>'+
+				                    	'<div class="basepro clearfix">'+
+											'<span class="colorbar bar-1" style="width:'+width[0]+'%"></span>'+
+											'<span class="colorbar bar-2" style="width:'+width[1]+'%"></span>'+
+											'<span class="colorbar bar-3" style="width:'+width[2]+'%"></span>'+
+											'<span class="colorbar bar-4" style="width:'+width[3]+'%"></span>'+
+											'<span class="colorbar bar-5" style="width:'+width[4]+'%"></span>'+
+											'<span class="colorbar bar-6" style="width:'+width[5]+'%"></span>'+
+											'<span class="leavebar" style="width:'+width[6]+'%"></span>'+
 										'</div>'+
 				                    '</td>'+                            
 				                '</tr>';
@@ -416,8 +408,8 @@
 			var weaponIcon = ["weapons_chq.png","weapons_psj.png","weapons_dj.png","weapons_td.png","weapons_dc.png","weapons_sd.png","weapons_np.png","weapons_g.png","weapons_sld.png"];
 			var type_html='',
 				weaponType='';
-			for(var i=0;i<that.weaponName.length;i++){				
-				type_html += '<li weaponType="'+i+'"><img src="'+that.o.url+'weapontype/'+weaponIcon[i]+'"><p>'+that.weaponName[i]+'</p></li>';
+			for(var i=0;i<that.o.weaponName.length;i++){				
+				type_html += '<li weaponType="'+i+'"><img src="'+that.o.url+'weapontype/'+weaponIcon[i]+'"><p>'+that.o.weaponName[i]+'</p></li>';
 			}			
 			$("#content").html('<ul>'+type_html+'</ul>');
 		},
@@ -469,9 +461,9 @@
 
 		getTypeName:function(){
 			var type = this.getsession("wbgl-guaiwulieren-weapon-type");	
-					for(var i=0;i<this.weaponName.length;i++){
+					for(var i=0;i<this.o.weaponName.length;i++){
 						if( i== type){
-							return this.weaponName[i];							
+							return this.o.weaponName[i];							
 						}
 					}	
 		},
