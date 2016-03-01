@@ -277,7 +277,7 @@
 				var _id = Number($(this).attr("data-id"));				
 				that.setsession("wbgl-boombeach-build-id", _id);				
 				if(that.o.platform == "ios"){
-					location.href = that.o.plugin_build+'/data-boombeach-building-details.html';
+					location.href = '../'+that.o.plugin_build+'/data-boombeach-building-details.html';
 				}else{
 					location.href = 'data-boombeach-building-details.html';
 				}

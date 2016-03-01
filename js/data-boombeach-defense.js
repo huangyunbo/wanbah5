@@ -33,27 +33,40 @@
 			this.eventsBen();
 		},
 
-		printDefenseList:function(err, list_data){		
+		printDefenseList:function(err, list_data, totalCount){		
 			var html_ben_list = ''
 				title = '',
-				that = this;				
+				that = this,
+				h_pic='';				
 			if(err === 1){
-				$("#container").html("网络错误");
+				$("#defense_datalist").addClass("no_net").html("网络错误");
 				return;
 			}			
 			title = that.getsession("wbgl-boombeach-ben-title");
 			if(list_data.data.length > 0){	
 				for(var i=0;i<list_data.data.length;i++){
+					if(list_data.data[i].thumbPicName.trim().length>0){
+						h_pic='<div class="d_img"><img src="'+'http://res.wanba123.cn/pic/'+list_data.data[i].thumbPicName+'"></div>';
+					}
 					html_ben_list += '<li>'+
-					'<a list-data-id="'+list_data.data[i].Id+'">'+
-					'<div class="d_img"><img src="'+'http://res.wanba123.cn/pic/'+list_data.data[i].thumbPicName+'"></div>'+
+					'<a class="item" list-data-id="'+list_data.data[i].Id+'">'+
+					h_pic+
 					'<div class="note">'+
 					'<h2>'+list_data.data[i].Title+'</h2>'+
 					'</div></a></li>'					
 				}
+				//分页请求
+				if(list_data.data.length > 10){
+					$("#lookmore").attr("data-startpage", totalCount);
+					html_ben_list += '<a href="javascript:;" class="lookmore" id="lookmore" data-startpage="'+totalCount+'">点击加载更多</a>';
+				}
 			}else{
-				html_ben_list = "暂无数据";
-				$("#defense_datalist").addClass("no_net");	
+				if(totalCount == 0){
+					html_ben_list = "暂无数据";
+					$("#defense_datalist").addClass("no_net");
+				}else{
+					$("#lookmore").html("没有更多了");
+				}
 			}			
 			$("#defense_datalist").html(html_ben_list);		
 			$("#list_title").html(title);	
@@ -103,7 +116,7 @@
 
 		eventsList:function(){
 			var that = this;
-			$("a").click(function(){
+			$(".item").click(function(){
 				var list_id = Number($(this).attr("list-data-id"));				
 				that.setsession("wbgl-boombeach-ben-list-id", list_id);					
 				if(that.o.platform == "ios"){
@@ -111,6 +124,13 @@
 				}else{
 					location.href = 'data-boombeach-defense-details.html';
 				}		
+			});
+
+			$("#lookmore").click(function(){
+			    var $self = $(this),
+			    	that = this,
+			        totalCount = Number($self.attr("data-startpage"))+10;
+			        that.getDefenseListData(totalCount);
 			});
 		},
 
@@ -121,22 +141,22 @@
 					artid: list_id
 				}).done(function(data){										
 					that.printDefenseDetail(data.error, data);										
-				}).fail(function(){
-					console.log('失败');
+				}).fail(function(){					
+					$("#container").addClass("no_net").html("网络错误");
 				});
 		},
 
-		getDefenseListData:function(){
+		getDefenseListData:function(totalCount){
 			
 			var that = this;
 			var id = that.getsession("wbgl-boombeach-ben-id");			
 			$.getJSON('http://m.wanba123.cn/h5data/articlelist?jsoncallback=?', {
 					groupid: id,
-					startpage: 0
+					startpage: totalCount
 				}).done(function(data){						
-					that.printDefenseList(data.error, data);									
-				}).fail(function(){
-					console.log('失败');
+					that.printDefenseList(data.error, data, totalCount);									
+				}).fail(function(){					
+					$("#defense_datalist").addClass("no_net").html("网络错误");
 				});
 
 		},
@@ -234,7 +254,7 @@
 					if(this.o.platform == "web"){
 						removehide();
 					}else if(this.o.platform == "android"){
-						removehide();		
+						removehide();
 						$("#header").children(".back").attr("href","index.html");				
 					}else if(this.o.platform == "ios"){						
 						$("#datalist").addClass("mt_0");
@@ -258,12 +278,12 @@
 			var href = $("body").attr("data-url");			
 			switch(true){
 				case (href == "defense-ben.html"):
-					this.isplatform("defense-ben");
+					this.isplatform("defense-ben");					
 					this.printDefenseBen();
 					break;
 				case (href == "defense-list.html"):
 					this.isplatform("defense-list");
-					this.getDefenseListData();					
+					this.getDefenseListData(0);					
 					break;
 				case (href == "defense-details.html"):
 					this.isplatform("defense-details");

@@ -90,12 +90,13 @@ tr{ display: table-row; vertical-align: inherit; border-color: inherit}
 
 .armsd .data_detail .figure { width: 100%; border-collapse: separate; border-spacing: 6px; table-layout: fixed}
 .armsd .f_tr{ display: table-row; vertical-align: inherit; border-color: inherit}
-.armsd .data_detail .figure .d_l{ width:65%; float:left}
+.armsd .data_detail .figure .d_l{ width:55%; float:left}
 .armsd .data_detail .figure .d_l span{ float:right; padding-top:5px; color:#365079}
-.armsd .data_detail .figure .d_r{ width:35%; float:right}
+.armsd .data_detail .figure .d_r{ width:45%; float:right}
 .armsd .data_detail .figure .d_r span,.armsd .data_detail .figure .d_r_f_l span{ font-size: 1.2rem; text-align: left; color: #66b5ff}
 .armsd .data_detail .figure .d_r_f_l{ float:left; padding-top:5px}
 .armsd .data_detail .figure .d_r_f_center{ text-align:left; margin-left:30%; padding-top:5px; color:#66b5ff}
+.armsd .data_detail .figure .d_r_f_center span{ font-size:1.4rem}
 .armsd .data_detail .figure .d_r div{ float:left; padding-top:5px}
 .armsd .data_detail .figure td{ width: 60%; position: relative; padding: 3px 5px; text-align: center; background:#fefdfb}
 .armsd .data_detail .figure td:first-child {width: 40%}
