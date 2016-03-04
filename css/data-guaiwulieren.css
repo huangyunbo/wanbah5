@@ -29,7 +29,7 @@ body{ background:#241a11}
 .content ul{ font-size: 0; line-height: 0}
 .content li{ display:inline-block; width:30%; text-align:center; padding-top:0.15rem; vertical-align:top}
 .content li img{ width:0.58rem; height:0.58rem}
-.content li p{ font-size:0.14rem; line-height:1; padding: 0.05rem 0; color:#fff}
+.content li p{ font-size:0.14rem; line-height:1; padding:0.05rem 0; color:#fff}
 
 
 .weaponlist{ color: #fff; margin-top: 0.45rem}
@@ -37,292 +37,282 @@ body{ background:#241a11}
 .weaponlist .head .item.on{ color:#ffca28}
 .weaponlist .head .item{ width:12%; height:0.50rem; text-align:center; display:table-cell; vertical-align:middle; font-size:0.14rem; position:relative}
 .weaponlist .head .item:before{ content: ""; background:#ffca28; width:0.01rem; height:0.22rem; position:absolute; right:0; top:0.15rem}
-.weaponlist .weapon_content{ height: 9rem}
-.weaponlist .weapon_content .content_item{ display: none}
-.weaponlist .weapon_content .content_item.on{ display: block}
-.weaponlist .weapon_content .move{ margin-left: 0.2rem; width: 100%; height: 1.5rem}
-.oldiv{ position:absolute; width:0.30rem; height:0.30rem; cursor:pointer; background-color:#41403c; border:0.02rem solid #53504b; border-radius:0.03rem; box-shadow: 0 0 0.08rem 0 rgba(0, 0, 0, 0.4) inset; text-align: center}
-.weapon_icon{ width:0.28rem; height: 0.28rem}
-.icon_chuizi { display:inline-block; position:absolute; bottom:-0.06rem; right:-0.11rem; width:0.16rem; height:0.16rem; background: url(../images/guaiwulieren/date-icon.png) 0 0 no-repeat; z-index:101}
-.left1{ left:0.4rem}
-.left2{ left:0.6rem}
-.left3{ left:0.8rem}
-.left4{ left:1.0rem}
-.left5{ left:1.2rem}
-.left6{ left:1.4rem}
-.left7{ left:1.6rem}
-.left8{ left:1.8rem}
-.left9{ left:2.0rem}
-.left10{ left:2.2rem}
-.left11{ left:2.4rem}
-.left12{ left:2.6rem}
-.left13{ left:2.8rem}
+.weaponlist .wptree{ position:relative; width:100%; height:9rem}
+.weaponlist .wptree .level{ position:absolute; width:0.4rem; height:100%; font-size:0.14rem; color:red; z-index:1}
+.weaponlist .wptree .land{ position:relative; width:100%; height:9rem;}
+.weaponlist .wptree .land .pole{ display:none;}
+.weaponlist .wptree .land .pole.on{ display: block;}
+.weaponlist .oldiv{ position:absolute; width:0.30rem; height:0.30rem; cursor:pointer; background-color:#41403c; border:0.02rem solid #53504b; border-radius:0.03rem; box-shadow: 0 0 0.08rem 0 rgba(0, 0, 0, 0.4) inset; text-align: center}
+.weaponlist .weapon_icon{ width:0.28rem; height:0.28rem}
+.weaponlist .icon_chuizi { position:absolute; bottom:-0.06rem; right:-0.11rem; width:0.16rem; height:0.16rem; background: url(../images/guaiwulieren/date-icon.png) 0 0 no-repeat}
 
-.top1{ top:1.2rem}
-.top2{ top:1.63rem}
-.top3{ top:2.06rem}
-.top4{ top:2.49rem}
-.top5{ top:3.92rem}
-.top6{ top:4.35rem}
-.top7{ top:4.78rem}
-.top8{ top:5.21rem}
-.top9{ top:5.64rem}
-.top10{ top:6.07rem}
-.top11{ top:6.50rem}
-.top12{ top:6.93rem}
-.top13{ top:7.385rem}
+
+.weaponlist .top1{ top:1.2rem}
+.weaponlist .top2{ top:1.63rem}
+.weaponlist .top3{ top:2.06rem}
+.weaponlist .top4{ top:2.49rem}
+.weaponlist .top5{ top:3.92rem}
+.weaponlist .top6{ top:4.35rem}
+.weaponlist .top7{ top:4.78rem}
+.weaponlist .top8{ top:5.21rem}
+.weaponlist .top9{ top:5.64rem}
+.weaponlist .top10{ top:6.07rem}
+.weaponlist .top11{ top:6.50rem}
+.weaponlist .top12{ top:6.93rem}
+.weaponlist .top13{ top:7.385rem}
 
 .changqiang{}
-.changqiang .line-1{left:0.8rem;}
-.changqiang .line-2{left:1.102rem;}
-.changqiang .line-3{left:1.2rem;}
-.changqiang .line-4{left:1.391rem;}
-.changqiang .line-5{left:1.6rem;}
-.changqiang .line-6{left:1.649rem;}
-.changqiang .line-7{left:2rem;}
-.changqiang .line-8{left:2.197rem;}
-.changqiang .line-9{left:2.4rem;}
-.changqiang .line-10{left:1.19rem;}
-.changqiang .line-11{left:1.393rem;}
-.changqiang .line-12{left:1.59rem;}
-.changqiang .line-13{left:1.701rem;}
-.changqiang .line-14{left:1.996rem;}
-.changqiang .line-15{left:0.79rem;}
-.changqiang .line-16{left:1.005rem;}
-.changqiang .line-17{left:1.19rem;}
-.changqiang .line-18{left:1.565rem;}
-.changqiang .line-19{left:1.608rem;}
-.changqiang .line-20{left:1.812rem;}
-.changqiang .line-21{left:2.008rem;}
-.changqiang .line-22{left:2.113rem;}
-.changqiang .line-23{left:2.408rem;}
-.changqiang .line-24{left:1.6rem;}
+.changqiang_bg{ background: url(../images/guaiwulieren/changqiang_1.jpg) no-repeat; background-size:contain}
+.changqiang .line-1{left:0.8rem}
+.changqiang .line-2{left:1.102rem}
+.changqiang .line-3{left:1.2rem}
+.changqiang .line-4{left:1.391rem}
+.changqiang .line-5{left:1.6rem}
+.changqiang .line-6{left:1.649rem}
+.changqiang .line-7{left:2rem}
+.changqiang .line-8{left:2.197rem}
+.changqiang .line-9{left:2.4rem}
+.changqiang .line-10{left:1.19rem}
+.changqiang .line-11{left:1.393rem}
+.changqiang .line-12{left:1.59rem}
+.changqiang .line-13{left:1.701rem}
+.changqiang .line-14{left:1.996rem}
+.changqiang .line-15{left:0.79rem}
+.changqiang .line-16{left:1.005rem}
+.changqiang .line-17{left:1.19rem}
+.changqiang .line-18{left:1.565rem}
+.changqiang .line-19{left:1.608rem}
+.changqiang .line-20{left:1.812rem}
+.changqiang .line-21{left:2.008rem}
+.changqiang .line-22{left:2.113rem}
+.changqiang .line-23{left:2.408rem}
+.changqiang .line-24{left:1.6rem}
 
 .chongqiang{}
-.chongqiang .line-1{left:1.2rem;}
-.chongqiang .line-2{left:1.502rem;}
-.chongqiang .line-3{left:1.6rem;}
-.chongqiang .line-4{left:1.791rem;}
-.chongqiang .line-5{left:1.994rem;}
-.chongqiang .line-6{left:0.79rem;}
-.chongqiang .line-7{left:0.987rem;}
-.chongqiang .line-8{left:1.196rem;}
-.chongqiang .line-9{left:1.596rem;}
-.chongqiang .line-10{left:1.688rem;}
-.chongqiang .line-11{left:1.799rem;}
-.chongqiang .line-12{left:1.996rem;}
-.chongqiang .line-13{left:2.408rem;}
-.chongqiang .line-14{left:0.79rem;}
-.chongqiang .line-15{left:1.012rem;}
-.chongqiang .line-16{left:1.196rem;}
-.chongqiang .line-17{left:1.615rem;}
-.chongqiang .line-1701{left:1.707rem;}
-.chongqiang .line-18{left:1.812rem;}
-.chongqiang .line-19{left:2.015rem;}
-.chongqiang .line-20{left:2.119rem;}
-.chongqiang .line-21{left:2.408rem;}
-.chongqiang .line-22{left:1.6rem;}
+.chongqiang .line-1{left:1.2rem}
+.chongqiang .line-2{left:1.502rem}
+.chongqiang .line-3{left:1.6rem}
+.chongqiang .line-4{left:1.791rem}
+.chongqiang .line-5{left:1.994rem}
+.chongqiang .line-6{left:0.79rem}
+.chongqiang .line-7{left:0.987rem}
+.chongqiang .line-8{left:1.196rem}
+.chongqiang .line-9{left:1.596rem}
+.chongqiang .line-10{left:1.688rem}
+.chongqiang .line-11{left:1.799rem}
+.chongqiang .line-12{left:1.996rem}
+.chongqiang .line-13{left:2.408rem}
+.chongqiang .line-14{left:0.79rem}
+.chongqiang .line-15{left:1.012rem}
+.chongqiang .line-16{left:1.196rem}
+.chongqiang .line-17{left:1.615rem}
+.chongqiang .line-1701{left:1.707rem}
+.chongqiang .line-18{left:1.812rem}
+.chongqiang .line-19{left:2.015rem}
+.chongqiang .line-20{left:2.119rem}
+.chongqiang .line-21{left:2.408rem}
+.chongqiang .line-22{left:1.6rem}
 
 .pianshoujian{}
-.pianshoujian .line-1{left:1.39rem;}
-.pianshoujian .line-2{left:1.593rem;}
-.pianshoujian .line-3{left:1.796rem;}
-.pianshoujian .line-4{left:0.59rem;}
-.pianshoujian .line-5{left:0.805rem;}
-.pianshoujian .line-6{left:0.996rem;}
-.pianshoujian .line-7{left:1.193rem;}
-.pianshoujian .line-8{left:1.39rem;}
-.pianshoujian .line-9{left:1.599rem;}
-.pianshoujian .line-10{left:1.796rem;}
-.pianshoujian .line-11{left:1.913rem;}
-.pianshoujian .line-12{left:2.202rem;}
-.pianshoujian .line-13{left:2.608rem;}
-.pianshoujian .line-14{left:0.78rem;}
-.pianshoujian .line-15{left:0.989rem;}
-.pianshoujian .line-16{left:1.174rem;}
-.pianshoujian .line-17{left:1.598rem;}
-.pianshoujian .line-18{left:1.685rem;}
-.pianshoujian .line-19{left:1.795rem;}
-.pianshoujian .line-20{left:1.998rem;}
-.pianshoujian .line-21{left:2.103rem;}
-.pianshoujian .line-22{left:2.405rem;}
-.pianshoujian .line-23{left:1.6rem;}
+.pianshoujian .line-1{left:1.39rem}
+.pianshoujian .line-2{left:1.593rem}
+.pianshoujian .line-3{left:1.796rem}
+.pianshoujian .line-4{left:0.59rem}
+.pianshoujian .line-5{left:0.805rem}
+.pianshoujian .line-6{left:0.996rem}
+.pianshoujian .line-7{left:1.193rem}
+.pianshoujian .line-8{left:1.39rem}
+.pianshoujian .line-9{left:1.599rem}
+.pianshoujian .line-10{left:1.796rem}
+.pianshoujian .line-11{left:1.913rem}
+.pianshoujian .line-12{left:2.202rem}
+.pianshoujian .line-13{left:2.608rem}
+.pianshoujian .line-14{left:0.78rem}
+.pianshoujian .line-15{left:0.989rem}
+.pianshoujian .line-16{left:1.174rem}
+.pianshoujian .line-17{left:1.598rem}
+.pianshoujian .line-18{left:1.685rem}
+.pianshoujian .line-19{left:1.795rem}
+.pianshoujian .line-20{left:1.998rem}
+.pianshoujian .line-21{left:2.103rem}
+.pianshoujian .line-22{left:2.405rem}
+.pianshoujian .line-23{left:1.6rem}
 
 .dajian{}
-.dajian .line-1{left:1.2rem;}
-.dajian .line-2{left:1.508rem;}
-.dajian .line-3{left:1.606rem;}
-.dajian .line-4{left:1.797rem;}
-.dajian .line-5{left:2rem;}
-.dajian .line-6{left:0.79rem;}
-.dajian .line-7{left:0.987rem;}
-.dajian .line-8{left:1.184rem;}
-.dajian .line-9{left:1.602rem;}
-.dajian .line-10{left:1.707rem;}
-.dajian .line-11{left:1.799rem;}
-.dajian .line-12{left:1.996rem;}
-.dajian .line-13{left:2.402rem;}
-.dajian .line-14{left:0.78rem;}
-.dajian .line-15{left:0.989rem;}
-.dajian .line-16{left:1.174rem;}
-.dajian .line-17{left:1.598rem;}
-.dajian .line-18{left:1.685rem;}
-.dajian .line-19{left:1.795rem;}
-.dajian .line-20{left:1.998rem;}
-.dajian .line-2001{left:2.103rem;}
-.dajian .line-21{left:2.405rem;}
-.dajian .line-22{left:1.6rem;}
+.dajian .line-1{left:1.2rem}
+.dajian .line-2{left:1.508rem}
+.dajian .line-3{left:1.606rem}
+.dajian .line-4{left:1.797rem}
+.dajian .line-5{left:2rem}
+.dajian .line-6{left:0.79rem}
+.dajian .line-7{left:0.987rem}
+.dajian .line-8{left:1.184rem}
+.dajian .line-9{left:1.602rem}
+.dajian .line-10{left:1.707rem}
+.dajian .line-11{left:1.799rem}
+.dajian .line-12{left:1.996rem}
+.dajian .line-13{left:2.402rem}
+.dajian .line-14{left:0.78rem}
+.dajian .line-15{left:0.989rem}
+.dajian .line-16{left:1.174rem}
+.dajian .line-17{left:1.598rem}
+.dajian .line-18{left:1.685rem}
+.dajian .line-19{left:1.795rem}
+.dajian .line-20{left:1.998rem}
+.dajian .line-2001{left:2.103rem}
+.dajian .line-21{left:2.405rem}
+.dajian .line-22{left:1.6rem}
 
 .taidao{}
-.taidao .line-1{left:0.99rem;}
-.taidao .line-2{left:1.39rem;}
-.taidao .line-3{left:1.593rem;}
-.taidao .line-4{left:1.796rem;}
-.taidao .line-5{left:1.882rem;}
-.taidao .line-6{left:2.196rem;}
-.taidao .line-7{left:0.99rem;}
-.taidao .line-8{left:1.193rem;}
-.taidao .line-9{left:1.396rem;}
-.taidao .line-10{left:1.593rem;}
-.taidao .line-11{left:1.79rem;}
-.taidao .line-12{left:2.196rem;}
-.taidao .line-13{left:0.78rem;}
-.taidao .line-14{left:0.989rem;}
-.taidao .line-15{left:1.174rem;}
-.taidao .line-16{left:1.598rem;}
-.taidao .line-17{left:1.795rem;}
-.taidao .line-18{left:1.998rem;}
-.taidao .line-19{left:2.405rem;}
-.taidao .line-20{left:1.6rem;}
+.taidao .line-1{left:0.99rem}
+.taidao .line-2{left:1.39rem}
+.taidao .line-3{left:1.593rem}
+.taidao .line-4{left:1.796rem}
+.taidao .line-5{left:1.882rem}
+.taidao .line-6{left:2.196rem}
+.taidao .line-7{left:0.99rem}
+.taidao .line-8{left:1.193rem}
+.taidao .line-9{left:1.396rem}
+.taidao .line-10{left:1.593rem}
+.taidao .line-11{left:1.79rem}
+.taidao .line-12{left:2.196rem}
+.taidao .line-13{left:0.78rem}
+.taidao .line-14{left:0.989rem}
+.taidao .line-15{left:1.174rem}
+.taidao .line-16{left:1.598rem}
+.taidao .line-17{left:1.795rem}
+.taidao .line-18{left:1.998rem}
+.taidao .line-19{left:2.405rem}
+.taidao .line-20{left:1.6rem}
 
 .dachui{}
-.dachui .line-1{left:1.2rem;}
-.dachui .line-2{left:1.502rem;}
-.dachui .line-3{left:1.6rem;}
-.dachui .line-4{left:1.791rem;}
-.dachui .line-5{left:2rem;}
-.dachui .line-6{left:0.6rem;}
-.dachui .line-7{left:0.797rem;}
-.dachui .line-8{left:1.006rem;}
-.dachui .line-9{left:1.406rem;}
-.dachui .line-10{left:1.505rem;}
-.dachui .line-11{left:1.615rem;}
-.dachui .line-12{left:1.806rem;}
-.dachui .line-13{left:2.206rem;}
-.dachui .line-14{left:2.415rem;}
-.dachui .line-15{left:2.594rem;}
-.dachui .line-16{left:0.99rem;}
-.dachui .line-17{left:1.175rem;}
-.dachui .line-18{left:1.402rem;}
-.dachui .line-19{left:1.507rem;}
-.dachui .line-20{left:1.802rem;}
-.dachui .line-21{left:2.012rem;}
-.dachui .line-22{left:2.202rem;}
-.dachui .line-23{left:1.6rem;}
+.dachui .line-1{left:1.2rem}
+.dachui .line-2{left:1.502rem}
+.dachui .line-3{left:1.6rem}
+.dachui .line-4{left:1.791rem}
+.dachui .line-5{left:2rem}
+.dachui .line-6{left:0.6rem}
+.dachui .line-7{left:0.797rem}
+.dachui .line-8{left:1.006rem}
+.dachui .line-9{left:1.406rem}
+.dachui .line-10{left:1.505rem}
+.dachui .line-11{left:1.615rem}
+.dachui .line-12{left:1.806rem}
+.dachui .line-13{left:2.206rem}
+.dachui .line-14{left:2.415rem}
+.dachui .line-15{left:2.594rem}
+.dachui .line-16{left:0.99rem}
+.dachui .line-17{left:1.175rem}
+.dachui .line-18{left:1.402rem}
+.dachui .line-19{left:1.507rem}
+.dachui .line-20{left:1.802rem}
+.dachui .line-21{left:2.012rem}
+.dachui .line-22{left:2.202rem}
+.dachui .line-23{left:1.6rem}
 
 .shuangdao{}
-.shuangdao .line-1{left:1.2rem;}
-.shuangdao .line-2{left:1.409rem;}
-.shuangdao .line-3{left:1.6rem;}
-.shuangdao .line-4{left:1.698rem;}
-.shuangdao .line-5{left:2rem;}
-.shuangdao .line-6{left:1.2rem;}
-.shuangdao .line-7{left:1.397rem;}
-.shuangdao .line-8{left:1.606rem;}
-.shuangdao .line-9{left:1.705rem;}
-.shuangdao .line-10{left:2rem;}
-.shuangdao .line-11{left:0.4rem;}
-.shuangdao .line-12{left:0.609rem;}
-.shuangdao .line-13{left:0.8rem;}
-.shuangdao .line-14{left:1.188rem;}
-.shuangdao .line-15{left:1.385rem;}
-.shuangdao .line-16{left:1.582rem;}
-.shuangdao .line-17{left:1.692rem;}
-.shuangdao .line-18{left:1.84rem;}
-.shuangdao .line-19{left:1.908rem;}
-.shuangdao .line-20{left:2rem;}
-.shuangdao .line-21{left:2.4rem;}
-.shuangdao .line-22{left:2.609rem;}
-.shuangdao .line-23{left:2.8rem;}
-.shuangdao .line-24{left:1.6rem;}
+.shuangdao .line-1{left:1.2rem}
+.shuangdao .line-2{left:1.409rem}
+.shuangdao .line-3{left:1.6rem}
+.shuangdao .line-4{left:1.698rem}
+.shuangdao .line-5{left:2rem}
+.shuangdao .line-6{left:1.2rem}
+.shuangdao .line-7{left:1.397rem}
+.shuangdao .line-8{left:1.606rem}
+.shuangdao .line-9{left:1.705rem}
+.shuangdao .line-10{left:2rem}
+.shuangdao .line-11{left:0.4rem}
+.shuangdao .line-12{left:0.609rem}
+.shuangdao .line-13{left:0.8rem}
+.shuangdao .line-14{left:1.188rem}
+.shuangdao .line-15{left:1.385rem}
+.shuangdao .line-16{left:1.582rem}
+.shuangdao .line-17{left:1.692rem}
+.shuangdao .line-18{left:1.84rem}
+.shuangdao .line-19{left:1.908rem}
+.shuangdao .line-20{left:2rem}
+.shuangdao .line-21{left:2.4rem}
+.shuangdao .line-22{left:2.609rem}
+.shuangdao .line-23{left:2.8rem}
+.shuangdao .line-24{left:1.6rem}
 
 .nupao{}
-.nupao .line-1{left:1.19rem;}
-.nupao .line-2{left:1.498rem;}
-.nupao .line-3{left:1.596rem;}
-.nupao .line-4{left:1.787rem;}
-.nupao .line-5{left:1.996rem;}
-.nupao .line-6{left:0.79rem;}
-.nupao .line-7{left:0.987rem;}
-.nupao .line-8{left:1.184rem;}
-.nupao .line-9{left:1.288rem;}
-.nupao .line-10{left:1.59rem;}
-.nupao .line-11{left:1.75rem;}
-.nupao .line-12{left:1.996rem;}
-.nupao .line-13{left:2.205rem;}
-.nupao .line-14{left:2.402rem;}
-.nupao .line-15{left:1.4rem;}
-.nupao .line-16{left:1.597rem;}
-.nupao .line-17{left:1.794rem;}
-.nupao .line-18{left:1.6rem;}
-.nupao .line-19{left:1.39rem;}
-.nupao .line-20{left:1.599rem;}
-.nupao .line-21{left:1.802rem;}
-.nupao .line-22{left:1.6rem;}
+.nupao .line-1{left:1.19rem}
+.nupao .line-2{left:1.498rem}
+.nupao .line-3{left:1.596rem}
+.nupao .line-4{left:1.787rem}
+.nupao .line-5{left:1.996rem}
+.nupao .line-6{left:0.79rem}
+.nupao .line-7{left:0.987rem}
+.nupao .line-8{left:1.184rem}
+.nupao .line-9{left:1.288rem}
+.nupao .line-10{left:1.59rem}
+.nupao .line-11{left:1.75rem}
+.nupao .line-12{left:1.996rem}
+.nupao .line-13{left:2.205rem}
+.nupao .line-14{left:2.402rem}
+.nupao .line-15{left:1.4rem}
+.nupao .line-16{left:1.597rem}
+.nupao .line-17{left:1.794rem}
+.nupao .line-18{left:1.6rem}
+.nupao .line-19{left:1.39rem}
+.nupao .line-20{left:1.599rem}
+.nupao .line-21{left:1.802rem}
+.nupao .line-22{left:1.6rem}
 
 .gong{}
-.gong .line-1{left:1.2rem;}
-.gong .line-2{left:1.495rem;}
-.gong .line-3{left:1.606rem;}
-.gong .line-4{left:1.797rem;}
-.gong .line-5{left:1.994rem;}
-.gong .line-6{left:0.79rem;}
-.gong .line-7{left:0.987rem;}
-.gong .line-8{left:1.196rem;}
-.gong .line-9{left:1.59rem;}
-.gong .line-10{left:1.701rem;}
-.gong .line-11{left:1.799rem;}
-.gong .line-12{left:1.996rem;}
-.gong .line-13{left:2.402rem;}
-.gong .line-14{left:0.79rem;}
-.gong .line-15{left:0.999rem;}
-.gong .line-16{left:1.184rem;}
-.gong .line-17{left:1.412rem;}
-.gong .line-18{left:1.602rem;}
-.gong .line-19{left:1.805rem;}
-.gong .line-20{left:1.898rem;}
-.gong .line-21{left:1.996rem;}
-.gong .line-22{left:2.402rem;}
-.gong .line-23{left:1.6rem;}
+.gong .line-1{left:1.2rem}
+.gong .line-2{left:1.495rem}
+.gong .line-3{left:1.606rem}
+.gong .line-4{left:1.797rem}
+.gong .line-5{left:1.994rem}
+.gong .line-6{left:0.79rem}
+.gong .line-7{left:0.987rem}
+.gong .line-8{left:1.196rem}
+.gong .line-9{left:1.59rem}
+.gong .line-10{left:1.701rem}
+.gong .line-11{left:1.799rem}
+.gong .line-12{left:1.996rem}
+.gong .line-13{left:2.402rem}
+.gong .line-14{left:0.79rem}
+.gong .line-15{left:0.999rem}
+.gong .line-16{left:1.184rem}
+.gong .line-17{left:1.412rem}
+.gong .line-18{left:1.602rem}
+.gong .line-19{left:1.805rem}
+.gong .line-20{left:1.898rem}
+.gong .line-21{left:1.996rem}
+.gong .line-22{left:2.402rem}
+.gong .line-23{left:1.6rem}
 
 .shouliedi{}
-.shouliedi .line-1{left:1rem;}
-.shouliedi .line-201{left:1.295rem;}
-.shouliedi .line-2{left:1.4rem;}
-.shouliedi .line-3{left:1.597rem;}
-.shouliedi .line-4{left:1.646rem;}
-.shouliedi .line-5{left:1.8rem;}
-.shouliedi .line-6{left:2.2rem;}
-.shouliedi .line-7{left:1.2rem;}
-.shouliedi .line-8{left:1.403rem;}
-.shouliedi .line-9{left:1.6rem;}
-.shouliedi .line-10{left:1.705rem;}
-.shouliedi .line-11{left:2rem;}
-.shouliedi .line-12{left:0.6rem;}
-.shouliedi .line-13{left:0.797rem;}
-.shouliedi .line-14{left:0.982rem;}
-.shouliedi .line-1501{left:1.388rem;}
-.shouliedi .line-15{left:1.578rem;}
-.shouliedi .line-16{left:1.782rem;}
-.shouliedi .line-17{left:2.2rem;}
-.shouliedi .line-18{left:2.403rem;}
-.shouliedi .line-19{left:2.6rem;}
-.shouliedi .line-20{left:1.6rem;}
+.shouliedi .line-1{left:1rem}
+.shouliedi .line-201{left:1.295rem}
+.shouliedi .line-2{left:1.4rem}
+.shouliedi .line-3{left:1.597rem}
+.shouliedi .line-4{left:1.646rem}
+.shouliedi .line-5{left:1.8rem}
+.shouliedi .line-6{left:2.2rem}
+.shouliedi .line-7{left:1.2rem}
+.shouliedi .line-8{left:1.403rem}
+.shouliedi .line-9{left:1.6rem}
+.shouliedi .line-10{left:1.705rem}
+.shouliedi .line-11{left:2rem}
+.shouliedi .line-12{left:0.6rem}
+.shouliedi .line-13{left:0.797rem}
+.shouliedi .line-14{left:0.982rem}
+.shouliedi .line-1501{left:1.388rem}
+.shouliedi .line-15{left:1.578rem}
+.shouliedi .line-16{left:1.782rem}
+.shouliedi .line-17{left:2.2rem}
+.shouliedi .line-18{left:2.403rem}
+.shouliedi .line-19{left:2.6rem}
+.shouliedi .line-20{left:1.6rem}
 
 
 .dialogcard{ background:rgba(0,0,0,0.9); color:#fff; width:100%; height:100%; z-index:9999; position:fixed; top:0; left:0; overflow-y:auto}
 .hoverdiv{ position:absolute; font-size:0.12rem; margin:0 0.05rem; top:0.45rem; width:3.08rem; background-color:#18100b; border:0.01rem solid #89836f; z-index:102}
-.hoverdiv h3{/* border-bottom: 1px solid #302824; */ text-align: center; font-size: 0.14rem; font-weight:bold; color:#f7f7f7; height:0.40rem; line-height:0.40rem; position:relative}
+.hoverdiv h3{ text-align: center; font-size: 0.14rem; font-weight:bold; color:#f7f7f7; height:0.40rem; line-height:0.40rem; position:relative}
 .hoverdiv .table-div { border-bottom:0.01rem solid #302824; padding:0.05rem 0 0.05rem 0.14rem; font-size:0.12rem}
 .hoverdiv .ol-table { text-align:left;}
  body table { border-collapse:collapse;}
@@ -332,10 +322,7 @@ body{ background:#241a11}
 .hoverdiv .ol-music .tit-p { text-align:left; padding:3px 0; color:#d5d4c2}
 .hoverdiv .ol-music .ol-table { width:100%; }
 .hoverdiv .more-table .ol-table { width:100%; text-align:left}
-/*basepro*/
-/*.basepro { position: absolute; background: url(../images/guaiwulieren/datebase-pro-bg.gif) 0 center no-repeat; width: 2.14rem; height: 0.06rem; padding: 0.03rem 0.17rem 0.05rem 0.14rem; top: 0.06rem; left: 0.35rem;}*/
 .basepro { position:absolute; -webkit-transform:skew(-40deg); -moz-transform:skew(-40deg); -o-transform:skew(-40deg); -ms-transform:skew(-40deg); transform:skew(-40deg); width:2.14rem; height:0.06rem; padding:0.03rem 0.17rem 0.05rem 0.14rem; top:0.06rem; left:0.35rem}
-
 .basepro .colorbar { float:left; width:10%; height:0.06rem}
 .basepro .leavebar { float:right; height:0.06rem; width:50%; background-color:#353334; position:relative; top:-0.06rem}
 .basepro .bar-1 { background-color:#9f2e10}

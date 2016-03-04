@@ -380,10 +380,11 @@
 				weapom_content_data = '',
 				single_weapon_data= '',
 				tindex='',
-				tmep_c1='',				
+				tmep_c1='',	
+				level='',			
 				$titlename = $("#titlename"),
 				$weapon_head = $("#weapon_head"),
-				$weapon_content = $("#weapon_content");				
+				$land = $("#land");				
 			for(var i=0;i<this.data_layout[index].data.length;i++){				
 				weapon_title_data = this.data_layout[index].data[i];				
 				html_title +='<div class="item">'+weapon_title_data.gname+'</div>';	
@@ -401,14 +402,14 @@
 							}							
 							html_content +='<div data-id="'+weapom_content_data.id+'" class="oldiv '+that.getTypeNameEng()+' line-'+weapom_content_data.line+' top'+weapom_content_data.row+'">'+html_small_icon+weapon_icon+'</div>';
 							html_small_icon = '';
-						}						
-						tmep_c1 += '<div class="'+that.getTypeNameEng()+' content_item ">'+html_content+'</div>';						
+						}	
+						tmep_c1 += '<div class="'+that.getTypeNameEng()+' pole">'+html_content+'</div>';						
 						html_content='';
 				// }
 			}					
 			$titlename.html(that.getTypeName());
 			$weapon_head.html(html_title);
-			$weapon_content.html(tmep_c1);		
+			$land.html(tmep_c1);		
 			
 		},
 
@@ -572,7 +573,7 @@
 		events: function(){//点击事件
 			var that = this,
 			$weapon_head = $("#weapon_head"),
-			$weapon_content = $("#weapon_content"),
+			$land = $("#land"),
 			tindex=0;
 			
 			//旋转屏幕重新设置
@@ -595,10 +596,10 @@
 				tindex = $weapon_head.children().index(this);
 				that.setsession("wbgl-guaiwulieren-weapon-title-tindex",tindex);
 				$weapon_head.children().eq(tindex).addClass("on").siblings().removeClass("on");
-				$weapon_content.children().eq(tindex).addClass("on").siblings().removeClass("on");
+				$land.children().eq(tindex).addClass("on").siblings().removeClass("on");
 			}).children().eq(tindex).trigger("click");
 
-			$weapon_content.on("click", ".oldiv", function(){//第二个页面内容点击事件
+			$land.on("click", ".oldiv", function(){//第二个页面内容点击事件
 				var _id = Number($(this).attr("data-id"));
 				that.setsession("wbgl-guaiwulieren-weapon-id",_id);				
 				// if(that.o.platform == "ios"){
