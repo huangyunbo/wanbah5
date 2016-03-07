@@ -353,7 +353,7 @@
 				}
 
 				part2 += '</tbody></table></div>';
-	       		$("#hoverdiv").html(part1 + part2 + part3);
+	       		$("#hover").html(part1 + part2 + part3);
 		},
 
 		getWeaponData:function(weapon_id){//获取单个weapon数据
@@ -403,7 +403,7 @@
 							html_content +='<div data-id="'+weapom_content_data.id+'" class="oldiv '+that.getTypeNameEng()+' line-'+weapom_content_data.line+' top'+weapom_content_data.row+'">'+html_small_icon+weapon_icon+'</div>';
 							html_small_icon = '';
 						}	
-						tmep_c1 += '<div class="'+that.getTypeNameEng()+' pole">'+html_content+'</div>';						
+						tmep_c1 += '<div class="'+that.getTypeNameEng()+' '+that.getTypeNameEng()+i+' pole">'+html_content+'</div>';						
 						html_content='';
 				// }
 			}					
@@ -420,7 +420,7 @@
 			for(var i=0;i<that.o.weaponName.length;i++){				
 				type_html += '<li weaponType="'+i+'"><img src="'+that.o.url+'weapontype/'+that.o.weaponIcon[i]+'"><p>'+that.o.weaponName[i]+'</p></li>';
 			}			
-			$("#content").html('<ul>'+type_html+'</ul>');
+			$("#weapon_content").html('<ul>'+type_html+'</ul>');
 		},
 
 		checkversion: function(){//检查版本
@@ -581,7 +581,7 @@
                 that.pageReset();
             });
 
-            $("#content").on("click", "li", function(){//第一个页面类型点击事件				
+            $("#weapon_content").on("click", "li", function(){//第一个页面类型点击事件				
 				weaponType = Number($(this).attr("weaponType"));
 				that.setsession("wbgl-guaiwulieren-weapon-type",weaponType);
 				if(that.o.platform == "ios"){
@@ -596,7 +596,7 @@
 				tindex = $weapon_head.children().index(this);
 				that.setsession("wbgl-guaiwulieren-weapon-title-tindex",tindex);
 				$weapon_head.children().eq(tindex).addClass("on").siblings().removeClass("on");
-				$land.children().eq(tindex).addClass("on").siblings().removeClass("on");
+				$land.children().eq(tindex).addClass("on").siblings().removeClass("on");				
 			}).children().eq(tindex).trigger("click");
 
 			$land.on("click", ".oldiv", function(){//第二个页面内容点击事件
