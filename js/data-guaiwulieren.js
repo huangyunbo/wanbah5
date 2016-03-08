@@ -16,7 +16,7 @@
 			plugin:"plugin_1217",
 			weaponName:["长枪","铳枪","片手剑","大剑","太刀","大锤","双刀","弩炮","弓","狩猎笛"],
 			weaponNameEng:["changqiang","chongqiang","pianshoujian","dajian","taidao","dachui","shuangdao","nupao","gong","shouliedi"],
-			weaponIcon:["weapons_chq.png","weapons_chq.png","weapons_psj.png","weapons_dj.png","weapons_td.png","weapons_dc.png","weapons_sd.png","weapons_np.png","weapons_g.png","weapons_sld.png"]
+			weaponIcon:["weapons_changq.png","weapons_chq.png","weapons_chq.png","weapons_psj.png","weapons_dj.png","weapons_td.png","weapons_dc.png","weapons_sd.png","weapons_np.png","weapons_g.png","weapons_sld.png"]
 		};		
 		if(this.o.platform == "android"){
 			this.o.url="../images/guaiwulieren/";
@@ -381,7 +381,9 @@
 				single_weapon_data= '',
 				tindex='',
 				tmep_c1='',	
-				level='',			
+				level='',		
+				wangzhe_bg='',	
+				other_bg='',
 				$titlename = $("#titlename"),
 				$weapon_head = $("#weapon_head"),
 				$land = $("#land");				
@@ -402,8 +404,18 @@
 							}							
 							html_content +='<div data-id="'+weapom_content_data.id+'" class="oldiv '+that.getTypeNameEng()+' line-'+weapom_content_data.line+' top'+weapom_content_data.row+'">'+html_small_icon+weapon_icon+'</div>';
 							html_small_icon = '';
-						}	
-						tmep_c1 += '<div class="'+that.getTypeNameEng()+' '+that.getTypeNameEng()+i+' pole">'+html_content+'</div>';						
+						}
+						other_bg = that.getTypeNameEng()+i;						
+						if(weapon_title_data.gname == "王者"){
+							wangzhe_bg = ' wangzhe ';
+							other_bg='';
+						}
+						if(weapon_title_data.gname == "其他"){							
+							other_bg='';//暂时先没有背景
+							wangzhe_bg='';
+						}
+						
+						tmep_c1 += '<div class="'+that.getTypeNameEng()+' '+wangzhe_bg+other_bg+' pole">'+html_content+'</div>';						
 						html_content='';
 				// }
 			}					
@@ -460,7 +472,7 @@
 					if(this.o.platform == "web"){
 							removehide();
 							$("#header").children(".back").attr("href","data-guaiwulieren-weapon.html");
-						}else if(this.o.platform == "android"){							
+					}else if(this.o.platform == "android"){							
 							$("#header").children(".back").attr("href","data-guaiwulieren-weapon.html");							
 						}			
 				break;		
