@@ -32,6 +32,8 @@ body{ background:#241a11}
 .weapon_content li p{ font-size:0.14rem; line-height:1; padding:0.05rem 0; color:#fff}
 
 
+.disappear{ display:none}
+.show{ display:block}
 .weaponlist{ color: #fff; }
 .weaponlist .head{  background:#241a11; z-index: 102; margin-top: 0.45rem; position:fixed; border-bottom:0.01rem solid #ffca28; display:table; width:100%}
 .weaponlist .head .item.on{ color:#ffca28}
@@ -51,7 +53,7 @@ body{ background:#241a11}
 .weaponlist .wptree .level45{ margin-top:0.24rem}
 .weaponlist .wptree .level50{ margin-top:0.26rem}
 .weaponlist .wptree .level55{ margin-top:0.28rem}
-.weaponlist .wptree .land{ position:relative; width:100%; height:9rem;}
+.weaponlist .wptree .land{ position:relative; width:100%; height:9rem; background:#18110b}
 .weaponlist .wptree .land .pole{ display:none;  background-size:contain; height:100%}
 .weaponlist .wptree .land .pole.on{ display: block;}
 .weaponlist .oldiv{ position:absolute; width:0.28rem; height:0.28rem; cursor:pointer; background-color:#41403c; border:0.02rem solid #53504b; border-radius:0.03rem; box-shadow: 0 0 0.08rem 0 rgba(0, 0, 0, 0.4) inset; text-align: center}
@@ -188,6 +190,9 @@ body{ background:#241a11}
 .dajian .line-22{left:1.6rem}
 
 .taidao{}
+.taidao0{ background: url(../images/guaiwulieren/bg/taidao0.jpg) no-repeat}
+.taidao1{ background: url(../images/guaiwulieren/bg/taidao1.jpg) no-repeat}
+.taidao2{ background: url(../images/guaiwulieren/bg/taidao2.jpg) no-repeat}
 .taidao .line-1{left:0.99rem}
 .taidao .line-2{left:1.39rem}
 .taidao .line-3{left:1.593rem}
@@ -210,6 +215,9 @@ body{ background:#241a11}
 .taidao .line-20{left:1.6rem}
 
 .dachui{}
+.dachui0{ background: url(../images/guaiwulieren/bg/dachui0.jpg) no-repeat}
+.dachui1{ background: url(../images/guaiwulieren/bg/dachui1.jpg) no-repeat}
+.dachui2{ background: url(../images/guaiwulieren/bg/dachui2.jpg) no-repeat}
 .dachui .line-1{left:1.2rem}
 .dachui .line-2{left:1.502rem}
 .dachui .line-3{left:1.6rem}
@@ -235,6 +243,9 @@ body{ background:#241a11}
 .dachui .line-23{left:1.6rem}
 
 .shuangdao{}
+.shuangdao0{ background: url(../images/guaiwulieren/bg/shuangdao0.jpg) no-repeat}
+.shuangdao1{ background: url(../images/guaiwulieren/bg/shuangdao1.jpg) no-repeat}
+.shuangdao2{ background: url(../images/guaiwulieren/bg/shuangdao2.jpg) no-repeat}
 .shuangdao .line-1{left:1.2rem}
 .shuangdao .line-2{left:1.409rem}
 .shuangdao .line-3{left:1.6rem}
@@ -261,6 +272,11 @@ body{ background:#241a11}
 .shuangdao .line-24{left:1.6rem}
 
 .nupao{}
+.nupao0{ background: url(../images/guaiwulieren/bg/nupao0.jpg) no-repeat}
+.nupao1{ background: url(../images/guaiwulieren/bg/nupao1.jpg) no-repeat}
+.nupao2{ background: url(../images/guaiwulieren/bg/nupao2.jpg) no-repeat}
+.nupao3{ background: url(../images/guaiwulieren/bg/nupao3.jpg) no-repeat}
+.nupao4{ background: url(../images/guaiwulieren/bg/nupao4.jpg) no-repeat}
 .nupao .line-1{left:1.19rem}
 .nupao .line-2{left:1.498rem}
 .nupao .line-3{left:1.596rem}
@@ -285,6 +301,9 @@ body{ background:#241a11}
 .nupao .line-22{left:1.6rem}
 
 .gong{}
+.gong0{ background: url(../images/guaiwulieren/bg/gong0.jpg) no-repeat}
+.gong1{ background: url(../images/guaiwulieren/bg/gong1.jpg) no-repeat}
+.gong2{ background: url(../images/guaiwulieren/bg/gong2.jpg) no-repeat}
 .gong .line-1{left:1.2rem}
 .gong .line-2{left:1.495rem}
 .gong .line-3{left:1.606rem}
@@ -310,6 +329,9 @@ body{ background:#241a11}
 .gong .line-23{left:1.6rem}
 
 .shouliedi{}
+.shouliedi0{ background: url(../images/guaiwulieren/bg/shouliedi0.jpg) no-repeat}
+.shouliedi1{ background: url(../images/guaiwulieren/bg/shouliedi1.jpg) no-repeat}
+.shouliedi2{ background: url(../images/guaiwulieren/bg/shouliedi2.jpg) no-repeat}
 .shouliedi .line-1{left:1rem}
 .shouliedi .line-201{left:1.295rem}
 .shouliedi .line-2{left:1.4rem}
