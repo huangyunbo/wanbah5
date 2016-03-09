@@ -605,8 +605,16 @@
             //选中索引
             tindex = that.getsession("wbgl-guaiwulieren-weapon-title-tindex");            
 			$weapon_head.on("click", ".item", function(){//第二个页面头部列表点击事件				
-				tindex = $weapon_head.children().index(this);
-				that.setsession("wbgl-guaiwulieren-weapon-title-tindex",tindex);
+				tindex = $weapon_head.children().index(this);							
+				
+				//其他隐藏等级
+				if($(this).context.innerText == '其他'){
+					console.log($(this).context.innerText);
+					$("#level").removeClass("show").addClass("disappear");
+				}else{
+					$("#level").removeClass("disappear").addClass("show");
+				}
+				that.setsession("wbgl-guaiwulieren-weapon-title-tindex",tindex);				
 				$weapon_head.children().eq(tindex).addClass("on").siblings().removeClass("on");
 				$land.children().eq(tindex).addClass("on").siblings().removeClass("on");				
 			}).children().eq(tindex).trigger("click");
