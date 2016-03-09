@@ -399,7 +399,7 @@
 									html_small_icon = '<i class="icon_chuizi"></i>';
 								}	
 								if(single_weapon_data[4] != ''){									
-									weapon_icon = '<img class="weapon_icon" src="images/guaiwulieren/icon/'+single_weapon_data[4]+'.png">';
+									weapon_icon = '<img class="weapon_icon" src="'+that.o.url+'icon/'+single_weapon_data[4]+'.png">';
 								}
 							}							
 							html_content +='<div data-id="'+weapom_content_data.id+'" class="oldiv '+that.getTypeNameEng()+' line-'+weapom_content_data.line+' top'+weapom_content_data.row+'">'+html_small_icon+weapon_icon+'</div>';
@@ -472,9 +472,10 @@
 					if(this.o.platform == "web"){
 							removehide();
 							$("#header").children(".back").attr("href","data-guaiwulieren-weapon.html");
-					}else if(this.o.platform == "android"){							
-							$("#header").children(".back").attr("href","data-guaiwulieren-weapon.html");							
-						}			
+					}else if(this.o.platform == "android"){		
+							removehide();					
+							$("#header").children(".back").attr("href","index.html");							
+					}			
 				break;		
 
 			}

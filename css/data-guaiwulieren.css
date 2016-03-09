@@ -39,7 +39,7 @@ body{ background:#241a11}
 .weaponlist .head .item.on{ color:#ffca28}
 .weaponlist .head .item{ width:12%; height:0.50rem; text-align:center; display:table-cell; vertical-align:middle; font-size:0.14rem; position:relative}
 .weaponlist .head .item:before{ content: ""; background:#ffca28; width:0.01rem; height:0.22rem; position:absolute; right:0; top:0.15rem}
-.weaponlist .wptree{ position:relative; width:100%; height:9rem; top: 0.92rem}
+.weaponlist .wptree{ position:relative; width:100%; height:6.14rem; top: 0.92rem}
 .weaponlist .wptree .level{ position:absolute; width:0.4rem; padding-left:0.10rem; height:100%; font-size:0.12rem; color:#fd935b; left:0;top:0}
 .weaponlist .wptree .level1{ margin-top:0.30rem}
 .weaponlist .wptree .level5{ margin-top:0.64rem}
@@ -53,7 +53,7 @@ body{ background:#241a11}
 .weaponlist .wptree .level45{ margin-top:0.24rem}
 .weaponlist .wptree .level50{ margin-top:0.26rem}
 .weaponlist .wptree .level55{ margin-top:0.28rem}
-.weaponlist .wptree .land{ position:relative; width:100%; height:9rem; background:#18110b}
+.weaponlist .wptree .land{ position:relative; width:100%; height:6.14rem; background:#18110b}
 .weaponlist .wptree .land .pole{ display:none;  background-size:contain; height:100%}
 .weaponlist .wptree .land .pole.on{ display: block;}
 .weaponlist .oldiv{ position:absolute; width:0.28rem; height:0.28rem; cursor:pointer; background-color:#41403c; border:0.02rem solid #53504b; border-radius:0.03rem; box-shadow: 0 0 0.08rem 0 rgba(0, 0, 0, 0.4) inset; text-align: center}
