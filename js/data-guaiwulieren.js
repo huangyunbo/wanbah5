@@ -16,7 +16,7 @@
 			plugin:"plugin_1217",
 			weaponName:["长枪","铳枪","片手剑","大剑","太刀","大锤","双刀","弩炮","弓","狩猎笛"],
 			weaponNameEng:["changqiang","chongqiang","pianshoujian","dajian","taidao","dachui","shuangdao","nupao","gong","shouliedi"],
-			weaponIcon:["weapons_changq.png","weapons_chq.png","weapons_chq.png","weapons_psj.png","weapons_dj.png","weapons_td.png","weapons_dc.png","weapons_sd.png","weapons_np.png","weapons_g.png","weapons_sld.png"]
+			weaponIcon:["weapons_changq.png","weapons_chq.png","weapons_psj.png","weapons_dj.png","weapons_td.png","weapons_dc.png","weapons_sd.png","weapons_np.png","weapons_g.png","weapons_sld.png"]
 		};		
 		if(this.o.platform == "android"){
 			this.o.url="../images/guaiwulieren/";
