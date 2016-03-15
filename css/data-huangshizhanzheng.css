@@ -18,34 +18,35 @@ a{ text-decoration:none}
 .mt_0{ margin-top:0 !important}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 
-body{ color:#fff; background:url(../images/huangshizhanzheng/hszz_bg.jpg) no-repeat fixed; background-size: cover}
+body{ color:#fff; background:url(../images/huangshizhanzheng/hszz_bg.jpg) no-repeat fixed; background-size: cover; z-index: 10}
 .header{ height:44px; border-bottom:1px solid #5086f0; background:#5086f0; position:fixed; width:100%; top:0; left:0}
 .header h1{ font-size:18px; padding-top:8px; text-align:center}
 .header .compare{ position:absolute; right: 0; top: 15px; padding-right:15px}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 .line{ height:1px; width:100%; background:#2a3c57; margin: 20px 0}
-.vertical_line{ width:1px; height:300px; background:#2a3c57; margin-top: -20px; display: inline-block;}
+.vertical_line{ width:1px; height:300px; background:#2a3c57; margin-top: -20px; display: inline-block}
 
 /*兵种数据*/
 .weaponlist{ color: #fff; margin-top:45px}
-.weaponlist .head{ background:#001536; /*border-bottom:1px solid #359bff;*/ display:table; width:100%}
+.weaponlist .head{ background:#001536; /*border-bottom:1px solid #359bff;*/ display:table; width:100%; position: fixed}
 .weaponlist .head .item.on{ color:#359bff}
 .weaponlist .head .item{ width:12%; height:50px; text-align:center; display:table-cell; vertical-align:middle; font-size:14px; position:relative}
 .weaponlist .head .item:before{ content: ""; background:#359bff; width:1px; height:22px; position:absolute; right:0; top:15px}
-.weaponlist .weapon_content{ text-align:center; margin-bottom:30px; height: 100%}
+.weaponlist .head .item:last-child:before{ display:none }
+.weaponlist .weapon_content{ text-align:center; margin-bottom:30px; height: 100%; padding-top: 60px}
 .weaponlist .weapon_content ul.on{ display:block}
 .weaponlist .weapon_content ul{ display:none}
 .weaponlist .weapon_content li{ display:inline-block; width:22%; text-align:center; padding-top:15px; vertical-align:top}
-.weaponlist .weapon_content li img{ width:58px; height:58px;}
-.weaponlist .weapon_content li p{ font-size:1.4rem; line-height:1; padding:5px 0}
+.weaponlist .weapon_content li img{ width: 75%; height: 75%}
+.weaponlist .weapon_content li p{ font-size:14px; line-height:1; padding:5px 0}
 
 /*兵种详情*/
 .det_container{ margin: 65px 10px; /*background:red*/; height: 100%; width: 93.75%}
 .det_container .descrile{ text-align: center}
-.det_container .descrile .headpic{ width:100px; height:100px;}
+.det_container .descrile .headpic{ width: 40%; height: 40%}
 .det_container .descrile .dec_dd{ margin-top: 15px; font-size: 14px }
 .det_container .descrile .label{ margin-top: 10px}
-.det_container .descrile .label .cup{ height: 20px; width: 20px; margin-left: -20px }
+.det_container .descrile .label .cup{ height: 20px; width: 20px; margin-left: -18px; vertical-align:-5px }
 .det_container .descrile .label span{ padding:0 5px; margin-right: 10px; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px}
 /*.det_container .descrile .label span:first-child{ background:#ec3a4a}
 .det_container .descrile .label span:nth-child(2){ background:#ffb642}
@@ -53,6 +54,7 @@ body{ color:#fff; background:url(../images/huangshizhanzheng/hszz_bg.jpg) no-rep
 .det_container .descrile .label .putong{ background:#ababab}
 .det_container .descrile .label .xiyou{ background:#ff7800}
 .det_container .descrile .label .shishi{ background:#bf0eeb}
+.det_container .descrile .label .chuanshuo{ background:#f5b13c}
 .det_container .descrile .label .budui{ background:#00a8ff}
 .det_container .descrile .label .jianzhu{ background:#1e9648}
 .det_container .descrile .label .fashu{ background:#733522}
@@ -64,37 +66,38 @@ body{ color:#fff; background:url(../images/huangshizhanzheng/hszz_bg.jpg) no-rep
 .det_container .descrile .label .sth_plus{ background:#ff1818}
 .det_container .descrile .label .tth_plus{ background:#e80000}
 
-.det_container .data_graph{ background:#005a92; width:100%; height: 100%; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px}
-.det_container .data_graph .graph_name{ text-align:center; padding:10px 0}
+.det_container .data_graph{ background:#005a92; width:100%; height: 100%; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; font-size: 12px}
+.det_container .data_graph .graph_name{ text-align:center; padding:10px 0; font-size: 16px}
 .det_container .data_graph .table_d{ margin:0 5px }
 .det_container .data_graph  table{ border-collapse:collapse; border:none; width:100%; background:#fff; color:#000}
 .det_container .data_graph .table1{}
 .det_container .data_graph .table2{ margin:20px 0px}
-.det_container .data_graph td{ border:solid #898989 1px; padding: 3px 5px; text-align: center;}
-.det_container .data_graph td span{ display:inline-block;}
+.det_container .data_graph td{ border:solid #898989 1px; padding: 3px 5px; text-align: center}
+.det_container .data_graph td span{ display:block; font-weight: bold}
 .det_container .data_graph td .g_1{}
 .det_container .data_graph td .g_2{ font-weight:700}
 .det_container .data_graph td img{ width:16px; height:16px; padding:4px 0}
+.det_container .intr{ font-size: 16px}
 .det_container .intr li{ display:inline-block; width:22%; text-align:center; padding-top:15px; vertical-align:top}
-.det_container .exprience .lingxing{ display:inline-block; margin-top:10px; border-color:#00b4ff; border-style: solid; border-width: 4px; width: 0; height: 0; -moz-transform:rotate(45deg); -webkit-transform:rotate(45deg); -o-transform:rotate(45deg); transform:rotate(45deg)}
-.det_container .exprience span{ color:#00b4ff}
+.det_container .exprience .lingxing{ display:inline-block; margin-top:10px; border-color:#00b4ff; border-style: solid; border-width: 2px; width: 0; height: 0; -moz-transform:rotate(45deg); -webkit-transform:rotate(45deg); -o-transform:rotate(45deg); transform:rotate(45deg)}
+.det_container .exprience span{ color:#00b4ff; margin-left: 6px; font-size: 14px; vertical-align: -2px}
 .det_container .zuhe{ margin-top: 10px}
-.det_container .zuhe span{ color:#00b4ff}
+.det_container .zuhe span{ color:#00b4ff; font-size: 14px}
 .det_container .kezhi{ margin-top: 10px}
-.det_container .kezhi span{ color:#00b4ff}
+.det_container .kezhi span{ color:#00b4ff; font-size: 14px}
 .det_container .recom{ margin-top: 10px}
-.det_container .recom span{ color:#00b4ff}
+.det_container .recom span{ color:#00b4ff; font-size: 14px}
 
 /*卡牌对比*/
-.com_container .compare_head{ margin-top:70px; text-align: center;}
-.com_container .compare_head .vspic{ display:inline-block; width:100px; height:100px;}
+.com_container .compare_head{ margin-top:70px; text-align: center}
+.com_container .compare_head .vspic{ display:inline-block; width:100px; height:100px}
 .com_container .compare_head .vs_text{ display:inline-block; vertical-align:-40px; margin: 0 15px; font-size: 18px; color:#00b4ff}
 
 .com_container .compare_data{ margin:0 15px; position: relative}
 .com_container .compare_data .line_bg{ text-align: center}
 .com_container .compare_data .data_detail{ position: absolute; width: 100%}
-.com_container .compare_data .data_detail .card{ margin-top: 20px; float: left; text-align: center;}
-.com_container .compare_data .data_detail .card .container{ display:inline-block; text-align: left;} 
+.com_container .compare_data .data_detail .card{ margin-top: 20px; float: left; text-align: center}
+.com_container .compare_data .data_detail .card .container{ display:inline-block; text-align: left} 
 .com_container .compare_data .data_detail .card_1{ width: 50%}
 .com_container .compare_data .data_detail .card_2{ width: 50%}
 .com_container .compare_data .data_detail .card .para1{ margin-bottom: 8px }
@@ -102,5 +105,32 @@ body{ color:#fff; background:url(../images/huangshizhanzheng/hszz_bg.jpg) no-rep
 .com_container .compare_data .data_detail .card .para2{  margin-top: 6px}
 .com_container .compare_data .data_detail .card .para2 .level{ color:#00b4ff; padding-left: 5px;}
 .com_container .compare_data .data_detail .card .para2 .value{ color:#ff0000; padding-left: 10px}
+
+@media screen and (min-width: 640px){
+	.line{ height:2px; margin: 30px 0}
+	.weaponlist .head .item:before{ height:34px; top:18px}
+	.weaponlist .head .item{ width:12%; height:70px; font-size:30px}
+	.weaponlist .weapon_content li img{}
+	.weaponlist .weapon_content li p{ font-size:28px; padding:10px 0}
+
+	.det_container .descrile .headpic{}
+	.det_container .descrile .dec_dd{ margin-top: 30px; font-size: 28px}
+	.det_container .descrile .label{ margin-top: 10px; font-size: 22px}
+	.det_container .descrile .label .cup{ height: 36px; width: 36px; margin-left: -30px ; vertical-align: -9px}
+	.det_container .descrile .label span{ padding:0 10px; margin-right: 20px}
+	.det_container .data_graph{ font-size: 24px}
+	.det_container .data_graph .graph_name{ padding:20px 0; font-size: 32px}
+	.det_container .data_graph td img{ width:32px; height:32px; padding:8px 0}
+
+	.det_container .intr{ font-size: 32px}
+	.det_container .exprience span{ margin-left: 10px; font-size: 28px}
+	.det_container .exprience .lingxing{ border-width: 5px; vertical-align:4px}
+	.det_container .zuhe{ margin-top: 15px}
+	.det_container .zuhe span{ font-size: 28px}
+	.det_container .kezhi{ margin-top: 15px}
+	.det_container .kezhi span{ font-size: 28px}
+	.det_container .recom{ margin-top: 15px}
+	.det_container .recom span{ font-size: 28px}
+}
 
 

@@ -1187,13 +1187,13 @@ var huangshizhanzheng_replace = ['css/', 'js/', 'json/'];
 var huangshizhanzheng_replace_data =  ['css/', 'js/', 'json/'];
 var huangshizhanzheng_platform = 'android';
 
-/*gulp.task('vainglory_images', function(){
-    gulp.src('./images/vainglory/**', {buffer: false})
-        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/vainglory'));
+gulp.task('huangshizhanzheng_images', function(){
+    gulp.src('./images/huangshizhanzheng/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+huangshizhanzheng_gameid+'/'+huangshizhanzheng_platform+'/DataPlugin/images/huangshizhanzheng'));
 	
 	gulp.src('./images/.nomedia', {buffer: false})
-        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/'));
-});*/
+        .pipe(gulp.dest('../../chajian/'+huangshizhanzheng_gameid+'/'+huangshizhanzheng_platform+'/DataPlugin/images/'));
+});
 
 gulp.task('huangshizhanzheng_css', function(){
     gulp.src(['./css/data-huangshizhanzheng.css'], {buffer: false})
@@ -1201,17 +1201,17 @@ gulp.task('huangshizhanzheng_css', function(){
 });
 
 gulp.task('huangshizhanzheng_js', function(){
-    gulp.src(['./js/jquery-2.1.3.min.js','./js/data-huangshizhanzheng.js'])
+    gulp.src(['./js/jquery-2.1.4.min.js','./js/data-huangshizhanzheng.js'])
         .pipe(concat('data-huangshizhanzheng.min.js'))
 		.pipe(replace('platform:"web"', 'platform:"'+huangshizhanzheng_platform+'"'))
         .pipe(uglify())
         .pipe(gulp.dest('../../chajian/'+huangshizhanzheng_gameid+'/'+huangshizhanzheng_platform+'/DataPlugin/js'));
 });
 
-/*gulp.task('vainglory_json', function(){
-    gulp.src(['./json/json-vainglory.js', './json/json-vainglory.js'], {buffer: false})
-        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/json'));
-});*/
+gulp.task('huangshizhanzheng_json', function(){
+    gulp.src(['./json/json-huangshizhanzheng.js', './json/json-huangshizhanzheng.js'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+huangshizhanzheng_gameid+'/'+huangshizhanzheng_platform+'/DataPlugin/json'));
+});
 
 gulp.task('huangshizhanzheng_data', function(){
 	if(huangshizhanzheng_platform == 'android'){
@@ -1220,13 +1220,23 @@ gulp.task('huangshizhanzheng_data', function(){
 		}
 	}
 	
-    gulp.src('data-huangshizhanzheng.html')
+    gulp.src('data-haungshizhanzheng-weapon.html')
 		.pipe(merge({
-            'js/data-huangshizhanzheng.min.js':['js/jquery-2.1.3.min.js','js/data-huangshizhanzheng.js']
+            'js/data-huangshizhanzheng.min.js':['js/jquery-2.1.4.min.js','js/data-huangshizhanzheng.js']
         }))
 		.pipe(replace(huangshizhanzheng_replace[0], huangshizhanzheng_replace_data[0]))
 		.pipe(replace(huangshizhanzheng_replace[1], huangshizhanzheng_replace_data[1]))
+		.pipe(replace(huangshizhanzheng_replace[2], huangshizhanzheng_replace_data[2]))
 		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+huangshizhanzheng_gameid+'/'+huangshizhanzheng_platform+'/DataPlugin/'+huangshizhanzheng_plugin));
+
+	gulp.src('data-huangshizhanzheng-weapon-detail.html')
+		.pipe(merge({
+            'js/data-huangshizhanzheng.min.js':['js/jquery-2.1.4.min.js','js/data-huangshizhanzheng.js']
+        }))
+		.pipe(replace(huangshizhanzheng_replace[0], huangshizhanzheng_replace_data[0]))
+		.pipe(replace(huangshizhanzheng_replace[1], huangshizhanzheng_replace_data[1]))
+		.pipe(replace(huangshizhanzheng_replace[2], huangshizhanzheng_replace_data[2]))
         .pipe(gulp.dest('../../chajian/'+huangshizhanzheng_gameid+'/'+huangshizhanzheng_platform+'/DataPlugin/'+huangshizhanzheng_plugin));
 });
 
@@ -1236,11 +1246,11 @@ gulp.task('huangshizhanzheng_clean', function(){
 });
 
 gulp.task('huangshizhanzheng_android', ['huangshizhanzheng_clean'], function(){
-	gulp.start('huangshizhanzheng_css', 'huangshizhanzheng_js', 'huangshizhanzheng_data');
+	gulp.start('huangshizhanzheng_images','huangshizhanzheng_css', 'huangshizhanzheng_js','huangshizhanzheng_json', 'huangshizhanzheng_data');
 });
 
 gulp.task('huangshizhanzheng_ios_inner', ['huangshizhanzheng_clean'], function(){
-	gulp.start('huangshizhanzheng_css', 'huangshizhanzheng_js', 'huangshizhanzheng_data');
+	gulp.start('huangshizhanzheng_images','huangshizhanzheng_css', 'huangshizhanzheng_js','huangshizhanzheng_json','huangshizhanzheng_data');
 });
 
 gulp.task('huangshizhanzheng_ios', function(){

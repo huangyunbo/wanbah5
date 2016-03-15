@@ -5,7 +5,7 @@
 		this.o = {
 					platform:"web",
 					url:"images/huangshizhanzheng/",
-					plugin:""
+					plugin:"plugin_1194"
 				 };
 		if(this.o.platform == "android"){
 			this.o.url="../images/huangshizhanzheng/";
@@ -38,6 +38,7 @@
 				html_content_temp = '',
 				html_content_all = '';
 			for(var i=0; i<this.data.length; i++){
+				
 				html_head += '<div class="item">'+this.data[i].typ+'</div>';
 				html_content += '<ul>';
 				html_content_temp='';
@@ -56,9 +57,9 @@
 		printDetail:function(){
 			var that = this,
 				piece = '',
-				html_head_pic = '',
-				html_head_des = '',
-				html_head_level = '',
+				html_head_pic = '',//pic
+				html_head_des = '',//描述
+				html_head_level = '',//等级
 				html_table1 = '',
 				html_table2 = '',
 				html_table= '',
@@ -66,7 +67,11 @@
 				table1_2 = '',
 				html_table3 = '',
 				table3_title = '',
-				table3_content = '';
+				table3_content = '',
+				html_card_exp = '',//卡牌经验
+				html_card_zuhe = '',//卡片组合
+				html_card_kezhi = '',//卡片克制
+				html_card_recomm = '';//推荐卡组	
 			piece = that.getWeaponData();
 			html_head_pic = '<img class="headpic" src="'+that.o.url+'dbpic/'+piece.id+'.png">'; 
 			html_head_des = '<div class="dec_dd"><span>'+piece.deion[0]+'</span> </div>';
@@ -74,11 +79,11 @@
 								'<span class="'+that.getSpan1Color(piece.deion[1])+'">'+piece.deion[1]+'</span>'+
 								'<span class="'+that.getSpan2Color(piece.deion[2])+'">'+piece.deion[2]+'</span>'+
 								'<span class="'+that.getSpan3Color(piece.deion[3])+'">'+piece.deion[3]+'</span>'+
-								'<img class="cup" src="images/huangshizhanzheng/dbpic/25.jpg">'+
+								'<img class="cup" src="'+that.o.url+'gold_cup.png">'+
 								'<div class="line"></div>'+
 								'</div>';
 			for(var i=0; i<piece.list1.length; i++){				
-				table1_1 += '<td><div><span class="g_1">'+that.getTableValue(piece.list1[i][0])+'</span><img src="images/huangshizhanzheng/dbpic/25.jpg"></div></td>';
+				table1_1 += '<td><div><span class="g_1">'+that.getTableValue(piece.list1[i][0])+'</span><img src="'+that.o.url+'icon/'+piece.list1[i][0]+'.png"></div></td>';
 				table1_2 += '<td><span class="g_2">'+piece.list1[i][1]+'</span></td>';
 			}
 
@@ -89,7 +94,7 @@
 					table3_title += '<td><div><span class="g_1">'+piece.list2[j][0]+'<span></div></td>';					
 			}
 			
-			for(var k=0; k<level_len-1; k++){					
+			for(var k=0; k<level_len-1; k++){//表格					
 					for(var m=0; m<piece.list2.length; m++){
 						level_value = '<td><span class="g_2">'+(k+1)+'</span></td>';
 						if(m<piece.list2.length){
@@ -98,13 +103,48 @@
 					}
 					html_table3 += '<tr>'+level_value+table3_content+'</tr>';
 					table3_content = '';
-			}		
+			}	
+
+			for(var e_i=0; e_i<piece.deion[4].length;e_i++){//卡牌经验				
+				html_card_exp += '<div class="exprience"><div class="lingxing"></div><span>'+piece.deion[4][e_i]+'</span></div>';
+			}	
+			
+			if(piece.group[0] != undefined && piece.group[0].length > 0){
+				var zuhe_pic = '';
+				for(var z_i=0; z_i<piece.group[0].length; z_i++){//卡牌组合
+					zuhe_pic += '<li><img src="'+that.o.url+'dbpic/'+piece.group[0][z_i]+'.png"></li>'; 
+				}
+				html_card_zuhe = '<span>卡牌组合</span><ul>'+zuhe_pic+'</ul><div class="zuhe"><span>'+piece.deion[5]+'</span></div><div class="line"></div>';
+				$("#card_zuhe").html(html_card_zuhe);
+			}
+			
+			if(piece.group[1] != undefined && piece.group[1].length >0 ){
+				var kezhi_pic = '';
+				for(var k_i=0; k_i<piece.group[1].length; k_i++){//卡牌克制
+					kezhi_pic += '<li><img src="'+that.o.url+'dbpic/'+piece.group[1][k_i]+'.png"></li>'; 
+				}
+				html_card_kezhi = '<span>卡牌克制</span><ul>'+kezhi_pic+'</ul><div class="kezhi"><span>'+piece.deion[6]+'</span></div><div class="line"></div>';
+				$("#card_kezhi").html(html_card_kezhi);
+			}
+			
+			if(piece.group[2] != undefined && piece.group[2].length > 0){
+				var recomm_pic = '';
+				for(var r_i=0; r_i<piece.group[2].length; r_i++){//推荐卡组
+					recomm_pic += '<li><img src="'+that.o.url+'dbpic/'+piece.group[2][r_i]+'.png"></li>'; 
+				}
+				html_card_recomm = '<span>推荐卡组</span><ul>'+recomm_pic+'</ul><div class="recom"><span>'+piece.deion[7]+'</span></div><div class="line"></div>';
+				$("#card_recomm").html(html_card_recomm);
+			}			
+
 			html_table1 += '<tr>'+table1_1+'</tr>';
 			html_table2 += '<tr>'+table1_2+'</tr>';
 			html_table = '<tbody>'+html_table1+html_table2+'</tbody>';
+
+			$("#header").children("h1").text(piece.name);
 			$("#describle").html(html_head_pic+html_head_des+html_head_level);
 			$("#table1").html(html_table);
-			$("#table2").html('<tbody>'+'<tr>'+level+table3_title+'</tr>'+html_table3+'</tbody>');
+			$("#table2").html('<tbody>'+'<tr>'+level+table3_title+'</tr>'+html_table3+'</tbody>');			
+			$("#card_exp").html('<span>卡牌经验</span>'+html_card_exp);			
 		},
 
 		getSpan1Color:function(value){//普通 稀有 史诗颜色css
@@ -115,6 +155,8 @@
 				text = 'xiyou'
 			}else if(value == '史诗'){
 				text = 'shishi';
+			}else if(value == '传说'){
+				text = 'chuanshuo';
 			}
 			return text;
 		},
@@ -127,8 +169,7 @@
 			}else if(value ==  '法术'){
 				text = 'fashu';
 			}
-			return text;
-			
+			return text;			
 		},
 		getSpan3Color:function(value){//数值css
 			var text = '';
@@ -173,6 +214,18 @@
 				case 7:
 				text = '单位数量';
 				break;
+				case 8:
+				text = '出兵速度';
+				break;
+				case 9:
+				text = '持续时间';
+				break;
+				case 10:
+				text = '生效时间';
+				break;
+				case 11:
+				text = '生产速度';
+				break;
 				case 31:
 				text = '慢';
 				break;
@@ -209,8 +262,8 @@
 				for(var i=0; i<that.data.length; i++){					
 					if(that.data[i].tid == weapontype){//找到类型
 						for(var j=0; j<that.data[i].data.length; j++){
-							if(weaponid = that.data[i].data[j].id){
-								piece = that.data[i].data[j];								
+							if(weaponid == that.data[i].data[j].id){
+								piece = that.data[i].data[j];
 								return piece;
 							}
 						}
@@ -219,12 +272,11 @@
 		},
 
 		printCompare:function(){
-
 		},
 
 		events:function(){
 			var that = this,
-			tindex = 0;
+			tindex = Number(that.getsession("wbgl-huangshizhanzhanzheng-weapon-tindex"));
 			$weapon_head = $("#weapon_head"),
 			$weapon_content = $("#weapon_content"),
 
@@ -236,7 +288,7 @@
 				$weapon_content.children().eq(tindex).addClass("on").siblings().removeClass("on");
 			}).children().eq(tindex).trigger("click");
 
-
+			/*单个兵种点击事件*/
 			$weapon_content.on("click", "li", function(){
 				var _id = Number($(this).attr("data-id"));
 					_weapontype = Number($(this).attr("data-type"));
@@ -312,22 +364,30 @@
 		},
 
 		isplatform: function(i){//判断打包平台显示相应内容
+			var that = this;
 			function removehide(){
 				$("#header").removeClass("hide");
 			}
 			
 			switch(i){
-				case "index":
+				case "index":					
 					if(this.o.platform == "web"){
 						removehide();
 					}else if(this.o.platform == "android"){
 						removehide();
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
 					}else if(this.o.platform == "ios"){
-						$("#container").addClass("mt_0");
+						$("#weaponlist").addClass("mt_0");
 					}
 				break;
-				case "detail":
+				case "detail":					
+					if(this.o.platform == "web"){
+							removehide();						
+							$("#header").children(".back").attr("href","data-haungshizhanzheng-weapon.html");					
+						}else if(this.o.platform == "android"){
+							removehide();					
+							$("#header").children(".back").attr("href","index.html");						
+						}
 				break;
 				case "compare":
 				break;
@@ -343,6 +403,7 @@
 					this.printIndex();
 					break;
 				case (href == "detail"):
+					this.isplatform("detail");
 					this.printDetail();
 					break; 
 				case (heef == "compare"):
@@ -358,3 +419,10 @@
 	window.Huangshizhanzheng = Huangshizhanzheng;
 })(window);
 
+/*
+	deion[0] 描述
+	deion[4] 卡牌经验描述
+	deion[5] 卡牌组合描述 【图片】 group[0]
+	deion[6] 卡牌克制描述 【图片】 group[1]
+	deion[7] 推荐卡组描述 【图片】 group[2]
+*/
