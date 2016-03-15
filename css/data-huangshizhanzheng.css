@@ -18,8 +18,8 @@ a{ text-decoration:none}
 .mt_0{ margin-top:0 !important}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 
-body{ color:#fff; background:url(../images/huangshizhanzheng/hszz_bg.jpg) no-repeat;}
-.header{ height:44px; border-bottom:1px solid #5086f0; background:#5086f0; position:fixed; width:100%; top:0; left:0;}
+body{ color:#fff; background:url(../images/huangshizhanzheng/hszz_bg.jpg) no-repeat fixed; background-size: cover}
+.header{ height:44px; border-bottom:1px solid #5086f0; background:#5086f0; position:fixed; width:100%; top:0; left:0}
 .header h1{ font-size:18px; padding-top:8px; text-align:center}
 .header .compare{ position:absolute; right: 0; top: 15px; padding-right:15px}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
@@ -47,10 +47,24 @@ body{ color:#fff; background:url(../images/huangshizhanzheng/hszz_bg.jpg) no-rep
 .det_container .descrile .label{ margin-top: 10px}
 .det_container .descrile .label .cup{ height: 20px; width: 20px; margin-left: -20px }
 .det_container .descrile .label span{ padding:0 5px; margin-right: 10px; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px}
-.det_container .descrile .label span:first-child{ background:#ec3a4a}
+/*.det_container .descrile .label span:first-child{ background:#ec3a4a}
 .det_container .descrile .label span:nth-child(2){ background:#ffb642}
-.det_container .descrile .label span:nth-child(3){ background:#46ac27}
-.det_container .data_graph{ background:#005a92; width:100%; height: 360px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px}
+.det_container .descrile .label span:nth-child(3){ background:#46ac27}*/
+.det_container .descrile .label .putong{ background:#ababab}
+.det_container .descrile .label .xiyou{ background:#ff7800}
+.det_container .descrile .label .shishi{ background:#bf0eeb}
+.det_container .descrile .label .budui{ background:#00a8ff}
+.det_container .descrile .label .jianzhu{ background:#1e9648}
+.det_container .descrile .label .fashu{ background:#733522}
+.det_container .descrile .label .z_plus{ background:#ff8e8e}
+.det_container .descrile .label .fh_plus{ background:#ff7474}
+.det_container .descrile .label .eh_plus{ background:#ff5d5d}
+.det_container .descrile .label .evh_plus{ background:#ff4545}
+.det_container .descrile .label .fth_plus{ background:#ff2e2e}
+.det_container .descrile .label .sth_plus{ background:#ff1818}
+.det_container .descrile .label .tth_plus{ background:#e80000}
+
+.det_container .data_graph{ background:#005a92; width:100%; height: 100%; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px}
 .det_container .data_graph .graph_name{ text-align:center; padding:10px 0}
 .det_container .data_graph .table_d{ margin:0 5px }
 .det_container .data_graph  table{ border-collapse:collapse; border:none; width:100%; background:#fff; color:#000}

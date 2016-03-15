@@ -9,24 +9,24 @@
 </head>
 
 <body data-url="detail">
-<div class="header hide" id="header">
+<div class="header" id="header">
 	<a href="javascript:;" class="back wbclick"></a>
     <h1>皮卡超人</h1>
     <div class="compare">数据对比</div>
 </div>
 <div class="det_container">
-	<div class="descrile">
-		<img class="headpic" src="images/huangshizhanzheng/dbpic/25.jpg">
+	<div class="descrile" id="describle">
+		<!-- <img class="headpic" src="images/huangshizhanzheng/dbpic/25.jpg">
 		<div class="dec_dd">
 			<span>身穿重甲，行动迟缓的近战战士。出手速度很慢，但攻击力极高身穿重甲，行动近战战士。出手速度很慢，但攻击力极高</span>
 		</div>
-		<div class="label">
+		<div class="label" id="label">
 			<span>史诗</span>
 			<span>部队</span>
-			<span>1100+</span>
+			<span class='z_plus'>1100+</span>
 			<img class="cup" src="images/huangshizhanzheng/dbpic/25.jpg">
 		</div>
-		<div class="line"></div>
+		<div class="line"></div> -->
 	</div><!--/descrile-->
 	<div class="data_graph">
 		<div class="graph_name">卡牌数据</div>
@@ -216,7 +216,7 @@
 <script type="text/javascript" src="js/data-huangshizhanzheng.js"></script>
 <script type="text/javascript">
 $(function(){
-	var huangshizhanzheng = new Huangshizhanzheng(1);
+	var huangshizhanzheng = new Huangshizhanzheng(data_card);
 });
 </script>
 </body>
