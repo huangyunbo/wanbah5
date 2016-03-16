@@ -464,8 +464,6 @@
 					}else if(this.o.platform == "android"){
 						removehide();
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
-					}else if(this.o.platform == "ios"){
-						$("#weaponlist").addClass("mt_0");
 					}					
 				break;
 				case "index-detail":
@@ -475,6 +473,8 @@
 					}else if(this.o.platform == "android"){		
 							removehide();					
 							$("#header").children(".back").attr("href","index.html");							
+					}else if(this.o.platform == "ios"){
+						$("#weaponlist").addClass("mt_0");
 					}			
 				break;		
 
@@ -500,7 +500,7 @@
 		},
 
 		ispage: function(){//判断当前打开的是哪一个页面
-			if(!this.checkversion()) return;
+			// if(!this.checkversion()) return;
 
 			var href = $("body").attr("data-url");			
 			switch(true){
