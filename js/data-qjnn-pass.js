@@ -17,7 +17,7 @@
 
 			for(var i=0; i<list.length; i++){
 				if(id == list[i].id){
-					$("#passdetail").html('<div class="title">'+list[i].name+'</div><div class="welcome">玩吧-奇迹暖暖交流4群 411055140</div><div class="content">'+list[i].p+'</div>');
+					$("#passdetail").html('<div class="title">'+list[i].name+'</div><div class="welcome">欢迎加入奇迹暖暖交流群:411055140</div><div class="content">'+list[i].p+'</div>');
 					break;
 				}
 			}
