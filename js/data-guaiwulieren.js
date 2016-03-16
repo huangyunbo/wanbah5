@@ -288,9 +288,9 @@
 						{
 							var obj = yinfu[data[143+k]];
 							part3 = part3 + '<tr>\
-											<td width="8%"><img src="images/guaiwulieren/icon/'+obj.line1+'.png"></td>\
-											<td width="8%"><img src="images/guaiwulieren/icon/'+obj.line2+'.png"></td>\
-											<td width="8%">'+(obj.line3!=""?('<img src="images/guaiwulieren/icon/'+obj.line3+'.png">'):"")+'</td>\
+											<td width="8%"><img src="'+that.o.url+'icon/'+obj.line1+'.png"></td>\
+											<td width="8%"><img src="'+that.o.url+'icon/'+obj.line2+'.png"></td>\
+											<td width="8%">'+(obj.line3!=""?('<img src="'+that.o.url+'icon/'+obj.line3+'.png">'):"")+'</td>\
 											<td width="76%">'+obj.line5+'</td>\
 										</tr>';
 						}
