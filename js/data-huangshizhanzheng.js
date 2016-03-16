@@ -38,7 +38,7 @@
 				html_content_temp = '',
 				html_content_all = '';
 			for(var i=0; i<this.data.length; i++){
-				
+
 				html_head += '<div class="item">'+this.data[i].typ+'</div>';
 				html_content += '<ul>';
 				html_content_temp='';
@@ -83,17 +83,34 @@
 								'<div class="line"></div>'+
 								'</div>';
 			for(var i=0; i<piece.list1.length; i++){				
-				table1_1 += '<td><div><span class="g_1">'+that.getTableValue(piece.list1[i][0])+'</span><img src="'+that.o.url+'icon/'+piece.list1[i][0]+'.png"></div></td>';
-				table1_2 += '<td><span class="g_2">'+piece.list1[i][1]+'</span></td>';
+				var k_name=that.getTableValue(piece.list1[i][0]),
+					v_name=that.getTable2Value(piece.list1[i][1]);
+				if(k_name == '攻击距离'){
+					if(v_name == 0){
+						v_name = '近战';
+					}
+				}	
+				if(k_name =='部署时间' || k_name =='出兵速度' || k_name =='持续时间' || k_name =='生产速度'){
+					v_name = v_name+'sec';
+				}
+				if(k_name == '攻击速度'){
+					v_name = v_name+'s/次';
+				}
+				if(k_name == '单位数量'){
+					v_name = 'x'+v_name;
+				}				
+				table1_1 += '<td class="name"><div><span class="g_1">'+k_name+'</span><img src="'+that.o.url+'icon/'+piece.list1[i][0]+'.png"></div></td>';
+				table1_2 += '<td><span class="g_2">'+v_name+'</span></td>';				
 			}
-
-			var level = '<td><span class="g_1">等级</span></td>';
+			var level = '<td class="name"><span class="g_1">等级</span></td>';
 			var level_value = '';
 			var level_len = piece.list2[0].length;//等级长度 
-			for(var j=0; j<piece.list2.length; j++){				
+			for(var j=0; j<piece.list2.length; j++){		
+					if(piece.list2[j][0] == '生效时间'){
+						piece.list2[j][0] = piece.list2[j][0]+'(s)';
+					}		
 					table3_title += '<td><div><span class="g_1">'+piece.list2[j][0]+'<span></div></td>';					
-			}
-			
+			}			
 			for(var k=0; k<level_len-1; k++){//表格					
 					for(var m=0; m<piece.list2.length; m++){
 						level_value = '<td><span class="g_2">'+(k+1)+'</span></td>';
@@ -101,14 +118,12 @@
 							table3_content += '<td><span class="g_2">'+piece.list2[m][k+1]+'</span></td>';
 						}
 					}
-					html_table3 += '<tr>'+level_value+table3_content+'</tr>';
+					html_table3 += '<tr class="name">'+level_value+table3_content+'</tr>';
 					table3_content = '';
-			}	
-
+			}
 			for(var e_i=0; e_i<piece.deion[4].length;e_i++){//卡牌经验				
 				html_card_exp += '<div class="exprience"><div class="lingxing"></div><span>'+piece.deion[4][e_i]+'</span></div>';
-			}	
-			
+			}				
 			if(piece.group[0] != undefined && piece.group[0].length > 0){
 				var zuhe_pic = '';
 				for(var z_i=0; z_i<piece.group[0].length; z_i++){//卡牌组合
@@ -116,8 +131,7 @@
 				}
 				html_card_zuhe = '<span>卡牌组合</span><ul>'+zuhe_pic+'</ul><div class="zuhe"><span>'+piece.deion[5]+'</span></div><div class="line"></div>';
 				$("#card_zuhe").html(html_card_zuhe);
-			}
-			
+			}			
 			if(piece.group[1] != undefined && piece.group[1].length >0 ){
 				var kezhi_pic = '';
 				for(var k_i=0; k_i<piece.group[1].length; k_i++){//卡牌克制
@@ -125,8 +139,7 @@
 				}
 				html_card_kezhi = '<span>卡牌克制</span><ul>'+kezhi_pic+'</ul><div class="kezhi"><span>'+piece.deion[6]+'</span></div><div class="line"></div>';
 				$("#card_kezhi").html(html_card_kezhi);
-			}
-			
+			}			
 			if(piece.group[2] != undefined && piece.group[2].length > 0){
 				var recomm_pic = '';
 				for(var r_i=0; r_i<piece.group[2].length; r_i++){//推荐卡组
@@ -143,7 +156,7 @@
 			$("#header").children("h1").text(piece.name);
 			$("#describle").html(html_head_pic+html_head_des+html_head_level);
 			$("#table1").html(html_table);
-			$("#table2").html('<tbody>'+'<tr>'+level+table3_title+'</tr>'+html_table3+'</tbody>');			
+			$("#table2").html('<tbody>'+'<tr class="name">'+level+table3_title+'</tr>'+html_table3+'</tbody>');			
 			$("#card_exp").html('<span>卡牌经验</span>'+html_card_exp);			
 		},
 
@@ -191,8 +204,8 @@
 			return text;
 		},
 		getTableValue:function(value){
-			text = '';
-			switch(value){
+			text = value;
+			switch(Number(value)){
 				case 1:
 				text = '效果范围';
 				break;
@@ -226,6 +239,14 @@
 				case 11:
 				text = '生产速度';
 				break;
+						
+			}
+			return text;
+		},
+
+		getTable2Value:function(value){
+			text = '';
+			switch(Number(value)){
 				case 31:
 				text = '慢';
 				break;
@@ -247,9 +268,12 @@
 				case 53:
 				text = '陆空兼顾';
 				break;
-				case 53:
+				case 54:
 				text = '建筑';
-				break;
+				break;	
+				default:				
+				return value;
+				
 			}
 			return text;
 		},

@@ -465,7 +465,7 @@
 						removehide();
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
 					}else if(this.o.platform == "ios"){
-						$("#container").addClass("mt_0");
+						$("#weaponlist").addClass("mt_0");
 					}					
 				break;
 				case "index-detail":
