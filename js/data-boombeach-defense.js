@@ -38,7 +38,7 @@
 				title = '',
 				that = this,
 				h_pic='';				
-			if(err === 1){
+			if(err === 0){
 				$("#defense_datalist").addClass("no_net").html("网络错误");
 				return;
 			}			
@@ -46,7 +46,7 @@
 			if(list_data.data.length > 0){	
 				for(var i=0;i<list_data.data.length;i++){
 					if(list_data.data[i].thumbPicName.trim().length>0){
-						h_pic='<div class="d_img"><img src="'+'http://res.wanba123.cn/pic/'+list_data.data[i].thumbPicName+'"></div>';
+						h_pic='<div class="d_img"><img src="'+list_data.data[i].thumbPicName+'"></div>';
 					}
 					html_ben_list += '<li>'+
 					'<a class="item" list-data-id="'+list_data.data[i].Id+'">'+
@@ -75,22 +75,32 @@
 
 		printDefenseDetail:function(err, detail_data){			
 			var	html_content='',
-				html_footer='';				
-			if(err === 1){
+				html_footer='',
+				temp_data='';				
+			if(err === 0){
 				$("#container").addClass("no_net").html("网络错误");
 				return;
 			}
-			$("#title").html(detail_data.data.Name);			
+			temp_data = detail_data.data;
+			if(!(temp_data instanceof Array)){
+				$("#container").addClass("no_net").html("数据错误");
+				return;
+			}
+			if(temp_data.length == 0){
+				$("#container").addClass("no_net").html("没有数据");
+				return;
+			}  
+			temp_data = temp_data[0]; 
+			$("#title").html(temp_data.Name);			
 
 			html_content = '<div class="article">'+
 							'<div class="top">'+
-								'<h1>'+detail_data.data.Title+'</h1>'+
+								'<h1>'+temp_data.Title+'</h1>'+
 							'<div class="info">'+
-							'<span>'+detail_data.data.ReleaseTime+'</span>'+
-							'<span>'+'作者:'+detail_data.data.NickName+'</span>'+
-							'<span>'+'来源:'+detail_data.data.Source+'</span>'+
+							'<span>'+temp_data.ReleaseTime+'</span>'+							
+							'<span>'+'来源:'+temp_data.Source+'</span>'+
 							'</div></div>'+
-							'<div class="pagebody">'+detail_data.data.Content+'</div></div><!--/pagebody-->';
+							'<div class="pagebody">'+temp_data.Content+'</div></div><!--/pagebody-->';
 			html_footer = '<div class="footer">'+
 			'<p>Copyright © 2013 - 2016 wanba123.cn</p>'+
 			'</div>';		
@@ -136,11 +146,11 @@
 
 		getDefenseDetailData:function(){
 			var that = this,
-			list_id = that.getsession("wbgl-boombeach-ben-list-id");
-			$.getJSON('http://m.wanba123.cn/h5data/article?jsoncallback=?', {
-					artid: list_id
+			list_id = that.getsession("wbgl-boombeach-ben-list-id");			
+			$.getJSON('http://m.wanba123.cn/h5data/detail?jsoncallback=?', {
+					tid: list_id
 				}).done(function(data){										
-					that.printDefenseDetail(data.error, data);										
+					that.printDefenseDetail(data.code, data);										
 				}).fail(function(){					
 					$("#container").addClass("no_net").html("网络错误");
 				});
@@ -150,11 +160,11 @@
 			
 			var that = this;
 			var id = that.getsession("wbgl-boombeach-ben-id");			
-			$.getJSON('http://m.wanba123.cn/h5data/articlelist?jsoncallback=?', {
+			$.getJSON('http://m.wanba123.cn/h5data/gonglue?jsoncallback=?', {
 					groupid: id,
 					startpage: totalCount
 				}).done(function(data){						
-					that.printDefenseList(data.error, data, totalCount);									
+					that.printDefenseList(data.code, data, totalCount);									
 				}).fail(function(){					
 					$("#defense_datalist").addClass("no_net").html("网络错误");
 				});
