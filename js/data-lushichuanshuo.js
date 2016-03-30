@@ -46,13 +46,12 @@
 		},
 		printdialogcard: function(){//打印单张卡片弹窗
 			var _id = Number(arguments[0]),
-			_type = this.o.type,
-			_datacards = this.datacards[_type].b,
-			_html = '';
-			
-			function zy(){//判断职业 德鲁伊
+				_type = this.o.type,
+				_datacards = this.datacards[_type].b,
+				_html = '';
+			//判断职业 德鲁伊
+			function zy(){
 				switch(_type){
-					case 0:return "zhongli";
 					case 1:return "deluyi";
 					case 2:return "lieren";
 					case 3:return "fashi";
@@ -62,17 +61,31 @@
 					case 7:return "saman";
 					case 8:return "shushi";
 					case 9:return "zhanshi";
+					default:return "zhongli";
 				}
 			}
-			
-			function lev(){//判断级别 免费级
+			//判断级别 免费级
+			function lev(){
 				var i = Number(arguments[0]);
 				switch(i){
-					case 1:return '<div class="lev lev_free"><i></i>免费级</div>';
 					case 2:return '<div class="lev lev_white"><i></i>普通级</div>';
 					case 3:return '<div class="lev lev_blue"><i></i>稀有级</div>';
 					case 4:return '<div class="lev lev_purple"><i></i>史诗级</div>';
 					case 5:return '<div class="lev lev_orange"><i></i>传说级</div>';
+					default:return '<div class="lev lev_free"><i></i>免费级</div>';
+				}
+			}
+			//出处
+			function source(){
+				var i = Number(arguments[0]);
+				switch(i){
+					case 2:return '经典';
+					case 3:return '冠军的试炼';
+					case 4:return '探险者协会';
+					case 5:return '黑石山的火焰';
+					case 6:return '地精大战侏儒';
+					case 7:return '纳克萨玛斯';
+					default:return '基本';
 				}
 			}
 			
@@ -83,6 +96,7 @@
 						'<div class="line1">'+
 							'<div class="name">'+_datacards[i].d+'</div>'+
 							lev(_datacards[i].f)+
+							'<div class="source">'+source(_datacards[i].j)+'</div>'+
 						'</div>'+
 						'<div class="line2">'+
 							'<div class="l"><span class="k">构筑评分</span>'+_datacards[i].g+'</div>'+

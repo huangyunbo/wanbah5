@@ -5,7 +5,7 @@
 		if(typeof(arguments[0]) == 'undefined') return false;
 		var data_cards = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		this.datacards = data_cards;
-		this.o = {platform:"web",plugin:"plugin_963",job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,fei:-1,keyword:""};//platform:打包平台,plugin:插件板块名925/926内侧 963/964正式,job:职业,url:前缀路径,cards:选中的卡牌,cardnum:当前一共选了多少张牌了,rarity:稀有度0所有,fei:费法力0所有
+		this.o = {platform:"web",plugin:"plugin_963",job:"zhongli",url:"images/lushichuanshuo/",cards:[],cardnum:0,rarity:0,fei:-1,keyword:"",model:"wild"};//platform:打包平台,plugin:插件板块名925/926内侧 963/964正式,job:职业,url:前缀路径,cards:选中的卡牌,cardnum:当前一共选了多少张牌了,rarity:稀有度0所有,fei:费法力0所有,keyword:关键词搜索,model:狂野模式wild/标准模式standard
 		if(this.o.platform == "android"){
 			this.o.url="../images/lushichuanshuo/";
 		}
@@ -226,6 +226,7 @@
 									'<div class="a">'+
 										'<i class="zhiye"></i>'+
 										'<i class="mask"></i>'+
+										'<i class="model'+( group.model === 'standard' ? ' model_standard' : '' )+'"></i>'+
 										'<div class="text text_p">'+group.name+'</div>'+
 									'</div>'+
 									'<div class="share">分享</div>'+
@@ -238,10 +239,10 @@
 		},
 		setmemorycard: function(){//存储卡组
 			var $input = $("#ka_add_input"),
-			cardname = $input.val(),
-			wbgllscska,
-			job = $("#ka_add_group").children().eq(0).attr("data-job"),
-			ka;
+				cardname = $input.val(),
+				wbgllscska,
+				job = $("#ka_add_group").children().eq(0).attr("data-job"),
+				ka;
 			
 			if($.trim(cardname).length == 0){
 				$input.focus();
@@ -250,8 +251,8 @@
 			}
 			
 			if(sessionStorage.getItem("wbgl-lscs-ka-urlfrom") == "job.html" || localStorage.getItem("wbgl-lscs-ka-urlfrom") == "job.html"){//如果是job.html过来的就新建保存
-				wbgllscska = {"data":[],id:1};
-				ka = {"id":1,"name":cardname,"job":job,"cards":this.o.cards};
+				wbgllscska = {"data":[],"id":1};
+				ka = {"id":1,"name":cardname,"job":job,"model":this.o.model,"cards":this.o.cards};
 				
 				if(localStorage.getItem("wbgl-lscs-ka") === null){//如果我的卡组为空时
 					wbgllscska.data.push(ka);
@@ -271,16 +272,16 @@
 				wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka"));
 				for(var i=0; i<wbgllscska.data.length; i++){
 					if(wbgllscska.data[i].id == id){
-						wbgllscska.data[i] = {"id":id,"name":cardname,"job":job,"cards":this.o.cards};
+						wbgllscska.data[i] = {"id":id,"name":cardname,"job":job,"model":this.o.model,"cards":this.o.cards};
 						localStorage.setItem("wbgl-lscs-ka", JSON.stringify(wbgllscska));
 					}
 				}
 			}
 			
 			if(this.o.platform == "ios"){
-				location.href = this.o.plugin+'/data-lushichuanshuo-ka-mygroup.html';
+				location.href = this.o.plugin+'/data-lushichuanshuo-ka-index.html';
 			}else{
-				location.href = 'data-lushichuanshuo-ka-mygroup.html';
+				location.href = 'data-lushichuanshuo-ka-index.html';
 			}
 		},
 		switchjob:function(){
@@ -322,36 +323,51 @@
 		},
 		printdialogcard: function(){//打印单张卡片弹窗
 			var id = Number(arguments[0]),
-			datacards = this.datacards[this.switchjob(this.o.job)].b,
-			html = '';
-
-			function lev(){//判断级别 免费级
+				datacards = this.datacards[this.switchjob(this.o.job)].b,
+				html = '';
+			
+			//判断级别 免费级
+			function lev(){
 				var i = Number(arguments[0]);
 				switch(i){
-					case 1:return '<div class="lev lev_free"><i></i>免费级</div>';
 					case 2:return '<div class="lev lev_white"><i></i>普通级</div>';
 					case 3:return '<div class="lev lev_blue"><i></i>稀有级</div>';
 					case 4:return '<div class="lev lev_purple"><i></i>史诗级</div>';
 					case 5:return '<div class="lev lev_orange"><i></i>传说级</div>';
+					default:return '<div class="lev lev_free"><i></i>免费级</div>';
+				}
+			}
+			//出处
+			function source(){
+				var i = Number(arguments[0]);
+				switch(i){
+					case 2:return '经典';
+					case 3:return '冠军的试炼';
+					case 4:return '探险者协会';
+					case 5:return '黑石山的火焰';
+					case 6:return '地精大战侏儒';
+					case 7:return '纳克萨玛斯';
+					default:return '基本';
 				}
 			}
 			
 			for(var i=0; i<datacards.length; i++){
 				if(datacards[i].c == id){
 					html = '<div class="pic"><img src="'+this.o.url+'DBPic/79_'+id+'_thumb.png"></div>'+
-						'<div class="zy '+this.o.job+'"></div>'+
-						'<div class="line1">'+
-							'<div class="name">'+datacards[i].d+'</div>'+
-							lev(datacards[i].f)+
-						'</div>'+
-						'<div class="line2">'+
-							'<div class="l"><span class="k">构筑评分</span>'+datacards[i].g+'</div>'+
-							'<div class="r"><span class="k">竞技场评分</span>'+datacards[i].h+'</div>'+
-						'</div>'+
-						'<div class="line3">'+
-							'<div><span class="k">画师语录</span></div>'+
-							'<p>'+datacards[i].i+'</p>'+
-						'</div>';
+							'<div class="zy '+this.o.job+'"></div>'+
+							'<div class="line1">'+
+								'<div class="name">'+datacards[i].d+'</div>'+
+								lev(datacards[i].f)+
+								'<div class="source">'+source(datacards[i].j)+'</div>'+
+							'</div>'+
+							'<div class="line2">'+
+								'<div class="l"><span class="k">构筑评分</span>'+datacards[i].g+'</div>'+
+								'<div class="r"><span class="k">竞技场评分</span>'+datacards[i].h+'</div>'+
+							'</div>'+
+							'<div class="line3">'+
+								'<div><span class="k">画师语录</span></div>'+
+								'<p>'+datacards[i].i+'</p>'+
+							'</div>';
 				}
 			}
 			
@@ -489,7 +505,7 @@
 			this.o.cards = bubbleSort(cards);
 			this.printcardlist();
 		},
-		printdetail: function(){//打印卡牌
+		printdetail: function(){//打印左侧卡牌
 			var cardshtml = '',
 				datacards = this.datacards[this.switchjob(this.o.job)].b,
 				rarity = this.o.rarity,
@@ -497,6 +513,7 @@
 				feimin = 0,
 				feimax = 100,
 				keyword = this.o.keyword,
+				model = this.o.model,
 				card;
 
 			(function feiFn(){
@@ -513,10 +530,10 @@
 						feimax = feimin = fei;
 				}
 			})();
-			
+
 			for(var i=0; i<datacards.length; i++){
 				card = datacards[i];
-				if((rarity==0 || card.f==rarity) && (card.e >= feimin && card.e <= feimax) && (keyword.length == 0 || card.d.indexOf(keyword) != -1)){
+				if((model == 'wild' || (card.j > 0 && card.j < 6)) && (rarity == 0 || card.f == rarity) && (card.e >= feimin && card.e <= feimax) && (keyword.length == 0 || card.d.indexOf(keyword) != -1)){
 					cardshtml += '<div class="item" data-id="'+card.c+'">'+
 									'<div class="w">'+
 										'<img src="'+this.o.url+'ka-defaultpic.png">'+
@@ -529,12 +546,9 @@
 				}
 			}
 			if(cardshtml.length == 0){
-				cardshtml += '<span class="nodata" style="color:#fff">暂无数据，换个关键词试试</span>';
+				cardshtml += '<span class="nodata" style="color:#fff">'+(model == 'standard' ? '现在是标准模式，' : '')+'暂无数据，换个关键词试试</span>';
 			}
 			$("#ka_add_maincard").html(cardshtml);
-		},
-		setkaaddboxbg: function(){//设置添加卡牌右侧顶部职业旗帜
-			$("#ka_add_flag").removeClass().addClass("box "+this.o.job);
 		},
 		checkversion: function(){//检查版本
 			if(!window.localStorage){
@@ -558,14 +572,10 @@
 			
 			switch(i){
 				case 1:
-					if(this.o.platform == "web"){
-						removehide();
-					}else if(this.o.platform == "android"){
-						removehide();
+					if(this.o.platform == "android"){
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
 					}else if(this.o.platform == "ios"){
-						$("#ka_road").children(".item").eq(0).attr("href",this.o.plugin+"/data-lushichuanshuo-ka-job.html");
-						$("#ka_road").children(".item").eq(1).attr("href",this.o.plugin+"/data-lushichuanshuo-ka-mygroup.html");
+						$("#header").addClass("header_ios");
 					}
 				break;
 				case 2:
@@ -585,26 +595,29 @@
 						$("#ka_add").children(".aside").addClass("aside_ios");
 					}
 				break;
-				case 4:
+				case 5:
 					if(this.o.platform == "android"){
 						$("#header").children(".back").attr("href","index.html");
 					}else if(this.o.platform == "ios"){
 						$("#header").addClass("header_ios");
 					}
 				break;
-				case 5:
-					if(this.o.platform == "ios"){
-						$("#header").addClass("header_ios");	
-					}
-				break;
 			}
 		},
 		events: function(){
 			var that = this;
+			//狂野模式 标准模式
+			$("#ka_road div").click(function(){				
+				if(that.o.platform == "ios"){
+					localStorage.setItem("wbgl-lscs-ka-model", $(this).attr("data-model"));
+					location.href = that.o.plugin+'/data-lushichuanshuo-ka-job.html';
+				}else{
+					sessionStorage.setItem("wbgl-lscs-ka-model", $(this).attr("data-model"));
+					location.href = 'data-lushichuanshuo-ka-job.html';
+				}
+			});
 			//选择职业
-			$("#ka_switch .item").click(function(){
-				if(!that.checkversion()) return;
-				
+			$("#ka_switch .item").click(function(){				
 				if(that.o.platform == "ios"){
 					localStorage.setItem("wbgl-lscs-ka-job",$(this).attr("data-job"));
 					location.href = that.o.plugin+'/data-lushichuanshuo-ka-detail.html';
@@ -785,6 +798,8 @@
 			switch(true){
 				case (href == "index"):
 					this.isplatform(1);
+					this.shareweixin();
+					this.printmygroup();
 					break;
 				case (href == "job"):
 					this.isplatform(2);
@@ -806,31 +821,39 @@
 					
 					if(this.o.platform == "ios"){
 						this.o.job = localStorage.getItem("wbgl-lscs-ka-job");
+						this.o.model = localStorage.getItem("wbgl-lscs-ka-model");
 						if(localStorage.getItem("wbgl-lscs-ka-urlfrom") == "mycards.html" && localStorage.getItem("wbgl-lscs-ka-mycards") !== null){//如果是从data-lushichuanshuo-ka-mycards.html过来的就赋值
 							var data = JSON.parse(localStorage.getItem("wbgl-lscs-ka-mycards"));
+							//做兼容，没有模式的，默认为狂野模式
+							this.o.model = data.model === undefined ? 'wild' : data.model;
 							this.o.cards = data.cards;
 							$("#ka_add_input").val(data.name);
 							this.printcardlist();
 						}
 					}else{
 						this.o.job = sessionStorage.getItem("wbgl-lscs-ka-job");
+						this.o.model = sessionStorage.getItem("wbgl-lscs-ka-model");
 						if(sessionStorage.getItem("wbgl-lscs-ka-urlfrom") == "mycards.html" && sessionStorage.getItem("wbgl-lscs-ka-mycards") !== null){//如果是从data-lushichuanshuo-ka-mycards.html过来的就赋值
 							var data = JSON.parse(sessionStorage.getItem("wbgl-lscs-ka-mycards"));
+							//做兼容，没有模式的，默认为狂野模式
+							this.o.model = data.model === undefined ? 'wild' : data.model;
 							this.o.cards = data.cards;
 							$("#ka_add_input").val(data.name);
 							this.printcardlist();
 						}
 					}
-
-					$("#ka_add_group").children().eq(0).attr("data-job",this.o.job);
-
-					this.setkaaddboxbg();
+					//设置添加卡牌右侧顶部旗帜
+					$("#ka_add_flag").removeClass().addClass("box "+this.o.job);
+					
+					//设置顶部旗帜上面的模式
+					if(this.o.model == 'standard'){
+						$("#ka_add_flag").children(".model").addClass("model_standard");
+					}
+					
+					//设置职业与中立单选按钮
+					$("#ka_add_group").children().eq(0).attr("data-job",this.o.job);					
+					
 					this.printdetail();
-					break;
-				case (href == "mygroup"):
-					this.isplatform(4);
-					this.shareweixin();
-					this.printmygroup();
 					break;
 				case (href == "mycards"):
 					this.isplatform(5);

@@ -145,7 +145,7 @@ body{ -webkit-user-select:none; user-select:none}
 .dialogcard .zhanshi{ background-position:0 -450px}
 .dialogcard .line1,.dialogcard .line2,.dialogcard .line3{ margin:0 18px; border-bottom:1px solid #71706e; padding:10px 0; overflow:hidden}
 .dialogcard .line1 .name{ font-size:1.8rem; float:left; margin-right:20px}
-.dialogcard .line1 .lev{ color:#fc7508; font-size:1.2rem; margin-top:5px; color:#fff}
+.dialogcard .line1 .lev{ font-size:1.2rem; margin-top:5px; float:left; margin-right:20px}
 .dialogcard .line1 .lev i{background:url(../images/lushichuanshuo/data-rarity.png) no-repeat; background-size:48px; height:15px; width:12px; display:inline-block; vertical-align:-3px; margin-right:3px}
 .dialogcard .line1 .lev_free i{ background:none}
 .dialogcard .line1 .lev_white i{ background-position:0 0}
@@ -155,6 +155,7 @@ body{ -webkit-user-select:none; user-select:none}
 .dialogcard .line1 .lev_purple i{ background-position:-24px 0}
 .dialogcard .line1 .lev_orange{ color:#fc7508}
 .dialogcard .line1 .lev_orange i{ background-position:-36px 0}
+.dialogcard .line1 .source{ font-size:1.2rem; margin-top:5px}
 .dialogcard .line2,.dialogcard .line3{ font-size:1.5rem}
 .dialogcard .line2 .k,.dialogcard .line3 .k{ color:#ffd957; padding-right:10px}
 .dialogcard .line2 .l{ float:left}
@@ -162,9 +163,27 @@ body{ -webkit-user-select:none; user-select:none}
 .dialogcard .line3{ border:0}
 /*卡组模拟*/
 .ka_body{ background:#2f2a21 url(../images/lushichuanshuo/ka-bg.jpg) no-repeat center bottom; background-size:cover}
-.ka_road .item{ width:220px; height:42px; padding-top:28px; color:#321701; background:url(../images/lushichuanshuo/ka-btn.png) no-repeat; background-size:220px; text-align:center; margin:45px auto 0; font-size:1.8rem; display:block}
+.ka_road{ display:table; width:100%; padding:45px 0}
+.ka_road div{ display:table-cell; width:50%; text-align:center}
+.ka_road span{ width:100px; height:78px; background:url(../images/lushichuanshuo/ka-index.png) no-repeat; background-size:124px; display:inline-block}
+.ka_road .model_wild span{ background-position:0 -83px}
+.ka_mygroup{ overflow:hidden}
+.ka_mygroup .item{ float:left; width:50%}
+.ka_mygroup .item .ka_flag{ margin:20px auto}
+.ka_mygroup .item .share{ position:absolute; bottom:11px; left:50%; margin-left:-21px; color:#fff; font-size:1.2rem; border:1px solid #fff; border-radius:30px; padding:2px 8px 1px; line-height:1}
+.ka_mygroup .item .del{ position:absolute; width:14px; height:14px; bottom:12px; left:50%; margin-left:-7px; background:url(../images/lushichuanshuo/ka-index.png) -100px -83px no-repeat; background-size:124px}
+@media screen and (min-width:375px){
+	.ka_mygroup .item{ width:33.33%}
+}
 @media screen and (min-width:641px){
-	.ka_road .item{ width:440px; height:84px; padding-top:54px; background-size:440px; margin-top:90px; font-size:3.6rem}
+	.ka_road span{ width:200px; height:156px; background-size:248px}
+	.ka_road .model_wild span{ background-position:0 -166px}
+	.ka_mygroup .item{ width:50%}
+	.ka_mygroup .item .share{ bottom:22px; margin-left:-33px; font-size:1.8rem; padding:4px 14px}
+	.ka_mygroup .item .del{ width:28px; height:28px; bottom:22px; margin-left:-14px; background-position:-200px -166px; background-size:248px}
+}
+@media screen and (min-width:769px){
+	.ka_mygroup .item{ width:33.33%}
 }
 /*卡组模拟-创建卡组*/
 .ka_switch{ overflow:hidden; width:100%; padding:15px 0 30px}
@@ -216,6 +235,8 @@ body{ -webkit-user-select:none; user-select:none}
 .ka_flag .box.shushi .zhiye{ background-position:-4px -647px}
 .ka_flag .box.zhanshi .zhiye{ background-position:-4px -736px}
 .ka_flag .mask{ width:109px; height:48px; position:absolute; background:url(../images/lushichuanshuo/ka-mycard.png) no-repeat; background-size:109px; top:7px; left:0}
+.ka_flag .model{ width:24px; height:35px; background:url(../images/lushichuanshuo/ka-index.png) right top no-repeat; background-size:124px; position:absolute; right:2px; top:11px}
+.ka_flag .model_standard{ background-position:right -35px}
 .ka_flag .text{ position:absolute; width:88px; height:14px; font-size:1.2rem; line-height:1; border:none; top:32px; left:12px; background:transparent; color:#fde69f}
 .ka_flag .text_p{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .ka_add .aside .content{ position:relative; margin:-25px 0 0 -3px; z-index:2; overflow-y:auto; height:calc(100% - 129px); -webkit-overflow-scrolling:touch; -webkit-tap-highlight-color:rgba(0,0,0,0)}/*ka_flag-负上去的，再加底部的完成。86-25+68=129*/
@@ -266,6 +287,8 @@ body{ -webkit-user-select:none; user-select:none}
 	.ka_flag .box.shushi .zhiye{ background-position:-8px -1294px}
 	.ka_flag .box.zhanshi .zhiye{ background-position:-8px -1472px}
 	.ka_flag .mask{ width:218px; height:96px; background-size:218px; top:14px}
+	.ka_flag .model{ width:48px; height:70px; background-size:248px; right:4px; top:22px}
+	.ka_flag .model_standard{ background-position:right -70px}
 	.ka_flag .text{ width:176px; height:28px; font-size:2.4rem; line-height:1; top:64px; left:24px}
 	.ka_add .aside .content{ margin:-50px 0 0 -6px; height:calc(100% - 258px)}/*ka_flag-负上去的，再加底部的完成。172-50+136=258*/
 	.ka_add .aside .item{ height:40px; margin-bottom:6px}
@@ -372,23 +395,6 @@ body{ -webkit-user-select:none; user-select:none}
 .dialogtip{ font-size:1.5rem; color:#fff; background:#000; border-radius:5px; padding:0 10px; display:none}
 @media screen and (min-width:641px){
 	.dialogtip{ font-size:2.6rem; padding:2px 20px}
-}
-/*卡组模拟-我的卡组*/
-.ka_mygroup_content{ overflow:hidden}
-.ka_mygroup .item{ float:left; width:50%; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
-.ka_mygroup .item .ka_flag{ margin:20px auto}
-.ka_mygroup .item .share{ position:absolute; bottom:11px; left:50%; margin-left:-21px; color:#fff; font-size:1.2rem; cursor:pointer; border:1px solid #fff; border-radius:30px; padding:2px 8px 1px; line-height:1}
-.ka_mygroup .item .del{ position:absolute; width:14px; height:14px; bottom:12px; left:50%; margin-left:-7px; background:url(../images/lushichuanshuo/ka-index.png) -100px -83px no-repeat; background-size:124px; cursor:pointer}
-@media screen and (min-width:375px){
-	.ka_mygroup .item{ width:33.33%}
-}
-@media screen and (min-width:641px){
-	.ka_mygroup .item{ width:50%}
-	.ka_mygroup .item .share{ bottom:22px; margin-left:-33px; font-size:1.8rem; padding:4px 14px}
-	.ka_mygroup .item .del{ width:28px; height:28px; bottom:22px; margin-left:-14px; background-position:-200px -166px; background-size:248px}
-}
-@media screen and (min-width:769px){
-	.ka_mygroup .item{ width:33.33%}
 }
 /*卡组模拟-我的卡组-卡列表*/
 .ka_mycards .c{ overflow:hidden; color:#fff; margin-top:15px}
