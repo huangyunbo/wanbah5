@@ -300,11 +300,12 @@
 		},
 		showdialogtip: function(){//弹窗
 			var i = Number(arguments[0]),
-			html_1 = '相同卡牌不能超过2张',
-			html_2 = '只能添加30张卡牌',
-			html_3 = '请添加30张卡牌',
-			html_4 = '相同传说级卡牌只能携带一张',
-			html_5 = '给你的卡组命个名吧';
+				html_1 = '相同卡牌不能超过2张',
+				html_2 = '只能添加30张卡牌',
+				html_3 = '请添加30张卡牌',
+				html_4 = '相同传说级卡牌只能携带一张',
+				html_5 = '给你的卡组命个名吧',
+				html_6 = '数据异常';
 			
 			switch(i){
 				case 1:$("#ka_add_dialogtip").html(html_1);break;
@@ -312,6 +313,7 @@
 				case 3:$("#ka_add_dialogtip").html(html_3);break;
 				case 4:$("#ka_add_dialogtip").html(html_4);break;
 				case 5:$("#ka_add_dialogtip").html(html_5);break;
+				case 6:$("#ka_add_dialogtip").html(html_6);break;
 			}
 			
 			easyDialog.open({
@@ -410,26 +412,46 @@
 		},
 		removecardlist: function(){//移除卡牌列表
 			var cardid = Number(arguments[0]),
-			cards = this.o.cards;
+				cards = this.o.cards,
+				rarity = 0,
+				isTwo = false;
 			
 			for(var i=0; i<cards.length; i++){
 				if(cards[i].c == cardid){
+					rarity = cards[i].f;
 					if(cards[i].z == 1){
 						cards.splice(i,1);
 					}else{
+						isTwo = true;
 						cards[i].z = 1;
+						
 					}
-					this.printcardlist();
+					$("#ka_add_maincard").children().filter(function(){
+						var self = $(this),
+							_id = self.attr("data-id"),
+							_datalock = Number(self.attr("data-lock"));
+						if(_id == cardid){
+							self.attr("data-lock", --_datalock);
+							if(rarity == 5){
+								self.children().children('.lock_one').remove();
+							}else if(isTwo){
+								self.children().children('.lock_two').remove();
+							}
+						}
+					});
+					break;
 				}
 			}
+			this.printcardlist();
 		},
 		addcardlist: function(){//增加卡牌进列表
 			var $element = $(arguments[0]),
-			$wrap = $element.children(".w"),
-			cardid = Number($element.attr("data-id")),
-			datacards = this.datacards[this.switchjob(this.o.job)].b,
-			cards = this.o.cards,
-			cardtmp;
+				$wrap = $element.children(".w"),
+				cardid = Number($element.attr("data-id")),
+				cardlock = Number($element.attr("data-lock")),
+				datacards = this.datacards[this.switchjob(this.o.job)].b.slice(0),
+				cards = this.o.cards,
+				cardtmp;
 			
 			if(this.o.cardnum == 30){
 				this.showdialogtip(2);
@@ -439,52 +461,45 @@
 			for(var i=0; i<datacards.length; i++){
 				if(datacards[i].c == cardid){
 					cardtmp = datacards[i];
-					
-					var k = 0,
-					istwo = false;
-					
-					if(cards.length == 0){//第一次的时候
-						cardtmp.z = 1;
-						cards.push(cardtmp);
-					}else{
-						for(var j=0; j<cards.length; j++){
-							if(cards[j].c == cardid){
-								k = j;
-								istwo = true;
-								break;
-							}
-						}
-						if(!istwo){
+
+					switch(cardlock){
+						//默认是0，允许两张，从0开始计数 0,1,2
+						case 0:
 							cardtmp.z = 1;
 							cards.push(cardtmp);
+							$element.attr("data-lock", ++cardlock);
 							break;
-						}
-						if(istwo && cards[k].z == 1){
-							if(cards[k].f == 5){//相同传说级卡牌只能携带一张
-								this.showdialogtip(4);
-								return;
+						case 1:
+							for(var j=0; j<cards.length; j++){
+								if(cards[j].c == cardid){
+									cards[j].z = 2;
+									break;
+								}
 							}
-							istwo = false;
-							cards[k].z = 2;
+							$element.attr("data-lock", ++cardlock);
+							$wrap.append('<i class="lock_two"></i>');
+							cardtmp
 							break;
-						}
-						if(istwo && cards[k].z == 2){
-							istwo = false;
+						case 2:
 							this.showdialogtip(1);
 							return;
-						}
+						//相同传说级卡牌只能携带一张,从3开始计数 3,4
+						case 3:
+							cardtmp.z = 1;
+							cards.push(cardtmp);
+							$element.attr("data-lock", ++cardlock);
+							$wrap.append('<i class="lock_one"></i>');
+							break;
+						case 4:
+							this.showdialogtip(4);
+							return;
+						default:
+							this.showdialogtip(6);
+							return;
 					}
 				}
 			}
-			
-			if(!$wrap.hasClass("flip1") && !$wrap.hasClass("flip2")){
-				$wrap.addClass("flip1");
-			}else if($wrap.hasClass("flip1") && !$wrap.hasClass("flip2")){
-				$wrap.removeClass("flip1").addClass("flip2");
-			}else if(!$wrap.hasClass("flip1") && $wrap.hasClass("flip2")){
-				$wrap.removeClass("flip2").addClass("flip1");
-			}
-			
+						
 			function bubbleSort(arr){//冒泡排序,从小到大
 				var i = arr.length,
 				j,
@@ -506,7 +521,8 @@
 			this.printcardlist();
 		},
 		printdetail: function(){//打印左侧卡牌
-			var cardshtml = '',
+			var that = this,
+				cardshtml = '',
 				datacards = this.datacards[this.switchjob(this.o.job)].b,
 				rarity = this.o.rarity,
 				fei = this.o.fei,
@@ -514,7 +530,8 @@
 				feimax = 100,
 				keyword = this.o.keyword,
 				model = this.o.model,
-				card;
+				card,
+				datalock = 0;
 
 			(function feiFn(){
 				switch(fei){
@@ -530,16 +547,53 @@
 						feimax = feimin = fei;
 				}
 			})();
+			//lock值 普通0,1,2 传说3,4
+			function calcLock(_id, _rarity){
+				var _card;
+				for(var j=0; j<that.o.cards.length; j++){
+					_card = that.o.cards[j];
+					//找到对应id 说明有存
+					if(_card.c == _id){
+						//如果稀有度是5 传说
+						if(_rarity == 5){
+							return 4;
+						}
+						if(_card.z == 1){
+							return 1;
+						}else if(_card.z == 2){
+							return 2;
+						}
+					}
+				}
+				//如果稀有度是5:传说
+				if(_rarity == 5){
+					return 3;
+				}else{
+					return 0;
+				}
+			}
+			//根据计算出的lock值返回html
+			function htmlLock(){
+				if(datalock == 2){
+					return '<i class="lock_two"></i>';
+				}else if(datalock == 4){
+					return '<i class="lock_one"></i>';
+				}else{
+					return '';
+				}
+			}
 
 			for(var i=0; i<datacards.length; i++){
 				card = datacards[i];
+
 				if((model == 'wild' || (card.j > 0 && card.j < 6)) && (rarity == 0 || card.f == rarity) && (card.e >= feimin && card.e <= feimax) && (keyword.length == 0 || card.d.indexOf(keyword) != -1)){
-					cardshtml += '<div class="item" data-id="'+card.c+'">'+
+					datalock = calcLock(card.c, card.f);
+					cardshtml += '<div class="item" data-id="'+card.c+'" data-lock="'+datalock+'">'+
 									'<div class="w">'+
 										'<img src="'+this.o.url+'ka-defaultpic.png">'+
-										'<div class="zoom"></div>'+
-										'<div class="pic picfront" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
-										'<div class="pic picback"></div>'+
+										'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
+										'<span class="zoom"><i></i></span>'+
+										htmlLock()+
 									'</div>'+
 									'<p>'+card.d+'</p>'+
 								'</div>';

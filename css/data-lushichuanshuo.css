@@ -263,7 +263,7 @@ body{ -webkit-user-select:none; user-select:none}
 .ka_add .aside .item .double{ background:url(../images/lushichuanshuo/ka-number.png) -204px -60px no-repeat; background-size:220px; right:7px; top:2px; width:16px; height:15px; position:absolute}
 .ka_add .aside_bottom{ position:absolute; bottom:0; text-align:center; width:100%; z-index:3}
 .ka_add .aside_bottom div{ color:#fff; font-size:1.6rem}
-.ka_add .aside_bottom a{ background:url(../images/lushichuanshuo/ka-detail.png) no-repeat; background-size:106px; width:106px; height:44px; display:block}
+.ka_add .aside_bottom a{ background:url(../images/lushichuanshuo/ka-detail.png) no-repeat; background-size:124px; width:106px; height:44px; display:block}
 @media screen and (min-width:641px){
 	.ka_add .aside{ width:212px}
 	.ka_add .aside .ka_flag{ margin-left:-6px}
@@ -313,7 +313,7 @@ body{ -webkit-user-select:none; user-select:none}
 	.ka_add .aside .item p{ left:42px; top:4px; width:165px; font-size:2rem}
 	.ka_add .aside .item .double{ background-position:-408px -120px; background-size:440px; right:14px; top:4px; width:32px; height:30px}
 	.ka_add .aside_bottom div{ color:#fff; font-size:3.2rem}
-	.ka_add .aside_bottom a{ background-size:212px; width:212px; height:88px}
+	.ka_add .aside_bottom a{ background-size:248px; width:212px; height:88px}
 }
 /*卡组模拟-编辑卡牌-左侧主体*/
 .ka_add .main{ margin-right:110px}
@@ -353,38 +353,23 @@ body{ -webkit-user-select:none; user-select:none}
 	.ka_add .main .filter .group_select li div{ padding:0 20px}	
 }
 /*卡组模拟-编辑卡牌-左侧主体-卡牌组*/
-.ka_add .maincard{ overflow-y:auto; -webkit-overflow-scrolling:touch; -webkit-transform-style:preserve-3d; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.ka_add .maincard{ overflow-y:auto; -webkit-overflow-scrolling:touch; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .ka_add .maincard .item{ float:left; width:33.33%; color:#fde69f; text-align:center; position:relative}
 .ka_add .maincard .item .w{ margin:5px; position:relative}
 .ka_add .maincard .item .w img{ width:100%; height:auto}
-.ka_add .maincard .item .w .zoom{ background:url(../images/lushichuanshuo/ka-detail.png) right -44px no-repeat; width:100%; height:30px; background-size:106px; position:absolute; top:0; left:0; z-index:4; backface-visibility:hidden; -webkit-backface-visibility:hidden; cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 .ka_add .maincard .item .w .pic{ position:absolute; width:100%; height:100%; background-repeat:no-repeat; background-position:center center; left:0; top:0; background-size:cover}
-.ka_add .maincard .item .w .picfront{ backface-visibility:hidden; -webkit-backface-visibility:hidden; z-index:3}
-.ka_add .maincard .item .flip1 .zoom,.ka_add .maincard .item .flip1 .picfront{ -webkit-animation:picfrontflip 2s ease-out 0s 1 normal}
-.ka_add .maincard .item .flip1 .picback{ -webkit-animation:picbackflip 2s ease-out 0s 1 normal}
-.ka_add .maincard .item .flip2 .zoom,.ka_add .maincard .item .flip2 .picfront{ -webkit-animation:picfrontflip2 2s ease-out 0s 1 normal}
-.ka_add .maincard .item .flip2 .picback{ -webkit-animation:picbackflip2 2s ease-out 0s 1 normal}
-@-webkit-keyframes picfrontflip{
-	100%{ -webkit-transform:rotateY(360deg)}
-}
-@-webkit-keyframes picbackflip{
-	50%{ background-image:url(../images/lushichuanshuo/ka-card-default.png)}
-	100%{ -webkit-transform:rotateY(360deg)}
-}
-@-webkit-keyframes picfrontflip2{
-	100%{ -webkit-transform:rotateY(360deg)}
-}
-@-webkit-keyframes picbackflip2{
-	50%{ background-image:url(../images/lushichuanshuo/ka-card-default.png)}
-	100%{ -webkit-transform:rotateY(360deg)}
-}
+.ka_add .maincard .item .w .zoom{ width:100%; height:40px; position:absolute; top:0; left:0; z-index:3}
+.ka_add .maincard .item .w .zoom i{ background:url(../images/lushichuanshuo/ka-detail.png) right top no-repeat; background-size:124px; width:18px; height:18px; float:right}
+.ka_add .maincard .item .w .lock_one,.ka_add .maincard .item .w .lock_two{ position:absolute; z-index:2; width:100%; height:100%; left:0; top:0; background-image:url(../images/lushichuanshuo/ka-lock-one.png); background-position:center center; background-repeat:no-repeat; background-size:cover}
+.ka_add .maincard .item .w .lock_two{ background-image:url(../images/lushichuanshuo/ka-lock-two.png)}
 .ka_add .maincard .item p{ font-size:1.2rem; height:36px; line-height:1.2}
 @media screen and (min-width:640px){
 	.ka_add .maincard .item{ width:25%}
 }
 @media screen and (min-width:641px){
 	.ka_add .maincard .item .w{ margin:10px 10px 5px}
-	.ka_add .maincard .item .w .zoom{ background-position:right -88px; height:60px; background-size:212px}
+	.ka_add .maincard .item .w .zoom{ height:80px}
+	.ka_add .maincard .item .w .zoom i{ background-size:248px; width:36px; height:36px}
 	.ka_add .maincard .item p{ font-size:1.8rem; height:50px; line-height:1.2}
 }
 @media screen and (min-width:1024px){
