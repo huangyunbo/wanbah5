@@ -282,7 +282,9 @@
 			}
 			
 			if(this.o.platform == "ios"){
-				location.href = this.o.plugin+'/data-lushichuanshuo-ka-index.html';
+				location.href = this.o.plugin+'/index.html';
+			}else if(this.o.platform == "android"){
+				location.href = 'index.html';
 			}else{
 				location.href = 'data-lushichuanshuo-ka-index.html';
 			}

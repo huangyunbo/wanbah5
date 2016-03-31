@@ -358,7 +358,7 @@ body{ -webkit-user-select:none; user-select:none}
 .ka_add .maincard .item .w{ margin:5px; position:relative}
 .ka_add .maincard .item .w img{ width:100%; height:auto}
 .ka_add .maincard .item .w .pic{ position:absolute; width:100%; height:100%; background-repeat:no-repeat; background-position:center center; left:0; top:0; background-size:cover}
-.ka_add .maincard .item .w .zoom{ width:100%; height:40px; position:absolute; top:0; left:0; z-index:3}
+.ka_add .maincard .item .w .zoom{ width:50%; height:40px; position:absolute; top:0; right:0; z-index:3}
 .ka_add .maincard .item .w .zoom i{ background:url(../images/lushichuanshuo/ka-detail.png) right top no-repeat; background-size:124px; width:18px; height:18px; float:right}
 .ka_add .maincard .item .w .lock_one,.ka_add .maincard .item .w .lock_two{ position:absolute; z-index:2; width:100%; height:100%; left:0; top:0; background-image:url(../images/lushichuanshuo/ka-lock-one.png); background-position:center center; background-repeat:no-repeat; background-size:cover}
 .ka_add .maincard .item .w .lock_two{ background-image:url(../images/lushichuanshuo/ka-lock-two.png)}
