@@ -391,8 +391,8 @@ body{ -webkit-user-select:none; user-select:none}
 .ka_mycards .c .item .num:before{ content:""; position:absolute; top:0; left:-4px; width:0; height:0; border-top:7px solid transparent; border-right:4px solid #2a91ff; border-bottom:7px solid transparent}
 .ka_mycards .c .item .num:after{ content:""; position:absolute; top:0; right:-4px; width:0; height:0; border-top:7px solid transparent; border-left:4px solid #2a91ff; border-bottom:7px solid transparent}
 .ka_mycards .c .item span{ color:#fde69f; position:relative; padding-left:22px; z-index:5; white-space:nowrap}
-.ka_mycards .c .item .pic{ width:50px; height:18px; position:absolute; right:0; top:0; background-size:150px; background-position:-41px -50px; background-repeat:no-repeat}
-.ka_mycards .c .item i{ width:10px; position:absolute; right:40px; top:0; bottom:0; background:linear-gradient(left, #31302e, transparent); background:-webkit-linear-gradient(left, #31302e, transparent); z-index:2}
+.ka_mycards .c .item .pic{ width:54px; height:18px; position:absolute; right:0; top:0; background-size:150px; background-position:-41px -50px; background-repeat:no-repeat}
+.ka_mycards .c .item i{ width:10px; position:absolute; right:44px; top:0; bottom:0; background:linear-gradient(left, #31302e, transparent); background:-webkit-linear-gradient(left, #31302e, transparent); z-index:2}
 .ka_mycards .foot{ margin:6px 0 30px; display:table; width:100%}
 .ka_mycards .foot .foot_l{ display:table-cell; width:50%; vertical-align:bottom}
 .ka_mycards .foot .count{ background:#31302e; margin:0 7.5px; text-align:center}
