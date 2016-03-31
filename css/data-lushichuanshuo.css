@@ -383,7 +383,8 @@ body{ -webkit-user-select:none; user-select:none}
 }
 /*卡组模拟-我的卡组-卡列表*/
 .ka_mycards .c{ overflow:hidden; color:#fff; margin-top:15px}
-.ka_mycards .c .item{ float:left; width:50%; padding:0 7.5px; margin-bottom:3px; box-sizing:border-box}
+.ka_mycards .l{ float:left; width:50%; padding:0 7.5px; box-sizing:border-box}
+.ka_mycards .c .item{ margin-bottom:3px}
 .ka_mycards .c .inner{ background:#31302e; position:relative; height:18px; overflow:hidden}
 .ka_mycards .c .item .num{ width:8px; height:14px; line-height:14px; text-align:center; background:#2a91ff; position:absolute; left:8px; top:2px; font-size:1.2rem; z-index:3; font-family:Arial} 
 .ka_mycards .c .item .num_two em{ transform:scale(0.883); -webkit-transform:scale(0.883); display:block; z-index:4; position:relative; left:-3px}

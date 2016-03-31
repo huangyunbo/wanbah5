@@ -15,7 +15,7 @@
 	LscsKa.prototype = {
 		shareweixin: function(){//分享到微信
 			var cardsid = arguments[0],//没值时设置icon；有值时直接分享
-			sharejson = {"url":"http://myapp.wanba123.cn/","title":"玩吧专业版客户端","des":"专为手机游戏玩家而生！这里有最给力的原创游戏攻略、最及时的游戏资讯、各种奇葩玩法、最实用的游戏资料...","pic":"https://is2-ssl.mzstatic.com/image/thumb/Newsstand7/v4/70/35/87/70358797-1269-34a0-dd1f-3891c7d74038/Icon-76@2x.png.png/150x150bb-80.png","name":"","job":0,"cards":""};
+			sharejson = {"url":"http://www.wanba123.cn/","title":"玩吧专业版客户端","des":"专为手机游戏玩家而生！这里有最给力的原创游戏攻略、最及时的游戏资讯、各种奇葩玩法、最实用的游戏资料...","pic":"https://is2-ssl.mzstatic.com/image/thumb/Newsstand7/v4/70/35/87/70358797-1269-34a0-dd1f-3891c7d74038/Icon-76@2x.png.png/150x150bb-80.png","name":"","job":0,"cards":""};
 
 			function setjob(){
 				switch(arguments[0]){
@@ -81,10 +81,10 @@
 		printmycards: function(){//打印我的某个卡组
 			var wbgllscsmycards,
 				newcards = [],
-				newcards_l = [],
-				newcards_r = [],
+				newcardslen = 0,
 				card,
-				html = '',
+				html_l = '',
+				html_r = '',
 				dic = [0,0,0,0,0,0,0,0],//0-7+的卡牌法力消耗值图表
 				dust_ordinary = 0,//普通奥术之尘
 				dust_gold = 0;//金奥术之尘
@@ -102,15 +102,6 @@
 			}
 			
 			$("#header h1").html(wbgllscsmycards.name);
-			
-			function isnumtwo(){//上两位数费的卡牌要换className
-				var num = arguments[0];
-				if(num >= 10){
-					return '<div class="num num_two"><em>'+num+'</em></div>';
-				}else{
-					return '<div class="num"><em>'+num+'</em></div>';
-				}
-			}
 			
 			for(var i=0; i<wbgllscsmycards.cards.length; i++){//先把30张牌排出来
 				card = wbgllscsmycards.cards[i];
@@ -130,28 +121,39 @@
 					newcards.push(card);
 				}
 			}
+			newcardslen = newcards.length;
 			
-			newcards_l = newcards.slice(0,15);//分成0-14
-			newcards_r = newcards.slice(15);//分成15-29
-			newcards = [];
-			for(var i=0; i<30; i++){//然后偶数的放左边数组，奇数的放右边数组
-				if(i%2 == 0){
-					newcards.push(newcards_l[Math.floor(i/2)]);
+			function isnumtwo(){//上两位数费的卡牌要换className
+				var num = arguments[0];
+				if(num >= 10){
+					return '<div class="num num_two"><em>'+num+'</em></div>';
 				}else{
-					newcards.push(newcards_r[Math.floor(i/2)]);
+					return '<div class="num"><em>'+num+'</em></div>';
 				}
 			}
 
-			for(var i=0; i<newcards.length; i++){
+			for(var i=0; i<newcardslen; i++){
 				card = newcards[i];
-				html += '<div class="item">'+
-							'<div class="inner">'+
-								isnumtwo(card.e)+
-								'<span>'+card.d+'</span>'+
-								'<i></i>'+
-								'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
-							'</div>'+
-						'</div>';
+				if(i < 15){
+					html_l += '<div class="item">'+
+								'<div class="inner">'+
+									isnumtwo(card.e)+
+									'<span>'+card.d+'</span>'+
+									'<i></i>'+
+									'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
+								'</div>'+
+							'</div>';
+				}else if(i < 30){
+					html_r += '<div class="item">'+
+								'<div class="inner">'+
+									isnumtwo(card.e)+
+									'<span>'+card.d+'</span>'+
+									'<i></i>'+
+									'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
+								'</div>'+
+							'</div>';
+				}
+				console.log(card.f);
 				//奥术之尘
 				switch(card.f){
 					case 2:
@@ -173,13 +175,14 @@
 				}
 			}
 		
-			$("#ka_mycards").html(html);
+			$("#ka_mycards_l").html(html_l);
+			$("#ka_mycards_r").html(html_r);
 			
 			$("#dust_ordinary").html(dust_ordinary);
 			$("#dust_gold").html(dust_gold);
 			
 			$("#ka_mycards_chart").children("li").each(function(index){
-				var _h = dic[index] / 30 * 2 * 100;//翻倍效果更加明显
+				var _h = dic[index] / newcardslen * 2 * 100;//翻倍效果更加明显
 				if(_h > 100){
 					_h = 100;
 				}
@@ -768,11 +771,7 @@
 			});
 			//添加卡牌-点击完成
 			$("#ka_add_ok").click(function(){
-				if(that.o.cardnum != 30){
-					that.showdialogtip(3);
-				}else{
-					that.setmemorycard();
-				}
+				that.setmemorycard();
 			});
 			//添加卡牌-点击顶部返回
 			$("#ka_detail_back").click(function(e){
