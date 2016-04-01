@@ -275,14 +275,16 @@
 				wbgllscska = JSON.parse(localStorage.getItem("wbgl-lscs-ka"));
 				for(var i=0; i<wbgllscska.data.length; i++){
 					if(wbgllscska.data[i].id == id){
-						wbgllscska.data[i] = {"id":id,"name":cardname,"job":job,"model":this.o.model,"cards":this.o.cards};
+						wbgllscska.data[i] = ka = {"id":id,"name":cardname,"job":job,"model":this.o.model,"cards":this.o.cards};
 						localStorage.setItem("wbgl-lscs-ka", JSON.stringify(wbgllscska));
+						break;
 					}
 				}
 			}
-			
+			//ios跳转做特殊处理，跳转mycards.html，另外还要设置localStorage.setItem("wbgl-lscs-ka-mycards",card);
 			if(this.o.platform == "ios"){
-				location.href = this.o.plugin+'/index.html';
+				localStorage.setItem("wbgl-lscs-ka-mycards", JSON.stringify(ka));
+				location.href = this.o.plugin+'/data-lushichuanshuo-ka-mycards.html';
 			}else if(this.o.platform == "android"){
 				location.href = 'index.html';
 			}else{
