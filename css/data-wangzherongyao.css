@@ -35,32 +35,45 @@ a{ text-decoration:none}
 .header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 /*英雄列表*/
+
+/*横向滑动通用导航*/
+.nav_slide_wrap{ height:50px; position:relative; overflow:hidden; margin-top:45px}
+.nav_slide_wrap .line_x{ position:absolute; left:0; right:0; bottom:0; background:#d3d3d3;height:1px;}
+.nav_slide_wrap .nav_slide{ overflow-x:auto; width:100%;height:70px; position:relative; -webkit-overflow-scrolling:touch}
+.nav_slide_wrap .nav_slide_inner{ position:absolute;height:49px; width:560px}
+@media screen and (min-width:640px){
+	.nav_slide_wrap{ height:80px;}
+	.nav_slide_wrap .line_x{ height:2px;}
+	.nav_slide_wrap .nav_slide{ height:140px;}
+	.nav_slide_wrap .nav_slide_inner{ height:79px; width:1000px}
+}
+
 .hero_body{ background:#05090c; color:#fff; -webkit-user-select:none; user-select:none}
-.herolist{color:#fff; margin-top:45px}
-.herolist .head{ border-bottom:1px solid #ffca28; display:table; width:100%}
-.herolist .head .item{ width:20%; height:50px; text-align:center; display:table-cell; vertical-align:middle; font-size:1.6rem; position:relative}
+.herolist{color:#fff;}
+.herolist .head{ border-bottom:1px solid #ffca28}
+.herolist .head .item{ width: 80px; height:50px; line-height: 50px; text-align: center; float:left; font-size:1.6rem; position:relative}
 .herolist .head .item.on{ color:#ffca28}
 .herolist .head .item:before{ content:""; background:#ffca28; width:1px; height:22px; position:absolute; right:0; top:15px}
 .herolist .head .item:last-child:before{ background:none}
-.herolist .content{ text-align:center; margin-bottom:30px}
-.herolist .content ul{ display:none}
-.herolist .content ul.on{ display:block}
-.herolist .content li{ display:inline-block; width:22%; text-align:center; padding-top:15px; vertical-align:top}
-.herolist .content li img{ width:58px; height:58px}
-.herolist .content li p{ font-size:1.4rem; line-height:1; padding:5px 0}
+.content{ text-align:center; margin-bottom:30px}
+.content ul{ display:none}
+.content ul.on{ display:block}
+.content li{ display:inline-block; width:22%; text-align:center; padding-top:15px; vertical-align:top}
+.content li img{ width:58px; height:58px}
+.content li p{ font-size:1.4rem; line-height:1; padding:5px 0}
 @media screen and (min-width:640px){
-	.herolist .head .item{ height:70px; font-size:3rem}
+	.herolist .head .item{ width: 160px;  height:70px; line-height: 70px; font-size:3rem}
 	.herolist .head .item:before{ height:34px; top:18px}
-	.herolist .content{ margin-bottom:60px}
-	.herolist .content li{ padding-top:30px}
-	.herolist .content li img{ width:116px; height:116px}
-	.herolist .content li p{ font-size:2.6rem; padding:10px 0}
+	.content{ margin-bottom:60px}
+	.content li{ padding-top:30px}
+	.content li img{ width:116px; height:116px}
+	.content li p{ font-size:2.6rem; padding:10px 0}
 }
 /*英雄详情*/
 .herod_bg{ position:relative}
 .herod_bg i { position: absolute; width: 100%; bottom: 0; left: 0; height: 150px; background: linear-gradient(transparent, #08121a); background: -webkit-linear-gradient(transparent, #08121a)}
 .herod{ position:relative}
-.herod .head .tit{ font-size:2.1rem; padding-bottom:5px; margin-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.4)}
+.herod .head .tit{ font-size:2.1rem; padding-bottom:5px; margin-bottom:10px; /*border-bottom:1px solid rgba(255,255,255,0.4)*/}
 .herod .head .tit div{ font-size:1.5rem; color:#ffca28}
 .herod .head .label span{ padding:0 5px; margin-right:12px; font-size:1.4rem}
 .herod .head .label span:first-child{ background:#c64251}
@@ -85,7 +98,7 @@ a{ text-decoration:none}
 .herod .head .circle_green .r i{ border-top:2px solid #20d48a; border-right:2px solid #20d48a}
 .herod .head .circle_blue .l i{ border-bottom:2px solid #23baf8; border-left:2px solid #23baf8}
 .herod .head .circle_blue .r i{ border-top:2px solid #23baf8; border-right:2px solid #23baf8}
-.herod_h2{ font-size:1.5rem; color:#ffca28; border-bottom:1px solid rgba(255,255,255,0.4); padding:0 0 5px 15px; margin-bottom:10px; background:url(../images/wangzherongyao/hero_detail.png) 0 -200px no-repeat; background-size:30px}
+.herod_h2{ font-size:1.5rem; color:#ffca28; /*border-bottom:1px solid rgba(255,255,255,0.4);*/ padding:0 0 5px 15px; margin-bottom:10px; background:url(../images/wangzherongyao/hero_detail.png) 0 -200px no-repeat; background-size:30px}
 
 /*装备*/
 .herod .equipchoice{ border-bottom: 1px solid #ffca28; padding-bottom: 5px}
@@ -110,9 +123,6 @@ a{ text-decoration:none}
 .herod .equipchoice_content .label span:nth-child(2){ background:#b88a3a}
 .herod .equipchoice_content .label span:nth-child(3){ background:#3d899f}
 .herod .equipchoice_content .label span:nth-child(4){ background:#9c62a6}
-
-
-
 
 
 .herod .addskill ul{ margin-left:-15px} 
@@ -172,6 +182,29 @@ a{ text-decoration:none}
 .herod .skills .content .key .col_00baff{ color:#00baff}
 .herod .skills .content .key .col_f66e01{ color:#f66e01}
 .herod .skills .content .key .col_96ff00{ color:#96ff00}
+
+/*最佳搭档*/
+.herod .bestpartner li,.herod .suppresshero li,.herod .suppressedhero li,.herod .recomrune li{ display:inline-block; width:18%; text-align:center; padding-top:15px; vertical-align:top; margin-right: 15px}
+.herod .bestpartner li p,.herod .suppresshero li p,.herod .suppressedhero li p,.herod .recomrune li p{ font-size:1.4rem; line-height:1; padding:5px 0}
+.herod .recomrune{ position: relative;}
+.herod .recomrune .rune_item{ margin-top: 1.4rem}
+.herod .recomrune .icon_rune{position:absolute; width:50px; height: 50px;}
+.herod .recomrune .icon_rune_r{ background:url(../images/wangzherongyao/rune_r.png); background-size: 100%;}
+.herod .recomrune .icon_rune_g{ background:url(../images/wangzherongyao/rune_g.png); background-size: 100%;}
+.herod .recomrune .icon_rune_b{ background:url(../images/wangzherongyao/rune_b.png); background-size: 100%;}
+.herod .recomrune .rune_f{ padding-left: 60px; font-size: 16px}
+.herod .recomrune .value{ padding-left: 60px; font-size: 14px; margin-top:0.1rem}
+.herod .recomrune .value span{ margin-right:10px; color: #9c9895;}
+@media screen and (min-width:640px){
+.herod .bestpartner li,.herod .suppresshero li,.herod .suppressedhero li,.herod .recomrune li{ margin-right: 30px}
+.herod .bestpartner li p,.herod .suppresshero li p,.herod .suppressedhero li p,.herod .recomrune li p{ font-size:2.6rem; line-height:2; padding:10px 0}
+.herod .recomrune .rune_item{ margin-top: 2.8rem}
+.herod .recomrune .icon_rune{ width:80px; height: 80px;}
+.herod .recomrune .rune_f{ padding-left: 100px; font-size: 2.8rem}
+.herod .recomrune .value{ padding-left: 100px; font-size: 2.6rem; margin-top:0.2rem}
+.herod .recomrune .value span{ margin-right:20px }
+}
+
 .herod .access{ margin-bottom:30px}
 .herod .access .content{ font-size:1.4rem}
 .herod .access .item{ margin-bottom:10px}

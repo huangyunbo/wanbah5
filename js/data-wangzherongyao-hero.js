@@ -260,6 +260,39 @@
 				}
 			});
 		},
+
+		findType:function(id){//全局查找英雄类型
+			var that = this,
+			mData = that.data,
+			mPiece='',
+			mType = '';
+			for(var i=0;i<mData.length;i++){
+				for(var j=0;j<mData[i].data.length;j++){					
+					if(id == mData[i].data[j].id){
+						mPiece = mData[i].data[j];	
+						mType = mData[i].tid;
+						console.log(mType);					
+						break;
+					}
+				}
+			}
+			return mType;
+		},
+
+		findHero:function(id){//全局查找英雄
+			var that = this,
+			mData = that.data,
+			mPiece = '';
+			for(var i=0;i<mData.length;i++){
+				for(var j=0;j<mData[i].data.length;j++){					
+					if(id == mData[i].data[j].id){
+						mPiece = mData[i].data[j];						
+						break;
+					}
+				}
+			}
+			return mPiece;
+		},
 		printHerodetail: function(id){//打印英雄详情
 			var type = this.o.type,
 				piece,
@@ -271,21 +304,27 @@
 				html_addskill = '',
 				html_skills_head = '',
 				html_skills_content = '',
+				html_bestparnter = '',
+				html_suppresshero = '',
+				html_suppressedhero = '',
+				html_rune_r = '',
+				html_rune_g = '',
+				html_rune_b = '',
 				html_access='',
 				html_jinbi = '',
 				html_dianjuan = '',
-				html_j_d_all='';
-			
-			for(var i=0; i<this.data[type].data.length; i++){
-				if(this.data[type].data[i].id == id){
-					piece = this.data[type].data[i];	
-					this.o.piece = piece;							
-					break;
-				}
-			}
-
-			if(piece === undefined) return;			
-			
+				html_j_d_all='',
+				that = this;		
+			// for(var i=0; i<this.data[type].data.length; i++){
+			// 	if(this.data[type].data[i].id == id){
+			// 		piece = this.data[type].data[i];	
+			// 		this.o.piece = piece;							
+			// 		break;
+			// 	}
+			// }
+			piece = that.findHero(id);
+			this.o.piece = piece;			
+			if(piece === undefined) return;
 			$("#herod_bg").attr("src",this.o.url+"dbpic/d_"+id+".jpg");//大背景图片
 			
 			html_herod_head_tit = piece.title + '-' + piece.name + '<div>' + piece.pos + '</div>';
@@ -341,17 +380,7 @@
 			}		
 			
 			$("#equipchoice").html(html_equipchoice_head);//装备选择
-			$("#equipchoice_content").html(html_equipchoice_content);//装备选择		
-			
-			// for(var i=0; i<piece.equip.length; i++){
-			// 	html_equipchoice += '<li><img src="'+this.o.url+'equip/'+piece.equip[i]+'.png"></li>';
-			// }
-			// $("#equipchoice").html(html_equipchoice);//装备选择
-			
-			for(var i=0; i<piece.addskill.length; i++){
-				html_addskill += '<li><img src="'+this.o.url+'skill/'+id+'_'+piece.addskill[i]+'.png"></li>';
-			}
-			$("#addskill").html(html_addskill);//加点路线
+			$("#equipchoice_content").html(html_equipchoice_content);//装备选择	
 			
 			$("#graphical").children("li").each(function(index){//英雄数据
 				$(this).find(".star").addClass("star"+piece.graphical[index]);
@@ -372,21 +401,49 @@
 											'<div class="desc">'+
 												piece.sintro[i]+
 											'</div>';
-
-				// if(i != piece.sname.length-1){//视频只有前3个
-				// 	html_skills_content += '<div class="video" id="videocon'+i+'" data-id="'+piece.svideo[i]+'"></div>';
-				// }
-
 				html_skills_content += '</div>';
 			}
+
+			for(var i=0; i<piece.addskill.length; i++){
+				html_addskill += '<li><img src="'+this.o.url+'skill/'+id+'_'+piece.addskill[i]+'.png"></li>';
+			}
+			$("#addskill").html(html_addskill);//加点路线
 			$("#skills_head").html(html_skills_head);
 			$("#skills_content").html(html_skills_content);
-			
-			$("#suipian").html(piece.suipian);//获得途径			
+			for(var bp=0; bp<piece.hero[0].length; bp++){				
+				var heroname = that.findHero(piece.hero[0][bp]).name;
+				html_bestparnter += '<li data-id="'+piece.hero[0][bp]+'" data-type="'+that.findType(piece.hero[0][bp])+'"><img src="'+this.o.url+'dbpic/'+piece.hero[0][bp]+'.png" alt="'+heroname+'"><p>'+heroname+'</p></li>';
+			}
+			for(var ss=0; ss<piece.hero[1].length; ss++){				
+				var s_heroname = that.findHero(piece.hero[1][ss]).name;
+				html_suppresshero += '<li data-id="'+piece.hero[1][ss]+'" data-type="'+that.findType(piece.hero[0][ss])+'"><img src="'+this.o.url+'dbpic/'+piece.hero[1][ss]+'.png" alt="'+s_heroname+'"><p>'+s_heroname+'</p></li>';
+			}
+			for(var ssd=0; ssd<piece.hero[2].length; ssd++){				
+				var ssd_heroname = that.findHero(piece.hero[2][ssd]).name;
+				html_suppressedhero += '<li data-id="'+piece.hero[2][ssd]+'" data-type="'+that.findType(piece.hero[0][ssd])+'"><img src="'+this.o.url+'dbpic/'+piece.hero[2][ssd]+'.png" alt="'+ssd_heroname+'"><p>'+ssd_heroname+'</p></li>';
+			}
+			$("#bestpartner").html(html_bestparnter);//最佳搭档
+			$("#suppresshero").html(html_suppresshero);//压制英雄
+			$("#suppressedhero").html(html_suppressedhero);//被压制英雄			
+			$("#suipian").html(piece.suipian);//获得途径	
+
+			for(var r=0;r<piece.rune[0].length; r++){
+				html_rune_r += '<span>'+piece.rune[0][r]+'</span>'
+			}
+			for(var g=0;g<piece.rune[1].length; g++){
+				html_rune_g += '<span>'+piece.rune[1][g]+'</span>'
+			}
+			for(var b=0;b<piece.rune[2].length; b++){
+				html_rune_b += '<span>'+piece.rune[2][b]+'</span>'
+			}
+			$("#value_r").html(html_rune_r);//红色符文
+			$("#value_g").html(html_rune_g);//绿色符文
+			$("#value_b").html(html_rune_b);//蓝色符文
+
+
 			for(var i=0; i<piece.getsuipian.length; i++){
 				html_access += '<div class="d_label"><label>'+piece.getsuipian[i]+'</label></div>';
-			}
-		
+			}		
 			if(piece.suipian>0){
 				html_jinbi +='<div class="item">'+
 				'<div>'+
@@ -459,8 +516,35 @@
 					$("#equipchoice_content").children().eq(_index).addClass("on").siblings().removeClass("on");
 				}	
 			});
-			
-			
+
+
+			$("#bestpartner").on("click", "li", function(){//最佳搭档跳转
+				var _id = Number($(this).attr("data-id"));									
+				that.setsession("wbgl-wangzherongyao-hero-id",_id);
+				if(that.o.platform == "ios"){
+					location.href = that.o.plugin+'/data-wangzherongyao-hero-detail.html';
+				}else{
+					location.href = 'data-wangzherongyao-hero-detail.html';
+				}
+			});
+			$("#suppresshero").on("click", "li", function(){//克制英雄
+				var _id = Number($(this).attr("data-id"));									
+				that.setsession("wbgl-wangzherongyao-hero-id",_id);
+				if(that.o.platform == "ios"){
+					location.href = that.o.plugin+'/data-wangzherongyao-hero-detail.html';
+				}else{
+					location.href = 'data-wangzherongyao-hero-detail.html';
+				}
+			});
+			$("#suppressedhero").on("click", "li", function(){//被克制英雄
+				var _id = Number($(this).attr("data-id"));									
+				that.setsession("wbgl-wangzherongyao-hero-id",_id);
+				if(that.o.platform == "ios"){
+					location.href = that.o.plugin+'/data-wangzherongyao-hero-detail.html';
+				}else{
+					location.href = 'data-wangzherongyao-hero-detail.html';
+				}
+			});
 			// that.setNumbersroll();//数值跳动
 			that.setHerodtop();//设置顶部图片高度
 			// that.setSlidebar();//滑动条
@@ -481,7 +565,7 @@
 				html_content_temp = '';
 				for(var j=0; j<this.data[i].data.length; j++){
 					piece = this.data[i].data[j];
-					html_content_temp += '<li data-id="'+piece.id+'" data-type="'+i+'"><img src="'+this.o.url+'dbpic/'+piece.id+'.png" alt="'+piece.title+'"><p>'+piece.title+'</p></li>';
+					html_content_temp += '<li data-id="'+piece.id+'" data-type="'+i+'"><img src="'+this.o.url+'dbpic/'+piece.id+'.png" alt="'+piece.name+'"><p>'+piece.name+'</p></li>';
 					
 				}
 				html_content += html_content_temp;
