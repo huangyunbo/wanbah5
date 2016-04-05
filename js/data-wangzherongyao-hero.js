@@ -701,6 +701,7 @@
 					}else if(this.o.platform == "ios"){
 						this.setsession("wbgl-wangzherongyao-equip2hero","n");//重置 从装备跳转过来
 						$("#herolist").addClass("mt_0");
+						$("#nav_slide_wrap").removeClass("mt_44");
 					}
 				break;
 				case "herodetail":
@@ -748,9 +749,10 @@
 /*
 第1数组 战士
 第2数组 法师
-第3数组 肉盾
-第4数组 辅助
-
+第3数组 坦克
+第4数组 刺客
+第5数组 射手
+第6数组 辅助
 
 [{"tid":1,"tname":"战士","data":[{"id":1,"title":"精灵女神",name:"狄安娜","pos":"近战 肉盾 攻击型","label":["治疗","辅助","AOE2"],"pie":[3,9,2,5],"aword":"具备高伤害的远程战士，攻击范围远且上手难度低","groom":"让他的普通攻击获得了吸血效果的加成，配合技能撕裂的被动，让他在打野的时候可以做到几乎无损耗!迅速的清野效果加上技能扑击的范围性眩晕。","equip":[1,2,3,4,5,6],"addskill":[1,2,3,4,1,2,3,4,1,2],"graphical":[1,2,3,10],"figure":{"shengming":[645,2],"gongji":[64,4],"fashu":[5,6],"hujia":[7,8],"fakang":[9,10],"shenghui":[11,12]},"sname":["虚拟一击1","虚拟一击2","虚拟一击3","虚拟一击4"],"sdesc":["每当...","每当...","每当...","每当..."],"sintro":["技能描述朵朵","技能描述朵朵","技能描述朵朵","技能描述朵朵"],"svideo":[],"suipian":18,"zuanshi":-1,"getsuipian":["挑战模式3","闯关模式"],"story":"故事..."}]}];
 */
