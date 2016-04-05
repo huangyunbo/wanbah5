@@ -270,8 +270,7 @@
 				for(var j=0;j<mData[i].data.length;j++){					
 					if(id == mData[i].data[j].id){
 						mPiece = mData[i].data[j];	
-						mType = mData[i].tid;
-						console.log(mType);					
+						mType = mData[i].tid;										
 						break;
 					}
 				}
