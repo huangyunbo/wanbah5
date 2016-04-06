@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* 虚荣 2015-10-19 lucas */
+
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
+html{font:62.5%/1.5 "Microsoft YaHei",sans-serif}
+img{border:none; max-width:100%; vertical-align:top}
+h1,h2,h3,h4,h5,h6{font-weight:normal}
+input,select,textarea{font-size:100%;vertical-align:baseline}
+ol,ul{list-style:none}
+textarea{overflow:auto;vertical-align:top;resize:vertical}
+table{border-collapse:collapse;border-spacing:0}
+em,i,code,cite,address,th{font-style:normal}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+a{ text-decoration:none}
+.hide{ display:none !important}
+.mt_0{ margin-top:0 !important}
+.ml_16{ margin-left:16px}
+.mb_10{ margin-bottom:10px}
+.center{ text-align:center}
+.wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+.fs_12{ font-size:12px}
+.media_fs_14{ font-size:1.4rem}
+.media_mb_20{ margin-bottom:20px}
+.media_ml_16{ margin-left:16px}
+.media_plr_7{ padding:0 7px}
+.no_net{ font-size:2.0rem; text-align:center}
+
+
+
+body{ background:#08121a; color:#fff; -webkit-user-select:none; user-select:none}
+.header{ height:44px; border-bottom:1px solid #355cbf; background:#091723; position:fixed; width:100%; top:0; left:0; z-index:100}
+.header h1{ font-size:18px; padding-top:8px; text-align:center}
+.header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
+
+.content{ margin-top:15px; text-align:center}
+.content ul{ padding-top: 20px;}
+.content li{ display:inline-block; width:32%; text-align:center; padding-top:15px; vertical-align:top}
+.content li img{ width: 93px; height: 93px;}
+
+.detail_body{ background: #08121a; color:#fff}
+.footer{ text-align: center; margin: 50px 0 20px; color: #999; font-size: 14px}
+.article .top { padding: 10px 0; border-bottom: 1px solid #d3d3d3}
+.article .top .info { font-size: 1.3em}
+.article .top .info span { margin-right: 10px}
+.article .top h1 { font-size: 1.8em; font-weight: normal; line-height: 1.2; margin: 10px 0}
+.footer .menu{ margin-bottom: 5px}
+.footer .menu a{ color: #999; padding: 0 10px; display: inline-block}
+.container{ margin-top:45px; margin-left:7px; margin-right:7px}
+@media screen and (min-width:640px){
+	.content ul{ padding-top: 40px;}
+	.content li{ padding-top:30px;}
+	.content li img{ width: 186px; height: 186px;}
+}
+
+
+
+
+
+
+

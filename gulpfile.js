@@ -1361,5 +1361,87 @@ gulp.task('guaiwulieren_ios', function(){
 	gulp.start('guaiwulieren_ios_inner');
 });
 
+//我的世界
+var myworld_gameid = 109;
+var myworld_plugin_hechengbiao = "plugin_1252";
+var myworld_path = '../';
+var myworld_replace = ['css/', 'js/', 'json/'];
+var myworld_replace_data =  ['css/', 'js/', 'json/'];
+var myworld_platform = 'android';
+
+
+gulp.task('myworld_images', function(){
+    gulp.src('./images/myworld/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+myworld_gameid+'/'+myworld_platform+'/DataPlugin/images/myworld'));
+	if(myworld_platform == 'android'){
+		gulp.src('./images/.nomedia', {buffer: false})
+	        .pipe(gulp.dest('../../chajian/'+myworld_gameid+'/'+myworld_platform+'/DataPlugin/images/'));
+    }
+});
+
+gulp.task('myworld_css', function(){
+    gulp.src(['./css/data-myworld.css'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+myworld_gameid+'/'+myworld_platform+'/DataPlugin/css'));
+});
+
+gulp.task('myworld_js', function(){
+    gulp.src(['./js/jquery-2.1.4.min.js','./js/data-myworld-hechengbiao.js'])
+        .pipe(concat('data-myworld-hechengbiao.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+myworld_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+myworld_gameid+'/'+myworld_platform+'/DataPlugin/js'));
+});
+
+// gulp.task('guaiwulieren_json', function(){
+//     gulp.src(['./json/json-guaiwulieren.js', './json/json-guaiwulieren.js'], {buffer: false})
+//         .pipe(gulp.dest('../../chajian/'+guaiwulieren_gameid+'/'+guaiwulieren_platform+'/DataPlugin/json'));
+// });
+
+gulp.task('myworld_data', function(){
+	if(myworld_platform == 'android'){
+		for(var i=0; i<myworld_replace.length; i++){
+			myworld_replace_data[i] = myworld_path + myworld_replace[i];
+		}
+	}
+	
+    gulp.src('data-myworld-hechengbiao.html')
+		.pipe(merge({
+            'js/data-myworld-hechengbiao.min.js':['js/jquery-2.1.4.min.js','js/data-myworld-hechengbiao.js']
+        }))
+		.pipe(replace(myworld_replace[0], myworld_replace_data[0]))
+		.pipe(replace(myworld_replace[1], myworld_replace_data[1]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+myworld_gameid+'/'+myworld_platform+'/DataPlugin/'+myworld_plugin_hechengbiao));
+
+    
+
+    gulp.src('data-myworld-biao-details.html')
+	.pipe(merge({
+        'js/data-myworld-hechengbiao.min.js':['js/jquery-2.1.4.min.js','js/data-myworld-hechengbiao.js']
+    }))
+	.pipe(replace(myworld_replace[0], myworld_replace_data[0]))
+	.pipe(replace(myworld_replace[1], myworld_replace_data[1]))	
+	.pipe(rename('data-myworld-biao-details.html'))
+    .pipe(gulp.dest('../../chajian/'+myworld_gameid+'/'+myworld_platform+'/DataPlugin/'+myworld_plugin_hechengbiao));
+});
+
+gulp.task('myworld_clean', function(){
+	return gulp.src('../../chajian/'+myworld_gameid+'/'+myworld_platform+'/DataPlugin/*', {read: false})
+	.pipe(clean({force: true}));
+});
+
+gulp.task('myworld_android', ['myworld_clean'], function(){
+	gulp.start('myworld_images','myworld_css', 'myworld_js', 'myworld_data');
+});
+
+gulp.task('myworld_ios_inner', ['myworld_clean'], function(){
+	gulp.start('myworld_images','myworld_css', 'myworld_js', 'myworld_data');
+});
+
+gulp.task('myworld_ios', function(){
+	myworld_platform = 'ios';
+	gulp.start('myworld_ios_inner');
+});
+
 
 
