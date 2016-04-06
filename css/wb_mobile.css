@@ -83,7 +83,7 @@ a{ text-decoration:none; outline:none}
 .news li.item a{ border-bottom:1px solid #d3d3d3; padding:10px; display:block}
 .news li.item table{ width:100%}
 .news li.item .img{ width:35%; vertical-align:top; padding-right:10px}
-.news li.item .img img{ max-width:164px}
+.news li.item .img img{ max-width:120px}
 .news li.item .note{ color:#1a1a1a; vertical-align:top}
 .news li.item .note h2{ font-size:1.6em; line-height:1.2}
 .news li.item .note p{ font-size:1.4em; margin-bottom:10px; color:#8f8f8f}
