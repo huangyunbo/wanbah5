@@ -9,11 +9,27 @@
 		};
 		if(this.o.platform == "android"){
 			this.o.url="../images/myworld/hechengbiao/";
-		}
+		}		
 		this.init();
 	};
 	
 	Myworld.prototype = {
+
+		setZhiboHeight: function(){//设置直播高度
+			var winH = $(window).height();								
+				$ifrme_id0 = $("#iframe_douyu"),
+				$ifrme_id1 = $("#iframe_huya"),
+				$ifrme_id2 = $("#iframe_longzhu");
+			if(this.o.platform == "ios"){
+				$ifrme_id0.height(winH);
+				$ifrme_id1.height(winH);
+				$ifrme_id2.height(winH);
+			}else{
+				$ifrme_id0.height(winH-45);
+				$ifrme_id1.height(winH-45);
+				$ifrme_id2.height(winH-45);
+			}
+		},
 		checkversion: function(){//检查版本
 			if(!window.localStorage){
 				alert("错误，你的版本过低，请升级你的设备");
@@ -34,24 +50,33 @@
 				$("#header").removeClass("hide");
 			}			
 			switch(i){
-				case "index":
+				case "index":				
+				if(this.o.platform == "web"){
+					removehide();
+				}else if(this.o.platform == "android"){
+					removehide();
+					$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
+				}else if(this.o.platform == "ios"){					
+				}
+				break;
+				case "biao-detail":
+				if(this.o.platform == "web"){
+						removehide();						
+				}else if(this.o.platform == "android"){
+						removehide();							
+						$("#header").children(".back").attr("href","index.html");	
+				}else if(this.o.platform == "ios"){	
+						$("#container").addClass("mt_0");					
+					}
+				break;
+				case "zhibo":
 					if(this.o.platform == "web"){
 						removehide();
 					}else if(this.o.platform == "android"){
 						removehide();
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
-					}else if(this.o.platform == "ios"){
-						// $("#container").addClass("mt_0");
-					}
-				break;
-				case "biao-detail":
-				if(this.o.platform == "web"){
-						removehide();						
-					}else if(this.o.platform == "android"){
-						removehide();							
-						$("#header").children(".back").attr("href","index.html");	
-					}else if(this.o.platform == "ios"){	
-						$("#container").addClass("mt_0");					
+					}else if(this.o.platform == "ios"){						
+						$("#zhibo").removeClass("mt_45");
 					}
 				break;
 			}
@@ -59,7 +84,6 @@
 		ispage: function(){//判断当前打开的是哪一个页面
 			if(!this.checkversion()) return;
 			var href = $("body").attr("data-url");
-			console.log(href);
 			switch(true){
 				case (href == "index.html"):
 					this.isplatform("index");	
@@ -70,14 +94,19 @@
 					this.isplatform("biao-detail");	
 					this.getHechengbiaoDetailData();
 					break;
+				case (href == "zhibo.html"):	
+					this.isplatform("zhibo");					
+					this.zhiboEvents();
+					break;				
 			}
 		},
 		init: function(){
 			this.ispage();
+			this.setZhiboHeight();
 		},
 
 		events:function(){
-			var that = this;
+			var that = this;				
 			$("#content").on("click", "li", function(){				
 				var _id = Number($(this).attr("data-id"));				
 				that.setsession("wbgl-myworld-biao-id", _id);				
@@ -88,6 +117,22 @@
 				}	
 			});
 		},
+
+		zhiboEvents:function(){			
+			var that = this,
+				$tab = $("#tab"),
+				$tabcontent = $("#iframe_container");				
+			$tab.on("click", ".tabitem", function(){								
+				var tindex = $tab.children().index(this);
+				if($tabcontent.children().eq(tindex).attr("src").length == 0){
+					$tabcontent.children().eq(tindex).attr("src", $tabcontent.children().eq(tindex).attr("data-src"));
+				}
+				// that.setsession("wbgl-myworld-zhibo-tindex",tindex);				
+				$tab.children().eq(tindex).addClass("on").siblings().removeClass("on");
+				$tabcontent.children().eq(tindex).addClass("on").siblings().removeClass("on");
+			}).children().eq(0).trigger("click");
+		},
+
 
 		printBiaoList:function(){
 			var Biaolist = ["basic","block","tools","weapon","armor","transport_tool","mechanism","food","various","dyestuff","wool","wards_brew"],
@@ -102,8 +147,7 @@
 
 		getHechengbiaoDetailData:function(){
 			var that = this,
-			id = that.getsession("wbgl-myworld-biao-id");	
-			console.log(id);		
+			id = that.getsession("wbgl-myworld-biao-id");
 			$.getJSON('http://m.wanba123.cn/h5data/detail?jsoncallback=?', {
 					tid: id
 				}).done(function(data){		

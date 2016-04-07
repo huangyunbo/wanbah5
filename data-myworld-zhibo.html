@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>直播</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/data-myworld.css">
+</head>
+<body class="zhibo_body" data-url="zhibo.html">
+<div class="header hide" id="header">
+	<a href="" class="back wbclick"></a>
+    <h2 id="title">直播</h1>
+</div>
+<div class="zhibo mt_45" id="zhibo">
+	<div class="tab" id="tab">
+		<div class="tabitem">斗鱼</div>
+		<div class="tabitem">虎牙</div>
+		<div class="tabitem">龙珠</div>		
+	</div>
+	<div id="iframe_container">
+		<iframe class="zhibo_iframe" src="http://www.douyu.com/directory/game/MC" id="iframe_douyu"></iframe>
+		<iframe class="zhibo_iframe" data-src="http://m.huya.com/g/minecraft" src="" id="iframe_huya"></iframe>
+		<iframe class="zhibo_iframe" data-src="http://longzhu.com/channels/minecraft" src="" id="iframe_longzhu"></iframe>
+	</div>
+</div>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/data-myworld-hechengbiao.js"></script>
+<script type="text/javascript">
+$(function(){
+    var myword = new Myworld(0);
+});
+</script>
+</body>
+</html>

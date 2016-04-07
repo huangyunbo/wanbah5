@@ -1364,6 +1364,7 @@ gulp.task('guaiwulieren_ios', function(){
 //我的世界
 var myworld_gameid = 109;
 var myworld_plugin_hechengbiao = "plugin_1252";
+var myworld_plugin_zhibo = "plugin_1253";
 var myworld_path = '../';
 var myworld_replace = ['css/', 'js/', 'json/'];
 var myworld_replace_data =  ['css/', 'js/', 'json/'];
@@ -1423,6 +1424,15 @@ gulp.task('myworld_data', function(){
 	.pipe(replace(myworld_replace[1], myworld_replace_data[1]))	
 	.pipe(rename('data-myworld-biao-details.html'))
     .pipe(gulp.dest('../../chajian/'+myworld_gameid+'/'+myworld_platform+'/DataPlugin/'+myworld_plugin_hechengbiao));
+
+    gulp.src('data-myworld-zhibo.html')
+	.pipe(merge({
+        'js/data-myworld-hechengbiao.min.js':['js/jquery-2.1.4.min.js','js/data-myworld-hechengbiao.js']
+    }))
+	.pipe(replace(myworld_replace[0], myworld_replace_data[0]))
+	.pipe(replace(myworld_replace[1], myworld_replace_data[1]))	
+	.pipe(rename('index.html'))
+    .pipe(gulp.dest('../../chajian/'+myworld_gameid+'/'+myworld_platform+'/DataPlugin/'+myworld_plugin_zhibo));
 });
 
 gulp.task('myworld_clean', function(){
