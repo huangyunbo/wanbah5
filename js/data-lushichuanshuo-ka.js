@@ -593,7 +593,7 @@
 			for(var i=0; i<datacards.length; i++){
 				card = datacards[i];
 
-				if((model == 'wild' || (card.j > 0 && card.j < 6)) && (rarity == 0 || card.f == rarity) && (card.e >= feimin && card.e <= feimax) && (keyword.length == 0 || card.d.indexOf(keyword) != -1)){
+				if((model == 'wild' || card.j == 1 || card.j == 2 || card.j == 3 || card.j == 4 || card.j == 5 || card.j == 8) && (rarity == 0 || card.f == rarity) && (card.e >= feimin && card.e <= feimax) && (keyword.length == 0 || card.d.indexOf(keyword) != -1)){
 					datalock = calcLock(card.c, card.f);
 					cardshtml += '<div class="item" data-id="'+card.c+'" data-lock="'+datalock+'">'+
 									'<div class="w">'+
@@ -943,7 +943,7 @@ f:稀有度 //0.所有 1.免费 2.普通 3.稀有 4.史诗 5.传说
 g:构筑评分
 h:竞技场评分
 i:画师语录
-j:出处 //1.基本 2.经典 3.冠军的试炼 4.探险者协会 5.黑石山的火焰 6.地精大战侏儒 7.纳克萨玛斯 标准模式=1 2 3 4 5 狂野模式=all
+j:出处 //1.基本 2.经典 3.冠军的试炼 4.探险者协会 5.黑石山的火焰 6.地精大战侏儒 7.纳克萨玛斯 8.上古之神的低语 标准模式=1 2 3 4 5 8 狂野模式=all
 
 z:卡牌是否乘以2
 
