@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>守望先锋-英雄详情</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/data-shouwangxianfeng.css">
+</head>
+
+<body class="d_body" data-url="herodetail.html">
+<div class="header hide" id="header">
+	<a href="data-shouwangxianfeng-hero.html" class="back wbclick"></a>
+    <h1>守望先锋-英雄详情</h1>
+</div>
+
+<div class="herod" id="herod">
+    <div class="des">
+        <div class="left">
+           <div class="d_name" id="nickname"></div>
+           <div class="location">
+               <i class="icon"></i>
+               <span class="text" id="location"></span>
+           </div>
+           <div class="name">
+               <i class="icon"></i>
+               <span class="text" id="name"></span>
+           </div>
+           <div class="age">
+               <i class="icon"></i>
+               <span class="text" id="age"></span>
+           </div>    
+           <div class="profession">
+               <i class="icon"></i>
+               <span class="text" id="profession"></span>
+           </div> 
+           <div class="actionbase">
+               <i class="icon"></i>
+               <span class="text" id="actionbase"></span>
+           </div>
+           <div class="subjection">
+               <i class="icon"></i>
+               <span class="text" id="subjection"></span>
+           </div>
+        </div><!--/left-->
+        <div class="right" id="right">
+            <!-- <div class="d_word">“玩游戏就得赢”</div>
+            <img class="pic" src="images/shouwangxianfeng/hero/25.jpg"></img>   
+            <div>
+                <div class="property">
+                    <span class="describle">生命值：</span>
+                    <span class="value">124</span>
+                </div>
+                <div class="property">
+                    <span class="describle">护甲值：</span>
+                    <span class="value">124</span>
+                </div>
+            </div>         -->             
+        </div><!--/right-->
+    </div><!--/des-->
+<div class="dottedline"></div>
+<div class="exp" id="exp">
+    英雄经验
+    <!-- <div class="d_exp">
+       <div class="dot"></div>
+       <div class="d_exp">攻击力9个护甲6个冷缩6魔抗3</div>
+    </div>
+    <div class="d_exp">
+       <div class="dot"></div>
+       <div>攻击力9个护甲6个冷缩6魔抗3</div>
+    </div> 
+    <div class="d_exp">
+       <div class="dot"></div>
+       <div>攻击力9个护甲6个冷缩6魔抗3</div>
+    </div>  -->    
+</div>
+<div class="dottedline"></div>
+<div class="skills mb_10">
+    <div class="title mb_10">
+            <ul class="clearfix" id="skills_head">
+               <!--  <li class="on">
+                    <img src="images/shouwangxianfeng/dbpic/1.jpg">
+                </li>
+                <li>
+                    <img src="images/shouwangxianfeng/dbpic/1.jpg">
+                </li>
+                <li>
+                    <img src="images/shouwangxianfeng/dbpic/1.jpg">
+                </li> -->
+            </ul>
+    </div>
+    <div class="content plr_7" id="skills_content">
+            <!-- <div class="item on">
+                <div class="skillname">  
+                    机甲：聚变机炮                  
+                </div>
+                <img class="video" id="video" src="images/shouwangxianfeng/video/1_1.jpg">
+                <div class="skilldes">   
+                D.Va每个英雄都拥有五个的了恐惧感啊每个英雄都拥有五个的了恐惧感啊每个英雄都拥有五个的了恐惧感啊每个英雄都拥有五个的了恐惧感啊                 
+                </div>
+            </div>
+            <div class="item">
+                <div class="skillname">  
+                    机vvvvv                  
+                </div>
+                <img class="video" id="video" src="images/shouwangxianfeng/video/1_1.jpg">
+                <div class="skilldes">   
+                D.Va每个英雄都拥有五个的hfghfghfgh       
+                </div>
+            </div>  
+            <div class="item">
+                <div class="skillname">  
+                    jhklhjkjh                  
+                </div>
+                <img class="video" id="video" src="images/shouwangxianfeng/video/1_1.jpg">
+                <div class="skilldes">   
+                D.Va每个英fgfdghsfdhsghsfgh         
+                </div>
+            </div>           -->
+    </div><!--/content-->    
+</div><!--/skills-->    
+<div class="dottedline"></div>
+<div class="story_tit">英雄故事</div>
+<div class="story_cont" id="story_cont"></div>
+</div><!--/herod-->
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="json/json-shouwangxianfeng.js"></script>
+<script type="text/javascript" src="js/data-shouwangxianfeng-hero.js"></script>
+<script type="text/javascript">
+$(function(){   
+	var swxfHero = new SwxfHero(data_hero);    
+});
+</script>
+</body>
+</html>

@@ -1453,5 +1453,87 @@ gulp.task('myworld_ios', function(){
 	gulp.start('myworld_ios_inner');
 });
 
+//守望先锋
+var shouwangxianfeng_gameid = 111;
+var shouwangxianfeng_plugin_hero = "plugin_1307";
+var shouwangxianfeng_path = '../';
+var shouwangxianfeng_replace = ['css/', 'js/', 'json/'];
+var shouwangxianfeng_replace_data =  ['css/', 'js/', 'json/'];	
+var shouwangxianfeng_platform = 'android';
+
+gulp.task('shouwangxianfeng_images', function(){
+    gulp.src('./images/shouwangxianfeng/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+shouwangxianfeng_gameid+'/'+shouwangxianfeng_platform+'/DataPlugin/images/shouwangxianfeng/'));
+	
+	gulp.src('./images/.nomedia', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+shouwangxianfeng_gameid+'/'+shouwangxianfeng_platform+'/DataPlugin/images/'));
+});
+
+gulp.task('shouwangxianfeng_css', function(){
+    gulp.src(['./css/data-shouwangxianfeng.css'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+shouwangxianfeng_gameid+'/'+shouwangxianfeng_platform+'/DataPlugin/css/'));
+});
+
+gulp.task('shouwangxianfeng_js', function(){
+    gulp.src(['./js/jquery-2.1.3.min.js','./js/data-shouwangxianfeng-hero.js'])
+        .pipe(concat('data-shouwangxianfeng-hero.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+shouwangxianfeng_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+shouwangxianfeng_gameid+'/'+shouwangxianfeng_platform+'/DataPlugin/js/'));
+});
+
+gulp.task('shouwangxianfeng_json', function(){
+    gulp.src('./json/json-shouwangxianfeng.js', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+shouwangxianfeng_gameid+'/'+shouwangxianfeng_platform+'/DataPlugin/json/'));
+});
+
+gulp.task('shouwangxianfeng_data', function(){
+	if(shouwangxianfeng_platform == 'android'){
+		for(var i=0; i<shouwangxianfeng_replace.length; i++){
+			shouwangxianfeng_replace_data[i] = shouwangxianfeng_path + shouwangxianfeng_replace[i];
+		}
+	}
+	
+    gulp.src('data-shouwangxianfeng-hero.html')
+		.pipe(merge({
+            'js/data-shouwangxianfeng-hero.min.js':['js/jquery-2.1.4.min.js','js/data-shouwangxianfeng-hero.js']
+        }))
+		.pipe(replace(shouwangxianfeng_replace[0], shouwangxianfeng_replace_data[0]))
+		.pipe(replace(shouwangxianfeng_replace[1], shouwangxianfeng_replace_data[1]))
+		.pipe(replace(shouwangxianfeng_replace[2], shouwangxianfeng_replace_data[2]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+shouwangxianfeng_gameid+'/'+shouwangxianfeng_platform+'/DataPlugin/'+shouwangxianfeng_plugin_hero));
+
+    gulp.src('data-shouwangxianfeng-hero-detail.html')
+		.pipe(merge({
+            'js/data-shouwangxianfeng-hero.min.js':['js/jquery-2.1.4.min.js','js/data-shouwangxianfeng-hero.js']
+        }))
+		.pipe(replace(shouwangxianfeng_replace[0], shouwangxianfeng_replace_data[0]))
+		.pipe(replace(shouwangxianfeng_replace[1], shouwangxianfeng_replace_data[1]))
+		.pipe(replace(shouwangxianfeng_replace[2], shouwangxianfeng_replace_data[2]))
+        .pipe(gulp.dest('../../chajian/'+shouwangxianfeng_gameid+'/'+shouwangxianfeng_platform+'/DataPlugin/'+shouwangxianfeng_plugin_hero));
+		
+	   
+});
+
+gulp.task('shouwangxianfeng_clean', function(){
+	return gulp.src('../../chajian/'+shouwangxianfeng_gameid+'/'+shouwangxianfeng_platform+'/DataPlugin/*', {read: false})
+	.pipe(clean({force: true}));
+});
+
+gulp.task('shouwangxianfeng_android', ['shouwangxianfeng_clean'], function(){
+	gulp.start('shouwangxianfeng_images','shouwangxianfeng_json','shouwangxianfeng_css', 'shouwangxianfeng_js', 'shouwangxianfeng_data');
+});
+
+gulp.task('shouwangxianfeng_ios_inner', ['shouwangxianfeng_clean'], function(){
+	gulp.start('shouwangxianfeng_images','shouwangxianfeng_json','shouwangxianfeng_css', 'shouwangxianfeng_js', 'shouwangxianfeng_data');
+});
+
+gulp.task('shouwangxianfeng_ios', function(){
+	shouwangxianfeng_platform = 'ios';
+	gulp.start('shouwangxianfeng_ios_inner');
+});
+
+
 
 
