@@ -91,7 +91,7 @@
 					}
 				}	
 				if(k_name =='部署时间' || k_name =='出兵速度' || k_name =='持续时间' || k_name =='生产速度'){
-					v_name = v_name+'sec';
+					v_name = v_name+'s';
 				}
 				if(k_name == '攻击速度'){
 					v_name = v_name+'s/次';
