@@ -45,48 +45,48 @@ a{ text-decoration:none}
 .herolist .content ul{ display:none}
 .herolist .content ul.on{ display:block}
 .herolist .content li{ display:inline-block; width:45%; padding-top:15px; padding-right:10px;}
-.herolist .content li img{ height:120px}
+.herolist .content li img{}
 .herolist .content li p{ font-size:14px; line-height:1; padding:5px 0}
 @media screen and (min-width:640px){
 	.herolist .head .item{ height:70px; font-size:30px}
 	.herolist .head .item:before{ height:34px; top:18px}
 	.herolist .content{ margin-bottom:60px}
 	.herolist .content li{ padding-top:30px}
-	.herolist .content li img{ height:240px}
+	.herolist .content li img{}
 	.herolist .content li p{ font-size:26px; padding:10px 0}
 }
 /*英雄详情*/
 .d_body{ background:url("../images/shouwangxianfeng/bg.png") no-repeat; background-size:cover}
-.herod{ margin-top:45px; }
+.herod{ margin:45px 10px 0 10px;}
 .herod .des{ width:100%; display:box; display:-moz-box; display:-webkit-box;}
 .herod .des .left{ width:100px; box-flex:1; -moz-box-flex:1; -webkit-box-flex:1; color:#fff;}
-.herod .des .left .d_name{ padding-left:10px; font-size:18px; color:#00abea; margin-top:10px;}
+.herod .des .left .d_name{ font-size:18px; color:#00abea; margin-top:10px;}
 .herod .des .left .location{ position:relative;}
-.herod .des .left .location .icon{ position:absolute; top:10px; left:10px; background:url(../images/shouwangxianfeng/icon/location.png) no-repeat; background-size:100%; width:15px; height:15px;}
-.herod .des .left .location .text{ display:inline-block; padding-left:30px; padding-top:6px; font-size:14px;}
+.herod .des .left .location .icon{ position:absolute; top:10px; background:url(../images/shouwangxianfeng/icon/location.png) no-repeat; background-size:100%; width:15px; height:15px;}
+.herod .des .left .location .text{ display:inline-block; padding-left:20px; padding-top:6px; font-size:14px;}
 .herod .des .left .name{ position:relative;}
-.herod .des .left .name .icon{ position:absolute; top:10px; left:10px; background:url(../images/shouwangxianfeng/icon/name.png) no-repeat; background-size:100%; width:15px; height:15px; }
-.herod .des .left .name .text{ display:inline-block; padding-left:30px; padding-top:6px; font-size:14px;}
+.herod .des .left .name .icon{ position:absolute; top:10px; background:url(../images/shouwangxianfeng/icon/name.png) no-repeat; background-size:100%; width:15px; height:15px; }
+.herod .des .left .name .text{ display:inline-block; padding-left:20px; padding-top:6px; font-size:14px;}
 .herod .des .left .age{ position:relative;}
-.herod .des .left .age .icon{ position:absolute; top:10px; left:10px; background:url(../images/shouwangxianfeng/icon/age.png) no-repeat; background-size:100%; width:15px; height:15px; }
-.herod .des .left .age .text{ display:inline-block; padding-left:30px; padding-top:6px; font-size:14px;}
+.herod .des .left .age .icon{ position:absolute; top:10px; background:url(../images/shouwangxianfeng/icon/age.png) no-repeat; background-size:100%; width:15px; height:15px; }
+.herod .des .left .age .text{ display:inline-block; padding-left:20px; padding-top:6px; font-size:14px;}
 .herod .des .left .profession{ position:relative;}
-.herod .des .left .profession .icon{ position:absolute; top:10px; left:10px; background:url(../images/shouwangxianfeng/icon/profession.png) no-repeat; background-size:100%; width:15px; height:15px; }
-.herod .des .left .profession .text{ display:inline-block; padding-left:30px; padding-top:6px; font-size:14px;}
+.herod .des .left .profession .icon{ position:absolute; top:10px; background:url(../images/shouwangxianfeng/icon/profession.png) no-repeat; background-size:100%; width:15px; height:15px; }
+.herod .des .left .profession .text{ display:inline-block; padding-left:20px; padding-top:6px; font-size:14px;}
 .herod .des .left .actionbase{ position:relative;}
-.herod .des .left .actionbase .icon{ position:absolute; top:10px; left:10px; background:url(../images/shouwangxianfeng/icon/action_base.png) no-repeat; background-size:100%; width:15px; height:15px; }
-.herod .des .left .actionbase .text{ display:inline-block; padding-left:30px; padding-top:6px; font-size:14px;}
+.herod .des .left .actionbase .icon{ position:absolute; top:10px; background:url(../images/shouwangxianfeng/icon/action_base.png) no-repeat; background-size:100%; width:15px; height:15px; }
+.herod .des .left .actionbase .text{ display:inline-block; padding-left:20px; padding-top:6px; font-size:14px;}
 .herod .des .left .subjection{ position:relative;}
-.herod .des .left .subjection .icon{ position:absolute; top:10px; left:10px; background:url(../images/shouwangxianfeng/icon/subjection.png) no-repeat; background-size:100%; width:15px; height:15px; }
-.herod .des .left .subjection .text{ display:inline-block; padding-left:30px; padding-top:6px; font-size:14px;}
+.herod .des .left .subjection .icon{ position:absolute; top:10px; background:url(../images/shouwangxianfeng/icon/subjection.png) no-repeat; background-size:100%; width:15px; height:15px; }
+.herod .des .left .subjection .text{ display:inline-block; padding-left:20px; padding-top:6px; font-size:14px;}
 .herod .des .right{ width:100px; height:100%; box-flex:1; -moz-box-flex:1; -webkit-box-flex:1}
-.herod .des .right .d_word{ padding-left:10px; font-size:18px; color:#00abea;  margin-top:10px;}
-.herod .des .right .pic{ width:150px; height:125px; padding-right:10px; padding-left:10px;}
+.herod .des .right .d_word{ padding-left:10px; font-size:18px; color:#00abea;  margin-top:10px; text-align:center;}
+.herod .des .right .pic{ width:150px; height:125px; padding:5px; background:url(../images/shouwangxianfeng/icon_bg.png) no-repeat; background-size:contain;}
 .herod .des .right .property{ color:#fff; background:#1c395f; display:inline-block; margin-top:10px; margin-left:10px; padding:0 5px; font-size:10px; border-radius:5px;}
 .herod .des .right .property .describle{  color:#00abea;}
 .herod .des .right .property .value{ line-height:25px;}
-.herod .dottedline{ background:url(../images/shouwangxianfeng/line.png); margin: 20px 10px ; height: 1px; display:block;}
-.herod .exp{ font-size:16px; color:#fff; padding-left:10px;}
+.herod .dottedline{ background:url(../images/shouwangxianfeng/line.png); margin: 20px 0 ; height: 1px; display:block;}
+.herod .exp{ font-size:16px; color:#fff}
 .herod .exp .d_exp{ font-size:14px; color:#00abea; margin-right:10px; margin-top:10px;}
 .herod .exp .d_exp .dot{ background:#00abea; width:5px; height:5px; border-radius:50px; display:inline-block;}
 .herod .exp .d_exp .des_exp{ margin-left:5px; margin-top:8px;}
@@ -94,36 +94,37 @@ a{ text-decoration:none}
 .herod .skills{ border-bottom:1px;}
 .herod .skills .title{ padding-bottom:5px; border-bottom:1px solid #74c9ff}
 .herod .skills .title li{ float:left; position:relative; margin:0 10px 0 7px; padding:10px 0}
-.herod .skills .title li img{ width:36px; height:36px}
 .herod .skills .title li.on:before{content:""; position:absolute; border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:6px solid #74c9ff; bottom:-5px; left:50%; margin-left:-6px}
+.herod .skills .icon_bg{ background:url(../images/shouwangxianfeng/skill_bg.png) no-repeat; background-size:contain; width:36px; height:36px; padding:5px;} 	
 .herod .skills .content .item{ display:none}
-.herod .skills .content .video{ margin-left:10px;}
+.herod .skills .content .video{}
 .herod .skills .content .item.on{ display:block}
-.herod .skills .content .item .skillname{ margin:10px; font-size:16px; color:#fff;}
-.herod .skills .content .item .skilldes{ margin:10px; font-size:14px; color:#00abea;}
-.herod .story_tit{ margin:10px; font-size:16px; color:#fff;}
-.herod .story_cont{ margin:10px; font-size:14px; color:#00abea; }
+.herod .skills .content .item .skillname{ margin:10px 0; font-size:16px; color:#fff;}
+.herod .skills .content .item .skilldes{ margin:10px 0; font-size:14px; color:#00abea;}
+.herod .story_tit{ margin:10px 0; font-size:16px; color:#fff;}
+.herod .story_cont{ margin:10px 0; font-size:14px; color:#00abea; }
 @media screen and (min-width:640px){
-	.herod .des .left .d_name{ padding-left:20px; font-size:36px;}	
-	.herod .des .left .location .icon{ top:20px; left:20px; width:30px; height:30px;}
-	.herod .des .left .location .text{ padding-left:60px; padding-top:12px; font-size:28px;}	
-	.herod .des .left .name .icon{ top:20px; left:20px; width:30px; height:30px; }
-	.herod .des .left .name .text{ padding-left:60px; padding-top:12px; font-size:28px;}
-	.herod .des .left .age .icon{ top:20px; left:20px; width:30px; height:30px; }
-	.herod .des .left .age .text{ padding-left:60px; padding-top:12px; font-size:28px;}
-	.herod .des .left .profession .icon{ top:20px; left:20px; width:30px; height:30px; }
-	.herod .des .left .profession .text{ padding-left:60px; padding-top:12px; font-size:28px;}
-	.herod .des .left .actionbase .icon{ top:20px; left:20px; width:30px; height:30px; }
-	.herod .des .left .actionbase .text{ padding-left:60px; padding-top:12px; font-size:28px;}	
-	.herod .des .left .subjection .icon{ top:20px; left:20px; width:30px; height:30px; }
-	.herod .des .left .subjection .text{ padding-left:60px; padding-top:12px; font-size:28px;}
+	.herod{ margin:45px 20px 0 20px;}
+	.herod .des .left .d_name{ font-size:36px;}	
+	.herod .des .left .location .icon{ top:20px; width:30px; height:30px;}
+	.herod .des .left .location .text{ padding-left:40px; padding-top:12px; font-size:28px;}	
+	.herod .des .left .name .icon{ top:20px; width:30px; height:30px; }
+	.herod .des .left .name .text{ padding-left:40px; padding-top:12px; font-size:28px;}
+	.herod .des .left .age .icon{ top:20px; width:30px; height:30px; }
+	.herod .des .left .age .text{ padding-left:40px; padding-top:12px; font-size:28px;}
+	.herod .des .left .profession .icon{ top:20px; width:30px; height:30px; }
+	.herod .des .left .profession .text{ padding-left:40px; padding-top:12px; font-size:28px;}
+	.herod .des .left .actionbase .icon{ top:20px; width:30px; height:30px; }
+	.herod .des .left .actionbase .text{ padding-left:40px; padding-top:12px; font-size:28px;}	
+	.herod .des .left .subjection .icon{ top:20px; width:30px; height:30px; }
+	.herod .des .left .subjection .text{ padding-left:40px; padding-top:12px; font-size:28px;}
 	.herod .des .right .d_word{ padding-left:20px; font-size:36px; margin-top:20px;}
-	.herod .des .right .pic{ width:300px; height:250px; padding-right:20px; padding-left:20px;}
+	.herod .des .right .pic{ width:300px; height:250px; padding:8px;}
 	.herod .des .right .property{ margin-top:20px; margin-left:20px; padding:0 10px; font-size:20px}
 	.herod .des .right .property .value{ line-height:50px;}
 
-	.herod .dottedline{ margin: 40px 20px ; height: 2px;}
-	.herod .exp{ font-size:32px; padding-left:20px;}
+	.herod .dottedline{ margin: 40px 0; height: 2px;}
+	.herod .exp{ font-size:32px;}
 	.herod .exp .d_exp{ font-size:28px; margin-right:20px; margin-top:20px;}
 	.herod .exp .d_exp .dot{ width:10px; height:10px;}
 	.herod .exp .d_exp .des_exp{ margin-left:10px; margin-top:16px;}
@@ -131,12 +132,14 @@ a{ text-decoration:none}
 	.herod .skills{ border-bottom:2px;}
 	.herod .skills .title{ padding-bottom:10px; border-bottom:2px solid #74c9ff}
 	.herod .skills .title li{ margin:0 20px 0 14px; padding:20px 0}
-	.herod .skills .title li img{ width:72px; height:72px}
+	.herod .skills .icon_bg{ width:72px; height:72px; padding:5px;} 
 	.herod .skills .title li.on:before{ border-left:12px solid transparent; border-right:12px solid transparent; border-bottom:12px solid #74c9ff; bottom:-10px;  margin-left:-12px}
 
+
+
 	.herod .skills .content .video{ margin-left:20px;}
-	.herod .skills .content .item .skillname{ margin:20px; font-size:32px}
-	.herod .skills .content .item .skilldes{ margin:20px; font-size:28px;}
-	.herod .story_tit{ margin:20px; font-size:32px;}
-	.herod .story_cont{ margin:20px; font-size:32px;}
+	.herod .skills .content .item .skillname{ margin:20px 0; font-size:32px}
+	.herod .skills .content .item .skilldes{ margin:20px 0; font-size:28px;}
+	.herod .story_tit{ margin:20px 0; font-size:32px;}
+	.herod .story_cont{ margin:20px 0; font-size:32px;}
 }

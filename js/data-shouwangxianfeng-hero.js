@@ -57,10 +57,9 @@
 				html_skills_content = '',
 				html_exp = '',
 				piece;
+
 				piece = that.findHero(id);
-				this.o.piece = piece,
-				
-				console.log("id= "+id);	
+				this.o.piece = piece;
 
 				if(piece === undefined) return;				
 				$("#nickname").html(piece.title);
@@ -83,7 +82,7 @@
 
 				for(var i=0; i<piece.skilln.length; i++){//英雄技能
 					html_skills_head += '<li>'+
-											'<div><img src="'+this.o.url+'skill/'+id+'_'+(i+1)+'.png"></div>'+
+											'<div><img src="'+this.o.url+'skill/'+id+'_'+(i+1)+'.png" class="icon_bg"></div>'+
 										'</li>';					
 					html_skills_content += '<div class="item">'+
 												'<div class="skillname">'+piece.skilln[i]+'</div>'+
@@ -118,7 +117,26 @@
 				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");
 				
 			}).children("li").eq(0).trigger("click");
+
+			// $("#gonglue").on("click",function(){
+			// 	that.gopage('{"pageid":2,"param1":1334,"title":"这是英雄"}');
+			// });
 		},
+
+		gopage: function(){
+			var arg = arguments[0];
+			
+			if(this.o.platform == "android"){
+				try{
+					window.jstojava.gotoWanbaPage(arg);
+				}catch(e){
+					alert("error");
+				}
+			}else if(this.o.platform == "ios"){
+				window.location.href = 'ios://gotoWanbaPage?param='+arg;
+			}
+		},
+
 		printIndex: function(){//打印英雄列表
 			var piece,
 				html_head = '',
