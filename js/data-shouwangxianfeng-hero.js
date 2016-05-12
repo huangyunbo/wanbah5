@@ -71,13 +71,17 @@
 				$("#subjection").html("隶属："+piece.sub);
 
 				html_top_right = '<div class="d_word">'+piece.lines+'</div>'+
-									'<img class="pic" src="'+this.o.url+'detail/'+piece.id+'.jpg"></img>'+            
-					            		'<div><div class="property">'+
-					                	'<span class="describle">生命值：</span>'+
-					                	'<span class="value">'+piece.life+'</span></div>'+
-					            '<div class="property">'+
-					                '<span class="describle">护甲值：</span>'+
-					                '<span class="value">'+piece.armor+'</span></div></div>';
+								  '<div class="pic"><img src="'+this.o.url+'detail/'+piece.id+'.jpg"></div>'+
+								  '<div>'+
+									  '<div class="property">'+
+										  '<span class="describle">生命值：</span>'+
+										  '<span class="value">'+piece.life+'</span>'+
+									  '</div>'+
+									  '<div class="property">'+
+										  '<span class="describle">护甲值：</span>'+
+										  '<span class="value">'+piece.armor+'</span>'+
+									  '</div>'+
+								  '<div>';
 				$("#right").html(html_top_right);	
 
 				for(var i=0; i<piece.skilln.length; i++){//英雄技能
@@ -96,7 +100,7 @@
 					html_exp += '<div class="d_exp"><div class="dot"></div><span class="des_exp">'+piece.exp[i]+'</span></div>';
 				}
 				
-				$("#exp").html("英雄经验"+html_exp);
+				$("#exp").html(html_exp);
 				$("#skills_head").html(html_skills_head);
 				$("#skills_content").html(html_skills_content);
 
@@ -117,13 +121,13 @@
 				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");
 				
 			}).children("li").eq(0).trigger("click");
-
-			// $("#gonglue").on("click",function(){
-			// 	that.gopage('{"pageid":2,"param1":1334,"title":"这是英雄"}');
-			// });
+			//攻略跳转
+			$("#gonglue").on("click",function(){
+				console.log(that.o.piece.groupid);
+				that.gopage('{"pageid":2,"param1":'+that.o.piece.groupid+',"title":'+that.o.piece.title+',"gameid":111,"flag":0}');
+			});
 		},
-
-		gopage: function(){
+		gopage: function(){//跳转app攻略
 			var arg = arguments[0];
 			
 			if(this.o.platform == "android"){
@@ -136,7 +140,6 @@
 				window.location.href = 'ios://gotoWanbaPage?param='+arg;
 			}
 		},
-
 		printIndex: function(){//打印英雄列表
 			var piece,
 				html_head = '',
