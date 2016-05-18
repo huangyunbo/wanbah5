@@ -119,15 +119,15 @@
 				var _index = $(this).parents().children().index($(this));
 				$(this).addClass("on").siblings().removeClass("on");
 				$("#skills_content").children().siblings().removeClass("on").eq(_index).addClass("on");
-				
 			}).children("li").eq(0).trigger("click");
-			//攻略跳转
+			
+			//跳转app专题组
 			$("#gonglue").on("click",function(){
-				console.log(that.o.piece.groupid);
-				that.gopage('{"pageid":2,"param1":'+that.o.piece.groupid+',"title":'+that.o.piece.title+',"gameid":111,"flag":0}');
+				//console.log(that.o.piece.groupid);
+				that.gopage('{"pageid":2,"param1":'+that.o.piece.groupid+',"title":"'+that.o.piece.title+'","gameid":111,"flag":0}');
 			});
 		},
-		gopage: function(){//跳转app攻略
+		gopage: function(){//跳转app专题组
 			var arg = arguments[0];
 			
 			if(this.o.platform == "android"){
@@ -272,28 +272,28 @@
 			return true;
 		},
 		isplatform: function(i){//判断打包平台显示相应内容
-			function removehide(){
+			function unios(){
+				if(arguments[0] !== undefined){
+					$(arguments[0]).addClass("mt_45");
+				}
 				$("#header").removeClass("hide");
 			}
 			
 			switch(i){
 				case "index":
 					if(this.o.platform == "web"){
-						removehide();						
+						unios("#herolist");
 					}else if(this.o.platform == "android"){
-						removehide();						
+						unios("#herolist");
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close();");
-					}else if(this.o.platform == "ios"){						
-						$("#herolist").addClass("mt_0");
 					}
 				break;
 				case "herodetail":
 					if(this.o.platform == "web"){
-						removehide();						
+						unios("#herod");
 					}else if(this.o.platform == "android"){
-						removehide();						
+						unios("#herod");
 						$("#header").children(".back").attr("href","index.html");
-						
 					}
 				break;
 			}

@@ -15,7 +15,7 @@ em,i,code,cite,address,th{font-style:normal}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 a{ text-decoration:none}
 .hide{ display:none !important}
-.mt_0{ margin-top:0 !important}
+.mt_45{ margin-top:45px !important}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 
 .media_fs_14{ font-size:14px}
@@ -34,8 +34,8 @@ a{ text-decoration:none}
 .header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 /*英雄列表*/
-.hero_body{ background:url("../images/shouwangxianfeng/bg.png") no-repeat; background-size:cover; color:#fff; -webkit-user-select:none; user-select:none}
-.herolist{color:#fff; margin-top:45px}
+.hero_body{ background:url(../images/shouwangxianfeng/bg.jpg) no-repeat; background-size:cover; color:#fff; -webkit-user-select:none; user-select:none}
+.herolist{color:#fff}
 .herolist .head{ display:table; width:100%; background:#38618b}
 .herolist .head .item{ width:20%; height:50px; text-align:center; display:table-cell; vertical-align:middle; font-size:16px; position:relative; color:#00abea;}
 .herolist .head .item.on{ color:#fff}
@@ -52,8 +52,8 @@ a{ text-decoration:none}
 	.herolist .content li{ padding:30px 10px 0}
 }
 /*英雄详情*/
-.d_body{ background:url("../images/shouwangxianfeng/bg.png") no-repeat; background-size:cover}
-.herod{ margin:45px 10px 0 10px; padding-bottom:50px}
+.d_body{ background:url(../images/shouwangxianfeng/bg.jpg) no-repeat; background-size:cover}
+.herod{ margin:0 10px; padding-bottom:50px}
 .herod .des{ width:100%; display:table; padding-bottom:10px; border-bottom:1px dashed #00abea; margin-bottom:10px}
 .herod .des .left{ display:table-cell; width:50%; color:#fff}
 .herod .des .left .d_name{ font-size:18px; color:#00abea; margin-top:10px;}
@@ -105,7 +105,7 @@ a{ text-decoration:none}
 .herod .gonglue .item:nth-child(2) i{ background-position:-20px 0}
 .herod .gonglue .item.on{ background:#345a86; color:#fff}
 @media screen and (min-width:640px){
-	.herod{ margin:45px 20px 0 20px; padding-bottom:100px}
+	.herod{ margin:0 20px; padding-bottom:100px}
 	.herod .des{ padding-bottom:20px; margin-bottom:20px}
 	.herod .des .left .d_name{ font-size:36px;}	
 	.herod .des .left .location .icon{ top:20px; width:30px; height:30px;}
