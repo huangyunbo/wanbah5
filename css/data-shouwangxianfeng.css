@@ -34,7 +34,7 @@ a{ text-decoration:none}
 .header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 /*英雄列表*/
-.hero_body{ background:url(../images/shouwangxianfeng/bg.jpg) no-repeat; background-size:cover; color:#fff; -webkit-user-select:none; user-select:none}
+.hero_body{ background:#142843 url(../images/shouwangxianfeng/bg.jpg) no-repeat; background-size:cover; color:#fff; -webkit-user-select:none; user-select:none}
 .herolist{color:#fff}
 .herolist .head{ display:table; width:100%; background:#38618b}
 .herolist .head .item{ width:20%; height:50px; text-align:center; display:table-cell; vertical-align:middle; font-size:16px; position:relative; color:#00abea;}
@@ -52,7 +52,7 @@ a{ text-decoration:none}
 	.herolist .content li{ padding:30px 10px 0}
 }
 /*英雄详情*/
-.d_body{ background:url(../images/shouwangxianfeng/bg.jpg) no-repeat; background-size:cover}
+.d_body{ background:#142843 url(../images/shouwangxianfeng/bg.jpg) no-repeat; background-size:cover}
 .herod{ margin:0 10px; padding-bottom:50px}
 .herod .des{ width:100%; display:table; padding-bottom:10px; border-bottom:1px dashed #00abea; margin-bottom:10px}
 .herod .des .left{ display:table-cell; width:50%; color:#fff}
