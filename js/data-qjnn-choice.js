@@ -102,6 +102,7 @@
 				_data,
 				_bag,
 				dress_wu,
+				dress_jiafen,
 				html_suit = '',
 				html_wu = '';
 			
@@ -125,12 +126,23 @@
 							if(_bag[i].cid == _datadress[j].data[k].id){//找到这件衣服了
 								for(var l in _datadress[j].data[k].wu){//开始计算五属性分值
 									dress_wu = _datadress[j].data[k].wu;
+									dress_jiafen = _datadress[j].data[k].jiafen;
 									for(var m=0; m<this.o.wu.length; m++){
 										if(l == this.o.wu[m].k){
 											if(this.o.wu[m].s === undefined){
 												this.o.wu[m].s = dress_wu[l]*this.o.wu[m].r;
 											}else{
 												this.o.wu[m].s += dress_wu[l]*this.o.wu[m].r;
+											}
+											
+											//计算萤光之灵的单独加分
+											if(_datadress[j].id == 35 && dress_jiafen !== undefined){
+												var n;
+												for(n in dress_jiafen){
+													if(l == n){
+														this.o.wu[m].s += dress_jiafen[n];
+													}
+												}
 											}
 										}
 									}
@@ -348,7 +360,7 @@
 				_bag = this.o.bag,
 				hasadd = 0,
 				_tid,
-				ornaments = [10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,29,30,31,32,33],//饰品
+				ornaments = [10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,29,30,31,32,33,34],//饰品
 				ornamentsNum = 0;
 			
 			if(_bag.length > 0){
@@ -647,6 +659,7 @@
 				
 			for(var i=0; i<datadress_len; i++){//服装大类
 				var _datadress_class = _datadress[i].data,
+					_datadress_id = _datadress[i].id,//单独为id35的萤光之灵
 					len = _datadress_class.length,//当前类别服装一共多少
 					htmllen = len,//冒泡排序需要用来控制减的长度
 					tempExchangVal,
@@ -654,6 +667,7 @@
 				
 				for(var j=0; j<len; j++){//具体服装
 					var dress_wu = _datadress_class[j].wu,
+						dress_jiafen = _datadress_class[j].jiafen,
 						k,
 						l,
 						radix,
@@ -664,6 +678,15 @@
 						for(l=0; l<this.o.wu.length; l++){//遍历你选择了的五属性
 							if(k == this.o.wu[l].k){//如果找到对应的五属性
 								total += radix*this.o.wu[l].r;//计算服装分数，乘以基数
+								//计算萤光之灵的单独加分
+								if(_datadress_id == 35 && dress_jiafen !== undefined){
+									var n;
+									for(n in dress_jiafen){
+										if(k == n){
+											total += dress_jiafen[n];
+										}
+									}
+								}
 							}
 						}
 					}
@@ -896,12 +919,25 @@
 					case 31:
 					case 32:
 					case 33:
-						for(k in _wu){
+					case 34:
+						for(k in _wu){//饰品
 							switch(_wu[k]){
 								case 250:r="B";break;
 								case 310:r="A";break;
 								case 410:r="S";break;
 								case 485:r="SS";break;
+								default:r="C";
+							}
+							_html += '<span>'+that.switchlael(k) + r +'</span>';
+						}
+						break;
+					case 35://荧光之灵
+						for(k in _wu){
+							switch(_wu[k]){
+								case 262:r="B";break;
+								case 338:r="A";break;
+								case 418:r="S";break;
+								case 523:r="SS";break;
 								default:r="C";
 							}
 							_html += '<span>'+that.switchlael(k) + r +'</span>';
