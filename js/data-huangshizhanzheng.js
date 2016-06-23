@@ -239,6 +239,9 @@
 				case 11:
 				text = '生产速度';
 				break;
+				case 13:
+				text = '提速';
+				break;
 						
 			}
 			return text;
