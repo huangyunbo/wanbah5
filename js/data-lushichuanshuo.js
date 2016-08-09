@@ -98,13 +98,13 @@
 						'<div class="line1">'+
 							'<div class="name">'+_datacards[i].d+'</div>'+
 							lev(_datacards[i].f)+
-							'<div class="source">'+source(_datacards[i].j)+'</div>'+
 						'</div>'+
-						'<div class="line2">'+
+						'<div class="line2"><span class="k">出处</span>'+source(_datacards[i].j)+'</div>'+
+						'<div class="line3">'+
 							'<div class="l"><span class="k">构筑评分</span>'+_datacards[i].g+'</div>'+
 							'<div class="r"><span class="k">竞技场评分</span>'+_datacards[i].h+'</div>'+
 						'</div>'+
-						'<div class="line3">'+
+						'<div class="line4">'+
 							'<div><span class="k">画师语录</span></div>'+
 							'<p>'+_datacards[i].i+'</p>'+
 						'</div>';
