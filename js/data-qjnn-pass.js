@@ -11,7 +11,7 @@
 	};
 	
 	QjnnPass.prototype = {
-		printdetail: function(){//打印详情页
+		/*printdetail: function(){//打印详情页
 			var list = this.datapass[Number(this.getsession("wbgl-qjnn-pass-chapter"))],
 			id = Number(this.getsession("wbgl-qjnn-pass-id"));
 
@@ -20,6 +20,19 @@
 					$("#passdetail").html('<div class="title">'+list[i].name+'</div><div class="welcome">欢迎加入奇迹暖暖交流群:411055140</div><div class="content">'+list[i].p+'</div>');
 					break;
 				}
+			}
+		},*/
+		gopage: function(){
+			var arg = arguments[0];
+			
+			if(this.o.platform == "android"){
+				try{
+					window.jstojava.gotoWanbaPage(arg);
+				}catch(e){
+					alert("error");
+				}
+			}else if(this.o.platform == "ios"){
+				window.location.href = 'ios://gotoWanbaPage?param='+arg;
 			}
 		},
 		printlist: function(){//打印列表
@@ -149,14 +162,15 @@
 			});
 			//点击具体某篇文章
 			$("#passlist").on("click", ".item", function(){
-				var id = Number($(this).attr("data-id"));
+				that.gopage('{"pageid":1,"param1":'+$(this).attr("data-id")+'}');
+				/*var id = Number($(this).attr("data-id"));
 				
 				that.setsession("wbgl-qjnn-pass-id", id);
 				if(that.o.platform == "ios"){
 					location.href = that.o.plugin+'/data-qjnn-pass-detail.html';
 				}else{
 					location.href = 'data-qjnn-pass-detail.html';
-				}
+				}*/
 			});
 		},
 		isplatform: function(i){//判断打包平台显示相应内容
@@ -186,7 +200,7 @@
 						$("#passlist").addClass("mt_0");
 					}
 				break;
-				case "detail":
+				/*case "detail":
 					if(this.o.platform == "web"){
 						removehide();
 					}else if(this.o.platform == "android"){
@@ -194,7 +208,7 @@
 					}else if(this.o.platform == "ios"){
 						$("#passdetail").addClass("mt_0");
 					}
-				break;
+				break;*/
 			}
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
@@ -210,10 +224,10 @@
 					this.isplatform("list");
 					this.printlist();
 					break;
-				case (href == "detail"):
+				/*case (href == "detail"):
 					this.isplatform("detail");
 					this.printdetail();
-					break;
+					break;*/
 			}
 		},
 		init: function(){

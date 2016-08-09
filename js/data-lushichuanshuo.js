@@ -33,7 +33,7 @@
 			for(var i=0; i<_datacards.length; i++){
 				card = _datacards[i];
 				if(mana() && (keyword.length == 0 || card.d.indexOf(keyword) != -1)){
-					html += '<li data-id="'+_datacards[i].c+'"><div class="pic"><div style="background-image:url('+url+'DBPic/79_'+_datacards[i].c+'_thumb.png)"></div><img src="'+url+'ka-defaultpic.png"></div><p>'+_datacards[i].d+'</p></li>';
+					html += '<li data-id="'+_datacards[i].c+'"><div class="pic"><div style="background-image:url('+url+'DBPic/'+_datacards[i].c+'.png)"></div><img src="'+url+'ka-defaultpic.png"></div><p>'+_datacards[i].d+'</p></li>';
 				}
 			}
 			if(html.length == 0){
@@ -85,13 +85,15 @@
 					case 5:return '黑石山的火焰';
 					case 6:return '地精大战侏儒';
 					case 7:return '纳克萨玛斯';
+					case 8:return '上古之神的低语';
+					case 9:return '卡拉赞之夜';
 					default:return '基本';
 				}
 			}
 			
 			for(var i=0; i<_datacards.length; i++){
 				if(_datacards[i].c == _id){
-					_html = '<div class="pic"><img src="'+this.o.url+'DBPic/79_'+_id+'_thumb.png"></div>'+
+					_html = '<div class="pic"><img src="'+this.o.url+'DBPic/'+_id+'.png"></div>'+
 						'<div class="zy '+zy()+'"></div>'+
 						'<div class="line1">'+
 							'<div class="name">'+_datacards[i].d+'</div>'+
@@ -245,7 +247,7 @@ f:稀有度 //0.所有 1:免费 2:普通 3.稀有 4.史诗 5.传说
 g:构筑评分
 h:竞技场评分
 i:画师语录
-j:出处 //1.基本 2.经典 3.冠军的试炼 4.探险者协会 5.黑石山的火焰 6.地精大战侏儒 7.纳克萨玛斯 8.上古之神的低语 标准模式=1 2 3 4 5 8 狂野模式=all
+j:出处 //1.基本 2.经典 3.冠军的试炼 4.探险者协会 5.黑石山的火焰 6.地精大战侏儒 7.纳克萨玛斯 8.上古之神的低语 9.卡拉赞之夜 标准模式=1 2 3 4 5 8 9 狂野模式=all
 
 var data_cards = [{a:"zhongli",b:[{c:123,d:"恐怖的奴隶主",e:1,f:1,g:9,h:6,i:"有些德鲁伊做梦的时候都会被陌生人的“给我个激活！”的喊叫声惊醒"},{}]}];
 
