@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* 拳皇98终极之战OL 2015.7.30 */
+
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
+html{font:625%/1.5 "Microsoft YaHei",sans-serif}
+img{border:none;max-width:100%;vertical-align:top}
+h1,h2,h3,h4,h5,h6{font-weight:normal}
+input,select,textarea{font-size:100%;vertical-align:baseline}
+ol,ul{list-style:none}
+textarea{overflow:auto;vertical-align:top;resize:vertical}
+table{border-collapse:collapse;border-spacing:0}
+em,i,code,cite,address,th{font-style:normal}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+a{ text-decoration:none}
+.mt_45{ margin-top:45px}
+.hide{ display:none !important}
+.wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+
+body{ background:#000; color:#fff}
+.index{ background:#000 url(../images/zhiwudazhanjiangshi2/bg.jpg) top center repeat-y fixed; background-size:contain}
+.header{ height:45px; background:#81472b url(../images/zhiwudazhanjiangshi2/headerbg.jpg); background-size:cover; position:fixed; top:0; left:0; width:100%;z-index: 100;}
+.header .back{width:15px;height:15px;border:1px solid;border-color: transparent transparent #fff #fff;transform: rotate(45deg);position: absolute;top:15px; left:10px;}
+.header h2{text-align: center;font-size:20px;line-height: 45px}
+.classify{width:2.67rem;height:4.17rem;margin:0.5rem auto 0;background:url(../images/zhiwudazhanjiangshi2/classifybg.png) center top no-repeat;background-size:100%;padding-top:0.25rem }
+.classify a{display: block;width:2rem;height: 1.1rem;margin:0.07rem auto;background:url(../images/zhiwudazhanjiangshi2/jiangshibg.png) no-repeat;background-size: cover}
+.classify a:first-child{background:url(../images/zhiwudazhanjiangshi2/zhiwubg.png) no-repeat;background-size: cover}
+.classify a:last-child{background:url(../images/zhiwudazhanjiangshi2/mingcibg.png) no-repeat;background-size: cover}
+
+.pokedex{padding-top:10px;margin-bottom: 0.2rem;overflow: hidden;}
+.pokedex .side{width: 0.7rem;background:#f0e7c6;border-radius: 7px;overflow: hidden;position: fixed;left:0.05rem;}
+.pokedex .side .tit{text-align: center;background:url(../images/zhiwudazhanjiangshi2/sidehbg.jpg) no-repeat;height:0.15rem ;background-size: cover;color: #fffefe;line-height:0.15rem;font-size: 0.1rem;}
+.pokedex .main{width: 2.32rem;background:#f0e7c6;border-radius: 7px;overflow: hidden;position: fixed;right:0.05rem;}
+.pokedex .mask{border-radius:5px ;background-color: rgba(0,0,0,0.2);padding: 0.02rem;margin: 0.04rem;overflow-y: auto;overflow-x: hidden;-webkit-overflow-scrolling:touch;}
+}
+.pokedex .side .scroll_wrap{ width: 0.8rem;overflow: hidden;}
+.pokedex .side .nav{font-size: 0;width:0.58rem; }
+.pokedex .side .nav .img{margin-bottom:0.02rem;width:0.58rem;height:0.42rem;position: relative;}
+.pokedex .side .nav .img img{width: 100%;height: 100%}
+.pokedex .side .nav .img:last-child{margin-bottom:0;}
+.pokedex .side .nav .img.on:before{ content:''; width:100%; height:100%; position:absolute; left:0; top:0;background:url(../images/zhiwudazhanjiangshi2/onbg.png) center top no-repeat;background-size: 100%}
+.pokedex .main .item{width: 0.9rem;height: 0.9rem;float: left;margin:0.1rem 0.05rem;padding:0.03rem;font-size: 0;position: relative;text-align: center}
+.pokedex .main .item .border_img{position: absolute;width: 100%;height: 100%;top:0;left:0;background:url(../images/zhiwudazhanjiangshi2/border_img.png) no-repeat;background-size: cover;}
+.pokedex .main .item img{width: 100%;height: 100%;border-radius: 10px}
+.pokedex .main .item .label{height:0.18rem;background:url(../images/zhiwudazhanjiangshi2/btn_left.png) left top no-repeat;background-size:auto 0.18rem;font-size: 0.09rem;color:#fff;line-height: 0.18rem;display: inline-block;position: relative;top:-0.05rem;padding-left: 0.05rem}
+.pokedex .main .item .label span{padding-right: 0.05rem;float: right;height:0.18rem ;background:url(../images/zhiwudazhanjiangshi2/btn_right.png) right top no-repeat;background-size:auto 0.18rem;}
+.wrap{width: 3.01rem;margin: 60px auto;background:url(../images/zhiwudazhanjiangshi2/contentbg.png) center top repeat-y; background-size:100%;position: relative;padding-top: 1.2em ;padding-bottom: 0.1rem}
+.wrap .topbg{position: absolute;top:-0.1rem;left:0;width: 100%;height:1.17rem; background:url(../images/zhiwudazhanjiangshi2/topbg.png) center top no-repeat;background-size:100%;overflow: hidden;padding-top: 0.08rem}
+.wrap .footbg{position: absolute;bottom:-0.1rem;left:0;width: 100%;height:0.1rem; background:url(../images/zhiwudazhanjiangshi2/footbg.png) center top no-repeat;background-size:100%;}
+.wrap .topbg .name{width:0.7rem;height: 0.92rem; background:url(../images/zhiwudazhanjiangshi2/namebg.png) center top no-repeat;background-size:100%;float: left;margin: 0 0.07rem;position: relative;}
+.wrap .topbg .way{font-size: 0.09rem;color:#000;padding:0.25rem 0.1rem 0 0.18rem;box-sizing: border-box;width:2.1rem;height: 0.92rem; background:url(../images/zhiwudazhanjiangshi2/waybg.png) center top no-repeat;background-size:100%;float: left;text-align:justify }
+.wrap .topbg .name .tit{text-align: center;font-size:0.11rem;line-height:2 }
+.wrap .topbg .name .img{width: 0.56rem;height: 0.56rem;border-radius: 10px;position: absolute;bottom:0.09rem;left:50%;margin-left: -0.28rem}
+.wrap .topbg .way .text{height:0.5rem;overflow-y:auto;color:#473013; -webkit-overflow-scrolling:touch;}
+.wrap .topbg .way .text .title{font-size: 0.14rem}
+.wrap .field{width:2.87rem;margin:0.02rem auto;background:url(../images/zhiwudazhanjiangshi2/sm_contentbg.png) center top repeat-y;background-size:100%;position: relative;margin-bottom: 0.3rem;font-size:0.09rem;color:#473013;padding:0.07rem 0.06rem 0.05rem;box-sizing: border-box; }
+.wrap .field .headerbg{position: absolute;top:-0.1rem;left:0;width: 100%;height:0.15rem;background:url(../images/zhiwudazhanjiangshi2/sm_topbg.png) center top no-repeat;background-size:100%; }
+.wrap .field .footerbg{position: absolute;bottom:-0.1rem;left:0;width: 100%;height:0.58rem;background:url(../images/zhiwudazhanjiangshi2/sm_footbg.png) center top no-repeat;background-size:100%; }
+.wrap .field .describe{z-index: 10;position: relative;}
+.wrap .field .label{width:0.78rem;height:0.25rem;background:url(../images/zhiwudazhanjiangshi2/btn_detail.png) center top no-repeat;background-size:100%;color:#fff; font-size: 0.12rem;line-height:0.25rem;text-indent: 0.1rem }
+.wrap .field .text{padding:0.05rem 0.1rem;line-height: 2}
+.wrap .field .split{width: 2.56rem;height: 0.03rem;background:url(../images/zhiwudazhanjiangshi2/split.png) center top no-repeat;background-size:100%;margin: 0.1rem auto;}
+.wrap .field .triangle{position: absolute;width:0.05rem;height: 0.05rem;background:url(../images/zhiwudazhanjiangshi2/triangle.jpg) center top no-repeat;background-size:100%;right:0.05rem;bottom: 0.5rem }

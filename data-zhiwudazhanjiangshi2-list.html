@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>植物图鉴</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/data-zhiwudazhanjiangshi2.css">
+</head>
+
+<body data-url="list" class="index">
+<div class="header hide" id="header">
+	<a class="back wbclick" href="data-zhiwudazhanjiangshi2.html"></a><h2>图鉴</h2>
+</div><!--/header-->
+<div class="body pokedex">
+	<div class="side" id="side">
+		<h3 class="tit">分类</h3>
+		<div class="mask">
+			<div class="scroll_wrap">
+				<ul class="nav" id="nav">
+					<!--<li class="on img"><img src="images/zhiwudazhanjiangshi2/icon_zhiwutujian/1.png" /></li>
+					<li class="img"><img src="images/zhiwudazhanjiangshi2/icon_zhiwutujian/2.png" /></li>
+					<li class="img"><img src="images/zhiwudazhanjiangshi2/icon_zhiwutujian/3.png" /></li>
+					<li class="img"><img src="images/zhiwudazhanjiangshi2/icon_zhiwutujian/4.png" /></li>
+					<li class="img"><img src="images/zhiwudazhanjiangshi2/icon_zhiwutujian/5.png" /></li>
+					<li class="img"><img src="images/zhiwudazhanjiangshi2/icon_zhiwutujian/6.png" /></li>
+					<li class="img"><img src="images/zhiwudazhanjiangshi2/icon_zhiwutujian/7.png" /></li>
+					<li class="img"><img src="images/zhiwudazhanjiangshi2/icon_zhiwutujian/8.png" /></li>
+					<li class="img"><img src="images/zhiwudazhanjiangshi2/icon_zhiwutujian/9.png" /></li>
+					<li class="img"><img src="images/zhiwudazhanjiangshi2/icon_zhiwutujian/9.png" /></li>
+					<li class="img"><img src="images/zhiwudazhanjiangshi2/icon_zhiwutujian/9.png" /></li>-->
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="main" id="main">
+		<div class="mask">
+			<div class="list wbclick" id="group">
+				<a class="item" href="javascript:;">
+					<div class="border_img"></div>
+					<img src="images/zhiwudazhanjiangshi2/kuihua.jpg"  />
+					<div class="label"><span>向日葵</span></div>
+				</a>
+				<a class="item" href="javascript:;">
+					<img src="images/zhiwudazhanjiangshi2/kuihua.jpg"  />
+					<div class="label">向日葵</div>
+				</a>
+				<a class="item" href="javascript:;">
+					<img src="images/zhiwudazhanjiangshi2/kuihua.jpg"  />
+					<span class="label">向日葵</span>
+				</a>
+				<a class="item" href="javascript:;">
+					<img src="images/zhiwudazhanjiangshi2/kuihua.jpg"  />
+					<span class="label">向日葵</span>
+				</a>
+				<a class="item" href="javascript:;">
+					<img src="images/zhiwudazhanjiangshi2/kuihua.jpg"  />
+					<span class="label">向日葵</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/data-zhiwudazhanjiangshi2.js"></script>
+<script type="text/javascript" src="json/json-zhiwudazhanjiangshi2.js"></script>
+<script type="text/javascript">
+$(function(){
+	var zhiwudazhanjiangshi2 = new Zhiwudazhanjiangshi2(data_zhiwu, data_jiangshi);
+});
+</script>
+</body>
+</html>
