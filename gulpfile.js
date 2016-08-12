@@ -1687,7 +1687,7 @@ gulp.task('zhiwudazhanjiangshi2_images', function(){
         .pipe(gulp.dest('../../chajian/'+zhiwudazhanjiangshi2_gameid+'/'+zhiwudazhanjiangshi2_platform+'/DataPlugin/images/zhiwudazhanjiangshi2'));
 	
 	
-	if(qjnn_platform == 'android'){
+	if(zhiwudazhanjiangshi2_platform == 'android'){
 		gulp.src('./images/.nomedia', {buffer: false})
         	.pipe(gulp.dest('../../chajian/'+zhiwudazhanjiangshi2_gameid+'/'+zhiwudazhanjiangshi2_platform+'/DataPlugin/images/'));
 	}
