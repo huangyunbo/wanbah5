@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* 精灵宝可梦GO 113 2016-08-05 wuyunduoduopiao */
+
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
+html{font:62.5%/1.5 "Microsoft YaHei",sans-serif}
+img{border:none;max-width:100%;vertical-align:top}
+h1,h2,h3,h4,h5,h6{font-weight:normal}
+input,select,textarea{font-size:100%;vertical-align:baseline}
+ol,ul{list-style:none}
+textarea{overflow:auto;vertical-align:top;resize:vertical}
+table{border-collapse:collapse;border-spacing:0}
+em,i,code,cite,address,th{font-style:normal}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+a{ text-decoration:none}
+.hide{ display:none !important}
+.mt_45{ margin-top:45px !important}
+.wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+
+body{ background:#072f37}
+.header{ height:44px; border-bottom:1px solid #c7fd9a; background:#4bb8b2; position:fixed; width:100%; top:0; left:0; z-index:100}
+.header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
+.header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
+.container{ color:#b9fdab; font-size:1.8rem; text-align:center; padding-top:100px}

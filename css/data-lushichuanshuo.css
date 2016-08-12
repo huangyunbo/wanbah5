@@ -143,7 +143,7 @@ body{ -webkit-user-select:none; user-select:none}
 .dialogcard .saman{ background-position:0 -350px}
 .dialogcard .shushi{ background-position:0 -400px}
 .dialogcard .zhanshi{ background-position:0 -450px}
-.dialogcard .line1,.dialogcard .line2,.dialogcard .line3{ margin:0 18px; border-bottom:1px solid #71706e; padding:10px 0; overflow:hidden}
+.dialogcard .line1,.dialogcard .line2,.dialogcard .line3,.dialogcard .line4{ margin:0 18px; border-bottom:1px solid #71706e; padding:10px 0; overflow:hidden}
 .dialogcard .line1 .name{ font-size:1.8rem; float:left; margin-right:20px}
 .dialogcard .line1 .lev{ font-size:1.2rem; margin-top:5px; float:left; margin-right:20px}
 .dialogcard .line1 .lev i{background:url(../images/lushichuanshuo/data-rarity.png) no-repeat; background-size:48px; height:15px; width:12px; display:inline-block; vertical-align:-3px; margin-right:3px}
@@ -155,12 +155,11 @@ body{ -webkit-user-select:none; user-select:none}
 .dialogcard .line1 .lev_purple i{ background-position:-24px 0}
 .dialogcard .line1 .lev_orange{ color:#fc7508}
 .dialogcard .line1 .lev_orange i{ background-position:-36px 0}
-.dialogcard .line1 .source{ font-size:1.2rem; margin-top:5px}
-.dialogcard .line2,.dialogcard .line3{ font-size:1.5rem}
-.dialogcard .line2 .k,.dialogcard .line3 .k{ color:#ffd957; padding-right:10px}
-.dialogcard .line2 .l{ float:left}
-.dialogcard .line2 .r{ float:right}
-.dialogcard .line3{ border:0}
+.dialogcard .line2,.dialogcard .line3,.dialogcard .line4{ font-size:1.5rem}
+.dialogcard .line2 .k,.dialogcard .line3 .k,.dialogcard .line4 .k{ color:#ffd957; padding-right:10px}
+.dialogcard .line3 .l{ float:left}
+.dialogcard .line3 .r{ float:right}
+.dialogcard .line4{ border:0}
 /*卡组模拟*/
 .ka_body{ background:#2f2a21 url(../images/lushichuanshuo/ka-bg.jpg) no-repeat center bottom; background-size:cover}
 .ka_road{ display:table; width:100%; padding:45px 0}

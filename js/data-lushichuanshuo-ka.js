@@ -140,7 +140,7 @@
 									isnumtwo(card.e)+
 									'<span>'+card.d+'</span>'+
 									'<i></i>'+
-									'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
+									'<div class="pic" style="background-image:url('+this.o.url+'DBPic/'+card.c+'.png)"></div>'+
 								'</div>'+
 							'</div>';
 				}else if(i < 30){
@@ -149,7 +149,7 @@
 									isnumtwo(card.e)+
 									'<span>'+card.d+'</span>'+
 									'<i></i>'+
-									'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
+									'<div class="pic" style="background-image:url('+this.o.url+'DBPic/'+card.c+'.png)"></div>'+
 								'</div>'+
 							'</div>';
 				}
@@ -356,24 +356,26 @@
 					case 5:return '黑石山的火焰';
 					case 6:return '地精大战侏儒';
 					case 7:return '纳克萨玛斯';
+					case 8:return '上古之神的低语';
+					case 9:return '卡拉赞之夜';
 					default:return '基本';
 				}
 			}
 			
 			for(var i=0; i<datacards.length; i++){
 				if(datacards[i].c == id){
-					html = '<div class="pic"><img src="'+this.o.url+'DBPic/79_'+id+'_thumb.png"></div>'+
+					html = '<div class="pic"><img src="'+this.o.url+'DBPic/'+id+'.png"></div>'+
 							'<div class="zy '+this.o.job+'"></div>'+
 							'<div class="line1">'+
 								'<div class="name">'+datacards[i].d+'</div>'+
 								lev(datacards[i].f)+
-								'<div class="source">'+source(datacards[i].j)+'</div>'+
 							'</div>'+
-							'<div class="line2">'+
+							'<div class="line2"><span class="k">出处</span>'+source(datacards[i].j)+'</div>'+
+							'<div class="line3">'+
 								'<div class="l"><span class="k">构筑评分</span>'+datacards[i].g+'</div>'+
 								'<div class="r"><span class="k">竞技场评分</span>'+datacards[i].h+'</div>'+
 							'</div>'+
-							'<div class="line3">'+
+							'<div class="line4">'+
 								'<div><span class="k">画师语录</span></div>'+
 								'<p>'+datacards[i].i+'</p>'+
 							'</div>';
@@ -398,7 +400,7 @@
 			for(var i=0; i<cards.length; i++){
 				card = cards[i];
 				html += '<div class="item'+isLegend(card.f)+'" data-id="'+card.c+'">'+
-							'<i class="hero" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png);"></i>'+
+							'<i class="hero" style="background-image:url('+this.o.url+'DBPic/'+card.c+'.png);"></i>'+
 							'<i class="mask"></i>'+
 							'<i class="num num_'+card.e+'"><span></span></i>'+
 							'<p>'+card.d+'</p>';
@@ -593,12 +595,12 @@
 			for(var i=0; i<datacards.length; i++){
 				card = datacards[i];
 
-				if((model == 'wild' || card.j == 1 || card.j == 2 || card.j == 3 || card.j == 4 || card.j == 5 || card.j == 8) && (rarity == 0 || card.f == rarity) && (card.e >= feimin && card.e <= feimax) && (keyword.length == 0 || card.d.indexOf(keyword) != -1)){
+				if((model == 'wild' || card.j == 1 || card.j == 2 || card.j == 3 || card.j == 4 || card.j == 5 || card.j == 8 || card.j == 9) && (rarity == 0 || card.f == rarity) && (card.e >= feimin && card.e <= feimax) && (keyword.length == 0 || card.d.indexOf(keyword) != -1)){
 					datalock = calcLock(card.c, card.f);
 					cardshtml += '<div class="item" data-id="'+card.c+'" data-lock="'+datalock+'">'+
 									'<div class="w">'+
 										'<img src="'+this.o.url+'ka-defaultpic.png">'+
-										'<div class="pic" style="background-image:url('+this.o.url+'DBPic/79_'+card.c+'_thumb.png)"></div>'+
+										'<div class="pic" style="background-image:url('+this.o.url+'DBPic/'+card.c+'.png)"></div>'+
 										'<span class="zoom"><i></i></span>'+
 										htmlLock()+
 									'</div>'+
@@ -943,7 +945,7 @@ f:稀有度 //0.所有 1.免费 2.普通 3.稀有 4.史诗 5.传说
 g:构筑评分
 h:竞技场评分
 i:画师语录
-j:出处 //1.基本 2.经典 3.冠军的试炼 4.探险者协会 5.黑石山的火焰 6.地精大战侏儒 7.纳克萨玛斯 8.上古之神的低语 标准模式=1 2 3 4 5 8 狂野模式=all
+j:出处 //1.基本 2.经典 3.冠军的试炼 4.探险者协会 5.黑石山的火焰 6.地精大战侏儒 7.纳克萨玛斯 8.上古之神的低语 9.卡拉赞之夜 标准模式=1 2 3 4 5 8 9 狂野模式=all
 
 z:卡牌是否乘以2
 
