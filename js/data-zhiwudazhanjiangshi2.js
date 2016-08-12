@@ -9,7 +9,7 @@
 		this.data_cards = [];
 		
 		this.o = {platform:"web",plugin:"plugin_1385",url:"images/zhiwudazhanjiangshi2/",menu:"zhiwu"};//platform:打包平台,plugin:插件板块名,url:前缀路径
-		if(this.o.platform.platform == "android"){
+		if(this.o.platform == "android"){
 			this.o.url="../images/zhiwudazhanjiangshi2/";
 		}
 		this.init();
