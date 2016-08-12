@@ -8,7 +8,7 @@
 		this.data_jiangshi = data_jiangshi;
 		this.data_cards = [];
 		
-		this.o = {platform:"web",plugin:"plugin_992",url:"images/zhiwudazhanjiangshi2/",menu:"zhiwu"};//platform:打包平台,plugin:插件板块名,url:前缀路径
+		this.o = {platform:"web",plugin:"plugin_1385",url:"images/zhiwudazhanjiangshi2/",menu:"zhiwu"};//platform:打包平台,plugin:插件板块名,url:前缀路径
 		if(this.o.platform.platform == "android"){
 			this.o.url="../images/zhiwudazhanjiangshi2/";
 		}
@@ -16,6 +16,19 @@
 	};
 	
 	Zhiwudazhanjiangshi2.prototype = {
+		gopage: function(){
+			var arg = arguments[0];
+			
+			if(this.o.platform == "android"){
+				try{
+					window.jstojava.gotoWanbaPage(arg);
+				}catch(e){
+					alert("error");
+				}
+			}else if(this.o.platform == "ios"){
+				window.location.href = 'ios://gotoWanbaPage?param='+arg;
+			}
+		},
 		isMenu: function(){
 			var headerTit;
 			if(this.getsession("wbgl-zhiwudazhanjiangshi2-menu") == 'zhiwu'){
@@ -37,8 +50,7 @@
 				data = {},
 				isfind = false,
 				html_mold = '',
-				html_jineng = '',
-				html_shuxing = '',
+				html_container = '',
 				contentArry='';
 
 			for(var i=0; i<this.data_cards.length; i++){
@@ -51,10 +63,7 @@
 				}
 				if(isfind) break;
 			}
-			
-			contentArry=data.content;
-
-			//console.log(contentArry);
+			contentArry = data.content;
 			if(contentArry === undefined){
 				return;
 			}
@@ -62,29 +71,37 @@
 			html_mold = '<h3 class="tit">'+data.h1+'</h3>'+
 						'<img src="'+this.o.url+this.o.menu+'/'+data.id+'.png" class="img" />';
 
-			html_jineng='<div class="headerbg"></div>'+
-			 			'<div class="describe">'+
-				 			'<div class="label">'+contentArry[0].k+'</div>'+
-				 			'<p class="text">'+contentArry[0].v+'</p>'+
-				 		'</div>'+
-			 			'<div class="footerbg"></div>';
-
-
-			for(var x=1;x<contentArry.length;x++){
-				html_shuxing+=
-						 '<div class="describe">'+
-				 			'<div class="label">'+contentArry[x].k+'</div>'+
-				 			'<p class="text">'+contentArry[x].v+'</p>'+
-				 			'<div class="split"></div>'+
-				 		'</div>'
-			} 			
+			for(var i=0; i<contentArry.length; i++){
+				if(i == 0){
+					html_container += '<div class="field">'+
+											'<div class="headerbg"></div>'+
+											'<div class="describe">'+
+												'<div class="label">'+contentArry[i].k+'</div>'+
+												'<p class="text">'+contentArry[i].v+'</p>'+
+											'</div>'+
+											'<div class="footerbg"></div> '+
+										'</div>'+
+										'<div class="field">'+
+											'<div class="headerbg"></div>'+
+											'<div class="footerbg"></div>';
+				}else{
+					html_container += '<div class="describe">'+
+											'<div class="label">'+contentArry[i].k+'</div>'+
+											'<div class="text">'+contentArry[i].v+'</div>'+
+											'<div class="split"></div>'+
+										'</div>';
+										
+					if(i == contentArry.length-1){
+						html_container += '</div>';
+					}
+				}
+			}
+				
 			$("#d_mold").html(html_mold);
 			$("#d_sum").html(data.sum);
-			$("#content1").html(html_jineng);
-			$("#content2").append(html_shuxing);
-
+			$("#container").html(html_container);
 		},
-		printGroup: function(pid){
+		printSku: function(pid){
 			var data = this.data_cards,
 				html = '';
 				
@@ -101,20 +118,20 @@
 					break;
 				}
 			}
-			$("#group").html(html);
+			$("#sku").html(html);
 		},
 		
-		printList: function(){//打印列表
+		printCategory: function(){//打印列表
 			var data,
-				html_nav = '';
+				html_category = '';
 
 			this.isMenu();
-			data = this.data_cards;			
+			data = this.data_cards;
 			
 			for(var i=0; i<data.length; i++){
-				html_nav += '<li class="img" data-pid="'+data[i].pid+'"><img src="'+this.o.url+'category/'+data[i].pid+'.png" /></li>';
+				html_category += '<li class="img" data-pid="'+data[i].pid+'"><img src="'+this.o.url+'category/'+data[i].pid+'.png" /></li>';
 			}
-			$("#nav").html(html_nav);
+			$("#category").html(html_category);
 			this.setheight();
 		},
 		
@@ -254,13 +271,13 @@
 			});
 			
 			//列表
-			$("#nav").on("click", ".img", function(){
+			$("#category").on("click", ".img", function(){
 				var $self = $(this);
 				$self.addClass("on").siblings().removeClass("on");
-				that.printGroup($self.attr("data-pid"));
+				that.printSku($self.attr("data-pid"));
 			}).children(".img").eq(0).trigger("click");
 
-			$("#group").on("click", ".item", function(){
+			$("#sku").on("click", ".item", function(){
 				var _id = Number($(this).attr("data-id"));
 				that.setsession("wbgl-zhiwudazhanjiangshi2-card", _id);
 				
@@ -269,7 +286,11 @@
 				}else{
 					location.href = 'data-zhiwudazhanjiangshi2-detail.html';
 				}
-
+			});
+			
+			//专用名词解释
+			$("#classify_word").click(function(){
+				that.gopage('{"pageid":1,"param1":28013}');
 			});
 			
 		},
@@ -282,7 +303,6 @@
 			docEle.style.fontSize = fs+"px";
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
-
 			var href = $("body").attr("data-url");
 			switch(true){
 				case (href == "index"):
@@ -290,7 +310,7 @@
 					break;
 				case (href == "list"):
 					this.isplatform("list");
-					this.printList();
+					this.printCategory();
 					break;	
 				case (href == "detail"):
 					this.isplatform("detail");

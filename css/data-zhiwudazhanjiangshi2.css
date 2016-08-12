@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* 拳皇98终极之战OL 2015.7.30 */
+/* 植物大战僵尸2 2016-08-12 huhulayo */
 
 body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
 html{font:625%/1.5 "Microsoft YaHei",sans-serif}
@@ -19,7 +19,7 @@ a{ text-decoration:none}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 
 body{ background:#000; color:#fff}
-.index{ background:#000 url(../images/zhiwudazhanjiangshi2/bg.jpg) top center repeat-y fixed; background-size:contain}
+.body{ background:#000 url(../images/zhiwudazhanjiangshi2/bg.jpg) top center repeat-y fixed; background-size:contain}
 .header{ height:45px; background:#81472b url(../images/zhiwudazhanjiangshi2/headerbg.jpg); background-size:cover; position:fixed; top:0; left:0; width:100%;z-index: 100;}
 .header .back{width:15px;height:15px;border:1px solid;border-color: transparent transparent #fff #fff;transform: rotate(45deg);position: absolute;top:15px; left:10px;}
 .header h2{text-align: center;font-size:20px;line-height: 45px}
@@ -33,13 +33,13 @@ body{ background:#000; color:#fff}
 .pokedex .side .tit{text-align: center;background:url(../images/zhiwudazhanjiangshi2/sidehbg.jpg) no-repeat;height:0.15rem ;background-size: cover;color: #fffefe;line-height:0.15rem;font-size: 0.1rem;}
 .pokedex .main{width: 2.32rem;background:#f0e7c6;border-radius: 7px;overflow: hidden;position: fixed;right:0.05rem;}
 .pokedex .mask{border-radius:5px ;background-color: rgba(0,0,0,0.2);padding: 0.02rem;margin: 0.04rem;overflow-y: auto;overflow-x: hidden;-webkit-overflow-scrolling:touch;}
-}
+
 .pokedex .side .scroll_wrap{ width: 0.8rem;overflow: hidden;}
-.pokedex .side .nav{font-size: 0;width:0.58rem; }
-.pokedex .side .nav .img{margin-bottom:0.02rem;width:0.58rem;height:0.42rem;position: relative;}
-.pokedex .side .nav .img img{width: 100%;height: 100%}
-.pokedex .side .nav .img:last-child{margin-bottom:0;}
-.pokedex .side .nav .img.on:before{ content:''; width:100%; height:100%; position:absolute; left:0; top:0;background:url(../images/zhiwudazhanjiangshi2/onbg.png) center top no-repeat;background-size: 100%}
+.pokedex .side .category{font-size: 0;width:0.58rem; }
+.pokedex .side .category .img{margin-bottom:0.02rem;width:0.58rem;height:0.42rem;position: relative;}
+.pokedex .side .category .img img{width: 100%;height: 100%}
+.pokedex .side .category .img:last-child{margin-bottom:0;}
+.pokedex .side .category .img.on:before{ content:''; width:100%; height:100%; position:absolute; left:0; top:0;background:url(../images/zhiwudazhanjiangshi2/onbg.png) center top no-repeat;background-size: 100%}
 .pokedex .main .item{width: 0.9rem;height: 0.9rem;float: left;margin:0.1rem 0.05rem;padding:0.03rem;font-size: 0;position: relative;text-align: center}
 .pokedex .main .item .border_img{position: absolute;width: 100%;height: 100%;top:0;left:0;background:url(../images/zhiwudazhanjiangshi2/border_img.png) no-repeat;background-size: cover;}
 .pokedex .main .item img{width: 100%;height: 100%;border-radius: 10px}
@@ -61,4 +61,5 @@ body{ background:#000; color:#fff}
 .wrap .field .label{width:0.78rem;height:0.25rem;background:url(../images/zhiwudazhanjiangshi2/btn_detail.png) center top no-repeat;background-size:100%;color:#fff; font-size: 0.12rem;line-height:0.25rem;text-indent: 0.1rem }
 .wrap .field .text{padding:0.05rem 0.1rem;line-height: 2}
 .wrap .field .split{width: 2.56rem;height: 0.03rem;background:url(../images/zhiwudazhanjiangshi2/split.png) center top no-repeat;background-size:100%;margin: 0.1rem auto;}
+.wrap .field .describe:last-child .split{ display:none}
 .wrap .field .triangle{position: absolute;width:0.05rem;height: 0.05rem;background:url(../images/zhiwudazhanjiangshi2/triangle.jpg) center top no-repeat;background-size:100%;right:0.05rem;bottom: 0.5rem }
