@@ -112,7 +112,7 @@
 			data = this.data_cards;			
 			
 			for(var i=0; i<data.length; i++){
-				html_nav += '<li class="img" data-pid="'+data[i].pid+'"><img src="'+this.o.url+'icon_zhiwutujian/'+data[i].pid+'.png" /></li>';
+				html_nav += '<li class="img" data-pid="'+data[i].pid+'"><img src="'+this.o.url+'category/'+data[i].pid+'.png" /></li>';
 			}
 			$("#nav").html(html_nav);
 			this.setheight();
