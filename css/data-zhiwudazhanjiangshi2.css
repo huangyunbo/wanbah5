@@ -28,8 +28,8 @@ body{ background:#000; color:#fff}
 .classify a:first-child{background:url(../images/zhiwudazhanjiangshi2/zhiwubg.png) no-repeat;background-size: cover}
 .classify a:last-child{background:url(../images/zhiwudazhanjiangshi2/mingcibg.png) no-repeat;background-size: cover}
 
-.pokedex{ padding:0.05rem 0}
-.pokedex .side{ width:0.7rem;margin-left:0.05rem;float: left;}
+.pokedex{ padding:0.05rem 0.05rem 0}
+.pokedex .side{ width:0.7rem;float: left;}
 .pokedex .side .tit{ background:url(../images/zhiwudazhanjiangshi2/sidehbg.png) no-repeat;height:0.15rem;background-size: cover;}
 .pokedex .category_wrap{ font-size:0; background:#f0e7c6; border-radius:0 0 0.03rem 0.03rem; border:0.03rem solid #f0e7c6}
 .pokedex .category{ width:0.60rem; overflow:hidden; background:#b3ae98; border-radius:0.03rem;padding: 0.02rem}
@@ -39,15 +39,11 @@ body{ background:#000; color:#fff}
 .pokedex .category li img{ width:0.60rem; height:0.46rem; border-radius:0.05rem}
 .pokedex .category li.on:before{ content:''; width:0.60rem; height:0.46rem; position:absolute; left:0; top:0;background:url(../images/zhiwudazhanjiangshi2/onbg.png) center top no-repeat;background-size: 100%}
 
-.pokedex .main{ width:2.35rem;margin-right:0.05rem;overflow: hidden;float: right;}
-.pokedex .main .category_wrap{border-radius:0.03rem 0.03rem 0.03rem 0.03rem;}
-.pokedex .main .main_mask{background:#b3ae98; border-radius:0.03rem;padding: 0.02rem;width:2.25rem; overflow:hidden; }
-/*.pokedex .main .sku{width:2.32rem;overflow-y: auto ;-webkit-overflow-scrolling:touch;}*/
-
-.pokedex .main .main_scroll{overflow-y:auto; width:2.42rem; -webkit-overflow-scrolling:touch; }
-.pokedex .main .item{width: 0.9rem;height: 0.9rem;float: left;margin:0.1rem 0.08rem;padding:0.03rem;font-size: 0;position: relative;text-align: center}
-.pokedex .main .item .border_img{position: absolute;width: 100%;height: 100%;top:0;left:0;background:url(../images/zhiwudazhanjiangshi2/border_img.png) no-repeat;background-size: cover;}
-.pokedex .main .item img{width: 100%;height: 100%;border-radius: 10px}
+.pokedex .main{ width:2.29rem; float: right; font-size:0; background:#f0e7c6; border-radius:0.03rem; border:0.03rem solid #f0e7c6}
+.pokedex .main .main_mask{background:#b3ae98; border-radius:0.03rem;width:2.29rem; overflow:hidden; }
+.pokedex .main .main_scroll{overflow-y:auto; width:2.47rem; -webkit-overflow-scrolling:touch; }
+.pokedex .main .item{width: 0.9rem;height: 0.9rem;float: left;margin:0.1rem 0.09rem;text-align: center; border:0.03rem solid #fff;border-radius:0.1rem;}
+.pokedex .main .item img{border-radius:0.1rem;width: 0.9rem;height: 0.9rem;}
 .pokedex .main .item .label{height:0.18rem;background:url(../images/zhiwudazhanjiangshi2/btn_left.png) left top no-repeat;background-size:auto 0.18rem;font-size: 0.09rem;color:#fff;line-height: 0.18rem;display: inline-block;position: relative;top:-0.05rem;padding-left: 0.05rem}
 .pokedex .main .item .label span{padding-right: 0.05rem;float: right;height:0.18rem ;background:url(../images/zhiwudazhanjiangshi2/btn_right.png) right top no-repeat;background-size:auto 0.18rem;}
 

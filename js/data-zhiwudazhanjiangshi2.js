@@ -110,7 +110,6 @@
 					for(var j=0; j<data[i].data.length; j++){
 						
 						html += '<a class="item" href="javascript:;" data-id="'+data[i].data[j].id+'">'+
-									'<div class="border_img"></div>'+
 									'<img src="'+this.o.url+this.o.menu+'/'+data[i].data[j].id+'.png"  />'+
 									'<div class="label"><span>'+data[i].data[j].h1+'</span></div>'+
 								'</a>';
@@ -323,22 +322,25 @@
 				category_wrap_top = $("#category_wrap").offset().top,
 				category_top = $("#category").offset().top,
 				category_ul_top = $("#category_ul").offset().top,
-
-				sku_top = $("#sku").offset().top,
+				
 				main_top = $("#main").offset().top,
 				main_mask_top = $("#main_mask").offset().top,
 
 				padding_h = 0,
 			    category = 0;
+				
+			console.log(win_h);
 
-			padding_h = category_ul_top-category_top;
+			padding_h = category_ul_top-category_top;//2
 			category = win_h-category_top-(category_top-category_wrap_top) - 10;
-			main_masky = win_h-main_mask_top-(main_mask_top-main_top) - 10;
+			main_h = win_h-main_mask_top-(main_mask_top-main_top) - 10;
+			
+
 			
 			$("#category").height(category);
 			$("#category_ul").height(category-2*padding_h);
-			$("#main_mask").height(main_masky);
-			$("#sku").height(main_masky-2*padding_h);
+			$("#main_mask").height(main_h);
+			$("#sku").height(main_h);
 		},
 
 		init: function(){
