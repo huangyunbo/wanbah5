@@ -321,7 +321,7 @@
 		setheight:function(){//获取滚动条高度
 			var wwindowh=window.innerHeight,
 			    sidetitH=$("#side .tit").height();
-			$("#side .mask").height(wwindowh-70-sidetitH);
+			// $("#side .mask").height(wwindowh-70-sidetitH);
 			$("#main .mask").height(wwindowh-70);
 		},
 
