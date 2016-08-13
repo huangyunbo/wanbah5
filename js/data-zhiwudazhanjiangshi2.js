@@ -328,17 +328,13 @@
 
 				padding_h = 0,
 			    category = 0;
-				
-			console.log(win_h);
 
-			padding_h = category_ul_top-category_top;//2
-			category = win_h-category_top-(category_top-category_wrap_top) - 10;
-			main_h = win_h-main_mask_top-(main_mask_top-main_top) - 10;
-			
-
+			padding_h = category_ul_top-category_top;
+			category = win_h-category_top-(category_top-category_wrap_top)-2*padding_h - 5;
+			main_h = win_h-main_mask_top-(main_mask_top-main_top) - 5;
 			
 			$("#category").height(category);
-			$("#category_ul").height(category-2*padding_h);
+			$("#category_ul").height(category);
 			$("#main_mask").height(main_h);
 			$("#sku").height(main_h);
 		},
