@@ -131,8 +131,8 @@
 			for(var i=0; i<data.length; i++){
 				html_category += '<li class="img" data-pid="'+data[i].pid+'"><img src="'+this.o.url+'category/'+data[i].pid+'.png" /></li>';
 			}
-			$("#category").html(html_category);
-			this.setheight();
+			$("#category_ul").html(html_category);
+			this.setHeight();
 		},
 		
 		getsession: function(){
@@ -271,11 +271,11 @@
 			});
 			
 			//列表
-			$("#category").on("click", ".img", function(){
+			$("#category_ul").on("click", "li", function(){
 				var $self = $(this);
 				$self.addClass("on").siblings().removeClass("on");
 				that.printSku($self.attr("data-pid"));
-			}).children(".img").eq(0).trigger("click");
+			}).children("li").eq(0).trigger("click");
 
 			$("#sku").on("click", ".item", function(){
 				var _id = Number($(this).attr("data-id"));
@@ -318,11 +318,18 @@
 					break;
 			}
 		},
-		setheight:function(){//获取滚动条高度
-			var wwindowh=window.innerHeight,
-			    sidetitH=$("#side .tit").height();
-			// $("#side .mask").height(wwindowh-70-sidetitH);
-			$("#main .mask").height(wwindowh-70);
+		setHeight:function(){//获取滚动条高度
+			var win_h = $(window).height(),
+				category_wrap_top = $("#category_wrap").offset().top,
+				category_top = $("#category").offset().top,
+			    category = 0;
+			
+			category = win_h-category_top-(category_top-category_wrap_top) - 5;
+			$("#category").height(category);
+			$("#category_ul").children("ul").height(category);
+			
+			
+			//$("#main .mask").height(wwindowh-70);
 		},
 
 		init: function(){
