@@ -8,7 +8,7 @@
 		this.data_jiangshi = data_jiangshi;
 		this.data_cards = [];
 		
-		this.o = {platform:"web",plugin:"plugin_1385",url:"images/zhiwudazhanjiangshi2/",menu:"zhiwu"};//platform:打包平台,plugin:插件板块名,url:前缀路径
+		this.o = {platform:"web",plugin:"plugin_1385",url:"images/zhiwudazhanjiangshi2/",menu:"eyes_zhiwu"};//platform:打包平台,plugin:插件板块名,url:前缀路径
 		if(this.o.platform == "android"){
 			this.o.url="../images/zhiwudazhanjiangshi2/";
 		}
@@ -31,12 +31,12 @@
 		},
 		isMenu: function(){
 			var headerTit;
-			if(this.getsession("wbgl-zhiwudazhanjiangshi2-menu") == 'zhiwu'){
-				this.o.menu = 'zhiwu';
+			if(this.getsession("wbgl-zhiwudazhanjiangshi2-eyes-menu") == 'zhiwu'){
+				this.o.menu = 'eyes_zhiwu';
 				this.data_cards = this.data_zhiwu;
 				headerTit = "植物图鉴";
 			}else{
-				this.o.menu = 'jiangshi';
+				this.o.menu = 'eyes_jiangshi';
 				this.data_cards = this.data_jiangshi;
 				headerTit = "僵尸图鉴";
 			}
@@ -46,7 +46,7 @@
 		printDetail:function(){
 			this.isMenu();
 
-			var cardid = Number(this.getsession("wbgl-zhiwudazhanjiangshi2-card")),
+			var cardid = Number(this.getsession("wbgl-zhiwudazhanjiangshi2-eyes-card")),
 				data = {},
 				isfind = false,
 				html_mold = '',
@@ -122,15 +122,15 @@
 		
 		printCategory: function(){//打印列表
 			var data,
-				html_category = '';
+				html_eyes_category = '';
 
 			this.isMenu();
 			data = this.data_cards;
 			
 			for(var i=0; i<data.length; i++){
-				html_category += '<li class="img" data-pid="'+data[i].pid+'"><img src="'+this.o.url+'category/'+data[i].pid+'.png" /></li>';
+				html_eyes_category += '<li class="img" data-pid="'+data[i].pid+'"><img src="'+this.o.url+'eyes_category/'+data[i].pid+'.png" /></li>';
 			}
-			$("#category_ul").html(html_category);
+			$("#category_ul").html(html_eyes_category);
 			this.setHeight();
 		},
 		
@@ -251,21 +251,21 @@
 			
 			//首页
 			$("#classify_zhiwu").click(function(){
-				that.setsession("wbgl-zhiwudazhanjiangshi2-menu", "zhiwu");
+				that.setsession("wbgl-zhiwudazhanjiangshi2-eyes-menu", "zhiwu");
 				
 				if(that.o.platform == "ios"){
-					location.href = that.o.plugin+'/data-zhiwudazhanjiangshi2-list.html';
+					location.href = that.o.plugin+'/data-zhiwudazhanjiangshi2-eyes-list.html';
 				}else{
-					location.href = 'data-zhiwudazhanjiangshi2-list.html';
+					location.href = 'data-zhiwudazhanjiangshi2-eyes-list.html';
 				}
 			});
 			$("#classify_jiangshi").click(function(){
-				that.setsession("wbgl-zhiwudazhanjiangshi2-menu", "jiangshi");
+				that.setsession("wbgl-zhiwudazhanjiangshi2-eyes-menu", "jiangshi");
 				
 				if(that.o.platform == "ios"){
-					location.href = that.o.plugin+'/data-zhiwudazhanjiangshi2-list.html';
+					location.href = that.o.plugin+'/data-zhiwudazhanjiangshi2-eyes-list.html';
 				}else{
-					location.href = 'data-zhiwudazhanjiangshi2-list.html';
+					location.href = 'data-zhiwudazhanjiangshi2-eyes-list.html';
 				}
 			});
 			
@@ -278,12 +278,12 @@
 
 			$("#sku").on("click", ".item", function(){
 				var _id = Number($(this).attr("data-id"));
-				that.setsession("wbgl-zhiwudazhanjiangshi2-card", _id);
+				that.setsession("wbgl-zhiwudazhanjiangshi2-eyes-card", _id);
 				
 				if(that.o.platform == "ios"){
-					location.href = that.o.plugin+'/data-zhiwudazhanjiangshi2-detail.html';
+					location.href = that.o.plugin+'/data-zhiwudazhanjiangshi2-eyes-detail.html';
 				}else{
-					location.href = 'data-zhiwudazhanjiangshi2-detail.html';
+					location.href = 'data-zhiwudazhanjiangshi2-eyes-detail.html';
 				}
 			});
 			

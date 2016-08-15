@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>植物大战僵尸2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="css/data-zhiwudazhanjiangshi2-eyes.css">
+</head>
+
+<body data-url="index" class="body">
+<div class="header hide" id="header">
+	<a class="back wbclick" href="javascript:;"></a>
+</div><!--/header-->
+
+<div>
+    <div class="classify">
+        <a href="javascript:;" id="classify_zhiwu" class="wbclick"></a>
+        <a href="javascript:;" id="classify_jiangshi" class="wbclick"></a>
+        <a href="javascript:;" id="classify_word" class="wbclick"></a>     
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/data-zhiwudazhanjiangshi2-eyes.js"></script>
+<script type="text/javascript" src="json/json-zhiwudazhanjiangshi2-eyes.js"></script>
+<script type="text/javascript">
+$(function(){
+	var zhiwudazhanjiangshi2 = new Zhiwudazhanjiangshi2(data_zhiwu, data_jiangshi);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* 植物大战僵尸2 2016-08-12 huhulayo */
+
+body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
+html{font:625%/1.5 "Microsoft YaHei",sans-serif}
+img{border:none;max-width:100%;vertical-align:top}
+h1,h2,h3,h4,h5,h6{font-weight:normal}
+input,select,textarea{font-size:100%;vertical-align:baseline}
+ol,ul{list-style:none}
+textarea{overflow:auto;vertical-align:top;resize:vertical}
+table{border-collapse:collapse;border-spacing:0}
+em,i,code,cite,address,th{font-style:normal}
+.clear{clear:both;line-height:0;font-size:0}
+.clearfix{*zoom:1;_height:1px}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+a{ text-decoration:none}
+.mt_45{ margin-top:45px}
+.hide{ display:none !important}
+.wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+
+body{ background:#000; color:#fff}
+.body{ background:#000 url(../images/zhiwudazhanjiangshi2/bg.jpg) top center repeat-y fixed; background-size:contain}
+.header{ height:45px; background:#81472b url(../images/zhiwudazhanjiangshi2/headerbg.jpg); background-size:cover; position:fixed; top:0; left:0; width:100%;z-index: 100;}
+.header .back{width:15px;height:15px;border:1px solid;border-color: transparent transparent #fff #fff;transform: rotate(45deg);position: absolute;top:15px; left:10px;}
+.header h2{text-align: center;font-size:20px;line-height: 45px}
+.pass_classify{text-align: center;padding-top:0.28rem }
+.pass_classify a{display: block;width:2rem;height:0.95rem ;margin:0  auto 0.15rem;font-size: 0 }
+
+.pass_list{width:2.67rem;height:4rem;margin: 0.4rem auto;background: url(../images/zhiwudazhanjiangshi2/pass_icon/pass_bg.png); background-size:cover;padding-top: 0.2rem;box-sizing: border-box;}
+.pass_list a img{display: block;width:2.04rem;height:1.02rem;margin:0 auto 0.1rem;  }
