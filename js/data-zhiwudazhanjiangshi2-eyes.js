@@ -8,7 +8,7 @@
 		this.data_jiangshi = data_jiangshi;
 		this.data_cards = [];
 		
-		this.o = {platform:"web",plugin:"plugin_1385",url:"images/zhiwudazhanjiangshi2/",menu:"eyes_zhiwu"};//platform:打包平台,plugin:插件板块名,url:前缀路径
+		this.o = {platform:"web",plugin:"plugin_1385",url:"images/zhiwudazhanjiangshi2/",menu:"zhiwu"};//platform:打包平台,plugin:插件板块名,url:前缀路径
 		if(this.o.platform == "android"){
 			this.o.url="../images/zhiwudazhanjiangshi2/";
 		}
@@ -32,11 +32,11 @@
 		isMenu: function(){
 			var headerTit;
 			if(this.getsession("wbgl-zhiwudazhanjiangshi2-eyes-menu") == 'zhiwu'){
-				this.o.menu = 'eyes_zhiwu';
+				this.o.menu = 'zhiwu';
 				this.data_cards = this.data_zhiwu;
 				headerTit = "植物图鉴";
 			}else{
-				this.o.menu = 'eyes_jiangshi';
+				this.o.menu = 'jiangshi';
 				this.data_cards = this.data_jiangshi;
 				headerTit = "僵尸图鉴";
 			}
@@ -69,7 +69,7 @@
 			}
 
 			html_mold = '<h3 class="tit">'+data.h1+'</h3>'+
-						'<img src="'+this.o.url+this.o.menu+'/'+data.id+'.png" class="img" />';
+						'<img src="'+this.o.url+'eyes_'+this.o.menu+'/'+data.id+'.png" class="img" />';
 
 			for(var i=0; i<contentArry.length; i++){
 				if(i == 0){
@@ -110,7 +110,7 @@
 					for(var j=0; j<data[i].data.length; j++){
 						
 						html += '<a class="item" href="javascript:;" data-id="'+data[i].data[j].id+'">'+
-									'<img src="'+this.o.url+this.o.menu+'/'+data[i].data[j].id+'.png"  />'+
+									'<img src="'+this.o.url+'eyes_'+this.o.menu+'/'+data[i].data[j].id+'.png"  />'+
 									'<div class="label"><span>'+data[i].data[j].h1+'</span></div>'+
 								'</a>';
 					}
@@ -274,6 +274,7 @@
 				var $self = $(this);
 				$self.addClass("on").siblings().removeClass("on");
 				that.printSku($self.attr("data-pid"));
+				$("#sku").scrollTop(0);
 			}).children("li").eq(0).trigger("click");
 
 			$("#sku").on("click", ".item", function(){
