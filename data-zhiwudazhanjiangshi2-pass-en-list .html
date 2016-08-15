@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>选择关卡——英文</title>
+<title>植物大战僵尸2</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" type="text/css" href="css/data-zhiwudazhanjiangshi2-pass.css">
@@ -16,9 +16,9 @@
 <div class="mt_45">
 	<div class="pass_list">
 		<i></i>
-		<a href="javascript:;" class="wbclick"><img src="images/zhiwudazhanjiangshi2/pass_icon/1-15.png" /></a>
-		<a href="javascript:;" class="wbclick"><img src="images/zhiwudazhanjiangshi2/pass_icon/16-20.png" /></a>
-		<a href="javascript:;" class="wbclick"><img src="images/zhiwudazhanjiangshi2/pass_icon/endless.png" /></a>       
+		<a href="javascript:;" class="wbclick" id="mode_1"><img src="images/zhiwudazhanjiangshi2/pass_icon/1-15.png" /></a>
+		<a href="javascript:;" class="wbclick" id="mode_2"><img src="images/zhiwudazhanjiangshi2/pass_icon/16-20.png" /></a>
+		<a href="javascript:;" class="wbclick" id="mode_3"><img src="images/zhiwudazhanjiangshi2/pass_icon/endless.png" /></a>       
 	</div>
 </div>
 
@@ -27,7 +27,7 @@
 <script type="text/javascript" src="json/json-zhiwudazhanjiangshi2-pass.js"></script>
 <script type="text/javascript">
 $(function(){
-	var zhiwudazhanjiangshi2 = new Zhiwudazhanjiangshi2(en,data_cn, data_en);
+	var zhiwudazhanjiangshi2_pass = new Zhiwudazhanjiangshi2_pass('en', data_cn, data_en);
 });
 </script>
 </body>
