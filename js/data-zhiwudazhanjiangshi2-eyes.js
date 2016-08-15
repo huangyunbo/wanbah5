@@ -1,7 +1,7 @@
 //2016-08-08 guawazi
 
 (function(window){
-	var Zhiwudazhanjiangshi2 = function(){
+	var Zhiwudazhanjiangshi2_eyes = function(){
 		var data_zhiwu = typeof(arguments[0]) == 'object' ? arguments[0] : {};
 		var data_jiangshi = typeof(arguments[1]) == 'object' ? arguments[1] : {};
 		this.data_zhiwu = data_zhiwu;
@@ -15,7 +15,7 @@
 		this.init();
 	};
 	
-	Zhiwudazhanjiangshi2.prototype = {
+	Zhiwudazhanjiangshi2_eyes.prototype = {
 		gopage: function(){
 			var arg = arguments[0];
 			
@@ -347,5 +347,5 @@
 		}
 	};
 	
-	window.Zhiwudazhanjiangshi2 = Zhiwudazhanjiangshi2;
+	window.Zhiwudazhanjiangshi2_eyes = Zhiwudazhanjiangshi2_eyes;
 })(window);
