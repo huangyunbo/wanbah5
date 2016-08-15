@@ -26,5 +26,5 @@ body{ background:#000; color:#fff}
 .pass_classify{text-align: center;padding-top:0.28rem }
 .pass_classify a{display: block;width:2rem;height:0.95rem ;margin:0  auto 0.15rem;font-size: 0 }
 
-.pass_list{width:2.67rem;height:4rem;margin: 0.4rem auto;background: url(../images/zhiwudazhanjiangshi2/pass_icon/pass_bg.png); background-size:cover;padding-top: 0.2rem;box-sizing: border-box;}
-.pass_list a img{display: block;width:2.04rem;height:1.02rem;margin:0 auto 0.1rem;  }
+.pass_list{width:2.67rem;height:4.31rem;margin: 0.54rem auto;background: url(../images/zhiwudazhanjiangshi2/pass_icon/bg.png); background-size:cover;padding-top: 0.52rem;box-sizing: border-box;}
+.pass_list a img{display: block;width:2.03rem;height:1rem;margin:0 auto 0.15rem;  }
