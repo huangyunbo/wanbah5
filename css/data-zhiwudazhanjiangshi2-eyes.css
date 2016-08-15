@@ -47,14 +47,15 @@ body{ background:#000; color:#fff}
 .pokedex .main .item .label{ height:0.18rem;background:url(../images/zhiwudazhanjiangshi2/eyes/btn_left.png) left top no-repeat;background-size:auto 0.18rem;font-size: 0.09rem;color:#fff;line-height: 0.18rem;display: inline-block;position: relative;top:-0.05rem;padding-left: 0.05rem}
 .pokedex .main .item .label span{ max-width:0.8rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-right: 0.05rem; display:block; height:0.18rem ;background:url(../images/zhiwudazhanjiangshi2/eyes/btn_right.png) right top no-repeat;background-size:auto 0.18rem;}
 
-.wrap{width: 3.01rem;margin: 60px auto;background:url(../images/zhiwudazhanjiangshi2/eyes/contentbg.png) center top repeat-y; background-size:100%;position: relative;padding-top: 1.2em ;padding-bottom: 0.1rem}
-.wrap .topbg{position: absolute;top:-0.1rem;left:0;width: 100%;height:1.17rem; background:url(../images/zhiwudazhanjiangshi2/eyes/topbg.png) center top no-repeat;background-size:100%;overflow: hidden;padding-top: 0.08rem}
+.wrap{width: 3rem;margin: 60px auto;background:url(../images/zhiwudazhanjiangshi2/eyes/contentbg.png) center top repeat-y; background-size:100%;position: relative;padding-top: 1.2rem ;padding-bottom: 0.1rem}
+.wrap .topbg{position: absolute;top:-0.1rem;left:0;width: 100%;height:1.3rem; background:url(../images/zhiwudazhanjiangshi2/eyes/topbg.png) center top no-repeat;background-size:100%;overflow: hidden;padding-top: 0.08rem}
 .wrap .footbg{position: absolute;bottom:-0.1rem;left:0;width: 100%;height:0.1rem; background:url(../images/zhiwudazhanjiangshi2/eyes/footbg.png) center top no-repeat;background-size:100%;}
-.wrap .topbg .name{width:0.7rem;height: 0.92rem; background:url(../images/zhiwudazhanjiangshi2/eyes/namebg.png) center top no-repeat;background-size:100%;float: left;margin: 0 0.07rem;position: relative;}
-.wrap .topbg .way{font-size: 0.12rem;color:#000;padding:0.25rem 0.1rem 0 0.18rem;box-sizing: border-box;width:2.1rem;height: 0.92rem; background:url(../images/zhiwudazhanjiangshi2/eyes/waybg.png) center top no-repeat;background-size:100%;float: left;text-align:justify }
-.wrap .topbg .name .tit{text-align: center;font-size:0.12rem;line-height:2; width:0.7rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
-.wrap .topbg .name .img{width: 0.56rem;height: 0.56rem;border-radius: 10px;position: absolute;bottom:0.09rem;left:50%;margin-left: -0.28rem}
-.wrap .topbg .way .text{height:0.5rem;overflow-y:auto;color:#473013; -webkit-overflow-scrolling:touch;}
+/*.wrap .topbg .name{width:0.7rem;height: 0.92rem; background:url(../images/zhiwudazhanjiangshi2/eyes/namebg.png) center top no-repeat;background-size:100%;float: left;margin: 0 0.07rem;position: relative;}*/
+.wrap .container{padding-top: 0.1rem}
+.wrap .topbg .way{font-size: 0.1rem;color:#000;width:2.87rem;height: 1.03rem; background:url(../images/zhiwudazhanjiangshi2/eyes/waybg.png) center top no-repeat;background-size:100%;text-align:justify ;margin:0 auto;}
+.wrap .topbg .way .tit{font-size:0.12rem;text-align: center;line-height:0.22rem;color:#fff; }
+.wrap .topbg .way .img{width: 0.65rem;height: 0.65rem;border-radius: 10px;float: left;margin:0.06rem 0.15rem;}
+.wrap .topbg .way .text{height:0.68rem;overflow-y:auto;color:#473013; -webkit-overflow-scrolling:touch;float: left;margin-top: 0.06rem;width: 1.75rem;overflow-y: auto}
 .wrap .topbg .way .text .title{font-size: 0.14rem}
 .wrap .field{width:2.87rem;margin:0.02rem auto;background:url(../images/zhiwudazhanjiangshi2/eyes/sm_contentbg.png) center top repeat-y;background-size:100%;position: relative;margin-bottom: 0.3rem;font-size:0.09rem;color:#473013;padding:0.07rem 0.06rem 0.05rem;box-sizing: border-box; }
 .wrap .field .headerbg{position: absolute;top:-0.1rem;left:0;width: 100%;height:0.15rem;background:url(../images/zhiwudazhanjiangshi2/eyes/sm_topbg.png) center top no-repeat;background-size:100%; }

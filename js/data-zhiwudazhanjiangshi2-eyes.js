@@ -51,7 +51,8 @@
 				isfind = false,
 				html_mold = '',
 				html_container = '',
-				contentArry='';
+				contentArry='',
+				html_sum = '';
 
 			for(var i=0; i<this.data_cards.length; i++){
 				for(var j=0; j<this.data_cards[i].data.length; j++){
@@ -68,8 +69,11 @@
 				return;
 			}
 
-			html_mold = '<h3 class="tit">'+data.h1+'</h3>'+
-						'<img src="'+this.o.url+'eyes_'+this.o.menu+'/'+data.id+'.png" class="img" />';
+			// html_mold = '<h3 class="tit">'+data.h1+'</h3>'+
+			// 			'<img src="'+this.o.url+'eyes_'+this.o.menu+'/'+data.id+'.png" class="img" />';
+			html_sum = '<h3 class="tit">'+data.h1+'</h3>'+
+						'<img src="'+this.o.url+'eyes_'+this.o.menu+'/'+data.id+'.png" class="img" />'+
+						'<div class="text" >'+data.sum+'</div>';
 
 			for(var i=0; i<contentArry.length; i++){
 				if(i == 0){
@@ -98,7 +102,7 @@
 			}
 				
 			$("#d_mold").html(html_mold);
-			$("#d_sum").html(data.sum);
+			$("#d_sum").html(html_sum);
 			$("#container").html(html_container);
 		},
 		printSku: function(pid){
