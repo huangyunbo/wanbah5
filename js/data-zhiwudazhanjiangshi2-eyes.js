@@ -1,4 +1,4 @@
-//2016-08-08 guawazi
+//2016-08-08 sunny
 
 (function(window){
 	var Zhiwudazhanjiangshi2_eyes = function(){
@@ -241,6 +241,7 @@
 						unios();
 					}else if(this.o.platform == "android"){
 						unios();
+						$("#header").children(".back").attr("href","javascript:history.go(-1)");
 					}
 				break;
 			}

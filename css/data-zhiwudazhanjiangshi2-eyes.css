@@ -16,6 +16,7 @@ em,i,code,cite,address,th{font-style:normal}
 a{ text-decoration:none}
 .mt_45{ margin-top:45px}
 .hide{ display:none !important}
+.pt_2{padding-top: 0.2rem}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 
 body{ background:#000; color:#fff}
@@ -23,7 +24,7 @@ body{ background:#000; color:#fff}
 .header{ height:45px; background:#81472b url(../images/zhiwudazhanjiangshi2/headerbg.jpg); background-size:cover; position:fixed; top:0; left:0; width:100%;z-index: 100;}
 .header .back{width:15px;height:15px;border:1px solid;border-color: transparent transparent #fff #fff;transform: rotate(45deg);position: absolute;top:15px; left:10px;}
 .header h2{text-align: center;font-size:20px;line-height: 45px}
-.classify{width:2.67rem;height:4.17rem;margin:0.5rem auto 0;background:url(../images/zhiwudazhanjiangshi2/eyes/classifybg.png) center top no-repeat;background-size:100%;padding-top:0.25rem }
+.classify{width:2.67rem;height:4.17rem;margin:0 auto;background:url(../images/zhiwudazhanjiangshi2/eyes/classifybg.png) center top no-repeat;background-size:100%;padding-top:0.25rem }
 .classify a{display: block;width:2rem;height: 1.1rem;margin:0.07rem auto;background:url(../images/zhiwudazhanjiangshi2/eyes/jiangshibg.png) no-repeat;background-size: cover}
 .classify a:first-child{background:url(../images/zhiwudazhanjiangshi2/eyes/zhiwubg.png) no-repeat;background-size: cover}
 .classify a:last-child{background:url(../images/zhiwudazhanjiangshi2/eyes/mingcibg.png) no-repeat;background-size: cover}
@@ -47,7 +48,8 @@ body{ background:#000; color:#fff}
 .pokedex .main .item .label{ height:0.18rem;background:url(../images/zhiwudazhanjiangshi2/eyes/btn_left.png) left top no-repeat;background-size:auto 0.18rem;font-size: 0.09rem;color:#fff;line-height: 0.18rem;display: inline-block;position: relative;top:-0.05rem;padding-left: 0.05rem}
 .pokedex .main .item .label span{ max-width:0.8rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-right: 0.05rem; display:block; height:0.18rem ;background:url(../images/zhiwudazhanjiangshi2/eyes/btn_right.png) right top no-repeat;background-size:auto 0.18rem;}
 
-.wrap{width: 3rem;margin: 60px auto;background:url(../images/zhiwudazhanjiangshi2/eyes/contentbg.png) center top repeat-y; background-size:100%;position: relative;padding-top: 1.2rem ;padding-bottom: 0.1rem}
+.wrap{width: 3rem;margin:0.2rem auto;background:url(../images/zhiwudazhanjiangshi2/eyes/contentbg.png) center top repeat-y; background-size:100%;position: relative;padding-top: 1.2rem ;padding-bottom: 0.1rem}
+.wrap.mt_45{margin-top: 70px}
 .wrap .topbg{position: absolute;top:-0.1rem;left:0;width: 100%;height:1.3rem; background:url(../images/zhiwudazhanjiangshi2/eyes/topbg.png) center top no-repeat;background-size:100%;overflow: hidden;padding-top: 0.08rem}
 .wrap .footbg{position: absolute;bottom:-0.1rem;left:0;width: 100%;height:0.1rem; background:url(../images/zhiwudazhanjiangshi2/eyes/footbg.png) center top no-repeat;background-size:100%;}
 /*.wrap .topbg .name{width:0.7rem;height: 0.92rem; background:url(../images/zhiwudazhanjiangshi2/eyes/namebg.png) center top no-repeat;background-size:100%;float: left;margin: 0 0.07rem;position: relative;}*/
