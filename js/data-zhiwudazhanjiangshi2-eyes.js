@@ -126,7 +126,10 @@
 		
 		printCategory: function(){//打印列表
 			var data,
-				html_eyes_category = '';
+				html_eyes_category = '',
+				_liindex = this.getsession("wbgl-zhiwudazhanjiangshi2-eyes-ul");
+
+			_liindex = _liindex == undefined ? 0 : _liindex;
 
 			this.isMenu();
 			data = this.data_cards;
@@ -135,6 +138,8 @@
 				html_eyes_category += '<li class="img" data-pid="'+data[i].pid+'"><img src="'+this.o.url+'eyes_category/'+data[i].pid+'.png" /></li>';
 			}
 			$("#category_ul").html(html_eyes_category);
+			
+			$("#category_ul").children().eq(_liindex).trigger("click");
 			this.setHeight();
 		},
 		
@@ -241,7 +246,7 @@
 						unios();
 					}else if(this.o.platform == "android"){
 						unios();
-						$("#header").children(".back").attr("href","javascript:history.go(-1)");
+						$("#header").children(".back").attr("href","data-zhiwudazhanjiangshi2-eyes-list.html");
 					}
 				break;
 			}
@@ -276,11 +281,14 @@
 			
 			//列表
 			$("#category_ul").on("click", "li", function(){
-				var $self = $(this);
+				var $self = $(this),
+				    _liindex = $(this).index();
+
+				that.setsession("wbgl-zhiwudazhanjiangshi2-eyes-ul", _liindex);
 				$self.addClass("on").siblings().removeClass("on");
 				that.printSku($self.attr("data-pid"));
 				$("#sku").scrollTop(0);
-			}).children("li").eq(0).trigger("click");
+			});
 
 			$("#sku").on("click", ".item", function(){
 				var _id = Number($(this).attr("data-id"));
@@ -312,6 +320,7 @@
 			switch(true){
 				case (href == "index"):
 					this.isplatform("index");
+					this.setsession("wbgl-zhiwudazhanjiangshi2-eyes-ul", 0);
 					break;
 				case (href == "list"):
 					this.isplatform("list");
@@ -347,8 +356,8 @@
 
 		init: function(){
 			this.setFontSize();
-			this.ispage();
 			this.events();
+			this.ispage();
 		}
 	};
 	
