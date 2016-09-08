@@ -38,8 +38,8 @@
 				case "index":				
 					if(this.o.platform == "web"){
 						unIos();
-					}else if(unIos.o.platform == "android"){
-						removehide();
+					}else if(this.o.platform == "android"){
+						unIos();
 						$("#header").children(".back").attr("href","javascript:window.jstojava.close()");
 					}
 					break;
