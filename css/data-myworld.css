@@ -1,5 +1,10 @@
 @charset "utf-8";
-/* 我的世界 2016-03-30 lucas */
+
+/* 
+ * 我的世界109 
+ * create 2016-03-30 lucas
+ * lastupdate 2016-09-08 wuyunduoduopiao
+**/
 
 body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
 html{font:62.5%/1.5 "Microsoft YaHei",sans-serif}
@@ -15,57 +20,34 @@ em,i,code,cite,address,th{font-style:normal}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 a{ text-decoration:none}
 .hide{ display:none !important}
-.mt_0{ margin-top:0 !important}
-.ml_16{ margin-left:16px}
-.mb_10{ margin-bottom:10px}
 .mt_45{ margin-top:45px}
-.center{ text-align:center}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
-.fs_12{ font-size:12px}
-.media_fs_14{ font-size:1.4rem}
-.media_mb_20{ margin-bottom:20px}
-.media_ml_16{ margin-left:16px}
-.media_plr_7{ padding:0 7px}
-.no_net{ font-size:2.0rem; text-align:center}
 
 
-
-body{ background:#08121a; color:#fff; -webkit-user-select:none; user-select:none}
+body{ background:#1a1510; color:#fff; -webkit-user-select:none; user-select:none}
 .header{ height:44px; border-bottom:1px solid #355cbf; background:#091723; position:fixed; width:100%; top:0; left:0; z-index:100}
 .header h1{ font-size:18px; padding-top:8px; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
 
 /*合成表页*/
-.content{ margin-top:15px; text-align:center}
-.content ul{ padding-top: 20px;}
-.content li{ display:inline-block; width:32%; text-align:center; padding-top:15px; vertical-align:top}
-.content li img{ width: 93px; height: 93px;}
-
-/*合成表详情页*/
-.detail_body{ background: #08121a; color:#fff}
-.footer{ text-align: center; margin: 50px 0 20px; color: #999; font-size: 14px}
-.article .top { padding: 10px 0; border-bottom: 1px solid #d3d3d3}
-.article .top .info { font-size: 1.3em}
-.article .top .info span { margin-right: 10px}
-.article .top h1 { font-size: 1.8em; font-weight: normal; line-height: 1.2; margin: 10px 0}
-.footer .menu{ margin-bottom: 5px}
-.footer .menu a{ color: #999; padding: 0 10px; display: inline-block}
-.container{ margin-top:45px; margin-left:7px; margin-right:7px}
+.hecheng{ text-align:center}
+.hecheng li{ display:inline-block; width:32%; margin-top:15px; vertical-align:top}
+.hecheng li img{ width:82px; height:82px}
 @media screen and (min-width:640px){
-	.content ul{ padding-top:40px;}
-	.content li{ padding-top:30px;}
-	.content li img{ width: 186px; height: 186px;}
+	.hecheng li{ margin-top:15px}
+	.hecheng li img{ width:164px; height:164px}
 }
 
-/*直播*/
-.zhibo_body{ background:#fff}
-.header h2{ font-size:18px; padding-top:8px; text-align:center; color:#fff;}
-.zhibo{}
-.zhibo .tab{ text-align: center; height: 45px; background:#fff; color:#525252}
-.zhibo .tab .tabitem{ float: left;  width: 33.33%; line-height:2.8; font-size: 16px; font-weight:bold; border-bottom:2px solid #fff}
-.zhibo .tab .tabitem.on{ color:#0d74eb; border-bottom:2px solid #0d74eb} 
-.zhibo_iframe{ width:100%; height:100%; vertical-align:top; border:none; display: none}
-.zhibo_iframe.on{ display: block; }
+/*合成表详情页*/
+.no_net{ font-size:2.0rem; text-align:center}
+.article{ padding:7px}
+.article .top{ padding-bottom:10px; border-bottom: 1px solid #d3d3d3}
+.article .top .info{ font-size: 1.3rem}
+.article .top .info span{ margin-right: 10px}
+.article .top h1{ font-size: 1.8rem; font-weight: normal; line-height: 1.2; margin: 10px 0}
+.footer{ text-align:center; padding:50px 0 20px; color:#999; font-size:14px}
+
+
 
 
 
