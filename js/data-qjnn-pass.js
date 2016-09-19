@@ -11,17 +11,6 @@
 	};
 	
 	QjnnPass.prototype = {
-		/*printdetail: function(){//打印详情页
-			var list = this.datapass[Number(this.getsession("wbgl-qjnn-pass-chapter"))],
-			id = Number(this.getsession("wbgl-qjnn-pass-id"));
-
-			for(var i=0; i<list.length; i++){
-				if(id == list[i].id){
-					$("#passdetail").html('<div class="title">'+list[i].name+'</div><div class="welcome">欢迎加入奇迹暖暖交流群:411055140</div><div class="content">'+list[i].p+'</div>');
-					break;
-				}
-			}
-		},*/
 		gopage: function(){
 			var arg = arguments[0];
 			
@@ -36,8 +25,34 @@
 			}
 		},
 		printlist: function(){//打印列表
-			var list = this.datapass[Number(this.getsession("wbgl-qjnn-pass-chapter"))],
-			html = '';
+			var list = [],
+				html = '',
+				chapter = 0;
+			
+			//特意兼容低版本android写的
+			if(this.o.platform == "android"){
+				var longHref = location.href.split("?"),
+					query = longHref[1];
+				
+				if(query !== undefined){
+					var pairs = query.split("&");
+					
+					for(var i=0; i<pairs.length; i++){
+						var pos = pairs[i].indexOf('='); //查找name=value
+						if(pos == -1) continue; //如果没有找到就跳过
+						var argname = pairs[i].substring(0, pos); //提取name
+						var value = pairs[i].substring(pos + 1); //提取value
+						if(argname == "wbgl-qjnn-pass-chapter"){
+							list = this.datapass[value];
+							break;
+						}
+					}
+				}else{
+					list = this.datapass[0];
+				}
+			}else{
+				list = this.datapass[Number(this.getsession("wbgl-qjnn-pass-chapter"))];
+			}
 			
 			for(var i=0; i<list.length; i++){
 				html += '<div class="item" data-id="'+list[i].id+'"><div><span>'+list[i].name+'</span></div></div>';
@@ -76,20 +91,20 @@
 		},
 		getsession: function(){
 			var sessionname = arguments[0];
-			if(this.o.platform == "web"){
-				return sessionStorage.getItem(sessionname);
-			}else{
+			if(this.o.platform == "ios"){
 				return this.cookie(sessionname);
+			}else{
+				return sessionStorage.getItem(sessionname);
 			}
 		},
 		setsession: function(){
 			var sessionname = arguments[0],
 				sessionvalue = arguments[1];
 				
-			if(this.o.platform == "web"){
-				sessionStorage.setItem(sessionname, sessionvalue);
+			if(this.o.platform == "ios"){
+				this.cookie(sessionname,sessionvalue);
 			}else{
-				this.cookie(sessionname, sessionvalue);
+				sessionStorage.setItem(sessionname, sessionvalue);
 			}
 		},
 		cookie: function(name, value, options){
@@ -154,24 +169,20 @@
 			$("#pass").on("click", ".item", function(){
 				var chapter = Number($(this).attr("data-chapter"));
 				
-				that.setsession("wbgl-qjnn-pass-chapter", chapter);
-				if(that.o.platform == "ios"){
+				
+				if(that.o.platform == "web"){
+					that.setsession("wbgl-qjnn-pass-chapter", chapter);
+					location.href = 'data-qjnn-pass-list.html';
+				}else if(that.o.platform == "ios"){
+					that.setsession("wbgl-qjnn-pass-chapter", chapter);
 					location.href = that.o.plugin+'/data-qjnn-pass-list.html';
 				}else{
-					location.href = 'data-qjnn-pass-list.html';
+					location.href = 'data-qjnn-pass-list.html?wbgl-qjnn-pass-chapter='+chapter;
 				}
 			});
 			//点击具体某篇文章
 			$("#passlist").on("click", ".item", function(){
 				that.gopage('{"pageid":1,"param1":'+$(this).attr("data-id")+'}');
-				/*var id = Number($(this).attr("data-id"));
-				
-				that.setsession("wbgl-qjnn-pass-id", id);
-				if(that.o.platform == "ios"){
-					location.href = that.o.plugin+'/data-qjnn-pass-detail.html';
-				}else{
-					location.href = 'data-qjnn-pass-detail.html';
-				}*/
 			});
 		},
 		isplatform: function(i){//判断打包平台显示相应内容
@@ -201,15 +212,6 @@
 						$("#passlist").addClass("mt_0");
 					}
 				break;
-				/*case "detail":
-					if(this.o.platform == "web"){
-						removehide();
-					}else if(this.o.platform == "android"){
-						removehide();
-					}else if(this.o.platform == "ios"){
-						$("#passdetail").addClass("mt_0");
-					}
-				break;*/
 			}
 		},
 		ispage: function(){//判断当前打开的是哪一个页面
@@ -225,10 +227,6 @@
 					this.isplatform("list");
 					this.printlist();
 					break;
-				/*case (href == "detail"):
-					this.isplatform("detail");
-					this.printdetail();
-					break;*/
 			}
 		},
 		init: function(){
