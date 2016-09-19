@@ -76,19 +76,20 @@
 		},
 		getsession: function(){
 			var sessionname = arguments[0];
-			if(this.o.platform == "ios"){
-				return this.cookie(sessionname);
-			}else{
+			if(this.o.platform == "web"){
 				return sessionStorage.getItem(sessionname);
+			}else{
+				return this.cookie(sessionname);
 			}
 		},
 		setsession: function(){
 			var sessionname = arguments[0],
-			sessionvalue = arguments[1];
-			if(this.o.platform == "ios"){
-				this.cookie(sessionname,sessionvalue);
-			}else{
+				sessionvalue = arguments[1];
+				
+			if(this.o.platform == "web"){
 				sessionStorage.setItem(sessionname, sessionvalue);
+			}else{
+				this.cookie(sessionname, sessionvalue);
 			}
 		},
 		cookie: function(name, value, options){
