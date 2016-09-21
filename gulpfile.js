@@ -1596,17 +1596,19 @@ gulp.task('qiuqiudazuozhan_ios', function(){
 var jinglingbaokemenggo_gameid = 113;
 var jinglingbaokemenggo_plugin = "plugin_1382";
 var jinglingbaokemenggo_path = '../';
-var jinglingbaokemenggo_replace = ['css/', 'js/'];
-var jinglingbaokemenggo_replace_data =  ['css/', 'js/'];
+var jinglingbaokemenggo_replace = ['css/', 'js/', 'images/'];
+var jinglingbaokemenggo_replace_data =  ['css/', 'js/', 'images/'];
 var jinglingbaokemenggo_platform = 'android';
 
-/*gulp.task('vainglory_images', function(){
-    gulp.src('./images/vainglory/**', {buffer: false})
-        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/vainglory'));
+gulp.task('jinglingbaokemenggo_images', function(){
+    gulp.src('./images/jinglingbaokemenggo/**', {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+jinglingbaokemenggo_gameid+'/'+jinglingbaokemenggo_platform+'/DataPlugin/images/jinglingbaokemenggo'));
 	
-	gulp.src('./images/.nomedia', {buffer: false})
-        .pipe(gulp.dest('../../chajian/'+vainglory_gameid+'/'+vainglory_platform+'/DataPlugin/images/'));
-});*/
+	if(jinglingbaokemenggo_platform == 'android'){
+		gulp.src('./images/.nomedia', {buffer: false})
+			.pipe(gulp.dest('../../chajian/'+jinglingbaokemenggo_gameid+'/'+jinglingbaokemenggo_platform+'/DataPlugin/images/'));
+	}
+});
 
 gulp.task('jinglingbaokemenggo_css', function(){
     gulp.src(['./css/data-jinglingbaokemenggo.css'], {buffer: false})
@@ -1641,6 +1643,15 @@ gulp.task('jinglingbaokemenggo_data', function(){
 		.pipe(replace(jinglingbaokemenggo_replace[1], jinglingbaokemenggo_replace_data[1]))
 		.pipe(rename('index.html'))
         .pipe(gulp.dest('../../chajian/'+jinglingbaokemenggo_gameid+'/'+jinglingbaokemenggo_platform+'/DataPlugin/'+jinglingbaokemenggo_plugin));
+	
+	gulp.src('data-jinglingbaokemenggo-manual.html')
+		.pipe(merge({
+            'js/data-jinglingbaokemenggo.min.js':['js/jquery-2.1.3.min.js','js/data-jinglingbaokemenggo.js']
+        }))
+		.pipe(replace(jinglingbaokemenggo_replace[0], jinglingbaokemenggo_replace_data[0]))
+		.pipe(replace(jinglingbaokemenggo_replace[1], jinglingbaokemenggo_replace_data[1]))
+		.pipe(replace(jinglingbaokemenggo_replace[2], jinglingbaokemenggo_replace_data[2]))
+        .pipe(gulp.dest('../../chajian/'+jinglingbaokemenggo_gameid+'/'+jinglingbaokemenggo_platform+'/DataPlugin/'+jinglingbaokemenggo_plugin));
 });
 
 gulp.task('jinglingbaokemenggo_clean', function(){
@@ -1649,11 +1660,11 @@ gulp.task('jinglingbaokemenggo_clean', function(){
 });
 
 gulp.task('jinglingbaokemenggo_android', ['jinglingbaokemenggo_clean'], function(){
-	gulp.start('jinglingbaokemenggo_css', 'jinglingbaokemenggo_js', 'jinglingbaokemenggo_data');
+	gulp.start('jinglingbaokemenggo_images', 'jinglingbaokemenggo_css', 'jinglingbaokemenggo_js', 'jinglingbaokemenggo_data');
 });
 
 gulp.task('jinglingbaokemenggo_ios_inner', ['jinglingbaokemenggo_clean'], function(){
-	gulp.start('jinglingbaokemenggo_css', 'jinglingbaokemenggo_js', 'jinglingbaokemenggo_data');
+	gulp.start('jinglingbaokemenggo_images', 'jinglingbaokemenggo_css', 'jinglingbaokemenggo_js', 'jinglingbaokemenggo_data');
 });
 
 gulp.task('jinglingbaokemenggo_ios', function(){

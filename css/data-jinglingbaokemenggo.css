@@ -1,5 +1,10 @@
 @charset "utf-8";
-/* 精灵宝可梦GO 113 2016-08-05 wuyunduoduopiao */
+/* 
+ *	精灵宝可梦GO 113
+ *	wuyunduoduopiao
+ *	creatTime 2016-08-05
+ *	lastUpdate 2016-09-21
+**/
 
 body,div,ul,ol,li,h1,h2,h3,h4,h5,h6,p,pre,code,form,img,dl,dd,dt,input,textarea,button,th,td{margin:0;padding:0}
 html{font:62.5%/1.5 "Microsoft YaHei",sans-serif}
@@ -18,8 +23,21 @@ a{ text-decoration:none}
 .mt_45{ margin-top:45px !important}
 .wbclick{ cursor:pointer; -webkit-tap-highlight-color:rgba(0,0,0,0)}
 
-body{ background:#072f37}
+body{ background:#072f37 url(../images/jinglingbaokemenggo/bg.jpg) no-repeat; background-size:cover}
 .header{ height:44px; border-bottom:1px solid #c7fd9a; background:#4bb8b2; position:fixed; width:100%; top:0; left:0; z-index:100}
 .header h1{ font-size:18px; padding-top:8px; color:#fff; text-align:center}
 .header .back{ position:absolute; top:13px; left:15px; border:solid #fff; border-width:0 0 1px 1px; width:15px; height:15px; -webkit-transform:rotate(45deg); transform:rotate(45deg)}
-.container{ color:#b9fdab; font-size:1.8rem; text-align:center; padding-top:100px}
+
+.index{ padding-top:10px}
+.index .menu{ width:244px; margin:0 auto}
+.index .item{ width:244px; height:70px; line-height:999; overflow:hidden; margin-top:40px; background-size:244px; background-repeat:no-repeat}
+.index .item_1{ background-image:url(../images/jinglingbaokemenggo/menu_tujian.png)}
+.index .item_2{ background-image:url(../images/jinglingbaokemenggo/menu_wmdjsq.png)}
+.index .item_3{ background-image:url(../images/jinglingbaokemenggo/menu_jsqsm.png)}
+
+.manual{ text-align:center}
+
+
+
+
+
