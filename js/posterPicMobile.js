@@ -16,7 +16,7 @@
 			dompicul: document.createElement('ul'),
 			delay: this.option.delay,
 			data: this.option.data,
-			pic: {width: 414, height: 207},//预设图片高度，动态获取会因图片加载延迟造成获取不到
+			pic: {width: 640, height: 260},//预设图片高度，动态获取会因图片加载延迟造成获取不到
 			limit: 9,//最大限制9张
 			total: 0,
 			current: 0,
