@@ -1816,5 +1816,62 @@ gulp.task('zhiwudazhanjiangshi2_ios', function(){
 });
 
 
+//阴阳师
+var yinyangshi_gameid = 116;
+var yinyangshi_plugin = "plugin_1516";
+var yinyangshi_path = '../';
+var yinyangshi_replace = ['css/', 'js/'];
+var yinyangshi_replace_data =  ['css/', 'js/'];
+var yinyangshi_platform = 'android';
+
+gulp.task('yinyangshi_css', function(){
+    gulp.src(['./css/data-yinyangshi.css'], {buffer: false})
+        .pipe(gulp.dest('../../chajian/'+yinyangshi_gameid+'/'+yinyangshi_platform+'/DataPlugin/css'));
+});
+
+gulp.task('yinyangshi_js', function(){
+    gulp.src(['./js/jquery-2.1.4.min.js','./js/data-yinyangshi.js'])
+        .pipe(concat('data-yinyangshi.min.js'))
+		.pipe(replace('platform:"web"', 'platform:"'+yinyangshi_platform+'"'))
+        .pipe(uglify())
+        .pipe(gulp.dest('../../chajian/'+yinyangshi_gameid+'/'+yinyangshi_platform+'/DataPlugin/js'));
+});
+
+gulp.task('yinyangshi_data', function(){
+	if(yinyangshi_platform == 'android'){
+		for(var i=0; i<yinyangshi_replace.length; i++){
+			yinyangshi_replace_data[i] = yinyangshi_path + yinyangshi_replace[i];
+		}
+	}
+	
+    gulp.src('data-yinyangshi.html')
+		.pipe(merge({
+            'js/data-yinyangshi.min.js':['js/jquery-2.1.4.min.js','js/data-yinyangshi.js']
+        }))
+		.pipe(replace(yinyangshi_replace[0], yinyangshi_replace_data[0]))
+		.pipe(replace(yinyangshi_replace[1], yinyangshi_replace_data[1]))
+		.pipe(rename('index.html'))
+        .pipe(gulp.dest('../../chajian/'+yinyangshi_gameid+'/'+yinyangshi_platform+'/DataPlugin/'+yinyangshi_plugin));
+});
+
+gulp.task('yinyangshi_clean', function(){
+	return gulp.src('../../chajian/'+yinyangshi_gameid+'/'+yinyangshi_platform+'/DataPlugin/*', {read: false})
+	.pipe(clean({force: true}));
+});
+
+gulp.task('yinyangshi_android', ['yinyangshi_clean'], function(){
+	gulp.start('yinyangshi_css', 'yinyangshi_js', 'yinyangshi_data');
+});
+
+gulp.task('yinyangshi_ios_inner', ['yinyangshi_clean'], function(){
+	gulp.start('yinyangshi_css', 'yinyangshi_js', 'yinyangshi_data');
+});
+
+gulp.task('yinyangshi_ios', function(){
+	yinyangshi_platform = 'ios';
+	gulp.start('yinyangshi_ios_inner');
+});
+
+
 
 
